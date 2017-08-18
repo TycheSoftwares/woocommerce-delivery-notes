@@ -1,10 +1,11 @@
-=== WooCommerce Print Invoice & Delivery Note ===
+	=== WooCommerce Print Invoice & Delivery Note ===
 
-Contributors: piffpaffpuff, tychesoftwares
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=K2JKYEASQBBSQ&lc=US&item_name=WooCommerce%20Print%20Invoice%20%26%20Delivery%20Note&item_number=WCDN&amount=20%2e00&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHostedGuest
+Contributors: ashokrane, bhavik.kiri, tychesoftwares
+Donate link: https://www.paypal.me/TycheSoftwares
 Tags: delivery note, packing slip, invoice, delivery, shipping, print, order, woocommerce, woothemes, shop
 Requires at least: 4.0
-Tested up to: 4.2.1
+Tested up to: 4.8.1
+Author URI: https://www.tychesoftwares.com/
 Stable tag: trunk
 License: GPLv3 or later
 License URI: http://www.opensource.org/licenses/gpl-license.php
@@ -12,6 +13,9 @@ License URI: http://www.opensource.org/licenses/gpl-license.php
 Print invoices and delivery notes for WooCommerce orders.  
 
 == Description ==
+
+= Announcement: The development of this plugin has been ceased. Thanks to everybody for their support throughout the years. Please contact me on GitHub if you want to take over the project. =
+
 
 
 You can print out invoices and delivery notes for the [WooCommerce](http://wordpress.org/plugins/woocommerce/) orders. You can also edit the Company/Shop name, Company/Shop postal address and also add personal notes, conditions/policies (like a refund policy) and a footer imprint.
@@ -42,11 +46,32 @@ Support can take place in the [public support forums](http://wordpress.org/suppo
 
 = Contributing =
 
-If you have a patch, or stumbled upon an issue with the source code that isn't a [WooCommerce issue](https://github.com/woothemes/woocommerce/issues?labels=Bug&milestone=22&state=open), you can contribute this back [on GitHub](https://github.com/piffpaffpuff/woocommerce-delivery-notes).
+If you have a patch, or stumbled upon an issue with the source code that isn't a [WooCommerce issue](https://github.com/woothemes/woocommerce/issues?labels=Bug&milestone=22&state=open), you can contribute this back [on GitHub](https://github.com/TycheSoftwares/woocommerce-delivery-notes).
 
 = Translating =
 
-When your language is missing you can contribute a translation to the [GitHub repository](https://github.com/piffpaffpuff/woocommerce-delivery-notes#translating).
+When your language is missing you can contribute a translation to the [GitHub repository](https://github.com/TycheSoftwares/woocommerce-delivery-notes#translating).
+
+**Some of our Pro plugins:**
+
+1. **[Abandoned Cart Pro for WooCommerce](https://www.tychesoftwares.com/store/premium-plugins/woocommerce-abandoned-cart-pro/?utm_source=wprepo&utm_medium=otherprolink&utm_campaign=WCDeliveryNotes "Abandoned Cart Pro for WooCommerce")**
+
+2. **[Booking & Appointment Plugin for WooCommerce](https://www.tychesoftwares.com/store/premium-plugins/woocommerce-booking-plugin/?utm_source=wprepo&utm_medium=link&utm_campaign=WCDeliveryNotes "Booking & Appointment Plugin for WooCommerce")**
+
+3. **[Order Delivery Date Pro for WooCommerce](https://www.tychesoftwares.com/store/premium-plugins/order-delivery-date-for-woocommerce-pro-21/?utm_source=wprepo&utm_medium=link&utm_campaign=WCDeliveryNotes "Order Delivery Date Pro for WooCommerce")**
+
+4. **[Product Delivery Date Pro for WooCommerce](https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=link&utm_campaign=WCDeliveryNotes "Product Delivery Date Pro for WooCommerce")**
+
+
+**Some of our other free plugins:**
+
+1. **[Abandoned Cart Lite for WooCommerce](https://wordpress.org/plugins/woocommerce-abandoned-cart/ "Abandoned Cart Lite for WooCommerce")**
+
+2. **[Order Delivery Date for WooCommerce](https://wordpress.org/plugins/order-delivery-date-for-woocommerce/ "Order Delivery Date for WooCommerce")**
+
+3. **[Product Delivery Date for WooCommerce](https://wordpress.org/plugins/product-delivery-date-for-woocommerce-lite/ "Product Delivery Date for WooCommerce")**
+
+4. **[Prevent Customers To Cancel WooCommerce Orders](https://wordpress.org/plugins/woo-prevent-cancel-order/ "Prevent Customers To Cancel WooCommerce Orders")**
 
 == Installation ==
 
@@ -278,7 +303,7 @@ The plugin uses the exact same content as WooCommerce. If the content isn't avai
 
 Upload your language file to `/wp-content/languages/plugins/` (create this folder if it doesn't exist). WordPress will then load the language. Make sure you use the same locale as in your configuration and the correct plugin locale i.e. `woocommerce-delivery-notes-it_IT.mo/.po`. 
 
-Please [contribute your translation](https://github.com/piffpaffpuff/woocommerce-delivery-notes#translating) to include it in the distribution.
+Please [contribute your translation](https://github.com/TycheSoftwares/woocommerce-delivery-notes#translating) to include it in the distribution.
 
 == Screenshots ==
 
@@ -292,6 +317,15 @@ Please [contribute your translation](https://github.com/piffpaffpuff/woocommerce
 == Changelog ==
 
 = Minimum Requirements: WooCommerce 2.2 =
+
+= 4.2.0 =
+
+* Tweak - Refactored settings screen
+* Fix - Compatibility with latest WooCommerce
+* Fix - Print preview loading indicators
+* Fix - Icon font embed
+* Dev - Load only one instance of the plugin (singleton class)
+* Dev - New settings hooks that work better with WooCommerce
 
 = 4.1.6 =
 

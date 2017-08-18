@@ -1,4 +1,4 @@
-# This German Language File: Copyright (C) 2011-2013 by David Decker of deckerweb.de & genesisthemes.de
+# This Vietnamese Language File: Copyright (C) 2015 by Nguyen Dinh Quan of http://www.narga.net/
 # This file is distributed under the same license as the WooCommerce Print Invoices & Delivery Notes Plugin package.
 #
 # Weitere deutsche Sprachdateien fuer WooCommerce und Extensions (Erweiterungen)
@@ -7,569 +7,533 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Print Invoice & Delivery Note V4.1.3 FR Traduction\n"
-"Report-Msgid-Bugs-To: http://deckerweb.de/kontakt/\n"
-"POT-Creation-Date: 2015-01-29 16:54+0100\n"
-"PO-Revision-Date: 2015-01-31 18:32+0100\n"
-"Last-Translator: jharasse <jharasse@free.fr>\n"
-"Language-Team: jharasse <jharasse@free.fr>\n"
+"Project-Id-Version: WooCommerce Print Invoice & Delivery Note\n"
+"Report-Msgid-Bugs-To: http://www.narga.net/contact/\n"
+"POT-Creation-Date: 2015-06-29 11:22+0700\n"
+"PO-Revision-Date: 2015-07-11 10:15+0700\n"
+"Last-Translator: Nguyễn Đình Quân <dinhquan@narga.net>\n"
+"Language-Team: NARGA <dinhquan@narga.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.5.4\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 1.8.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
-"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;"
-"esc_attr_e;esc_attr__\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;"
+"_nx:4c,1,2;_nx_noop:4c,1,2;esc_attr_e;esc_attr__\n"
 "X-Poedit-Basepath: .\n"
 "X-Textdomain-Support: yes\n"
-"Language: Français\n"
+"Language: vi_VN\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-print.php:41
 msgid "Invoice"
-msgstr "Facture"
+msgstr "Hóa đơn"
 
 #: ../includes/class-wcdn-print.php:42
 msgid "Invoices"
-msgstr "Factures"
+msgstr "Các hóa đơn"
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-print.php:43
 msgid "Print Invoice"
-msgstr "Imprimer la facture"
+msgstr "In hóa đơn"
 
 #: ../includes/class-wcdn-print.php:44
 msgid "Print Invoices"
-msgstr "Imprimer les factures"
+msgstr "In các hóa đơn"
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-print.php:45
 msgid "Invoice created."
-msgstr "Facture créée"
+msgstr "Hóa đơn đã được tạo"
 
 #: ../includes/class-wcdn-print.php:46
 msgid "Invoices created."
-msgstr "Factures créées"
+msgstr "Các hóa đơn đã được tạo"
 
 #: ../includes/class-wcdn-print.php:47
 msgid "Enable Invoices"
-msgstr "Factures"
+msgstr "Sử dụng các hóa đơn"
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-print.php:53
 msgid "Delivery Note"
-msgstr "Bon de livraison"
+msgstr "Ghi chú giao nhận hàng"
 
 #: ../includes/class-wcdn-print.php:54
 msgid "Delivery Notes"
-msgstr "Bons de livraison"
+msgstr "Các ghi chú giao nhận hàng"
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-print.php:55
 msgid "Print Delivery Note"
-msgstr "Imprimer le bon de livraison"
+msgstr "In ghi chú giao nhận hàng"
 
 #: ../includes/class-wcdn-print.php:56
 msgid "Print Delivery Notes"
-msgstr "Imprimer les bons de livraison"
+msgstr "In các ghi chú giao nhận hàng"
 
 #: ../includes/class-wcdn-print.php:57
 msgid "Delivery Note created."
-msgstr "Bon de livraison créé"
+msgstr "Ghi chú giao nhận hàng đã được tạo"
 
 #: ../includes/class-wcdn-print.php:58
 msgid "Delivery Notes created."
-msgstr "Bons de livraison créés"
+msgstr "Các ghi chú giao nhận hàng đã được tạo"
 
 #: ../includes/class-wcdn-print.php:59
 msgid "Enable Delivery Notes"
-msgstr "Bons de livraison"
+msgstr "Kích hoạt các ghi chú giao nhận hàng"
 
 #: ../includes/class-wcdn-print.php:65
 msgid "Receipt"
-msgstr "Reçu"
+msgstr "Biên lai"
 
 #: ../includes/class-wcdn-print.php:66
 msgid "Receipts"
-msgstr "Reçus"
+msgstr "Các biên lai"
 
 #: ../includes/class-wcdn-print.php:67
 msgid "Print Receipt"
-msgstr "Imprimer le reçu"
+msgstr "In Biên lai"
 
 #: ../includes/class-wcdn-print.php:68
 msgid "Print Receipts"
-msgstr "Imprimer les reçus"
+msgstr "In Các biên lai"
 
 #: ../includes/class-wcdn-print.php:69
 msgid "Receipt created."
-msgstr "Reçu créé"
+msgstr "Biên lai đã được tạo"
 
 #: ../includes/class-wcdn-print.php:70
 msgid "Receipts created."
-msgstr "Reçus créés"
+msgstr "Các biên lai đã được tạo"
 
 #: ../includes/class-wcdn-print.php:71
 msgid "Enable Receipts"
-msgstr "Reçus"
+msgstr "Kích hoạt Các biên lai"
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-print.php:80
 msgid "Order"
-msgstr "Commande"
+msgstr "Đơn hàng"
 
 #: ../includes/class-wcdn-print.php:81
 msgid "Orders"
-msgstr "Commandes"
+msgstr "Các đơn hàng"
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-print.php:82 ../includes/class-wcdn-settings.php:157
 msgid "Print Order"
-msgstr "Paramétrage des impressions"
+msgstr "In đơn hàng"
 
 #: ../includes/class-wcdn-print.php:83
 msgid "Print Orders"
-msgstr "Imprimer les commandes"
+msgstr "In Các đơn hàng"
 
 #: ../includes/class-wcdn-settings.php:72
-msgid ""
-"Do you really want to reset the counter to zero? This process can't be "
-"undone."
-msgstr ""
-"Voulez-vous vraiement réinitialiser le compteur de facture ? L'opération est "
-"irréversible."
+msgid "Do you really want to reset the counter to zero? This process can't be undone."
+msgstr "Bạn có muốn đặt lại bộ đếm về không? Thao tác này không thể phục hồi."
 
 # @ woocommerce-delivery-notes
-#: ../includes/class-wcdn-settings.php:102 ../includes/class-wcdn-theme.php:56
-#: ../includes/class-wcdn-theme.php:91
+#: ../includes/class-wcdn-settings.php:102 ../includes/class-wcdn-theme.php:56 ../includes/class-wcdn-theme.php:91
 #: ../includes/wcdn-template-functions.php:127
 msgid "Print"
-msgstr "Impression"
+msgstr "In"
 
 #: ../includes/class-wcdn-settings.php:176
 #, php-format
 msgid ""
-"You can preview the <a href=\"%1$s\" target=\"%4$s\" class=\"%5$s\">invoice</"
-"a>, <a href=\"%2$s\" target=\"%4$s\" class=\"%5$s\">delivery note</a> or <a "
-"href=\"%3$s\" target=\"%4$s\" class=\"%5$s\">receipt</a> template."
+"You can preview the <a href=\"%1$s\" target=\"%4$s\" class=\"%5$s\">invoice</a>, <a href=\"%2$s\" target=\"%4$s\" "
+"class=\"%5$s\">delivery note</a> or <a href=\"%3$s\" target=\"%4$s\" class=\"%5$s\">receipt</a> template."
 msgstr ""
-"You can preview the <a href=\"%1$s\" target=\"%4$s\" class=\"%5$s\">invoice</"
-"a>, <a href=\"%2$s\" target=\"%4$s\" class=\"%5$s\">delivery note</a> or <a "
-"href=\"%3$s\" target=\"%4$s\" class=\"%5$s\">receipt</a> template."
+"Bạn có thể xem trước bố cục  <a href=\"%1$s\" target=\"%4$s\" class=\"%5$s\">hóa đơn</a>, <a href=\"%2$s\" target="
+"\"%4$s\" class=\"%5$s\">ghi chú giao nhận</a> hoặc <a href=\"%3$s\" target=\"%4$s\" class=\"%5$s\">biên lai</a> "
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-settings.php:177
-msgid ""
-"With the FAQ in the readme file you can learn how to customize the template."
-msgstr ""
-"Avec la FAQ dans le fichier readme vous pouvez apprendre comment  "
-"personnaliser le modèle"
+msgid "With the FAQ in the readme file you can learn how to customize the template."
+msgstr "Đọc phần FAQ trong tập tin readme để biết cách thay đổi bố cục."
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-settings.php:188
 msgid "Company/Shop Logo"
-msgstr "Logo  magasin/entreprise"
+msgstr "Biểu tượng (logo) của cửa hàng/công ty"
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-settings.php:194
 msgid "Remove Logo"
-msgstr "Enlever le Logo"
+msgstr "Gỡ bỏ"
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-settings.php:195
 msgid "Set Logo"
-msgstr "Mise en place du Logo"
+msgstr "Đặt làm biểu tượng"
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-settings.php:199
 msgid "A company/shop logo representing your business."
-msgstr "Un logo du magasin/entreprise représentant votre activité."
+msgstr "Biểu tượng (logo) của cửa hàng/công ty"
 
 # @ woocommerce-delivery-notes
-#: ../includes/class-wcdn-settings.php:200
-#: ../includes/class-wcdn-settings.php:213
-#: ../includes/class-wcdn-settings.php:226
-#: ../includes/class-wcdn-settings.php:239
-#: ../includes/class-wcdn-settings.php:252
-#: ../includes/class-wcdn-settings.php:265
-#: ../includes/class-wcdn-settings.php:382
-#: ../includes/class-wcdn-settings.php:397
+#: ../includes/class-wcdn-settings.php:200 ../includes/class-wcdn-settings.php:213
+#: ../includes/class-wcdn-settings.php:226 ../includes/class-wcdn-settings.php:239
+#: ../includes/class-wcdn-settings.php:252 ../includes/class-wcdn-settings.php:265
+#: ../includes/class-wcdn-settings.php:382 ../includes/class-wcdn-settings.php:397
 #: ../includes/class-wcdn-settings.php:412
 msgid "Note:"
-msgstr "Note :"
+msgstr "Ghi chú:"
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-settings.php:201
 msgid ""
-"When the image is printed, its pixel density will automatically be eight "
-"times higher than the original. This means, 1 printed inch will correspond "
-"to about 288 pixels on the screen. Example: an image with a width of 576 "
-"pixels and a height of 288 pixels will have a printed size of about 2 inches "
-"to 1 inch."
+"When the image is printed, its pixel density will automatically be eight times higher than the original. This "
+"means, 1 printed inch will correspond to about 288 pixels on the screen. Example: an image with a width of 576 "
+"pixels and a height of 288 pixels will have a printed size of about 2 inches to 1 inch."
 msgstr ""
-"Quand l'image est imprimée, sa densité de pixels sera automatiquement "
-"multipliée par 8 par rapport à l'original. Ce qui veut dire qu'un pouce "
-"correspondra environ à 288 pixels sur l'écran. Exemple : une image avec une "
-"largeur de 576 pixels et une hauteur de 288 pixels sera imprimée à une "
-"taille d'environ 5 centimètres sur 2,5. "
+"Khi được in, độ phân giải sẽ được tăng thêm tám lần. Ví dụ như nếu bạn in 1 điểm rộng 1 inch trên màn hình là "
+"288px nhưng khi in ra nó sẽ có độ phân giải 576px để đảm bảo chất lượng."
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-settings.php:207
 msgid "Company/Shop Name"
-msgstr "Nom magasin/entreprise"
+msgstr "Tên Công ty/Cửa hàng"
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-settings.php:212
 msgid "Your company/shop name for the Delivery Note."
-msgstr "Le nom de votre magasin/entreprise pour le bon de livraison."
+msgstr "Tên công ty/cửa hàng trên Ghi chú giao hàng."
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-settings.php:214
 msgid ""
-"Leave blank to use the default Website/Blog title defined in WordPress "
-"settings. The name will be ignored when a Logo is set."
+"Leave blank to use the default Website/Blog title defined in WordPress settings. The name will be ignored when a "
+"Logo is set."
 msgstr ""
-"Laisser blanc pour utiliser le titre de blog/site défini dans les paramètres "
-"Wordpress. Ce nom sera ignoré si un logo est paramétré."
+"Để trống để in Tên của Website (trong thiết lập WordPress). Nội dung này sẽ bị bỏ qua nếu bạn đặt Biểu tượng"
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-settings.php:220
 msgid "Company/Shop Address"
-msgstr "Adresse  magasin/entreprise"
+msgstr "Địa chỉ Công ty/Cửa hàng"
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-settings.php:225
 msgid ""
-"The postal address of the company/shop or even e-mail or telephone, which "
-"gets printed right after the company/shop name."
-msgstr ""
-"L'adresse postale du magasin ou un email ou un téléphone, qui sera imprimé "
-"juste après le nom du magasin."
+"The postal address of the company/shop or even e-mail or telephone, which gets printed right after the company/"
+"shop name."
+msgstr "Địa chỉ công ty/cửa hàng hoặc địa chỉ email, điện thoại sẽ được in phía dưới biểu tượng."
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-settings.php:227
 msgid "Leave blank to not print an address."
-msgstr "Laisser blanc pour ne pas imprimer d'adresse"
+msgstr "Để trống để không in địa chỉ."
 
 #: ../includes/class-wcdn-settings.php:233
 msgid "Complimentary Close"
-msgstr "Fermeture complémentaire"
+msgstr "Nội dung Hàng gửi tặng"
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-settings.php:238
 msgid ""
-"Add some personal notes, or season greetings or whatever (e.g. Thank You for "
-"Your Order!, Merry Christmas!, etc.)."
-msgstr ""
-"Ajouter des notes personnelles, ou des voeux de saison ou ce que vous voulez "
-"(ex: Merci pour votre commande, Joyeux Noël, etc.)."
+"Add some personal notes, or season greetings or whatever (e.g. Thank You for Your Order!, Merry Christmas!, etc.)."
+msgstr "Ghi nội dung cho người được tặng quà, ví dụ Cám ơn, Chúc mừng năm mới ...)"
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-settings.php:240
 msgid "Leave blank to not print any personal notes."
-msgstr "Laisser blanc pour ne pas imprimer de note personnelle"
+msgstr "Để trống để không in ra ghi chú cá nhân."
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-settings.php:246
 msgid "Returns Policy, Conditions, etc"
-msgstr "Conditions générales de vente, retours, etc"
+msgstr "Điều khoản, quy định trả hàng ..."
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-settings.php:251
 msgid ""
-"Here you can add some more policies, conditions etc. For example add a "
-"returns policy in case the client would like to send back some goods. In "
-"some countries (e.g. in the European Union) this is required so please add "
-"any required info in accordance with the statutory regulations."
+"Here you can add some more policies, conditions etc. For example add a returns policy in case the client would "
+"like to send back some goods. In some countries (e.g. in the European Union) this is required so please add any "
+"required info in accordance with the statutory regulations."
 msgstr ""
-"Ici vous pouvez ajouter des conditions, informations ... Par exemple la "
-"politique de retour dans le cas où le client souhaiterait renvoyer un "
-"produit. Dans certains pays (ex. Union Européenne) ceci est requis ; donc "
-"remplissez en accord avec la règlementation de votre pays."
+"Tại đây bạn có thể thêm các thông tin bổ xung như các quy định đảm bảo gửi hàng, trả hàng, hoàn tiền. Trong một "
+"số khu vực địa lý nhất định (ví dụ như Châu Âu) thì các điều khoản này là bắt buộc."
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-settings.php:253
 msgid "Leave blank to not print any policies or conditions."
-msgstr "Laisser blanc pour ne pas imprimer de conditions ou informations"
+msgstr "Để trống để không in thông tin, điều khoản..."
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-settings.php:259
 msgid "Footer"
-msgstr "Pied de page"
+msgstr "Chân trang"
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-settings.php:264
 msgid ""
-"Add some further footer imprint, e-mail, telephone, copyright notes etc. "
-"This makes the printed sheets a bit more branded."
-msgstr ""
-"Ajouter quelques informations en pied de page : copyright, email, "
-"téléphone ... Cela rend les documents imprimés plus à l'image du magasin."
+"Add some further footer imprint, e-mail, telephone, copyright notes etc. This makes the printed sheets a bit more "
+"branded."
+msgstr "Các nội dung cần in trong chân trang: email,  điện thoại, lưu ý."
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-settings.php:266
 msgid "Leave blank to not print a footer."
-msgstr "Laisser blanc pour ne pas imprimer de pied de page"
+msgstr "Để trống để không in chân trang."
 
 #: ../includes/class-wcdn-settings.php:273
 msgid "Print Options"
-msgstr "Impressions permises :"
+msgstr "Tùy chọn In"
 
 #: ../includes/class-wcdn-settings.php:278
 msgid "Types"
-msgstr "Types"
+msgstr "Các kiểu"
 
 #: ../includes/class-wcdn-settings.php:297
 msgid "Theme Options"
-msgstr "Paramètrages coté clients"
+msgstr "Tùy chọn chủ đề"
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-settings.php:302
 msgid "Print Page Endpoint"
-msgstr "Fonction impression"
+msgstr "In đánh dấu kết thúc trang"
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-settings.php:309
-msgid ""
-"The endpoint is appended to the accounts page URL to print the order. It "
-"should be unique."
-msgstr ""
-"La fonction est ajoutée aux URLs des pages des utilisateurs pour imprimer la "
-"commande. Elle doit être unique."
+msgid "The endpoint is appended to the accounts page URL to print the order. It should be unique."
+msgstr "Đánh dấu kết thúc trang sẽ được tự động gắn vào bản in. Nó nên là biểu tượng đặc biệt."
 
 #: ../includes/class-wcdn-settings.php:315
 msgid "My Account"
-msgstr "Mon compte"
+msgstr "Tài khoản của tôi"
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-settings.php:322
 msgid "Show print button on the \"View Order\" page"
-msgstr "Montrer le bouton d'impression sur la page \"Voir la commande\""
+msgstr "Hiện nút in được trong trang \"Xem đơn hàng\""
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-settings.php:329
 msgid "Show print buttons on the \"My Account\" page"
-msgstr "Montrer les boutons d'impression sur la page \"Mon Compte\""
+msgstr "Hiện nút in được trong trang \"Tài khoản\""
 
 # @ woocommerce-delivery-notes
-#: ../includes/class-wcdn-settings.php:336
-#: ../includes/wcdn-template-functions.php:254
+#: ../includes/class-wcdn-settings.php:336 ../includes/wcdn-template-functions.php:254
 msgid "Email"
 msgstr "Email"
 
 #: ../includes/class-wcdn-settings.php:343
 msgid "Show print link in customer emails"
-msgstr "Indiquer le lien pour imprimer dans les emails aux clients"
+msgstr "Hiện liên kết in được trong email"
 
 #: ../includes/class-wcdn-settings.php:347
 msgid ""
-"This includes the emails for a new, processing and completed order. On top "
-"of that the customer invoice email also includes the link."
+"This includes the emails for a new, processing and completed order. On top of that the customer invoice email "
+"also includes the link."
 msgstr ""
-"Ceci vaudra pour les emails des nouvelles commandes effectuées. De plus, "
-"l'email de facturation au client contiendra également ce lien."
+"Nó bao gồm trong các email trạng thái đơn hàng: mới, đang xử lí và đã hoàn thành. Được đặt trên đầu của email và "
+"cũng bao gồm các liên kết."
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-settings.php:354
 msgid "Order Numbering"
-msgstr "Numérotation  factures et commandes"
+msgstr "Số đơn hàng"
 
 #: ../includes/class-wcdn-settings.php:359
 msgid "Invoice Numbering"
-msgstr "Numérotation des factures"
+msgstr "Số hóa đơn"
 
 #: ../includes/class-wcdn-settings.php:367
 msgid "Create invoice numbers"
-msgstr "Activer la numérotation des factures"
+msgstr "Tạo số hóa đơn"
 
 #: ../includes/class-wcdn-settings.php:374
 msgid "Invoice Number Start"
-msgstr "Numéro initial des factures"
+msgstr "Bắt đầu đánh số từ"
 
 #: ../includes/class-wcdn-settings.php:381
 msgid "Start the numbering at the specified number."
-msgstr "Commencer la numérotation au numéro indiqué."
+msgstr "Bắt đầu đánh số "
 
 #: ../includes/class-wcdn-settings.php:383
 msgid "Use only integers."
-msgstr "Utiliser uniquement des nombres entiers"
+msgstr "Chỉ số tự nhiên"
 
 #: ../includes/class-wcdn-settings.php:389
 msgid "Invoice Number Prefix"
-msgstr "Préfixe pour les numéros de facture"
+msgstr "Tiền tố cho số hóa đơn"
 
 #: ../includes/class-wcdn-settings.php:396
 msgid "This text will be prepended to the invoice number."
-msgstr "Ce texte apparaîtra devant le numéro de la facture."
+msgstr "Nội dung sẽ được thêm đằng trước vào số hóa đơn"
 
 #: ../includes/class-wcdn-settings.php:398
 msgid "Leave blank to not add a prefix."
-msgstr "Laisser blanc pour ne pas mettre de préfixe."
+msgstr "Để trống để không thêm tiền tố"
 
 #: ../includes/class-wcdn-settings.php:404
 msgid "Invoice Number Suffix"
-msgstr "Suffixe de numéro de facture"
+msgstr "Hậu tố cho số hóa đơn"
 
 #: ../includes/class-wcdn-settings.php:411
 msgid "This text will be appended to the invoice number."
-msgstr "Ce texte sera ajouté au numéro de facture."
+msgstr "Nội dung sẽ được thêm đằng sau vào số hóa đơn"
 
 #: ../includes/class-wcdn-settings.php:413
 msgid "Leave blank to not add a suffix."
-msgstr "Laisser blanc pour ne pas ajouter de suffixe."
+msgstr "Để trống để không thêm hậu tố"
 
 #: ../includes/class-wcdn-settings.php:419
 msgid "Invoice Number Counter"
-msgstr "Numéro courant de facture"
+msgstr "Bộ đếm số hóa đơn"
 
 #: ../includes/class-wcdn-settings.php:428
 msgid "Reset Counter …"
-msgstr "Réinitialiser ..."
+msgstr "Đặt lại bộ đếm số..."
 
 #: ../includes/class-wcdn-settings.php:434
 msgid "Sequential Order Number"
-msgstr "Numéro séquentiel de commande "
+msgstr "Đánh số đơn hàng theo thứ tự"
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-settings.php:439
 msgid "Sequential numbering is enabled."
-msgstr "Numérotation séquentielle activée."
+msgstr "Đã kích hoạt đánh số theo thứ tự"
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-settings.php:441
 #, php-format
-msgid ""
-"Install and activate the free <a href=\"%s\">WooCommerce Sequential Order "
-"Numbers</a> Plugin."
-msgstr ""
-"Installer et activer le plugin gratuit <a href=\"%s\">WooCommerce Sequential "
-"Order Numbers</a>."
+msgid "Install and activate the free <a href=\"%s\">WooCommerce Sequential Order Numbers</a> Plugin."
+msgstr "Cài đặt và kích hoạt phần mở rộng <a href=\"%s\">WooCommerce Sequential Order Numbers</a> miễn phí."
 
-#: ../includes/class-wcdn-theme.php:105
+#: ../includes/class-wcdn-theme.php:106
 msgid "Print your order"
-msgstr "Imprimer la facture"
+msgstr "In đơn hàng của bạn"
 
-#: ../includes/class-wcdn-theme.php:111
+#: ../includes/class-wcdn-theme.php:112
 msgid "Print:"
-msgstr "Impression :"
+msgstr "In:"
 
-#: ../includes/class-wcdn-theme.php:111
+#: ../includes/class-wcdn-theme.php:112
 msgid "Open print view in browser"
-msgstr "Ouvrir la vue d'impression dans le navigateur"
+msgstr "Mở bản in được trong trình duyệt"
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-writepanel.php:214
 msgid "Print now"
-msgstr "Imprimer maintenant"
+msgstr "In"
 
 # @ woocommerce-delivery-notes
 #: ../includes/class-wcdn-writepanel.php:228
 msgid "Order Printing"
-msgstr "Imprimer la commande"
+msgstr "In đơn hàng"
 
 #: ../includes/class-wcdn-writepanel.php:256
 msgid "Invoice number: "
-msgstr "Numéro de facture :"
+msgstr "Hóa đơn số:"
 
 #: ../includes/class-wcdn-writepanel.php:257
 msgid "Invoice date: "
-msgstr "Date de facture :"
+msgstr "Ngày xuất hóa đơn:"
 
 #: ../includes/wcdn-template-functions.php:232
 msgid "Invoice Number"
-msgstr "Numéro de facture"
+msgstr "Hóa đơn số"
 
 # @ woocommerce-delivery-notes
 #: ../includes/wcdn-template-functions.php:238
 msgid "Order Number"
-msgstr "Numéro de commande"
+msgstr "Đơn hàng số"
 
 # @ woocommerce-delivery-notes
 #: ../includes/wcdn-template-functions.php:243
 msgid "Order Date"
-msgstr "Date de commande"
+msgstr "Ngày đặt hàng"
 
 # @ woocommerce-delivery-notes
 #: ../includes/wcdn-template-functions.php:248
 msgid "Payment Method"
-msgstr "Méthode de paiement"
+msgstr "Phương thức thanh toán"
 
 # @ woocommerce-delivery-notes
 #: ../includes/wcdn-template-functions.php:261
 msgid "Telephone"
-msgstr "Téléphone"
+msgstr "Điện thoại"
 
 #: ../includes/wcdn-template-functions.php:294
 msgid "SKU:"
-msgstr "Référence :"
+msgstr "SKU:"
 
-#: ../includes/wcdn-template-functions.php:364
+#: ../includes/wcdn-template-functions.php:380 ../includes/wcdn-template-functions.php:384
+#, php-format
+msgid "(Includes %s)"
+msgstr "(Bao gồm %s)"
+
+#: ../includes/wcdn-template-functions.php:400
 msgid "Refund"
-msgstr "Remboursement"
+msgstr "Hoàn tiền"
 
-#: ../includes/wcdn-template-functions.php:374
+#: ../includes/wcdn-template-functions.php:412
 msgid "Order Subtotal"
-msgstr "Sous-total "
+msgstr "Các mục phụ"
 
 # @ woocommerce-delivery-notes
 #: ../templates/print-order/print-content.php:28
 msgid "Billing Address"
-msgstr "Adresse de facturation"
+msgstr "Địa chỉ thanh toán"
 
 # @ woocommerce-delivery-notes
-#: ../templates/print-order/print-content.php:31
-#: ../templates/print-order/print-content.php:40
+#: ../templates/print-order/print-content.php:31 ../templates/print-order/print-content.php:40
 msgid "N/A"
-msgstr "N/A"
+msgstr "Không"
 
 # @ woocommerce-delivery-notes
 #: ../templates/print-order/print-content.php:37
 msgid "Shipping Address"
-msgstr "Adresse d'expédition"
+msgstr "Địa chỉ nhận hàng"
 
 # @ woocommerce-delivery-notes
 #: ../templates/print-order/print-content.php:70
 msgid "Product"
-msgstr "Produit"
+msgstr "Sản phẩm"
 
 #: ../templates/print-order/print-content.php:71
 msgid "Price"
-msgstr "Prix"
+msgstr "Giá"
 
 #: ../templates/print-order/print-content.php:72
 msgid "Quantity"
-msgstr "Quantité"
+msgstr "Số lượng"
 
 # @ woocommerce-delivery-notes
 #: ../templates/print-order/print-content.php:73
 msgid "Total"
-msgstr "Total"
+msgstr "Tổng cộng"
 
 # @ woocommerce-delivery-notes
 #: ../templates/print-order/print-content.php:97
 msgid "Download:"
-msgstr "Téléchargement :"
+msgstr "Tải xuống"
 
 # @ woocommerce-delivery-notes
 #: ../templates/print-order/print-content.php:98
 #, php-format
 msgid "%s Files"
-msgstr "%s fichiers"
+msgstr "%s Tập tin"
 
 # @ woocommerce-delivery-notes
 #: ../templates/print-order/print-content.php:147
 msgid "Customer Note"
-msgstr "Note du client"
+msgstr "Ghi chú"
 
 # @ woocommerce-delivery-notes
 #: ../woocommerce-delivery-notes.php:181
 msgid "Go to the settings page"
-msgstr "Aller à la page de configuration"
+msgstr "Tới trang thiết lập"
 
 # @ woocommerce-delivery-notes
 #: ../woocommerce-delivery-notes.php:181
 msgid "Settings"
-msgstr "Paramètres"
+msgstr "Thiết lập"
