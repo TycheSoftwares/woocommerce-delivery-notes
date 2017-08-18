@@ -1,4 +1,4 @@
-> Announcement: The development of this plugin has been ceased. Thanks to everybody for their support throughout the years. Please contact me on GitHub if you want to take over the project.
+> Announcement: The original plugin repository is at: https://github.com/piffpaffpuff/woocommerce-delivery-notes . Future updates of this plugin will be available on this repository.
 
 # WooCommerce Print Invoice & Delivery Note
 
