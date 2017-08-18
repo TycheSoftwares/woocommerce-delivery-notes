@@ -2,11 +2,11 @@
 
 @font-face {
 	font-family: 'icons';
-	src: url('../fonts/icons.eot?-q3um4l');
-	src: url('../fonts/icons.eot?#iefix-q3um4l') format('embedded-opentype'),
-	   url('../fonts/icons.woff?-q3um4l') format('woff'),
-	   url('../fonts/icons.ttf?-q3um4l') format('truetype'),
-	   url('../fonts/icons.svg?-q3um4l#icons') format('svg');
+	src: url('../fonts/icons.eot');
+	src: url('../fonts/icons.eot?#iefix') format('embedded-opentype'),
+	   url('../fonts/icons.woff') format('woff'),
+	   url('../fonts/icons.ttf') format('truetype'),
+	   url('../fonts/icons.svg#icons') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -29,13 +29,7 @@
 #woocommerce-delivery-notes-box span.print-preview-loading {
 	position: absolute;
 	right: 2.5em;
-	top: -2.35em;
-}
-
-#woocommerce-delivery-notes-box span.print-preview-loading,
-.type-shop_order .column-order_actions span.print-preview-loading {
-	display: none;
-	vertical-align: middle;
+	top: -2.1em;
 }
 
 #woocommerce-delivery-notes-box .print-actions {
@@ -51,6 +45,7 @@
 }
 
 /* All orders */
+
 .type-shop_order .column-order_actions .print-preview-button {
 	display: block;
 	text-indent: -9999px;
@@ -108,27 +103,82 @@
 	display:  none;
 }
 
+.print-preview-loading {
+	visibility: hidden;
+	vertical-align: middle;
+	margin: 0;
+}
+
+.print-preview-loading.is-active {
+	visibility: visible;
+}
+
 /* Settings */
 
-#company-logo-placeholder {
+.wcdn-image-select-field {
+	position: relative;
+	overflow: hidden;
+	background-color: white;
+	border: 1px solid #ddd;
+	width: 125px;
+	height: 125px;
 }
 
-#company-logo-placeholder img {
+.wcdn-image-select-attachment {
+	position: relative;
+	width: 100%;
+	height: 100%;
 	cursor: pointer;
-	max-width: 200px;
-	height: auto;
 }
 
-#company-logo-loader.spinner {
+.wcdn-image-select-attachment .thumbnail {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	-webkit-transform: translate( 50%, 50% );
+	-ms-transform: translate(50%,50%);
+	transform: translate( 50%, 50% );
+}
+
+.wcdn-image-select-attachment img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	max-height: 100%;
+	max-width: none;
+	-webkit-transform: translate( -50%, -50% );
+	-ms-transform: translate(-50%,-50%);
+	transform: translate( -50%, -50% );
+}
+
+.wcdn-image-select-attachment img.portrait {
+	max-height: none;
+	max-width: 100%;
+}
+
+.wcdn-image-select-spinner {
 	float: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 10px;
+} 
+
+.wcdn-image-select-buttons {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	padding-left: 10px;
+	padding-bottom: 10px;
 }
 
-#company-logo-loader.print-preview-loading {
-	display: inline-block;
-}
-
-#invoice-counter-value {
-	display: inline-block;
-	border: 1px solid #e4e4e4;
-	padding: 3px 10px;
+.wcdn-image-select-buttons .button {
+	max-width: 105px;
+	white-space: nowrap;
+	overflow: hidden;
+	-webkit-text-overflow: ellipsis;
+	-ms-text-overflow: ellipsis;
+	text-overflow: ellipsis;
 }

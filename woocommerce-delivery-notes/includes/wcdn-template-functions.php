@@ -12,7 +12,10 @@ if ( !defined( 'ABSPATH' ) ) {
  */
 function wcdn_get_template_content( $name, $args = null ) {
 	global $wcdn;
-	wc_get_template( $name, $args, $wcdn->print->template_path_theme, $wcdn->print->template_path_plugin );
+	$location = $wcdn->print->get_template_file_location( $name );
+	if( $location ) {
+		wc_get_template( $name, $args, $location, $location );
+	}
 }
 
 /**
@@ -28,7 +31,7 @@ function wcdn_get_template_type() {
  */
 function wcdn_get_template_title() {
 	global $wcdn;
-	return apply_filters( 'wcdn_template_type', __( $wcdn->print->template['labels']['name'], 'woocommerce-delivery-notes' ) );
+	return apply_filters( 'wcdn_template_title', __( $wcdn->print->template['labels']['name'], 'woocommerce-delivery-notes' ) );
 }
 
 /**
@@ -136,7 +139,7 @@ function wcdn_template_stylesheet() {
 	global $wcdn;
 	$name = apply_filters( 'wcdn_template_stylesheet_name', 'style.css' );
 	?>
-	<link rel="stylesheet" href="<?php echo $wcdn->print->get_template_url( $name ); ?>" type="text/css" media="screen,print" />
+	<link rel="stylesheet" href="<?php echo $wcdn->print->get_template_file_location( $name, true ) . $name; ?>" type="text/css" media="screen,print" />
 	<?php
 }
 
@@ -161,7 +164,7 @@ function wcdn_content( $order, $template_type ) {
  */
 function wcdn_get_company_logo_id() {
 	global $wcdn;
-	return apply_filters( 'wcdn_company_logo_id', get_option( WooCommerce_Delivery_Notes::$plugin_prefix . 'company_logo_image_id' ) );
+	return apply_filters( 'wcdn_company_logo_id', get_option( 'wcdn_company_logo_image_id' ) );
 }
 
 /**
@@ -170,14 +173,14 @@ function wcdn_get_company_logo_id() {
 function wcdn_company_logo() {
 	global $wcdn;
 	$attachment_id = wcdn_get_company_logo_id();
-	$company = get_option( WooCommerce_Delivery_Notes::$plugin_prefix . 'custom_company_name' );
+	$company = get_option( 'wcdn_custom_company_name' );
 	if( $attachment_id ) {
 		$attachment_src = wp_get_attachment_image_src( $attachment_id, 'full', false );
 		
 		// resize the image to a 1/4 of the original size
 		// to have a printing point density of about 288ppi.
 		?>
-		<img src="<?php echo $attachment_src[0]; ?>" width="<?php echo $attachment_src[1] / 4; ?>" height="<?php echo $attachment_src[2] / 4; ?>" alt="<?php echo esc_attr( $company ); ?>" />
+		<img src="<?php echo $attachment_src[0]; ?>" width="<?php echo round( $attachment_src[1] / 4 ); ?>" height="<?php echo round( $attachment_src[2] / 4 ); ?>" alt="<?php echo esc_attr( $company ); ?>" />
 		<?php
 	}
 }
@@ -187,7 +190,7 @@ function wcdn_company_logo() {
  */
 function wcdn_company_name() {
 	global $wcdn;
-	$name = trim( get_option( WooCommerce_Delivery_Notes::$plugin_prefix . 'custom_company_name' ) );
+	$name = trim( get_option( 'wcdn_custom_company_name' ) );
 	if( !empty( $name ) ) {
 		echo apply_filters( 'wcdn_company_name', stripslashes( wptexturize( $name ) ) );
 	} else {
@@ -200,7 +203,7 @@ function wcdn_company_name() {
  */
 function wcdn_company_info() {
 	global $wcdn;
-	echo stripslashes( wpautop( wptexturize( get_option( WooCommerce_Delivery_Notes::$plugin_prefix . 'company_address' ) ) ) );
+	echo stripslashes( wpautop( wptexturize( get_option( 'wcdn_company_address' ) ) ) );
 }
 
 /**
@@ -225,12 +228,30 @@ function wcdn_get_order( $order_id ) {
 function wcdn_get_order_info( $order ) {
 	global $wcdn;
 	$fields = array();
-	$create_invoice_number = get_option( WooCommerce_Delivery_Notes::$plugin_prefix . 'create_invoice_number' );
+	$create_invoice_number = get_option( 'wcdn_create_invoice_number' );
 	
-	if( wcdn_get_template_type() == 'invoice' && !empty( $create_invoice_number ) ) {
+	
+	
+	$wdn_order_id =  ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', ">="  ) ) ? $order->get_id() : $order->id;
+	$order_post = get_post( $wdn_order_id );
+	
+	$wdn_order_order_date =  ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', ">="  ) ) ? $order_post->post_date : $order->order_date;
+	$wdn_order_payment_method_title =  ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', ">="  ) ) ? $order->get_payment_method_title() : $order->payment_method_title;
+	$wdn_order_billing_id  =  ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', ">="  ) ) ? $order->get_billing_email() : $order->billing_email;
+    $wdn_order_billing_phone  =  ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', ">="  ) ) ? $order->get_billing_phone() : $order->billing_phone;
+    
+    if( wcdn_get_template_type() == 'invoice' && !empty( $create_invoice_number ) && $create_invoice_number == 'yes' ) {
+	    
 		$fields['invoice_number'] = array( 
 			'label' => __( 'Invoice Number', 'woocommerce-delivery-notes' ),
-			'value' => wcdn_get_order_invoice_number( $order->id )
+			'value' => wcdn_get_order_invoice_number( $wdn_order_id )
+		);
+	}
+	
+	if( wcdn_get_template_type() == 'invoice' ) {	
+		$fields['invoice_date'] = array( 
+			'label' => __( 'Invoice Date', 'woocommerce-delivery-notes' ),
+			'value' => wcdn_get_order_invoice_date( $wdn_order_id )
 		);
 	}
 	
@@ -241,25 +262,25 @@ function wcdn_get_order_info( $order ) {
 	
 	$fields['order_date'] = array( 
 		'label' => __( 'Order Date', 'woocommerce-delivery-notes' ),
-		'value' => date_i18n( get_option( 'date_format' ), strtotime( $order->order_date ) )
+		'value' => date_i18n( get_option( 'date_format' ), strtotime( $wdn_order_order_date ) )
 	);
 	
 	$fields['payment_method'] = array( 
 		'label' => __( 'Payment Method', 'woocommerce-delivery-notes' ),
-		'value' => __( $order->payment_method_title, 'woocommerce' )
+		'value' => __( $wdn_order_payment_method_title, 'woocommerce' )
 	);
 	
-	if( $order->billing_email ) {
+	if( $wdn_order_billing_id ) {
 		$fields['billing_email'] = array(
 			'label' => __( 'Email', 'woocommerce-delivery-notes' ),
-			'value' => $order->billing_email
+			'value' => $wdn_order_billing_id
 		);
 	}
 	
-	if( $order->billing_phone ) {
+	if( $wdn_order_billing_phone ) {
 		$fields['billing_phone'] = array(
 			'label' => __( 'Telephone', 'woocommerce-delivery-notes' ),
-			'value' => $order->billing_phone
+			'value' => $wdn_order_billing_phone
 		);
 	}
 	
@@ -290,7 +311,7 @@ function wcdn_additional_product_fields( $fields = null, $product = null, $order
 	
 	// Stock keeping unit
 	if( $product && $product->exists() && $product->get_sku() ) {
-		$fields[] = array(
+		$fields['sku'] = array(
 			'label' => __( 'SKU:', 'woocommerce-delivery-notes' ),
 			'value' => $product->get_sku()
 		);
@@ -332,19 +353,26 @@ function wcdn_has_refund( $order ) {
 function wcdn_get_formatted_item_price( $order, $item, $tax_display = '' ) {
 
 	if ( ! $tax_display ) {
-		$tax_display = $order->tax_display_cart;
+		$tax_display = get_option( 'woocommerce_tax_display_cart' );
 	}
 
 	if ( ! isset( $item['line_subtotal'] ) || ! isset( $item['line_subtotal_tax'] ) ) {
 		return '';
 	}
 
+    $wdn_order_currency = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', ">="  ) ) ? $order->get_currency() : $order->get_order_currency();
+    
 	if ( 'excl' == $tax_display ) {
-		$ex_tax_label = $order->prices_include_tax ? 1 : 0;
-
-		$subtotal = wc_price( $order->get_item_subtotal( $item ), array( 'ex_tax_label' => $ex_tax_label, 'currency' => $order->get_order_currency() ) );
+	    if ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', ">="  ) ){
+	        $ex_tax_label = wc_prices_include_tax() ? 1 : 0; 
+	    }else{
+	        $ex_tax_label = $order->prices_include_tax ? 1 : 0;     
+	    }
+		
+		
+		$subtotal = wc_price( $order->get_item_subtotal( $item ), array( 'ex_tax_label' => $ex_tax_label, 'currency' => $wdn_order_currency ) );
 	} else {
-		$subtotal = wc_price( $order->get_item_subtotal( $item, true ), array('currency' => $order->get_order_currency()) );
+		$subtotal = wc_price( $order->get_item_subtotal( $item, true ), array('currency' => $wdn_order_currency ) );
 	}
 
 	return apply_filters( 'wcdn_formatted_item_price', $subtotal, $item, $order );
@@ -445,7 +473,9 @@ function wcdn_remove_payment_method_from_totals( $total_rows, $order ) {
  */
 function wcdn_get_customer_notes( $order ) {
 	global $wcdn;
-	return stripslashes( wpautop( wptexturize( $order->customer_note ) ) );
+	
+	$wdn_order_customer_notes = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', ">="  ) ) ? $order->get_customer_note() : $order->customer_note;
+	return stripslashes( wpautop( wptexturize( $wdn_order_customer_notes  ) ) );
 }
 
 /**
@@ -473,7 +503,7 @@ function wcdn_has_customer_notes( $order ) {
  */
 function wcdn_get_personal_notes() {
 	global $wcdn;
-	return stripslashes( wpautop( wptexturize( get_option( WooCommerce_Delivery_Notes::$plugin_prefix . 'personal_notes' ) ) ) );
+	return stripslashes( wpautop( wptexturize( get_option( 'wcdn_personal_notes' ) ) ) );
 }
 
 /**
@@ -489,7 +519,7 @@ function wcdn_personal_notes() {
  */
 function wcdn_get_policies_conditions() {
 	global $wcdn;
-	return stripslashes( wpautop( wptexturize( get_option( WooCommerce_Delivery_Notes::$plugin_prefix . 'policies_conditions' ) ) ) );
+	return stripslashes( wpautop( wptexturize( get_option( 'wcdn_policies_conditions' ) ) ) );
 }
 
 /**
@@ -505,7 +535,7 @@ function wcdn_policies_conditions() {
  */
 function wcdn_get_imprint() {
 	global $wcdn;
-	return stripslashes( wpautop( wptexturize( get_option( WooCommerce_Delivery_Notes::$plugin_prefix . 'footer_imprint' ) ) ) );
+	return stripslashes( wpautop( wptexturize( get_option( 'wcdn_footer_imprint' ) ) ) );
 }
 
 /**

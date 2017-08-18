@@ -3,17 +3,17 @@
  * Print invoices & delivery notes for WooCommerce orders.
  *
  * Plugin Name: WooCommerce Print Invoice & Delivery Note
- * Plugin URI: https://github.com/piffpaffpuff/woocommerce-delivery-notes
+ * Plugin URI: https://www.tychesoftwares.com/
  * Description: Print Invoices & Delivery Notes for WooCommerce Orders. 
- * Version: 4.1.5
- * Author: Triggvy Gunderson
- * Author URI: https://github.com/piffpaffpuff/woocommerce-delivery-notes
+ * Version: 4.3
+ * Author: Tyche Softwares
+ * Author URI: https://www.tychesoftwares.com/
  * License: GPLv3 or later
  * License URI: http://www.opensource.org/licenses/gpl-license.php
  * Text Domain: woocommerce-delivery-notes
  * Domain Path: /languages
  *
- * Copyright 2015 Triggvy Gunderson
+ * Copyright 2015 Tyche Softwares
  *		
  *     This file is part of WooCommerce Print Invoices & Delivery Notes,
  *     a plugin for WordPress.
@@ -55,8 +55,7 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 		/**
 		 * Default properties
 		 */
-		public static $plugin_version;
-		public static $plugin_prefix;
+		public static $plugin_version = '4.2.0';
 		public static $plugin_url;
 		public static $plugin_path;
 		public static $plugin_basefile;
@@ -118,13 +117,20 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 		 * Define WC Constants
 		 */
 		private function define_constants() {
-			self::$plugin_version = '4.1.5';
-			self::$plugin_prefix = 'wcdn_';
 			self::$plugin_basefile_path = __FILE__;
 			self::$plugin_basefile = plugin_basename( self::$plugin_basefile_path );
 			self::$plugin_url = plugin_dir_url( self::$plugin_basefile );
 			self::$plugin_path = trailingslashit( dirname( self::$plugin_basefile_path ) );	
-			self::$plugin_text_domain = trim( dirname( self::$plugin_basefile ) );
+			self::$plugin_text_domain = trim( dirname( self::$plugin_basefile ) );		
+		}
+		
+		/**
+		 * Define constant if not already set
+		 */
+		private function define( $name, $value ) {
+			if( !defined( $name ) ) {
+				define( $name, $value );
+			}
 		}
 		
 		/**
@@ -175,9 +181,6 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 				$this->writepanel = new WooCommerce_Delivery_Notes_Writepanel();
 				$this->theme = new WooCommerce_Delivery_Notes_Theme();
 
-				// Check for database updates
-				$this->update();
-
 				// Load the hooks for the template after the objetcs.
 				// Like this the template has full access to all objects.
 				add_filter( 'plugin_action_links_' . self::$plugin_basefile, array( $this, 'add_settings_link') );
@@ -193,30 +196,44 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 		 * Install or update the default settings
 		 */
 		public function update() {
-			// Define default settings
-			if( get_option( self::$plugin_prefix . 'version' ) != self::$plugin_version ) {
-				// Print slug for the frontend
-				$endpoint = get_option( self::$plugin_prefix . 'print_order_page_endpoint' );
-				if( !$endpoint ) {
-					update_option( self::$plugin_prefix . 'print_order_page_endpoint', 'print-order' );
-	
-					// Flush the rewrite rules when a fresh install
-					set_transient( self::$plugin_prefix . 'flush_rewrite_rules', true );
+			$option_version = get_option( 'wcdn_version', '1' );
+
+			// Update the settings
+			if( version_compare( $option_version, self::$plugin_version, '<' ) ) {
+				// Legacy updates
+				if( version_compare( $option_version, '4.2.0', '<' ) ) {
+					// Group invoice numbering
+					$invoice_start = intval( get_option( 'wcdn_invoice_number_start', 1 ) );
+					$invoice_counter = intval( get_option( 'wcdn_invoice_number_counter', 0 ) );
+					update_option( 'wcdn_invoice_number_count', $invoice_start + $invoice_counter );	
+					
+					// Translate checkbox values
+					foreach( $this->settings->get_settings() as $value ) {
+						if( isset( $value['id'] ) && isset( $value['type'] ) && $value['type'] == 'checkbox' ) {
+							$autoload = isset( $value['autoload'] ) ? (bool) $value['autoload'] : true;
+							$option = get_option( $value['id'] );
+							if( (bool)$option ) {
+								update_option( $value['id'], 'yes' );	
+							} else {
+								update_option( $value['id'], 'no' );	
+							}
+						}
+					}				
 				}
 				
-				// Template types
-				foreach( WooCommerce_Delivery_Notes_Print::$templates as $template ) {
-					// Enable 'invoice' and 'delivery_note' by default
-					if( $template['type'] == 'invoice' || $template['type'] == 'delivery-note' ) {
-						$option = get_option( self::$plugin_prefix . 'template_type_' . $template['type'] );
-						if( !$option ) {
-							update_option( self::$plugin_prefix . 'template_type_' . $template['type'], 1 );
-						}
+				// Set all options that have default values
+				foreach( $this->settings->get_settings() as $value ) {
+					if( isset( $value['default'] ) && isset( $value['id'] ) ) {
+						$autoload = isset( $value['autoload'] ) ? (bool) $value['autoload'] : true;
+						add_option( $value['id'], $value['default'], '', ( $autoload ? 'yes' : 'no' ) );
 					}
 				}
 				
+				// Flush the transients in case the endpoint changed
+				set_transient( 'wcdn_flush_rewrite_rules', true );
+
 				// Update the settings to the latest version
-				update_option( self::$plugin_prefix . 'version', self::$plugin_version );
+				update_option( 'wcdn_version', self::$plugin_version );
 			}
 		}
 		
@@ -224,7 +241,7 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 		 * Add settings link to plugin page
 		 */
 		public function add_settings_link( $links ) {
-			$url = esc_url( admin_url( add_query_arg( array( 'page' => 'wc-settings', 'tab' => $this->settings->tab_name ), 'admin.php' ) ) );
+			$url = esc_url( admin_url( add_query_arg( array( 'page' => 'wc-settings', 'tab' => $this->settings->id ), 'admin.php' ) ) );
 			$settings = sprintf( '<a href="%s" title="%s">%s</a>' , $url, __( 'Go to the settings page', 'woocommerce-delivery-notes' ) , __( 'Settings', 'woocommerce-delivery-notes' ) );
 			array_unshift( $links, $settings );
 			return $links;	
@@ -238,7 +255,7 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 			$site_plugins = get_site_option( 'active_sitewide_plugins', array() );
 			$woocommerce_basename = plugin_basename( WC_PLUGIN_FILE );
 					
-			if( ( in_array( $woocommerce_basename, $blog_plugins ) || isset( $site_plugins[$woocommerce_basename] ) ) && version_compare( WC_VERSION, '2.1', '>=' )) {
+			if( ( in_array( $woocommerce_basename, $blog_plugins ) || isset( $site_plugins[$woocommerce_basename] ) ) && version_compare( WC_VERSION, '2.2', '>=' ) ) {
 				return true;
 			} else {
 				return false;
@@ -249,7 +266,7 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 }
 
 /**
- * Returns the main instance of teh plugin to prevent the need to use globals
+ * Returns the main instance of the plugin to prevent the need to use globals
  */
 function WCDN() {
 	return WooCommerce_Delivery_Notes::instance();
