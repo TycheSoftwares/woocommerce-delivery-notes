@@ -318,6 +318,12 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 
 = Minimum Requirements: WooCommerce 2.2 =
 
+= 4.3 (19.08.2017) =
+
+* This version has 1 bug fix.
+
+* Fix - Warnings were displayed on My Account, Checkout, Orders page with WooCommerce version 3.0.x. This has been fixed.
+
 = 4.2.0 =
 
 * Tweak - Refactored settings screen
