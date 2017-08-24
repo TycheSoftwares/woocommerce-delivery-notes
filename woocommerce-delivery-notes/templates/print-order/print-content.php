@@ -96,13 +96,16 @@ if ( !defined( 'ABSPATH' ) ) exit;
 											<span class="name"><?php echo apply_filters( 'wcdn_order_item_name', $item['name'], $item ); ?></span>
 
 											<?php 
-											if ( version_compare( get_option( 'woocommerce_version' ), '3.1.0', ">="  ) ) {
-											    $item_meta->get_product(); 
+											// if ( version_compare( get_option( 'woocommerce_version' ), '3.1.0', ">="  ) ) {
+											//     $item_meta->get_product(); 
 											
-											}else {
+											// }else {
 											    
-											    $item_meta->display(); 
-											}
+											//     $item_meta->display(); 
+											// }
+
+											$item_meta_new = new WC_Order_Item_Meta( $item['item_meta'], $product );
+                                            $item_meta_new->display();
 											?>
 											
 											<dl class="extras">
