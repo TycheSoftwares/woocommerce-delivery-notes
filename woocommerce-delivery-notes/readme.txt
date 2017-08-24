@@ -1,6 +1,6 @@
 	=== WooCommerce Print Invoice & Delivery Note ===
 
-Contributors: ashokrane, bhavik.kiri, tychesoftwares
+Contributors: ashokrane, bhavik.kiri, tychesoftwares, chabis
 Donate link: https://www.paypal.me/TycheSoftwares
 Tags: delivery note, packing slip, invoice, delivery, shipping, print, order, woocommerce, woothemes, shop
 Requires at least: 4.0
@@ -14,15 +14,12 @@ Print invoices and delivery notes for WooCommerce orders.
 
 == Description ==
 
-= Announcement: The development of this plugin has been ceased. Thanks to everybody for their support throughout the years. Please contact me on GitHub if you want to take over the project. =
+= Announcement: TYCHE SOFTWARES TEAM HAS TAKEN OVER THE OWNERSHIP & DEVELOPMENT OF THIS PLUGIN. THE ORIGINAL AUTHOR OF THIS PLUGIN IS TRIGGVY GUNDERSON. =
 
 
-
-You can print out invoices and delivery notes for the [WooCommerce](http://wordpress.org/plugins/woocommerce/) orders. You can also edit the Company/Shop name, Company/Shop postal address and also add personal notes, conditions/policies (like a refund policy) and a footer imprint.
+You can print out invoices and delivery notes for the WooCommerce orders. You can also edit the Company/Shop name, Company/Shop postal address and also add personal notes, conditions/policies (like a refund policy) and a footer imprint.
 
 The plugin adds a new side panel on the order page to allow shop administrators to print out the invoice or delivery note. Registered customers can also print their order with a button that is added to the order screen.
-
-Check out [WooCommerce Print Invoice & Delivery Note Pro](#) for more advanced features.
 
 
 = Features =
@@ -38,7 +35,6 @@ Check out [WooCommerce Print Invoice & Delivery Note Pro](#) for more advanced f
 * Supports sequential order numbers
 * Supports the WooCommerce refund system
 * Intelligent invoice and delivery note template system with hooks and functions.php support  
-* Get even more features with [WooCommerce Print Invoice & Delivery Note Pro](#)
 
 = Support =
 
@@ -119,8 +115,8 @@ An example that changes the font and makes the addresses very large. Paste the c
 `
 function example_serif_font_and_large_address() {
 	?>
-		<style>
-			#page {
+		<style>	
+			`#page {
 				font-size: 1em;
 				font-family: Georgia, serif;
 			}
@@ -131,7 +127,7 @@ function example_serif_font_and_large_address() {
 			}
 		</style>
 	<?php
-}
+`}
 add_action( 'wcdn_head', 'example_serif_font_and_large_address', 20 );
 `
 
@@ -317,6 +313,12 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 == Changelog ==
 
 = Minimum Requirements: WooCommerce 2.2 =
+
+= 4.3.1 (23.08.2017) =
+
+* This version has 1 bug fix.
+
+* Fix - The attributes of variable product were not displayed with the variation name in the Print screen. This has been fixed.
 
 = 4.3 (19.08.2017) =
 
