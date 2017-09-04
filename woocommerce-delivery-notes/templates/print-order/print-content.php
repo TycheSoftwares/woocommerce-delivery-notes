@@ -120,6 +120,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 
 											} 
 											?>
+
 											<dl class="extras">
 												<?php if( $product && $product->exists() && $product->is_downloadable() && $order->is_download_permitted() ) : ?>
 													
