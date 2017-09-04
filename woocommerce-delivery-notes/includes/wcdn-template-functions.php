@@ -351,7 +351,6 @@ function wcdn_has_refund( $order ) {
  * Gets formatted item subtotal for display.
  */
 function wcdn_get_formatted_item_price( $order, $item, $tax_display = '' ) {
-
 	if ( ! $tax_display ) {
 		$tax_display = get_option( 'woocommerce_tax_display_cart' );
 	}
@@ -383,6 +382,8 @@ function wcdn_get_formatted_item_price( $order, $item, $tax_display = '' ) {
  */
 function wcdn_add_refunded_order_totals( $total_rows, $order ) {		
 	if( wcdn_has_refund( $order ) ) {
+    $wdn_order_currency = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', ">="  ) ) ? $order->get_currency() : $order->get_order_currency();
+
 		if( version_compare( WC_VERSION, '2.3.0', '>=' ) ) {
 			$refunded_tax_del = '';
 			$refunded_tax_ins = '';
@@ -396,12 +397,12 @@ function wcdn_add_refunded_order_totals( $total_rows, $order ) {
 	
 					foreach ( $order->get_tax_totals() as $code => $tax ) {
 						$tax_del_array[] = sprintf( '%s %s', $tax->formatted_amount, $tax->label );
-						$tax_ins_array[] = sprintf( '%s %s', wc_price( $tax->amount - $order->get_total_tax_refunded_by_rate_id( $tax->rate_id ), array( 'currency' => $order->get_order_currency() ) ), $tax->label );
+						$tax_ins_array[] = sprintf( '%s %s', wc_price( $tax->amount - $order->get_total_tax_refunded_by_rate_id( $tax->rate_id ), array( 'currency' => $wdn_order_currency ) ), $tax->label );
 					}
 	
 				} else {
-					$tax_del_array[] = sprintf( '%s %s', wc_price( $order->get_total_tax(), array( 'currency' => $order->get_order_currency() ) ), WC()->countries->tax_or_vat() );
-					$tax_ins_array[] = sprintf( '%s %s', wc_price( $order->get_total_tax() - $order->get_total_tax_refunded(), array( 'currency' => $order->get_order_currency() ) ), WC()->countries->tax_or_vat() );
+					$tax_del_array[] = sprintf( '%s %s', wc_price( $order->get_total_tax(), array( 'currency' => $wdn_order_currency ) ), WC()->countries->tax_or_vat() );
+					$tax_ins_array[] = sprintf( '%s %s', wc_price( $order->get_total_tax() - $order->get_total_tax_refunded(), array( 'currency' => $wdn_order_currency ) ), WC()->countries->tax_or_vat() );
 				}
 	
 				if ( ! empty( $tax_del_array ) ) {
@@ -414,7 +415,7 @@ function wcdn_add_refunded_order_totals( $total_rows, $order ) {
 			}
 			
 			// use only the number for new wc versions
-			$order_subtotal = wc_price( $order->get_total(), array( 'currency' => $order->get_order_currency() ) );
+			$order_subtotal = wc_price( $order->get_total(), array( 'currency' => $wdn_order_currency ) );
 		} else {
 			$refunded_tax_del = '';
 			$refunded_tax_ins = '';
@@ -426,13 +427,13 @@ function wcdn_add_refunded_order_totals( $total_rows, $order ) {
 		// Add refunded totals row
 		$total_rows['wcdn_refunded_total'] = array(
 			'label' => __( 'Refund', 'woocommerce-delivery-notes' ), 
-			'value' => wc_price( -$order->get_total_refunded(), array( 'currency' => $order->get_order_currency() ) )
+			'value' => wc_price( -$order->get_total_refunded(), array( 'currency' => $wdn_order_currency ) )
 		);
 		
 		// Add new order totals row
 		$total_rows['wcdn_order_total'] = array(
 			'label' => $total_rows['order_total']['label'], 
-			'value' => wc_price( $order->get_total() - $order->get_total_refunded(), array( 'currency' => $order->get_order_currency() ) ) . $refunded_tax_ins
+			'value' => wc_price( $order->get_total() - $order->get_total_refunded(), array( 'currency' => $wdn_order_currency ) ) . $refunded_tax_ins
 		);
 		
 		// Edit the original order total row
