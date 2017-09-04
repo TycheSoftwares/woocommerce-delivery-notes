@@ -107,7 +107,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 											$item_meta_new = new WC_Order_Item_Meta( $item['item_meta'], $product );
                                             $item_meta_new->display();
 											?>
-											
+											<br>
 											<dl class="extras">
 												<?php if( $product && $product->exists() && $product->is_downloadable() && $order->is_download_permitted() ) : ?>
 													
