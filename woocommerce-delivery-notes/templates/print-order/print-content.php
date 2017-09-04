@@ -111,8 +111,17 @@ if ( !defined( 'ABSPATH' ) ) exit;
 											// }
 
 											if ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', ">="  ) ) {
-												foreach ($item['item_meta'] as $key => $value) {
-													echo '<br>'.$key.':'.$value;
+												if(isset($item['variation_id'])){
+													$variation = wc_get_product($item['variation_id']);
+													foreach ($item['item_meta'] as $key => $value) {
+														$term = get_term_by('slug', $value, $key);
+														$attribute_name = wc_attribute_label( $key, $variation );
+														if(isset($term->name)){
+															echo '<br>'.$attribute_name.':'.$term->name;
+														}else{
+															echo '<br>'.$attribute_name.':'.$value;
+														}
+													}
 												}
 											}else{
 											    $item_meta_new = new WC_Order_Item_Meta( $item['item_meta'], $product );   
