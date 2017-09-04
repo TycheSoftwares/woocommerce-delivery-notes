@@ -81,7 +81,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 									<?php
 										$product = apply_filters( 'wcdn_order_item_product', $order->get_product_from_item( $item ), $item );
 										
-										if ( version_compare( get_option( 'woocommerce_version' ), '3.1.0', ">="  ) ) {
+										if ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', ">="  ) ) {
 										    $item_meta = new WC_Order_Item_Product( $item['item_meta'], $product );
 										}else{
 										    $item_meta = new WC_Order_Item_Meta( $item['item_meta'], $product );    
@@ -93,7 +93,13 @@ if ( !defined( 'ABSPATH' ) ) exit;
 										<td class="product-name">
 											<?php do_action( 'wcdn_order_item_before', $product, $order ); ?>
 
-											<span class="name"><?php echo apply_filters( 'wcdn_order_item_name', $item['name'], $item ); ?></span>
+											<span class="name"><?php 
+											$product_id   =  $item['product_id'];
+                                            $prod_name    = get_post( $product_id );
+                                            $product_name = $prod_name->post_title;
+                                            
+
+											echo apply_filters( 'wcdn_order_item_name', $product_name, $item ); ?></span>
 
 											<?php 
 											// if ( version_compare( get_option( 'woocommerce_version' ), '3.1.0', ">="  ) ) {
@@ -104,8 +110,24 @@ if ( !defined( 'ABSPATH' ) ) exit;
 											//     $item_meta->display(); 
 											// }
 
-											$item_meta_new = new WC_Order_Item_Meta( $item['item_meta'], $product );
-                                            $item_meta_new->display();
+											if ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', ">="  ) ) {
+												if(isset($item['variation_id'])){
+													$variation = wc_get_product($item['variation_id']);
+													foreach ($item['item_meta'] as $key => $value) {
+														$term = get_term_by('slug', $value, $key);
+														$attribute_name = wc_attribute_label( $key, $variation );
+														if(isset($term->name)){
+															echo '<br>'.$attribute_name.':'.$term->name;
+														}else{
+															echo '<br>'.$attribute_name.':'.$value;
+														}
+													}
+												}
+											}else{
+											    $item_meta_new = new WC_Order_Item_Meta( $item['item_meta'], $product );   
+                                            	$item_meta_new->display( );
+
+											} 
 											?>
 											<br>
 											<dl class="extras">
