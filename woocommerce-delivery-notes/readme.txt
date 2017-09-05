@@ -6,7 +6,7 @@ Tags: delivery note, packing slip, invoice, delivery, shipping, print, order, wo
 Requires at least: 4.0
 Tested up to: 4.8.1
 Author URI: https://www.tychesoftwares.com/
-Stable tag: trunk
+Stable tag: 4.3.2
 License: GPLv3 or later
 License URI: http://www.opensource.org/licenses/gpl-license.php
 
@@ -61,13 +61,29 @@ When your language is missing you can contribute a translation to the [GitHub re
 
 **Some of our other free plugins:**
 
-1. **[Abandoned Cart Lite for WooCommerce](https://wordpress.org/plugins/woocommerce-abandoned-cart/ "Abandoned Cart Lite for WooCommerce")**
+1. **[Order Delivery Date for WooCommerce - Lite](https://wordpress.org/plugins/order-delivery-date-for-woocommerce/ "Order Delivery Date for WooCommerce - Lite")**
 
-2. **[Order Delivery Date for WooCommerce](https://wordpress.org/plugins/order-delivery-date-for-woocommerce/ "Order Delivery Date for WooCommerce")**
+2. **[Abandoned Cart for WooCommerce](https://wordpress.org/plugins/woocommerce-abandoned-cart/ "Abandoned Cart for WooCommerce")**
 
-3. **[Product Delivery Date for WooCommerce](https://wordpress.org/plugins/product-delivery-date-for-woocommerce-lite/ "Product Delivery Date for WooCommerce")**
+3. **[Product Delivery Date for WooCommerce – Lite](https://wordpress.org/plugins/product-delivery-date-for-woocommerce-lite/ "Product Delivery Date for WooCommerce – Lite")**
 
-4. **[Prevent Customers To Cancel WooCommerce Orders](https://wordpress.org/plugins/woo-prevent-cancel-order/ "Prevent Customers To Cancel WooCommerce Orders")**
+4. **[Order Delivery Date for WP e-Commerce](https://wordpress.org/plugins/order-delivery-date/ "Order Delivery Date for WP e-Commerce")**
+
+5. **[Prevent Customers To Cancel WooCommerce Orders](https://wordpress.org/plugins/woo-prevent-cancel-order/ "Prevent Customers To Cancel WooCommerce Orders")**
+
+6. **[WooCommerce Coupons by Categories and Tags](https://wordpress.org/plugins/woo-coupons-by-categories-and-tags/ "WooCommerce Coupons by Categories and Tags")**
+
+7. **[Arconix FAQ](https://wordpress.org/plugins/arconix-faq/ "Arconix FAQ")**
+
+8. **[Arconix Shortcodes](https://wordpress.org/plugins/arconix-shortcodes/ "Arconix Shortcodes")**
+
+9. **[Arconix Flexslider](https://wordpress.org/plugins/arconix-flexslider/ "Arconix Flexslider")**
+
+10. **[Arconix Portfolio](https://wordpress.org/plugins/arconix-portfolio/ "Arconix Portfolio")**
+
+11. **[Arconix Testimonials](https://wordpress.org/plugins/arconix-testimonials/ "Arconix Testimonials")**
+
+12. **[Export WordPress Menus](https://wordpress.org/plugins/wp-export-menus/ "Export WordPress Menus")**
 
 == Installation ==
 
@@ -313,6 +329,14 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 == Changelog ==
 
 = Minimum Requirements: WooCommerce 2.2 =
+
+= 4.3.2 (05.09.2017) =
+
+* In this version deprecated functions and classes have been removed. Because of that attributes were missing and attribute slug was getting printed on Invoice page. This has been fixed.
+
+* Fix - There was no line break before SKU element for variable products on Invoice page. This has been fixed.
+
+* Fix - The deprecated function WC_Order::get_order_currency has been removed and replaced with get_currency().
 
 = 4.3.1 (23.08.2017) =
 
