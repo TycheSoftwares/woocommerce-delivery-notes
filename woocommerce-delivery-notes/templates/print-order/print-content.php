@@ -112,20 +112,15 @@ if ( !defined( 'ABSPATH' ) ) exit;
 
 											if ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', ">="  ) ) {
 												if( isset( $item[ 'variation_id' ] ) && $item[ 'variation_id' ] != 0 ) {
-													$variation = wc_get_product( $item[ 'variation_id' ] );
-													$attr = $variation->get_attributes();
+													$variation = wc_get_product( $item[ 'product_id' ] );
 													foreach ( $item[ 'item_meta' ] as $key => $value ) {
-														if( array_key_exists( $key, $attr ) ) {
+														if( !( 0 === strpos($key, '_' ) ) ) {
 															$term = get_term_by( 'slug', $value, $key );
 															$attribute_name = wc_attribute_label( $key, $variation );
 															if( isset( $term->name ) ) {
 																echo '<br>'.$attribute_name.':'.$term->name;
 															} else {
 																echo '<br>'.$attribute_name.':'.$value;
-															}
-														} else {
-															if( !( 0 === strpos($key, '_' ) ) ) {
-																echo '<br>' . $key . ':' . $value;
 															}
 														}
 													}
