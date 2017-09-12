@@ -113,7 +113,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 											if ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', ">="  ) ) {
 												if( isset( $item[ 'variation_id' ] ) && $item[ 'variation_id' ] != 0 ) {
 													$variation = wc_get_product( $item[ 'variation_id' ] );
-													$attr = $variation->attributes;
+													$attr = $variation->get_attributes();
 													foreach ( $item[ 'item_meta' ] as $key => $value ) {
 														if( array_key_exists( $key, $attr ) ) {
 															$term = get_term_by( 'slug', $value, $key );
