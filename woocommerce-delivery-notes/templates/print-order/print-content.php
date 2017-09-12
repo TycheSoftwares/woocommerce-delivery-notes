@@ -111,25 +111,37 @@ if ( !defined( 'ABSPATH' ) ) exit;
 											// }
 
 											if ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', ">="  ) ) {
-												if(isset($item['variation_id'])){
-													$variation = wc_get_product($item['variation_id']);
-													foreach ($item['item_meta'] as $key => $value) {
-														$term = get_term_by('slug', $value, $key);
-														$attribute_name = wc_attribute_label( $key, $variation );
-														if(isset($term->name)){
-															echo '<br>'.$attribute_name.':'.$term->name;
-														}else{
-															echo '<br>'.$attribute_name.':'.$value;
+												if( isset( $item[ 'variation_id' ] ) && $item[ 'variation_id' ] != 0 ) {
+													$variation = wc_get_product( $item[ 'variation_id' ] );
+													$attr = $variation->attributes;
+													foreach ( $item[ 'item_meta' ] as $key => $value ) {
+														if( array_key_exists( $key, $attr ) ) {
+															$term = get_term_by( 'slug', $value, $key );
+															$attribute_name = wc_attribute_label( $key, $variation );
+															if( isset( $term->name ) ) {
+																echo '<br>'.$attribute_name.':'.$term->name;
+															} else {
+																echo '<br>'.$attribute_name.':'.$value;
+															}
+														} else {
+															if( !( 0 === strpos($key, '_' ) ) ) {
+																echo '<br>' . $key . ':' . $value;
+															}
+														}
+													}
+												} else {
+													foreach ( $item[ 'item_meta' ] as $key => $value ) {
+														if( !( 0 === strpos( $key, '_' ) ) ) {
+															echo '<br>' . $key . ':' . $value;
 														}
 													}
 												}
-											}else{
+											} else {
 											    $item_meta_new = new WC_Order_Item_Meta( $item['item_meta'], $product );   
                                             	$item_meta_new->display( );
-
 											} 
 											?>
-
+											<br>
 											<dl class="extras">
 												<?php if( $product && $product->exists() && $product->is_downloadable() && $order->is_download_permitted() ) : ?>
 													
