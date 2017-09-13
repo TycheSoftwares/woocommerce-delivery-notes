@@ -141,7 +141,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 												<?php if( $product && $product->exists() && $product->is_downloadable() && $order->is_download_permitted() ) : ?>
 													
 													<dt><?php _e( 'Download:', 'woocommerce-delivery-notes' ); ?></dt>
-													<dd><?php printf( __( '%s Files', 'woocommerce-delivery-notes' ), count( $order->get_item_downloads( $item ) ) ); ?></dd>
+													<dd><?php printf( __( '%s Files', 'woocommerce-delivery-notes' ), count( $item->get_item_downloads() ) ); ?></dd>
 														
 												<?php endif; ?>
 												
