@@ -134,6 +134,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 											} else {
 											    $item_meta_new = new WC_Order_Item_Meta( $item['item_meta'], $product );   
                                             	$item_meta_new->display( );
+
 											} 
 											?>
 											<br>

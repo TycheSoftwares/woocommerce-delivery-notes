@@ -6,7 +6,7 @@ Tags: delivery note, packing slip, invoice, delivery, shipping, print, order, wo
 Requires at least: 4.0
 Tested up to: 4.8.1
 Author URI: https://www.tychesoftwares.com/
-Stable tag: 4.3.2
+Stable tag: 4.3.3
 License: GPLv3 or later
 License URI: http://www.opensource.org/licenses/gpl-license.php
 
@@ -58,6 +58,7 @@ When your language is missing you can contribute a translation to the [GitHub re
 
 4. **[Product Delivery Date Pro for WooCommerce](https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wprepo&utm_medium=link&utm_campaign=WCDeliveryNotes "Product Delivery Date Pro for WooCommerce")**
 
+5. **[Deposits For WooCommerce](https://www.tychesoftwares.com/store/premium-plugins/deposits-for-woocommerce/?utm_source=wprepo&utm_medium=link&utm_campaign=WCDeliveryNotes "Deposits For WooCommerce")**
 
 **Some of our other free plugins:**
 
@@ -329,6 +330,16 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 == Changelog ==
 
 = Minimum Requirements: WooCommerce 2.2 =
+
+= 4.3.4 (26.09.2017) =
+
+* .po and .mo files for Japanese and Norwegian language is added in the plugin. The plugin strings can now be translated to this languages using these files.
+
+= 4.3.3 (13.09.2017) =
+
+* Fix - The unwanted attributes from products were getting displayed in the invoice.
+
+* Fix - Notice of deprecated function get_item_downloads() in the invoice for downloadable products.
 
 = 4.3.2 (05.09.2017) =
 
