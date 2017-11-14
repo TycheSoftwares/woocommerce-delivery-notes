@@ -2,20 +2,17 @@
 
 Contributors: ashokrane, bhavik.kiri, tychesoftwares, chabis
 Donate link: https://www.paypal.me/TycheSoftwares
-Tags: delivery note, packing slip, invoice, delivery, shipping, print, order, woocommerce, woothemes, shop
+Tags: delivery note, packing slip, pdf invoice, delivery, shipping, print order, woocommerce, woothemes, shop
 Requires at least: 4.0
 Tested up to: 4.8.1
 Author URI: https://www.tychesoftwares.com/
-Stable tag: 4.3.3
+Stable tag: 4.3.5
 License: GPLv3 or later
 License URI: http://www.opensource.org/licenses/gpl-license.php
 
 Print invoices and delivery notes for WooCommerce orders.  
 
 == Description ==
-
-= Announcement: TYCHE SOFTWARES TEAM HAS TAKEN OVER THE OWNERSHIP & DEVELOPMENT OF THIS PLUGIN. THE ORIGINAL AUTHOR OF THIS PLUGIN IS TRIGGVY GUNDERSON. =
-
 
 You can print out invoices and delivery notes for the WooCommerce orders. You can also edit the Company/Shop name, Company/Shop postal address and also add personal notes, conditions/policies (like a refund policy) and a footer imprint.
 
@@ -330,6 +327,14 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 == Changelog ==
 
 = Minimum Requirements: WooCommerce 2.2 =
+
+= 4.3.5 (14.11.2017) =
+
+* Fix issue of invoice date label not appearing translated
+
+= 4.3.4.1 (07.11.2017) =
+
+* Updating missing .mo files for Japanese and Norwegian.
 
 = 4.3.4 (26.09.2017) =
 
