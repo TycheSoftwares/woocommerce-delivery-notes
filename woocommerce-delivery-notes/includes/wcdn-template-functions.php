@@ -248,7 +248,7 @@ function wcdn_get_order_info( $order ) {
 		);
 	}
 	
-	if( wcdn_get_template_type() == 'invoice' ) {	
+	if( wcdn_get_template_type() == 'invoice:' ) {	
 		$fields['invoice_date'] = array( 
 			'label' => __( 'Invoice Date', 'woocommerce-delivery-notes' ),
 			'value' => wcdn_get_order_invoice_date( $wdn_order_id )
