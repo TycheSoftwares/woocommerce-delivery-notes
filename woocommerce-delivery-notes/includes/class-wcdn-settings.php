@@ -93,7 +93,7 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes_Settings' ) ) {
 
 					array(
 						'title'    => __( 'Style', 'woocommerce-delivery-notes' ),
-						'desc'     => sprintf( __( 'The default print style. Read the <a href="%1$s">FAQ</a> to learn how to customize it or get more styles with <a href="%2$s">WooCommerce Print Invoice & Delivery Note Pro</a>.', 'woocommerce-delivery-notes' ), 'https://wordpress.org/plugins/woocommerce-delivery-notes/faq/', '#' ),
+						'desc'     => sprintf( __( 'The default print style. Read the <a href="%1$s">FAQ</a> to learn how to customize it.', 'woocommerce-delivery-notes' ), 'https://wordpress.org/plugins/woocommerce-delivery-notes/faq/', '#' ),
 						'id'       => 'wcdn_template_style',
 						'class'    => 'wc-enhanced-select',
 						'default'  => '',
