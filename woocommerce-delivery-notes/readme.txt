@@ -6,7 +6,7 @@ Tags: delivery note, packing slip, pdf invoice, delivery, shipping, print order,
 Requires at least: 4.0
 Tested up to: 4.8.1
 Author URI: https://www.tychesoftwares.com/
-Stable tag: 4.3.5
+Stable tag: 4.3.6
 License: GPLv3 or later
 License URI: http://www.opensource.org/licenses/gpl-license.php
 
@@ -327,6 +327,11 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 == Changelog ==
 
 = Minimum Requirements: WooCommerce 2.2 =
+
+= 4.3.6 (19.12.2017) =
+
+* Added translation for the word 'Price' for dutch language
+* Removed Pro version link that was not going anywhere
 
 = 4.3.5 (14.11.2017) =
 
