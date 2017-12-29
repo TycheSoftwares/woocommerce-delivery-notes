@@ -119,6 +119,53 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes_Print' ) ) {
 			add_action( 'parse_request', array( $this, 'parse_request' ) );
 			add_action( 'template_redirect', array( $this, 'template_redirect_theme' ) );
 			add_action( 'wp_ajax_print_order', array( $this, 'template_redirect_admin' ) );
+			add_action( 'wcdn_after_items', array( $this, 'wdn_add_extra_data_after_items' ), 10 , 1 );
+		}
+		
+		public function wdn_add_extra_data_after_items ( $order ) {
+			
+			/**
+			 * Local pickup plus plugin is active
+			 */
+			if ( class_exists( "WC_Local_Pickup_Plus")  ) {
+				
+				$cdn_local_pickup_plugin_plugins_version = wc_local_pickup_plus()->get_version();
+
+				if( version_compare( $cdn_local_pickup_plugin_plugins_version, '2.0.0', ">=" ) ) { 
+					$cdn_local_pickup_object    = new WC_Local_Pickup_Plus_Orders();
+					$local_pickup   = wc_local_pickup_plus();
+					$cdn_local_pickup_locations        = $cdn_local_pickup_object->get_order_pickup_data( $order );
+					$cdn_local_pickup__shipping_object = $local_pickup->get_shipping_method_instance();
+					WooCommerce_Delivery_Notes_Print::cdn_print_local_pickup_address( $cdn_local_pickup_locations, $cdn_local_pickup__shipping_object );
+				}
+			}
+		}
+
+		public function cdn_print_local_pickup_address( $cdn_local_pickup_locations, $shipping_method ) {
+
+			$package_number = 1;
+			$packages_count = count( $cdn_local_pickup_locations );
+			foreach ( $cdn_local_pickup_locations as $pickup_meta ) : 
+			?>
+				<div>
+					<?php if ( $packages_count > 1 ) : ?>
+						<h5><?php echo sprintf( is_rtl() ? '#%2$s %1$s': '%1$s #%2$s', esc_html( $shipping_method->get_method_title() ), $package_number ); ?></h5>
+					<?php endif; ?>
+					<ul>
+						<?php foreach ( $pickup_meta as $label => $value ) : ?>
+							<li>
+								<?php if ( is_rtl() ) : ?>
+									<?php echo wp_kses_post( $value ); ?> <strong>:<?php echo esc_html( $label ); ?></strong>
+								<?php else : ?>
+									<strong><?php echo esc_html( $label ); ?>:</strong> <?php echo wp_kses_post( $value ); ?>
+								<?php endif; ?>
+							</li>
+						<?php endforeach; ?>
+					</ul>
+					<?php $package_number++; ?>
+				</div>
+			<?
+			endforeach; 
 		}
 
 		/**
