@@ -4,9 +4,9 @@ Contributors: ashokrane, bhavik.kiri, tychesoftwares, chabis
 Donate link: https://www.paypal.me/TycheSoftwares
 Tags: delivery note, packing slip, pdf invoice, delivery, shipping, print order, woocommerce, woothemes, shop
 Requires at least: 4.0
-Tested up to: 4.8.1
+Tested up to: 4.9.1
 Author URI: https://www.tychesoftwares.com/
-Stable tag: 4.3.6
+Stable tag: 4.4
 License: GPLv3 or later
 License URI: http://www.opensource.org/licenses/gpl-license.php
 
@@ -327,6 +327,14 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 == Changelog ==
 
 = Minimum Requirements: WooCommerce 2.2 =
+
+= 4.4 (29.12.2017) =
+
+* This version has 1 bug fix.
+
+* Fix - Earlier with WooCommerce Local Pickup Plus v2.x.x, pickup locations were not displayed on the invoices, delivery notes & receipts. Now, the plugin is compatible with it and it will display the pickup locations. 
+
+* Code Enhancement - Now, the plugin has the uninstall file for deleting the plugin options.
 
 = 4.3.6 (19.12.2017) =
 
