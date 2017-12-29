@@ -5,13 +5,16 @@
  * Plugin Name: WooCommerce Print Invoice & Delivery Note
  * Plugin URI: https://www.tychesoftwares.com/
  * Description: Print Invoices & Delivery Notes for WooCommerce Orders. 
- * Version: 4.3.5
+ * Version: 4.4
  * Author: Tyche Softwares
  * Author URI: https://www.tychesoftwares.com/
  * License: GPLv3 or later
  * License URI: http://www.opensource.org/licenses/gpl-license.php
  * Text Domain: woocommerce-delivery-notes
  * Domain Path: /languages
+ * Requires PHP: 5.6
+ * WC requires at least: 3.0.0
+ * WC tested up to: 3.2.0
  *
  * Copyright 2015 Tyche Softwares
  *		
@@ -46,7 +49,7 @@ if ( !defined( 'ABSPATH' ) ) {
 if ( !class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 
 	final class WooCommerce_Delivery_Notes {
-
+ 
 		/**
 		 * The single instance of the class
 		 */
@@ -55,7 +58,7 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 		/**
 		 * Default properties
 		 */
-		public static $plugin_version = '4.3.2';
+		public static $plugin_version = '4.4';
 		public static $plugin_url;
 		public static $plugin_path;
 		public static $plugin_basefile;
@@ -128,6 +131,7 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 		 * Define constant if not already set
 		 */
 		private function define( $name, $value ) {
+
 			if( !defined( $name ) ) {
 				define( $name, $value );
 			}
@@ -141,6 +145,9 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 			include_once( 'includes/class-wcdn-settings.php' );
 			include_once( 'includes/class-wcdn-writepanel.php' );
 			include_once( 'includes/class-wcdn-theme.php' );
+			if ( is_admin() ) {
+			    include_once( 'includes/wcdn-welcome.php' );
+			}
 		}
 
 		/**

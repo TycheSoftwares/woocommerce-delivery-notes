@@ -121,7 +121,7 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes_Print' ) ) {
 			add_action( 'wp_ajax_print_order', array( $this, 'template_redirect_admin' ) );
 			add_action( 'wcdn_after_items', array( $this, 'wdn_add_extra_data_after_items' ), 10 , 1 );
 		}
-		
+
 		public function wdn_add_extra_data_after_items ( $order ) {
 			
 			/**
@@ -167,7 +167,6 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes_Print' ) ) {
 			<?
 			endforeach; 
 		}
-
 		/**
 		 * Load the init hooks
 		 */
