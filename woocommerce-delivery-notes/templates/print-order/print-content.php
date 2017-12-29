@@ -50,7 +50,11 @@ if ( !defined( 'ABSPATH' ) ) exit;
 					<h2><?php wcdn_document_title(); ?></h2>
 
 					<ul class="info-list">
-						<?php $fields = apply_filters( 'wcdn_order_info_fields', wcdn_get_order_info( $order ), $order ); ?>
+						<?php $fields = apply_filters( 'wcdn_order_info_fields', wcdn_get_order_info( $order ), $order ); 
+
+							
+
+						?>
 						<?php foreach( $fields as $field ) : ?>
 							<li>
 								<strong><?php echo apply_filters( 'wcdn_order_info_name', $field['label'], $field ); ?></strong>
@@ -75,7 +79,15 @@ if ( !defined( 'ABSPATH' ) ) exit;
 						</thead>
 						
 						<tbody>
-							<?php if( sizeof( $order->get_items() ) > 0 ) : ?>
+							<?php 
+							//order_pickup_location()
+
+							//$var = new WC_Local_Pickup_Plus_Orders();
+							//email_pickup_location( $order )
+
+							//echo "<pre> Fields: "; var_dump( $var->get_order_pickup_data( $order ) /*$var->order_pickup_location( $order ) /* wc_local_pickup_plus()->order_pickup_location($order->get_id())/*WC_Local_Pickup_Plus_Orders::get_order_pickup_data($order)*/ ); echo "</pre>";
+
+							if( sizeof( $order->get_items() ) > 0 ) : ?>
 								<?php foreach( $order->get_items() as $item ) : ?>
 									
 									<?php
@@ -147,7 +159,9 @@ if ( !defined( 'ABSPATH' ) ) exit;
 												<?php endif; ?>
 												
 												<?php 
+
 													$fields = apply_filters( 'wcdn_order_item_fields', array(), $product, $order ); 
+
 													foreach ( $fields as $field ) : 
 												?>
 												
@@ -173,7 +187,10 @@ if ( !defined( 'ABSPATH' ) ) exit;
 						
 						<tfoot>							
 							<?php if( $totals = $order->get_order_item_totals() ) : ?>
-								<?php foreach( $totals as $total ) : ?>
+								<?php 
+
+
+								foreach( $totals as $total ) : ?>
 									<tr>
 										<td class="total-name"><span><?php echo $total['label']; ?></span></td>
 										<td class="total-item-price"></td>
