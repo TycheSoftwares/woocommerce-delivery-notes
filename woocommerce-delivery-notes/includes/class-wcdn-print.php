@@ -164,7 +164,7 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes_Print' ) ) {
 					</ul>
 					<?php $package_number++; ?>
 				</div>
-			<?
+			<?php
 			endforeach; 
 		}
 		/**
@@ -509,5 +509,4 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes_Print' ) ) {
 	}
 
 }
-
 ?>
