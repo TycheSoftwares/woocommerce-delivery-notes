@@ -46,7 +46,7 @@
 
 /* All orders */
 
-.type-shop_order .column-order_actions .print-preview-button {
+.type-shop_order .column-wc_actions .print-preview-button {
 	display: block;
 	text-indent: -9999px;
 	position: relative;
@@ -57,7 +57,7 @@
 	width: 2em;
 }
 
-.type-shop_order .column-order_actions .print-preview-button:before {
+.type-shop_order .column-wc_actions .print-preview-button:before {
 	font-family: "icons";
 	speak: none;
 	font-weight: normal;
@@ -78,28 +78,28 @@
 	content: "\e603";
 } 
 
-.type-shop_order .column-order_actions .print-preview-button.invoice:before {
+.type-shop_order .column-wc_actions .print-preview-button.invoice:before {
 	content: "\e602";
 }
 
-.type-shop_order .column-order_actions .print-preview-button.delivery-note:before {
+.type-shop_order .column-wc_actions .print-preview-button.delivery-note:before {
 	content: "\e601";
 }
 
-.type-shop_order .column-order_actions .print-preview-button.receipt:before {
+.type-shop_order .column-wc_actions .print-preview-button.receipt:before {
 	content: "\e604";
 }
 
-.type-shop_order .column-order_actions .print-preview-button.credit-note:before {
+.type-shop_order .column-wc_actions .print-preview-button.credit-note:before {
 	content: "\e600";
 }
 
-.type-shop_order .column-order_actions span.print-preview-loading {
+.type-shop_order .column-wc_actions span.print-preview-loading {
 	float: left;
 	margin-top: 3px;
 }
 
-.type-shop_order .column-order_actions .print-preview-button span {
+.type-shop_order .column-wc_actions .print-preview-button span {
 	display:  none;
 }
 
