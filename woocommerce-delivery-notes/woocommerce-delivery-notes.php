@@ -5,7 +5,7 @@
  * Plugin Name: WooCommerce Print Invoice & Delivery Note
  * Plugin URI: https://www.tychesoftwares.com/
  * Description: Print Invoices & Delivery Notes for WooCommerce Orders. 
- * Version: 4.4.1
+ * Version: 4.4.2
  * Author: Tyche Softwares
  * Author URI: https://www.tychesoftwares.com/
  * License: GPLv3 or later
@@ -14,7 +14,7 @@
  * Domain Path: /languages
  * Requires PHP: 5.6
  * WC requires at least: 3.0.0
- * WC tested up to: 3.2.0
+ * WC tested up to: 3.3.0
  *
  * Copyright 2015 Tyche Softwares
  *		
@@ -58,7 +58,7 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 		/**
 		 * Default properties
 		 */
-		public static $plugin_version = '4.4';
+		public static $plugin_version = '4.4.2';
 		public static $plugin_url;
 		public static $plugin_path;
 		public static $plugin_basefile;
