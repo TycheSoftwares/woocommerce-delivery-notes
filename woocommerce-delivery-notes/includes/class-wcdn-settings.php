@@ -12,6 +12,12 @@ if ( !defined( 'ABSPATH' ) ) {
  */
 if ( !class_exists( 'WooCommerce_Delivery_Notes_Settings' ) ) {
 
+	/**
+	 * WooCommerce Print Delivery Notes
+	 * 
+	 * @author Tyche Softwares
+	 * @package WooCommerce-Delivery-Notes/Settings
+	 */
 	class WooCommerce_Delivery_Notes_Settings {
 
 		public $id;

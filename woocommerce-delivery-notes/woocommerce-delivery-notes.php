@@ -36,6 +36,7 @@
  *     along with WordPress. If not, see <http://www.gnu.org/licenses/>.
  */
 
+
 /**
  * Exit if accessed directly
  */
@@ -47,7 +48,12 @@ if ( !defined( 'ABSPATH' ) ) {
  * Base class
  */
 if ( !class_exists( 'WooCommerce_Delivery_Notes' ) ) {
-
+	/**
+	 * WooCommerce Delivery Notes
+	 * 
+	 * @author Tyche Softwares
+	 * @package WooCommerce-Delivery-Notes
+	 */
 	final class WooCommerce_Delivery_Notes {
  
 		/**

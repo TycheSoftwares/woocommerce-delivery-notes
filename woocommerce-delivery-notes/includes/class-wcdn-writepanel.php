@@ -12,6 +12,12 @@ if ( !defined( 'ABSPATH' ) ) {
  */
 if ( !class_exists( 'WooCommerce_Delivery_Notes_Writepanel' ) ) {
 
+	/**
+	 * WooCommerce Print Delivery Notes
+	 * 
+	 * @author Tyche Softwares
+	 * @package WooCommerce-Delivery-Notes/Admin/Edit-Order
+	 */
 	class WooCommerce_Delivery_Notes_Writepanel {
 
 		/**
