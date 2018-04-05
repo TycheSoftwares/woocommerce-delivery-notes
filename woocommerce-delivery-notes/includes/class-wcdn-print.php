@@ -1,5 +1,7 @@
 <?php
 
+
+
 /**
  * Exit if accessed directly
  */
@@ -12,6 +14,12 @@ if ( !defined( 'ABSPATH' ) ) {
  */
 if ( ! class_exists( 'WooCommerce_Delivery_Notes_Print' ) ) {
 
+	/**
+	 * WooCommerce Print Delivery Notes
+	 * 
+	 * @author Tyche Softwares
+	 * @package WooCommerce-Delivery-Notes/Includes
+	 */
 	class WooCommerce_Delivery_Notes_Print {
 
 		public static $template_registrations;
@@ -122,6 +130,11 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes_Print' ) ) {
 			add_action( 'wcdn_after_items', array( $this, 'wdn_add_extra_data_after_items' ), 10 , 1 );
 		}
 
+		/**
+		 * Add extra data after the order items in the invoice
+		 * 
+		 * @param WC_Order $order
+		 */
 		public function wdn_add_extra_data_after_items ( $order ) {
 			
 			/**
@@ -141,6 +154,12 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes_Print' ) ) {
 			}
 		}
 
+		/**
+		 * Print the Local Pickup Address if the Pickup Plus plugin is active
+		 * 
+		 * @param array $cdn_local_pickup_locations
+		 * @param mixed $shipping_method
+		 */
 		public function cdn_print_local_pickup_address( $cdn_local_pickup_locations, $shipping_method ) {
 
 			$package_number = 1;
