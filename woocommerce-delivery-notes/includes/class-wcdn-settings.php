@@ -88,6 +88,7 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes_Settings' ) ) {
 		 * Get the settings fields
 		 */
 		public function get_settings( $section = '' ) {
+			$wcdn_faq_url = admin_url( 'index.php?page=wcdn_faq_page' ) ;
 		    $settings = apply_filters( 'wcdn_get_settings_no_section',
 			    array(
 			        array(
@@ -99,7 +100,7 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes_Settings' ) ) {
 
 					array(
 						'title'    => __( 'Style', 'woocommerce-delivery-notes' ),
-						'desc'     => sprintf( __( 'The default print style. Read the <a href="%1$s">FAQ</a> to learn how to customize it.', 'woocommerce-delivery-notes' ), 'https://wordpress.org/plugins/woocommerce-delivery-notes/faq/', '#' ),
+						'desc'     => sprintf( __( 'The default print style. Read the <a href="%1$s">FAQ</a> to learn how to customize it.', 'woocommerce-delivery-notes' ), $wcdn_faq_url, '#' ),
 						'id'       => 'wcdn_template_style',
 						'class'    => 'wc-enhanced-select',
 						'default'  => '',
