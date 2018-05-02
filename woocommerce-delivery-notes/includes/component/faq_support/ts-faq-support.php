@@ -63,9 +63,14 @@ class TS_Faq_Support {
 	 */
 	public static $ts_faq = array ();
 	/**
+	 * @var string Slug for FAQ submenu
+	 * @access public 
+	 */
+	public static $ts_faq_submenu_slug = '';
+	/**
 	 * Initialization of hooks where we prepare the functionality to ask use for survey
 	 */
-	public function __construct( $ts_plugin_mame = '', $ts_plugin_prefix = '', $ts_plugin_page = '', $ts_plugin_locale = '', $ts_plugin_folder_name = '', $ts_plugin_slug = '', $ts_faq_array = array() ) {
+	public function __construct( $ts_plugin_mame = '', $ts_plugin_prefix = '', $ts_plugin_page = '', $ts_plugin_locale = '', $ts_plugin_folder_name = '', $ts_plugin_slug = '', $ts_faq_array = array(), $faq_submenu_slug = '' ) {
 		
 		self::$plugin_name   = $ts_plugin_mame;
 		self::$plugin_prefix = $ts_plugin_prefix;
@@ -73,13 +78,15 @@ class TS_Faq_Support {
 		self::$plugin_locale = $ts_plugin_locale;
 		self::$plugin_slug   = $ts_plugin_slug;
 		self::$ts_faq        = $ts_faq_array;
+		self::$ts_faq_submenu_slug =  ( '' == $faq_submenu_slug ) ? self::$plugin_slug : $faq_submenu_slug ;
+
 
 		//Add a sub menu in the main menu of the plugin if added.
 		add_action( self::$plugin_prefix . '_add_submenu', array( &$this, 'ts_add_submenu' ) );
 
 		//Add a tab for FAQ & Support along with other plugin settings tab.
 		add_action( self::$plugin_prefix . '_add_settings_tab', array( &$this, 'ts_add_new_settings_tab' ) );
-		add_action( self::$plugin_prefix . '_add_tab_content',  array( &$this, 'ts_add_tab_content' ) );
+		add_action( self::$plugin_prefix . '_add_tab_content', array( &$this, 'ts_add_tab_content' ) );
 
 		add_action ( self::$plugin_prefix . '_add_meta_footer', array( &$this, 'ts_add_meta_footer_text' ), 10, 1 );
 
@@ -143,7 +150,14 @@ class TS_Faq_Support {
 	*/
 
 	public function ts_add_submenu() {
-		$page = add_submenu_page( self::$plugin_slug, 'FAQ & Support', 'FAQ & Support', 'manage_woocommerce', 'ts_faq_support_page', array( &$this, 'ts_faq_support_page' ) );
+		$page = add_submenu_page( self::$plugin_slug, 
+								  'FAQ & Support', 
+								  'FAQ & Support', 
+								  'manage_woocommerce', 
+								  self::$ts_faq_submenu_slug . 
+								  '&action=faq_support_page', 
+								  array( &$this, 'ts_add_tab_content' ) 
+								);
 
 	}
 
