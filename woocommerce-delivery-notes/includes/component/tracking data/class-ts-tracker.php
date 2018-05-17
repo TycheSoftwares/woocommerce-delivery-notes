@@ -133,8 +133,11 @@ class TS_Tracker {
 		//WooCommerce version 
 		$data[ 'wc_plugin_version' ] = self::ts_get_wc_plugin_version();
 
+
+				
 		return apply_filters( 'ts_tracker_data', $data );
 	}
+
 	/**
 	 * Get Selected city of the WooCommerce store.
 	 * @return string $ts_city Name of the city
@@ -152,7 +155,7 @@ class TS_Tracker {
 		$ts_country = get_option ( 'woocommerce_default_country' ); 
 		return $ts_country;
 	}
-
+    
 	/**
 	 * Get WordPress related data.
 	 * @return array
@@ -167,15 +170,15 @@ class TS_Tracker {
 			$memory        = max( $memory, $system_memory );
 		}
 
-		$wp_data[ 'memory_limit' ]    = size_format( $memory );
-		$wp_data[ 'debug_mode' ]      = ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ? 'Yes' : 'No';
-		$wp_data[ 'locale' ]          = get_locale();
-		$wp_data[ 'wp_version' ]      = get_bloginfo( 'version' );
-		$wp_data[ 'multisite' ]       = is_multisite() ? 'Yes' : 'No';
+		$wp_data[ 'memory_limit' ] = size_format( $memory );
+		$wp_data[ 'debug_mode' ]   = ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ? 'Yes' : 'No';
+		$wp_data[ 'locale' ]       = get_locale();
+		$wp_data[ 'wp_version' ]   = get_bloginfo( 'version' );
+		$wp_data[ 'multisite' ]    = is_multisite() ? 'Yes' : 'No';
 		$wp_data[ 'blogdescription' ] = get_option ( 'blogdescription' );
 		$wp_data[ 'blogname' ] = get_option ( 'blogname' );
-		$wp_data[ 'wc_city' ] 	         = self::ts_get_wc_city();
-		$wp_data[ 'wc_country' ] 		 = self::ts_get_wc_country();
+		$wp_data[ 'wc_city' ] 	 = self::ts_get_wc_city();
+		$wp_data[ 'wc_country' ] = self::ts_get_wc_country();
 
 		return $wp_data;
 	}

@@ -51,9 +51,11 @@ if ( ! class_exists( 'WCDN_Component' ) ) {
                 $wcdn_plugin_slug          = '';
                 $wcdn_pro_file_name        = '';
 
+                $wcdn_settings_page        = 'admin.php?page=wc-settings&tab=wcdn-settings';
+
                 new TS_Woo_Active ( $wcdn_plugin_name, $wcdn_file_name, $wcdn_locale );
 
-                new TS_tracking ( $wcdn_plugin_prefix, $wcdn_plugin_name, $wcdn_blog_post_link, $wcdn_locale, $wcdn_plugin_url );
+                new TS_tracking ( $wcdn_plugin_prefix, $wcdn_plugin_name, $wcdn_blog_post_link, $wcdn_locale, $wcdn_plugin_url, $wcdn_settings_page );
 
                 new TS_Tracker ( $wcdn_plugin_prefix, $wcdn_plugin_name );
 

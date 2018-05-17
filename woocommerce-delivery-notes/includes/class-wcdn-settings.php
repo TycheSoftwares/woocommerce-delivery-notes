@@ -38,6 +38,17 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes_Settings' ) ) {
 			add_action( 'woocommerce_admin_field_wcdn_image_select', array( $this, 'output_image_select' ) );
 			add_action( 'wp_ajax_wcdn_settings_load_image', array( $this, 'load_image_ajax' ) );
 			add_filter( 'wcdn_get_settings', array( $this, 'generate_template_type_fields' ), 10, 2 );
+			add_action( 'woocommerce_admin_field_link'    , array( &$this, 'wcdn_add_admin_field_reset_button' ) );
+		}
+
+		/**
+		 * It will add a reset tracking data button on the settting page.
+		 * @hook woocommerce_admin_field_link
+		 */
+		public static function wcdn_add_admin_field_reset_button ( $value ) {
+			if ( $value [ 'id' ] == 'ts_reset_tracking' ){
+				do_action ( 'wcdn_add_new_settings', $value );
+			}
 		}
 
 		/**

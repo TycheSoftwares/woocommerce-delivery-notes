@@ -55,27 +55,161 @@ class TS_tracking {
 	 * @access public
 	 */
 	public static $ts_plugin_locale = '';
-	/** Default Constructor 
-	 *
-	 * @since 6.8
-	 */
-	public function __construct( $ts_plugin_prefix = '', $ts_plugin_name = '', $ts_blog_post_link = '', $ts_plugin_context = '', $ts_plugin_url = '' ) {
 
-		self::$plugin_prefix    = $ts_plugin_prefix;
-		self::$plugin_name      = $ts_plugin_name;
-		self::$blog_post_link   = $ts_blog_post_link;
-		self::$plugin_url       = $ts_plugin_url;
+	/**
+	 * @var string Settings page
+	 * @access public
+	 */
+	public static $ts_settings_page = '';
+
+	/**
+	 * @var string On which setting page need to add setting
+	 * @access public
+	 */
+	public static $ts_add_setting_on_page = '';
+	/**
+	 * @var string On which section setting need to add
+	 * @access public
+	 */
+	public static $ts_add_setting_on_section = '';
+	/**
+	 * @var string Register setting
+	 * @access public
+	 */
+	public static $ts_register_setting = '';
+	/** 
+	 * Default Constructor 
+	 *
+	 */
+	public function __construct( $ts_plugin_prefix = '', $ts_plugin_name = '', $ts_blog_post_link = '', $ts_plugin_context = '', $ts_plugin_url = '', $setting_page = '', $add_setting = '', $setting_section = '', $setting_register = '' ) {
+
+		self::$plugin_prefix  = $ts_plugin_prefix;
+		self::$plugin_name    = $ts_plugin_name;
+		self::$blog_post_link = $ts_blog_post_link;
+		self::$plugin_url     = $ts_plugin_url;
 		self::$ts_plugin_locale = $ts_plugin_context;
-		self::$ts_file_path     = untrailingslashit( plugins_url( '/', __FILE__) ) ;
+		self::$ts_settings_page  = $setting_page;
+		self::$ts_add_setting_on_page = $add_setting;
+		self::$ts_add_setting_on_section = $setting_section;
+		self::$ts_register_setting = $setting_register;
+
+		self::$ts_file_path   = untrailingslashit( plugins_url( '/', __FILE__) ) ;
 		//Tracking Data
 		add_action( 'admin_notices', array( 'TS_tracking', 'ts_track_usage_data' ) );
 		add_action( 'admin_footer',  array( 'TS_tracking', 'ts_admin_notices_scripts' ) );
 		add_action( 'wp_ajax_'.self::$plugin_prefix.'_admin_notices', array( 'TS_tracking', 'ts_admin_notices' ) );
 
-		//wp_clear_scheduled_hook( 'wcap_ts_tracker_send_event' );
 		add_filter( 'cron_schedules', array( 'TS_tracking', 'ts_add_cron_schedule' ) );
 
+		add_action( self::$plugin_prefix . '_add_new_settings', array( 'TS_tracking', 'ts_add_reset_tracking_setting' ) );
+
+		add_action ( 'admin_init', array( 'TS_tracking', 'ts_reset_tracking_setting' ) ) ;
+
 		self::ts_schedule_cron_job();
+
+		add_filter( self::$plugin_prefix . '_add_settings_field', array( 'TS_tracking', 'ts_add_new_settings_field') );
+	}
+
+	/**
+	 * It will add the New setting for the WooCommerce settings.
+	 * @hook self::$plugin_prefix . '_add_settings_field'
+	 */
+	public static function ts_add_new_settings_field ( $ts_settings ) {
+
+		$ts_settings = array (
+			'name'          => __( 'Reset usage tracking', 'deposits-for-woocommerce'),
+			'type'          => 'link',
+			'desc'          => __( 'This will reset your usage tracking settings, causing it to show the opt-in banner again and not sending any data','ts-tracking'),
+			'button_text'   => 'Reset',
+			'desc_tip'      => true,
+			'class'         => 'button-secondary reset_tracking',
+			'id'            => 'ts_reset_tracking',
+		);
+
+		return $ts_settings;
+	}
+
+
+
+	/**
+	 * It will delete the tracking option from the database.
+	 */
+	public static function ts_reset_tracking_setting () {
+
+		if ( isset ( $_GET [ 'ts_action' ] ) && 'reset_tracking' == $_GET [ 'ts_action' ] ) {
+			delete_option( self::$plugin_prefix . '_allow_tracking' );
+			delete_option( 'ts_tracker_last_send' );
+			$ts_url = remove_query_arg( 'ts_action' );
+			wp_safe_redirect( $ts_url );
+		}
+	}
+
+	/**
+	 * It will add the settinig, which will allow store owner to reset the tracking data. Which will result into stop trakcing the data.
+	 * @hook self::$plugin_prefix . '_add_new_settings'
+	 * 
+	 */
+	public static function ts_add_reset_tracking_setting ( $value ) {
+		
+		if ( '' == self::$ts_add_setting_on_page && '' == self::$ts_add_setting_on_section && '' == self::$ts_register_setting ) {
+			if ( $value['id'] == 'ts_reset_tracking' ) {
+			$description = WC_Admin_Settings::get_field_description( $value );
+			$ts_action = self::$ts_settings_page . "&amp;ts_action=reset_tracking";
+		?>
+			
+        <tr valign="top">
+            <th scope="row" class="titledesc">
+                <label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
+                <?php echo  $description['tooltip_html'];?>
+            </th>
+            
+            <td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
+                
+				<a  href = "<?php echo $ts_action; ?>"
+					name ="ts_reset_tracking"
+					id   ="ts_reset_tracking"
+					style="<?php echo esc_attr( $value['css'] ); ?>"
+					class="<?php echo esc_attr( $value['class'] ); ?>"
+				> <?php echo $value['button_text']; ?> </a> <?php echo $description['description']; ?>
+            </td>
+        </tr><?php
+			}
+		} else {
+			add_settings_field(
+				'ts_reset_tracking',
+				__( 'Reset usage tracking', self::$ts_plugin_locale  ),
+				array( 'TS_tracking', 'ts_rereset_tracking_callback' ),
+				self::$ts_add_setting_on_page,
+				self::$ts_add_setting_on_section,
+				array( 'This will reset your usage tracking settings, causing it to show the opt-in banner again and not sending any data.', self::$ts_plugin_locale )
+			);
+
+			register_setting(
+				self::$ts_register_setting,
+				'ts_reset_tracking'
+			);
+		}
+	}
+
+	public static function ts_reset_tracking_setting_section_callback ( ) {
+
+	}
+
+	/**
+	 * It will add the Reset button on the settings page.
+	 * @param array $args
+	 */
+	public static function ts_rereset_tracking_callback ( $args ) {
+		$wcap_restrict_domain_address = get_option( 'wcap_restrict_domain_address' );
+		$domain_value                 = isset( $wcap_restrict_domain_address ) ? esc_attr( $wcap_restrict_domain_address ) : '';
+		// Next, we update the name attribute to access this element's ID in the context of the display options array
+		// We also access the show_header element of the options collection in the call to the checked() helper function
+		$ts_action = self::$ts_settings_page . "&amp;ts_action=reset_tracking"; 
+		printf( '<a href="'.$ts_action.'" class="button button-large reset_tracking">Reset</a>' );
+		
+		// Here, we'll take the first argument of the array and add it to a label next to the checkbox
+		$html = '<label for="wcap_restrict_domain_address_label"> '  . $args[0] . '</label>';
+		echo $html;
 	}
 
 	/**
