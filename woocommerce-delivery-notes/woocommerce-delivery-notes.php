@@ -225,7 +225,6 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes' ) ) {
         public static function wcdn_ts_add_plugin_tracking_data ( $data ) {
             if ( isset( $_GET[ 'wcdn_tracker_optin' ] ) && isset( $_GET[ 'wcdn_tracker_nonce' ] ) && wp_verify_nonce( $_GET[ 'wcdn_tracker_nonce' ], 'wcdn_tracker_optin' ) ) {
 
-                $plugin_data  = array();
                 $plugin_data[ 'ts_meta_data_table_name' ] = 'ts_tracking_wcdn_meta_data';
                 $plugin_data[ 'ts_plugin_name' ]		  = 'WooCommerce Print Invoice & Delivery Note';
                 

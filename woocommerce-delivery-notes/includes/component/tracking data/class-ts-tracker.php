@@ -78,7 +78,7 @@ class TS_Tracker {
 			$params   = array();
 			$params[ 'tracking_usage' ] = 'no';
 			$params[ 'url' ]            = home_url();
-			$params[ 'email' ]          = apply_filters( 'ts_tracker_admin_email', get_option( 'admin_email' ) );
+			$params[ 'email' ]          = '';
 			
 			$params 					= apply_filters( 'ts_tracker_opt_out_data', $params );
 		} else {
