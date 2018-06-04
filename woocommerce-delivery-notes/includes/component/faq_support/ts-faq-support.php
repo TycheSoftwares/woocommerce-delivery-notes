@@ -4,7 +4,7 @@
  * 
  * @since 1.0.0
  */
-class TS_Faq_Support {
+class WCDN_TS_Faq_Support {
 
 	/**
 	 * @var string The capability users should have to view the page

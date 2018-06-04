@@ -12,14 +12,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * TS_Welcome Class
+ * WCDN_TS_Welcome Class
  *
  * A general class for About page.
  *
  * @since 7.7
  */
 
-class TS_Welcome {
+class WCDN_TS_Welcome {
 
 	/**
 	 * @var string The capability users should have to view the page

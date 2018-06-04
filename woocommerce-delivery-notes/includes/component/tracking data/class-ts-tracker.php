@@ -4,7 +4,7 @@
  * No personal information is tracked, only general settings, order and user counts and admin email for 
  * discount code.
  *
- * @class 		TS_Tracker
+ * @class 		WCDN_TS_Tracker
  * @version		6.8
  */
 
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class TS_Tracker {
+class WCDN_TS_Tracker {
 
 	/**
 	 * URL to the  Tracker API endpoint.

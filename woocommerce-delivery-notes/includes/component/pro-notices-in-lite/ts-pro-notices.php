@@ -1,6 +1,6 @@
 <?php
 
-class ts_pro_notices {
+class WCDN_ts_pro_notices {
 
 	/**
 	* Plugin's Name
@@ -65,10 +65,10 @@ class ts_pro_notices {
 		register_activation_hook( __FILE__,  array( &$this, 'ts_notices_activate' ) );
 
 		//Add pro notices
-        add_action( 'admin_notices', array( 'ts_pro_notices', 'ts_notices_of_pro' ) );
-		add_action( 'admin_init', array( 'ts_pro_notices', 'ts_ignore_pro_notices' ) );
+        add_action( 'admin_notices', array( 'WCDN_ts_pro_notices', 'ts_notices_of_pro' ) );
+		add_action( 'admin_init', array( 'WCDN_ts_pro_notices', 'ts_ignore_pro_notices' ) );
 		
-		add_action( self::$plugin_prefix . '_activate', array( 'ts_pro_notices', 'ts_activate_time' ) );
+		add_action( self::$plugin_prefix . '_activate', array( 'WCDN_ts_pro_notices', 'ts_activate_time' ) );
 	}
 
 	public static function ts_activate_time () {

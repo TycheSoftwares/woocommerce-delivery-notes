@@ -53,23 +53,23 @@ if ( ! class_exists( 'WCDN_Component' ) ) {
 
                 $wcdn_settings_page        = 'admin.php?page=wc-settings&tab=wcdn-settings';
 
-                new TS_Woo_Active ( $wcdn_plugin_name, $wcdn_file_name, $wcdn_locale );
+                new WCDN_TS_Woo_Active ( $wcdn_plugin_name, $wcdn_file_name, $wcdn_locale );
 
-                new TS_tracking ( $wcdn_plugin_prefix, $wcdn_plugin_name, $wcdn_blog_post_link, $wcdn_locale, $wcdn_plugin_url, $wcdn_settings_page );
+                new WCDN_TS_tracking ( $wcdn_plugin_prefix, $wcdn_plugin_name, $wcdn_blog_post_link, $wcdn_locale, $wcdn_plugin_url, $wcdn_settings_page );
 
-                new TS_Tracker ( $wcdn_plugin_prefix, $wcdn_plugin_name );
+                new WCDN_TS_Tracker ( $wcdn_plugin_prefix, $wcdn_plugin_name );
 
-                $wcdn_deativate = new TS_deactivate;
+                $wcdn_deativate = new WCDN_TS_deactivate;
                 $wcdn_deativate->init ( $wcdn_file_name, $wcdn_plugin_name );
 
                 
-                new TS_Welcome ( $wcdn_plugin_name, $wcdn_plugin_prefix, $wcdn_locale, $wcdn_plugin_folder_name, $wcdn_plugin_dir_name, $wcdn_get_previous_version );
+                new WCDN_TS_Welcome ( $wcdn_plugin_name, $wcdn_plugin_prefix, $wcdn_locale, $wcdn_plugin_folder_name, $wcdn_plugin_dir_name, $wcdn_get_previous_version );
                 
                 $ts_pro_faq = self::wcdn_get_faq ();
-                new TS_Faq_Support( $wcdn_plugin_name, $wcdn_plugin_prefix, $wcdn_plugins_page, $wcdn_locale, $wcdn_plugin_folder_name, $wcdn_plugin_slug, $ts_pro_faq );
+                new WCDN_TS_Faq_Support( $wcdn_plugin_name, $wcdn_plugin_prefix, $wcdn_plugins_page, $wcdn_locale, $wcdn_plugin_folder_name, $wcdn_plugin_slug, $ts_pro_faq );
                 
                 $ts_pro_notices = self::wcdn_get_notice_text ();
-				new ts_pro_notices( $wcdn_plugin_name, $wcdn_lite_plugin_prefix, $wcdn_plugin_prefix, $ts_pro_notices, $wcdn_file_name, $wcdn_pro_file_name );
+				new WCDN_ts_pro_notices( $wcdn_plugin_name, $wcdn_lite_plugin_prefix, $wcdn_plugin_prefix, $ts_pro_notices, $wcdn_file_name, $wcdn_pro_file_name );
 
             }
         }

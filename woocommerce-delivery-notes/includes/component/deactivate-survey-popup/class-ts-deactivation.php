@@ -4,7 +4,7 @@
  * Contains the logic for deactivation popups
  * @since 1.0.0
  */
-class TS_deactivate {
+class WCDN_TS_deactivate {
 	public static $ts_deactivation_str;
 
 	public static $ts_generic_questions;
