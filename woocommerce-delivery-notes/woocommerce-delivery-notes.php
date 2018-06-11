@@ -120,6 +120,9 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 		public function init_hooks() {
 			add_action( 'init', array( $this, 'localise' ) );
 			add_action( 'woocommerce_init', array( $this, 'load' ) );
+			if ( true === is_admin() ) {
+			    include_once( 'includes/wcdn-all-component.php' );
+			}
 		}
 
 		/**
@@ -151,9 +154,7 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 			include_once( 'includes/class-wcdn-settings.php' );
 			include_once( 'includes/class-wcdn-writepanel.php' );
 			include_once( 'includes/class-wcdn-theme.php' );
-			if ( is_admin() ) {
-			    include_once( 'includes/wcdn-welcome.php' );
-			}
+			
 		}
 
 		/**
@@ -199,12 +200,104 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 				add_filter( 'plugin_action_links_' . self::$plugin_basefile, array( $this, 'add_settings_link') );
 				add_action( 'admin_init', array( $this, 'update' ) );
 				add_action( 'init', array( $this, 'include_template_functions' ) );
+
+				add_filter( 'ts_deativate_plugin_questions', array( &$this, 'wcdn_deactivate_add_questions' ), 10, 1 );
+                add_filter( 'ts_tracker_data',               array( &$this, 'wcdn_ts_add_plugin_tracking_data' ), 10, 1 );
+				add_filter( 'ts_tracker_opt_out_data',       array( &$this, 'wcdn_get_data_for_opt_out' ), 10, 1 );
+                
 				
 				// Send out the init action
 				do_action( 'wcdn_init');
 			}
 		}
-				
+
+		/**
+         * Plugin's data to be tracked when Allow option is choosed.
+         *
+         * @hook ts_tracker_data
+         *
+         * @param array $data Contains the data to be tracked.
+         *
+         * @return array Plugin's data to track.
+         * 
+         */
+
+        public static function wcdn_ts_add_plugin_tracking_data ( $data ) {
+            if ( isset( $_GET[ 'wcdn_tracker_optin' ] ) && isset( $_GET[ 'wcdn_tracker_nonce' ] ) && wp_verify_nonce( $_GET[ 'wcdn_tracker_nonce' ], 'wcdn_tracker_optin' ) ) {
+
+                $plugin_data[ 'ts_meta_data_table_name' ] = 'ts_tracking_wcdn_meta_data';
+                $plugin_data[ 'ts_plugin_name' ]		  = 'WooCommerce Print Invoice & Delivery Note';
+                
+                // Get all plugin options info
+                $plugin_data[ 'invoice_in_admin' ]        = get_option( 'wcdn_template_type_invoice' );
+                $plugin_data[ 'delivery_in_admin' ]       = get_option( 'wcdn_template_type_delivery-note' );
+				$plugin_data[ 'receipt_in_admin' ]        = get_option('wcdn_template_type_receipt');
+				$plugin_data[ 'print_in_myaccount' ]      = get_option('wcdn_print_button_on_my_account_page');
+				$plugin_data[ 'print_in_vieworder' ]      = get_option('wcdn_print_button_on_my_account_page');
+				$plugin_data[ 'print_in_email' ]          = get_option('wcdn_print_button_on_my_account_page');
+                $plugin_data[ 'wcdn_plugin_version' ]     = self::$plugin_version;
+                $plugin_data[ 'wcdn_allow_tracking' ]     = get_option ( 'wcdn_allow_tracking' );
+                $data[ 'plugin_data' ]                    = $plugin_data;
+            }
+            return $data;
+        }
+
+
+        /**
+         * Tracking data to send when No, thanks. button is clicked.
+         *
+         * @hook ts_tracker_opt_out_data
+         *
+         * @param array $params Parameters to pass for tracking data.
+         *
+         * @return array Data to track when opted out.
+         * 
+         */
+        public static function wcdn_get_data_for_opt_out ( $params ) {
+            $plugin_data[ 'ts_meta_data_table_name']   = 'ts_tracking_wcdn_meta_data';
+            $plugin_data[ 'ts_plugin_name' ]		   = 'WooCommerce Print Invoice & Delivery Note';
+            
+            // Store count info
+            $params[ 'plugin_data' ]  				   = $plugin_data;
+            
+            return $params;
+        }
+		
+		/**
+		 * It will add the question for the deactivate popup modal
+         * @return array $dfw_deactivate_questions All questions.
+		 */
+		public static function wcdn_deactivate_add_questions ( $dfw_deactivate_questions ) {
+
+			$dfw_deactivate_questions = array(
+                0 => array(
+                    'id'                => 4,
+                    'text'              => __( "I can't differentiate between Invoice, Delivery Notes & Receipt. The templates are the same. ", "woocommerce-delivery-notes" ),
+                    'input_type'        => '',
+                    'input_placeholder' => ''
+                    ), 
+                1 =>  array(
+                    'id'                => 5,
+                    'text'              => __( "The invoice sent through mail can't be downloaded as PDF directly.", "woocommerce-delivery-notes" ),
+                    'input_type'        => '',
+                    'input_placeholder' => ''
+                ),
+                2 => array(
+                    'id'                => 6,
+                    'text'              => __( "The plugin is not compatible with another plugin.", "woocommerce-delivery-notes" ),
+                    'input_type'        => 'textfield',
+                    'input_placeholder' => 'Which plugin?'
+                ),
+                3 => array(
+                    'id'                => 7,
+                    'text'              => __( "This plugin is not useful to me.", "woocommerce-delivery-notes" ),
+                    'input_type'        => '',
+                    'input_placeholder' => ''
+                )
+
+            );
+			return $dfw_deactivate_questions;
+		}
 		/**
 		 * Install or update the default settings
 		 */

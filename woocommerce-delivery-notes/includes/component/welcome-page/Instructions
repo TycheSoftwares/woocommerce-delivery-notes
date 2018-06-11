@@ -1,0 +1,37 @@
+Welcome page feature allows you to add an introduction page when a plugin is installed and active for the first time or when it is updated. 
+
+To add this feature to the plugin, you can follow the below steps:
+
+1. Copy the ts-welcome.php file into your plugin folder. 
+
+2. Copy the files in the template folder to template in the plugin.
+
+3. Include the file once when on the admin page. This can be done with is_admin() function. 
+
+4. You need to pass the 6 parameters to the default constructor of the TS_Welcome class. You need to change the value of the variable value as per the respective plugin.
+
+    $wcap_plugin_prefix      = 'wcap';
+    $wcap_plugin_name        = 'Abandoned Cart Pro for WooCommerce';
+    $wcap_blog_post_link     = 'https://www.tychesoftwares.com/order-delivery-date-usage-tracking/';
+    $wcap_locale             = 'woocommerce-ac';
+    define('WCAP_PLUGIN_PATH' , untrailingslashit(plugin_dir_path(__FILE__)) );
+    $wcap_plugin_folder_name = 'woocommerce-abandon-cart-pro/';
+    $wcap_plugin_dir_name    = WCAP_PLUGIN_PATH . '/woocommerce-ac.php' ;
+    $wcap_get_previous_version = get_option( 'woocommerce_ac_db_version' );
+
+    new TS_Welcome ( $wcap_plugin_name, $wcap_plugin_prefix, $wcap_locale, $wcap_plugin_folder_name, $wcap_plugin_dir_name, $wcap_get_previous_version );
+
+5. Add the below code in the uninstall.php file of the plugin.
+
+delete_option( '{{plugin-prefix}}_pro_welcome_page_shown' );
+delete_option( '{{plugin-prefix}}_pro_welcome_page_shown_time' );
+
+6. You need to update the Template as per your update of the plguin. You just need to update the template content.
+
+Note:
+
+1. Please put your all images in the images folder of this folder.
+2. You can use the $ts_dir_image_path for img src. Like <img src="<?php echo $ts_dir_image_path . 'custom-delivery-settings.png'?>"
+3. Please change the Utm parameters
+
+You just need to append the image name. 

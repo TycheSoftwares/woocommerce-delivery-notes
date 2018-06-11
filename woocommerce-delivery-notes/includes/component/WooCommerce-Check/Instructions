@@ -1,0 +1,11 @@
+Add a notice if the WooCommerce is not active. 
+
+To add this feature to the plugin, you can follow the below steps:
+
+1. Copy the ts-woo-active.php file into your plugin file. 
+
+2. Include the file ts-woo-active.php once when on the admin page. This can be done with is_admin() function. 
+
+3. Change the value of the $plugin_name and $plugin_file variable of the TS_Woo_Active class with the name of your plugin.
+
+4. Now if the WooCommerce plugin is inactive, then our plugin will be inactive automatically with a notice displayed. 

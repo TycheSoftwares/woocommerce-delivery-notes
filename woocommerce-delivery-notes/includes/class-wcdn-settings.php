@@ -38,6 +38,17 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes_Settings' ) ) {
 			add_action( 'woocommerce_admin_field_wcdn_image_select', array( $this, 'output_image_select' ) );
 			add_action( 'wp_ajax_wcdn_settings_load_image', array( $this, 'load_image_ajax' ) );
 			add_filter( 'wcdn_get_settings', array( $this, 'generate_template_type_fields' ), 10, 2 );
+			add_action( 'woocommerce_admin_field_link'    , array( &$this, 'wcdn_add_admin_field_reset_button' ) );
+		}
+
+		/**
+		 * It will add a reset tracking data button on the settting page.
+		 * @hook woocommerce_admin_field_link
+		 */
+		public static function wcdn_add_admin_field_reset_button ( $value ) {
+			if ( $value [ 'id' ] == 'ts_reset_tracking' ){
+				do_action ( 'wcdn_add_new_settings', $value );
+			}
 		}
 
 		/**
@@ -88,6 +99,7 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes_Settings' ) ) {
 		 * Get the settings fields
 		 */
 		public function get_settings( $section = '' ) {
+			$wcdn_faq_url = admin_url( 'index.php?page=wcdn_faq_page' ) ;
 		    $settings = apply_filters( 'wcdn_get_settings_no_section',
 			    array(
 			        array(
@@ -99,7 +111,7 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes_Settings' ) ) {
 
 					array(
 						'title'    => __( 'Style', 'woocommerce-delivery-notes' ),
-						'desc'     => sprintf( __( 'The default print style. Read the <a href="%1$s">FAQ</a> to learn how to customize it.', 'woocommerce-delivery-notes' ), 'https://wordpress.org/plugins/woocommerce-delivery-notes/faq/', '#' ),
+						'desc'     => sprintf( __( 'The default print style. Read the <a href="%1$s">FAQ</a> to learn how to customize it.', 'woocommerce-delivery-notes' ), $wcdn_faq_url, '#' ),
 						'id'       => 'wcdn_template_style',
 						'class'    => 'wc-enhanced-select',
 						'default'  => '',
