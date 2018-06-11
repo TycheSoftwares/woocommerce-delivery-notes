@@ -184,11 +184,11 @@ foreach ( $reasons as $reason ) {
                 + ' <div class="ts-modal-dialog">'
                 + '     <div class="ts-modal-body">'
                 + '         <div class="ts-modal-panel" data-panel-id="confirm"><p><?php echo $confirmation_message; ?></p></div>'
-                + '         <div class="ts-modal-panel active" data-panel-id="reasons"><h3><strong><?php printf( TS_deactivate::load_str( 'deactivation-share-reason' ) ); ?>:</strong></h3><ul id="reasons-list">' + reasonsHtml + '</ul></div>'
+                + '         <div class="ts-modal-panel active" data-panel-id="reasons"><h3><strong><?php printf( WCDN_TS_deactivate::load_str( 'deactivation-share-reason' ) ); ?>:</strong></h3><ul id="reasons-list">' + reasonsHtml + '</ul></div>'
                 + '     </div>'
                 + '     <div class="ts-modal-footer">'
                 + '         <a href="#" class="button button-secondary button-deactivate"></a>'
-                + '         <a href="#" class="button button-primary button-close"><?php printf( TS_deactivate::load_str( 'deactivation-modal-button-cancel' ) ); ?></a>'
+                + '         <a href="#" class="button button-primary button-close"><?php printf( WCDN_TS_deactivate::load_str( 'deactivation-modal-button-cancel' ) ); ?></a>'
                 + '     </div>'
                 + ' </div>'
                 + '</div>',
@@ -265,7 +265,7 @@ foreach ( $reasons as $reason ) {
                 _parent_ul.children("li.li-active").removeClass("li-active");
 
                 $modal.find('.reason-input').remove();
-                $modal.find('.button-deactivate').text('<?php printf( TS_deactivate::load_str( 'deactivation-modal-button-submit' ) ); ?>');
+                $modal.find('.button-deactivate').text('<?php printf( WCDN_TS_deactivate::load_str( 'deactivation-modal-button-submit' ) ); ?>');
 
                 if (_parent.hasClass('has_html')) {
                     _parent.addClass('li-active');
@@ -350,11 +350,11 @@ foreach ( $reasons as $reason ) {
             
             // Reset the deactivate button's text.
             if ('confirm' === getCurrentPanel()) {
-                $deactivateButton.text('<?php printf( TS_deactivate::load_str( 'deactivation-modal-button-confirm' ) ); ?>');
+                $deactivateButton.text('<?php printf( WCDN_TS_deactivate::load_str( 'deactivation-modal-button-confirm' ) ); ?>');
             } else {
                 var $radio = $('input[type="radio"]:checked');
                 if( $radio.length == 0 ) {
-                    $deactivateButton.text('<?php printf( TS_deactivate::load_str( 'deactivation-modal-button-deactivate' ) ); ?>');
+                    $deactivateButton.text('<?php printf( WCDN_TS_deactivate::load_str( 'deactivation-modal-button-deactivate' ) ); ?>');
                 } else {
                     var _parent = $( $radio ).parents('li:first');
                     var _parent_ul = $( $radio ).parents('ul#reasons-list');
@@ -362,7 +362,7 @@ foreach ( $reasons as $reason ) {
                     _parent_ul.children("li.li-active").removeClass("li-active");
 
                     $modal.find('.reason-input').remove();
-                    $modal.find('.button-deactivate').text('<?php printf( TS_deactivate::load_str( 'deactivation-modal-button-submit' ) ); ?>');
+                    $modal.find('.button-deactivate').text('<?php printf( WCDN_TS_deactivate::load_str( 'deactivation-modal-button-submit' ) ); ?>');
 
                     if (_parent.hasClass('has_html')) {
                         _parent.addClass('li-active');
