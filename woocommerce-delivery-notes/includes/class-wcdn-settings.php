@@ -281,7 +281,7 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes_Settings' ) ) {
 						'type'     => 'text',
 						'desc_tip' =>  __( 'This text will be appended to the invoice number.', 'woocommerce-delivery-notes' )
 					),
-
+					apply_filters ( 'wcdn_add_settings_field', '' ),
 			        array(
 						'type' 	=> 'sectionend',
 						'id' 	=> 'invoice_options'
