@@ -73,8 +73,8 @@ class WCDN_ts_pro_notices {
 
 	public static function ts_activate_time () {
 
-		if( !get_option( 'wcal_activate_time' ) ) {
-			add_option( 'wcal_activate_time', current_time( 'timestamp' ) );
+		if( !get_option( self::$plugin_prefix .'_activate_time' ) ) {
+			add_option( self::$plugin_prefix .'_activate_time', current_time( 'timestamp' ) );
 		}
 	}
 
@@ -338,6 +338,10 @@ class WCDN_ts_pro_notices {
 	 */
 	public static function ts_ignore_pro_notices() {
 
+		if( !get_option( self::$plugin_prefix . 'activate_time' ) ) {
+            add_option( self::$plugin_prefix . '_activate_time', current_time( 'timestamp' ) );
+		}
+		
 		// If user clicks to ignore the notice, add that to their user meta
 		if ( isset( $_GET[ self::$pro_plugin_prefix . '_first_notice_ignore' ] ) && '0' === $_GET[ self::$pro_plugin_prefix . '_first_notice_ignore' ] ) {
 			add_user_meta( get_current_user_id(), self::$pro_plugin_prefix . '_first_notice_ignore', 'true', true );
