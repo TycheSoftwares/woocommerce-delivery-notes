@@ -72,7 +72,7 @@ class WCDN_TS_Tracker {
 		}
 		
 		// Update time first before sending to ensure it is set
-		update_option( 'ts_tracker_last_send', time() );
+		update_option( 'wcdn_ts_tracker_last_send', time() );
 
 		if( $override == false ) {
 			$params   = array();
@@ -103,7 +103,7 @@ class WCDN_TS_Tracker {
 	 * @return int|bool
 	 */
 	private static function ts_get_last_send_time() {
-		return apply_filters( 'ts_tracker_last_send_time', get_option( 'ts_tracker_last_send', false ) );
+		return apply_filters( 'ts_tracker_last_send_time', get_option( 'wcdn_ts_tracker_last_send', false ) );
 	}
 
 	/**

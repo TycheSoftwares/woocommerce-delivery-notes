@@ -138,7 +138,7 @@ class WCDN_TS_tracking {
 
 		if ( isset ( $_GET [ 'ts_action' ] ) && 'reset_tracking' == $_GET [ 'ts_action' ] ) {
 			delete_option( self::$plugin_prefix . '_allow_tracking' );
-			delete_option( 'ts_tracker_last_send' );
+			delete_option( 'wcdn_ts_tracker_last_send' );
 			$ts_url = remove_query_arg( 'ts_action' );
 			wp_safe_redirect( $ts_url );
 		}
