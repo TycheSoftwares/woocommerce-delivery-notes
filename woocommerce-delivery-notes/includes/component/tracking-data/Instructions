@@ -1,0 +1,54 @@
+Add a notice to ask customers to collect non-sensitive data for the plugin and provide them with 20% coupon code if they allow us to collect data. 
+
+To add this feature to the plugin, you can follow the below steps:
+
+1. Copy the ts-tracking.php file and class-ts-tracker.php file into your plugin folder. 
+
+2. Include the file ts-tracking.php once when on the admin page. This can be done with is_admin() function. 
+
+3. You need to pass the 5 parameters to the default constructor of the TS_tracking class. You need to change the value of the variable as per the respective plugin.
+
+    $wcap_plugin_prefix      = 'wcap';
+    $wcap_plugin_name        = 'Abandoned Cart Pro for WooCommerce';
+    $wcap_blog_post_link     = 'https://www.tychesoftwares.com/order-delivery-date-usage-tracking/';
+    $wcap_locale             = 'woocommerce-ac';
+    WCAP_PLUGIN_URL          = untrailingslashit(plugins_url('/', __FILE__)) ;
+
+    new TS_tracking( $wcap_plugin_prefix, $wcap_plugin_name, $wcap_blog_post_link, $wcap_locale, WCAP_PLUGIN_URL );
+
+4. Then you need to pass 2 parameters to the TS_Tracker class. You need to change the value of the variable as per the respective plugin.
+
+    $wcap_plugin_prefix      = 'wcap';
+    $wcap_plugin_name        = 'Abandoned Cart Pro for WooCommerce';
+    new TS_Tracker( $wcap_plugin_prefix, $wcap_plugin_name );
+
+5. We are using these class for tracking the data from the websites, so to track the data from the site we need to add the plugin data.
+
+To get the data from the website you need to use 2 filters.
+
+1. ts_tracker_data : It will be called when admin allows tracking the data.
+
+2. ts_tracker_opt_out_data : It will be called when an admin does not allow to track the data
+
+Both filters have 1 argument, you need to add all the data as per the plugin.
+
+6. We need to give the table name in the tracking data. You need to pass that in above both filter.
+
+IMP: ts_meta_data_table_name - this should contain the table name which will store the plugin specific data. This should not be skipped.
+
+Like: $plugin_data[ 'ts_meta_data_table_name' ] = 'ts_tracking_wcap_meta_data';
+
+Here, key 'ts_meta_data_table_name' should remain same, you just need to change the table name.
+
+Here, in the AC pro case, I have given table name as 'ts_tracking_{{prefix-of-plugin}}_meta_data
+
+7. Here we need 1 js file and 1 image for the tracking of the data. So I have added in the same folder, so the code structure is kept as per the current location.
+
+If you move the js file and the image to another place then you need to change that in the 'ts-tracking.php' file.
+
+You need to change the line number #75 for js file.
+You need to change the line number #127 for the image.
+
+8. It is also have the ajax function which will be named as
+
+'wp_ajax_{{plugin-prefix}}_admin_notices'
