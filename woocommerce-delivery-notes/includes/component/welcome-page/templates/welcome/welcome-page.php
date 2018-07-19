@@ -71,7 +71,7 @@
             <div class="content feature-section-item last-feature">
                 <h3><?php esc_html_e( 'Enable Invoice Numbering', 'woocommerce-delivery-notes' ); ?></h3>
 
-                <p><?php esc_html_e( 'f you want to change the default invoice numbers & set some numbering scheme of your own, then you can set it here with a starting invoice number, a prefix & suffix. For example, you could set it as: TS/001/17-18.', 'woocommerce-delivery-notes' ); ?></p>
+                <p><?php esc_html_e( 'If you want to change the default invoice numbers & set some numbering scheme of your own, then you can set it here with a starting invoice number, a prefix & suffix. For example, you could set it as: TS/001/17-18.', 'woocommerce-delivery-notes' ); ?></p>
                 <a href="admin.php?page=wc-settings&tab=wcdn-settings" target="_blank" class="button-secondary">
                     <?php esc_html_e( 'Click Here to Enable Invoice Numbering', 'woocommerce-delivery-notes' ); ?>
                     <span class="dashicons dashicons-external"></span>
@@ -99,13 +99,6 @@
                 </li>
                 <li><a href="https://tychesoftwares.com/about/?utm_source=wpaboutpage&utm_medium=link&utm_campaign=WCDeliveryNotes" target="_blank"><?php esc_html_e( 'Meet the team', 'woocommerce-delivery-notes' ); ?></a></li>
             </ul>
-        </div>
-
-        <div class="content feature-section-item">
-
-            <h3><?php esc_html_e( 'Current Offers', 'woocommerce-delivery-notes' ); ?></h3>
-
-            <p>Buy all our <a href="https://tychesoftwares.com/premium-plugins/?utm_source=wpaboutpage&utm_medium=link&utm_campaign=WCDeliveryNotes" target="_blank">premium plugins</a> at 30% off till 31st December 2017</p>
         </div>
     </div>            
     <!-- /.feature-section -->
