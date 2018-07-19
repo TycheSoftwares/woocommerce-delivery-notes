@@ -508,3 +508,4 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes_Settings' ) ) {
 }
 
 ?>
+	

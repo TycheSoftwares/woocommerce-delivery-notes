@@ -1,12 +1,12 @@
 	=== WooCommerce Print Invoice & Delivery Note ===
 
-Contributors: ashokrane, bhavik.kiri, tychesoftwares, chabis
+Contributors: ashokrane, bhavik.kiri, tychesoftwares, rashmim
 Donate link: https://www.paypal.me/TycheSoftwares
 Tags: delivery note, packing slip, pdf invoice, delivery, shipping, print order, woocommerce, woothemes, shop
 Requires at least: 4.0
-Tested up to: 4.9.1
+Tested up to: 4.9.5
 Author URI: https://www.tychesoftwares.com/
-Stable tag: 4.4.1
+Stable tag: 4.4.2
 License: GPLv3 or later
 License URI: http://www.opensource.org/licenses/gpl-license.php
 
@@ -82,6 +82,8 @@ When your language is missing you can contribute a translation to the [GitHub re
 11. **[Arconix Testimonials](https://wordpress.org/plugins/arconix-testimonials/ "Arconix Testimonials")**
 
 12. **[Export WordPress Menus](https://wordpress.org/plugins/wp-export-menus/ "Export WordPress Menus")**
+
+**[Developer Documentation](https://www.tychesoftwares.com/docs/print-invoice-apidocs/index.html "Developer Documentation")**
 
 == Installation ==
 
@@ -327,6 +329,10 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 == Changelog ==
 
 = Minimum Requirements: WooCommerce 2.2 =
+
+= 4.4.2 (22.02.2018) =
+
+* Fix - With the latest WooCommerce version 3.3, the icons for Print were missing. This is fixed.
 
 = 4.4.1 (29.12.2017) =
 

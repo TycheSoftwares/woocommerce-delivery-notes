@@ -12,12 +12,6 @@ if ( !defined( 'ABSPATH' ) ) {
  */
 if ( !class_exists( 'WooCommerce_Delivery_Notes_Theme' ) ) {
 
-	/**
-	 * WooCommerce Print Delivery Notes
-	 * 
-	 * @author Tyche Softwares
-	 * @package WooCommerce-Delivery-Notes/Theme
-	 */
 	class WooCommerce_Delivery_Notes_Theme {
 
 		/**
