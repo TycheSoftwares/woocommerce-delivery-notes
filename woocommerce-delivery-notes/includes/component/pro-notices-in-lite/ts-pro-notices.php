@@ -412,7 +412,7 @@ class WCDN_ts_pro_notices {
 				$tenth_ignore_time = get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_tenth_notice_ignore_time' );
 				//$ts_seven_days   = strtotime( '+7 Days', $tenth_ignore_time[0] );
 
-				$tenth_ignore_time   = strtotime( '+2 Minutes', $tenth_ignore_time[0] );
+				$ts_seven_days   = strtotime( '+2 Minutes', $tenth_ignore_time[0] );
 				
 				if ( $current_time > $ts_seven_days ) {
 					
