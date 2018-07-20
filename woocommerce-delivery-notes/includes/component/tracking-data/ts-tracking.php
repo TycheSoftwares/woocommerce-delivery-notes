@@ -306,7 +306,7 @@ class WCDN_TS_tracking {
 			<div class="<?php echo self::$plugin_prefix; ?>-message <?php echo self::$plugin_prefix; ?>-tracker notice notice-info is-dismissible" style="position: relative;">
 				<div style="position: absolute;"><img class="site-logo" src= " <?php echo self::$ts_file_path . '/assets/images/site-logo-new.jpg '; ?> "></div>
 				<p style="margin: 10px 0 10px 130px; font-size: medium;">
-					<?php print( __( 'Want to help make ' . self::$plugin_name . ' even more awesome? Allow ' . self::$plugin_name . ' to collect non-sensitive diagnostic data and usage information and get 20% off on your next purchase. <a href="' . self::$blog_post_link . '">Find out more</a>.', self::$plugin_context ) ); ?></p>
+					<?php print( __( 'Want to help make ' . self::$plugin_name . ' even more awesome? Allow ' . self::$plugin_name . ' to collect non-sensitive diagnostic data and usage information and get 20% off on your next purchase. <a href="' . self::$blog_post_link . '" target="_blank">Find out more</a>.', self::$plugin_context ) ); ?></p>
 				<p class="submit">
 					<a class="button-primary button button-large" href="<?php echo esc_url( wp_nonce_url( add_query_arg( self::$plugin_prefix . '_tracker_optin', 'true' ), self::$plugin_prefix . '_tracker_optin', self::$plugin_prefix . '_tracker_nonce' ) ); ?>"><?php esc_html_e( 'Allow', self::$plugin_context ); ?></a>
 					<a class="button-secondary button button-large skip"  href="<?php echo esc_url( wp_nonce_url( add_query_arg( self::$plugin_prefix . '_tracker_optout', 'true' ), self::$plugin_prefix . '_tracker_optout', self::$plugin_prefix . '_tracker_nonce' ) ); ?>"><?php esc_html_e( 'No thanks', self::$plugin_context ); ?></a>
