@@ -163,7 +163,7 @@ foreach ( $reasons as $reason ) {
         overflow: hidden
     }
 
-    #the-list .deactivate > .ts-slug {
+    #the-list .deactivate > .wcdn-ts-slug {
         display: none
     }
 
@@ -194,10 +194,10 @@ foreach ( $reasons as $reason ) {
                 + '</div>',
             $modal = $(modalHtml),
 
-            $deactivateLink = $('#the-list .deactivate > .ts-slug').prev();
+            $deactivateLink = $('#the-list .deactivate > .wcdn-ts-slug').prev();
 
         for( var i = 0; i < $deactivateLink.length; i++ ) {
-            $deactivateLinks[ $( $deactivateLink[i] ).siblings( ".ts-slug" ).attr( 'data-slug' ) ] = $deactivateLink[i].href;
+            $deactivateLinks[ $( $deactivateLink[i] ).siblings( ".wcdn-ts-slug" ).attr( 'data-slug' ) ] = $deactivateLink[i].href;
         }
    
         $modal.appendTo( $( 'body' ) );
@@ -207,7 +207,7 @@ foreach ( $reasons as $reason ) {
         function registerEventHandlers() {
             $deactivateLink.on( "click", function (evt) {
                 evt.preventDefault();
-                currentPluginName = $(this).siblings( ".ts-slug" ).attr( 'data-slug' );
+                currentPluginName = $(this).siblings( ".wcdn-ts-slug" ).attr( 'data-slug' );
                 showModal();
             });
 

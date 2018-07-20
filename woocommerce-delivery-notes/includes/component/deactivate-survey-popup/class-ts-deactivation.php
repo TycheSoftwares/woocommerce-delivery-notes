@@ -62,7 +62,7 @@ class WCDN_TS_deactivate {
 	public static function ts_plugin_settings_link( $links ) {
 		
 		if ( isset ( $links['deactivate'] ) ) {
-			$links['deactivate'] .= '<i class="ts-slug" data-slug="' . self::$ts_plugin_file_name  . '"></i>';
+			$links['deactivate'] .= '<i class="wcdn-ts-slug" data-slug="' . self::$ts_plugin_file_name  . '"></i>';
 		}
 		return $links;
 	}
