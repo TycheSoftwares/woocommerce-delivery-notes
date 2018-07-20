@@ -224,8 +224,6 @@ class WCDN_ts_pro_notices {
 		 * AC - With latest version, Lite will be deactivated. With old version, it will be deactivated.
 		 * Ordd, Prdd - Both version can be activated.
 		 * 
-		 * Question: How do you show this notice if Pro version is active? What all condition you consider. How many days you will consider?
-		 * 
 		 */
 		$seven_days    = strtotime ( '+7 Days', $activate_time );
 		$seven_days    = strtotime ( '+2 Minutes', $activate_time );
@@ -270,8 +268,6 @@ class WCDN_ts_pro_notices {
 				}
 				
 			}
-			
-			
 
 			if ( !is_plugin_active( $sixth_plugin_link ) && 
 				  get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_sixth_notice_ignore' )  &&
@@ -296,10 +292,9 @@ class WCDN_ts_pro_notices {
 				}
 			}
 
-			
 
 			if ( !is_plugin_active( $sixth_plugin_link ) && 
-				 get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_sixth_notice_ignore' )   &&
+				 
 				 get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_seventh_notice_ignore' ) &&
 				! get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_eigth_notice_ignore' ) 
 			) {
@@ -323,8 +318,6 @@ class WCDN_ts_pro_notices {
 			}
 
 			if ( !is_plugin_active( $sixth_plugin_link ) && 
-				 get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_sixth_notice_ignore' )   &&
-				 get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_seventh_notice_ignore' ) &&
 				 get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_eigth_notice_ignore' )   &&
 				! get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_ninth_notice_ignore' ) 
 			) {
@@ -350,9 +343,6 @@ class WCDN_ts_pro_notices {
 			
 			$tenth_plugin_link = self::$ts_pro_notices[10] ['plugin_link'];
 			if ( !is_plugin_active( $tenth_plugin_link ) && 
-				 get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_sixth_notice_ignore' )   &&
-				 get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_seventh_notice_ignore' ) &&
-				 get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_eigth_notice_ignore' )   &&
 				 get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_ninth_notice_ignore' )  &&
 				! get_user_meta( get_current_user_id(), self::$pro_plugin_prefix . '_tenth_notice_ignore' ) 
 			) {
@@ -401,10 +391,6 @@ class WCDN_ts_pro_notices {
 
 			$eleven_plugin_link = self::$ts_pro_notices[11] ['plugin_link'];
 			if ( !is_plugin_active( $eleven_plugin_link ) && 
-				 get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_sixth_notice_ignore' )   &&
-				 get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_seventh_notice_ignore' ) &&
-				 get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_eigth_notice_ignore' )   &&
-				 get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_ninth_notice_ignore' )  &&
 				 get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_tenth_notice_ignore' ) &&
 				 ! get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_eleven_notice_ignore' )
 			) {
@@ -480,11 +466,6 @@ class WCDN_ts_pro_notices {
 
 			$twelve_plugin_link = self::$ts_pro_notices[12] ['plugin_link'];
 			if ( !is_plugin_active( $twelve_plugin_link ) && 
-				 get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_sixth_notice_ignore' )   &&
-				 get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_seventh_notice_ignore' ) &&
-				 get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_eigth_notice_ignore' )   &&
-				 get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_ninth_notice_ignore' )  &&
-				 get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_tenth_notice_ignore' ) &&
 				 get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_eleven_notice_ignore' ) &&
 				 !get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_twelve_notice_ignore' )
 			) {
@@ -562,12 +543,6 @@ class WCDN_ts_pro_notices {
 
 			$thirteen_plugin_link = self::$ts_pro_notices[13] ['plugin_link'];
 			if ( !is_plugin_active( $thirteen_plugin_link ) && 
-				 get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_sixth_notice_ignore' )   &&
-				 get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_seventh_notice_ignore' ) &&
-				 get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_eigth_notice_ignore' )   &&
-				 get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_ninth_notice_ignore' )  &&
-				 get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_tenth_notice_ignore' ) &&
-				 get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_eleven_notice_ignore' ) &&
 				 get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_twelve_notice_ignore' ) &&
 				 !get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_thirteen_notice_ignore' )
 			) {
