@@ -88,7 +88,7 @@
 
             <ul class="ul-disc">
                 <li><a href="https://tychesoftwares.com/?utm_source=wpaboutpage&utm_medium=link&utm_campaign=WCDeliveryNotes" target="_blank"><?php esc_html_e( 'Visit the Tyche Softwares Website', 'woocommerce-delivery-notes' ); ?></a></li>
-                <li><a href="https://tychesoftwares.com/premium-plugins/?utm_source=wpaboutpage&utm_medium=link&utm_campaign=WCDeliveryNotes" target="_blank"><?php esc_html_e( 'View all Premium Plugins', 'woocommerce-delivery-notes' ); ?></a>
+                <li><a href="https://tychesoftwares.com/premium-woocommerce-plugins/?utm_source=wpaboutpage&utm_medium=link&utm_campaign=WCDeliveryNotes" target="_blank"><?php esc_html_e( 'View all Premium Plugins', 'woocommerce-delivery-notes' ); ?></a>
                 <ul class="ul-disc">
                     <li><a href="https://www.tychesoftwares.com/store/premium-plugins/woocommerce-abandoned-cart-pro/?utm_source=wpaboutpage&utm_medium=link&utm_campaign=WCDeliveryNotes" target="_blank">Abandoned Cart Pro Plugin for WooCommerce</a></li>
                     <li><a href="https://www.tychesoftwares.com/store/premium-plugins/woocommerce-booking-plugin/?utm_source=wpaboutpage&utm_medium=link&utm_campaign=WCDeliveryNotes" target="_blank">Booking & Appointment Plugin for WooCommerce</a></li>
