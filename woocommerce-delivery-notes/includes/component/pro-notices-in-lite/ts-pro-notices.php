@@ -117,10 +117,8 @@ class WCDN_ts_pro_notices {
 				 ) {
 
 				$first_ignore_time = get_user_meta( get_current_user_id(), self::$pro_plugin_prefix . '_first_notice_ignore_time' );
-				// $fifteen_days = strtotime( '+15 Days', $first_ignore_time[0] );
-
-				$fifteen_days = strtotime( '+2 Minutes', $first_ignore_time[0] );
-
+				$fifteen_days = strtotime( '+15 Days', $first_ignore_time[0] );
+				
 				if ( $current_time > $fifteen_days ) {
 					
 					$add_query_arguments = add_query_arg( self::$pro_plugin_prefix . '_second_notice_ignore', '0' );
@@ -138,9 +136,7 @@ class WCDN_ts_pro_notices {
 			   ) {
 
 				$second_ignore_time = get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_second_notice_ignore_time' );
-				//$ts_fifteen_days = strtotime( '+15 Days', $second_ignore_time[0] );
-
-				$ts_fifteen_days = strtotime( '+2 Minutes', $second_ignore_time[0] );
+				$ts_fifteen_days = strtotime( '+15 Days', $second_ignore_time[0] );
 
 				if ( $current_time > $ts_fifteen_days ) {
 					
@@ -160,11 +156,7 @@ class WCDN_ts_pro_notices {
 			   ) {
 
 				$third_ignore_time = get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_third_notice_ignore_time' );
-				//$ts_fifteen_days = strtotime( '+15 Days', $third_ignore_time[0] );
-
-				$ts_fifteen_days = strtotime( '+2 Minutes', $third_ignore_time[0] );
-
-				
+				$ts_fifteen_days = strtotime( '+15 Days', $third_ignore_time[0] );
 
 				if ( $current_time > $ts_fifteen_days ) {
 					
@@ -185,13 +177,8 @@ class WCDN_ts_pro_notices {
 			   ) {
 
 				$fourth_ignore_time = get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_fourth_notice_ignore_time' );
-				//$ts_fifteen_days = strtotime( '+15 Days', $fourth_ignore_time[0] );
-
-				$ts_fifteen_days = strtotime( '+2 Minutes', $fourth_ignore_time[0] );
-
-				
-
-
+				$ts_fifteen_days = strtotime( '+15 Days', $fourth_ignore_time[0] );
+	
 				if ( $current_time > $ts_fifteen_days ) {
 					
 					$add_query_arguments = add_query_arg( self::$pro_plugin_prefix . '_fifth_notice_ignore', '0' );
@@ -226,7 +213,7 @@ class WCDN_ts_pro_notices {
 		 * 
 		 */
 		$seven_days    = strtotime ( '+7 Days', $activate_time );
-		$seven_days    = strtotime ( '+2 Minutes', $activate_time );
+		
 		if( ( is_plugin_active( self::$ts_pro_file_name ) || '' == self::$ts_pro_file_name  ) && 
 		( false === $activate_time || ( $activate_time > 0 && $current_time >= $seven_days ) ) ) {
 
@@ -251,9 +238,8 @@ class WCDN_ts_pro_notices {
 					/**
 					 * This is fifth ignore notice time plus 7 days
 					 */
-					//$ts_consider_time = strtotime( '+7 Days', $ts_consider_time );
-
-					$ts_consider_time = strtotime( '+2 Minutes', $ts_consider_time );
+					$ts_consider_time = strtotime( '+7 Days', $ts_consider_time );
+				
 				}
 
 				$sixth_message = self::$ts_pro_notices[6] ['message'];
@@ -275,9 +261,7 @@ class WCDN_ts_pro_notices {
 			) {
 
 				$sixth_ignore_time = get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_sixth_notice_ignore_time' );
-				//$ts_seven_days = strtotime( '+7 Days', $sixth_ignore_time[0] );
-
-				$ts_seven_days = strtotime( '+2 Minutes', $sixth_ignore_time[0] );
+				$ts_seven_days = strtotime( '+7 Days', $sixth_ignore_time[0] );
 
 				if ( $current_time > $ts_seven_days ) {
 					
@@ -300,9 +284,7 @@ class WCDN_ts_pro_notices {
 			) {
 
 				$seventh_ignore_time = get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_seventh_notice_ignore_time' );
-				//$ts_seven_days = strtotime( '+7 Days', $seventh_ignore_time[0] );
-
-				$ts_seven_days = strtotime( '+2 Minutes', $seventh_ignore_time[0] );
+				$ts_seven_days = strtotime( '+7 Days', $seventh_ignore_time[0] );
 
 				if ( $current_time > $ts_seven_days ) {
 					
@@ -323,10 +305,8 @@ class WCDN_ts_pro_notices {
 			) {
 
 				$eigth_ignore_time = get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_eigth_notice_ignore_time' );
-				//$ts_seven_days   = strtotime( '+7 Days', $eigth_ignore_time[0] );
+				$ts_seven_days   = strtotime( '+7 Days', $eigth_ignore_time[0] );
 
-				$ts_seven_days   = strtotime( '+2 Minutes', $eigth_ignore_time[0] );
-				
 				if ( $current_time > $ts_seven_days ) {
 					
 					$add_query_arguments = add_query_arg( self::$pro_plugin_prefix . '_ninth_notice_ignore', '0' );
@@ -348,10 +328,8 @@ class WCDN_ts_pro_notices {
 			) {
 
 				$ninth_ignore_time = get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_ninth_notice_ignore_time' );
-				//$ts_seven_days   = strtotime( '+7 Days', $ninth_ignore_time[0] );
+				$ts_seven_days   = strtotime( '+7 Days', $ninth_ignore_time[0] );
 
-				$ts_seven_days   = strtotime( '+2 Minutes', $ninth_ignore_time[0] );
-				
 				if ( $current_time > $ts_seven_days ) {
 					
 					$add_query_arguments = add_query_arg( self::$pro_plugin_prefix . '_tenth_notice_ignore', '0' );
@@ -371,10 +349,8 @@ class WCDN_ts_pro_notices {
 				/**
 				 * If Ac Pro active then Directly show notice after 30 days, skip 4 notice period of ac pro.
 				 */
-				//$ts_seven_days   = strtotime( '+30 Days', $activate_time );
+				$ts_seven_days   = strtotime( '+30 Days', $activate_time );
 
-				$ts_seven_days   = strtotime( '+2 Minutes', $activate_time );
-				
 				if ( $current_time > $ts_seven_days ) {
 					
 					$add_query_arguments = add_query_arg( self::$pro_plugin_prefix . '_tenth_notice_ignore', '0' );
@@ -396,10 +372,8 @@ class WCDN_ts_pro_notices {
 			) {
 
 				$tenth_ignore_time = get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_tenth_notice_ignore_time' );
-				//$ts_seven_days   = strtotime( '+7 Days', $tenth_ignore_time[0] );
+				$ts_seven_days   = strtotime( '+7 Days', $tenth_ignore_time[0] );
 
-				$ts_seven_days   = strtotime( '+2 Minutes', $tenth_ignore_time[0] );
-				
 				if ( $current_time > $ts_seven_days ) {
 					
 					$add_query_arguments = add_query_arg( self::$pro_plugin_prefix . '_eleven_notice_ignore', '0' );
@@ -421,10 +395,8 @@ class WCDN_ts_pro_notices {
 				 * If Tenth notice has been ignored, the consider the time.
 				 */
 				$tenth_ignore_time = get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_tenth_notice_ignore_time' );
-				//$ts_seven_days   = strtotime( '+7 Days', $tenth_ignore_time[0] );
+				$ts_seven_days   = strtotime( '+7 Days', $tenth_ignore_time[0] );
 
-				$ts_seven_days   = strtotime( '+2 Minutes', $tenth_ignore_time[0] );
-				
 				if ( $current_time > $ts_seven_days ) {
 					
 					$add_query_arguments = add_query_arg( self::$pro_plugin_prefix . '_eleven_notice_ignore', '0' );
@@ -446,10 +418,8 @@ class WCDN_ts_pro_notices {
 				 /**
 				  * If Ac pro and orrdd pro is activate then skip the time priod of both plugins
 				  */
-				//$ts_seven_days   = strtotime( '+37 Days', $activate_time );
+				$ts_seven_days   = strtotime( '+37 Days', $activate_time );
 
-				$ts_seven_days   = strtotime( '+4 Minutes', $activate_time );
-				
 				if ( $current_time > $ts_seven_days ) {
 					
 					$add_query_arguments = add_query_arg( self::$pro_plugin_prefix . '_eleven_notice_ignore', '0' );
@@ -471,10 +441,8 @@ class WCDN_ts_pro_notices {
 			) {
 
 				$eleventh_ignore_time = get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_eleventh_notice_ignore_time' );
-				//$ts_seven_days   = strtotime( '+7 Days', $eleventh_ignore_time[0] );
+				$ts_seven_days   = strtotime( '+7 Days', $eleventh_ignore_time[0] );
 
-				$ts_seven_days   = strtotime( '+2 Minutes', $eleventh_ignore_time[0] );
-				
 				if ( $current_time > $ts_seven_days ) {
 					
 					$add_query_arguments = add_query_arg( self::$pro_plugin_prefix . '_twelve_notice_ignore', '0' );
@@ -497,10 +465,7 @@ class WCDN_ts_pro_notices {
 				 * If ordd, booking notice ignored then consider booking plugin ignore time ( 11 )
 				 */
 				$eleventh_ignore_time = get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_eleventh_notice_ignore_time' );
-				//$ts_seven_days   = strtotime( '+7 Days', $eleventh_ignore_time[0] );
-
-				$ts_seven_days   = strtotime( '+2 Minutes', $eleventh_ignore_time[0] );
-				
+				$ts_seven_days   = strtotime( '+7 Days', $eleventh_ignore_time[0] );
 				if ( $current_time > $ts_seven_days ) {
 					
 					$add_query_arguments = add_query_arg( self::$pro_plugin_prefix . '_twelve_notice_ignore', '0' );
@@ -523,10 +488,8 @@ class WCDN_ts_pro_notices {
 				 * If ac pro, ordd pro, booking is active then skip the time period for these plugins and consider the plugin activate time
 				 */
 
-				//$ts_seven_days   = strtotime( '+43 Days', $activate_time );
+				$ts_seven_days   = strtotime( '+43 Days', $activate_time );
 
-				$ts_seven_days   = strtotime( '+6 Minutes', $activate_time );
-				
 				if ( $current_time > $ts_seven_days ) {
 					
 					$add_query_arguments = add_query_arg( self::$pro_plugin_prefix . '_twelve_notice_ignore', '0' );
@@ -548,10 +511,8 @@ class WCDN_ts_pro_notices {
 			) {
 
 				$twelve_ignore_time = get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_twelve_notice_ignore_time' );
-				//$ts_seven_days   = strtotime( '+7 Days', $twelve_ignore_time[0] );
+				$ts_seven_days   = strtotime( '+7 Days', $twelve_ignore_time[0] );
 
-				$ts_seven_days   = strtotime( '+2 Minutes', $twelve_ignore_time[0] );
-				
 				if ( $current_time > $ts_seven_days ) {
 					
 					$add_query_arguments = add_query_arg( self::$pro_plugin_prefix . '_thirteen_notice_ignore', '0' );
@@ -575,9 +536,7 @@ class WCDN_ts_pro_notices {
 				 * If ordd, booking, and wc deposits notice is ignored, then consider the wc deposits ignore time.
 				 */
 				$twelve_ignore_time = get_user_meta( get_current_user_id(),  self::$pro_plugin_prefix . '_twelve_notice_ignore_time' );
-				//$ts_seven_days   = strtotime( '+7 Days', $twelve_ignore_time[0] );
-
-				$ts_seven_days   = strtotime( '+2 Minutes', $twelve_ignore_time[0] );
+				$ts_seven_days   = strtotime( '+7 Days', $twelve_ignore_time[0] );
 				
 				if ( $current_time > $ts_seven_days ) {
 					
@@ -603,10 +562,8 @@ class WCDN_ts_pro_notices {
 				/**
 				 * If ordd, booking, and wc deposits activate, then consider the plugin activate time.
 				 */
-				//$ts_seven_days   = strtotime( '+50 Days', $activate_time );
+				$ts_seven_days   = strtotime( '+50 Days', $activate_time );
 
-				$ts_seven_days   = strtotime( '+8 Minutes', $activate_time );
-				
 				if ( $current_time > $ts_seven_days ) {
 					
 					$add_query_arguments = add_query_arg( self::$pro_plugin_prefix . '_thirteen_notice_ignore', '0' );
