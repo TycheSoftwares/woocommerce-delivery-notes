@@ -120,9 +120,7 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 		public function init_hooks() {
 			add_action( 'init', array( $this, 'localise' ) );
 			add_action( 'woocommerce_init', array( $this, 'load' ) );
-			if ( true === is_admin() ) {
-			    include_once( 'includes/wcdn-all-component.php' );
-			}
+			
 		}
 
 		/**
@@ -154,7 +152,9 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 			include_once( 'includes/class-wcdn-settings.php' );
 			include_once( 'includes/class-wcdn-writepanel.php' );
 			include_once( 'includes/class-wcdn-theme.php' );
-			
+			if ( true === is_admin() ) {
+			    include_once( 'includes/wcdn-all-component.php' );
+			}
 		}
 
 		/**
