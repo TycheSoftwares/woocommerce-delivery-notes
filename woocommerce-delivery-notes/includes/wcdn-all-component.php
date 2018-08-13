@@ -62,9 +62,11 @@ if ( ! class_exists( 'WCDN_Component' ) ) {
                 $wcdn_deativate = new WCDN_TS_deactivate;
                 $wcdn_deativate->init ( $wcdn_file_name, $wcdn_plugin_name );
 
+                $user = wp_get_current_user();
                 
-                new WCDN_TS_Welcome ( $wcdn_plugin_name, $wcdn_plugin_prefix, $wcdn_locale, $wcdn_plugin_folder_name, $wcdn_plugin_dir_name, $wcdn_get_previous_version );
-                
+                if ( in_array( 'administrator', (array) $user->roles ) ) {
+                    new WCDN_TS_Welcome ( $wcdn_plugin_name, $wcdn_plugin_prefix, $wcdn_locale, $wcdn_plugin_folder_name, $wcdn_plugin_dir_name, $wcdn_get_previous_version );
+                }
                 $ts_pro_faq = self::wcdn_get_faq ();
                 new WCDN_TS_Faq_Support( $wcdn_plugin_name, $wcdn_plugin_prefix, $wcdn_plugins_page, $wcdn_locale, $wcdn_plugin_folder_name, $wcdn_plugin_slug, $ts_pro_faq );
                 
