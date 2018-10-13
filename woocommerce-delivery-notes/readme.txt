@@ -332,7 +332,7 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 
 = 4.4.4 (13.10.2018) =
 
-* Removed the Welcome page of the plugin and also removed the promotioanal notices which were displaying on admin end of WordPress website.
+* Removed the Welcome page of the plugin and also removed the promotional notices which were being displayed on admin end of the WordPress website.
 
 = 4.4.3 (23.07.2018) =
 
