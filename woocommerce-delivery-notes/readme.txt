@@ -6,7 +6,7 @@ Tags: delivery note, packing slip, pdf invoice, delivery, shipping, print order,
 Requires at least: 4.0
 Tested up to: 4.9.7
 Author URI: https://www.tychesoftwares.com/
-Stable tag: 4.4.3
+Stable tag: 4.4.4
 License: GPLv3 or later
 License URI: http://www.opensource.org/licenses/gpl-license.php
 
@@ -329,6 +329,10 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 == Changelog ==
 
 = Minimum Requirements: WooCommerce 2.2 =
+
+= 4.4.4 (13.10.2018) =
+
+* Removed the Welcome page of the plugin and also removed the promotioanal notices which were displaying on admin end of WordPress website.
 
 = 4.4.3 (23.07.2018) =
 
