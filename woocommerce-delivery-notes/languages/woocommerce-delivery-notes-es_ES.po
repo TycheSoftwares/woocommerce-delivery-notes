@@ -3,393 +3,864 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WooCommerce Print Invoices & Delivery Notes\n"
-"Report-Msgid-Bugs-To: http://deckerweb.de/kontakt/\n"
-"POT-Creation-Date: 2014-06-28 17:13+0100\n"
-"PO-Revision-Date: 2014-07-14 17:37+0100\n"
-"Last-Translator: César Díaz Menes"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/woocommerce-"
+"delivery-notes\n"
+"POT-Creation-Date: 2018-10-22 18:58+0530\n"
+"PO-Revision-Date: 2018-10-22 18:59+0530\n"
+"Last-Translator: César Díaz MenesLanguage-Team:\n"
 "Language-Team: \n"
 "Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
-#: ../includes/class-wcdn-settings.php:90
-#: ../includes/class-wcdn-theme.php:48
-#: ../includes/class-wcdn-theme.php:83
-#: ../includes/wcdn-template-functions.php:120
-msgid "Print"
-msgstr "Imprimir"
+#: includes/class-wcdn-print.php:39 includes/class-wcdn-settings.php:237
+msgid "Invoice"
+msgstr "Factura"
 
-#: ../includes/class-wcdn-settings.php:128
-msgid "Print Order"
-msgstr "Print Order"
-
-# @ woocommerce-delivery-notes
-#: ../includes/class-wcdn-settings.php:147
-#, php-format
-msgid "You can preview the <a href=\"%1$s\" target=\"%3$s\" class=\"%4$s\">invoice template</a> or <a href=\"%2$s\" target=\"%3$s\" class=\"%4$s\">delivery note template</a>."
+#: includes/class-wcdn-print.php:40
+msgid "Invoices"
 msgstr ""
 
-# @ woocommerce-delivery-notes
-#: ../includes/class-wcdn-settings.php:148
-msgid "With the FAQ in the readme file you can learn how to customize the template."
-msgstr ""
-
-#: ../includes/class-wcdn-settings.php:159
-msgid "Company/Shop Logo"
-msgstr "Logo Empresa/Tienda"
-
-#: ../includes/class-wcdn-settings.php:165
-msgid "Remove Logo"
-msgstr "Eliminar Logo"
-
-#: ../includes/class-wcdn-settings.php:166
-msgid "Set Logo"
-msgstr "Definir Logo"
-
-#: ../includes/class-wcdn-settings.php:170
-msgid "A company/shop logo representing your business."
-msgstr "Logo de la empresa/tienda que represente su negocio."
-
-#: ../includes/class-wcdn-settings.php:171
-#: ../includes/class-wcdn-settings.php:184
-#: ../includes/class-wcdn-settings.php:197
-#: ../includes/class-wcdn-settings.php:210
-#: ../includes/class-wcdn-settings.php:223
-#: ../includes/class-wcdn-settings.php:236
-#: ../includes/class-wcdn-settings.php:312
-#: ../includes/class-wcdn-settings.php:328
-#: ../includes/class-wcdn-settings.php:344
-msgid "Note:"
-msgstr "Nota:"
-
-#: ../includes/class-wcdn-settings.php:172
-msgid "When the image is printed, its pixel density will automatically be eight times higher than the original. This means, 1 printed inch will correspond to about 288 pixels on the screen. Example: an image with a width of 576 pixels and a height of 288 pixels will have a printed size of about 2 inches to 1 inch."
-msgstr ""
-
-#: ../includes/class-wcdn-settings.php:178
-msgid "Company/Shop Name"
-msgstr "Empresa/Nombre de la tienda"
-
-#: ../includes/class-wcdn-settings.php:183
-msgid "Your company/shop name for the Delivery Note."
-msgstr "Nombre de tu empresa/tienda para las Notas de Entrega."
-
-#: ../includes/class-wcdn-settings.php:185
-#, fuzzy
-msgid "Leave blank to use the default Website/Blog title defined in WordPress settings. The name will be ignored when a Logo is set."
-msgstr "Dejar en blanco para usar el Website por defecto/ Título del blog definido en los ajustes de WordPress."
-
-#: ../includes/class-wcdn-settings.php:191
-msgid "Company/Shop Address"
-msgstr "Empresa/Dirección de la tienda"
-
-#: ../includes/class-wcdn-settings.php:196
-#, fuzzy
-msgid "The postal address of the company/shop or even e-mail or telephone, which gets printed right after the company/shop name."
-msgstr "La dirección postal de la compañia/tienda, quedara impresa a la derecha del nombre de la compañia/tienda, debajo del listado de pedido."
-
-#: ../includes/class-wcdn-settings.php:198
-msgid "Leave blank to not print an address."
-msgstr "Dejar en blanco para no imprimir la dirección."
-
-#: ../includes/class-wcdn-settings.php:204
-msgid "Complimentary Close"
-msgstr "Cierre gratuito"
-
-#: ../includes/class-wcdn-settings.php:209
-msgid "Add some personal notes, or season greetings or whatever (e.g. Thank You for Your Order!, Merry Christmas!, etc.)."
-msgstr "Añade notas personales, o felicitaciones o cualquier cosa (ej. ¡Gracias por tu pedido!, ¡Feliz Navidad!, ect.)"
-
-#: ../includes/class-wcdn-settings.php:211
-msgid "Leave blank to not print any personal notes."
-msgstr "Dejar en blanco para no imprimir notas personales."
-
-#: ../includes/class-wcdn-settings.php:217
-#, fuzzy
-msgid "Returns Policy, Conditions, etc"
-msgstr "Política de Devoluciones, Condiciones, etc.:"
-
-#: ../includes/class-wcdn-settings.php:222
-msgid "Here you can add some more policies, conditions etc. For example add a returns policy in case the client would like to send back some goods. In some countries (e.g. in the European Union) this is required so please add any required info in accordance with the statutory regulations."
-msgstr "Aquí puedes añadir algunas claúsulas, condiciones etc. Por ejemplo añade una política de de devolución en el caso de que el cliente quiera devolver algunos artículos. En algunos países (p.ej en la Unión Europea) esto es obligatorio, asi que por favor añade cualquier información obligatoria de acuerdo con las regulaciones estatutarias. "
-
-#: ../includes/class-wcdn-settings.php:224
-msgid "Leave blank to not print any policies or conditions."
-msgstr "Dejar en blanco para no imprimir cláusulas o condiciones."
-
-#: ../includes/class-wcdn-settings.php:230
-#, fuzzy
-msgid "Footer"
-msgstr "Pie de Página"
-
-#: ../includes/class-wcdn-settings.php:235
-#, fuzzy
-msgid "Add some further footer imprint, e-mail, telephone, copyright notes etc. This makes the printed sheets a bit more branded."
-msgstr "Añade además de notas a pie de página, notas de copyright etc. para obtener hojas impresas que se ajusten un poco mas a tu marca."
-
-#: ../includes/class-wcdn-settings.php:237
-msgid "Leave blank to not print a footer."
-msgstr "Dejar en blanco para no imprimir el pie de página."
-
-#: ../includes/class-wcdn-settings.php:244
-msgid "Front-end Options"
-msgstr "Opciones Front-end"
-
-# @ woocommerce-delivery-notes
-#: ../includes/class-wcdn-settings.php:249
-msgid "Print Page Endpoint"
-msgstr "Endpoint Pagina de Impresión"
-
-# @ woocommerce-delivery-notes
-#: ../includes/class-wcdn-settings.php:256
-msgid "The endpoint is appended to the accounts page URL to print the order. It should be unique."
-msgstr "El Endpoint es añadido a la URL de la pagina de cuenta para ser impreso"
-
-#: ../includes/class-wcdn-settings.php:262
-msgid "Print Buttons"
-msgstr "Botones de Impresión"
-
-# @ woocommerce-delivery-notes
-#: ../includes/class-wcdn-settings.php:269
-msgid "Show print button on the \"View Order\" page"
-msgstr "Mostrar botón de impresión en la página \"View Order\""
-
-# @ woocommerce-delivery-notes
-#: ../includes/class-wcdn-settings.php:276
-msgid "Show print buttons on the \"My Account\" page"
-msgstr "Mostrar botón de impresión en la página \"My Account\""
-
-#: ../includes/class-wcdn-settings.php:284
-#, fuzzy
-msgid "Order Numbering"
-msgstr "Número de Pedido"
-
-#: ../includes/class-wcdn-settings.php:289
-#: ../includes/wcdn-template-functions.php:209
-msgid "Invoice Number"
-msgstr "Número de Factura"
-
-#: ../includes/class-wcdn-settings.php:297
-msgid "Create invoice numbers"
-msgstr "Crear números de factua"
-
-#: ../includes/class-wcdn-settings.php:304
-msgid "Invoice Number Start"
-msgstr "Comiezo de números de factura"
-
-#: ../includes/class-wcdn-settings.php:311
-msgid "Start the numbering at the specified number."
-msgstr "Empezar el conteo en un número específico"
-
-#: ../includes/class-wcdn-settings.php:313
-msgid "Use only integers."
-msgstr "Usar únicamente enteros"
-
-#: ../includes/class-wcdn-settings.php:314
-#: ../includes/class-wcdn-settings.php:330
-#: ../includes/class-wcdn-settings.php:346
-msgid "Already created invoice numbers are not affected by changes."
-msgstr "Los números de factura ya creados no están afectados por los cambios"
-
-#: ../includes/class-wcdn-settings.php:320
-msgid "Invoice Number Prefix"
-msgstr "Prefijo de Número de Factura"
-
-#: ../includes/class-wcdn-settings.php:327
-msgid "This text will be prepended to the invoice number."
-msgstr "Este texto será adjuntado al número de factura"
-
-#: ../includes/class-wcdn-settings.php:329
-#, fuzzy
-msgid "Leave blank to not add a prefix."
-msgstr "Dejar en blanco para no imprimir la dirección."
-
-#: ../includes/class-wcdn-settings.php:336
-msgid "Invoice Number Suffix"
-msgstr "Sufijo de número de factua"
-
-#: ../includes/class-wcdn-settings.php:343
-msgid "This text will be appended to the invoice number."
-msgstr "Este texto sera anexado al número de factura"
-
-#: ../includes/class-wcdn-settings.php:345
-#, fuzzy
-msgid "Leave blank to not add a suffix."
-msgstr "Dejar en blanco para no imprimir el pie de página."
-
-#: ../includes/class-wcdn-settings.php:352
-#, fuzzy
-msgid "Sequential Order Number"
-msgstr "Número de pedido secuencial"
-
-#: ../includes/class-wcdn-settings.php:356
-msgid "Sequential numbering is enabled."
-msgstr "La numeración secuencial esta activada."
-
-#: ../includes/class-wcdn-settings.php:358
-#, php-format
-msgid "Install and activate the free <a href=\"%s\">WooCommerce Sequential Order Numbers</a> Plugin."
-msgstr "Instalar y activar el plugin gratuito <a href=\"%s\">WooCommerce Números de Pedido Secuenciales</a>."
-
-#: ../includes/class-wcdn-writepanel.php:83
-#: ../includes/class-wcdn-writepanel.php:84
-#: ../includes/class-wcdn-writepanel.php:108
-#: ../includes/class-wcdn-writepanel.php:109
-#: ../includes/class-wcdn-writepanel.php:205
+#: includes/class-wcdn-print.php:41
 msgid "Print Invoice"
 msgstr "Imprimir Factura"
 
-#: ../includes/class-wcdn-writepanel.php:86
-#: ../includes/class-wcdn-writepanel.php:87
-#: ../includes/class-wcdn-writepanel.php:111
-#: ../includes/class-wcdn-writepanel.php:112
-#: ../includes/class-wcdn-writepanel.php:206
+#: includes/class-wcdn-print.php:42
+msgid "Print Invoices"
+msgstr ""
+
+#: includes/class-wcdn-print.php:43
+#, fuzzy
+msgid "Invoice created."
+msgstr "Factura"
+
+#: includes/class-wcdn-print.php:44
+msgid "Invoices created."
+msgstr ""
+
+#: includes/class-wcdn-print.php:45
+msgid "Show \"Print Invoice\" button"
+msgstr ""
+
+#: includes/class-wcdn-print.php:51
+msgid "Delivery Note"
+msgstr "Nota de Entrega"
+
+#: includes/class-wcdn-print.php:52
+msgid "Delivery Notes"
+msgstr ""
+
+#: includes/class-wcdn-print.php:53
 msgid "Print Delivery Note"
 msgstr "Imprimir Nota de Entrega"
 
-#: ../includes/class-wcdn-writepanel.php:89
-#: ../includes/class-wcdn-writepanel.php:90
-#: ../includes/class-wcdn-writepanel.php:115
-#: ../includes/class-wcdn-writepanel.php:116
-#: ../includes/class-wcdn-writepanel.php:207
+#: includes/class-wcdn-print.php:54
+msgid "Print Delivery Notes"
+msgstr ""
+
+#: includes/class-wcdn-print.php:55
+msgid "Delivery Note created."
+msgstr ""
+
+#: includes/class-wcdn-print.php:56
+msgid "Delivery Notes created."
+msgstr ""
+
+#: includes/class-wcdn-print.php:57
+msgid "Show \"Print Delivery Note\" button"
+msgstr ""
+
+#: includes/class-wcdn-print.php:63
+msgid "Receipt"
+msgstr ""
+
+#: includes/class-wcdn-print.php:64
+msgid "Receipts"
+msgstr ""
+
+#: includes/class-wcdn-print.php:65
 #, fuzzy
 msgid "Print Receipt"
 msgstr "Imprimir Factura"
 
-#: ../includes/class-wcdn-writepanel.php:176
-#, fuzzy, php-format
-msgid "Invoice created."
-msgid_plural "%s invoices created."
-msgstr[0] "Factura"
-msgstr[1] "Factura"
-
-#: ../includes/class-wcdn-writepanel.php:178
-#, fuzzy, php-format
-msgid "Delivery note created."
-msgid_plural "%s delivery notes created."
-msgstr[0] "Nota de Entrega"
-msgstr[1] "Nota de Entrega"
-
-#: ../includes/class-wcdn-writepanel.php:180
-#, php-format
-msgid "Receipt created."
-msgid_plural "%s receipts created."
-msgstr[0] "Recibo creado"
-msgstr[1] "%s recibos creados"
-
-#: ../includes/class-wcdn-writepanel.php:184
-#, fuzzy
-msgid "Print now"
-msgstr "Imprimir ahora"
-
-#: ../includes/class-wcdn-writepanel.php:195
-#, fuzzy
-msgid "Order Printing"
-msgstr "Imprimir pedido"
-
-#: ../includes/class-wcdn-writepanel.php:218
-msgid "Invoice number: "
-msgstr "Número de factura: "
-
-#: ../includes/class-wcdn-writepanel.php:219
-#, fuzzy
-msgid "Invoice date: "
-msgstr "Fecha de factura:"
-
-#: ../includes/wcdn-template-functions.php:32
-msgid "Invoice"
-msgstr "Factura"
-
-#: ../includes/wcdn-template-functions.php:34
-msgid "Delivery Note"
-msgstr "Nota de Entrega"
-
-#: ../includes/wcdn-template-functions.php:36
-msgid "Receipt"
+#: includes/class-wcdn-print.php:66
+msgid "Print Receipts"
 msgstr ""
 
-#: ../includes/wcdn-template-functions.php:38
+#: includes/class-wcdn-print.php:67
+#, fuzzy
+msgid "Receipt created."
+msgstr "Recibo creado"
+
+#: includes/class-wcdn-print.php:68
+msgid "Receipts created."
+msgstr ""
+
+#: includes/class-wcdn-print.php:69
+msgid "Show \"Print Receipt\" button"
+msgstr ""
+
+#: includes/class-wcdn-print.php:78
 #, fuzzy
 msgid "Order"
 msgstr "Imprimir pedido"
 
-#: ../includes/wcdn-template-functions.php:215
+#: includes/class-wcdn-print.php:79
+msgid "Orders"
+msgstr ""
+
+#: includes/class-wcdn-print.php:80
+msgid "Print Order"
+msgstr "Print Order"
+
+#: includes/class-wcdn-print.php:81
+msgid "Print Orders"
+msgstr ""
+
+#: includes/class-wcdn-print.php:93
+msgid "Default"
+msgstr ""
+
+#: includes/class-wcdn-settings.php:67
+msgid ""
+"Do you really want to reset the counter to zero? This process can't be "
+"undone."
+msgstr ""
+
+#: includes/class-wcdn-settings.php:75 includes/class-wcdn-theme.php:57
+#: includes/class-wcdn-theme.php:94 includes/wcdn-template-functions.php:130
+msgid "Print"
+msgstr "Imprimir"
+
+#: includes/class-wcdn-settings.php:106
+msgid "Template"
+msgstr ""
+
+#: includes/class-wcdn-settings.php:113
+msgid "Style"
+msgstr ""
+
+#: includes/class-wcdn-settings.php:114
+msgid ""
+"The default print style. Read the <a href=\"%1$s\">FAQ</a> to learn how to "
+"customize it."
+msgstr ""
+
+#: includes/class-wcdn-settings.php:124
+msgid "Shop Logo"
+msgstr ""
+
+#: includes/class-wcdn-settings.php:130
+msgid ""
+"A shop logo representing your business. When the image is printed, its pixel "
+"density will automatically be eight times higher than the original. This "
+"means, 1 printed inch will correspond to about 288 pixels on the screen."
+msgstr ""
+
+#: includes/class-wcdn-settings.php:134
+msgid "Shop Name"
+msgstr ""
+
+#: includes/class-wcdn-settings.php:140
+msgid ""
+"The shop name. Leave blank to use the default Website or Blog title defined "
+"in WordPress settings. The name will be ignored when a Logo is set."
+msgstr ""
+
+#: includes/class-wcdn-settings.php:144
+msgid "Shop Address"
+msgstr ""
+
+#: includes/class-wcdn-settings.php:145
+msgid "The postal address of the shop or even e-mail or telephone."
+msgstr ""
+
+#: includes/class-wcdn-settings.php:154
+msgid "Complimentary Close"
+msgstr "Cierre gratuito"
+
+#: includes/class-wcdn-settings.php:155
+msgid "Add a personal close, notes or season greetings."
+msgstr ""
+
+#: includes/class-wcdn-settings.php:164
+msgid "Policies"
+msgstr ""
+
+#: includes/class-wcdn-settings.php:165
+msgid "Add the shop policies, conditions, etc."
+msgstr ""
+
+#: includes/class-wcdn-settings.php:174
+#, fuzzy
+msgid "Footer"
+msgstr "Pie de Página"
+
+#: includes/class-wcdn-settings.php:175
+msgid ""
+"Add a footer imprint, instructions, copyright notes, e-mail, telephone, etc."
+msgstr ""
+
+#: includes/class-wcdn-settings.php:189
+msgid "Pages & Buttons"
+msgstr ""
+
+# @ woocommerce-delivery-notes
+#: includes/class-wcdn-settings.php:196
+msgid "Print Page Endpoint"
+msgstr "Endpoint Pagina de Impresión"
+
+# @ woocommerce-delivery-notes
+#: includes/class-wcdn-settings.php:202
+msgid ""
+"The endpoint is appended to the accounts page URL to print the order. It "
+"should be unique."
+msgstr ""
+"El Endpoint es añadido a la URL de la pagina de cuenta para ser impreso"
+
+# @ woocommerce-delivery-notes
+#: includes/class-wcdn-settings.php:206
+#: includes/wcdn-template-functions.php:275
+msgid "Email"
+msgstr "Email"
+
+#: includes/class-wcdn-settings.php:207
+msgid "Show print link in customer emails"
+msgstr ""
+
+#: includes/class-wcdn-settings.php:211
+msgid ""
+"This includes the emails for a new, processing and completed order. On top "
+"of that the customer invoice email also includes the link."
+msgstr ""
+
+#: includes/class-wcdn-settings.php:215
+msgid "My Account"
+msgstr ""
+
+# @ woocommerce-delivery-notes
+#: includes/class-wcdn-settings.php:216
+msgid "Show print button on the \"View Order\" page"
+msgstr "Mostrar botón de impresión en la página \"View Order\""
+
+# @ woocommerce-delivery-notes
+#: includes/class-wcdn-settings.php:224
+msgid "Show print buttons on the \"My Account\" page"
+msgstr "Mostrar botón de impresión en la página \"My Account\""
+
+#: includes/class-wcdn-settings.php:244
+msgid "Numbering"
+msgstr ""
+
+#: includes/class-wcdn-settings.php:245
+msgid "Create invoice numbers"
+msgstr "Crear números de factua"
+
+#: includes/class-wcdn-settings.php:253
+msgid "Next Number"
+msgstr ""
+
+#: includes/class-wcdn-settings.php:260
+msgid "The next invoice number."
+msgstr ""
+
+#: includes/class-wcdn-settings.php:264
+msgid "Number Prefix"
+msgstr ""
+
+#: includes/class-wcdn-settings.php:271
+msgid "This text will be prepended to the invoice number."
+msgstr "Este texto será adjuntado al número de factura"
+
+#: includes/class-wcdn-settings.php:275
+msgid "Number Suffix"
+msgstr ""
+
+#: includes/class-wcdn-settings.php:282
+msgid "This text will be appended to the invoice number."
+msgstr "Este texto sera anexado al número de factura"
+
+#: includes/class-wcdn-settings.php:327
+msgid "Admin"
+msgstr ""
+
+#: includes/class-wcdn-settings.php:330
+msgid ""
+"The print buttons are available on the order listing and on the order detail "
+"screen."
+msgstr ""
+
+#: includes/class-wcdn-settings.php:372
+msgid ""
+"This section lets you customise the content. You can preview the <a href="
+"\"%1$s\" target=\"%4$s\" class=\"%5$s\">invoice</a>, <a href=\"%2$s\" target="
+"\"%4$s\" class=\"%5$s\">delivery note</a> or <a href=\"%3$s\" target=\"%4$s"
+"\" class=\"%5$s\">receipt</a> template."
+msgstr ""
+
+#: includes/class-wcdn-settings.php:435
+msgid "Select"
+msgstr ""
+
+#: includes/class-wcdn-settings.php:439
+msgid "Remove"
+msgstr ""
+
+#: includes/class-wcdn-theme.php:112
+msgid "Print your order"
+msgstr ""
+
+#: includes/class-wcdn-theme.php:119
+msgid "Print:"
+msgstr ""
+
+#: includes/class-wcdn-theme.php:119
+msgid "Open print view in browser"
+msgstr ""
+
+#: includes/class-wcdn-writepanel.php:218
+#, fuzzy
+msgid "Print now"
+msgstr "Imprimir ahora"
+
+#: includes/class-wcdn-writepanel.php:232
+#, fuzzy
+msgid "Order Printing"
+msgstr "Imprimir pedido"
+
+#: includes/class-wcdn-writepanel.php:259
+msgid "Invoice number: "
+msgstr "Número de factura: "
+
+#: includes/class-wcdn-writepanel.php:260
+#, fuzzy
+msgid "Invoice date: "
+msgstr "Fecha de factura:"
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:75
+msgid "If you have a moment, please let us know why you are deactivating"
+msgstr ""
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:76
+msgid "Submit & Deactivate"
+msgstr ""
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:77
+msgid "Deactivate"
+msgstr ""
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:78
+msgid "Cancel"
+msgstr ""
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:79
+msgid "Yes - Deactivate"
+msgstr ""
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:83
+msgid "I found a better plugin"
+msgstr ""
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:84
+msgid "What's the plugin's name?"
+msgstr ""
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:85
+msgid "I only needed the plugin for a short period"
+msgstr ""
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:86
+msgid "The plugin is not working"
+msgstr ""
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:87
+msgid "Kindly share what didn't work so we can fix it for future users..."
+msgstr ""
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:88
+msgid "The plugin is great, but I need specific feature that you don't support"
+msgstr ""
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:89
+msgid "What feature?"
+msgstr ""
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:90
+msgid "I don't like to share my information with you"
+msgstr ""
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:91
+msgctxt ""
+"the text of the 'other' reason for deactivating the plugin that is shown in "
+"the modal box."
+msgid "Other"
+msgstr ""
+
+#: includes/component/faq-support/ts-faq-support.php:127
+msgid "Frequently Asked Questions for %s"
+msgstr ""
+
+#: includes/component/faq-support/ts-faq-support.php:176
+msgid "FAQ & Support"
+msgstr ""
+
+#: includes/component/tracking-data/ts-tracking.php:120
+#: includes/component/tracking-data/ts-tracking.php:180
+msgid "Reset usage tracking"
+msgstr ""
+
+#: includes/component/tracking-data/ts-tracking.php:122
+msgid ""
+"This will reset your usage tracking settings, causing it to show the opt-in "
+"banner again and not sending any data"
+msgstr ""
+
+#: includes/component/tracking-data/ts-tracking.php:225
+msgid "Once in a Week"
+msgstr ""
+
+#: includes/component/tracking-data/ts-tracking.php:311
+msgid "Allow"
+msgstr ""
+
+#: includes/component/tracking-data/ts-tracking.php:312
+msgid "No thanks"
+msgstr ""
+
+#: includes/component/welcome-page/templates/social-media-elements.php:10
+#: includes/wcdn-welcome.php:231
+msgid "Follow %s"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:19
+#: includes/wcdn-welcome.php:99
+msgid ""
+"Thank you for activating or updating to the latest version of WooCommerce "
+"Print Invoice & Delivery Note! If you're a first time user, welcome! You're "
+"well on your way to explore the print functionality for your WooCommerce "
+"orders."
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:29
+#: includes/wcdn-welcome.php:109
+msgid "Get Started with WooCommerce Print Invoice & Delivery Note"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:33
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:62
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:68
+#: includes/wcdn-welcome.php:113 includes/wcdn-welcome.php:142
+#: includes/wcdn-welcome.php:148
+msgid "WooCommerce Print Invoice & Delivery Note"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:37
+#: includes/wcdn-welcome.php:117
+msgid "Add settings"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:39
+#: includes/wcdn-welcome.php:119
+msgid ""
+"To enable the print functionality for your invoices, delivery notes & "
+"receipts, you just need to set it up under WooCommerce -> Settings -> Print "
+"page. Here you can also setup the Company Logo that will appear on the "
+"printed items, Company Address & other information."
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:41
+#: includes/wcdn-welcome.php:121
+msgid "Click Here to go to Print page"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:52
+#: includes/wcdn-welcome.php:132
+msgid "Enable Print button for Customers."
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:54
+#: includes/wcdn-welcome.php:134
+msgid ""
+"Allow customers to print the WooCommerce order invoice from the customer "
+"notification email, from the My Account page or from the View Order page "
+"under My Account."
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:56
+#: includes/wcdn-welcome.php:136
+msgid "Click Here to Enable Print button for Customers"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:72
+#: includes/wcdn-welcome.php:152
+msgid "Enable Invoice Numbering"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:74
+msgid ""
+"If you want to change the default invoice numbers & set some numbering "
+"scheme of your own, then you can set it here with a starting invoice number, "
+"a prefix & suffix. For example, you could set it as: TS/001/17-18."
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:76
+#: includes/wcdn-welcome.php:156
+msgid "Click Here to Enable Invoice Numbering"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:87
+#: includes/wcdn-welcome.php:167
+msgid "Getting to Know Tyche Softwares"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:90
+#: includes/wcdn-welcome.php:170
+msgid "Visit the Tyche Softwares Website"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:91
+#: includes/wcdn-welcome.php:171
+msgid "View all Premium Plugins"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:100
+#: includes/wcdn-welcome.php:180
+msgid "Meet the team"
+msgstr ""
+
+#: includes/component/welcome-page/ts-welcome.php:167
+msgid "Welcome to %s %s"
+msgstr ""
+
+#: includes/wcdn-all-component.php:118
+msgid ""
+"Thank you for using WooCommerce Print Invoice & Delivery Note plugin! Now "
+"make your deliveries more accurate by allowing customers to select their "
+"preferred delivery date & time from Product Delivery Date Pro for "
+"WooCommerce. <strong><a target=\"_blank\" href= \"https://www.tychesoftwares."
+"com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?"
+"utm_source=wpnotice&utm_medium=first&utm_campaign=PrintInvoicePlugin\">Get "
+"it now!</a></strong>"
+msgstr ""
+
+#: includes/wcdn-all-component.php:120
+msgid ""
+"Never login to your admin to check your deliveries by syncing the delivery "
+"dates to the Google Calendar from Product Delivery Date Pro for WooCommerce. "
+"<strong><a target=\"_blank\" href= \"https://www.tychesoftwares.com/store/"
+"premium-plugins/product-delivery-date-pro-for-woocommerce/checkout?"
+"edd_action=add_to_cart&download_id=16&utm_source=wpnotice&utm_medium=first&utm_campaign=PrintInvoicePlugin"
+"\">Get it now!</a></strong>"
+msgstr ""
+
+#: includes/wcdn-all-component.php:122
+msgid ""
+"You can now view all your deliveries in list view or in calendar view from "
+"Product Delivery Date Pro for WooCommerce. <strong><a target=\"_blank\" "
+"href= \"https://www.tychesoftwares.com/store/premium-plugins/product-"
+"delivery-date-pro-for-woocommerce/checkout?"
+"edd_action=add_to_cart&download_id=16&utm_source=wpnotice&utm_medium=first&utm_campaign=PrintInvoicePlugin"
+"\">Get it now!</a></strong>."
+msgstr ""
+
+#: includes/wcdn-all-component.php:124
+msgid ""
+"Allow your customers to pay extra for delivery for certain Weekdays/Dates "
+"from Product Delivery Date Pro for WooCommerce. <strong><a target=\"_blank\" "
+"href= \"https://www.tychesoftwares.com/store/premium-plugins/product-"
+"delivery-date-pro-for-woocommerce/checkout?"
+"edd_action=add_to_cart&download_id=16&utm_source=wpnotice&utm_medium=first&utm_campaign=PrintInvoicePlugin"
+"\">Have it now!</a></strong>."
+msgstr ""
+
+#: includes/wcdn-all-component.php:126
+msgid ""
+"Customers can now edit the Delivery date & time on cart and checkout page or "
+"they can reschedule the deliveries for the already placed orders from "
+"Product Delivery Date Pro for WooCommerce. <strong><a target=\"_blank\" "
+"href= \"https://www.tychesoftwares.com/store/premium-plugins/product-"
+"delivery-date-pro-for-woocommerce/checkout?"
+"edd_action=add_to_cart&download_id=16&utm_source=wpnotice&utm_medium=first&utm_campaign=PrintInvoicePlugin"
+"\">Have it now!</a></strong>."
+msgstr ""
+
+#: includes/wcdn-template-functions.php:246
+msgid "Invoice Number"
+msgstr "Número de Factura"
+
+#: includes/wcdn-template-functions.php:253
+msgid "Invoice Date"
+msgstr ""
+
+#: includes/wcdn-template-functions.php:259
 msgid "Order Number"
 msgstr "Numero de Pedido"
 
-#: ../includes/wcdn-template-functions.php:220
+#: includes/wcdn-template-functions.php:264
 msgid "Order Date"
 msgstr "Fecha de pedido"
 
-#: ../includes/wcdn-template-functions.php:225
+#: includes/wcdn-template-functions.php:269
 msgid "Payment Method"
 msgstr "Forma de Pago"
 
 # @ woocommerce-delivery-notes
-#: ../includes/wcdn-template-functions.php:231
-msgid "Email"
-msgstr "Email"
-
-# @ woocommerce-delivery-notes
-#: ../includes/wcdn-template-functions.php:238
+#: includes/wcdn-template-functions.php:282
 msgid "Telephone"
 msgstr "Teléfono"
 
-#: ../includes/wcdn-template-functions.php:271
+#: includes/wcdn-template-functions.php:315
 msgid "SKU:"
 msgstr "SKU:"
 
-#: ../templates/print-order/print-content.php:28
+#: includes/wcdn-template-functions.php:409
+#: includes/wcdn-template-functions.php:413
+msgid "(Includes %s)"
+msgstr ""
+
+#: includes/wcdn-template-functions.php:429
+msgid "Refund"
+msgstr ""
+
+#: includes/wcdn-template-functions.php:441
+msgid "Order Subtotal"
+msgstr ""
+
+#: includes/wcdn-welcome.php:54
+msgid "Welcome to WooCommerce Print Invoice & Delivery Note %s"
+msgstr ""
+
+#: includes/wcdn-welcome.php:55
+msgid "Welcome to WooCommerce Print Invoice & Delivery Note"
+msgstr ""
+
+#: includes/wcdn-welcome.php:154
+msgid ""
+"f you want to change the default invoice numbers & set some numbering scheme "
+"of your own, then you can set it here with a starting invoice number, a "
+"prefix & suffix. For example, you could set it as: TS/001/17-18."
+msgstr ""
+
+#: includes/wcdn-welcome.php:186
+msgid "Current Offers"
+msgstr ""
+
+#: templates/print-order/print-content.php:28
 msgid "Billing Address"
 msgstr "Dirección de Facturación"
 
-#: ../templates/print-order/print-content.php:31
-#: ../templates/print-order/print-content.php:42
+#: templates/print-order/print-content.php:31
+#: templates/print-order/print-content.php:40
 msgid "N/A"
 msgstr "No Disponible"
 
-#: ../templates/print-order/print-content.php:39
+#: templates/print-order/print-content.php:37
 msgid "Shipping Address"
 msgstr "Dirección de Envío"
 
-#: ../templates/print-order/print-content.php:74
+#: templates/print-order/print-content.php:71
 msgid "Product"
 msgstr "Producto"
 
-#: ../templates/print-order/print-content.php:75
+#: templates/print-order/print-content.php:72
+msgid "Price"
+msgstr ""
+
+#: templates/print-order/print-content.php:73
 msgid "Quantity"
 msgstr "Cantidad"
 
-#: ../templates/print-order/print-content.php:76
+#: templates/print-order/print-content.php:74
 #, fuzzy
 msgid "Total"
 msgstr "Total"
 
-#: ../templates/print-order/print-content.php:100
+#: templates/print-order/print-content.php:147
 msgid "Download:"
 msgstr "Descarga:"
 
 # @ woocommerce-delivery-notes
-#: ../templates/print-order/print-content.php:101
-#, php-format
+#: templates/print-order/print-content.php:148
 msgid "%s Files"
 msgstr "%s Ficheros"
 
-#: ../templates/print-order/print-content.php:148
+#: templates/print-order/print-content.php:202
 #, fuzzy
 msgid "Customer Note"
 msgstr "Notas del Cliente"
 
-#: ../woocommerce-delivery-notes.php:144
+#: woocommerce-delivery-notes.php:96 woocommerce-delivery-notes.php:103
+msgid "Cheatin&#8217; huh?"
+msgstr ""
+
+#: woocommerce-delivery-notes.php:275
+msgid ""
+"I can't differentiate between Invoice, Delivery Notes & Receipt. The "
+"templates are the same. "
+msgstr ""
+
+#: woocommerce-delivery-notes.php:281
+msgid "The invoice sent through mail can't be downloaded as PDF directly."
+msgstr ""
+
+#: woocommerce-delivery-notes.php:287
+msgid "The plugin is not compatible with another plugin."
+msgstr ""
+
+#: woocommerce-delivery-notes.php:293
+msgid "This plugin is not useful to me."
+msgstr ""
+
+#: woocommerce-delivery-notes.php:351
 msgid "Go to the settings page"
 msgstr "Ir a la página de ajustes"
 
-#: ../woocommerce-delivery-notes.php:144
+#: woocommerce-delivery-notes.php:351
 msgid "Settings"
 msgstr "Ajustes"
+
+#~ msgid "Company/Shop Logo"
+#~ msgstr "Logo Empresa/Tienda"
+
+#~ msgid "Remove Logo"
+#~ msgstr "Eliminar Logo"
+
+#~ msgid "Set Logo"
+#~ msgstr "Definir Logo"
+
+#~ msgid "A company/shop logo representing your business."
+#~ msgstr "Logo de la empresa/tienda que represente su negocio."
+
+#~ msgid "Note:"
+#~ msgstr "Nota:"
+
+#~ msgid "Company/Shop Name"
+#~ msgstr "Empresa/Nombre de la tienda"
+
+#~ msgid "Your company/shop name for the Delivery Note."
+#~ msgstr "Nombre de tu empresa/tienda para las Notas de Entrega."
+
+#, fuzzy
+#~ msgid ""
+#~ "Leave blank to use the default Website/Blog title defined in WordPress "
+#~ "settings. The name will be ignored when a Logo is set."
+#~ msgstr ""
+#~ "Dejar en blanco para usar el Website por defecto/ Título del blog "
+#~ "definido en los ajustes de WordPress."
+
+#~ msgid "Company/Shop Address"
+#~ msgstr "Empresa/Dirección de la tienda"
+
+#, fuzzy
+#~ msgid ""
+#~ "The postal address of the company/shop or even e-mail or telephone, which "
+#~ "gets printed right after the company/shop name."
+#~ msgstr ""
+#~ "La dirección postal de la compañia/tienda, quedara impresa a la derecha "
+#~ "del nombre de la compañia/tienda, debajo del listado de pedido."
+
+#~ msgid "Leave blank to not print an address."
+#~ msgstr "Dejar en blanco para no imprimir la dirección."
+
+#~ msgid ""
+#~ "Add some personal notes, or season greetings or whatever (e.g. Thank You "
+#~ "for Your Order!, Merry Christmas!, etc.)."
+#~ msgstr ""
+#~ "Añade notas personales, o felicitaciones o cualquier cosa (ej. ¡Gracias "
+#~ "por tu pedido!, ¡Feliz Navidad!, ect.)"
+
+#~ msgid "Leave blank to not print any personal notes."
+#~ msgstr "Dejar en blanco para no imprimir notas personales."
+
+#, fuzzy
+#~ msgid "Returns Policy, Conditions, etc"
+#~ msgstr "Política de Devoluciones, Condiciones, etc.:"
+
+#~ msgid ""
+#~ "Here you can add some more policies, conditions etc. For example add a "
+#~ "returns policy in case the client would like to send back some goods. In "
+#~ "some countries (e.g. in the European Union) this is required so please "
+#~ "add any required info in accordance with the statutory regulations."
+#~ msgstr ""
+#~ "Aquí puedes añadir algunas claúsulas, condiciones etc. Por ejemplo añade "
+#~ "una política de de devolución en el caso de que el cliente quiera "
+#~ "devolver algunos artículos. En algunos países (p.ej en la Unión Europea) "
+#~ "esto es obligatorio, asi que por favor añade cualquier información "
+#~ "obligatoria de acuerdo con las regulaciones estatutarias. "
+
+#~ msgid "Leave blank to not print any policies or conditions."
+#~ msgstr "Dejar en blanco para no imprimir cláusulas o condiciones."
+
+#, fuzzy
+#~ msgid ""
+#~ "Add some further footer imprint, e-mail, telephone, copyright notes etc. "
+#~ "This makes the printed sheets a bit more branded."
+#~ msgstr ""
+#~ "Añade además de notas a pie de página, notas de copyright etc. para "
+#~ "obtener hojas impresas que se ajusten un poco mas a tu marca."
+
+#~ msgid "Leave blank to not print a footer."
+#~ msgstr "Dejar en blanco para no imprimir el pie de página."
+
+#~ msgid "Front-end Options"
+#~ msgstr "Opciones Front-end"
+
+#~ msgid "Print Buttons"
+#~ msgstr "Botones de Impresión"
+
+#, fuzzy
+#~ msgid "Order Numbering"
+#~ msgstr "Número de Pedido"
+
+#~ msgid "Invoice Number Start"
+#~ msgstr "Comiezo de números de factura"
+
+#~ msgid "Start the numbering at the specified number."
+#~ msgstr "Empezar el conteo en un número específico"
+
+#~ msgid "Use only integers."
+#~ msgstr "Usar únicamente enteros"
+
+#~ msgid "Already created invoice numbers are not affected by changes."
+#~ msgstr ""
+#~ "Los números de factura ya creados no están afectados por los cambios"
+
+#~ msgid "Invoice Number Prefix"
+#~ msgstr "Prefijo de Número de Factura"
+
+#, fuzzy
+#~ msgid "Leave blank to not add a prefix."
+#~ msgstr "Dejar en blanco para no imprimir la dirección."
+
+#~ msgid "Invoice Number Suffix"
+#~ msgstr "Sufijo de número de factua"
+
+#, fuzzy
+#~ msgid "Leave blank to not add a suffix."
+#~ msgstr "Dejar en blanco para no imprimir el pie de página."
+
+#, fuzzy
+#~ msgid "Sequential Order Number"
+#~ msgstr "Número de pedido secuencial"
+
+#~ msgid "Sequential numbering is enabled."
+#~ msgstr "La numeración secuencial esta activada."
+
+#~ msgid ""
+#~ "Install and activate the free <a href=\"%s\">WooCommerce Sequential Order "
+#~ "Numbers</a> Plugin."
+#~ msgstr ""
+#~ "Instalar y activar el plugin gratuito <a href=\"%s\">WooCommerce Números "
+#~ "de Pedido Secuenciales</a>."
+
+#, fuzzy
+#~ msgid "Delivery note created."
+#~ msgid_plural "%s delivery notes created."
+#~ msgstr[0] "Nota de Entrega"
+#~ msgstr[1] "Nota de Entrega"
 
 #~ msgid "2.0"
 #~ msgstr "2.0"
