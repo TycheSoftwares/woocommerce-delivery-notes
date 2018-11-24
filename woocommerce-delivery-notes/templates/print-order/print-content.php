@@ -88,79 +88,89 @@ if ( !defined( 'ABSPATH' ) ) exit;
 							    $item_meta = new WC_Order_Item_Product( $item['item_meta'], $product );
 							}else{
 							    $item_meta = new WC_Order_Item_Meta( $item['item_meta'], $product );    
-							} 
-							
+							}							
 						?>
-						
 						<tr>
 							<td class="product-name">
 								<?php do_action( 'wcdn_order_item_before', $product, $order ); ?>
-
-								<span class="name"><?php 
-								$product_id   =  $item['product_id'];
-                                $prod_name    = get_post( $product_id );
-                                $product_name = $prod_name->post_title;
-                                
-
-								echo apply_filters( 'wcdn_order_item_name', $product_name, $item ); ?></span>
-
-								<?php 
-								// if ( version_compare( get_option( 'woocommerce_version' ), '3.1.0', ">="  ) ) {
-								//     $item_meta->get_product(); 
+								<span class="name">
+								<?php
 								
-								// }else {
-								    
-								//     $item_meta->display(); 
-								// }
+								$addon_name  	= $item->get_meta( '_wc_pao_addon_name', true );
+								$addon_value 	= $item->get_meta( '_wc_pao_addon_value', true );
+								$is_addon 		= ! empty( $addon_value );
 
-								if ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', ">="  ) ) {
-									if( isset( $item[ 'variation_id' ] ) && $item[ 'variation_id' ] != 0 ) {
-										$variation = wc_get_product( $item[ 'product_id' ] );
-										foreach ( $item[ 'item_meta' ] as $key => $value ) {
-											if( !( 0 === strpos($key, '_' ) ) ) {
-												$term = get_term_by( 'slug', $value, $key );
-												$attribute_name = wc_attribute_label( $key, $variation );
-												if( isset( $term->name ) ) {
-													echo '<br>'.$attribute_name.':'.$term->name;
-												} else {
-													echo '<br>'.$attribute_name.':'.$value;
+								if ( $is_addon ) { // Displaying options of product addon
+									$addon_html = '<div class="wc-pao-order-item-name">' . esc_html( $addon_name ) . '</div><div class="wc-pao-order-item-value">' . esc_html( $addon_value ) . '</div></div>';
+
+									echo $addon_html;
+								} else {
+
+									$product_id   =  $item['product_id'];
+	                                $prod_name    = get_post( $product_id );
+	                                $product_name = $prod_name->post_title;
+	                                
+
+									echo apply_filters( 'wcdn_order_item_name', $product_name, $item ); ?></span>
+
+									<?php 
+									// if ( version_compare( get_option( 'woocommerce_version' ), '3.1.0', ">="  ) ) {
+									//     $item_meta->get_product(); 
+									
+									// }else {
+									    
+									//     $item_meta->display(); 
+									// }
+
+									if ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', ">="  ) ) {
+										if( isset( $item[ 'variation_id' ] ) && $item[ 'variation_id' ] != 0 ) {
+											$variation = wc_get_product( $item[ 'product_id' ] );
+											foreach ( $item[ 'item_meta' ] as $key => $value ) {
+												if( !( 0 === strpos($key, '_' ) ) ) {
+													$term = get_term_by( 'slug', $value, $key );
+													$attribute_name = wc_attribute_label( $key, $variation );
+													if( isset( $term->name ) ) {
+														echo '<br>'.$attribute_name.':'.$term->name;
+													} else {
+														echo '<br>'.$attribute_name.':'.$value;
+													}
+												}
+											}
+										} else {
+											foreach ( $item[ 'item_meta' ] as $key => $value ) {
+												if( !( 0 === strpos( $key, '_' ) ) ) {
+													echo '<br>' . $key . ':' . $value;
 												}
 											}
 										}
 									} else {
-										foreach ( $item[ 'item_meta' ] as $key => $value ) {
-											if( !( 0 === strpos( $key, '_' ) ) ) {
-												echo '<br>' . $key . ':' . $value;
-											}
-										}
-									}
-								} else {
-								    $item_meta_new = new WC_Order_Item_Meta( $item['item_meta'], $product );   
-                                	$item_meta_new->display( );
+									    $item_meta_new = new WC_Order_Item_Meta( $item['item_meta'], $product );   
+	                                	$item_meta_new->display( );
 
-								} 
-								?>
-								<br>
-								<dl class="extras">
-									<?php if( $product && $product->exists() && $product->is_downloadable() && $order->is_download_permitted() ) : ?>
-										
-										<dt><?php _e( 'Download:', 'woocommerce-delivery-notes' ); ?></dt>
-										<dd><?php printf( __( '%s Files', 'woocommerce-delivery-notes' ), count( $item->get_item_downloads() ) ); ?></dd>
-											
-									<?php endif; ?>
-									
-									<?php 
-
-										$fields = apply_filters( 'wcdn_order_item_fields', array(), $product, $order ); 
-
-										foreach ( $fields as $field ) : 
+									} 
 									?>
-									
-										<dt><?php echo $field['label']; ?></dt>
-										<dd><?php echo $field['value']; ?></dd>
+									<br>
+									<dl class="extras">
+										<?php if( $product && $product->exists() && $product->is_downloadable() && $order->is_download_permitted() ) : ?>
 											
-									<?php endforeach; ?>
-								</dl>
+											<dt><?php _e( 'Download:', 'woocommerce-delivery-notes' ); ?></dt>
+											<dd><?php printf( __( '%s Files', 'woocommerce-delivery-notes' ), count( $item->get_item_downloads() ) ); ?></dd>
+												
+										<?php endif; ?>
+										
+										<?php 
+
+											$fields = apply_filters( 'wcdn_order_item_fields', array(), $product, $order ); 
+
+											foreach ( $fields as $field ) : 
+										?>
+										
+											<dt><?php echo $field['label']; ?></dt>
+											<dd><?php echo $field['value']; ?></dd>
+												
+										<?php endforeach; ?>
+									</dl>
+								<?php } ?>
 							</td>
 							<td class="product-item-price">
 								<span><?php echo wcdn_get_formatted_item_price( $order, $item ); ?></span>
