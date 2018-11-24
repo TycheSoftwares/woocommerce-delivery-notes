@@ -130,6 +130,9 @@ if ( !defined( 'ABSPATH' ) ) exit;
 									} else {
 										foreach ( $item[ 'item_meta' ] as $key => $value ) {
 											if( !( 0 === strpos( $key, '_' ) ) ) {
+											    if( is_array( $value ) ){
+											        continue;
+											    }
 												echo '<br>' . $key . ':' . $value;
 											}
 										}
