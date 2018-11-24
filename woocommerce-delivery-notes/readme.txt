@@ -330,6 +330,11 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 
 = Minimum Requirements: WooCommerce 2.2 =
 
+= 4.4.7 (24.11.2018) =
+
+* Fix – Fixed compatibility related issue with WooCommerce Product Add-ons v3.0.x. Options were not being printed.
+* Fix – Fixed compatibility related issue with Woocommerce Partial Orders Pro Plugin.
+
 = 4.4.6 (22.10.2018) =
 
 * .po, .mo is updated for all the other languages.
