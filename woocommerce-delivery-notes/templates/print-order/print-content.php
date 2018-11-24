@@ -127,6 +127,9 @@ if ( !defined( 'ABSPATH' ) ) exit;
 											$variation = wc_get_product( $item[ 'product_id' ] );
 											foreach ( $item[ 'item_meta' ] as $key => $value ) {
 												if( !( 0 === strpos($key, '_' ) ) ) {
+												    if( is_array( $value ) ){
+												        continue;
+												    }
 													$term = get_term_by( 'slug', $value, $key );
 													$attribute_name = wc_attribute_label( $key, $variation );
 													if( isset( $term->name ) ) {
