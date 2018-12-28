@@ -136,7 +136,7 @@ class WCDN_TS_tracking {
 	 */
 	public static function ts_reset_tracking_setting () {
 
-		if ( isset ( $_GET [ 'ts_action' ] ) && 'reset_tracking' == $_GET [ 'ts_action' ] ) {
+		if ( isset ( $_GET [ 'ts_action' ] ) && 'wcdn_reset_tracking' == $_GET [ 'ts_action' ] ) {
 			delete_option( self::$plugin_prefix . '_allow_tracking' );
 			delete_option( 'wcdn_ts_tracker_last_send' );
 			$ts_url = remove_query_arg( 'ts_action' );
@@ -154,7 +154,7 @@ class WCDN_TS_tracking {
 		if ( '' == self::$ts_add_setting_on_page && '' == self::$ts_add_setting_on_section && '' == self::$ts_register_setting ) {
 			if ( $value['id'] == 'ts_reset_tracking' ) {
 			$description = WC_Admin_Settings::get_field_description( $value );
-			$ts_action = self::$ts_settings_page . "&amp;ts_action=reset_tracking";
+			$ts_action = self::$ts_settings_page . "&amp;ts_action=" . self::$plugin_prefix . "_reset_tracking";
 		?>
 			
         <tr valign="top">
@@ -204,7 +204,7 @@ class WCDN_TS_tracking {
 		$domain_value                 = isset( $wcap_restrict_domain_address ) ? esc_attr( $wcap_restrict_domain_address ) : '';
 		// Next, we update the name attribute to access this element's ID in the context of the display options array
 		// We also access the show_header element of the options collection in the call to the checked() helper function
-		$ts_action = self::$ts_settings_page . "&amp;ts_action=reset_tracking"; 
+		$ts_action = self::$ts_settings_page . "&amp;ts_action=" . self::$plugin_prefix . "_reset_tracking"; 
 		printf( '<a href="'.$ts_action.'" class="button button-large reset_tracking">Reset</a>' );
 		
 		// Here, we'll take the first argument of the array and add it to a label next to the checkbox
@@ -246,7 +246,7 @@ class WCDN_TS_tracking {
 	public static function ts_admin_notices_scripts() {
 		
         wp_enqueue_script(
-            'ts_dismiss_notice',
+            self::$plugin_prefix . 'ts_dismiss_notice',
 			self::$ts_file_path . '/assets/js/dismiss-notice.js',
             '',
             '',
