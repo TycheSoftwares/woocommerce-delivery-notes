@@ -389,7 +389,7 @@ function wcdn_add_refunded_order_totals( $total_rows, $order ) {
 			$refunded_tax_ins = '';
 			
 			// Tax for inclusive prices
-			if ( wc_tax_enabled() && 'incl' == $order->tax_display_cart ) {
+			if ( wc_tax_enabled() && 'incl' == get_option( 'woocommerce_tax_display_cart' ) ) {
 				$tax_del_array = array();
 				$tax_ins_array = array();
 	
@@ -413,7 +413,6 @@ function wcdn_add_refunded_order_totals( $total_rows, $order ) {
 					$refunded_tax_ins .= ' ' . sprintf( __( '(Includes %s)', 'woocommerce' ), implode( ', ', $tax_ins_array ) );
 				}
 			}
-			
 			// use only the number for new wc versions
 			$order_subtotal = wc_price( $order->get_total(), array( 'currency' => $wdn_order_currency ) );
 		} else {
