@@ -4,9 +4,9 @@ Contributors: ashokrane, bhavik.kiri, tychesoftwares, rashmim
 Donate link: https://www.paypal.me/TycheSoftwares
 Tags: delivery note, packing slip, pdf invoice, delivery, shipping, print order, woocommerce, woothemes, shop
 Requires at least: 4.0
-Tested up to: 4.9.7
+Tested up to: 5.1
 Author URI: https://www.tychesoftwares.com/
-Stable tag: 4.4.6
+Stable tag: 4.4.8
 License: GPLv3 or later
 License URI: http://www.opensource.org/licenses/gpl-license.php
 
@@ -329,6 +329,11 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 == Changelog ==
 
 = Minimum Requirements: WooCommerce 2.2 =
+
+= 4.4.7 (02.04.2019) =
+
+* Fix - When a noticed was dismissed from the plugin, then it will dismiss all other notices from other plugins also. This is fixed now. 
+* Fix - Some errors in debug.log file are fixed. 
 
 = 4.4.7 (24.11.2018) =
 
