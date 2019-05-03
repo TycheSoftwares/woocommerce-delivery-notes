@@ -134,6 +134,9 @@ echo "\n****************************************************\n\n";
 			} else {
 				$type = apply_filters( 'wcdn_theme_print_button_template_type', 'order' );
 			}
+
+			$type = apply_filters( 'wcdn_theme_print_button_template_type_arbitrary', $type, $order );
+
 			return $type;
 		}
 
