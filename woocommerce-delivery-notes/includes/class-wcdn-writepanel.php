@@ -1,24 +1,32 @@
 <?php
+/**
+ * Write Panel class
+ *
+ * @package woocommerce-print-invoice-delivery-notes
+ */
 
 /**
  * Exit if accessed directly
  */
-if ( !defined( 'ABSPATH' ) ) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 /**
  * Writepanel class
  */
-if ( !class_exists( 'WooCommerce_Delivery_Notes_Writepanel' ) ) {
+if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 
-	class WooCommerce_Delivery_Notes_Writepanel {
+	/**
+	 * Write Panel class
+	 */
+	class WCDN_Writepanel {
 
 		/**
 		 * Constructor
 		 */
 		public function __construct() {
-			// Load the hooks
+			// Load the hooks.
 			add_action( 'admin_init', array( $this, 'load_admin_hooks' ) );
 		}
 
@@ -26,7 +34,7 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes_Writepanel' ) ) {
 		 * Load the admin hooks
 		 */
 		public function load_admin_hooks() {
-			// Hooks
+			// Hooks.
 			add_action( 'woocommerce_admin_order_actions_end', array( $this, 'add_listing_actions' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'add_scripts' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'add_styles' ) );
@@ -34,7 +42,7 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes_Writepanel' ) ) {
 			add_action( 'add_meta_boxes_shop_order', array( $this, 'add_box' ) );
 
 			add_action( 'admin_footer-edit.php', array( $this, 'add_bulk_actions' ) );
-            add_action( 'load-edit.php', array( $this, 'load_bulk_actions' ) );
+			add_action( 'load-edit.php', array( $this, 'load_bulk_actions' ) );
 			add_action( 'admin_notices', array( $this, 'confirm_bulk_actions' ) );
 		}
 
@@ -42,9 +50,9 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes_Writepanel' ) ) {
 		 * Add the styles
 		 */
 		public function add_styles() {
-			if( $this->is_order_edit_page() || $this->is_order_post_page() ) {
-				wp_enqueue_style('thickbox');
-				wp_enqueue_style( 'woocommerce-delivery-notes-admin', WooCommerce_Delivery_Notes::$plugin_url . 'css/admin.css' );
+			if ( $this->is_order_edit_page() || $this->is_order_post_page() ) {
+				wp_enqueue_style( 'thickbox' );
+				wp_enqueue_style( 'woocommerce-delivery-notes-admin', WooCommerce_Delivery_Notes::$plugin_url . 'css/admin.css', '', WooCommerce_Delivery_Notes::$plugin_version );
 			}
 		}
 
@@ -52,10 +60,10 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes_Writepanel' ) ) {
 		 * Add the scripts
 		 */
 		public function add_scripts() {
-			if( $this->is_order_edit_page() || $this->is_order_post_page() ) {
+			if ( $this->is_order_edit_page() || $this->is_order_post_page() ) {
 				wp_enqueue_script( 'thickbox' );
-				wp_enqueue_script( 'woocommerce-delivery-notes-print-link', WooCommerce_Delivery_Notes::$plugin_url . 'js/jquery.print-link.js', array( 'jquery' ) );
-				wp_enqueue_script( 'woocommerce-delivery-notes-admin', WooCommerce_Delivery_Notes::$plugin_url . 'js/admin.js', array( 'jquery', 'woocommerce-delivery-notes-print-link' ) );
+				wp_enqueue_script( 'woocommerce-delivery-notes-print-link', WooCommerce_Delivery_Notes::$plugin_url . 'js/jquery.print-link.js', array( 'jquery' ), WooCommerce_Delivery_Notes::$plugin_version, false );
+				wp_enqueue_script( 'woocommerce-delivery-notes-admin', WooCommerce_Delivery_Notes::$plugin_url . 'js/admin.js', array( 'jquery', 'woocommerce-delivery-notes-print-link' ), WooCommerce_Delivery_Notes::$plugin_version, false );
 			}
 		}
 
@@ -64,7 +72,7 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes_Writepanel' ) ) {
 		 */
 		public function is_order_edit_page() {
 			global $typenow, $pagenow;
-			if( $typenow == 'shop_order' && $pagenow == 'edit.php' ) {
+			if ( 'shop_order' === $typenow && 'edit.php' === $pagenow ) {
 				return true;
 			} else {
 				return false;
@@ -76,7 +84,7 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes_Writepanel' ) ) {
 		 */
 		public function is_order_post_page() {
 			global $typenow, $pagenow;
-			if( $typenow == 'shop_order' && ( $pagenow == 'post.php' || $pagenow == 'post-new.php' ) ) {
+			if ( 'shop_order' === $typenow && ( 'post.php' === $pagenow || 'post-new.php' === $pagenow ) ) {
 				return true;
 			} else {
 				return false;
@@ -85,18 +93,20 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes_Writepanel' ) ) {
 
 		/**
 		 * Add print actions to the orders listing
+		 *
+		 * @param object $order Order Object.
 		 */
 		public function add_listing_actions( $order ) {
 
-		    $wdn_order_id =  ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', ">="  ) ) ? $order->get_id() : $order->id;
+			$wdn_order_id = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_id() : $order->id;
 			?>
-			<?php foreach( WooCommerce_Delivery_Notes_Print::$template_registrations as $template_registration ) : ?>
-				<?php if( get_option( 'wcdn_template_type_' . $template_registration['type'] ) == 'yes' && $template_registration['type'] !== 'order' ) : ?>
-
-					<a href="<?php echo wcdn_get_print_link( $wdn_order_id, $template_registration['type'] ); ?>" class="button tips print-preview-button <?php echo $template_registration['type']; ?>" target="_blank" alt="<?php esc_attr_e( __( $template_registration['labels']['print'], 'woocommerce-delivery-notes' ) ); ?>" data-tip="<?php esc_attr_e( __( $template_registration['labels']['print'], 'woocommerce-delivery-notes' ) ); ?>">
-						<?php _e( $template_registration['labels']['print'], 'woocommerce-delivery-notes' ); ?>
+			<?php foreach ( WCDN_Print::$template_registrations as $template_registration ) : ?>
+				<?php if ( 'yes' === get_option( 'wcdn_template_type_' . $template_registration['type'] ) && 'order' !== $template_registration['type'] ) : ?>
+					<?php // phpcs:disable ?>
+					<a href="<?php echo esc_url( wcdn_get_print_link( $wdn_order_id, $template_registration['type'] ) ); ?>" class="button tips print-preview-button <?php echo esc_attr( $template_registration['type'] ); ?>" target="_blank" alt="<?php esc_attr_e( __( $template_registration['labels']['print'], 'woocommerce-delivery-notes' ) ); ?>" data-tip="<?php esc_attr_e( __( $template_registration['labels']['print'], 'woocommerce-delivery-notes' ) ); ?>">
+						<?php esc_html_e( $template_registration['labels']['print'], 'woocommerce-delivery-notes' ); ?>
 					</a>
-
+					<?php // phpcs:enable ?>
 				<?php endif; ?>
 			<?php endforeach; ?>
 
@@ -113,109 +123,122 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes_Writepanel' ) ) {
 		 * https://core.trac.wordpress.org/ticket/16031
 		 */
 		public function add_bulk_actions() {
-			if( $this->is_order_edit_page() ) : ?>
+			if ( $this->is_order_edit_page() ) :
+				?>
 				<script type="text/javascript">
 					jQuery(document).ready(function($) {
-						<?php foreach( WooCommerce_Delivery_Notes_Print::$template_registrations as $template_registration ) : ?>
-							<?php if( get_option( 'wcdn_template_type_' . $template_registration['type'] ) == 'yes' && $template_registration['type'] !== 'order' ) : ?>
-
-								$('<option>').val('wcdn_print_<?php echo $template_registration['type']; ?>').attr('title', '<?php echo $template_registration['type']; ?>').text('<?php echo esc_js( __( $template_registration['labels']['print'], 'woocommerce-delivery-notes' ) ); ?>').appendTo('select[name="action"]');
-								$('<option>').val('wcdn_print_<?php echo $template_registration['type']; ?>').attr('title', '<?php echo $template_registration['type']; ?>').text('<?php echo esc_js( __( $template_registration['labels']['print'], 'woocommerce-delivery-notes' ) ); ?>').appendTo('select[name="action2"]');
-
+						<?php foreach ( WCDN_Print::$template_registrations as $template_registration ) : ?>
+							<?php if ( 'yes' === get_option( 'wcdn_template_type_' . $template_registration['type'] ) && 'order' !== $template_registration['type'] ) : ?>
+								<?php //phpcs:disable ?>
+								$('<option>').val('wcdn_print_<?php echo esc_attr( $template_registration['type'] ); ?>').attr('title', '<?php echo esc_attr( $template_registration['type'] ); ?>').text('<?php echo esc_js( __( $template_registration['labels']['print'], 'woocommerce-delivery-notes' ) ); ?>').appendTo('select[name="action"]');
+								$('<option>').val('wcdn_print_<?php echo esc_attr( $template_registration['type'] ); ?>').attr('title', '<?php echo esc_attr( $template_registration['type'] ); ?>').text('<?php echo esc_js( __( $template_registration['labels']['print'], 'woocommerce-delivery-notes' ) ); ?>').appendTo('select[name="action2"]');
+								<?php //phpcs:enable ?>
 							<?php endif; ?>
 						<?php endforeach; ?>
 					});
 				</script>
-			<?php endif;
+				<?php
+			endif;
 		}
 
 		/**
 		 * Add bulk print actions to the orders listing
 		 */
 		public function load_bulk_actions() {
-			if( $this->is_order_edit_page() ) {
-				// get the action staht should be started
-				$wp_list_table = _get_list_table('WP_Posts_List_Table');
-				$action = $wp_list_table->current_action();
+			if ( $this->is_order_edit_page() ) {
+				// get the action that should be started.
+				$wp_list_table = _get_list_table( 'WP_Posts_List_Table' );
+				$action        = $wp_list_table->current_action();
 
-				// stop if there are no post ids
-				if( !isset( $_REQUEST['post'] ) ) {
+				// stop if there are no post ids.
+				if ( ! isset( $_REQUEST['post'] ) ) {
 					return;
 				}
 
-				// only for specified actions
-				foreach( WooCommerce_Delivery_Notes_Print::$template_registrations as $template_registration ) {
-					if( $action == 'wcdn_print_' . $template_registration['type'] ) {
+				// only for specified actions.
+				foreach ( WCDN_Print::$template_registrations as $template_registration ) {
+					if ( 'wcdn_print_' . $template_registration['type'] === $action ) {
 						$template_type = $template_registration['type'];
 						$report_action = 'printed_' . $template_registration['type'];
 						break;
 					}
 				}
-				if( !isset( $report_action ) ) {
+				if ( ! isset( $report_action ) ) {
 					return;
 				}
 
-				// security check
-				check_admin_referer('bulk-posts');
+				// security check.
+				check_admin_referer( 'bulk-posts' );
 
-				// get referrer
-				if( !wp_get_referer() ) {
+				// get referrer.
+				if ( ! wp_get_referer() ) {
 					return;
 				}
 
-				// filter the referer args
+				// filter the referer args.
 				$referer_args = array();
-				parse_str( parse_url( wp_get_referer(), PHP_URL_QUERY ), $referer_args );
+				parse_str( wp_parse_url( wp_get_referer(), PHP_URL_QUERY ), $referer_args );
 
-				// set the basic args for the sendback
+				// set the basic args for the sendback.
 				$args = array(
-					'post_type' => $referer_args['post_type']
+					'post_type' => $referer_args['post_type'],
 				);
-				if( isset( $referer_args['post_status'] ) ) {
+				if ( isset( $referer_args['post_status'] ) ) {
 					$args = wp_parse_args( array( 'post_status' => $referer_args['post_status'] ), $args );
 				}
-				if( isset( $referer_args['paged'] ) ) {
+				if ( isset( $referer_args['paged'] ) ) {
 					$args = wp_parse_args( array( 'paged' => $referer_args['paged'] ), $args );
 				}
-				if( isset( $referer_args['orderby'] ) ) {
+				if ( isset( $referer_args['orderby'] ) ) {
 					$args = wp_parse_args( array( 'orderby' => $referer_args['orderby'] ), $args );
 				}
-				if( isset( $referer_args['order'] ) ) {
+				if ( isset( $referer_args['order'] ) ) {
 					$args = wp_parse_args( array( 'orderby' => $referer_args['order'] ), $args );
 				}
 
-				// do the action
+				// do the action.
 				$post_ids = array_map( 'absint', (array) $_REQUEST['post'] );
-				$total = count( $post_ids );
-				$url = wcdn_get_print_link( $post_ids , $template_type );
+				$total    = count( $post_ids );
+				$url      = wcdn_get_print_link( $post_ids, $template_type );
 
-				// generate more args and the sendback string
-				$args = wp_parse_args( array( $report_action => true, 'total' => $total, 'print_url' => urlencode( $url ) ), $args );
+				// generate more args and the sendback string.
+				$args     = wp_parse_args(
+					array(
+						$report_action => true,
+						'total'        => $total,
+						'print_url'    => rawurlencode( $url ),
+					),
+					$args
+				);
 				$sendback = add_query_arg( $args, '' );
-				wp_redirect( $sendback );
+				wp_safe_redirect( $sendback );
 				exit;
 			}
-        }
+		}
 
 		/**
 		 * Show confirmation message that orders are printed
 		 */
 		public function confirm_bulk_actions() {
-			if( $this->is_order_edit_page() ) {
-				foreach( WooCommerce_Delivery_Notes_Print::$template_registrations as $template_registration ) {
-					if( isset( $_REQUEST['printed_' . $template_registration['type']] ) ) {
-						// use singular or plural form
+			if ( $this->is_order_edit_page() ) {
+				foreach ( WCDN_Print::$template_registrations as $template_registration ) {
+					if ( isset( $_REQUEST[ 'printed_' . $template_registration['type'] ] ) ) {
+						// use singular or plural form.
 						$total = isset( $_REQUEST['total'] ) ? absint( $_REQUEST['total'] ) : 0;
-						if( $total <= 1 ) {
+						if ( $total <= 1 ) {
 							$message = $template_registration['labels']['message'];
 						} else {
 							$message = $template_registration['labels']['message_plural'];
 						}
-						// changed
 						?>
 
 						<div id="woocommerce-delivery-notes-bulk-print-message" class="updated">
-							<p><?php _e( $message, 'woocommerce-delivery-notes' ); ?> <a href="<?php echo urldecode( esc_url_raw ( $_REQUEST['print_url'] ) ); ?>" target="_blank" class="print-preview-button" id="woocommerce-delivery-notes-bulk-print-button"><?php _e( 'Print now', 'woocommerce-delivery-notes' ) ?></a> <span class="print-preview-loading spinner"></span></p>
+							<p><?php wp_kses_post( $message, 'woocommerce-delivery-notes' ); ?>
+							<a href="<?php if ( isset( $_REQUEST['print_url'] ) ) : ?>
+								<?php
+								// phpcs:ignore
+								echo urldecode( esc_url_raw( $_REQUEST['print_url'] ) ); ?>
+							<?php endif; ?>" target="_blank" class="print-preview-button" id="woocommerce-delivery-notes-bulk-print-button"><?php esc_attr_e( 'Print now', 'woocommerce-delivery-notes' ); ?></a> <span class="print-preview-loading spinner"></span></p>
 						</div>
 
 						<?php
@@ -239,25 +262,26 @@ if ( !class_exists( 'WooCommerce_Delivery_Notes_Writepanel' ) ) {
 			global $post_id, $wcdn;
 			?>
 			<div class="print-actions">
-				<?php foreach( WooCommerce_Delivery_Notes_Print::$template_registrations as $template_registration ) : ?>
-					<?php if( get_option( 'wcdn_template_type_' . $template_registration['type'] ) == 'yes' && $template_registration['type'] !== 'order' ) : ?>
-
-						<a href="<?php echo wcdn_get_print_link( $post_id, $template_registration['type'] ); ?>" class="button print-preview-button <?php echo $template_registration['type']; ?>" target="_blank" alt="<?php esc_attr_e( __( $template_registration['labels']['print'], 'woocommerce-delivery-notes' ) ); ?>"><?php _e( $template_registration['labels']['print'], 'woocommerce-delivery-notes' ); ?></a>
-
+				<?php foreach ( WCDN_Print::$template_registrations as $template_registration ) : ?>
+					<?php if ( get_option( 'yes' === 'wcdn_template_type_' . $template_registration['type'] ) && 'order' !== $template_registration['type'] ) : ?>
+						<?php // phpcs:disable ?>
+						<a href="<?php echo esc_url( wcdn_get_print_link( $post_id, $template_registration['type'] ) ); ?>" class="button print-preview-button <?php echo esc_attr( $template_registration['type'] ); ?>" target="_blank" alt="<?php esc_attr_e( __( $template_registration['labels']['print'], 'woocommerce-delivery-notes' ) ); ?>"><?php esc_attr( $template_registration['labels']['print'], 'woocommerce-delivery-notes' ); ?></a>
+						<?php // phpcs:enable ?>
 					<?php endif; ?>
 				<?php endforeach; ?>
 				<span class="print-preview-loading spinner"></span>
 			</div>
 			<?php
 			$create_invoice_number = get_option( 'wcdn_create_invoice_number' );
-			$has_invoice_number = get_post_meta( $post_id, '_wcdn_invoice_number', true );
-			if( !empty( $create_invoice_number ) && $create_invoice_number == 'yes' && $has_invoice_number ) :
+			$has_invoice_number    = get_post_meta( $post_id, '_wcdn_invoice_number', true );
+			if ( ! empty( $create_invoice_number ) && 'yes' === $create_invoice_number && $has_invoice_number ) :
 				$invoice_number = wcdn_get_order_invoice_number( $post_id );
-				$invoice_date = wcdn_get_order_invoice_date( $post_id ); ?>
+				$invoice_date   = wcdn_get_order_invoice_date( $post_id );
+				?>
 
 				<ul class="print-info">
-					<li><strong><?php _e( 'Invoice number: ', 'woocommerce-delivery-notes' ); ?></strong> <?php echo $invoice_number; ?></li>
-					<li><strong><?php _e( 'Invoice date: ', 'woocommerce-delivery-notes' ); ?></strong> <?php echo $invoice_date; ?></li>
+					<li><strong><?php esc_html_e( 'Invoice number: ', 'woocommerce-delivery-notes' ); ?></strong> <?php echo esc_attr( $invoice_number ); ?></li>
+					<li><strong><?php esc_html_e( 'Invoice date: ', 'woocommerce-delivery-notes' ); ?></strong> <?php echo esc_attr( $invoice_date ); ?></li>
 				</ul>
 
 			<?php endif; ?>
