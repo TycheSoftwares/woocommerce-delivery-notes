@@ -65,7 +65,7 @@ if ( ! class_exists( 'WCDN_Theme' ) ) {
 				$wdn_order_id     = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_id() : $order->id;
 				$actions['print'] = array(
 					'url'  => wcdn_get_print_link( $wdn_order_id, $this->get_template_type( $order ) ),
-					'name' => apply_filters( 'wcdn_print_button_name_on_my_account_page', __( 'Print', 'woocommerce-delivery-notes' ), $order )
+					'name' => apply_filters( 'wcdn_print_button_name_on_my_account_page', __( 'Print', 'woocommerce-delivery-notes' ), $order ),
 				);
 			}
 			return $actions;
@@ -102,7 +102,7 @@ if ( ! class_exists( 'WCDN_Theme' ) ) {
 
 				?>
 				<p class="order-print">
-					<a href="<?php echo esc_url( $print_url ); ?>" class="button print"><?php echo apply_filters( 'wcdn_print_button_name_order_page', __( 'Print', 'woocommerce-delivery-notes' ), $order ); ?></a>
+					<a href="<?php echo esc_url( $print_url ); ?>" class="button print"><?php echo esc_attr( apply_filters( 'wcdn_print_button_name_order_page', __( 'Print', 'woocommerce-delivery-notes' ), $order ) ); ?></a>
 				</p>
 				<?php
 			}
