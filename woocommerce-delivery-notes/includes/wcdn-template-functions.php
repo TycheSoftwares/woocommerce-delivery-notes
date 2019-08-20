@@ -153,7 +153,7 @@ function wcdn_template_stylesheet() {
 	$name = apply_filters( 'wcdn_template_stylesheet_name', 'style.css' );
 	// phpcs:disable
 	?>
-	<link rel="stylesheet" href="<?php echo esc_url( $wcdn->print->get_template_file_location( $name, true ) ) . esc_html_e( $name, 'woocommerce-delivery-notes' ); ?>" type="text/css" media="screen,print" />
+	<link rel="stylesheet" href="<?php echo esc_url( $wcdn->print->get_template_file_location( $name, true ) ) . esc_html( $name ); ?>" type="text/css" media="screen,print" />
 	<?php
 	// phpcs:enable
 }
