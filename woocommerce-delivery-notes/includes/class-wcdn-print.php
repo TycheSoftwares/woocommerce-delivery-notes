@@ -275,7 +275,7 @@ if ( ! class_exists( 'WCDN_Print' ) ) {
 
 			// Flush the rules when the transient is set.
 			// This is important to make the endpoint work.
-			if ( true === get_transient( 'wcdn_flush_rewrite_rules' ) ) {
+			if ( '1' === get_transient( 'wcdn_flush_rewrite_rules' ) ) {
 				delete_transient( 'wcdn_flush_rewrite_rules' );
 				flush_rewrite_rules();
 			}
