@@ -330,6 +330,10 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 
 = Minimum Requirements: WooCommerce 3.0 =
 
+= 4.5.1 (21.08.2019) =
+
+* Fixed the issue of Print buttons not showing up on Order details page after the 4.4.9 update.
+
 = 4.5.0 (21.08.2019) =
 
 * Added a missing file from v4.4.9.
