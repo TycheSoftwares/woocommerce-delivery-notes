@@ -1,12 +1,12 @@
 	=== WooCommerce Print Invoice & Delivery Note ===
 
-Contributors: ashokrane, bhavik.kiri, tychesoftwares, rashmim
+Contributors: ashokrane, tychesoftwares, rashmim
 Donate link: https://www.paypal.me/TycheSoftwares
 Tags: delivery note, packing slip, pdf invoice, delivery, shipping, print order, woocommerce, woothemes, shop
 Requires at least: 4.0
-Tested up to: 5.1
+Tested up to: 5.2
 Author URI: https://www.tychesoftwares.com/
-Stable tag: 4.4.8
+Stable tag: trunk
 License: GPLv3 or later
 License URI: http://www.opensource.org/licenses/gpl-license.php
 
@@ -328,9 +328,16 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 
 == Changelog ==
 
-= Minimum Requirements: WooCommerce 2.2 =
+= Minimum Requirements: WooCommerce 3.0 =
 
-= 4.4.7 (02.04.2019) =
+= 4.4.9 (21.08.2019) =
+
+* Made the plugin code compliant with WPCS coding standards
+* Added filter wcdn_theme_print_button_template_type_arbitrary - this filter hook allows to change template type based on order status
+* Added filters wcdn_print_button_name_on_my_account_page, wcdn_print_button_name_order_page - these filter hooks allows to change the label of the Print button
+* When plugin is uninstalled, data cleanup wasn't happening. This has been fixed.
+
+= 4.4.8 (02.04.2019) =
 
 * Fix - When a noticed was dismissed from the plugin, then it will dismiss all other notices from other plugins also. This is fixed now. 
 * Fix - Some errors in debug.log file are fixed. 
