@@ -330,6 +330,10 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 
 = Minimum Requirements: WooCommerce 3.0 =
 
+= 4.5.0 (21.08.2019) =
+
+* Added a missing file from v4.4.9.
+
 = 4.4.9 (21.08.2019) =
 
 * Made the plugin code compliant with WPCS coding standards
