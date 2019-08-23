@@ -149,7 +149,7 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 		 * Define WC Constants.
 		 */
 		private function define_constants() {
-			self::$plugin_basefile_path = dirname( __FILE__, 2 ) . '/woocommerce-delivery-notes.php';
+			self::$plugin_basefile_path = dirname( dirname( __FILE__ ) ) . '/woocommerce-delivery-notes.php';
 			self::$plugin_basefile      = plugin_basename( self::$plugin_basefile_path );
 			self::$plugin_url           = plugin_dir_url( self::$plugin_basefile );
 			self::$plugin_path          = trailingslashit( dirname( self::$plugin_basefile_path ) );
