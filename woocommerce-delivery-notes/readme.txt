@@ -330,6 +330,10 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 
 = Minimum Requirements: WooCommerce 3.0 =
 
+= 4.5.2 (23.08.2019) =
+
+* Fixed the issue of Print buttons not working on sites with PHP versions below 7.0.
+
 = 4.5.1 (21.08.2019) =
 
 * Fixed the issue of Print buttons not showing up on Order details page after the 4.4.9 update.
