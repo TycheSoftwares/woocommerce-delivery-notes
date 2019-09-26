@@ -330,6 +330,10 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 
 = Minimum Requirements: WooCommerce 3.0 =
 
+= 4.5.3 (26.09.2019) =
+
+* The plugin now allows 3rd party code to add order item data on the print-content.php template. Props to @doozy for the PR.
+
 = 4.5.2 (23.08.2019) =
 
 * Fixed the issue of Print buttons not working on sites with PHP versions below 7.0.
