@@ -117,7 +117,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						?>
 						<tr>
 							<td class="product-name">
-								<?php do_action( 'wcdn_order_item_before', $product, $order ); ?>
+								<?php do_action( 'wcdn_order_item_before', $product, $order, $item ); ?>
 								<span class="name">
 								<?php
 
@@ -190,7 +190,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 										<?php
 
-											$fields = apply_filters( 'wcdn_order_item_fields', array(), $product, $order );
+											$fields = apply_filters( 'wcdn_order_item_fields', array(), $product, $order, $item );
 
 										foreach ( $fields as $field ) :
 											?>
@@ -201,6 +201,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 										<?php endforeach; ?>
 									</dl>
 								<?php } ?>
+								<?php do_action( 'wcdn_order_item_after', $product, $order, $item ); ?>
 							</td>
 							<td class="product-item-price">
 								<span><?php echo wp_kses_post( wcdn_get_formatted_item_price( $order, $item ) ); ?></span>
