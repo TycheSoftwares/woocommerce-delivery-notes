@@ -1,4 +1,4 @@
-	=== WooCommerce Print Invoice & Delivery Note ===
+	=== Print Invoice & Delivery Notes for WooCommerce ===
 
 Contributors: ashokrane, tychesoftwares, rashmim
 Donate link: https://www.paypal.me/TycheSoftwares
