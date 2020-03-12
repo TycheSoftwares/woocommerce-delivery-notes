@@ -1,6 +1,6 @@
-# WooCommerce Print Invoice & Delivery Note
+# Print Invoice & Delivery Notes for WooCommerce
 
-This is the WooCommerce Print Invoice & Delivery Note repository on GitHub. Here you can browse the source, look at open issues and keep track of development.
+This is the Print Invoice & Delivery Notes for WooCommerce repository on GitHub. Here you can browse the source, look at open issues and keep track of development.
 
 ## Support
 
