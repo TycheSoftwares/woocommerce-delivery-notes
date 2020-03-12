@@ -4,7 +4,7 @@ Contributors: ashokrane, tychesoftwares, rashmim
 Donate link: https://www.paypal.me/TycheSoftwares
 Tags: packing slips, invoices, pdf, print, woocommerce
 Requires at least: 4.0
-Tested up to: 5.2
+Tested up to: 5.3.2
 Author URI: https://www.tychesoftwares.com/
 Stable tag: trunk
 License: GPLv3 or later
@@ -339,6 +339,10 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 == Changelog ==
 
 = Minimum Requirements: WooCommerce 3.0 =
+
+= 4.5.4 (11.03.2020) =
+
+* Compatibility with WooCommerce v4.0.0
 
 = 4.5.3 (26.09.2019) =
 
