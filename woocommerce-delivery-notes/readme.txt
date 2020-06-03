@@ -2,9 +2,9 @@
 
 Contributors: ashokrane, tychesoftwares, rashmim
 Donate link: https://www.paypal.me/TycheSoftwares
-Tags: packing slips, invoices, pdf, print, woocommerce
+Tags: packing slips, invoice, pdf invoice, delivery notes, woocommerce print invoice, print, pdf, invoices
 Requires at least: 4.0
-Tested up to: 5.3.2
+Tested up to: 5.4
 Author URI: https://www.tychesoftwares.com/
 Stable tag: trunk
 License: GPLv3 or later
@@ -339,6 +339,10 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 == Changelog ==
 
 = Minimum Requirements: WooCommerce 3.0 =
+
+= 4.5.5 (12.03.2020) =
+
+* Changed the plugin name to 'Print Invoice & Delivery Notes for WooCommerce'
 
 = 4.5.4 (11.03.2020) =
 
