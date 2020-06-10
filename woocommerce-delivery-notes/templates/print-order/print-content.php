@@ -108,7 +108,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 						<?php
 							$product = apply_filters( 'wcdn_order_item_product', $order->get_product_from_item( $item ), $item );
-
+						if ( ! $product ) {
+							continue;
+						}
 						if ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) {
 							$item_meta = new WC_Order_Item_Product( $item['item_meta'], $product );
 						} else {
