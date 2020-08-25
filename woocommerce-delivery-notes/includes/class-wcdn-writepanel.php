@@ -38,11 +38,9 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 			add_action( 'woocommerce_admin_order_actions_end', array( $this, 'add_listing_actions' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'add_scripts' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'add_styles' ) );
-
 			add_action( 'add_meta_boxes_shop_order', array( $this, 'add_box' ) );
-
-			add_action( 'admin_footer-edit.php', array( $this, 'add_bulk_actions' ) );
-			add_action( 'load-edit.php', array( $this, 'load_bulk_actions' ) );
+			add_filter( 'bulk_actions-edit-shop_order', array( $this, 'register_my_bulk_actions' ) );
+			add_filter( 'handle_bulk_actions-edit-shop_order', array( $this, 'my_bulk_action_handler' ), 10, 3 );
 			add_action( 'admin_notices', array( $this, 'confirm_bulk_actions' ) );
 		}
 
@@ -115,105 +113,88 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 		}
 
 		/**
-		 * Add bulk actions with javascript to the dropdown.
-		 * This is not so pretty but WordPress does not yet
-		 * offer any better solution. The JS code is inline
-		 * because we can't determine the page without
-		 * checking the post_type.
-		 * https://core.trac.wordpress.org/ticket/16031
+		 * Add bulk actions to the dropdown.
+		 *
+		 * @param array $bulk_actions Array of the list in dropdown.
 		 */
-		public function add_bulk_actions() {
-			if ( $this->is_order_edit_page() ) :
-				?>
-				<script type="text/javascript">
-					jQuery(document).ready(function($) {
-						<?php foreach ( WCDN_Print::$template_registrations as $template_registration ) : ?>
-							<?php if ( 'yes' === get_option( 'wcdn_template_type_' . $template_registration['type'] ) && 'order' !== $template_registration['type'] ) : ?>
-								<?php //phpcs:disable ?>
-								$('<option>').val('wcdn_print_<?php echo esc_attr( $template_registration['type'] ); ?>').attr('title', '<?php echo esc_attr( $template_registration['type'] ); ?>').text('<?php echo esc_js( __( $template_registration['labels']['print'], 'woocommerce-delivery-notes' ) ); ?>').appendTo('select[name="action"]');
-								$('<option>').val('wcdn_print_<?php echo esc_attr( $template_registration['type'] ); ?>').attr('title', '<?php echo esc_attr( $template_registration['type'] ); ?>').text('<?php echo esc_js( __( $template_registration['labels']['print'], 'woocommerce-delivery-notes' ) ); ?>').appendTo('select[name="action2"]');
-								<?php //phpcs:enable ?>
-							<?php endif; ?>
-						<?php endforeach; ?>
-					});
-				</script>
-				<?php
-			endif;
+		public function register_my_bulk_actions( $bulk_actions ) {
+			$bulk_actions['wcdn_print_invoice']       = __( 'Print Invoice', 'woocommerce-delivery-notes' );
+			$bulk_actions['wcdn_print_delivery-note'] = __( 'Print Delivery Note', 'woocommerce-delivery-notes' );
+			$bulk_actions['wcdn_print_receipt']       = __( 'Print Receipt', 'woocommerce-delivery-notes' );
+			return $bulk_actions;
 		}
 
 		/**
 		 * Add bulk print actions to the orders listing
+		 *
+		 * @param string $redirect_to The redirect URL.
+		 * @param string $doaction    The action being taken.
+		 * @param array  $post_ids    Array of an IDs.
 		 */
-		public function load_bulk_actions() {
-			if ( $this->is_order_edit_page() ) {
-				// get the action that should be started.
-				$wp_list_table = _get_list_table( 'WP_Posts_List_Table' );
-				$action        = $wp_list_table->current_action();
-
-				// stop if there are no post ids.
-				if ( ! isset( $_REQUEST['post'] ) ) {
-					return;
-				}
-
-				// only for specified actions.
-				foreach ( WCDN_Print::$template_registrations as $template_registration ) {
-					if ( 'wcdn_print_' . $template_registration['type'] === $action ) {
-						$template_type = $template_registration['type'];
-						$report_action = 'printed_' . $template_registration['type'];
-						break;
-					}
-				}
-				if ( ! isset( $report_action ) ) {
-					return;
-				}
-
-				// security check.
-				check_admin_referer( 'bulk-posts' );
-
-				// get referrer.
-				if ( ! wp_get_referer() ) {
-					return;
-				}
-
-				// filter the referer args.
-				$referer_args = array();
-				parse_str( wp_parse_url( wp_get_referer(), PHP_URL_QUERY ), $referer_args );
-
-				// set the basic args for the sendback.
-				$args = array(
-					'post_type' => $referer_args['post_type'],
-				);
-				if ( isset( $referer_args['post_status'] ) ) {
-					$args = wp_parse_args( array( 'post_status' => $referer_args['post_status'] ), $args );
-				}
-				if ( isset( $referer_args['paged'] ) ) {
-					$args = wp_parse_args( array( 'paged' => $referer_args['paged'] ), $args );
-				}
-				if ( isset( $referer_args['orderby'] ) ) {
-					$args = wp_parse_args( array( 'orderby' => $referer_args['orderby'] ), $args );
-				}
-				if ( isset( $referer_args['order'] ) ) {
-					$args = wp_parse_args( array( 'orderby' => $referer_args['order'] ), $args );
-				}
-
-				// do the action.
-				$post_ids = array_map( 'absint', (array) $_REQUEST['post'] );
-				$total    = count( $post_ids );
-				$url      = wcdn_get_print_link( $post_ids, $template_type );
-
-				// generate more args and the sendback string.
-				$args     = wp_parse_args(
-					array(
-						$report_action => true,
-						'total'        => $total,
-						'print_url'    => rawurlencode( $url ),
-					),
-					$args
-				);
-				$sendback = add_query_arg( $args, '' );
-				wp_safe_redirect( $sendback );
-				exit;
+		public function my_bulk_action_handler( $redirect_to, $doaction, $post_ids ) {
+			// stop if there are no post ids.
+			if ( ! isset( $_REQUEST['post'] ) ) {
+				return;
 			}
+
+			// only for specified actions.
+			foreach ( WCDN_Print::$template_registrations as $template_registration ) {
+				if ( 'wcdn_print_' . $template_registration['type'] === $doaction ) {
+					$template_type = $template_registration['type'];
+					$report_action = 'printed_' . $template_registration['type'];
+					break;
+				}
+			}
+			if ( ! isset( $report_action ) ) {
+				return;
+			}
+
+			// security check.
+			check_admin_referer( 'bulk-posts' );
+
+			// get referrer.
+			if ( ! wp_get_referer() ) {
+				return;
+			}
+
+			// filter the referer args.
+			$referer_args = array();
+			parse_str( wp_parse_url( wp_get_referer(), PHP_URL_QUERY ), $referer_args );
+
+			// set the basic args for the sendback.
+			$args = array(
+				'post_type' => $referer_args['post_type'],
+			);
+			if ( isset( $referer_args['post_status'] ) ) {
+				$args = wp_parse_args( array( 'post_status' => $referer_args['post_status'] ), $args );
+			}
+			if ( isset( $referer_args['paged'] ) ) {
+				$args = wp_parse_args( array( 'paged' => $referer_args['paged'] ), $args );
+			}
+			if ( isset( $referer_args['orderby'] ) ) {
+				$args = wp_parse_args( array( 'orderby' => $referer_args['orderby'] ), $args );
+			}
+			if ( isset( $referer_args['order'] ) ) {
+				$args = wp_parse_args( array( 'orderby' => $referer_args['order'] ), $args );
+			}
+
+			// do the action.
+			$post_ids = array_map( 'absint', (array) $_REQUEST['post'] );
+			$total    = count( $post_ids );
+			$url      = wcdn_get_print_link( $post_ids, $template_type );
+
+			// generate more args and the sendback string.
+			$args     = wp_parse_args(
+				array(
+					$report_action => true,
+					'total'        => $total,
+					'print_url'    => rawurlencode( $url ),
+				),
+				$args
+			);
+			$sendback = add_query_arg( $args, '' );
+			wp_safe_redirect( $sendback );
+			exit;
 		}
 
 		/**
