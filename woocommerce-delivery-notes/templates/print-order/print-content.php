@@ -227,7 +227,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<tr>
 							<td class="total-name"><span><?php echo wp_kses_post( $total['label'] ); ?></span></td>
 							<td class="total-item-price"></td>
+							<?php if ( 'Total' === $total['label'] ) { ?>
+							<td class="total-quantity"><?php echo wp_kses_post( $order->get_item_count() ); ?></td>
+							<?php } else {  ?>
 							<td class="total-quantity"></td>
+							<?php } ?>
 							<td class="total-price"><span><?php echo wp_kses_post( $total['value'] ); ?></span></td>
 						</tr>
 					<?php endforeach; ?>
