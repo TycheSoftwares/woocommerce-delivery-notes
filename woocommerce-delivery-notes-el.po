@@ -1,0 +1,796 @@
+# Copyright (C) 2018
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Print Invoice & Delivery Notes for WooCommerce\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/woocommerce-"
+"delivery-notes\n"
+"POT-Creation-Date: 2018-10-19 12:56:49+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2020-05-22 10:14+0000\n"
+"Last-Translator: \n"
+"Language-Team: Ελληνικά\n"
+"Language: el\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.3.4; wp-5.4.1"
+
+#: includes/class-wcdn-print.php:39 includes/class-wcdn-settings.php:237
+msgid "Invoice"
+msgstr "Τιμολόγιο"
+
+#: includes/class-wcdn-print.php:40
+msgid "Invoices"
+msgstr "Τιμολόγια"
+
+#: includes/class-wcdn-print.php:41
+msgid "Print Invoice"
+msgstr "Εκτύπωση Τιμολογίου"
+
+#: includes/class-wcdn-print.php:42
+msgid "Print Invoices"
+msgstr "Εκτύπωση Τιμολογίων"
+
+#: includes/class-wcdn-print.php:43
+msgid "Invoice created."
+msgstr "Το Τιμολόγιο Δημιουργήθηκε"
+
+#: includes/class-wcdn-print.php:44
+msgid "Invoices created."
+msgstr "Τα Τιμολόγια Δημιουργήθηκαν"
+
+#: includes/class-wcdn-print.php:45
+msgid "Show \"Print Invoice\" button"
+msgstr "Εμφάνιση κουμπίου \"Εκτύπωση Τιμολογίου\""
+
+#: includes/class-wcdn-print.php:51
+msgid "Delivery Note"
+msgstr "Δελτίο παράδοσης"
+
+#: includes/class-wcdn-print.php:52
+msgid "Delivery Notes"
+msgstr "Σημειώσεις παράδοσης."
+
+#: includes/class-wcdn-print.php:53
+msgid "Print Delivery Note"
+msgstr "Εκτύπωση Δελτίου Αποστολής"
+
+#: includes/class-wcdn-print.php:54
+msgid "Print Delivery Notes"
+msgstr "Εκτύπωση Δελτίων Αποστολών"
+
+#: includes/class-wcdn-print.php:55
+msgid "Delivery Note created."
+msgstr "Η Σημείωση Παράδοσης δημιουργήθηκε."
+
+#: includes/class-wcdn-print.php:56
+msgid "Delivery Notes created."
+msgstr "Οι Σημιώσεις Παράδοσης δημιουργήθηκαν"
+
+#: includes/class-wcdn-print.php:57
+msgid "Show \"Print Delivery Note\" button"
+msgstr "Εμφάνιση κουμπιού \" Εκτύπωση Σημείωση Παράδοσης \""
+
+#: includes/class-wcdn-print.php:63
+msgid "Receipt"
+msgstr "Απόδειξη"
+
+#: includes/class-wcdn-print.php:64
+msgid "Receipts"
+msgstr "Αποδείξεις"
+
+#: includes/class-wcdn-print.php:65
+msgid "Print Receipt"
+msgstr "Εκτύπωση Απόδειξης"
+
+#: includes/class-wcdn-print.php:66
+msgid "Print Receipts"
+msgstr "Εκτύπωση Αποδείξεων"
+
+#: includes/class-wcdn-print.php:67
+msgid "Receipt created."
+msgstr "Η Απόδειξη δημιουργήθηκε"
+
+#: includes/class-wcdn-print.php:68
+msgid "Receipts created."
+msgstr "Οι αποδείξεις δημιουργήθηκαν"
+
+#: includes/class-wcdn-print.php:69
+msgid "Show \"Print Receipt\" button"
+msgstr "Εμφάνιση κουμπιού \"Εκτύπωση Απόδειξης\""
+
+#: includes/class-wcdn-print.php:78
+msgid "Order"
+msgstr "Παραγγελία"
+
+#: includes/class-wcdn-print.php:79
+msgid "Orders"
+msgstr "Παραγγελίες"
+
+#: includes/class-wcdn-print.php:80
+msgid "Print Order"
+msgstr "Εκτύπωση Παραγγελίας"
+
+#: includes/class-wcdn-print.php:81
+msgid "Print Orders"
+msgstr "Εκτώπωση Παραγγελιών"
+
+#: includes/class-wcdn-print.php:93
+msgid "Default"
+msgstr "Προκαθορισμένο"
+
+#: includes/class-wcdn-settings.php:67
+msgid ""
+"Do you really want to reset the counter to zero? This process can't be "
+"undone."
+msgstr ""
+"Θέλετε πραγματικά να μηδενίσετε το μετρητή; Δεν είναι δυνατή η αναίρεση "
+"αυτής της διαδικασίας."
+
+#: includes/class-wcdn-settings.php:75 includes/class-wcdn-theme.php:57 
+#: includes/class-wcdn-theme.php:94 includes/wcdn-template-functions.php:130
+msgid "Print"
+msgstr "Εκτύπωση"
+
+#: includes/class-wcdn-settings.php:106
+msgid "Template"
+msgstr "Πρότυπο"
+
+#: includes/class-wcdn-settings.php:113
+msgid "Style"
+msgstr "Στύλ"
+
+#: includes/class-wcdn-settings.php:114
+msgid ""
+"The default print style. Read the <a href=\"%1$s\">FAQ</a> to learn how to "
+"customize it."
+msgstr ""
+"Το προεπιλεγμένο στυλ εκτύπωσης. Διαβάστε τις <a href=\"%1$s\"> Συνήθεις "
+"ερωτήσεις </a> για να μάθετε πώς να το προσαρμόσετε."
+
+#: includes/class-wcdn-settings.php:124
+msgid "Shop Logo"
+msgstr "Λογότυπο Καταστήματος "
+
+#: includes/class-wcdn-settings.php:130
+msgid ""
+"A shop logo representing your business. When the image is printed, its pixel "
+"density will automatically be eight times higher than the original. This "
+"means, 1 printed inch will correspond to about 288 pixels on the screen."
+msgstr ""
+"Το λογότυπο καταστήματος που αντιπροσωπεύει την επιχείρησή σας. Όταν "
+"εκτυπώνεται η εικόνα, η πυκνότητα των εικονοστοιχείων της θα είναι αυτόματα "
+"οκτώ φορές υψηλότερη από την αρχική. Αυτό σημαίνει, 1 τυπωμένη ίντσα θα "
+"αντιστοιχεί σε περίπου 288 pixel στην οθόνη."
+
+#: includes/class-wcdn-settings.php:134
+msgid "Shop Name"
+msgstr "Όνομα Καταστήματος"
+
+#: includes/class-wcdn-settings.php:140
+msgid ""
+"The shop name. Leave blank to use the default Website or Blog title defined "
+"in WordPress settings. The name will be ignored when a Logo is set."
+msgstr ""
+"Το όνομα του καταστήματος. Αφήστε κενό για να χρησιμοποιήσετε τον "
+"προεπιλεγμένο ιστότοπο ή τον τίτλο ιστολογίου που ορίζεται στις ρυθμίσεις "
+"του WordPress. Το όνομα θα αγνοηθεί όταν έχει οριστεί ένα λογότυπο."
+
+#: includes/class-wcdn-settings.php:144
+msgid "Shop Address"
+msgstr "Διεύθυνση καταστήματος"
+
+#: includes/class-wcdn-settings.php:145
+msgid "The postal address of the shop or even e-mail or telephone."
+msgstr ""
+"Η ταχυδρομική διεύθυνση του καταστήματος ή ακόμα και e-mail ή τηλέφωνο."
+
+#: includes/class-wcdn-settings.php:154
+msgid "Complimentary Close"
+msgstr "Ευχαριστήριο Mήνυμα"
+
+#: includes/class-wcdn-settings.php:155
+msgid "Add a personal close, notes or season greetings."
+msgstr ""
+"Προσθέστε ένα προσωπικό μήνυμα κλείσιματος, σημειώσεις ή χαιρετισμούς σεζόν."
+
+#: includes/class-wcdn-settings.php:164
+msgid "Policies"
+msgstr "Πολιτικές"
+
+#: includes/class-wcdn-settings.php:165
+msgid "Add the shop policies, conditions, etc."
+msgstr "Προσθέστε τις πολιτικές καταστήματος, τους όρους κ.λπ."
+
+#: includes/class-wcdn-settings.php:174
+msgid "Footer"
+msgstr "Υποσέλιδο"
+
+#: includes/class-wcdn-settings.php:175
+msgid ""
+"Add a footer imprint, instructions, copyright notes, e-mail, telephone, etc."
+msgstr ""
+"Προσθέστε ένα αποτύπωμα στο υποσέλιδο , οδηγίες, σημειώσεις πνευματικών "
+"δικαιωμάτων, e-mail, τηλέφωνο κ.λπ."
+
+#: includes/class-wcdn-settings.php:189
+msgid "Pages & Buttons"
+msgstr "Σελίδες & Κουμπία"
+
+#: includes/class-wcdn-settings.php:196
+msgid "Print Page Endpoint"
+msgstr "Εκτύπωση Σελίδας Τελικού Σημείου"
+
+#: includes/class-wcdn-settings.php:202
+msgid ""
+"The endpoint is appended to the accounts page URL to print the order. It "
+"should be unique."
+msgstr ""
+"Το τελικό σημείο προσαρτάται στη διεύθυνση URL της σελίδας λογαριασμών για "
+"την εκτύπωση της παραγγελίας. Θα πρέπει να είναι μοναδικό."
+
+#: includes/class-wcdn-settings.php:206 
+#: includes/wcdn-template-functions.php:275
+msgid "Email"
+msgstr "Email"
+
+#: includes/class-wcdn-settings.php:207
+msgid "Show print link in customer emails"
+msgstr "Εμφάνιση συνδέσμου εκτύπωσης στο email του πελάτη"
+
+#: includes/class-wcdn-settings.php:211
+msgid ""
+"This includes the emails for a new, processing and completed order. On top "
+"of that the customer invoice email also includes the link."
+msgstr ""
+"Αυτό περιλαμβάνει τα μηνύματα ηλεκτρονικού ταχυδρομείου για μια νέα, "
+"επεξεργασμένη και ολοκληρωμένη παραγγελία. Επιπλέον, το email τιμολογίου "
+"πελάτη περιλαμβάνει επίσης τον σύνδεσμο."
+
+#: includes/class-wcdn-settings.php:215
+msgid "My Account"
+msgstr "Ο Λογαριασμός μου"
+
+#: includes/class-wcdn-settings.php:216
+msgid "Show print button on the \"View Order\" page"
+msgstr "Εμφάνιση κουμπιόυ εκτύπωσης στην σελίδα \"Προβολή παραγγελίας\""
+
+#: includes/class-wcdn-settings.php:224
+msgid "Show print buttons on the \"My Account\" page"
+msgstr "Εμφάνιση κουμπιόυ εκτύπωσης στην σελίδα \"Ο Λογαριασμός μου\""
+
+#: includes/class-wcdn-settings.php:244
+msgid "Numbering"
+msgstr "Αρίθμηση"
+
+#: includes/class-wcdn-settings.php:245
+msgid "Create invoice numbers"
+msgstr "Δημιουργήστε αριθμό τιμολογίων"
+
+#: includes/class-wcdn-settings.php:253
+msgid "Next Number"
+msgstr "Επόμενος αριθμός"
+
+#: includes/class-wcdn-settings.php:260
+msgid "The next invoice number."
+msgstr "Ο επόμενος αριθμός τιμολογίου."
+
+#: includes/class-wcdn-settings.php:264
+msgid "Number Prefix"
+msgstr "Πρόθεμα αριθμού"
+
+#: includes/class-wcdn-settings.php:271
+msgid "This text will be prepended to the invoice number."
+msgstr "Αυτό το κείμενο θα προστεθεί στον αριθμό τιμολογίου."
+
+#: includes/class-wcdn-settings.php:275
+msgid "Number Suffix"
+msgstr "Επίθημα αριθμού"
+
+#: includes/class-wcdn-settings.php:282
+msgid "This text will be appended to the invoice number."
+msgstr "Αυτό το κείμενο θα προσαρτηθεί στον αριθμό τιμολογίου."
+
+#: includes/class-wcdn-settings.php:327
+msgid "Admin"
+msgstr "Διαχειριστής"
+
+#: includes/class-wcdn-settings.php:330
+msgid ""
+"The print buttons are available on the order listing and on the order detail "
+"screen."
+msgstr ""
+"Τα κουμπιά εκτύπωσης είναι διαθέσιμα στην λίστα παραγγελιών και στην οθόνη "
+"λεπτομερειών παραγγελίας."
+
+#: includes/class-wcdn-settings.php:372
+msgid ""
+"This section lets you customise the content. You can preview the <a "
+"href=\"%1$s\" target=\"%4$s\" class=\"%5$s\">invoice</a>, <a href=\"%2$s\" "
+"target=\"%4$s\" class=\"%5$s\">delivery note</a> or <a href=\"%3$s\" "
+"target=\"%4$s\" class=\"%5$s\">receipt</a> template."
+msgstr ""
+"Αυτή η ενότητα σάς επιτρέπει να προσαρμόσετε το περιεχόμενο. Μπορείτε να "
+"κάνετε προεπισκόπηση των προτύπων <a href=\"%1$s\" target=\"%4$s\" "
+"class=\"%5$s\"> τιμολογίο</a>, <a href = \"% 2 $ s\" target = \" % 4 $ s "
+"\"class =\"% 5 $ s \"> δελτίο παράδοσης </a> ή <a href=\"%3$s\" "
+"target=\"%4$s\" class=\"%5$s\"> απόδειξη < / a>."
+
+#: includes/class-wcdn-settings.php:435
+msgid "Select"
+msgstr "Επιλογή"
+
+#: includes/class-wcdn-settings.php:439
+msgid "Remove"
+msgstr "Αφαίρεση"
+
+#: includes/class-wcdn-theme.php:112
+msgid "Print your order"
+msgstr "Εκτυπώστε την παραγγελια σας"
+
+#: includes/class-wcdn-theme.php:119
+msgid "Print:"
+msgstr "Εκτύπωση :"
+
+#: includes/class-wcdn-theme.php:119
+msgid "Open print view in browser"
+msgstr "Ανοίξτε την προβολή εκτύπωσης στο πρόγραμμα περιήγησης"
+
+#: includes/class-wcdn-writepanel.php:218
+msgid "Print now"
+msgstr "Εκτώπωση Τώρα"
+
+#: includes/class-wcdn-writepanel.php:232
+msgid "Order Printing"
+msgstr "Εκτύπωση Παραγγελίας"
+
+#: includes/class-wcdn-writepanel.php:259
+msgid "Invoice number: "
+msgstr "Αριθμός Τιμολογίου:"
+
+#: includes/class-wcdn-writepanel.php:260
+msgid "Invoice date: "
+msgstr "Ημερομηνία Τιμολογίου:"
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:75
+msgid "If you have a moment, please let us know why you are deactivating"
+msgstr "Εάν έχετε λίγο χρόνο, ενημερώστε μας γιατί το απενεργοποιείτε"
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:76
+msgid "Submit & Deactivate"
+msgstr "Υποβολή & απενεργοποίηση"
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:77
+msgid "Deactivate"
+msgstr "Απενεργοποίηση"
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:78
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:79
+msgid "Yes - Deactivate"
+msgstr "Ναι - Απενεργοποίηση"
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:83
+msgid "I found a better plugin"
+msgstr "Βρήκα ένα καλύτερο πρόσθετο"
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:84
+msgid "What's the plugin's name?"
+msgstr "Ποιο είναι το όνομα του προσθέτου;"
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:85
+msgid "I only needed the plugin for a short period"
+msgstr "Χρειάζομαι το πρόσθετο μόνο για μικρό χρονικό διάστημα"
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:86
+msgid "The plugin is not working"
+msgstr "Το πρόσθετο δεν λειτουργεί"
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:87
+msgid "Kindly share what didn't work so we can fix it for future users..."
+msgstr ""
+"Παρακαλούμε πείτε μας τι δεν λειτούργησε, ώστε να το διορθώσουμε για τους "
+"μελλοντικούς χρήστες..."
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:88
+msgid "The plugin is great, but I need specific feature that you don't support"
+msgstr ""
+"Το πρόσθετο είναι εξαιρετικό , αλλά χρειάζομαι συγκεκριμένη δυνατότητα που "
+"δεν υποστηρίζετε"
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:89
+msgid "What feature?"
+msgstr "Τι χαρακτηριστικό;"
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:90
+msgid "I don't like to share my information with you"
+msgstr "Δεν επιθυμώ να μοιραστώ τις πληροφορίες μου μαζί σας"
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:91
+msgctxt ""
+"the text of the 'other' reason for deactivating the plugin that is shown in "
+"the modal box."
+msgid "Other"
+msgstr "Άλλο"
+
+#: includes/component/faq-support/ts-faq-support.php:127
+msgid "Frequently Asked Questions for %s"
+msgstr "Συχνές Ερωτήσεις για% s"
+
+#: includes/component/faq-support/ts-faq-support.php:176
+msgid "FAQ & Support"
+msgstr "Συχνές ερωτήσεις & υποστήριξη"
+
+#: includes/component/tracking-data/ts-tracking.php:120 
+#: includes/component/tracking-data/ts-tracking.php:180
+msgid "Reset usage tracking"
+msgstr "Επαναφορά παρακολούθησης χρήσης"
+
+#: includes/component/tracking-data/ts-tracking.php:122
+msgid ""
+"This will reset your usage tracking settings, causing it to show the opt-in "
+"banner again and not sending any data"
+msgstr ""
+"Αυτό θα επαναφέρει τις ρυθμίσεις παρακολούθησης χρήσης, αναγκάζοντας να "
+"εμφανίσει ξανά το μήνυμα και δεν θα σταθεί κανένα δεδομένο"
+
+#: includes/component/tracking-data/ts-tracking.php:225
+msgid "Once in a Week"
+msgstr "Μία φορά την εβδομάδα"
+
+#: includes/component/tracking-data/ts-tracking.php:311
+msgid "Allow"
+msgstr "Αποδοχή"
+
+#: includes/component/tracking-data/ts-tracking.php:312
+msgid "No thanks"
+msgstr "Οχι ευχαριστώ"
+
+#: includes/component/welcome-page/templates/social-media-elements.php:10 
+#: includes/wcdn-welcome.php:231
+msgid "Follow %s"
+msgstr "Ακολουθήστε το% s"
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:19 
+#: includes/wcdn-welcome.php:99
+msgid ""
+"Thank you for activating or updating to the latest version of WooCommerce "
+"Print Invoice & Delivery Note! If you're a first time user, welcome! You're "
+"well on your way to explore the print functionality for your WooCommerce "
+"orders."
+msgstr ""
+"Σας ευχαριστούμε που ενεργοποιήσατε ή ενημερώσατε την τελευταία έκδοση του "
+"WooCommerce Print Invoice & Delivery Note! Εάν είστε για πρώτη φορά χρήστης ,"
+" καλώς ήλθατε! Είστε έτοιμοι να εξερευνήσετε τη λειτουργικότητα εκτύπωσης "
+"για τις παραγγελίες σας στο WooCommerce."
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:29 
+#: includes/wcdn-welcome.php:109
+msgid "Get Started with WooCommerce Print Invoice & Delivery Note"
+msgstr "Ξεκινήστε με το WooCommerce Print Invoice & Delivery Note"
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:33 
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:62 
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:68 
+#: includes/wcdn-welcome.php:113 includes/wcdn-welcome.php:142 
+#: includes/wcdn-welcome.php:148
+msgid "WooCommerce Print Invoice & Delivery Note"
+msgstr "WooCommerce Print Invoice & Delivery Note"
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:37 
+#: includes/wcdn-welcome.php:117
+msgid "Add settings"
+msgstr "Προσθήκη Ρυθμίσεων"
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:39 
+#: includes/wcdn-welcome.php:119
+msgid ""
+"To enable the print functionality for your invoices, delivery notes & "
+"receipts, you just need to set it up under WooCommerce -> Settings -> Print "
+"page. Here you can also setup the Company Logo that will appear on the "
+"printed items, Company Address & other information."
+msgstr ""
+"Για να ενεργοποιήσετε τη λειτουργία εκτύπωσης για τα τιμολόγια, τις "
+"σημειώσεις παράδοσης και τις αποδείξεις, απλώς πρέπει να το ρυθμίσετε στην "
+"ενότητα WooCommerce -> Ρυθμίσεις -> Εκτύπωση σελίδας. Εδώ μπορείτε επίσης να "
+"ρυθμίσετε το Εταιρικό Λογότυπο που θα εμφανίζεται στα έντυπα αντικείμενα, "
+"Διεύθυνση Εταιρείας και άλλες πληροφορίες."
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:41 
+#: includes/wcdn-welcome.php:121
+msgid "Click Here to go to Print page"
+msgstr "Κάντε Κλικ Εδώ για να Μεταβείτε στη Σελίδα Εκτύπωση"
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:52 
+#: includes/wcdn-welcome.php:132
+msgid "Enable Print button for Customers."
+msgstr "Ενεργοποίηση κουμπιού εκτύπωσης για τους πελάτες."
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:54 
+#: includes/wcdn-welcome.php:134
+msgid ""
+"Allow customers to print the WooCommerce order invoice from the customer "
+"notification email, from the My Account page or from the View Order page "
+"under My Account."
+msgstr ""
+"Να επιτρέπεται στους πελάτες να εκτυπώνουν το τιμολόγιο παραγγελίας "
+"WooCommerce από το email ειδοποίησης πελάτη, από τη σελίδα Ο λογαριασμός μου "
+"ή από τη σελίδα Προβολή παραγγελίας στην ενότητα Ο λογαριασμός μου."
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:56 
+#: includes/wcdn-welcome.php:136
+msgid "Click Here to Enable Print button for Customers"
+msgstr ""
+"Κάντε Kλικ Eδώ για να Eνεργοποιήσετε το Kουμπί Eκτύπωσης για τους Πελάτες"
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:72 
+#: includes/wcdn-welcome.php:152
+msgid "Enable Invoice Numbering"
+msgstr "Ενεργοποίηση αρίθμησης τιμολογίων"
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:74
+msgid ""
+"If you want to change the default invoice numbers & set some numbering "
+"scheme of your own, then you can set it here with a starting invoice number, "
+"a prefix & suffix. For example, you could set it as: TS/001/17-18."
+msgstr ""
+"Αν θέλετε να αλλάξετε τους προεπιλεγμένους αριθμούς τιμολογίου & να ορίσετε "
+"κάποιο δικό σας πρότυπο αρίθμησης, τότε μπορείτε να το ορίσετε εδώ με έναν "
+"αρχικό αριθμό τιμολογίου, ένα πρόθεμα και ένα επίθημα. Για παράδειγμα, θα "
+"μπορούσατε να το ορίσετε ως: TS / 001 / 17-18"
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:76 
+#: includes/wcdn-welcome.php:156
+msgid "Click Here to Enable Invoice Numbering"
+msgstr "Κάντε Kλικ Eδώ για να Eνεργοποιήσετε την Aρίθμηση Tιμολογίων"
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:87 
+#: includes/wcdn-welcome.php:167
+msgid "Getting to Know Tyche Softwares"
+msgstr "Γνωρίστε τα λογισμικά Tyche"
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:90 
+#: includes/wcdn-welcome.php:170
+msgid "Visit the Tyche Softwares Website"
+msgstr "Επισκευθείτε την ιστοσελίδα Tyche Softwares"
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:91 
+#: includes/wcdn-welcome.php:171
+msgid "View all Premium Plugins"
+msgstr "Εμφάνιση όλων των Premium Προσθέτων"
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:100 
+#: includes/wcdn-welcome.php:180
+msgid "Meet the team"
+msgstr "Γνωρίστε την ομάδα"
+
+#: includes/component/welcome-page/ts-welcome.php:167
+msgid "Welcome to %s %s"
+msgstr "Καλώς ορίσατε στο% s% s"
+
+#: includes/wcdn-all-component.php:118
+msgid ""
+"Thank you for using WooCommerce Print Invoice & Delivery Note plugin! Now "
+"make your deliveries more accurate by allowing customers to select their "
+"preferred delivery date & time from Product Delivery Date Pro for "
+"WooCommerce. <strong><a target=\"_blank\" href= \"https://www.tychesoftwares."
+"com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?"
+"utm_source=wpnotice&utm_medium=first&utm_campaign=PrintInvoicePlugin\">Get "
+"it now!</a></strong>"
+msgstr ""
+"Σας ευχαριστούμε που χρησιμοποιείτε το πρόσθετο WooCommerce Print Invoice & "
+"Delivery Note! Τώρα κάντε τις παραδόσεις σας πιο ακριβείς επιτρέποντας στους "
+"πελάτες να επιλέξουν την προτιμώμενη ημερομηνία και ώρα παράδοσης από το "
+"Product Delivery Date Pro για το WooCommerce.<strong><a target=\"_blank\" "
+"href= \"https://www.tychesoftwares.com/store/premium-plugins/product-"
+"delivery-date-pro-for-woocommerce/?"
+"utm_source=wpnotice&utm_medium=first&utm_campaign=PrintInvoicePlugin\">"
+"Αποκτήστε το τώρα!</a></strong>"
+
+#: includes/wcdn-all-component.php:120
+msgid ""
+"Never login to your admin to check your deliveries by syncing the delivery "
+"dates to the Google Calendar from Product Delivery Date Pro for WooCommerce. "
+"<strong><a target=\"_blank\" href= \"https://www.tychesoftwares."
+"com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/checkout?"
+"edd_action=add_to_cart&download_id=16&utm_source=wpnotice&utm_medium=first&utm_campaign=PrintInvoicePlugin\""
+">Get it now!</a></strong>"
+msgstr ""
+"Χώρις να χρειάζεται να συνδεθείτε στον λογαριασμο διαχείρηστη σας ελέγξτε "
+"τις παραδόσεις σας συγχρονίζοντας τις ημερομηνίες παράδοσης στο Ημερολόγιο "
+"Google από το Product Delivery Date Pro για το WooCommerce.<strong><a "
+"target=\"_blank\" href= \"https://www.tychesoftwares.com/store/premium-"
+"plugins/product-delivery-date-pro-for-woocommerce/checkout?"
+"edd_action=add_to_cart&download_id=16&utm_source=wpnotice&utm_medium=first&utm_campaign=PrintInvoicePlugin\""
+">Αποκτήστε το τώρα!</a></strong>"
+
+#: includes/wcdn-all-component.php:122
+msgid ""
+"You can now view all your deliveries in list view or in calendar view from "
+"Product Delivery Date Pro for WooCommerce. <strong><a target=\"_blank\" "
+"href= \"https://www.tychesoftwares.com/store/premium-plugins/product-"
+"delivery-date-pro-for-woocommerce/checkout?"
+"edd_action=add_to_cart&download_id=16&utm_source=wpnotice&utm_medium=first&utm_campaign=PrintInvoicePlugin\""
+">Get it now!</a></strong>."
+msgstr ""
+"Τώρα μπορείτε να δείτε όλες τις παραδόσεις σας σε προβολή λίστας ή σε "
+"προβολή ημερολογίου από το Product Delivery Date Pro για το WooCommerce. "
+"<strong><a target=\"_blank\" href= \"https://www.tychesoftwares."
+"com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/checkout?"
+"edd_action=add_to_cart&download_id=16&utm_source=wpnotice&utm_medium=first&utm_campaign=PrintInvoicePlugin\""
+"> Αποκτήστε το τώρα! </a> </strong>."
+
+#: includes/wcdn-all-component.php:124
+msgid ""
+"Allow your customers to pay extra for delivery for certain Weekdays/Dates "
+"from Product Delivery Date Pro for WooCommerce. <strong><a target=\"_blank\" "
+"href= \"https://www.tychesoftwares.com/store/premium-plugins/product-"
+"delivery-date-pro-for-woocommerce/checkout?"
+"edd_action=add_to_cart&download_id=16&utm_source=wpnotice&utm_medium=first&utm_campaign=PrintInvoicePlugin\""
+">Have it now!</a></strong>."
+msgstr ""
+"Επιτρέψτε στους πελάτες σας να πληρώνουν επιπλέον για παράδοση για "
+"συγκεκριμένες ημερομηνίες/καθημερινές από το Product Delivery Date Pro για "
+"το WooCommerce.<strong><a target=\"_blank\" href= \"https://www."
+"tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-"
+"woocommerce/checkout?"
+"edd_action=add_to_cart&download_id=16&utm_source=wpnotice&utm_medium=first&utm_campaign=PrintInvoicePlugin\""
+">Αποκτήστε το τώρα!</a></strong>."
+
+#: includes/wcdn-all-component.php:126
+msgid ""
+"Customers can now edit the Delivery date & time on cart and checkout page or "
+"they can reschedule the deliveries for the already placed orders from "
+"Product Delivery Date Pro for WooCommerce. <strong><a target=\"_blank\" "
+"href= \"https://www.tychesoftwares.com/store/premium-plugins/product-"
+"delivery-date-pro-for-woocommerce/checkout?"
+"edd_action=add_to_cart&download_id=16&utm_source=wpnotice&utm_medium=first&utm_campaign=PrintInvoicePlugin\""
+">Have it now!</a></strong>."
+msgstr ""
+"Οι πελάτες σας πλέον μπορούν να επεξεργαστούν την ημερομηνία και ώρα "
+"παράδοσης στο καλάθι και στη σελίδα ολοκλήρωσης αγοράς ή μπορούν να "
+"επαναπρογραμματίσουν τις παραδόσεις για τις παραγγελίες που έχουν ήδη "
+"τοποθετηθεί από το Product Delivery Date Pro για το WooCommerce."
+
+#: includes/wcdn-template-functions.php:246
+msgid "Invoice Number"
+msgstr "Αριθμός Τιμολογίου"
+
+#: includes/wcdn-template-functions.php:253
+msgid "Invoice Date"
+msgstr "Ημερομηνία Τιμολογίου"
+
+#: includes/wcdn-template-functions.php:259
+msgid "Order Number"
+msgstr "Αρ. Παραγγελίας"
+
+#: includes/wcdn-template-functions.php:264
+msgid "Order Date"
+msgstr "Ημερομηνία Παραγγελίας"
+
+#: includes/wcdn-template-functions.php:269
+msgid "Payment Method"
+msgstr "Μέθοδος Πληρωμής"
+
+#: includes/wcdn-template-functions.php:282
+msgid "Telephone"
+msgstr "Τηλέφωνο"
+
+#: includes/wcdn-template-functions.php:315
+msgid "SKU:"
+msgstr "SKU:"
+
+#: includes/wcdn-template-functions.php:409 
+#: includes/wcdn-template-functions.php:413
+msgid "(Includes %s)"
+msgstr "(Includes %s)"
+
+#: includes/wcdn-template-functions.php:429
+msgid "Refund"
+msgstr "Επιστροφή χρημάτων"
+
+#: includes/wcdn-template-functions.php:441
+msgid "Order Subtotal"
+msgstr "Υποσύνολο Παραγγελίας"
+
+#: includes/wcdn-welcome.php:54
+msgid "Welcome to WooCommerce Print Invoice & Delivery Note %s"
+msgstr "Καλώς ήλθατε στο WooCommerce Print Invoice & Delivery Note %s"
+
+#: includes/wcdn-welcome.php:55
+msgid "Welcome to WooCommerce Print Invoice & Delivery Note"
+msgstr "Καλώς ήλθατε στο WooCommerce Print Invoice & Delivery Note"
+
+#: includes/wcdn-welcome.php:154
+msgid ""
+"f you want to change the default invoice numbers & set some numbering scheme "
+"of your own, then you can set it here with a starting invoice number, a "
+"prefix & suffix. For example, you could set it as: TS/001/17-18."
+msgstr ""
+"Εάν θέλετε να αλλάξετε τους προεπιλεγμένους αριθμούς τιμολογίου και να "
+"ορίσετε κάποιο δικό σας πρότυπο αρίθμησης, τότε μπορείτε να το ορίσετε εδώ "
+"με έναν αρχικό αριθμό τιμολογίου, ένα πρόθεμα και ένα επίθημα. Για "
+"παράδειγμα, θα μπορούσατε να το ορίσετε ως: TS / 001 / 17-18."
+
+#: includes/wcdn-welcome.php:186
+msgid "Current Offers"
+msgstr "Τρέχουσες προσφορές"
+
+#: templates/print-order/print-content.php:28
+msgid "Billing Address"
+msgstr "Διεύθυνση Χρέωσης"
+
+#: templates/print-order/print-content.php:31 
+#: templates/print-order/print-content.php:40
+msgid "N/A"
+msgstr "Χ/Α"
+
+#: templates/print-order/print-content.php:37
+msgid "Shipping Address"
+msgstr "Διεύθυνση αποστολής"
+
+#: templates/print-order/print-content.php:71
+msgid "Product"
+msgstr "Προϊον"
+
+#: templates/print-order/print-content.php:72
+msgid "Price"
+msgstr "Τιμή"
+
+#: templates/print-order/print-content.php:73
+msgid "Quantity"
+msgstr "Ποσότητα"
+
+#: templates/print-order/print-content.php:74
+msgid "Total"
+msgstr "Σύνολο"
+
+#: templates/print-order/print-content.php:147
+msgid "Download:"
+msgstr "Κατέβασμα:"
+
+#: templates/print-order/print-content.php:148
+msgid "%s Files"
+msgstr "%s Files"
+
+#: templates/print-order/print-content.php:202
+msgid "Customer Note"
+msgstr "Σημείωση Πελάτη"
+
+#: woocommerce-delivery-notes.php:96 woocommerce-delivery-notes.php:103
+msgid "Cheatin&#8217; huh?"
+msgstr "Είσαι Ζαβολιάρης&#8217; ε;"
+
+#: woocommerce-delivery-notes.php:275
+msgid ""
+"I can't differentiate between Invoice, Delivery Notes & Receipt. The "
+"templates are the same. "
+msgstr ""
+"Δεν μπορώ να διακρίνω την διαφορά μεταξύ τιμολογίου, σημειώσεων παράδοσης "
+"και απόδειξης. Τα πρότυπα είναι τα ίδια."
+
+#: woocommerce-delivery-notes.php:281
+msgid "The invoice sent through mail can't be downloaded as PDF directly."
+msgstr ""
+"Το τιμολόγιο που στάλθηκε μέσω ηλεκτρονικού ταχυδρομίου δεν είναι διαθέσιμο "
+"για απευθείας λήψη σε μορφή PDF."
+
+#: woocommerce-delivery-notes.php:287
+msgid "The plugin is not compatible with another plugin."
+msgstr "Το πρόσθετο δεν είναι συμβατό με άλλο πρόσθετο."
+
+#: woocommerce-delivery-notes.php:293
+msgid "This plugin is not useful to me."
+msgstr "Αυτό το πρόσθετο δεν είναι μου είναι χρήσιμο."
+
+#: woocommerce-delivery-notes.php:351
+msgid "Go to the settings page"
+msgstr "Μεταβείτε στη σελίδα ρυθμίσεων"
+
+#: woocommerce-delivery-notes.php:351
+msgid "Settings"
+msgstr "Ρυθμίσεις"
