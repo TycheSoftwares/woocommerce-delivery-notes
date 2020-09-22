@@ -338,12 +338,13 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 
 == Changelog ==
 
-= 4.6.0 (21.09.2020) =
+= 4.6.0 (22.09.2020) =
 
-* Fix :- Compatibility with WooCommerce v4.5.0
+* Fix :- Notice was coming since WooCommerce V4.4.0 which is fixed now.
 * Fix :- Bulk printing function was using old hooks & filters.Have changed them with the new ones.
 * Dev :- Now the Total number of quantity of the products in the row of quantity in invoice will be shown.
-* Dev :-  With the help of filter now one can hide the child products in Composite Products.
+* Dev :- With the help of filter now one can hide the child products in Composite Products.
+* Dev :- Translated the plugin in Greek language.
 
 = Minimum Requirements: WooCommerce 3.0 =
 
