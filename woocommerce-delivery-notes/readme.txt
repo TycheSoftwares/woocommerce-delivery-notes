@@ -344,7 +344,7 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 * Fix :- Bulk printing function was using old hooks & filters.Have changed them with the new ones.
 * Dev :- Now the Total number of quantity of the products in the row of quantity in invoice will be shown.
 * Dev :- With the help of filter now one can hide the child products in Composite Products.
-* Dev :- Translated the plugin in Greek language.
+* Dev :- Translated the plugin in Greek language. Props to @edeuter for the PR.
 
 = Minimum Requirements: WooCommerce 3.0 =
 
