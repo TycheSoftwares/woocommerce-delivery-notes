@@ -1,6 +1,6 @@
 	=== Print Invoice & Delivery Notes for WooCommerce ===
 
-Contributors: ashokrane, tychesoftwares, rashmim
+Contributors: ashokrane, tychesoftwares, rashmim, shasvat
 Donate link: https://www.paypal.me/TycheSoftwares
 Tags: packing slips, invoice, pdf invoice, delivery notes, woocommerce print invoice, print, pdf, invoices
 Requires at least: 4.0
@@ -337,6 +337,14 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 6. Customers can also print the order.
 
 == Changelog ==
+
+= 4.6.0 (22.09.2020) =
+
+* Fix :- Notice was coming since WooCommerce V4.4.0 which is fixed now.
+* Fix :- Bulk printing function was using old hooks & filters.Have changed them with the new ones.
+* Dev :- Now the Total number of quantity of the products in the row of quantity in invoice will be shown.
+* Dev :- With the help of filter now one can hide the child products in Composite Products.
+* Dev :- Translated the plugin in Greek language. Props to @edeuter for the PR.
 
 = Minimum Requirements: WooCommerce 3.0 =
 
