@@ -118,9 +118,12 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 		 * @param array $bulk_actions Array of the list in dropdown.
 		 */
 		public function register_my_bulk_actions( $bulk_actions ) {
-			$bulk_actions['wcdn_print_invoice']       = __( 'Print Invoice', 'woocommerce-delivery-notes' );
-			$bulk_actions['wcdn_print_delivery-note'] = __( 'Print Delivery Note', 'woocommerce-delivery-notes' );
-			$bulk_actions['wcdn_print_receipt']       = __( 'Print Receipt', 'woocommerce-delivery-notes' );
+			$print_invoice_label                      = apply_filters( 'wcdn_change_text_of_print_invoice_in_bulk_option', 'Print Invoice' );
+			$print_delivery_note_label                = apply_filters( 'wcdn_change_text_of_print_delivery_note_in_bulk_option', 'Print Delivery Note' );
+			$print_receipt_label                      = apply_filters( 'wcdn_change_text_of_print_receipt_in_bulk_option', 'Print Receipt' );
+			$bulk_actions['wcdn_print_invoice']       = wp_kses_post( $print_invoice_label, 'woocommerce-delivery-notes' );
+			$bulk_actions['wcdn_print_delivery-note'] = wp_kses_post( $print_delivery_note_label, 'woocommerce-delivery-notes' );
+			$bulk_actions['wcdn_print_receipt']       = wp_kses_post( $print_receipt_label, 'woocommerce-delivery-notes' );
 			return $bulk_actions;
 		}
 
