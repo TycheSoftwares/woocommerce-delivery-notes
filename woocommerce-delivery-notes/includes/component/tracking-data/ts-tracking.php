@@ -233,7 +233,7 @@ class WCDN_TS_tracking {
 	 */
 	public static function ts_schedule_cron_job () {
 		if ( ! wp_next_scheduled( self::$plugin_prefix . '_ts_tracker_send_event' ) ) {
-			wp_schedule_event( time(), 'once_in_week', self::$plugin_prefix . '_ts_tracker_send_event' );
+			wp_schedule_event( time() + 604800, 'once_in_week', self::$plugin_prefix . '_ts_tracker_send_event' );
 		}
 	}
 
