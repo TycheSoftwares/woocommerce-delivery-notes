@@ -338,6 +338,11 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 
 == Changelog ==
 
+= 4.6.1 (23.10.2020) =
+
+* Fix :- Tracker cron event was not running properly which is fixed now.
+* Dev :- With the help of filters now able to change the name of the print invoice and delivery notes in the dropdown menu on Orders page.
+
 = 4.6.0 (22.09.2020) =
 
 * Fix :- Notice was coming since WooCommerce V4.4.0 which is fixed now.
