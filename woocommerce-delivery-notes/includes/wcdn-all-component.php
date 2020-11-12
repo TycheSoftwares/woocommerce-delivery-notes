@@ -243,7 +243,11 @@ add_filter( \'wcdn_order_info_fields\', \'example_custom_order_fields\', 10, 2 )
                         <pre>
 function example_product_image( $product ) {	
     if( isset( $product->id ) && has_post_thumbnail( $product->id ) ) {
-        echo get_the_post_thumbnail( $product->id, array( 40, 40 ) );
+        echo get_the_post_thumbnail(
+            $product->id,
+            array( 40, 40 ),
+            array( \'loading\' => false )
+        );
     }
 }
 add_action( \'wcdn_order_item_before\', \'example_product_image\' );</pre>'
