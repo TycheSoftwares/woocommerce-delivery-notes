@@ -609,5 +609,41 @@ function wcdn_imprint() {
 	echo wp_kses_post( wcdn_get_imprint() );
 }
 
+/**
+ * Show PIF Fileds in the invoice
+ */
+function wcdn_print_extra_fields( $item ) {
+	// Check if Product Input Field Pro is active.
+	$product_input_field_pro = 'product-input-fields-for-woocommerce-pro/product-input-fields-for-woocommerce-pro.php';
+	// Check if Product Input Field Lite is active.
+	$product_input_field     = 'product-input-fields-for-woocommerce/product-input-fields-for-woocommerce.php';
 
+	if ( ( in_array( $product_input_field_pro, apply_filters( 'active_plugins', get_option( 'active_plugins', array() ) ) ) || ( is_multisite() && array_key_exists( $product_input_field_pro, get_site_option( 'active_sitewide_plugins', array() ) ) )
+	) || ( in_array( $product_input_field, apply_filters( 'active_plugins', get_option( 'active_plugins', array() ) ) ) || ( is_multisite() && array_key_exists( $product_input_field, get_site_option( 'active_sitewide_plugins', array() ) ) )
+	) ) {
+
+		$pif_global_fields = $item->get_meta( '_alg_wc_pif_global', true );
+		$pif_local_fields  = $item->get_meta( '_alg_wc_pif_local', true );
+
+		if( $pif_global_fields ) {
+			foreach( $pif_global_fields as $pif_global_field ) {
+				$key   = $pif_global_field['title'];
+				$value = $pif_global_field['_value'];
+				?>
+				<dt><?php echo wp_kses_post( $key . ' : ' . $value ); ?> </dt>
+				<?php
+			}
+		}
+		if( $pif_local_fields ) {
+			foreach( $pif_local_fields as $pif_local_field ) {
+				$key   = $pif_local_field['title'];
+				$value = $pif_local_field['_value'];
+				?>
+				<dt><?php echo wp_kses_post( $key . ' : ' . $value ); ?> </dt>
+				<?php
+			}
+		}
+	}
+
+}
 ?>

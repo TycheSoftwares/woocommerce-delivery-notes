@@ -192,8 +192,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 										<?php endif; ?>
 
 										<?php
-
-											$fields = apply_filters( 'wcdn_order_item_fields', array(), $product, $order, $item );
+										wcdn_print_extra_fields( $item );
+										$fields = apply_filters( 'wcdn_order_item_fields', array(), $product, $order, $item );
 
 										foreach ( $fields as $field ) :
 											?>
