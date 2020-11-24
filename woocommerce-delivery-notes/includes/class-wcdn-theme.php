@@ -116,7 +116,7 @@ if ( ! class_exists( 'WCDN_Theme' ) ) {
 		 * @param boolean $plain_text Whether only to send plain text email or not.
 		 */
 		public function add_email_print_url( $order, $sent_to_admin = true, $plain_text = false ) {
-			if ( 'yes' === get_option( 'wcdn_email_print_link' ) && 'yes' === get_option( 'wcdn_admin_email_print_link' ) ) {
+			if ( 'yes' === get_option( 'wcdn_email_print_link' ) || 'yes' === get_option( 'wcdn_admin_email_print_link' ) ) {
 				$wdn_order_billing_id = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_billing_email() : $order->billing_email;
 
 				$wdn_order_id = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_id() : $order->id;
