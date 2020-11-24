@@ -227,7 +227,16 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 						'id'       => 'wcdn_email_print_link',
 						'default'  => 'no',
 						'type'     => 'checkbox',
-						'desc_tip' => __( 'This includes the emails for a new, processing and completed order. On top of that the customer invoice email also includes the link.', 'woocommerce-delivery-notes' ),
+						'checkboxgroup' => 'start',
+					),
+
+					array(
+						'desc'     => __( 'Show print link in Admin emails', 'woocommerce-delivery-notes' ),
+						'id'       => 'wcdn_admin_email_print_link',
+						'default'  => 'no',
+						'type'     => 'checkbox',
+						'desc_tip' => __( 'This includes the emails for a new, processing and completed order. On top of that the customer and admin invoice emails will also include the link.', 'woocommerce-delivery-notes' ),
+						'checkboxgroup' => 'end',
 					),
 
 					array(

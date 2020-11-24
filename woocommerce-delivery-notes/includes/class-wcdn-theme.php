@@ -116,25 +116,43 @@ if ( ! class_exists( 'WCDN_Theme' ) ) {
 		 * @param boolean $plain_text Whether only to send plain text email or not.
 		 */
 		public function add_email_print_url( $order, $sent_to_admin = true, $plain_text = false ) {
-			if ( 'yes' === get_option( 'wcdn_email_print_link' ) ) {
+			if ( 'yes' === get_option( 'wcdn_email_print_link' ) || 'yes' === get_option( 'wcdn_admin_email_print_link' ) ) {
 				$wdn_order_billing_id = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_billing_email() : $order->billing_email;
-				if ( $wdn_order_billing_id && ! $sent_to_admin ) {
-					$wdn_order_id = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_id() : $order->id;
 
-					$url = wcdn_get_print_link( $wdn_order_id, $this->get_template_type( $order ), $wdn_order_billing_id, true );
+				$wdn_order_id = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_id() : $order->id;
 
-					if ( $plain_text ) :
-						echo esc_html_e( 'Print your order', 'woocommerce-delivery-notes' ) . "\n\n";
+				$url = wcdn_get_print_link( $wdn_order_id, $this->get_template_type( $order ), $wdn_order_billing_id, true );
 
-						echo esc_url( $url ) . "\n";
-
-						echo "\n****************************************************\n\n";
-					else :
-						?>
-						<p><strong><?php esc_attr_e( 'Print:', 'woocommerce-delivery-notes' ); ?></strong> <a href="<?php echo esc_url_raw( $url ); ?>"><?php esc_attr_e( 'Open print view in browser', 'woocommerce-delivery-notes' ); ?></a></p>
-					<?php endif;
+				if ( 'yes' === get_option( 'wcdn_email_print_link' ) ) {
+					if ( ( $wdn_order_billing_id && ! $sent_to_admin ) ) {
+						$this->print_link_in_email( $plain_text, $url );
+					}
+				}
+				if ( 'yes' === get_option( 'wcdn_admin_email_print_link' ) ) {
+					if ( $sent_to_admin ) {
+						$this->print_link_in_email( $plain_text, $url );
+					}
 				}
 			}
+		}
+
+		/**
+		 * Html for Print Link in the emails.
+		 *
+		 * @param boolean $plain_text Whether only to send plain text email or not.
+		 * @param string  $url Print Url in the email.
+		 */
+		public function print_link_in_email( $plain_text, $url ) {
+			if ( $plain_text ) :
+				echo esc_html_e( 'Print your order', 'woocommerce-delivery-notes' ) . "\n\n";
+
+				echo esc_url( $url ) . "\n";
+
+				echo "\n****************************************************\n\n";
+			else :
+				?>
+				<p><strong><?php esc_attr_e( 'Print:', 'woocommerce-delivery-notes' ); ?></strong> <a href="<?php echo esc_url_raw( $url ); ?>"><?php esc_attr_e( 'Open print view in browser', 'woocommerce-delivery-notes' ); ?></a></p>
+			<?php endif;
 		}
 
 		/**
