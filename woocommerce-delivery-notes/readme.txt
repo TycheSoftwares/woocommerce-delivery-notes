@@ -273,7 +273,7 @@ An example that adds a 40px large product image. Paste the code in the `function
 `
 function example_product_image( $product ) {	
 	if( isset( $product->id ) && has_post_thumbnail( $product->id ) ) {
-		echo get_the_post_thumbnail( $product->id, array( 40, 40 ) );
+		 echo get_the_post_thumbnail( $product->id, array( 40, 40 ), array( 'loading' => false ) );
 	}
 }
 add_action( 'wcdn_order_item_before', 'example_product_image' );
