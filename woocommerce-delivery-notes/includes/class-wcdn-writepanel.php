@@ -139,7 +139,10 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 			if ( ! isset( $_REQUEST['post'] ) ) {
 				return;
 			}
-
+			// stop if the action is not of bulk printing.
+			if( ! in_array( $_REQUEST['action'], array( 'wcdn_print_invoice', 'wcdn_print_delivery-note', 'wcdn_print_receipt' ) ) ) {
+				return;
+			}
 			// only for specified actions.
 			foreach ( WCDN_Print::$template_registrations as $template_registration ) {
 				if ( 'wcdn_print_' . $template_registration['type'] === $doaction ) {
