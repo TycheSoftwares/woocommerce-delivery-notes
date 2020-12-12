@@ -340,6 +340,7 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 
 = 4.6.2 (11.12.2020) =
 
+Enhancement :- Added an option to insert the print link in the admin emails.
 Fix :- Strings of Bulk Printing options were not getting translated. This is fixed now. Props to @pomegranate
 Fix :- Finnish language locale name was incorrect. This is fixed now.
 Fix :- Custom fields on WooCommerce product page from Product Input Fields for WooCommerce plugin were not coming in the invoice. This is fixed now.
