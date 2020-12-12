@@ -340,12 +340,12 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 
 = 4.6.2 (11.12.2020) =
 
+Enhancement :- Added an option to insert the print link in the admin emails.
 Fix :- Strings of Bulk Printing options were not getting translated. This is fixed now. Props to @pomegranate
 Fix :- Finnish language locale name was incorrect. This is fixed now.
 Fix :- Custom fields on WooCommerce product page from Product Input Fields for WooCommerce plugin were not coming in the invoice. This is fixed now.
 Fix :- The BULK printing options of WooCommerce DYMO Print (PRO version) stopped working after installing our Print invoices plugin. This has been fixed. Props to @pepbc
 Tweak :- In FAQ page changed the code snippet to add the products image in the invoice.
-Enhancement :- Added an option to insert the print link in the admin emails.
 
 = 4.6.1 (23.10.2020) =
 
