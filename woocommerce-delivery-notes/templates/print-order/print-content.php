@@ -185,7 +185,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 											<dd>
 											<?php
 											// translators: files count.
-											printf( esc_attr_e( '%s Files', 'woocommerce-delivery-notes' ), count( $item->get_item_downloads() ) );
+											printf( esc_attr__( '%s Files', 'woocommerce-delivery-notes' ), count( $item->get_item_downloads() ) );
 											?>
 											</dd>
 
