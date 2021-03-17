@@ -14,7 +14,7 @@
  * Domain Path: /languages
  * Requires PHP: 5.6
  * WC requires at least: 3.0.0
- * WC tested up to: 4.7
+ * WC tested up to: 5.1
  * Tested up to: 5.5
  *
  * Copyright 2019 Tyche Softwares
