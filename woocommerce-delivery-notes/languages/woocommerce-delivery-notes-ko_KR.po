@@ -1,0 +1,744 @@
+# This Korean Language File: Copyright (C) 2021 by Seok-Hyun Ga (http://www.seokhyun.ga)
+# This file is distributed under the same license as the WooCommerce Print Invoices & Delivery Notes Plugin package.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Print Invoice & Delivery Note V4.1.3 Korean Translation\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/woocommerce-delivery-notes\n"
+"POT-Creation-Date: 2021-03-24 19:00+0900\n"
+"PO-Revision-Date: 2021-03-24 13:14+0900\n"
+"Last-Translator: Seok-Hyun Ga <shga89@naver.com>\n"
+"Language-Team: Seok-Hyun Ga <shga89@naver.com>\n"
+"Language: ko_KR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 2.4.2\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;esc_attr_e;esc_attr__\n"
+"X-Poedit-Basepath: .\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+# @ woocommerce-delivery-notes
+#: includes/class-wcdn-print.php:39 includes/class-wcdn-settings.php:237
+msgid "Invoice"
+msgstr "거래명세서"
+
+#: includes/class-wcdn-print.php:40
+msgid "Invoices"
+msgstr "거래명세서"
+
+# @ woocommerce-delivery-notes
+#: includes/class-wcdn-print.php:41
+msgid "Print Invoice"
+msgstr "거래명세서 인쇄"
+
+#: includes/class-wcdn-print.php:42
+msgid "Print Invoices"
+msgstr "거래명세서 인쇄"
+
+# @ woocommerce-delivery-notes
+#: includes/class-wcdn-print.php:43
+msgid "Invoice created."
+msgstr "거래명세서가 생성되었습니다."
+
+#: includes/class-wcdn-print.php:44
+msgid "Invoices created."
+msgstr "거래명세서가 생성되었습니다."
+
+#: includes/class-wcdn-print.php:45
+msgid "Show \"Print Invoice\" button"
+msgstr "\"거래명세서 인쇄\" 버튼 표시"
+
+# @ woocommerce-delivery-notes
+#: includes/class-wcdn-print.php:51
+msgid "Delivery Note"
+msgstr "배송 정보"
+
+#: includes/class-wcdn-print.php:52
+msgid "Delivery Notes"
+msgstr "배송 정보"
+
+# @ woocommerce-delivery-notes
+#: includes/class-wcdn-print.php:53
+msgid "Print Delivery Note"
+msgstr "배송 정보 인쇄"
+
+#: includes/class-wcdn-print.php:54
+msgid "Print Delivery Notes"
+msgstr "배송 정보 인쇄"
+
+#: includes/class-wcdn-print.php:55
+msgid "Delivery Note created."
+msgstr "배송 정보가 생성되었습니다."
+
+#: includes/class-wcdn-print.php:56
+msgid "Delivery Notes created."
+msgstr "배송 정보가 생성되었습니다."
+
+#: includes/class-wcdn-print.php:57
+msgid "Show \"Print Delivery Note\" button"
+msgstr "\"배송 정보 인쇄\" 버튼 보이기"
+
+#: includes/class-wcdn-print.php:63
+msgid "Receipt"
+msgstr "영수증"
+
+#: includes/class-wcdn-print.php:64
+msgid "Receipts"
+msgstr "영수증"
+
+#: includes/class-wcdn-print.php:65
+msgid "Print Receipt"
+msgstr "영수증 인쇄"
+
+#: includes/class-wcdn-print.php:66
+msgid "Print Receipts"
+msgstr "영수증 인쇄"
+
+#: includes/class-wcdn-print.php:67
+msgid "Receipt created."
+msgstr "영수증이 생성되었습니다."
+
+#: includes/class-wcdn-print.php:68
+msgid "Receipts created."
+msgstr "영수증이 생성되었습니다."
+
+#: includes/class-wcdn-print.php:69
+msgid "Show \"Print Receipt\" button"
+msgstr "\"영수증 인쇄\" 버튼 보이기"
+
+# @ woocommerce-delivery-notes
+#: includes/class-wcdn-print.php:78
+msgid "Order"
+msgstr "주문"
+
+#: includes/class-wcdn-print.php:79
+msgid "Orders"
+msgstr "주문"
+
+# @ woocommerce-delivery-notes
+#: includes/class-wcdn-print.php:80
+msgid "Print Order"
+msgstr "주문 인쇄"
+
+#: includes/class-wcdn-print.php:81
+msgid "Print Orders"
+msgstr "주문 인쇄"
+
+#: includes/class-wcdn-print.php:93
+msgid "Default"
+msgstr "기본값"
+
+#: includes/class-wcdn-settings.php:67
+msgid "Do you really want to reset the counter to zero? This process can't be undone."
+msgstr "연번을 초기화 하시겠습니까? 이 작업은 취소될 수 없습니다."
+
+# @ woocommerce-delivery-notes
+#: includes/class-wcdn-settings.php:75 includes/class-wcdn-theme.php:57
+#: includes/class-wcdn-theme.php:94 includes/wcdn-template-functions.php:130
+msgid "Print"
+msgstr "인쇄"
+
+#: includes/class-wcdn-settings.php:106
+msgid "Template"
+msgstr "템플릿"
+
+#: includes/class-wcdn-settings.php:113
+msgid "Style"
+msgstr "스타일"
+
+#: includes/class-wcdn-settings.php:114
+msgid "The default print style. Read the <a href=\"%1$s\">FAQ</a> to learn how to customize it."
+msgstr "기본 인쇄 스타일. 사용자가 임의로 스타일을 변경하시려면 <a href=\"%1$s\">FAQ</a>를 참조하세요."
+
+#: includes/class-wcdn-settings.php:124
+msgid "Shop Logo"
+msgstr "상점 로고"
+
+#: includes/class-wcdn-settings.php:130
+msgid "A shop logo representing your business. When the image is printed, its pixel density will automatically be eight times higher than the original. This means, 1 printed inch will correspond to about 288 pixels on the screen."
+msgstr ""
+
+#: includes/class-wcdn-settings.php:134
+msgid "Shop Name"
+msgstr "상점 이름"
+
+#: includes/class-wcdn-settings.php:140
+msgid "The shop name. Leave blank to use the default Website or Blog title defined in WordPress settings. The name will be ignored when a Logo is set."
+msgstr ""
+
+#: includes/class-wcdn-settings.php:144
+msgid "Shop Address"
+msgstr "상점 주소"
+
+#: includes/class-wcdn-settings.php:145
+msgid "The postal address of the shop or even e-mail or telephone."
+msgstr ""
+
+#: includes/class-wcdn-settings.php:154
+msgid "Complimentary Close"
+msgstr "끝인사"
+
+#: includes/class-wcdn-settings.php:155
+msgid "Add a personal close, notes or season greetings."
+msgstr ""
+
+#: includes/class-wcdn-settings.php:164
+msgid "Policies"
+msgstr "정책"
+
+#: includes/class-wcdn-settings.php:165
+msgid "Add the shop policies, conditions, etc."
+msgstr ""
+
+# @ woocommerce-delivery-notes
+#: includes/class-wcdn-settings.php:174
+msgid "Footer"
+msgstr "꼬릿말"
+
+#: includes/class-wcdn-settings.php:175
+msgid "Add a footer imprint, instructions, copyright notes, e-mail, telephone, etc."
+msgstr ""
+
+#: includes/class-wcdn-settings.php:189
+msgid "Pages & Buttons"
+msgstr "페이지 & 버튼"
+
+# @ woocommerce-delivery-notes
+#: includes/class-wcdn-settings.php:196
+msgid "Print Page Endpoint"
+msgstr "페이지 끝 표시 인쇄"
+
+# @ woocommerce-delivery-notes
+#: includes/class-wcdn-settings.php:202
+msgid "The endpoint is appended to the accounts page URL to print the order. It should be unique."
+msgstr ""
+
+# @ woocommerce-delivery-notes
+#: includes/class-wcdn-settings.php:206
+#: includes/wcdn-template-functions.php:275
+msgid "Email"
+msgstr ""
+
+#: includes/class-wcdn-settings.php:207
+msgid "Show print link in customer emails"
+msgstr "고객 이메일에 프린트 링크를 표시"
+
+#: includes/class-wcdn-settings.php:211
+msgid "This includes the emails for a new, processing and completed order. On top of that the customer invoice email also includes the link."
+msgstr ""
+
+#: includes/class-wcdn-settings.php:215
+msgid "My Account"
+msgstr "내 계정"
+
+# @ woocommerce-delivery-notes
+#: includes/class-wcdn-settings.php:216
+msgid "Show print button on the \"View Order\" page"
+msgstr "\"주문 보기\" 페이지에 프린트 버튼 보이기"
+
+# @ woocommerce-delivery-notes
+#: includes/class-wcdn-settings.php:224
+msgid "Show print buttons on the \"My Account\" page"
+msgstr "\"내 계정\" 페이지에 프린트 버튼 보이기"
+
+#: includes/class-wcdn-settings.php:244
+msgid "Numbering"
+msgstr "연번"
+
+#: includes/class-wcdn-settings.php:245
+msgid "Create invoice numbers"
+msgstr "거래명세서 연번 생성"
+
+#: includes/class-wcdn-settings.php:253
+msgid "Next Number"
+msgstr "다음 번호"
+
+#: includes/class-wcdn-settings.php:260
+msgid "The next invoice number."
+msgstr "다음 거래명세서 번호."
+
+#: includes/class-wcdn-settings.php:264
+msgid "Number Prefix"
+msgstr "번호 접두사"
+
+#: includes/class-wcdn-settings.php:271
+msgid "This text will be prepended to the invoice number."
+msgstr ""
+
+#: includes/class-wcdn-settings.php:275
+msgid "Number Suffix"
+msgstr "번호 접미사"
+
+#: includes/class-wcdn-settings.php:282
+msgid "This text will be appended to the invoice number."
+msgstr "이 문구는 거리명세서 번호에 덧붙여집니다."
+
+#: includes/class-wcdn-settings.php:327
+msgid "Admin"
+msgstr "관리자"
+
+#: includes/class-wcdn-settings.php:330
+msgid "The print buttons are available on the order listing and on the order detail screen."
+msgstr ""
+
+#: includes/class-wcdn-settings.php:372
+msgid "This section lets you customise the content. You can preview the <a href=\"%1$s\" target=\"%4$s\" class=\"%5$s\">invoice</a>, <a href=\"%2$s\" target=\"%4$s\" class=\"%5$s\">delivery note</a> or <a href=\"%3$s\" target=\"%4$s\" class=\"%5$s\">receipt</a> template."
+msgstr ""
+
+#: includes/class-wcdn-settings.php:435
+msgid "Select"
+msgstr "선택"
+
+#: includes/class-wcdn-settings.php:439
+msgid "Remove"
+msgstr "삭제"
+
+#: includes/class-wcdn-theme.php:112
+msgid "Print your order"
+msgstr "내 주문 인쇄"
+
+#: includes/class-wcdn-theme.php:119
+msgid "Print:"
+msgstr "인쇄 :"
+
+#: includes/class-wcdn-theme.php:119
+msgid "Open print view in browser"
+msgstr "브라우저에 인쇄 화면 열기"
+
+# @ woocommerce-delivery-notes
+#: includes/class-wcdn-writepanel.php:218
+msgid "Print now"
+msgstr "바로 인쇄"
+
+# @ woocommerce-delivery-notes
+#: includes/class-wcdn-writepanel.php:232
+msgid "Order Printing"
+msgstr "주문 인쇄"
+
+#: includes/class-wcdn-writepanel.php:259
+msgid "Invoice number: "
+msgstr "거래명세서 번호: "
+
+#: includes/class-wcdn-writepanel.php:260
+msgid "Invoice date: "
+msgstr "거래명세서 날짜: "
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:75
+msgid "If you have a moment, please let us know why you are deactivating"
+msgstr ""
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:76
+msgid "Submit & Deactivate"
+msgstr "제출 & 비활성화"
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:77
+msgid "Deactivate"
+msgstr "비활성화"
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:78
+msgid "Cancel"
+msgstr "취소"
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:79
+msgid "Yes - Deactivate"
+msgstr "예 - 비활성화"
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:83
+msgid "I found a better plugin"
+msgstr "더 나은 플러그인을 발견"
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:84
+msgid "What's the plugin's name?"
+msgstr "플러그인 이름이 무엇입니까?"
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:85
+msgid "I only needed the plugin for a short period"
+msgstr ""
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:86
+msgid "The plugin is not working"
+msgstr "플러그인이 제대로 작동하지 않음"
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:87
+msgid "Kindly share what didn't work so we can fix it for future users..."
+msgstr ""
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:88
+msgid "The plugin is great, but I need specific feature that you don't support"
+msgstr ""
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:89
+msgid "What feature?"
+msgstr "어떤 기능?"
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:90
+msgid "I don't like to share my information with you"
+msgstr ""
+
+#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:91
+msgctxt "the text of the 'other' reason for deactivating the plugin that is shown in the modal box."
+msgid "Other"
+msgstr "기타"
+
+#: includes/component/faq-support/ts-faq-support.php:127
+msgid "Frequently Asked Questions for %s"
+msgstr ""
+
+#: includes/component/faq-support/ts-faq-support.php:176
+msgid "FAQ & Support"
+msgstr ""
+
+#: includes/component/tracking-data/ts-tracking.php:120
+#: includes/component/tracking-data/ts-tracking.php:180
+msgid "Reset usage tracking"
+msgstr "사용자 추적 초기화"
+
+#: includes/component/tracking-data/ts-tracking.php:122
+msgid "This will reset your usage tracking settings, causing it to show the opt-in banner again and not sending any data"
+msgstr ""
+
+#: includes/component/tracking-data/ts-tracking.php:225
+msgid "Once in a Week"
+msgstr "1주일에 한 번"
+
+#: includes/component/tracking-data/ts-tracking.php:311
+msgid "Allow"
+msgstr "허용"
+
+#: includes/component/tracking-data/ts-tracking.php:312
+msgid "No thanks"
+msgstr "원치 않습니다"
+
+#: includes/component/welcome-page/templates/social-media-elements.php:10
+#: includes/wcdn-welcome.php:231
+msgid "Follow %s"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:19
+#: includes/wcdn-welcome.php:99
+msgid "Thank you for activating or updating to the latest version of WooCommerce Print Invoice & Delivery Note! If you're a first time user, welcome! You're well on your way to explore the print functionality for your WooCommerce orders."
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:29
+#: includes/wcdn-welcome.php:109
+msgid "Get Started with WooCommerce Print Invoice & Delivery Note"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:33
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:62
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:68
+#: includes/wcdn-welcome.php:113 includes/wcdn-welcome.php:142
+#: includes/wcdn-welcome.php:148
+msgid "WooCommerce Print Invoice & Delivery Note"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:37
+#: includes/wcdn-welcome.php:117
+msgid "Add settings"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:39
+#: includes/wcdn-welcome.php:119
+msgid "To enable the print functionality for your invoices, delivery notes & receipts, you just need to set it up under WooCommerce -> Settings -> Print page. Here you can also setup the Company Logo that will appear on the printed items, Company Address & other information."
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:41
+#: includes/wcdn-welcome.php:121
+msgid "Click Here to go to Print page"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:52
+#: includes/wcdn-welcome.php:132
+msgid "Enable Print button for Customers."
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:54
+#: includes/wcdn-welcome.php:134
+msgid "Allow customers to print the WooCommerce order invoice from the customer notification email, from the My Account page or from the View Order page under My Account."
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:56
+#: includes/wcdn-welcome.php:136
+msgid "Click Here to Enable Print button for Customers"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:72
+#: includes/wcdn-welcome.php:152
+msgid "Enable Invoice Numbering"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:74
+msgid "If you want to change the default invoice numbers & set some numbering scheme of your own, then you can set it here with a starting invoice number, a prefix & suffix. For example, you could set it as: TS/001/17-18."
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:76
+#: includes/wcdn-welcome.php:156
+msgid "Click Here to Enable Invoice Numbering"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:87
+#: includes/wcdn-welcome.php:167
+msgid "Getting to Know Tyche Softwares"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:90
+#: includes/wcdn-welcome.php:170
+msgid "Visit the Tyche Softwares Website"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:91
+#: includes/wcdn-welcome.php:171
+msgid "View all Premium Plugins"
+msgstr ""
+
+#: includes/component/welcome-page/templates/welcome/welcome-page.php:100
+#: includes/wcdn-welcome.php:180
+msgid "Meet the team"
+msgstr ""
+
+#: includes/component/welcome-page/ts-welcome.php:167
+msgid "Welcome to %s %s"
+msgstr ""
+
+#: includes/wcdn-all-component.php:118
+msgid "Thank you for using WooCommerce Print Invoice & Delivery Note plugin! Now make your deliveries more accurate by allowing customers to select their preferred delivery date & time from Product Delivery Date Pro for WooCommerce. <strong><a target=\"_blank\" href= \"https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?utm_source=wpnotice&utm_medium=first&utm_campaign=PrintInvoicePlugin\">Get it now!</a></strong>"
+msgstr ""
+
+#: includes/wcdn-all-component.php:120
+msgid "Never login to your admin to check your deliveries by syncing the delivery dates to the Google Calendar from Product Delivery Date Pro for WooCommerce. <strong><a target=\"_blank\" href= \"https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/checkout?edd_action=add_to_cart&download_id=16&utm_source=wpnotice&utm_medium=first&utm_campaign=PrintInvoicePlugin\">Get it now!</a></strong>"
+msgstr ""
+
+#: includes/wcdn-all-component.php:122
+msgid "You can now view all your deliveries in list view or in calendar view from Product Delivery Date Pro for WooCommerce. <strong><a target=\"_blank\" href= \"https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/checkout?edd_action=add_to_cart&download_id=16&utm_source=wpnotice&utm_medium=first&utm_campaign=PrintInvoicePlugin\">Get it now!</a></strong>."
+msgstr ""
+
+#: includes/wcdn-all-component.php:124
+msgid "Allow your customers to pay extra for delivery for certain Weekdays/Dates from Product Delivery Date Pro for WooCommerce. <strong><a target=\"_blank\" href= \"https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/checkout?edd_action=add_to_cart&download_id=16&utm_source=wpnotice&utm_medium=first&utm_campaign=PrintInvoicePlugin\">Have it now!</a></strong>."
+msgstr ""
+
+#: includes/wcdn-all-component.php:126
+msgid "Customers can now edit the Delivery date & time on cart and checkout page or they can reschedule the deliveries for the already placed orders from Product Delivery Date Pro for WooCommerce. <strong><a target=\"_blank\" href= \"https://www.tychesoftwares.com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/checkout?edd_action=add_to_cart&download_id=16&utm_source=wpnotice&utm_medium=first&utm_campaign=PrintInvoicePlugin\">Have it now!</a></strong>."
+msgstr ""
+
+#: includes/wcdn-template-functions.php:246
+msgid "Invoice Number"
+msgstr "거래명세서 날짜"
+
+#: includes/wcdn-template-functions.php:253
+msgid "Invoice Date"
+msgstr "거래명세서 날짜"
+
+# @ woocommerce-delivery-notes
+#: includes/wcdn-template-functions.php:259
+msgid "Order Number"
+msgstr "주문 번호"
+
+# @ woocommerce-delivery-notes
+#: includes/wcdn-template-functions.php:264
+msgid "Order Date"
+msgstr "주문 날짜"
+
+# @ woocommerce-delivery-notes
+#: includes/wcdn-template-functions.php:269
+msgid "Payment Method"
+msgstr "결제 방법"
+
+# @ woocommerce-delivery-notes
+#: includes/wcdn-template-functions.php:282
+msgid "Telephone"
+msgstr "전화"
+
+#: includes/wcdn-template-functions.php:315
+msgid "SKU:"
+msgstr "재고관리코드 :"
+
+#: includes/wcdn-template-functions.php:409
+#: includes/wcdn-template-functions.php:413
+msgid "(Includes %s)"
+msgstr "(%s 포함)"
+
+#: includes/wcdn-template-functions.php:429
+msgid "Refund"
+msgstr "환불"
+
+#: includes/wcdn-template-functions.php:441
+msgid "Order Subtotal"
+msgstr "주문 소계"
+
+#: includes/wcdn-welcome.php:54
+msgid "Welcome to WooCommerce Print Invoice & Delivery Note %s"
+msgstr ""
+
+#: includes/wcdn-welcome.php:55
+msgid "Welcome to WooCommerce Print Invoice & Delivery Note"
+msgstr ""
+
+#: includes/wcdn-welcome.php:154
+msgid "f you want to change the default invoice numbers & set some numbering scheme of your own, then you can set it here with a starting invoice number, a prefix & suffix. For example, you could set it as: TS/001/17-18."
+msgstr ""
+
+#: includes/wcdn-welcome.php:186
+msgid "Current Offers"
+msgstr "현재 제아"
+
+# @ woocommerce-delivery-notes
+#: templates/print-order/print-content.php:28
+msgid "Billing Address"
+msgstr "청구 주소"
+
+# @ woocommerce-delivery-notes
+#: templates/print-order/print-content.php:31
+#: templates/print-order/print-content.php:40
+msgid "N/A"
+msgstr "N/A"
+
+# @ woocommerce-delivery-notes
+#: templates/print-order/print-content.php:37
+msgid "Shipping Address"
+msgstr "배송 주소"
+
+# @ woocommerce-delivery-notes
+#: templates/print-order/print-content.php:71
+msgid "Product"
+msgstr "제품"
+
+#: templates/print-order/print-content.php:72
+msgid "Price"
+msgstr "가격"
+
+#: templates/print-order/print-content.php:73
+msgid "Quantity"
+msgstr "수량"
+
+# @ woocommerce-delivery-notes
+#: templates/print-order/print-content.php:74
+msgid "Total"
+msgstr "합계"
+
+# @ woocommerce-delivery-notes
+#: templates/print-order/print-content.php:147
+msgid "Download:"
+msgstr "다운로드 :"
+
+# @ woocommerce-delivery-notes
+#: templates/print-order/print-content.php:148
+msgid "%s Files"
+msgstr "%s 파일"
+
+# @ woocommerce-delivery-notes
+#: templates/print-order/print-content.php:202
+msgid "Customer Note"
+msgstr "고객 메모"
+
+#: woocommerce-delivery-notes.php:96 woocommerce-delivery-notes.php:103
+msgid "Cheatin&#8217; huh?"
+msgstr ""
+
+#: woocommerce-delivery-notes.php:275
+msgid "I can't differentiate between Invoice, Delivery Notes & Receipt. The templates are the same. "
+msgstr ""
+
+#: woocommerce-delivery-notes.php:281
+msgid "The invoice sent through mail can't be downloaded as PDF directly."
+msgstr ""
+
+#: woocommerce-delivery-notes.php:287
+msgid "The plugin is not compatible with another plugin."
+msgstr "이 플러그인은 다른 플러그인과 호환이 되지 않습니다."
+
+#: woocommerce-delivery-notes.php:293
+msgid "This plugin is not useful to me."
+msgstr "이 플러그인은 나에게 유용하지 않습니다."
+
+# @ woocommerce-delivery-notes
+#: woocommerce-delivery-notes.php:351
+msgid "Go to the settings page"
+msgstr "설정 페이지로 이동"
+
+# @ woocommerce-delivery-notes
+#: woocommerce-delivery-notes.php:351
+msgid "Settings"
+msgstr "설정"
+
+#~ msgid "Enable Invoices"
+#~ msgstr "거래명세서 사용"
+
+#~ msgid "Enable Delivery Notes"
+#~ msgstr "배송 정보 사용"
+
+#~ msgid "Enable Receipts"
+#~ msgstr "영수증 사용"
+
+# @ woocommerce-delivery-notes
+#~ msgid "Company/Shop Logo"
+#~ msgstr "회사/상점 로고"
+
+# @ woocommerce-delivery-notes
+#~ msgid "Remove Logo"
+#~ msgstr "로고 삭제"
+
+# @ woocommerce-delivery-notes
+#~ msgid "Set Logo"
+#~ msgstr "로고 설정"
+
+# @ woocommerce-delivery-notes
+#~ msgid "A company/shop logo representing your business."
+#~ msgstr "당신의 비즈니스를 설명하는 회사/상점의 로고."
+
+# @ woocommerce-delivery-notes
+#~ msgid "Note:"
+#~ msgstr "메모:"
+
+# @ woocommerce-delivery-notes
+#~ msgid "Company/Shop Name"
+#~ msgstr "회사/상점 이름"
+
+# @ woocommerce-delivery-notes
+#~ msgid "Company/Shop Address"
+#~ msgstr "회사/상점 주소"
+
+#~ msgid "Print Options"
+#~ msgstr "인쇄 옵션"
+
+#~ msgid "Types"
+#~ msgstr "종류"
+
+#~ msgid "Theme Options"
+#~ msgstr "테마 옵션"
+
+# @ woocommerce-delivery-notes
+#~ msgid "Order Numbering"
+#~ msgstr "주문 연번"
+
+#~ msgid "Invoice Numbering"
+#~ msgstr "거래명세서 연번"
+
+#~ msgid "Invoice Number Start"
+#~ msgstr "거래명세서 번호 시작"
+
+#~ msgid "Use only integers."
+#~ msgstr "정수만 사용이 가능합니다."
+
+#~ msgid "Invoice Number Prefix"
+#~ msgstr "거래명세서 번호 접두사"
+
+#~ msgid "Invoice Number Suffix"
+#~ msgstr "거래명세서 번호 접미사"
+
+#~ msgid "Invoice Number Counter"
+#~ msgstr "거래명세서 번호 카운터"
+
+#~ msgid "Reset Counter …"
+#~ msgstr "카운터 초기화 ..."
+
+#~ msgid "Sequential Order Number"
+#~ msgstr "순차적인 주문 번호"
+
+# @ woocommerce-delivery-notes
+#~ msgid "Sequential numbering is enabled."
+#~ msgstr "순차적인 주문 번호가 활성화되었습니다."
