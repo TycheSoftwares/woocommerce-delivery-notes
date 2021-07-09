@@ -104,7 +104,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 				if ( count( $order->get_items() ) > 0 ) :
 					?>
-					<?php foreach ( $order->get_items() as $item ) : ?>
+					<?php foreach ( $order->get_items() as $item_id => $item ) : ?>
 
 						<?php
 
