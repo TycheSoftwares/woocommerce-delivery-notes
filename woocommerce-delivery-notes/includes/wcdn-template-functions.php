@@ -340,7 +340,7 @@ function wcdn_get_order_invoice_date( $order_id ) {
  * @param object $product Product Object.
  * @param object $order Order object.
  */
-function wcdn_additional_product_fields( $fields = null, $product = null, $order ) {
+function wcdn_additional_product_fields( $fields, $product, $order ) {
 	$new_fields = array();
 
 	// Stock keeping unit.
