@@ -354,23 +354,6 @@ function wcdn_additional_product_fields( $fields, $product, $order ) {
 }
 
 /**
- * Check if a shipping address is enabled
- *
- * @param object $order Order object.
- */
-function wcdn_has_shipping_address( $order ) {
-	// Works only with WooCommerce 2.2 and higher.
-	if ( version_compare( WC_VERSION, '2.2.0', '>=' ) ) {
-		if ( ! wc_ship_to_billing_address_only() && $order->needs_shipping_address() && 'no' !== get_option( 'woocommerce_calc_shipping' ) ) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	return true;
-}
-
-/**
  * Check if an order contains a refund
  *
  * @param object $order Order object.

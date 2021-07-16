@@ -169,16 +169,6 @@ h2 {
 	float: left;
 }
 
-.order-addresses.no-shipping-address .shipping-address {
-	display: none;
-}
-
-/*
-.order-addresses.no-shipping-address .billing-address {
-	margin-left: 50%;
-}
-*/
-
 /* Switch the addresses for invoices */
 
 /* Order Info */

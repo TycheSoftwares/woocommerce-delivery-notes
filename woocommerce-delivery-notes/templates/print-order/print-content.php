@@ -30,11 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php do_action( 'wcdn_after_branding', $order ); ?>
 	</div><!-- .order-branding -->
 
-	<div class="order-addresses 
-	<?php
-	if ( ! wcdn_has_shipping_address( $order ) ) :
-		?>
-		no-shipping-address<?php endif; ?>">
+	<div class="order-addresses">
 		<div class="billing-address">
 			<h3><?php esc_attr_e( 'Billing Address', 'woocommerce-delivery-notes' ); ?></h3>
 			<address>
