@@ -4,7 +4,7 @@ Contributors: ashokrane, tychesoftwares, rashmim, shasvat
 Donate link: https://www.paypal.me/TycheSoftwares
 Tags: packing slips, invoice, pdf invoice, delivery notes, woocommerce print invoice, print, pdf, invoices
 Requires at least: 4.0
-Tested up to: 5.7
+Tested up to: 5.8
 Author URI: https://www.tychesoftwares.com/
 Stable tag: trunk
 License: GPLv3 or later
@@ -337,6 +337,12 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 6. Customers can also print the order.
 
 == Changelog ==
+
+= 4.6.3 (19.07.2021) =
+* Fix :- Fixed the errors coming with PHP 8.
+* Fix :- Shipping address was not printed in invoice when the order is created manually. This is fixed now.
+* Fix :- When printing receipts, the number of downloaded files is displayed as "%s files". This is fixed now. Props to @inc2734 for the PR.
+* Dev :- Translated the plugin in Korean language. Props to @shga89 for the PR.
 
 = 4.6.2 (11.12.2020) =
 
