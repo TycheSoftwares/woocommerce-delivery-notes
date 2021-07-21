@@ -338,6 +338,9 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 
 == Changelog ==
 
+= 4.6.4 (21.07.2021) =
+* Fix :- After updating to v4.6.3 , fatal error was coming in some sites where the invoice template has been customized by copying print-content.php file in the theme folder. This is fixed now.
+
 = 4.6.3 (19.07.2021) =
 * Fix :- Fixed the errors coming with PHP 8.
 * Fix :- Shipping address was not printed in invoice when the order is created manually. This is fixed now.
