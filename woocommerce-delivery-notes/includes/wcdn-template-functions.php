@@ -354,6 +354,17 @@ function wcdn_additional_product_fields( $fields, $product, $order ) {
 }
 
 /**
+ * Check if a shipping address is enabled
+ * Note: In v4.6.3, we have removed this function but it throws the fatal error on printing the invoice if someone have customized the invoice and copied print-content.php file in thier theme so from v4.6.4 we need to keep this function as blank and returning true value to avoid errors when function is called.
+ *
+ * @param object $order Order object.
+ * @return boolean true
+ */
+function wcdn_has_shipping_address( $order ) {
+	return true;
+}
+
+/**
  * Check if an order contains a refund
  *
  * @param object $order Order object.
