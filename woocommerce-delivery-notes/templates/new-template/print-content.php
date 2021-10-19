@@ -41,8 +41,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 <table class="product-table">
 			<thead>
 				<tr style="border:1px solid black;" >
-					<th></th>
-					<th style = 'max-width: 0.01em;' ><?php esc_attr_e( 'Quantity', 'woocommerce-delivery-notes' ); ?></th>
+					<th style = 'min-width: 1em;'></th>
+					<th style = 'max-width: 2.25em;'><?php esc_attr_e( 'Quantity', 'woocommerce-delivery-notes' ); ?></th>
 					<th><span><?php esc_attr_e( 'Items', 'woocommerce-delivery-notes' ); ?></span></th>
 				</tr>
 			</thead>
@@ -166,6 +166,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 </div>
 <div class="pickup-info">
 	<span><?php esc_attr_e( 'Pickup Information:', 'woocommerce-delivery-notes' ); ?></span>
+	<span>
+	<?php
+	$cdn_local_pickup_object           = new WC_Local_Pickup_Plus_Orders();
+	$local_pickup                      = wc_local_pickup_plus();
+	$cdn_local_pickup_locations        = $cdn_local_pickup_object->get_order_pickup_data( $order );
+	$cdn_local_pickup__shipping_object = $local_pickup->get_shipping_method_instance();
+	foreach ( $cdn_local_pickup_locations as $pickup_meta ) {
+		foreach ( $pickup_meta as $label => $value ) {
+			if ( 'Pickup Date' === $label ) {
+				$timestamp   = strtotime( $value );
+				$day         = date( 'l', $timestamp );
+				$pickup_date = $value;
+			}
+			if ( 'Pickup Time' === $label ) {
+				$pickup_time = $value;
+			}
+		}
+	}
+	$pickup_time_date = $pickup_date . ',' . $day . ' ' . $pickup_time;
+	echo esc_attr_e( $pickup_time_date, 'woocommerce-delivery-notes' );
+	?>
+	</span>
 </div>
 <div  class ="delivery-info">
 	<span><?php esc_attr_e( 'Packed By: ______', 'woocommerce-delivery-notes' ); ?></span>
