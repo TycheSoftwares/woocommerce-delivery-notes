@@ -209,24 +209,24 @@ add_filter( \'wcdn_order_info_fields\', \'example_removed_payment_method\' );<pr
                 ),
                 6 => array (
 						'question' => 'How can I add some more fields to the order info section? ',
-						'answer'   => 'Use the `wcdn_order_info_fields` filter hook. It returns all the fields as array. Read the WooCommerce documentation to learn how you get custom checkout and order fields. Tip: To get custom meta field values you will most probably need the `get_post_meta( $order->id, \'your_meta_field_name\', true);` function and of course the `your_meta_field_name`. 
+						'answer'   => 'Use the `wcdn_order_info_fields` filter hook. It returns all the fields as array. Read the WooCommerce documentation to learn how you get custom checkout and order fields. Tip: To get custom meta field values you will most probably need the `get_post_meta( $order->get_id(), \'your_meta_field_name\', true);` function and of course the `your_meta_field_name`. 
                         <br/><br/>
                         An example that adds a \'VAT\' and \'Customer Number\' field to the end of the list. Paste the code in the `functions.php` file of your theme:
                         <pre>
 function example_custom_order_fields( $fields, $order ) {
     $new_fields = array();
         
-    if( get_post_meta( $order->id, \'your_meta_field_name\', true ) ) {
+    if( get_post_meta( $order->get_id(), \'your_meta_field_name\', true ) ) {
         $new_fields[\'your_meta_field_name\'] = array( 
             \'label\' => \'VAT\',
-            \'value\' => get_post_meta( $order->id, \'your_meta_field_name\', true )
+            \'value\' => get_post_meta( $order->get_id(), \'your_meta_field_name\', true )
         );
     }
     
-    if( get_post_meta( $order->id, \'your_meta_field_name\', true ) ) {
+    if( get_post_meta( $order->get_id(), \'your_meta_field_name\', true ) ) {
         $new_fields[\'your_meta_field_name\'] = array( 
             \'label\' => \'Customer Number\',
-            \'value\' => get_post_meta( $order->id, \'your_meta_field_name\', true )
+            \'value\' => get_post_meta( $order->get_id(), \'your_meta_field_name\', true )
         );
     }
     
@@ -242,9 +242,9 @@ add_filter( \'wcdn_order_info_fields\', \'example_custom_order_fields\', 10, 2 )
                         
                         <pre>
 function example_product_image( $product ) {	
-    if( isset( $product->id ) && has_post_thumbnail( $product->id ) ) {
+    if( ( '' !== $product->get_id() ) && has_post_thumbnail( $product->get_id() ) ) {
         echo get_the_post_thumbnail(
-            $product->id,
+            $product->get_id(),
             array( 40, 40 ),
             array( \'loading\' => false )
         );
