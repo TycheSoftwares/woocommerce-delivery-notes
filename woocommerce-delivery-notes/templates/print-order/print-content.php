@@ -140,6 +140,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 									<?php
 
+									$product_id   = $item['product_id'];
+									$product_addons = WC_Product_Addons_Helper::get_product_addons( $product_id );
 									if ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) {
 										if ( isset( $item['variation_id'] ) && 0 !== $item['variation_id'] ) {
 											$variation = wc_get_product( $item['product_id'] );
@@ -150,6 +152,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 													}
 													$term_wp        = get_term_by( 'slug', $value, $key );
 													$attribute_name = wc_attribute_label( $key, $variation );
+													foreach ( $product_addons as $addon ) {
+														if ( 'file_upload' === $addon['type'] ) {
+															if ( $key === $addon['name'] ) {
+																$value = wp_basename( $value );
+															}
+														}
+													}
 													if ( isset( $term_wp->name ) ) {
 														echo '<br>' . wp_kses_post( $attribute_name . ':' . $term_wp->name );
 													} else {
@@ -162,6 +171,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 												if ( ! ( 0 === strpos( $key, '_' ) ) ) {
 													if ( is_array( $value ) ) {
 														continue;
+													}
+													foreach ( $product_addons as $addon ) {
+														if ( 'file_upload' === $addon['type'] ) {
+															if ( $key === $addon['name'] ) {
+																$value = wp_basename( $value );
+															}
+														}
 													}
 													echo '<br>' . wp_kses_post( $key . ':' . $value );
 												}
