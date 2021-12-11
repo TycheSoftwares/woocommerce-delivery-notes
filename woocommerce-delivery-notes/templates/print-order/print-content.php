@@ -140,8 +140,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 									<?php
 
-									$product_id   = $item['product_id'];
-									$product_addons = WC_Product_Addons_Helper::get_product_addons( $product_id );
+									$product_addons            = array();
+									$woocommerce_product_addon = 'woocommerce-product-addons/woocommerce-product-addons.php';
+									if ( in_array( $woocommerce_product_addon, apply_filters( 'active_plugins', get_option( 'active_plugins', array() ) ), true ) ) {
+										$product_id     = $item['product_id'];
+										$product_addons = WC_Product_Addons_Helper::get_product_addons( $product_id );
+									}
 									if ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) {
 										if ( isset( $item['variation_id'] ) && 0 !== $item['variation_id'] ) {
 											$variation = wc_get_product( $item['product_id'] );
@@ -152,10 +156,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 													}
 													$term_wp        = get_term_by( 'slug', $value, $key );
 													$attribute_name = wc_attribute_label( $key, $variation );
-													foreach ( $product_addons as $addon ) {
-														if ( 'file_upload' === $addon['type'] ) {
-															if ( $key === $addon['name'] ) {
-																$value = wp_basename( $value );
+													if ( ! empty( $product_addons ) ) {
+														foreach ( $product_addons as $addon ) {
+															if ( 'file_upload' === $addon['type'] ) {
+																if ( $key === $addon['name'] ) {
+																	$value = wp_basename( $value );
+																}
 															}
 														}
 													}
@@ -172,10 +178,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 													if ( is_array( $value ) ) {
 														continue;
 													}
-													foreach ( $product_addons as $addon ) {
-														if ( 'file_upload' === $addon['type'] ) {
-															if ( $key === $addon['name'] ) {
-																$value = wp_basename( $value );
+													if ( ! empty( $product_addons ) ) {
+														foreach ( $product_addons as $addon ) {
+															if ( 'file_upload' === $addon['type'] ) {
+																if ( $key === $addon['name'] ) {
+																	$value = wp_basename( $value );
+																}
 															}
 														}
 													}
