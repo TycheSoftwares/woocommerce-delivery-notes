@@ -20,6 +20,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php
 		// wcdn_head hook.
 		do_action( 'wcdn_head' );
+	if ( 'yes' === get_option( 'wcdn_rtl_invoice', 'no' ) ) {
+		?>
+		<style>
+			body {
+				direction: rtl;
+			}
+			.order-items dt,
+			.order-items dd {
+				float: right;
+			}
+			.content{
+				text-align:right;	
+			}
+			th {
+				text-align:right;
+			}
+		</style>
+		<?php
+	}
 	?>
 </head>
 
