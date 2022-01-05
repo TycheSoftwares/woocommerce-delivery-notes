@@ -257,11 +257,12 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 					),
 
 					array(
-						'title'   => __( 'RtL Invoice Direction', 'woocommerce-delivery-notes' ),
-						'desc'    => __( 'Create the invoice in right to left direction', 'woocommerce-delivery-notes' ),
-						'id'      => 'wcdn_rtl_invoice',
-						'default' => 'no',
-						'type'    => 'checkbox',
+						'title'    => __( 'Text Direction', 'woocommerce-delivery-notes' ),
+						'desc'     => __( 'Print Text from Right to left', 'woocommerce-delivery-notes' ),
+						'id'       => 'wcdn_rtl_invoice',
+						'default'  => 'no',
+						'type'     => 'checkbox',
+						'desc_tip' => __( 'Show text in right to left direction in Invoice, Print Receipt & Delivery note if you are using languages such as Hebrew, Arabic, etc.', 'woocommerce-delivery-notes' ),
 					),
 					array(
 						'type' => 'sectionend',
