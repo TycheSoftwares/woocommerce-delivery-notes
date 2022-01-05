@@ -139,6 +139,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 									</span>
 
 									<?php
+									$item_meta_fields = apply_filters( 'wcdn_product_meta_data', $item['item_meta'], $item );
 
 									$product_addons            = array();
 									$woocommerce_product_addon = 'woocommerce-product-addons/woocommerce-product-addons.php';
@@ -149,7 +150,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 									if ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) {
 										if ( isset( $item['variation_id'] ) && 0 !== $item['variation_id'] ) {
 											$variation = wc_get_product( $item['product_id'] );
-											foreach ( $item['item_meta'] as $key => $value ) {
+											foreach ( $item_meta_fields as $key => $value ) {
 												if ( ! ( 0 === strpos( $key, '_' ) ) ) {
 													if ( is_array( $value ) ) {
 														continue;
@@ -173,7 +174,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 												}
 											}
 										} else {
-											foreach ( $item['item_meta'] as $key => $value ) {
+											foreach ( $item_meta_fields as $key => $value ) {
 												if ( ! ( 0 === strpos( $key, '_' ) ) ) {
 													if ( is_array( $value ) ) {
 														continue;
@@ -192,7 +193,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 											}
 										}
 									} else {
-										$item_meta_new = new WC_Order_Item_Meta( $item['item_meta'], $product );
+										$item_meta_new = new WC_Order_Item_Meta( $item_meta_fields, $product );
 										$item_meta_new->display();
 
 									}
