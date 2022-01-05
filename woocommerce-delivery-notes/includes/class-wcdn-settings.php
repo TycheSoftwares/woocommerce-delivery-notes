@@ -222,20 +222,20 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 					),
 
 					array(
-						'title'    => __( 'Email', 'woocommerce-delivery-notes' ),
-						'desc'     => __( 'Show print link in customer emails', 'woocommerce-delivery-notes' ),
-						'id'       => 'wcdn_email_print_link',
-						'default'  => 'no',
-						'type'     => 'checkbox',
+						'title'         => __( 'Email', 'woocommerce-delivery-notes' ),
+						'desc'          => __( 'Show print link in customer emails', 'woocommerce-delivery-notes' ),
+						'id'            => 'wcdn_email_print_link',
+						'default'       => 'no',
+						'type'          => 'checkbox',
 						'checkboxgroup' => 'start',
 					),
 
 					array(
-						'desc'     => __( 'Show print link in Admin emails', 'woocommerce-delivery-notes' ),
-						'id'       => 'wcdn_admin_email_print_link',
-						'default'  => 'no',
-						'type'     => 'checkbox',
-						'desc_tip' => __( 'This includes the emails for a new, processing and completed order. On top of that the customer and admin invoice emails will also include the link.', 'woocommerce-delivery-notes' ),
+						'desc'          => __( 'Show print link in Admin emails', 'woocommerce-delivery-notes' ),
+						'id'            => 'wcdn_admin_email_print_link',
+						'default'       => 'no',
+						'type'          => 'checkbox',
+						'desc_tip'      => __( 'This includes the emails for a new, processing and completed order. On top of that the customer and admin invoice emails will also include the link.', 'woocommerce-delivery-notes' ),
 						'checkboxgroup' => 'end',
 					),
 
@@ -256,6 +256,14 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 						'checkboxgroup' => 'end',
 					),
 
+					array(
+						'title'    => __( 'Text Direction', 'woocommerce-delivery-notes' ),
+						'desc'     => __( 'Print Text from Right to left', 'woocommerce-delivery-notes' ),
+						'id'       => 'wcdn_rtl_invoice',
+						'default'  => 'no',
+						'type'     => 'checkbox',
+						'desc_tip' => __( 'Show text in right to left direction in Invoice, Print Receipt & Delivery note if you are using languages such as Hebrew, Arabic, etc.', 'woocommerce-delivery-notes' ),
+					),
 					array(
 						'type' => 'sectionend',
 						'id'   => 'display_options',
