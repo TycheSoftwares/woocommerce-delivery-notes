@@ -218,11 +218,7 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 
 						<div id="woocommerce-delivery-notes-bulk-print-message" class="updated">
 							<p><?php wp_kses_post( $message, 'woocommerce-delivery-notes' ); ?>
-							<a href="<?php if ( isset( $_REQUEST['print_url'] ) ) : ?>
-								<?php
-								// phpcs:ignore
-								echo urldecode( esc_url_raw( $_REQUEST['print_url'] ) ); ?>
-							<?php endif; ?>" target="_blank" class="print-preview-button" id="woocommerce-delivery-notes-bulk-print-button"><?php esc_attr_e( 'Print now', 'woocommerce-delivery-notes' ); ?></a> <span class="print-preview-loading spinner"></span></p>
+							<a href="<?php if ( isset( $_REQUEST['print_url'] ) ) : echo urldecode( esc_url_raw( $_REQUEST['print_url'] ) ); endif; // phpcs:ignore ?>" target="_blank" class="print-preview-button" id="woocommerce-delivery-notes-bulk-print-button"><?php esc_attr_e( 'Print now', 'woocommerce-delivery-notes' ); ?></a> <span class="print-preview-loading spinner"></span></p>
 						</div>
 
 						<?php

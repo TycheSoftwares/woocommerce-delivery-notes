@@ -265,7 +265,7 @@ function wcdn_get_order_info( $order ) {
 	$wdn_order_billing_id           = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_billing_email() : $order->billing_email;
 	$wdn_order_billing_phone        = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_billing_phone() : $order->billing_phone;
 
-	if ( 'invoice' === wcdn_get_template_type() && ! empty( $create_invoice_number ) && 'yes' === $create_invoice_number ) {
+	if ( ( 'invoice' === wcdn_get_template_type() || 'order' === wcdn_get_template_type() ) && ! empty( $create_invoice_number ) && 'yes' === $create_invoice_number ) {
 
 		$fields['invoice_number'] = array(
 			'label' => __( 'Invoice Number', 'woocommerce-delivery-notes' ),

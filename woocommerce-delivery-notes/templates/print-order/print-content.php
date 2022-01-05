@@ -140,6 +140,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 									<?php
 									$item_meta_fields = apply_filters( 'wcdn_product_meta_data', $item['item_meta'], $item );
+
+									$product_addons            = array();
+									$woocommerce_product_addon = 'woocommerce-product-addons/woocommerce-product-addons.php';
+									if ( in_array( $woocommerce_product_addon, apply_filters( 'active_plugins', get_option( 'active_plugins', array() ) ), true ) ) {
+										$product_id     = $item['product_id'];
+										$product_addons = WC_Product_Addons_Helper::get_product_addons( $product_id );
+									}
 									if ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) {
 										if ( isset( $item['variation_id'] ) && 0 !== $item['variation_id'] ) {
 											$variation = wc_get_product( $item['product_id'] );
@@ -150,6 +157,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 													}
 													$term_wp        = get_term_by( 'slug', $value, $key );
 													$attribute_name = wc_attribute_label( $key, $variation );
+													if ( ! empty( $product_addons ) ) {
+														foreach ( $product_addons as $addon ) {
+															if ( 'file_upload' === $addon['type'] ) {
+																if ( $key === $addon['name'] ) {
+																	$value = wp_basename( $value );
+																}
+															}
+														}
+													}
 													if ( isset( $term_wp->name ) ) {
 														echo '<br>' . wp_kses_post( $attribute_name . ':' . $term_wp->name );
 													} else {
@@ -162,6 +178,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 												if ( ! ( 0 === strpos( $key, '_' ) ) ) {
 													if ( is_array( $value ) ) {
 														continue;
+													}
+													if ( ! empty( $product_addons ) ) {
+														foreach ( $product_addons as $addon ) {
+															if ( 'file_upload' === $addon['type'] ) {
+																if ( $key === $addon['name'] ) {
+																	$value = wp_basename( $value );
+																}
+															}
+														}
 													}
 													echo '<br>' . wp_kses_post( $key . ':' . $value );
 												}
@@ -203,13 +228,62 @@ if ( ! defined( 'ABSPATH' ) ) {
 								<?php do_action( 'wcdn_order_item_after', $product, $order, $item ); ?>
 							</td>
 							<td class="product-item-price">
-								<span><?php echo wp_kses_post( wcdn_get_formatted_item_price( $order, $item ) ); ?></span>
+								<span>
+								<?php
+								$product_meta_datas = $item->get_meta_data();
+								$price_individually = '';
+								$no_price           = false;
+								if ( is_array( $product_meta_datas ) ) {
+									foreach ( $product_meta_datas as $product_meta_data ) {
+										if ( isset( $product_meta_data->key ) ) {
+											if ( '_bundled_items' === $product_meta_data->key || '_composite_children' === $product_meta_data->key ) {
+													$no_price = true;
+											}
+											if ( '_bundled_item_priced_individually' === $product_meta_data->key || '_component_priced_individually' === $product_meta_data->key ) {
+												$price_individually = $product_meta_data->value;
+											}
+										}
+									}
+								}
+								if ( 'no' === $price_individually ) {
+									echo '';
+								} elseif ( true === $no_price ) {
+									echo wp_kses_post( $order->get_formatted_line_subtotal( $item ) );
+								} else {
+									echo wp_kses_post( wcdn_get_formatted_item_price( $order, $item ) );
+								}
+								?>
+								</span>
 							</td>
 							<td class="product-quantity">
-								<span><?php echo esc_attr( apply_filters( 'wcdn_order_item_quantity', $item['qty'], $item ) ); ?></span>
+								<span>
+								<?php
+								$product_meta_datas = $item->get_meta_data();
+								if ( is_array( $product_meta_datas ) ) {
+									foreach ( $product_meta_datas as $product_meta_data ) {
+										if ( isset( $product_meta_data->key ) ) {
+											if ( '_composite_children' === $product_meta_data->key || '_bundled_items' === $product_meta_data->key ) {
+												$item['qty'] = 0;
+											} else {
+												continue;
+											}
+										}
+									}
+								}
+								if ( 0 === $item['qty'] ) {
+									echo '';
+								} else {
+									echo esc_attr( apply_filters( 'wcdn_order_item_quantity', $item['qty'], $item ) );
+								}
+								?>
+								</span>
 							</td>
 							<td class="product-price">
-								<span><?php echo wp_kses_post( $order->get_formatted_line_subtotal( $item ) ); ?></span>
+								<span>
+								<?php
+								echo wp_kses_post( $order->get_formatted_line_subtotal( $item ) );
+								?>
+								</span>
 							</td>
 						</tr>
 					<?php endforeach; ?>
@@ -228,7 +302,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<td class="total-item-price"></td>
 							<?php if ( 'Total' === $total['label'] ) { ?>
 							<td class="total-quantity"><?php echo wp_kses_post( $order->get_item_count() ); ?></td>
-							<?php } else {  ?>
+							<?php } else { ?>
 							<td class="total-quantity"></td>
 							<?php } ?>
 							<td class="total-price"><span><?php echo wp_kses_post( $total['value'] ); ?></span></td>
