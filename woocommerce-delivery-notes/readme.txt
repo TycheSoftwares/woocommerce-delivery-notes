@@ -237,7 +237,7 @@ add_filter( 'wcdn_order_info_fields', 'example_removed_payment_method' );
 
 =  How can I add some more fields to the order info section? =
 
-Use the `wcdn_order_info_fields` filter hook. It returns all the fields as array. Read the WooCommerce documentation to learn how you get custom checkout and order fields. Tip: To get custom meta field values you will most probably need the `get_post_meta( $order->id, 'your_meta_field_name', true);` function and of course the `your_meta_field_name`. 
+Use the `wcdn_order_info_fields` filter hook. It returns all the fields as array. Read the WooCommerce documentation to learn how you get custom checkout and order fields. Tip: To get custom meta field values you will most probably need the `get_post_meta( $order->get_id(), 'your_meta_field_name', true);` function and of course the `your_meta_field_name`. 
 
 An example that adds a 'VAT' and 'Customer Number' field to the end of the list. Paste the code in the `functions.php` file of your theme:
 
@@ -245,17 +245,17 @@ An example that adds a 'VAT' and 'Customer Number' field to the end of the list.
 function example_custom_order_fields( $fields, $order ) {
 	$new_fields = array();
 		
-	if( get_post_meta( $order->id, 'your_meta_field_name', true ) ) {
+	if( get_post_meta( $order->get_id(), 'your_meta_field_name', true ) ) {
 		$new_fields['your_meta_field_name'] = array( 
 			'label' => 'VAT',
-			'value' => get_post_meta( $order->id, 'your_meta_field_name', true )
+			'value' => get_post_meta( $order->get_id(), 'your_meta_field_name', true )
 		);
 	}
 	
-	if( get_post_meta( $order->id, 'your_meta_field_name', true ) ) {
+	if( get_post_meta( $order->get_id(), 'your_meta_field_name', true ) ) {
 		$new_fields['your_meta_field_name'] = array( 
 			'label' => 'Customer Number',
-			'value' => get_post_meta( $order->id, 'your_meta_field_name', true )
+			'value' => get_post_meta( $order->get_id(), 'your_meta_field_name', true )
 		);
 	}
 	
@@ -272,8 +272,8 @@ An example that adds a 40px large product image. Paste the code in the `function
 
 `
 function example_product_image( $product ) {	
-	if( isset( $product->id ) && has_post_thumbnail( $product->id ) ) {
-		 echo get_the_post_thumbnail( $product->id, array( 40, 40 ), array( 'loading' => false ) );
+	if( ( '' !== $product->get_id() ) && has_post_thumbnail( $product->get_id() ) ) {
+		 echo get_the_post_thumbnail( $product->get_id(), array( 40, 40 ), array( 'loading' => false ) );
 	}
 }
 add_action( 'wcdn_order_item_before', 'example_product_image' );
