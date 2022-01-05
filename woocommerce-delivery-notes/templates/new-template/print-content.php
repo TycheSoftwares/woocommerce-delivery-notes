@@ -164,6 +164,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</tbody>
 </table>
 </div>
+<?php
+if ( class_exists( 'WC_Local_Pickup_Plus_Orders' ) ) {
+	?>
 <div class="pickup-info">
 	<span><?php esc_attr_e( 'Pickup Information:', 'woocommerce-delivery-notes' ); ?></span>
 	<span>
@@ -194,6 +197,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	&nbsp;&nbsp;
 	<span><?php esc_attr_e( 'Delivered By: ______', 'woocommerce-delivery-notes' ); ?></span>
 </div>
+	<?php
+}
+?>
 <br>
 <br>
 <center>
