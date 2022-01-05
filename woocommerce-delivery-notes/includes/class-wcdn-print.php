@@ -169,6 +169,12 @@ if ( ! class_exists( 'WCDN_Print' ) ) {
 					'type' => 'default',
 					'path' => WooCommerce_Delivery_Notes::$plugin_path . 'templates/print-order/',
 					'url'  => WooCommerce_Delivery_Notes::$plugin_url . 'templates/print-order/',
+				),
+				array(
+					'name' => __( 'Custom template', 'woocommerce-delivery-notes' ),
+					'type' => 'new_template',
+					'path' => WooCommerce_Delivery_Notes::$plugin_path . 'templates/new-template/',
+					'url'  => WooCommerce_Delivery_Notes::$plugin_url . 'templates/new-template/',
 				)
 			);
 
@@ -315,10 +321,17 @@ if ( ! class_exists( 'WCDN_Print' ) ) {
 		 * Build the template locations
 		 */
 		public function build_template_locations() {
-			$wc_template_directory = WC_TEMPLATE_PATH . 'print-order/';
-
 			// Get the paths for custom styles.
-			$settings_type = get_option( 'wcdn_template_style' );
+			$settings_type = get_option( 'wcdn_template_style', '' );
+			if ( 'default' === $settings_type || '' === $settings_type ) {
+				$wc_template_directory = WC_TEMPLATE_PATH . 'print-order/';
+				$plugin_path           = self::$template_styles[0]['path'];
+				$plugin_url            = self::$template_styles[0]['url'];
+			} elseif ( 'new_template' === $settings_type ) {
+				$wc_template_directory = WC_TEMPLATE_PATH . 'new-template/';
+				$plugin_path           = self::$template_styles[1]['path'];
+				$plugin_url            = self::$template_styles[1]['url'];
+			}
 			$settings_path = null;
 			$settings_url  = null;
 			if ( isset( $settings_type ) && 'default' !== $settings_type ) {
@@ -349,11 +362,10 @@ if ( ! class_exists( 'WCDN_Print' ) ) {
 				),
 
 				'plugin'      => array(
-					'path' => self::$template_styles[0]['path'],
-					'url'  => self::$template_styles[0]['url'],
+					'path' => $plugin_path,
+					'url'  => $plugin_url,
 				),
 			);
-
 			return $locations;
 		}
 
