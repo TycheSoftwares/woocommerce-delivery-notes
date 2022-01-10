@@ -242,7 +242,7 @@ add_filter( \'wcdn_order_info_fields\', \'example_custom_order_fields\', 10, 2 )
                         
                         <pre>
 function example_product_image( $product ) {	
-    if( ( '' !== $product->get_id() ) && has_post_thumbnail( $product->get_id() ) ) {
+    if( isset( $product->get_id() ) && ( \'\' !== $product->get_id() ) && has_post_thumbnail( $product->get_id ) ) {
         echo get_the_post_thumbnail(
             $product->get_id(),
             array( 40, 40 ),
