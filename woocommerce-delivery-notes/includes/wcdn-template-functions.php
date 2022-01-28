@@ -640,4 +640,28 @@ function wcdn_print_extra_fields( $item ) {
 	}
 
 }
+
+/**
+ * Function to show the correct quantity on the frontend when Composite/Bundle products are there.
+ *
+ * @param int      $count Total Quantity.
+ * @param string   $type Item Type.
+ * @param WC_Order $order Order object.
+ */
+function wcdn_order_item_count( $count, $type, $order ) {
+	global $wp;
+	// Check that print button is been clicked or not.
+	if ( ! empty( $wp->query_vars['print-order'] ) ) {
+		if ( in_array( 'woocommerce-composite-products/woocommerce-composite-products.php', apply_filters( 'active_plugins', get_option( 'active_plugins', array() ) ), true ) || in_array( 'woocommerce-product-bundles/woocommerce-product-bundles.php', apply_filters( 'active_plugins', get_option( 'active_plugins', array() ) ), true ) ) {
+			if ( function_exists( 'is_account_page' ) && is_account_page() ) {
+				$count = 0;
+				foreach ( $order->get_items() as $item ) {
+					$count += $item->get_quantity();
+				}
+			}
+		}
+	}
+	return $count;
+}
+add_filter( 'woocommerce_get_item_count', 'wcdn_order_item_count', 20, 3 );
 ?>
