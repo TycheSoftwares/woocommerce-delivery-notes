@@ -4,7 +4,7 @@ Contributors: ashokrane, tychesoftwares, rashmim, shasvat
 Donate link: https://www.paypal.me/TycheSoftwares
 Tags: packing slips, invoice, pdf invoice, delivery notes, woocommerce print invoice, print, pdf, invoices
 Requires at least: 4.0
-Tested up to: 5.8
+Tested up to: 5.9
 Author URI: https://www.tychesoftwares.com/
 Stable tag: trunk
 License: GPLv3 or later
@@ -337,6 +337,15 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 6. Customers can also print the order.
 
 == Changelog ==
+
+= 4.6.5 (08.02.2022) =
+* Enhancement :- Added an option to print the invoice text in Right to Left direction.
+* Enhancement :- Added a filter called 'wcdn_product_meta_data' to remove the meta fields of the product in the invoice.
+* Fix :- Quantity column was showing wrong total in the print invoice on the frontend when the invoice contains WooCommerce Composite products.
+* Fix :- Extra tabs were added in the bulk action print link.
+* Fix :- When using the file field in the WooCommerce Product Addons plugin whole path was getting printed instead of the filename.
+* Fix :- The invoice number was not appearing when we open the invoice from the Order email sent to the customer.
+* Fix :- Debug log errors are been fixed.
 
 = 4.6.4 (21.07.2021) =
 * Fix :- After updating to v4.6.3 , fatal error was coming in some sites where the invoice template has been customized by copying print-content.php file in the theme folder. This is fixed now.
