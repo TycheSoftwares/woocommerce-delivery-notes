@@ -139,7 +139,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 									</span>
 
 									<?php
-									$item_meta_fields = apply_filters( 'wcdn_product_meta_data', $item['item_meta'], $item );
+									$item_meta_fields = wc_display_item_meta( $item, apply_filters( 'wcdn_product_meta_data', $item['item_meta'] , $item ) ); 
+									if ( $item_meta_fields === null ) {
+										$item_meta_fields = array();
+									}
 
 									$product_addons            = array();
 									$woocommerce_product_addon = 'woocommerce-product-addons/woocommerce-product-addons.php';
@@ -198,7 +201,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 									}
 									?>
-									<br>
 									<dl class="extras">
 										<?php if ( $product && $product->exists() && $product->is_downloadable() && $order->is_download_permitted() ) : ?>
 
