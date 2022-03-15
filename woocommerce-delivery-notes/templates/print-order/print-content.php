@@ -36,6 +36,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<address>
 
 				<?php
+				add_filter( 'wcdn_address_billing', 'change_address_billing', 10, 2 );
+				function change_address_billing( $billing_address, $order ) {
+				   $billing_address =  'Address 1: ' . $order->get_billing_address_1() . ',<br>'.
+									   'Address 2: ' . $order->get_billing_address_2() . ',<br>'. 
+									   'City:'. $order->get_billing_city() . ',<br>'. 
+							           'State: ' . $order->get_billing_state();
+				return $billing_address;
+			}
 				if ( ! $order->get_formatted_billing_address() ) {
 					esc_attr_e( 'N/A', 'woocommerce-delivery-notes' );
 				} else {
@@ -51,6 +59,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<address>
 
 				<?php
+				add_filter( 'wcdn_address_shipping', 'change_address_shipping', 10, 2 );
+				function change_address_shipping( $shipping_address, $order ) {
+					$shipping_address = 'Address 1: ' . $order->get_shipping_address_1() . ',<br>'.
+										'Address 2: ' . $order->get_shipping_address_2() . ',<br>'. 
+										'City:'. $order->get_shipping_city() . ',<br>'. 
+										'State: ' . $order->get_shipping_state();
+                     return $shipping_address;
+				}
 				if ( ! $order->get_formatted_shipping_address() ) {
 					esc_attr_e( 'N/A', 'woocommerce-delivery-notes' );
 				} else {
