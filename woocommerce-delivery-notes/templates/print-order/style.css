@@ -47,13 +47,13 @@ h4 {
 }
 
 ul {
-	margin-bottom: 1.25em;
+	margin-bottom: 0.1em;
 }
 
 li,
 dt,
 dd  {
-	padding: 0.375em 0;
+	padding: 0.1em 0;
 }
 
 dt {
