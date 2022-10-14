@@ -200,12 +200,33 @@ function wcdn_company_logo() {
 	if ( $attachment_id ) {
 		$attachment_src = wp_get_attachment_image_src( $attachment_id, 'full', false );
 
-		// resize the image to a 1/4 of the original size to have a printing point density of about 288ppi.
+	  	// resize the image to a 1/4 of the original size to have a printing point density of about 288ppi.
 		?>
-		<img src="<?php echo esc_url( $attachment_src[0] ); ?>" width="<?php echo esc_attr( round( $attachment_src[1] / 4 ) ); ?>" height="<?php echo esc_attr( round( $attachment_src[2] / 4 ) ); ?>" alt="<?php echo esc_attr( $company ); ?>" />
+		<style>
+         /* hide mobile version by default */
+        .logo .mobile {
+         display: none;
+        }
+         /* when screen is less than 600px wide show mobile version and hide desktop */
+        @media ( max-width: 600px ) {
+         .logo .mobile {
+           display: block;
+        }
+         .logo .desktop {
+           display: none;
+       }
+     }
+       </style>
+
+      <div class="logo">
+        <img src="<?php echo esc_url( $attachment_src[0] ); ?>"  class="desktop"  width="<?php echo esc_attr( round( $attachment_src[1] / 4 ) ); ?>" height="<?php echo esc_attr( round( $attachment_src[2] / 4 ) ); ?>" alt="<?php echo esc_attr( $company ); ?>" />
+        <img src="<?php echo esc_url( $attachment_src[0] ); ?>" class="mobile" width="<?php echo esc_attr( round( $attachment_src[1] / 4 ) ); ?>" height="<?php echo esc_attr( round( $attachment_src[2] / 4 ) ); ?>" alt="<?php echo esc_attr( $company ); ?>" />
+      </div>
+		
 		<?php
+		
 	}
-}
+}  
 
 /**
  * Return default title name of Delivery Note
