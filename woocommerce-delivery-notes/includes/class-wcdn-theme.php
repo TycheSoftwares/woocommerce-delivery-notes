@@ -77,7 +77,7 @@ if ( ! class_exists( 'WCDN_Theme' ) ) {
 		 * @param int $order_id Order ID.
 		 */
 		public function create_print_button_order_page( $order_id ) {
-			$order                = new WC_Order( $order_id );
+			$order                = wc_get_order( $order_id );
 			$wdn_order_billing_id = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_billing_email() : $order->billing_email;
 			// Output the button only when the option is enabled.
 			if ( 'yes' === get_option( 'wcdn_print_button_on_view_order_page' ) ) {

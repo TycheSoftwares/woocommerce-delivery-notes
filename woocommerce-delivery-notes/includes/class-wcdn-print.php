@@ -538,7 +538,7 @@ if ( ! class_exists( 'WCDN_Print' ) ) {
 
 			// Check permissons of the user to determine if the orders should be populated.
 			foreach ( $posts as $post ) {
-				$order = new WC_Order( $post->ID );
+				$order = wc_get_order( $post->ID );
 
 				$wdn_order_id = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_id() : $order->id;
 				// Logged in users.
@@ -586,7 +586,6 @@ if ( ! class_exists( 'WCDN_Print' ) ) {
 			// Add the invoice number to the order when it doesn't yet exist.
 			$meta_key   = '_wcdn_invoice_number';
 			$meta_added = add_post_meta( $order_id, $meta_key, $invoice_prefix . $invoice_count . $invoice_suffix, true );
-
 			// Update the total count.
 			if ( $meta_added ) {
 				update_option( 'wcdn_invoice_number_count', $invoice_count + 1 );
@@ -604,10 +603,10 @@ if ( ! class_exists( 'WCDN_Print' ) ) {
 		public function get_order_invoice_date( $order_id ) {
 			// Add the invoice date to the order when it doesn't yet exist.
 			$meta_key   = '_wcdn_invoice_date';
-			$meta_added = add_post_meta( $order_id, $meta_key, time(), true );
+			$meta_added = $order->add_post_meta( $order_id, $meta_key, time(), true );
 
 			// Get the invoice date.
-			$meta_date      = get_post_meta( $order_id, $meta_key, true );
+			$meta_date      = $order->get_meta( $meta_key );
 			$formatted_date = date_i18n( get_option( 'date_format' ), $meta_date );
 			return apply_filters( 'wcdn_order_invoice_date', $formatted_date, $meta_date );
 		}
