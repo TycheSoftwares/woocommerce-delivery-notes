@@ -253,7 +253,7 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 			</div>
 			<?php
 			$create_invoice_number = get_option( 'wcdn_create_invoice_number' );
-			$order = wc_get_order( $order_id );
+			$order = wc_get_order( $post_id );
 			$has_invoice_number    = get_post_meta('_wcdn_invoice_number' );
 			if ( ! empty( $create_invoice_number ) && 'yes' === $create_invoice_number && $has_invoice_number ) :
 				$invoice_number = wcdn_get_order_invoice_number( $post_id );
