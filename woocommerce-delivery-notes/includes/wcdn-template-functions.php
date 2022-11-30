@@ -537,6 +537,7 @@ function wcdn_remove_semicolon_from_totals( $total_rows, $order ) {
  */
 function wcdn_remove_payment_method_from_totals( $total_rows, $order ) {
 	unset( $total_rows['payment_method'] );
+	unset( $total_rows['refund_0'] );
 	return $total_rows;
 }
 
