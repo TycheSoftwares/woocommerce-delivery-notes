@@ -1,10 +1,10 @@
 	=== Print Invoice & Delivery Notes for WooCommerce ===
 
-Contributors: ashokrane, tychesoftwares, rashmim, shasvat
+Contributors: ashokrane, tychesoftwares
 Donate link: https://www.paypal.me/TycheSoftwares
 Tags: packing slips, invoice, pdf invoice, delivery notes, woocommerce print invoice, print, pdf, invoices
 Requires at least: 4.0
-Tested up to: 5.9
+Tested up to: 6.1
 Author URI: https://www.tychesoftwares.com/
 Stable tag: trunk
 License: GPLv3 or later
@@ -337,6 +337,12 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 6. Customers can also print the order.
 
 == Changelog ==
+
+= 4.7.0 (06.12.2022) =
+* Fix :- Logo was not showing on Android phone earlier. This is fixed now.
+* Fix :- Display labels for shipping and billing address
+* Fix :- Removed redundant "Refund" line. 
+* Fix :- Compatibility with WooCommerce Product Addons plugin. All the fields from the plugin will be shown in the Invoice, Receipt & Delivery Note.
 
 = 4.6.5 (08.02.2022) =
 * Enhancement :- Added an option to print the invoice text in Right to Left direction.
