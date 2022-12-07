@@ -40,17 +40,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				if ( ! $order->get_formatted_billing_address() ) {
 					esc_attr_e( 'N/A', 'woocommerce-delivery-notes' );
 				} else {
-					$country = $order->get_billing_country();
-					$state = $order->get_billing_state();
-					$full_name_state =  WC()->countries->get_states( $country )[$state];
-			    	$billing_address = 'Company : ' . $order->get_billing_company() . '<br>' .
-									   'Name : ' . $order->get_formatted_billing_full_name() . '<br>' .
-									   'Address 1: ' . $order->get_billing_address_1() .',<br>' . 
-									   'Address 2: ' . $order->get_billing_address_2() . ',<br>' . 
-									   'City: ' . $order->get_billing_city() . ' ' . $order->get_billing_postcode() .',<br>' . 
-									   'State: ' . $full_name_state . '.';
-                       
-					 echo wp_kses_post( apply_filters( 'wcdn_address_billing', $billing_address , $order ) );
+					echo wp_kses_post( apply_filters( 'wcdn_address_billing', $order->get_formatted_billing_address(), $order ) );
 				}
 				?>
 
@@ -65,17 +55,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				if ( ! $order->get_formatted_shipping_address() ) {
 					esc_attr_e( 'N/A', 'woocommerce-delivery-notes' );
 				} else {
-					$country = $order->get_shipping_country();
-					$state = $order->get_shipping_state();
-					$full_name_state =  WC()->countries->get_states( $country )[$state];
-					$shipping_address = 'Company : ' . $order->get_shipping_company() . '<br>' .
-										'Name : ' . $order->get_formatted_shipping_full_name() . '<br>' .
-										'Address 1: ' . $order->get_shipping_address_1() .',<br>' . 
-										'Address 2: ' . $order->get_shipping_address_2() . ',<br>' . 
-										'City: ' . $order->get_shipping_city() . ' ' . $order->get_shipping_postcode() .',<br>' . 
-										'State: ' . $full_name_state . '.' ;
-				
-					echo wp_kses_post( apply_filters( 'wcdn_address_shipping', $shipping_address , $order ) );
+					echo wp_kses_post( apply_filters( 'wcdn_address_shipping', $order->get_formatted_shipping_address(), $order ) );
 				}
 				?>
 
