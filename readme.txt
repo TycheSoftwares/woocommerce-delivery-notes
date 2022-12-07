@@ -338,6 +338,9 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 
 == Changelog ==
 
+= 4.7.1 (07.12.2022) =
+* Fix :- Fix :- Removed the labels for shipping and billing address. This was added in 4.7.0, which is now reverted back.
+
 = 4.7.0 (06.12.2022) =
 * Fix :- Logo was not showing on Android phone earlier. This is fixed now.
 * Fix :- Display labels for shipping and billing address
