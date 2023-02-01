@@ -137,7 +137,7 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 				return;
 			}
 			// stop if the action is not of bulk printing.
-			if( ! in_array( $_REQUEST['action'], array( 'wcdn_print_invoice', 'wcdn_print_delivery-note', 'wcdn_print_receipt' ) ) ) {
+			if ( ! in_array( $_REQUEST['action'], array( 'wcdn_print_invoice', 'wcdn_print_delivery-note', 'wcdn_print_receipt' ) ) ) { // phpcs:ignore
 				return;
 			}
 			// only for specified actions.
@@ -207,21 +207,23 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 			if ( $this->is_order_edit_page() ) {
 				foreach ( WCDN_Print::$template_registrations as $template_registration ) {
 					if ( isset( $_REQUEST[ 'printed_' . $template_registration['type'] ] ) ) {
+						
 						// use singular or plural form.
-						$total = isset( $_REQUEST['total'] ) ? absint( $_REQUEST['total'] ) : 0;
-						if ( $total <= 1 ) {
-							$message = $template_registration['labels']['message'];
-						} else {
-							$message = $template_registration['labels']['message_plural'];
+						$total   = isset( $_REQUEST['total'] ) ? absint( $_REQUEST['total'] ) : 0;
+						$message = $total <= 1 ? $message = $template_registration['labels']['message'] : $template_registration['labels']['message_plural'];
+
+						// Print URL - Fix Issue #214: Reflected XSS Vulnerability in Plugin.
+						$print_url = isset( $_REQUEST['print_url'] ) ? $_REQUEST['print_url'] : ''; // phpcs:ignore
+						$print_url = '' !== $print_url && strtolower( esc_url_raw( $print_url ) ) === strtolower( $print_url ) ? esc_url_raw( $print_url ) : '';
+
+						if ( '' !== $print_url ) {
+							?>
+							<div id="woocommerce-delivery-notes-bulk-print-message" class="updated">
+								<p><?php wp_kses_post( $message, 'woocommerce-delivery-notes' ); ?>
+								<a href="<?php echo $print_url; // phpcs:ignore ?>" target="_blank" class="print-preview-button" id="woocommerce-delivery-notes-bulk-print-button"><?php esc_attr_e( 'Print now', 'woocommerce-delivery-notes' ); ?></a> <span class="print-preview-loading spinner"></span></p>
+							</div>
+							<?php
 						}
-						?>
-
-						<div id="woocommerce-delivery-notes-bulk-print-message" class="updated">
-							<p><?php wp_kses_post( $message, 'woocommerce-delivery-notes' ); ?>
-							<a href="<?php if ( isset( $_REQUEST['print_url'] ) ) : echo urldecode( esc_url_raw( $_REQUEST['print_url'] ) ); endif; // phpcs:ignore ?>" target="_blank" class="print-preview-button" id="woocommerce-delivery-notes-bulk-print-button"><?php esc_attr_e( 'Print now', 'woocommerce-delivery-notes' ); ?></a> <span class="print-preview-loading spinner"></span></p>
-						</div>
-
-						<?php
 						break;
 					}
 				}
@@ -269,7 +271,4 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 		}
 
 	}
-
 }
-
-?>
