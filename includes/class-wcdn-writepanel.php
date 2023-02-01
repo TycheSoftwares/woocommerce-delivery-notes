@@ -134,11 +134,11 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 		public function my_bulk_action_handler( $redirect_to, $doaction, $post_ids ) {
 			// stop if there are no post ids.
 			if ( ! isset( $_REQUEST['post'] ) ) {
-				return;
+				return $redirect_to;
 			}
 			// stop if the action is not of bulk printing.
 			if ( ! in_array( $_REQUEST['action'], array( 'wcdn_print_invoice', 'wcdn_print_delivery-note', 'wcdn_print_receipt' ) ) ) { // phpcs:ignore
-				return;
+				return $redirect_to;
 			}
 			// only for specified actions.
 			foreach ( WCDN_Print::$template_registrations as $template_registration ) {
@@ -149,7 +149,7 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 				}
 			}
 			if ( ! isset( $report_action ) ) {
-				return;
+				return $redirect_to;
 			}
 
 			// security check.
@@ -157,7 +157,7 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 
 			// get referrer.
 			if ( ! wp_get_referer() ) {
-				return;
+				return $redirect_to;
 			}
 
 			// filter the referer args.
