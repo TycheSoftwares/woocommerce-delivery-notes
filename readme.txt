@@ -4,7 +4,7 @@ Contributors: ashokrane, tychesoftwares
 Donate link: https://www.paypal.me/TycheSoftwares
 Tags: packing slips, invoice, pdf invoice, delivery notes, woocommerce print invoice, print, pdf, invoices
 Requires at least: 4.0
-Tested up to: 6.1
+Tested up to: 6.1.1
 Author URI: https://www.tychesoftwares.com/
 Stable tag: trunk
 License: GPLv3 or later
@@ -337,6 +337,10 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 6. Customers can also print the order.
 
 == Changelog ==
+
+= 4.7.2 (02.02.2023) =
+* Fix - Fixed a Reflected XSS vulnerability in the plugin.
+* Fix - Fixed a fatal error which occurs when plugins apart from ours are customizing the Bulk Actions on the WooCommerce Orders page.
 
 = 4.7.1 (07.12.2022) =
 * Fix :- Fix :- Removed the labels for shipping and billing address. This was added in 4.7.0, which is now reverted back.
