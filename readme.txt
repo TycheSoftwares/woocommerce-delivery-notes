@@ -338,6 +338,9 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 
 == Changelog ==
 
+= 4.7.3 (21.03.2023) =
+* Fix - Cross-Site Request Forgery vulnerability in the plugin.
+
 = 4.7.2 (02.02.2023) =
 * Fix - Fixed a Reflected XSS vulnerability in the plugin.
 * Fix - Fixed a fatal error which occurs when plugins apart from ours are customizing the Bulk Actions on the WooCommerce Orders page.
