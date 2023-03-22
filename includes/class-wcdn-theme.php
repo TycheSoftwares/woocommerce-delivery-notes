@@ -41,6 +41,19 @@ if ( ! class_exists( 'WCDN_Theme' ) ) {
 			add_action( 'woocommerce_thankyou', array( $this, 'create_print_button_order_page' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts' ) );
 			add_action( 'woocommerce_email_after_order_table', array( $this, 'add_email_print_url' ), 100, 3 );
+			add_filter( 'woocommerce_email_attachments', array( $this, 'attach_pdf_to_emails' ), 10, 4 );
+		}
+
+		/**
+		 * Attch pdf to email.
+		 */
+		function attach_pdf_to_emails( $attachments, $email_id, $order, $email ) {
+	
+		        $upload_dir = wp_upload_dir();
+		        create_pdf( $order );
+		        $attachments[] = $upload_dir['basedir'] . "/wcdn/invoice/abc.pdf";
+	
+		    return $attachments;
 		}
 
 		/**
@@ -48,8 +61,8 @@ if ( ! class_exists( 'WCDN_Theme' ) ) {
 		 */
 		public function add_scripts() {
 			if ( is_account_page() || is_order_received_page() || $this->is_woocommerce_tracking_page() ) {
-				wp_enqueue_script( 'woocommerce-delivery-notes-print-link', WooCommerce_Delivery_Notes::$plugin_url . 'js/jquery.print-link.js', array( 'jquery' ), WooCommerce_Delivery_Notes::$plugin_version, false );
-				wp_enqueue_script( 'woocommerce-delivery-notes-theme', WooCommerce_Delivery_Notes::$plugin_url . 'js/theme.js', array( 'jquery', 'woocommerce-delivery-notes-print-link' ), WooCommerce_Delivery_Notes::$plugin_version, false );
+				wp_enqueue_script( 'woocommerce-delivery-notes-print-link', WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/jquery.print-link.js', array( 'jquery' ), WooCommerce_Delivery_Notes::$plugin_version, false );
+				wp_enqueue_script( 'woocommerce-delivery-notes-theme', WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/theme.js', array( 'jquery', 'woocommerce-delivery-notes-print-link' ), WooCommerce_Delivery_Notes::$plugin_version, false );
 			}
 		}
 

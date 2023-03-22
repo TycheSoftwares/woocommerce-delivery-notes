@@ -36,7 +36,7 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 		 *
 		 * @var string $plugin_version Current plugin version number
 		 */
-		public static $plugin_version = '4.7.3';
+		public static $plugin_version = '5.0.0';
 
 		/**
 		 * Plugin URL on current installation
@@ -183,10 +183,12 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 		}
 
 		/**
-		 * Function used to init Template Functions.
+		 * Function used to init Template Functions. 
 		 * This makes them pluggable by plugins and themes.
 		 */
 		public function include_template_functions() {
+			include_once 'admin/wcdn-admin-function.php';
+			include_once 'front/wcdn-front-function.php';
 			include_once 'wcdn-template-functions.php';
 			include_once 'wcdn-template-hooks.php';
 		}
@@ -201,6 +203,20 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 				load_textdomain( self::$plugin_text_domain, $mo_file );
 			}
 
+			$upload_path = wp_upload_dir()['basedir'];
+			//Create folders to store all document.
+			if (!file_exists($upload_path.'/wcdn')) {
+			    mkdir($upload_path.'/wcdn', 0777, true);
+			}
+			if (!file_exists($upload_path.'/wcdn/invoice')) {
+			    mkdir($upload_path.'/wcdn/invoice', 0777, true);
+			}
+			if (!file_exists($upload_path.'/wcdn/receipt')) {
+			    mkdir($upload_path.'/wcdn/receipt', 0777, true);
+			}
+			if (!file_exists($upload_path.'/wcdn/deliverynote')) {
+			    mkdir($upload_path.'/wcdn/deliverynote', 0777, true);
+			}
 			// Otherwise load them from the plugin folder.
 			load_plugin_textdomain( self::$plugin_text_domain, false, dirname( self::$plugin_basefile ) . '/languages/' );
 		}
@@ -331,35 +347,123 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 		public function update() {
 			$option_version = get_option( 'wcdn_version', '1' );
 
+			if( isset( $_FILES[ 'shop_logo' ] ) && !empty( $_FILES[ 'shop_logo' ] )) {
+				$upload = wp_handle_upload( 
+								$_FILES[ 'shop_logo' ], 
+								array( 'test_form' => false ) 
+							);
+				if ( empty( $upload[ 'error' ] ) ) {
+					$attachment_id = wp_insert_attachment(
+									array(
+										'guid'           => $upload[ 'url' ],
+										'post_mime_type' => $upload[ 'type' ],
+										'post_title'     => basename( $upload[ 'file' ] ),
+										'post_content'   => '',
+										'post_status'    => 'inherit',
+									),
+									$upload[ 'file' ]
+								);
+
+					wp_update_attachment_metadata(
+						$attachment_id,
+						wp_generate_attachment_metadata( $attachment_id, $upload[ 'file' ] )
+					);
+					update_option( 'wcdn_company_logo_image_id', $attachment_id );
+					$_POST['wcdn_general']['shop_logo'] = $attachment_id;
+				}
+			}
+			
+			// update_option( 'wcdn_invoice_number_count', );
+			// update_option( 'wcdn_rtl_invoice', );
+			
+
+			if ( isset( $_POST['wcdn_general'] ) ) {
+				update_option( 'wcdn_print_order_page_endpoint', $_POST['wcdn_general']['page_endpoint'] );
+				update_option( 'wcdn_footer_imprint', $_POST['wcdn_general']['shop_footer'] );
+				update_option( 'wcdn_policies_conditions', $_POST['wcdn_general']['shop_policy']);
+				update_option( 'wcdn_personal_notes', $_POST['wcdn_general']['shop_complimentry_close']);
+				update_option( 'wcdn_company_address', $_POST['wcdn_general']['shop_address'] );
+				update_option( 'wcdn_custom_company_name', $_POST['wcdn_general']['shop_name']);
+				update_option( 'wcdn_general_settings', $_POST['wcdn_general'] );
+				if(isset($_POST['wcdn_general']['view_account'])) { 
+					update_option( 'wcdn_print_button_on_my_account_page', 'yes');
+				} else {
+					update_option( 'wcdn_print_button_on_my_account_page', 'no');
+				}
+				if(isset($_POST['wcdn_general']['view_order'])) { 
+					update_option( 'wcdn_print_button_on_view_order_page', 'yes');
+				} else {
+					update_option( 'wcdn_print_button_on_view_order_page', 'no');
+				}
+				
+				if(isset($_POST['wcdn_general']['print_customer'])) { 
+					update_option( 'wcdn_email_print_link', 'yes');
+				} else {
+					update_option( 'wcdn_email_print_link', 'no');
+				}
+				if(isset($_POST['wcdn_general']['print_admin'])) { 
+					update_option( 'wcdn_admin_email_print_link', 'yes');
+				} else {
+					update_option( 'wcdn_admin_email_print_link', 'no');
+				}
+			}
+			if ( isset( $_POST['wcdn_document'] ) ) {
+				update_option( 'wcdn_document_settings', $_POST['wcdn_document'] );
+				if (in_array('invoice', $_POST['wcdn_document'])) {
+					update_option( 'wcdn_template_type_invoice', 'yes');
+				}else {
+					update_option( 'wcdn_template_type_invoice', 'no');
+				}
+				if (in_array('receipt', $_POST['wcdn_document'])) {
+					update_option( 'wcdn_template_type_receipt', 'yes');
+				}else {
+					update_option( 'wcdn_template_type_receipt', 'no');
+				}
+				if (in_array('delivery_note', $_POST['wcdn_document'])) {
+					update_option( 'wcdn_template_type_delivery-note', 'yes');
+				}else {
+					update_option( 'wcdn_template_type_delivery-note', 'no');
+				}
+			}
+			if ( isset( $_POST['wcdn_invoice'] ) ) {
+				if (isset($_POST['wcdn_invoice']['invoice_number']) && $_POST['wcdn_invoice']['invoice_number'] == 'custom_number') {
+					update_option( 'wcdn_create_invoice_number', 'yes');
+				}else {
+					update_option( 'wcdn_create_invoice_number', 'no');
+				}
+				update_option( 'wcdn_invoice_settings', $_POST['wcdn_invoice'] );
+				update_option( 'wcdn_invoice_number_suffix', $_POST['wcdn_invoice']['invoice_suffix'] );
+				update_option( 'wcdn_invoice_number_prefix', $_POST['wcdn_invoice']['invoice_preffix'] );
+			}
+			if ( isset( $_POST['wcdn_receipt'] ) ) {
+				update_option( 'wcdn_receipt_settings', $_POST['wcdn_receipt'] );
+			}
+			if ( isset( $_POST['wcdn_deliverynote'] ) ) {
+				update_option( 'wcdn_deliverynote_settings', $_POST['wcdn_deliverynote'] );
+			}
+
+			if ( isset( $_POST['invoice'] ) ) {
+				update_option( 'wcdn_invoice_customization', $_POST['invoice'] );
+			}
+			if ( isset( $_POST['receipt'] ) ) {
+				update_option( 'wcdn_recepit_customization', $_POST['recepit'] );
+			}
+			if ( isset( $_POST['deliverynote'] ) ) {
+				update_option( 'wcdn_deliverynote_customization', $_POST['deliverynote'] );
+			}
+
 			// Update the settings.
 			if ( version_compare( $option_version, self::$plugin_version, '<' ) ) {
 				// Legacy updates.
-				if ( version_compare( $option_version, '4.2.0', '<' ) ) {
+				if ( version_compare( $option_version, '5.0.0', '<' ) ) {
 					// Group invoice numbering.
 					$invoice_start   = intval( get_option( 'wcdn_invoice_number_start', 1 ) );
 					$invoice_counter = intval( get_option( 'wcdn_invoice_number_counter', 0 ) );
 					update_option( 'wcdn_invoice_number_count', $invoice_start + $invoice_counter );
+					update_option( 'wcdn_invoice_template_type', 'default' );
+					update_option( 'wcdn_receipt_template_type', 'default' );
+					update_option( 'wcdn_delivery_note_template_type', 'default' );
 
-					// Translate checkbox values.
-					foreach ( $this->settings->get_settings() as $value ) {
-						if ( isset( $value['id'] ) && isset( $value['type'] ) && 'checkbox' === $value['type'] ) {
-							$autoload = isset( $value['autoload'] ) ? (bool) $value['autoload'] : true;
-							$option   = get_option( $value['id'] );
-							if ( (bool) $option ) {
-								update_option( $value['id'], 'yes' );
-							} else {
-								update_option( $value['id'], 'no' );
-							}
-						}
-					}
-				}
-
-				// Set all options that have default values.
-				foreach ( $this->settings->get_settings() as $value ) {
-					if ( isset( $value['default'] ) && isset( $value['id'] ) ) {
-						$autoload = isset( $value['autoload'] ) ? (bool) $value['autoload'] : true;
-						add_option( $value['id'], $value['default'], '', ( $autoload ? 'yes' : 'no' ) );
-					}
 				}
 
 				// Flush the transients in case the endpoint changed.

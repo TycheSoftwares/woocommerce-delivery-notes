@@ -50,7 +50,7 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 		public function add_styles() {
 			if ( $this->is_order_edit_page() || $this->is_order_post_page() ) {
 				wp_enqueue_style( 'thickbox' );
-				wp_enqueue_style( 'woocommerce-delivery-notes-admin', WooCommerce_Delivery_Notes::$plugin_url . 'css/admin.css', '', WooCommerce_Delivery_Notes::$plugin_version );
+				wp_enqueue_style( 'woocommerce-delivery-notes-admin', WooCommerce_Delivery_Notes::$plugin_url . 'assets/css/admin.css', '', WooCommerce_Delivery_Notes::$plugin_version );
 			}
 		}
 
@@ -60,8 +60,8 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 		public function add_scripts() {
 			if ( $this->is_order_edit_page() || $this->is_order_post_page() ) {
 				wp_enqueue_script( 'thickbox' );
-				wp_enqueue_script( 'woocommerce-delivery-notes-print-link', WooCommerce_Delivery_Notes::$plugin_url . 'js/jquery.print-link.js', array( 'jquery' ), WooCommerce_Delivery_Notes::$plugin_version, false );
-				wp_enqueue_script( 'woocommerce-delivery-notes-admin', WooCommerce_Delivery_Notes::$plugin_url . 'js/admin.js', array( 'jquery', 'woocommerce-delivery-notes-print-link' ), WooCommerce_Delivery_Notes::$plugin_version, false );
+				wp_enqueue_script( 'woocommerce-delivery-notes-print-link', WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/jquery.print-link.js', array( 'jquery' ), WooCommerce_Delivery_Notes::$plugin_version, false );
+				wp_enqueue_script( 'woocommerce-delivery-notes-admin', WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/admin.js', array( 'jquery', 'woocommerce-delivery-notes-print-link' ), WooCommerce_Delivery_Notes::$plugin_version, false );
 			}
 		}
 
@@ -134,11 +134,11 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 		public function my_bulk_action_handler( $redirect_to, $doaction, $post_ids ) {
 			// stop if there are no post ids.
 			if ( ! isset( $_REQUEST['post'] ) ) {
-				return $redirect_to;
+				return;
 			}
 			// stop if the action is not of bulk printing.
-			if ( ! in_array( $_REQUEST['action'], array( 'wcdn_print_invoice', 'wcdn_print_delivery-note', 'wcdn_print_receipt' ) ) ) { // phpcs:ignore
-				return $redirect_to;
+			if( ! in_array( $_REQUEST['action'], array( 'wcdn_print_invoice', 'wcdn_print_delivery-note', 'wcdn_print_receipt' ) ) ) {
+				return;
 			}
 			// only for specified actions.
 			foreach ( WCDN_Print::$template_registrations as $template_registration ) {
@@ -149,7 +149,7 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 				}
 			}
 			if ( ! isset( $report_action ) ) {
-				return $redirect_to;
+				return;
 			}
 
 			// security check.
@@ -157,7 +157,7 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 
 			// get referrer.
 			if ( ! wp_get_referer() ) {
-				return $redirect_to;
+				return;
 			}
 
 			// filter the referer args.
@@ -207,23 +207,21 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 			if ( $this->is_order_edit_page() ) {
 				foreach ( WCDN_Print::$template_registrations as $template_registration ) {
 					if ( isset( $_REQUEST[ 'printed_' . $template_registration['type'] ] ) ) {
-						
 						// use singular or plural form.
-						$total   = isset( $_REQUEST['total'] ) ? absint( $_REQUEST['total'] ) : 0;
-						$message = $total <= 1 ? $message = $template_registration['labels']['message'] : $template_registration['labels']['message_plural'];
-
-						// Print URL - Fix Issue #214: Reflected XSS Vulnerability in Plugin.
-						$print_url = isset( $_REQUEST['print_url'] ) ? $_REQUEST['print_url'] : ''; // phpcs:ignore
-						$print_url = '' !== $print_url && strtolower( esc_url_raw( $print_url ) ) === strtolower( $print_url ) ? esc_url_raw( $print_url ) : '';
-
-						if ( '' !== $print_url ) {
-							?>
-							<div id="woocommerce-delivery-notes-bulk-print-message" class="updated">
-								<p><?php wp_kses_post( $message, 'woocommerce-delivery-notes' ); ?>
-								<a href="<?php echo $print_url; // phpcs:ignore ?>" target="_blank" class="print-preview-button" id="woocommerce-delivery-notes-bulk-print-button"><?php esc_attr_e( 'Print now', 'woocommerce-delivery-notes' ); ?></a> <span class="print-preview-loading spinner"></span></p>
-							</div>
-							<?php
+						$total = isset( $_REQUEST['total'] ) ? absint( $_REQUEST['total'] ) : 0;
+						if ( $total <= 1 ) {
+							$message = $template_registration['labels']['message'];
+						} else {
+							$message = $template_registration['labels']['message_plural'];
 						}
+						?>
+
+						<div id="woocommerce-delivery-notes-bulk-print-message" class="updated">
+							<p><?php wp_kses_post( $message, 'woocommerce-delivery-notes' ); ?>
+							<a href="<?php if ( isset( $_REQUEST['print_url'] ) ) : echo urldecode( esc_url_raw( $_REQUEST['print_url'] ) ); endif; // phpcs:ignore ?>" target="_blank" class="print-preview-button" id="woocommerce-delivery-notes-bulk-print-button"><?php esc_attr_e( 'Print now', 'woocommerce-delivery-notes' ); ?></a> <span class="print-preview-loading spinner"></span></p>
+						</div>
+
+						<?php
 						break;
 					}
 				}
@@ -271,4 +269,7 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 		}
 
 	}
+
 }
+
+?>
