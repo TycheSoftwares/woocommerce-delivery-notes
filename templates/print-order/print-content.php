@@ -140,16 +140,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 									</span>
 
 									<?php
-									$item_meta_fields = wc_display_item_meta( $item, apply_filters( 'wcdn_product_meta_data', $item['item_meta'] , $item ) ); 
-									if ( $item_meta_fields === null ) {
-										$item_meta_fields = array();
-									}
+									$item_meta_fields = apply_filters( 'wcdn_product_meta_data', $item['item_meta'], $item );
 
 									$product_addons            = array();
 									$woocommerce_product_addon = 'woocommerce-product-addons/woocommerce-product-addons.php';
 									if ( in_array( $woocommerce_product_addon, apply_filters( 'active_plugins', get_option( 'active_plugins', array() ) ), true ) ) {
 										$product_id     = $item['product_id'];
-										$product_addons = WC_Product_Addons_Helper::get_product_addons( $product_id );
+										if ( class_exists( 'WC_Product_Addons_Helper' ) ) {
+											$product_addons = WC_Product_Addons_Helper::get_product_addons( $product_id );
+										}
 									}
 									if ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) {
 										if ( isset( $item['variation_id'] ) && 0 !== $item['variation_id'] ) {
