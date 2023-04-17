@@ -149,6 +149,38 @@ jQuery(document).ready(function($) {
 		}
 	});
 */
-	
-});
 
+var width = 0;
+var height = 0;
+if ( typeof logo != "undefined" ) {
+	var width = (logo.default_width);
+	var height = (logo.default_height);
+	var ratio = width / height ;
+	var new_wdt = (logo.new_width);
+	var new_hgt = (logo.new_height);
+}
+if ( ! new_wdt ) {
+	$('input#wcdn_resize_logo_width').val(width / 4);
+}
+	$('input#wcdn_resize_logo_height').on('keyup', function(event) {
+		var display_height = $('input#wcdn_resize_logo_height').val();
+		if ( display_height ) {
+			$('input#wcdn_resize_logo_width').val(Math.round(display_height * ratio));
+		} else {
+			$('input#wcdn_resize_logo_width').val(width / 4);
+		}
+ 	});
+
+
+if ( ! new_hgt ) {
+	$('input#wcdn_resize_logo_height').val(height / 4);
+}
+	$('input#wcdn_resize_logo_width').on('keyup', function(event) {
+		var display_width = $('input#wcdn_resize_logo_width').val();
+		if ( display_width ) {
+			$('input#wcdn_resize_logo_height').val(Math.round(display_width / ratio));
+		} else {
+			$('input#wcdn_resize_logo_height').val('');
+		}
+	});
+});

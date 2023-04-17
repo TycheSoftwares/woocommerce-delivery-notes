@@ -150,6 +150,26 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 					),
 
 					array(
+						'title'   => __( 'Logo Width', 'woocommerce-delivery-notes' ),
+						'desc'    => '',
+						'id'      => 'wcdn_resize_logo_width',
+						'css'     => '',
+						'default' => '',
+						'type'    => 'text',
+
+					),
+
+					array(
+						'title'   => __( 'Logo Height', 'woocommerce-delivery-notes' ),
+						'desc'    => '',
+						'id'      => 'wcdn_resize_logo_height',
+						'css'     => '',
+						'default' => '',
+						'type'    => 'text',
+
+					),
+
+					array(
 						'title'    => __( 'Shop Name', 'woocommerce-delivery-notes' ),
 						'desc'     => '',
 						'id'       => 'wcdn_custom_company_name',
@@ -466,7 +486,18 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 			if ( ( $attachment_src[1] / $attachment_src[2] ) < 1 ) {
 				$orientation = 'portrait';
 			}
-
+			$attachment_src = wp_get_attachment_image_src( $attachment_id, 'full', false );
+			$default_width  = $attachment_src[1];
+			$default_height = $attachment_src[2];
+			$logo_width     = get_option( 'wcdn_resize_logo_width' );
+			$logo_height    = get_option( 'wcdn_resize_logo_height' );
+			$resize_logo    = array(
+				'default_width'  => $default_width,
+				'default_height' => $default_height,
+				'new_width'      => $logo_width,
+				'new_height'     => $logo_height,
+			);
+			wp_localize_script( 'woocommerce-delivery-notes-admin', 'logo', $resize_logo );
 			?>
 			<img src="<?php echo esc_url( $attachment_src[0] ); ?>" class="<?php echo esc_attr( $orientation ); ?>" alt="" />
 			<?php

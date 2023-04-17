@@ -195,13 +195,25 @@ function wcdn_get_company_logo_id() {
  */
 function wcdn_company_logo() {
 	global $wcdn;
-	$attachment_id = wcdn_get_company_logo_id();
-	$company       = get_option( 'wcdn_custom_company_name' );
-	if ( $attachment_id ) {
-		$attachment_src = wp_get_attachment_image_src( $attachment_id, 'full', false );
+    $attachment_id        = wcdn_get_company_logo_id();
+    $company              = get_option( 'wcdn_custom_company_name' );
+    $logo_width           = get_option( 'wcdn_resize_logo_width' );
+    $logo_height          = get_option( 'wcdn_resize_logo_height' );
+    $attachment_src       = wp_get_attachment_image_src( $attachment_id, 'full', false );
+    //list($width, $height) = getimagesize( $attachment_src[0] );
+
+	if ( ! empty( $logo_height ) && ! empty( $logo_width ) ) {
+        ?>
+        <img src="<?php echo esc_url( $attachment_src[0] ); ?>" width="<?php echo esc_attr( $logo_width ); ?>" height="<?php echo esc_attr( $logo_height ); ?>" alt="<?php echo esc_attr( $company ); ?>" />
+        <?php
+    } else {
+        ?>
+        <img src="<?php echo esc_url( $attachment_src[0] ); ?>" width="<?php echo esc_attr( round( $attachment_src[1] / 4 ) ); ?>" height="<?php echo esc_attr( round( $attachment_src[1] / 4 ) ); ?>" alt="<?php echo esc_attr( $company ); ?>" />
+        <?php
+    }
 
 	  	// resize the image to a 1/4 of the original size to have a printing point density of about 288ppi.
-		?>
+	?>
 		<style>
          /* hide mobile version by default */
         .logo .mobile {
@@ -214,19 +226,13 @@ function wcdn_company_logo() {
         }
          .logo .desktop {
            display: none;
-       }
-     }
+		}
+	}	
        </style>
+	<?php
+		
+}
 
-      <div class="logo">
-        <img src="<?php echo esc_url( $attachment_src[0] ); ?>"  class="desktop"  width="<?php echo esc_attr( round( $attachment_src[1] / 4 ) ); ?>" height="<?php echo esc_attr( round( $attachment_src[2] / 4 ) ); ?>" alt="<?php echo esc_attr( $company ); ?>" />
-        <img src="<?php echo esc_url( $attachment_src[0] ); ?>" class="mobile" width="<?php echo esc_attr( round( $attachment_src[1] / 4 ) ); ?>" height="<?php echo esc_attr( round( $attachment_src[2] / 4 ) ); ?>" alt="<?php echo esc_attr( $company ); ?>" />
-      </div>
-		
-		<?php
-		
-	}
-}  
 
 /**
  * Return default title name of Delivery Note
