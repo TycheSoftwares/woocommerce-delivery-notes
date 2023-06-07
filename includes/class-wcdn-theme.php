@@ -41,74 +41,15 @@ if ( ! class_exists( 'WCDN_Theme' ) ) {
 			add_action( 'woocommerce_thankyou', array( $this, 'create_print_button_order_page' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts' ) );
 			add_action( 'woocommerce_email_after_order_table', array( $this, 'add_email_print_url' ), 100, 3 );
-			add_filter( 'woocommerce_email_attachments', array( $this, 'attach_pdf_to_emails' ), 10, 4 );
 		}
-
-		/**
-		 * Attch a pdf in mail.
-		 *
-		 * @param array  $attachments Order Object.
-		 * @param string $email_id  Document type.
-		 * @param array  $order  Order object.
-		 *
-		 * @since 5.0
-		 */
-		public function attach_pdf_to_emails( $attachments, $email_id, $order ) {
-			$upload_dir = wp_upload_dir();
-
-			$invoice       = get_option( 'wcdn_template_type_invoice' );
-			$receipt       = get_option( 'wcdn_template_type_receipt' );
-			$delivery_note = get_option( 'wcdn_template_type_delivery-note' );
-
-			if ( 'yes' === $invoice ) {
-				$settings = get_option( 'wcdn_invoice_settings' );
-				if ( isset( $settings['status'] ) ) {
-					if ( in_array( $email_id, $settings['status'], true ) ) {
-						$name = 'wcdn_' . $order->id . '_invoice.pdf';
-						if ( ! file_exists( $upload_dir['basedir'] . '/wcdn/invoice/' . $name ) ) {
-							$name = create_pdf( $order, 'invoice' );
-						}
-						$attachments[] = $upload_dir['basedir'] . '/wcdn/invoice/' . $name;
-					}
-				}
-			}
-
-			if ( 'yes' === $receipt ) {
-				$settings = get_option( 'wcdn_receipt_settings' );
-				if ( isset( $settings['status'] ) ) {
-					if ( in_array( $email_id, $settings['status'], true ) ) {
-						$name = 'wcdn_' . $order->id . '_receipt.pdf';
-						if ( ! file_exists( $upload_dir['basedir'] . '/wcdn/receipt/' . $name ) ) {
-							$name = create_pdf( $order, 'receipt' );
-						}
-						$attachments[] = $upload_dir['basedir'] . '/wcdn/receipt/' . $name;
-					}
-				}
-			}
-
-			if ( 'yes' === $delivery_note ) {
-				$settings = get_option( 'wcdn_deliverynote_settings' );
-				if ( isset( $settings['status'] ) ) {
-					if ( in_array( $email_id, $settings['status'], true ) ) {
-						$name = 'wcdn_' . $order->id . '_deliverynote.pdf';
-						if ( ! file_exists( $upload_dir['basedir'] . '/wcdn/deliverynote/' . $name ) ) {
-							$name = create_pdf( $order, 'deliverynote' );
-						}
-						$attachments[] = $upload_dir['basedir'] . '/wcdn/deliverynote/' . $name;
-					}
-				}
-			}
-			return $attachments;
-		}
-
 
 		/**
 		 * Add the scripts
 		 */
 		public function add_scripts() {
 			if ( is_account_page() || is_order_received_page() || $this->is_woocommerce_tracking_page() ) {
-				wp_enqueue_script( 'woocommerce-delivery-notes-print-link', WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/jquery.print-link.js', array( 'jquery' ), WooCommerce_Delivery_Notes::$plugin_version, false );
-				wp_enqueue_script( 'woocommerce-delivery-notes-theme', WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/theme.js', array( 'jquery', 'woocommerce-delivery-notes-print-link' ), WooCommerce_Delivery_Notes::$plugin_version, false );
+				wp_enqueue_script( 'woocommerce-delivery-notes-print-link', WooCommerce_Delivery_Notes::$plugin_url . 'js/jquery.print-link.js', array( 'jquery' ), WooCommerce_Delivery_Notes::$plugin_version, false );
+				wp_enqueue_script( 'woocommerce-delivery-notes-theme', WooCommerce_Delivery_Notes::$plugin_url . 'js/theme.js', array( 'jquery', 'woocommerce-delivery-notes-print-link' ), WooCommerce_Delivery_Notes::$plugin_version, false );
 			}
 		}
 
