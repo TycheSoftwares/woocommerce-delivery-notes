@@ -43,11 +43,7 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 			add_filter( 'woocommerce_settings_tabs_array', array( $this, 'add_settings_page' ), 200 );
 			add_action( 'woocommerce_settings_start', array( $this, 'add_assets' ) );
 			add_action( 'woocommerce_settings_' . $this->id, array( $this, 'output' ) );
-			add_action( 'woocommerce_settings_save_' . $this->id, array( $this, 'save' ) );
-
-			add_action( 'woocommerce_admin_field_wcdn_image_select', array( $this, 'output_image_select' ) );
-			add_action( 'wp_ajax_wcdn_settings_load_image', array( $this, 'load_image_ajax' ) );
-			add_filter( 'wcdn_get_settings', array( $this, 'generate_template_type_fields' ), 10, 2 );
+			add_action( 'wp_ajax_wcdn_remove_shoplogo', array( $this, 'wcdn_remove_shoplogo' ) );
 			add_action( 'woocommerce_admin_field_link', array( &$this, 'wcdn_add_admin_field_reset_button' ) );
 		}
 
@@ -69,12 +65,30 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 		 */
 		public function add_assets() {
 			// Styles.
-			wp_enqueue_style( 'woocommerce-delivery-notes-admin', WooCommerce_Delivery_Notes::$plugin_url . 'css/admin.css', '', WooCommerce_Delivery_Notes::$plugin_version );
+			wp_enqueue_style( 'woocommerce-delivery-notes-admin', WooCommerce_Delivery_Notes::$plugin_url . 'assets/css/admin.css', '', WooCommerce_Delivery_Notes::$plugin_version );
+
+			if ( isset( $_GET['tab'] ) && 'wcdn-settings' === $_GET['tab'] ) { // phpcs:ignore
+				wp_enqueue_style( 'woocommerce-delivery-notes-bootstrap-style', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css', '', WooCommerce_Delivery_Notes::$plugin_version );
+				wp_enqueue_style( 'woocommerce-delivery-notes-select2-style', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css', '', WooCommerce_Delivery_Notes::$plugin_version );
+			}
 
 			// Scripts.
 			wp_enqueue_media();
-			wp_enqueue_script( 'woocommerce-delivery-notes-print-link', WooCommerce_Delivery_Notes::$plugin_url . 'js/jquery.print-link.js', array( 'jquery' ), WooCommerce_Delivery_Notes::$plugin_version, false );
-			wp_enqueue_script( 'woocommerce-delivery-notes-admin', WooCommerce_Delivery_Notes::$plugin_url . 'js/admin.js', array( 'jquery', 'custom-header', 'woocommerce-delivery-notes-print-link' ), WooCommerce_Delivery_Notes::$plugin_version, false );
+			wp_enqueue_script( 'woocommerce-delivery-notes-print-link', WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/jquery.print-link.js', array( 'jquery' ), WooCommerce_Delivery_Notes::$plugin_version, false );
+			wp_enqueue_script( 'woocommerce-delivery-notes-admin', WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/admin.js', array( 'jquery', 'custom-header', 'woocommerce-delivery-notes-print-link' ), WooCommerce_Delivery_Notes::$plugin_version, false );
+			wp_localize_script(
+				'woocommerce-delivery-notes-admin',
+				'admin_object',
+				array(
+					'ajax_url'  => admin_url( 'admin-ajax.php' ),
+					'admin_url' => admin_url(),
+				)
+			);
+
+			if ( isset( $_GET['tab'] ) && 'wcdn-settings' == $_GET['tab'] ) { // phpcs:ignore
+				wp_enqueue_script( 'woocommerce-delivery-notes-bootstrap-script', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js', array( 'jquery' ), WooCommerce_Delivery_Notes::$plugin_version, false );
+				wp_enqueue_script( 'woocommerce-delivery-notes-select2-script', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js', array( 'jquery' ), WooCommerce_Delivery_Notes::$plugin_version, false );
+			}
 
 			// Localize the script strings.
 			$translation = array( 'resetCounter' => __( 'Do you really want to reset the counter to zero? This process can\'t be undone.', 'woocommerce-delivery-notes' ) );
@@ -95,254 +109,17 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 		 * Output the settings fields into the tab.
 		 */
 		public function output() {
-			global $current_section;
-			$settings = $this->get_settings( $current_section );
-			woocommerce_admin_fields( $settings );
+			include_once __DIR__ . '/admin/views/wcdn-header.php';
 		}
 
 		/**
-		 * Save the settings
+		 * Ajax Call For remove shop logo.
 		 */
-		public function save() {
-			global $current_section;
-			set_transient( 'wcdn_flush_rewrite_rules', true );
-			$settings = $this->get_settings( $current_section );
-			woocommerce_update_options( $settings );
-		}
-
-		/**
-		 * Get the settings fields
-		 *
-		 * @param string $section Section name.
-		 */
-		public function get_settings( $section = '' ) {
-			$wcdn_faq_url = admin_url( 'index.php?page=wcdn_faq_page' );
-			$settings     = apply_filters(
-				'wcdn_get_settings_no_section',
-				array(
-					array(
-						'title' => __( 'Template', 'woocommerce-delivery-notes' ),
-						'type'  => 'title',
-						'desc'  => $this->get_template_description(),
-						'id'    => 'general_options',
-					),
-
-					array(
-						'title'    => __( 'Style', 'woocommerce-delivery-notes' ),
-						/* translators: %s: link to faq */
-						'desc'     => sprintf( __( 'The default print style. Read the <a href="%1$s">FAQ</a> to learn how to customize it.', 'woocommerce-delivery-notes' ), $wcdn_faq_url, '#' ),
-						'id'       => 'wcdn_template_style',
-						'class'    => 'wc-enhanced-select',
-						'default'  => '',
-						'type'     => 'select',
-						'options'  => $this->get_options_styles(),
-						'desc_tip' => false,
-					),
-
-					array(
-						'title'    => __( 'Shop Logo', 'woocommerce-delivery-notes' ),
-						'desc'     => '',
-						'id'       => 'wcdn_company_logo_image_id',
-						'css'      => '',
-						'default'  => '',
-						'type'     => 'wcdn_image_select',
-						'desc_tip' => __( 'A shop logo representing your business. When the image is printed, its pixel density will automatically be eight times higher than the original. This means, 1 printed inch will correspond to about 288 pixels on the screen.', 'woocommerce-delivery-notes' ),
-					),
-
-					array(
-						'title'    => __( 'Shop Name', 'woocommerce-delivery-notes' ),
-						'desc'     => '',
-						'id'       => 'wcdn_custom_company_name',
-						'css'      => 'min-width:100%;',
-						'default'  => '',
-						'type'     => 'text',
-						'desc_tip' => __( 'The shop name. Leave blank to use the default Website or Blog title defined in WordPress settings. The name will be ignored when a Logo is set.', 'woocommerce-delivery-notes' ),
-					),
-
-					array(
-						'title'    => __( 'Shop Address', 'woocommerce-delivery-notes' ),
-						'desc'     => __( 'The postal address of the shop or even e-mail or telephone.', 'woocommerce-delivery-notes' ),
-						'id'       => 'wcdn_company_address',
-						'css'      => 'min-width:100%;min-height:100px;',
-						'default'  => '',
-						'type'     => 'textarea',
-						'desc_tip' => true,
-					),
-
-					array(
-						'title'    => __( 'Complimentary Close', 'woocommerce-delivery-notes' ),
-						'desc'     => __( 'Add a personal close, notes or season greetings.', 'woocommerce-delivery-notes' ),
-						'id'       => 'wcdn_personal_notes',
-						'css'      => 'min-width:100%;min-height:100px;',
-						'default'  => '',
-						'type'     => 'textarea',
-						'desc_tip' => true,
-					),
-
-					array(
-						'title'    => __( 'Policies', 'woocommerce-delivery-notes' ),
-						'desc'     => __( 'Add the shop policies, conditions, etc.', 'woocommerce-delivery-notes' ),
-						'id'       => 'wcdn_policies_conditions',
-						'css'      => 'min-width:100%;min-height:100px;',
-						'default'  => '',
-						'type'     => 'textarea',
-						'desc_tip' => true,
-					),
-
-					array(
-						'title'    => __( 'Footer', 'woocommerce-delivery-notes' ),
-						'desc'     => __( 'Add a footer imprint, instructions, copyright notes, e-mail, telephone, etc.', 'woocommerce-delivery-notes' ),
-						'id'       => 'wcdn_footer_imprint',
-						'css'      => 'min-width:100%;min-height:100px;',
-						'default'  => '',
-						'type'     => 'textarea',
-						'desc_tip' => true,
-					),
-
-					array(
-						'type' => 'sectionend',
-						'id'   => 'general_options',
-					),
-
-					array(
-						'title' => __( 'Pages & Buttons', 'woocommerce-delivery-notes' ),
-						'type'  => 'title',
-						'desc'  => '',
-						'id'    => 'display_options',
-					),
-
-					array(
-						'title'    => __( 'Print Page Endpoint', 'woocommerce-delivery-notes' ),
-						'desc'     => '',
-						'id'       => 'wcdn_print_order_page_endpoint',
-						'css'      => '',
-						'default'  => 'print-order',
-						'type'     => 'text',
-						'desc_tip' => __( 'The endpoint is appended to the accounts page URL to print the order. It should be unique.', 'woocommerce-delivery-notes' ),
-					),
-
-					array(
-						'title'         => __( 'Email', 'woocommerce-delivery-notes' ),
-						'desc'          => __( 'Show print link in customer emails', 'woocommerce-delivery-notes' ),
-						'id'            => 'wcdn_email_print_link',
-						'default'       => 'no',
-						'type'          => 'checkbox',
-						'checkboxgroup' => 'start',
-					),
-
-					array(
-						'desc'          => __( 'Show print link in Admin emails', 'woocommerce-delivery-notes' ),
-						'id'            => 'wcdn_admin_email_print_link',
-						'default'       => 'no',
-						'type'          => 'checkbox',
-						'desc_tip'      => __( 'This includes the emails for a new, processing and completed order. On top of that the customer and admin invoice emails will also include the link.', 'woocommerce-delivery-notes' ),
-						'checkboxgroup' => 'end',
-					),
-
-					array(
-						'title'         => __( 'My Account', 'woocommerce-delivery-notes' ),
-						'desc'          => __( 'Show print button on the "View Order" page', 'woocommerce-delivery-notes' ),
-						'id'            => 'wcdn_print_button_on_view_order_page',
-						'default'       => 'no',
-						'type'          => 'checkbox',
-						'checkboxgroup' => 'start',
-					),
-
-					array(
-						'desc'          => __( 'Show print buttons on the "My Account" page', 'woocommerce-delivery-notes' ),
-						'id'            => 'wcdn_print_button_on_my_account_page',
-						'default'       => 'no',
-						'type'          => 'checkbox',
-						'checkboxgroup' => 'end',
-					),
-
-					array(
-						'title'    => __( 'Text Direction', 'woocommerce-delivery-notes' ),
-						'desc'     => __( 'Print Text from Right to left', 'woocommerce-delivery-notes' ),
-						'id'       => 'wcdn_rtl_invoice',
-						'default'  => 'no',
-						'type'     => 'checkbox',
-						'desc_tip' => __( 'Show text in right to left direction in Invoice, Print Receipt & Delivery note if you are using languages such as Hebrew, Arabic, etc.', 'woocommerce-delivery-notes' ),
-					),
-					array(
-						'type' => 'sectionend',
-						'id'   => 'display_options',
-					),
-
-					array(
-						'title' => __( 'Invoice', 'woocommerce-delivery-notes' ),
-						'type'  => 'title',
-						'desc'  => '',
-						'id'    => 'invoice_options',
-					),
-
-					array(
-						'title'    => __( 'Numbering', 'woocommerce-delivery-notes' ),
-						'desc'     => __( 'Create invoice numbers', 'woocommerce-delivery-notes' ),
-						'id'       => 'wcdn_create_invoice_number',
-						'default'  => 'no',
-						'type'     => 'checkbox',
-						'desc_tip' => '',
-					),
-
-					array(
-						'title'    => __( 'Next Number', 'woocommerce-delivery-notes' ),
-						'desc'     => '',
-						'id'       => 'wcdn_invoice_number_count',
-						'class'    => 'create-invoice',
-						'css'      => '',
-						'default'  => 1,
-						'type'     => 'number',
-						'desc_tip' => __( 'The next invoice number.', 'woocommerce-delivery-notes' ),
-					),
-
-					array(
-						'title'    => __( 'Number Prefix', 'woocommerce-delivery-notes' ),
-						'desc'     => '',
-						'id'       => 'wcdn_invoice_number_prefix',
-						'class'    => 'create-invoice',
-						'css'      => '',
-						'default'  => '',
-						'type'     => 'text',
-						'desc_tip' => __( 'This text will be prepended to the invoice number.', 'woocommerce-delivery-notes' ),
-					),
-
-					array(
-						'title'    => __( 'Number Suffix', 'woocommerce-delivery-notes' ),
-						'desc'     => '',
-						'id'       => 'wcdn_invoice_number_suffix',
-						'class'    => 'create-invoice',
-						'css'      => '',
-						'default'  => '',
-						'type'     => 'text',
-						'desc_tip' => __( 'This text will be appended to the invoice number.', 'woocommerce-delivery-notes' ),
-					),
-					apply_filters( 'wcdn_add_settings_field', '' ),
-					array(
-						'type' => 'sectionend',
-						'id'   => 'invoice_options',
-					),
-				)
-			);
-
-			return apply_filters( 'wcdn_get_settings', $settings, $section );
-		}
-
-		/**
-		 * Get the position of a setting inside the array.
-		 *
-		 * @param int    $id Setting ID.
-		 * @param array  $settings Setting details.
-		 * @param string $type Type.
-		 */
-		public function get_setting_position( $id, $settings, $type = null ) {
-			foreach ( $settings as $key => $value ) {
-				if ( isset( $value['id'] ) && $value['id'] === $id ) {
-					return $key;
-				}
+		public function wcdn_remove_shoplogo() {
+			if ( ! empty( $_POST['shop_logoid'] ) ) { // phpcs:ignore
+				update_option( 'wcdn_company_logo_image_id', '' );
+				wp_delete_attachment( $_POST['shop_logoid'] ); // phpcs:ignore
 			}
-
-			return false;
 		}
 
 		/**
