@@ -145,6 +145,7 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 			add_action( 'init', array( $this, 'localise' ) );
 			add_action( 'init', array( $this, 'wcdn_create_dir' ) );
 			add_action( 'init', array( $this, 'wcdn_remove_save_btn' ) );
+			add_action( 'admin_enqueue_scripts', array( $this, 'wcdn_deactivation_enquaue_script' ) );
 			add_action( 'woocommerce_init', array( $this, 'load' ) );
 		}
 
@@ -184,6 +185,17 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 			if ( true === is_admin() ) {
 				include_once 'wcdn-all-component.php';
 			}
+
+			require_once 'class-tyche-plugin-deactivation.php';
+			new Tyche_Plugin_Deactivation(
+				array(
+					'plugin_name'       => 'Print invoices & delivery notes for WooCommerce orders',
+					'plugin_base'       => 'Print-Invoice-Delivery-Notes-for-WooCommerce/woocommerce-delivery-notes.php',
+					'script_file'       => self::$plugin_url . 'assets/js/plugin-deactivation.js',
+					'plugin_short_name' => 'wcdn',
+					'version'           => self::$plugin_version,
+				)
+			);
 		}
 
 		/**
@@ -215,6 +227,21 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 			}
 		}
 
+		/**
+		 * Enquaue Admin Script.
+		 *
+		 * @since 5.0
+		 */
+		public function wcdn_deactivation_enquaue_script() {
+			wp_register_script(
+				'tyche',
+				self::$plugin_url . 'assets/js/tyche.js',
+				array( 'jquery' ),
+				self::$plugin_version,
+				true
+			);
+			wp_enqueue_script( 'tyche' );
+		}
 
 		/**
 		 * Load the localisation.
