@@ -59,25 +59,28 @@ if ( isset( $_GET['wdcn_setting'] ) ) {
 						</label>
 					</div>
 				</div>
-				<div class="form-group row">
+				<?php 
+					$wcdn_depend_row_style = ( get_option('wcdn_create_invoice_number') == 'yes' ) ? 'display:flex' : 'display:none';
+				?>
+				<div class="form-group row wcdn_depend_row" style="<?php echo $wcdn_depend_row_style; ?>;">
 					<label for="invoice_nextnumber" class="col-sm-2 col-form-label"><?php esc_html_e( 'Next Number', 'woocommerce-delivery-notes' ); ?></label>
 					<div class="col-sm-6 icon-flex">
 						<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'The next invoice number.', 'woocommerce-delivery-notes' ); ?>"></i>
-						<input type="number" class="form-control" name="wcdn_invoice[invoice_nextnumber]" id="invoice_nextnumber" value="<?php echo esc_attr( isset( $settings_db_data['invoice_nextnumber'] ) ? $settings_db_data['invoice_nextnumber'] : '' ); ?>">
+						<input type="number" class="form-control" name="wcdn_invoice[invoice_nextnumber]" id="invoice_nextnumber" value="<?php echo esc_attr( get_option('wcdn_invoice_number_count') ); ?>">
 					</div>
 				</div>
-				<div class="form-group row">
+				<div class="form-group row wcdn_depend_row" style="<?php echo $wcdn_depend_row_style; ?>;">
 					<label for="invoice_suffix" class="col-sm-2 col-form-label"><?php esc_html_e( 'Suffix', 'woocommerce-delivery-notes' ); ?></label>
 					<div class="col-sm-6 icon-flex">
 						<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'This text will be appended to the invoice number.', 'woocommerce-delivery-notes' ); ?>"></i>
-						<input type="text" class="form-control" name="wcdn_invoice[invoice_suffix]" id="invoice_suffix" value="<?php echo esc_attr( isset( $settings_db_data['invoice_suffix'] ) ? $settings_db_data['invoice_suffix'] : '' ); ?>">
+						<input type="text" class="form-control" name="wcdn_invoice[invoice_suffix]" id="invoice_suffix" value="<?php echo esc_attr( get_option('wcdn_invoice_number_suffix') ); ?>">
 					</div>
 				</div>
-				<div class="form-group row">
+				<div class="form-group row wcdn_depend_row" style="<?php echo $wcdn_depend_row_style; ?>;">
 					<label for="invoice_preffix" class="col-sm-2 col-form-label"><?php esc_html_e( 'Preffix', 'woocommerce-delivery-notes' ); ?></label>
 					<div class="col-sm-6 icon-flex">
 						<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'This text will be prepended to the invoice number.', 'woocommerce-delivery-notes' ); ?>"></i>
-						<input type="text" class="form-control" name="wcdn_invoice[invoice_preffix]" id="invoice_preffix" value="<?php echo esc_attr( isset( $settings_db_data['invoice_preffix'] ) ? $settings_db_data['invoice_preffix'] : '' ); ?>">
+						<input type="text" class="form-control" name="wcdn_invoice[invoice_preffix]" id="invoice_preffix" value="<?php echo esc_attr( get_option('wcdn_invoice_number_prefix') ); ?>">
 					</div>
 				</div>
 				<?php } ?>
