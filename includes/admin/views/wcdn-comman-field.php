@@ -74,3 +74,13 @@
 		?>
 	</div>
 </div>
+<div class="col-sm-6 offset-sm-2">
+	<div class="wcdn_preview_img">
+		<div class="wcdn_for_default"> 
+			<img src="<?php echo esc_url( WooCommerce_Delivery_Notes::$plugin_url . 'assets/images/Default_Invoice.png' ); ?>">
+		</div>
+		<div class="wcdn_for_simple" style="display:none;"> 
+			<img src="<?php echo esc_url( WooCommerce_Delivery_Notes::$plugin_url . 'assets/images/Simple_Invoice.png' ); ?>">
+		</div>
+	</div>
+</div>

@@ -160,8 +160,14 @@ jQuery(document).ready(function($) {
 	$('select[name*="\\[template_setting\\][\\template_setting_template\\]"]').change(function () {
 		if( this.value == 'simple' ) {
 			jQuery('.accordion-button').attr('disabled', false);
+			jQuery('.wcdn_for_simple').css('display','block');
+			jQuery('.wcdn_for_default').css('display','none');
+
 		} else {
 			jQuery('.accordion-button').attr('disabled', true);
+			jQuery('.wcdn_for_simple').css('display','none');
+			jQuery('.wcdn_for_default').css('display','block');
+
 		}
     });
 
