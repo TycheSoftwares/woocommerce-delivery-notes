@@ -10,6 +10,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <html>
+	<head>
+	<?php
+	wcdn_rtl();
+	?>
+	</head>
 	<body>
 		<div class="content">
 			<div class="page-header">
@@ -51,7 +56,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</div>
 
 				<div class="shipping-address">						
-					<h3><?php esc_attr_e( 'Shipping Address', 'woocommerce-delivery-notes' ); ?></h3>
+					<h3 class="cap"><?php esc_attr_e( 'Shipping Address', 'woocommerce-delivery-notes' ); ?></h3>
 					<address>
 
 						<?php

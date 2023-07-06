@@ -246,6 +246,31 @@ function wcdn_pdf_company_logo() {
 }
 
 /**
+ * Apply css if RTL is active.
+ */
+function wcdn_rtl() {
+	if ( 'yes' === get_option( 'wcdn_rtl_invoice', 'no' ) ) {
+		?>
+		<style>
+			body {
+				direction: rtl;
+			}
+			.order-items dt,
+			.order-items dd {
+				float: right;
+			}
+			.content{
+				text-align:right;	
+			}
+			th {
+				text-align:right;
+			}
+		</style>
+		<?php
+	}
+}
+
+/**
  * Return default title name of Delivery Note
  */
 function wcdn_company_name() {

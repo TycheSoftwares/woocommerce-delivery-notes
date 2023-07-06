@@ -10,6 +10,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <html>
+	<head>
+	<?php
+	wcdn_rtl();
+	?>
+	</head>
 	<body>
 		<div class="content">
 			<div class="page-header">
@@ -51,7 +56,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</div>
 
 				<div class="shipping-address">						
-					<h3><?php esc_attr_e( 'Shipping Address', 'woocommerce-delivery-notes' ); ?></h3>
+					<h3 class="cap"><?php esc_attr_e( 'Shipping Address', 'woocommerce-delivery-notes' ); ?></h3>
 					<address>
 
 						<?php
@@ -73,12 +78,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<?php
 					$fields = apply_filters( 'wcdn_order_info_fields', wcdn_get_order_info( $order ), $order );
 					?>
-					<?php foreach ( $fields as $field ) : ?>
-						<li>
-							<strong><?php echo wp_kses_post( apply_filters( 'wcdn_order_info_name', $field['label'], $field ) ); ?></strong>
-							<strong><?php echo wp_kses_post( apply_filters( 'wcdn_order_info_content', $field['value'], $field ) ); ?></strong>
-						</li>
-					<?php endforeach; ?>
+					<?php
+					foreach ( $fields as $field ) :
+						$nodisplay = array( 'Payment Method', 'Email', 'Telephone' );
+						if ( ! in_array( $field['label'], $nodisplay, true ) ) {
+							?>
+							<li>
+								<strong><?php echo wp_kses_post( apply_filters( 'wcdn_order_info_name', $field['label'], $field ) ); ?></strong>
+								<strong><?php echo wp_kses_post( apply_filters( 'wcdn_order_info_content', $field['value'], $field ) ); ?></strong>
+							</li>
+							<?php
+						}
+					endforeach;
+					?>
 				</ul>
 
 				<?php do_action( 'wcdn_after_info', $order ); ?>
