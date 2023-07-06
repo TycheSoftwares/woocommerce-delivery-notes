@@ -189,7 +189,7 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 			require_once 'class-tyche-plugin-deactivation.php';
 			new Tyche_Plugin_Deactivation(
 				array(
-					'plugin_name'       => 'Print invoices & delivery notes for WooCommerce orders',
+					'plugin_name'       => 'Print invoices & delivery notes for WooCommerce',
 					'plugin_base'       => 'Print-Invoice-Delivery-Notes-for-WooCommerce/woocommerce-delivery-notes.php',
 					'script_file'       => self::$plugin_url . 'assets/js/plugin-deactivation.js',
 					'plugin_short_name' => 'wcdn',
