@@ -471,3 +471,6 @@ span.remove-image {
 .wcdn-footer .ft-text p { line-height: 25px; margin-bottom: 22px; }
 .wcdn-footer .ft-text p:last-child { margin-bottom: 0; }
 .wcdn-footer .ft-text .rating { font-size: 17px; color: #FFBA00; }
+.wcdn_preview_img img {
+	width: 100%;
+}
