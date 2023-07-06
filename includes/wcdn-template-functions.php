@@ -227,20 +227,20 @@ function wcdn_company_logo() {
 /**
  * Show pdf logo html
  */
-
 function wcdn_pdf_company_logo() {
 	global $wcdn;
 	$attachment_id = wcdn_get_company_logo_id();
 	$company       = get_option( 'wcdn_custom_company_name' );
+	$sizeh         = get_option( 'wcdn_general_settings' )['logo_size']['sizeh'];
+	$sizew         = get_option( 'wcdn_general_settings' )['logo_size']['sizew'];
 	if ( $attachment_id ) {
 		$attachment_src = wp_get_attachment_image_src( $attachment_id, 'full', false );
 		$upload_dir     = wp_upload_dir();
 		$type           = pathinfo( $attachment_src[0], PATHINFO_EXTENSION );
 		$data           = file_get_contents( $attachment_src[0] );
 		$data_uri       = 'data:image/' . $type . ';base64,' . base64_encode( $data );
-		// resize the image to a 1/4 of the original size to have a printing point density of about 288ppi.
 		?>
-		<img src="<?php echo $data_uri; ?>" width="<?php echo esc_attr( round( $attachment_src[1] / 4 ) ); ?>" height="<?php echo esc_attr( round( $attachment_src[2] / 4 ) ); ?>" alt="<?php echo esc_attr( $company ); ?>" />
+		<img src="<?php echo $data_uri; ?>" width="<?php echo esc_attr( $sizew ); ?>px" height="<?php echo esc_attr( $sizeh ); ?>px" alt="<?php echo esc_attr( $company ); ?>" />
 		<?php
 	}
 }
@@ -426,8 +426,7 @@ function wcdn_get_order_info( $order, $type = '' ) {
 /**
  * Get the invoice number of an order
  *
- * @param int    $order_id Order ID.
- * @param string $create_invoice_number pass yes or no for creating invoice number.
+ * @param int $order_id Order ID.
  */
 function wcdn_get_order_invoice_number( $order_id ) {
 	global $wcdn;
@@ -716,7 +715,9 @@ function wcdn_imprint() {
 }
 
 /**
- * Show PIF Fileds in the invoice
+ * Show PIF Fileds in the invoice.
+ *
+ * @param array $item Cart item array.
  */
 function wcdn_print_extra_fields( $item ) {
 	// Check if Product Input Field Pro is active.

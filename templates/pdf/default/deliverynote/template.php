@@ -1,6 +1,6 @@
 <?php
 /**
- * Create default Invoice PDF.
+ * Create default Delivery note PDF.
  *
  * @package WooCommerce Print Invoice & Delivery Note/Templates
  */
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<?php wcdn_pdf_company_logo(); ?><?php endif; ?>
 				</div>
 				<div class="document-name cap">						
-					<h1>Invoice</h1>
+					<h1>Delivery Note</h1>
 				</div>
 			</div>
 
@@ -89,9 +89,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<thead>
 						<tr>
 							<th class="head-name"><span><?php esc_attr_e( 'Product', 'woocommerce-delivery-notes' ); ?></span></th>
-							<th class="head-item-price"><span><?php esc_attr_e( 'Price', 'woocommerce-delivery-notes' ); ?></span></th>
 							<th class="head-quantity"><span><?php esc_attr_e( 'Quantity', 'woocommerce-delivery-notes' ); ?></span></th>
-							<th class="head-price"><span><?php esc_attr_e( 'Total', 'woocommerce-delivery-notes' ); ?></span></th>
 						</tr>
 					</thead>
 
@@ -104,14 +102,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 									<td class="product-name">
 										<?php echo $item->get_name(); ?>
 									</td>
-									<td class="product-item-price">
-										<span><?php echo wp_kses_post( wcdn_get_formatted_item_price( $order, $item ) ); ?></span>
-									</td>
 									<td class="product-quantity">
 										<span><?php echo esc_attr( apply_filters( 'wcdn_order_item_quantity', $item['qty'], $item ) ); ?></span>
-									</td>
-									<td class="product-price">
-										<span><?php echo wp_kses_post( $order->get_formatted_line_subtotal( $item ) ); ?></span>
 									</td>
 								</tr>
 							<?php endforeach; ?>

@@ -11,6 +11,7 @@ ol, ul, li {
 body {
 	background: #fff;
 	font-family: "HelveticaNeue", Helvetica, Arial, sans-serif;
+	padding: 5% 10%;
 }
 h1, h2, h3, h4 {
 	margin-bottom: 10px;
@@ -21,7 +22,6 @@ h1, h2, h3, h4 {
 
 /* Page Margins & Basic Stylings */
 .content {
-	padding: 5% 10%;
 	margin-left: auto;
 	margin-right: auto;
 }

@@ -1,6 +1,6 @@
 <?php
 /**
- * Create default Invoice PDF.
+ * Create default Receipt PDF.
  *
  * @package WooCommerce Print Invoice & Delivery Note/Templates
  */
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<?php wcdn_pdf_company_logo(); ?><?php endif; ?>
 				</div>
 				<div class="document-name cap">						
-					<h1>Invoice</h1>
+					<h1>Receipt</h1>
 				</div>
 			</div>
 
