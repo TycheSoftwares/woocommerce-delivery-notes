@@ -449,7 +449,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			
 			<div class="order-thanks">
 				<?php
-				if ( isset( $data['complimentary_close']['active'] ) ) :
+				if ( isset( $data['complimentary_close']['active'] ) ) {
 					$style = 'font-size:' . $data['complimentary_close']['complimentary_close_font_size'] . 'px;color:' . $data['complimentary_close']['complimentary_close_text_colour'];
 					?>
 					<?php wcdn_personal_notes(); ?>
