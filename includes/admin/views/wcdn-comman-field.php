@@ -74,12 +74,21 @@
 		?>
 	</div>
 </div>
+<?php
+	if ( isset( $customization_data['template_setting']['template_setting_template'] ) && 'simple' === $customization_data['template_setting']['template_setting_template'] ) {
+		$styles = 'style=display:block;';
+		$styled = 'style=display:none;';
+	}else {
+		$styles = 'style=display:none;';
+		$styled = 'style=display:block;';
+	}
+?>
 <div class="col-sm-6 offset-sm-2">
 	<div class="wcdn_preview_img">
-		<div class="wcdn_for_default"> 
+		<div class="wcdn_for_default" <?php echo $styled; ?>> 
 			<img src="<?php echo esc_url( WooCommerce_Delivery_Notes::$plugin_url . 'assets/images/Default_Invoice.png' ); ?>">
 		</div>
-		<div class="wcdn_for_simple" style="display:none;"> 
+		<div class="wcdn_for_simple" <?php echo $styles; ?>> 
 			<img src="<?php echo esc_url( WooCommerce_Delivery_Notes::$plugin_url . 'assets/images/Simple_Invoice.png' ); ?>">
 		</div>
 	</div>
