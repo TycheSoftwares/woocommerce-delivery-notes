@@ -160,8 +160,10 @@ jQuery(document).ready(function($) {
 	$('select[name*="\\[template_setting\\][\\template_setting_template\\]"]').change(function () {
 		if( this.value == 'simple' ) {
 			jQuery('.accordion-button').attr('disabled', false);
+			jQuery('.switch input[type="checkbox"]').attr('disabled', false);
 		} else {
 			jQuery('.accordion-button').attr('disabled', true);
+			jQuery('.switch input[type="checkbox"]').attr('disabled', true);
 		}
     });
 

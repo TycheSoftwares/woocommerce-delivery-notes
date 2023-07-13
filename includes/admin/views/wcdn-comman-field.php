@@ -16,7 +16,7 @@
 		$hidden             = 'disabled';
 		foreach ( $settings[ $c_tab ] as $key => $eachsetting ) {
 			$class = ( 1 === $i ) ? 'show' : '';
-			if ( isset( $customization_data['template_setting']['template_setting_template'] ) && 'simple' === $customization_data['template_setting']['template_setting_template'] && $i === 1 ) {
+			if ( isset( $customization_data['template_setting']['template_setting_template'] ) && 'simple' === $customization_data['template_setting']['template_setting_template'] && 1 === $i ) {
 				$hidden = '';
 			}
 			?>
@@ -26,7 +26,7 @@
 						<?php echo esc_html( $label[ $key ] ); ?>
 					</button>
 					<label class="switch">
-						<input type="checkbox" name="<?php echo esc_attr( $c_tab . '[' . $key . '][active]' ); ?>" 
+						<input type="checkbox" <?php echo esc_html( $hidden ); ?> name="<?php echo esc_attr( $c_tab . '[' . $key . '][active]' ); ?>" 
 							<?php
 							if ( isset( $customization_data[ $key ]['active'] ) && 'on' === $customization_data[ $key ]['active'] ) {
 								echo 'checked';
