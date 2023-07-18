@@ -332,7 +332,11 @@ function wcdn_get_order_info( $order, $type = '' ) {
 
 	if ( ( 'invoice' === wcdn_get_template_type() || 'order' === wcdn_get_template_type() ) && ! empty( $create_invoice_number ) && 'yes' === $create_invoice_number ) {
 		if ( isset( $data['invoice_number']['active'] ) ) {
-			$label                    = $data['invoice_number']['invoice_number_text'];
+			if ( isset( $data['invoice_number']['invoice_number_text'] ) && ! empty( $data['invoice_number']['invoice_number_text'] ) ) {
+				$label = $data['invoice_number']['invoice_number_text'];
+			} else {
+				$label = __( 'Invoice Number', 'woocommerce-delivery-notes' );
+			}
 			$fields['invoice_number'] = array(
 				'label'       => __( $label, 'woocommerce-delivery-notes' ), // phpcs:ignore
 				'value'       => wcdn_get_order_invoice_number( $wdn_order_id ),
@@ -348,28 +352,35 @@ function wcdn_get_order_info( $order, $type = '' ) {
 			);
 		}
 	}
-
-	if ( 'invoice:' === wcdn_get_template_type() ) {
-		if ( isset( $data['invoice_date']['active'] ) ) {
-			$label                  = $data['invoice_date']['invoice_date_text'];
-			$fields['invoice_date'] = array(
-				'label'       => __( $label, 'woocommerce-delivery-notes' ), // phpcs:ignore
-				'value'       => wcdn_get_order_invoice_date( $wdn_order_id ),
-				'font-size'   => $data['invoice_date']['invoice_date_font_size'],
-				'font-weight' => $data['invoice_date']['invoice_date_style'],
-				'color'       => $data['invoice_date']['invoice_date_text_colour'],
-				'active'      => 'yes',
-			);
+	
+	if ( isset( $data['invoice_date']['active'] ) ) {
+		if ( isset( $data['invoice_date']['invoice_date_text'] ) && ! empty( $data['invoice_date']['invoice_date_text'] ) ) {
+			$label = $data['invoice_date']['invoice_date_text'];
 		} else {
-			$fields['invoice_date'] = array(
-				'label' => __( 'Invoice Date', 'woocommerce-delivery-notes' ),
-				'value' => wcdn_get_order_invoice_date( $wdn_order_id ),
-			);
+			$label = __( 'Invoice Date', 'woocommerce-delivery-notes' );
 		}
+		$fields['invoice_date'] = array(
+			'label'       => __( $label, 'woocommerce-delivery-notes' ), // phpcs:ignore
+			'value'       => wcdn_get_order_invoice_date( $wdn_order_id ),
+			'font-size'   => $data['invoice_date']['invoice_date_font_size'],
+			'font-weight' => $data['invoice_date']['invoice_date_style'],
+			'color'       => $data['invoice_date']['invoice_date_text_colour'],
+			'active'      => 'yes',
+		);
+	} else {
+		$fields['invoice_date'] = array(
+			'label' => __( 'Invoice Date', 'woocommerce-delivery-notes' ),
+			'value' => wcdn_get_order_invoice_date( $wdn_order_id ),
+		);
 	}
+	
 
 	if ( isset( $data['order_number']['active'] ) ) {
-		$label                  = $data['order_number']['order_number_text'];
+		if ( isset( $data['order_number']['order_number_text'] ) && ! empty( $data['order_number']['order_number_text'] ) ) {
+			$label = $data['order_number']['order_number_text'];
+		} else {
+			$label = __( 'Order Number', 'woocommerce-delivery-notes' );
+		}
 		$fields['order_number'] = array(
 			'label'       => __( $label, 'woocommerce-delivery-notes' ), // phpcs:ignore
 			'value'       => $order->get_order_number(),
@@ -386,7 +397,11 @@ function wcdn_get_order_info( $order, $type = '' ) {
 	}
 
 	if ( isset( $data['order_date']['active'] ) ) {
-		$label                = $data['order_date']['order_date_text'];
+		if ( isset( $data['order_date']['order_date_text'] ) && ! empty( $data['order_date']['order_date_text'] ) ) {
+			$label = $data['order_date']['order_date_text'];
+		} else {
+			$label = __( 'Order Date', 'woocommerce-delivery-notes' );
+		}
 		$fields['order_date'] = array(
 			'label'       => __( $label, 'woocommerce-delivery-notes' ), // phpcs:ignore
 			'value'       => date_i18n( get_option( 'date_format' ), strtotime( $wdn_order_order_date ) ),
@@ -409,7 +424,11 @@ function wcdn_get_order_info( $order, $type = '' ) {
 	);
 	if ( $wdn_order_billing_id ) {
 		if ( isset( $data['email_address']['active'] ) ) {
-			$label                   = $data['email_address']['email_address_title'];
+			if ( isset( $data['email_address']['email_address_title'] ) && ! empty( $data['email_address']['email_address_title'] ) ) {
+				$label = $data['email_address']['email_address_title'];
+			} else {
+				$label = __( 'Email', 'woocommerce-delivery-notes' );
+			}
 			$fields['billing_email'] = array(
 				'label'     => __( $label, 'woocommerce-delivery-notes' ), // phpcs:ignore
 				'value'     => $wdn_order_billing_id,
@@ -426,22 +445,24 @@ function wcdn_get_order_info( $order, $type = '' ) {
 	}
 
 	if ( $wdn_order_billing_phone ) {
-		if ( $wdn_order_billing_id ) {
-			if ( isset( $data['phone_number']['active'] ) ) {
-				$label                   = $data['phone_number']['phone_number_title'];
-				$fields['billing_phone'] = array(
-					'label'     => __( $label, 'woocommerce-delivery-notes' ), // phpcs:ignore
-					'value'     => $wdn_order_billing_id,
-					'font-size' => $data['phone_number']['phone_number_font_size'],
-					'color'     => $data['phone_number']['phone_number_text_colour'],
-					'active'    => 'yes',
-				);
+		if ( isset( $data['phone_number']['active'] ) ) {
+			if ( isset( $data['phone_number']['phone_number_title'] ) && ! empty( $data['phone_number']['phone_number_title'] ) ) {
+				$label = $data['phone_number']['phone_number_title'];
 			} else {
-				$fields['billing_phone'] = array(
-					'label' => __( 'Telephone', 'woocommerce-delivery-notes' ),
-					'value' => $wdn_order_billing_phone,
-				);
+				$label = __( 'Telephone', 'woocommerce-delivery-notes' );
 			}
+			$fields['billing_phone'] = array(
+				'label'     => __( $label, 'woocommerce-delivery-notes' ), // phpcs:ignore
+				'value'     => $wdn_order_billing_phone,
+				'font-size' => $data['phone_number']['phone_number_font_size'],
+				'color'     => $data['phone_number']['phone_number_text_colour'],
+				'active'    => 'yes',
+			);
+		} else {
+			$fields['billing_phone'] = array(
+				'label' => __( 'Telephone', 'woocommerce-delivery-notes' ),
+				'value' => $wdn_order_billing_phone,
+			);
 		}
 	}
 
