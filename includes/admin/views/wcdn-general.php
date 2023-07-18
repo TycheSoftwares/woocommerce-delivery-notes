@@ -116,12 +116,6 @@ $shop_logotitle = get_the_title( $shop_logoid );
 	</div>
 </div>
 <div class="form-group row">
-	<label for="shop_copyright" class="col-sm-2 col-form-label"><?php esc_html_e( 'Copyright Text', 'woocommerce-delivery-notes' ); ?></label>
-	<div class="col-sm-6 icon-flex">
-		<input type="text" class="form-control" name="wcdn_general[shop_copyright]" id="shop_copyright" value="<?php echo esc_attr( isset( $data['shop_copyright'] ) ? stripcslashes( $data['shop_copyright'] ) : '' ); ?>">
-	</div>
-</div>
-<div class="form-group row">
 	<div class="col-sm-8">
 		<h5 class="wcdn_title"><?php esc_html_e( 'Pages & Buttons', 'woocommerce-delivery-notes' ); ?></h5>
 	</div>
