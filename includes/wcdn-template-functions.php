@@ -312,7 +312,6 @@ function wcdn_get_order_info( $order, $type = '' ) {
 			} else {
 				$label = __( 'Invoice Number', 'woocommerce-delivery-notes' );
 			}
-			$label                    = $label;
 			$fields['invoice_number'] = array(
 				'label'       => __( $label, 'woocommerce-delivery-notes' ), // phpcs:ignore
 				'value'       => wcdn_get_order_invoice_number( $wdn_order_id ),
@@ -328,14 +327,12 @@ function wcdn_get_order_info( $order, $type = '' ) {
 			);
 		}
 	}
-	
 	if ( isset( $data['invoice_date']['active'] ) ) {
 		if ( isset( $data['invoice_date']['invoice_date_text'] ) && ! empty( $data['invoice_date']['invoice_date_text'] ) ) {
 			$label = $data['invoice_date']['invoice_date_text'];
 		} else {
 			$label = __( 'Invoice Date', 'woocommerce-delivery-notes' );
 		}
-		$label                  = $label;
 		$fields['invoice_date'] = array(
 			'label'       => __( $label, 'woocommerce-delivery-notes' ), // phpcs:ignore
 			'value'       => wcdn_get_order_invoice_date( $wdn_order_id ),
@@ -350,7 +347,6 @@ function wcdn_get_order_info( $order, $type = '' ) {
 			'value' => wcdn_get_order_invoice_date( $wdn_order_id ),
 		);
 	}
-	
 
 	if ( isset( $data['order_number']['active'] ) ) {
 		if ( isset( $data['order_number']['order_number_text'] ) && ! empty( $data['order_number']['order_number_text'] ) ) {
@@ -358,7 +354,6 @@ function wcdn_get_order_info( $order, $type = '' ) {
 		} else {
 			$label = __( 'Order Number', 'woocommerce-delivery-notes' );
 		}
-		$label                  = $label;
 		$fields['order_number'] = array(
 			'label'       => __( $label, 'woocommerce-delivery-notes' ), // phpcs:ignore
 			'value'       => $order->get_order_number(),
@@ -380,7 +375,6 @@ function wcdn_get_order_info( $order, $type = '' ) {
 		} else {
 			$label = __( 'Order Date', 'woocommerce-delivery-notes' );
 		}
-		$label                = $label;
 		$fields['order_date'] = array(
 			'label'       => __( $label, 'woocommerce-delivery-notes' ), // phpcs:ignore
 			'value'       => date_i18n( get_option( 'date_format' ), strtotime( $wdn_order_order_date ) ),
@@ -408,7 +402,6 @@ function wcdn_get_order_info( $order, $type = '' ) {
 			} else {
 				$label = __( 'Email', 'woocommerce-delivery-notes' );
 			}
-			$label                   = $label;
 			$fields['billing_email'] = array(
 				'label'     => __( $label, 'woocommerce-delivery-notes' ), // phpcs:ignore
 				'value'     => $wdn_order_billing_id,
@@ -431,7 +424,6 @@ function wcdn_get_order_info( $order, $type = '' ) {
 			} else {
 				$label = __( 'Telephone', 'woocommerce-delivery-notes' );
 			}
-			$label                   = $label;
 			$fields['billing_phone'] = array(
 				'label'     => __( $label, 'woocommerce-delivery-notes' ), // phpcs:ignore
 				'value'     => $wdn_order_billing_phone,
