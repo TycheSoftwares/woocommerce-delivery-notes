@@ -147,13 +147,30 @@ function wcdn_navigation() {
 
 /**
  * Output template stylesheet
+ *
+ * @param string $template_type Template type.
  */
-function wcdn_template_stylesheet() {
+function wcdn_template_stylesheet( $template_type ) {
 	global $wcdn;
 	$name = apply_filters( 'wcdn_template_stylesheet_name', 'style.css' );
 	// phpcs:disable
+
+	if ( 'delivery-note' === $template_type ) {
+		$template_type = 'deliverynote';
+	}
+	$setting = get_option( 'wcdn_' . $template_type . '_customization' );
+	if ( isset( $setting['template_setting']['active'] ) ) {
+		?>
+		<link rel="stylesheet" href="<?php echo esc_url( $wcdn->print->get_template_file_location( $name, true ) ) . 'simple/' . esc_html( $name ); ?>" type="text/css" media="screen,print" />
+		<?php
+	} else {
+		?>
+		<link rel="stylesheet" href="<?php echo esc_url( $wcdn->print->get_template_file_location( $name, true ) ) . esc_html( $name ); ?>" type="text/css" media="screen,print" />
+		<?php
+	}
+
 	?>
-	<link rel="stylesheet" href="<?php echo esc_url( $wcdn->print->get_template_file_location( $name, true ) ) . esc_html( $name ); ?>" type="text/css" media="screen,print" />
+	
 	<?php
 	// phpcs:enable
 }
@@ -172,9 +189,19 @@ function wcdn_content( $order, $template_type ) {
 	add_filter( 'woocommerce_get_order_item_totals', 'wcdn_remove_payment_method_from_totals', 20, 2 );
 	add_filter( 'woocommerce_get_order_item_totals', 'wcdn_add_refunded_order_totals', 30, 2 );
 
+	if ( 'delivery-note' === $template_type ) {
+		$template_type = 'deliverynote';
+	}
+	$setting = get_option( 'wcdn_' . $template_type . '_customization' );
+	if ( isset( $setting['template_setting']['active'] ) ) {
+		$turl = 'simple/' . $template_type . '/print-content.php';
+	} else {
+		$turl = 'print-content.php';
+	}
+
 	// Load the template.
 	wcdn_get_template_content(
-		'print-content.php',
+		$turl,
 		array(
 			'order'         => $order,
 			'template_type' => $template_type,
@@ -226,8 +253,10 @@ function wcdn_company_logo() {
 
 /**
  * Show pdf logo html
+ *
+ * @param string $type pdf type.
  */
-function wcdn_pdf_company_logo() {
+function wcdn_pdf_company_logo( $ttype ) {
 	global $wcdn;
 	$attachment_id = wcdn_get_company_logo_id();
 	$company       = get_option( 'wcdn_custom_company_name' );
@@ -236,12 +265,18 @@ function wcdn_pdf_company_logo() {
 	if ( $attachment_id ) {
 		$attachment_src = wp_get_attachment_image_src( $attachment_id, 'full', false );
 		$upload_dir     = wp_upload_dir();
-		$type           = pathinfo( $attachment_src[0], PATHINFO_EXTENSION );
+		$typei          = pathinfo( $attachment_src[0], PATHINFO_EXTENSION );
 		$data           = file_get_contents( $attachment_src[0] );
-		$data_uri       = 'data:image/' . $type . ';base64,' . base64_encode( $data );
-		?>
-		<img src="<?php echo $data_uri; ?>" width="<?php echo esc_attr( $sizew ); ?>px" height="<?php echo esc_attr( $sizeh ); ?>px" alt="<?php echo esc_attr( $company ); ?>" />
-		<?php
+		$data_uri       = 'data:image/' . $typei . ';base64,' . base64_encode( $data );
+		if ( 'default' === $ttype ) {
+			?>
+			<img src="<?php echo esc_url( $attachment_src[0] ); ?>"  class="desktop"  width="<?php echo esc_attr( round( $attachment_src[1] / 4 ) ); ?>" height="<?php echo esc_attr( round( $attachment_src[2] / 4 ) ); ?>" alt="<?php echo esc_attr( $company ); ?>" />
+			<?php
+		} else {
+			?>
+			<img src="<?php echo $data_uri; ?>" width="<?php echo esc_attr( $sizew ); ?>px" height="<?php echo esc_attr( $sizeh ); ?>px" alt="<?php echo esc_attr( $company ); ?>" />
+			<?php
+		}
 	}
 }
 
@@ -403,9 +438,10 @@ function wcdn_get_order_info( $order, $type = '' ) {
 	}
 
 	$fields['payment_method'] = array(
-		'label' => __( 'Payment Method', 'woocommerce-delivery-notes' ),
+		'label'  => __( 'Payment Method', 'woocommerce-delivery-notes' ),
 		// phpcs:ignore
-		'value' => __( $wdn_order_payment_method_title, 'woocommerce' ),
+		'value'  => __( $wdn_order_payment_method_title, 'woocommerce' ),
+		'active' => 'yes',
 	);
 	if ( $wdn_order_billing_id ) {
 		if ( isset( $data['email_address']['active'] ) ) {
@@ -802,4 +838,109 @@ function wcdn_order_item_count( $count, $type, $order ) {
 	return $count;
 }
 add_filter( 'woocommerce_get_item_count', 'wcdn_order_item_count', 20, 3 );
+
+
+/**
+ * Function to pass product name in PDFs.
+ *
+ * @param object   $product product array.
+ * @param WC_Order $order Order object.
+ * @param object   $item Item Type.
+ */
+function get_product_name( $product, $order, $item ) {
+	echo '<div class="name">';
+	$addon_name  = $item->get_meta( '_wc_pao_addon_name', true );
+	$addon_value = $item->get_meta( '_wc_pao_addon_value', true );
+	$is_addon    = ! empty( $addon_value );
+	if ( $is_addon ) { // Displaying options of product addon.
+		$addon_html = '<div class="wc-pao-order-item-name">' . esc_html( $addon_name ) . '</div><div class="wc-pao-order-item-value">' . esc_html( $addon_value ) . '</div></div>';
+		echo wp_kses_post( $addon_html );
+	} else {
+		$product_id   = $item['product_id'];
+		$prod_name    = get_post( $product_id );
+		$product_name = $prod_name->post_title;
+		echo wp_kses_post( apply_filters( 'wcdn_order_item_name', $product_name, $item ) );
+		echo '</div>';
+		$item_meta_fields          = apply_filters( 'wcdn_product_meta_data', $item['item_meta'], $item );
+		$product_addons            = array();
+		$woocommerce_product_addon = 'woocommerce-product-addons/woocommerce-product-addons.php';
+		if ( in_array( $woocommerce_product_addon, apply_filters( 'active_plugins', get_option( 'active_plugins', array() ) ), true ) ) {
+			$product_id = $item['product_id'];
+			if ( class_exists( 'WC_Product_Addons_Helper' ) ) {
+				$product_addons = WC_Product_Addons_Helper::get_product_addons( $product_id );
+			}
+		}
+		if ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) {
+			if ( isset( $item['variation_id'] ) && 0 !== $item['variation_id'] ) {
+				$variation = wc_get_product( $item['product_id'] );
+				foreach ( $item_meta_fields as $key => $value ) {
+					if ( ! ( 0 === strpos( $key, '_' ) ) ) {
+						if ( is_array( $value ) ) {
+							continue;
+						}
+						$term_wp        = get_term_by( 'slug', $value, $key );
+						$attribute_name = wc_attribute_label( $key, $variation );
+						if ( ! empty( $product_addons ) ) {
+							foreach ( $product_addons as $addon ) {
+								if ( 'file_upload' === $addon['type'] ) {
+									if ( $key === $addon['name'] ) {
+										$value = wp_basename( $value );
+									}
+								}
+							}
+						}
+						if ( isset( $term_wp->name ) ) {
+							echo '<br>' . wp_kses_post( $attribute_name . ':' . $term_wp->name );
+						} else {
+							echo '<br>' . wp_kses_post( $attribute_name . ':' . $value );
+						}
+					}
+				}
+			} else {
+				foreach ( $item_meta_fields as $key => $value ) {
+					if ( ! ( 0 === strpos( $key, '_' ) ) ) {
+						if ( is_array( $value ) ) {
+							continue;
+						}
+						if ( ! empty( $product_addons ) ) {
+							foreach ( $product_addons as $addon ) {
+								if ( 'file_upload' === $addon['type'] ) {
+									if ( $key === $addon['name'] ) {
+										$value = wp_basename( $value );
+									}
+								}
+							}
+						}
+						echo '<br>' . wp_kses_post( $key . ':' . $value );
+					}
+				}
+			}
+		} else {
+			$item_meta_new = new WC_Order_Item_Meta( $item_meta_fields, $product );
+			$item_meta_new->display();
+		}
+		echo '<dl class="extras">';
+		if ( $product && $product->exists() && $product->is_downloadable() && $order->is_download_permitted() ) :
+			echo '<dt>';
+			esc_attr_e( 'Download:', 'woocommerce-delivery-notes' );
+			echo '</dt>';
+			echo '<dd>';
+			// translators: files count.
+			printf( esc_attr__( '%s Files', 'woocommerce-delivery-notes' ), count( $item->get_item_downloads() ) );
+			echo '</dd>';
+
+		endif;
+		wcdn_print_extra_fields( $item );
+		$fields = apply_filters( 'wcdn_order_item_fields', array(), $product, $order, $item );
+		foreach ( $fields as $field ) :
+			echo '<dt>';
+			echo esc_html( $field['label'] );
+			echo '</dt>';
+			echo '<dd>';
+			echo esc_html( $field['value'] );
+			echo '</dd>';
+		endforeach;
+		echo '</dl>';
+	}
+}
 ?>

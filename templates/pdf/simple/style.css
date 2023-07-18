@@ -105,20 +105,8 @@ tfoot {
 .order-items dd {
 	font-size: 0.785em;
 	font-weight: normal;
-	line-height: 150%;
 	padding: 0;
 	margin: 0;
-}
-
-.order-items dt,
-.order-items dd {
-	display: block;
-	float: left;
-}
-
-.order-items dt {
-	clear: left;
-	padding-right: 0.2em;
 }
 .order-items .product-name .attachment {
 	display: block;
