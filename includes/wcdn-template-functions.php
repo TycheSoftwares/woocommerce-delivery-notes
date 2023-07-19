@@ -159,7 +159,7 @@ function wcdn_template_stylesheet( $template_type ) {
 		$template_type = 'deliverynote';
 	}
 	$setting = get_option( 'wcdn_' . $template_type . '_customization' );
-	if ( isset( $setting['template_setting']['active'] ) ) {
+	if ( isset( $setting['template_setting']['template_setting_template'] ) && 'simple' == $setting['template_setting']['template_setting_template'] ) {
 		?>
 		<link rel="stylesheet" href="<?php echo esc_url( $wcdn->print->get_template_file_location( $name, true ) ) . 'simple/' . esc_html( $name ); ?>" type="text/css" media="screen,print" />
 		<?php
@@ -193,7 +193,7 @@ function wcdn_content( $order, $template_type ) {
 		$template_type = 'deliverynote';
 	}
 	$setting = get_option( 'wcdn_' . $template_type . '_customization' );
-	if ( isset( $setting['template_setting']['active'] ) ) {
+	if ( isset( $setting['template_setting']['template_setting_template'] ) && 'simple' == $setting['template_setting']['template_setting_template'] ) {
 		$turl = 'simple/' . $template_type . '/print-content.php';
 	} else {
 		$turl = 'print-content.php';
