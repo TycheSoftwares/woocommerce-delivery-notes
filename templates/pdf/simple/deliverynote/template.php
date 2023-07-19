@@ -123,21 +123,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 					?>
 					<?php
 					foreach ( $fields as $field ) :
-						if ( isset( $field['active'] ) && 'yes' === $field['active'] ) {
-							if ( isset( $field['font-size'] ) ) {
-								$labelstyle = 'font-size:' . $field['font-size'] . 'px;';
-							}
-							if ( isset( $field['color'] ) ) {
-								$labelstyle .= 'color:' . $field['color'] . ';';
-							}
-							if ( isset( $field['font-weight'] ) ) {
-								$labelstyle .= 'font-weight:' . $field['font-weight'] . ';';
-							}
-							?>
-							<li>
-								<strong style="<?php echo $labelstyle; // phpcs:ignore ?>"><?php echo wp_kses_post( apply_filters( 'wcdn_order_info_name', $field['label'], $field ) ); ?></strong>
-								<strong style="<?php echo $labelstyle; // phpcs:ignore ?>"><?php echo wp_kses_post( apply_filters( 'wcdn_order_info_content', $field['value'], $field ) ); ?></strong>
-							</li>
+						$nodisplay = array( 'Payment Method' );
+						if ( ! in_array( $field['label'], $nodisplay, true ) ) {
+							if ( isset( $field['active'] ) && 'yes' === $field['active'] ) {
+								if ( isset( $field['font-size'] ) ) {
+									$labelstyle = 'font-size:' . $field['font-size'] . 'px;';
+								}
+								if ( isset( $field['color'] ) ) {
+									$labelstyle .= 'color:' . $field['color'] . ';';
+								}
+								if ( isset( $field['font-weight'] ) ) {
+									$labelstyle .= 'font-weight:' . $field['font-weight'] . ';';
+								}
+								?>
+								<li>
+									<strong style="<?php echo $labelstyle; // phpcs:ignore ?>"><?php echo wp_kses_post( apply_filters( 'wcdn_order_info_name', $field['label'], $field ) ); ?></strong>
+									<strong style="<?php echo $labelstyle; // phpcs:ignore ?>"><?php echo wp_kses_post( apply_filters( 'wcdn_order_info_content', $field['value'], $field ) ); ?></strong>
+								</li>
+							<?php } ?>
 						<?php } ?>
 					<?php endforeach; ?>
 				</ul>
