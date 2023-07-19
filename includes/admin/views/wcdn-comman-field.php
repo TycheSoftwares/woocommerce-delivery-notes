@@ -25,6 +25,7 @@
 					<button <?php echo esc_html( $hidden ); ?> class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#ct_acc_<?php echo esc_attr( $i ); ?>_content" aria-expanded="true" aria-controls="ct_acc_<?php echo esc_attr( $i ); ?>_content">
 						<?php echo esc_html( $label[ $key ] ); ?>
 					</button>
+					<?php if( 1 !== $i ) { ?>
 					<label class="switch">
 						<input type="checkbox" name="<?php echo esc_attr( $c_tab . '[' . $key . '][active]' ); ?>" 
 							<?php
@@ -35,6 +36,7 @@
 						>
 						<span class="slider round"></span>
 					</label>
+					<?php } ?>
 				</h2>
 				<div id="<?php echo esc_attr( 'ct_acc_' . $i . '_content' ); ?>" class="accordion-collapse collapse <?php echo esc_attr( $class ); ?>" aria-labelledby="<?php echo esc_attr( 'ct_acc_' . $i ); ?>">
 					<div class="accordion-body">
