@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php
 			if ( wcdn_get_company_logo_id() ) :
 				?>
-				<?php wcdn_pdf_company_logo(); ?>
+				<?php wcdn_pdf_company_logo( $ttype = 'simple'); ?>
 			<?php endif; ?>
 		</div>
 	<?php } ?>
@@ -78,6 +78,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 					esc_attr_e( 'N/A', 'woocommerce-delivery-notes' );
 				} else {
 					echo wp_kses_post( apply_filters( 'wcdn_address_billing', $order->get_formatted_billing_address(), $order ) );
+					$wdn_order_billing_id    = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_billing_email() : $order->billing_email;
+					$wdn_order_billing_phone = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_billing_phone() : $order->billing_phone;
+					if ( $wdn_order_billing_phone ) {
+						if ( isset( $data['phone_number']['active'] ) ) {
+							echo '<br>';
+							echo $wdn_order_billing_phone; // phpcs:ignore
+						}
+					}
+					if ( $wdn_order_billing_id ) {
+						if ( isset( $data['email_address']['active'] ) ) {
+							echo '<br>';
+							echo $wdn_order_billing_id; // phpcs:ignore
+						}
+					}
 				}
 				?>
 			</address>
@@ -103,6 +117,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 					esc_attr_e( 'N/A', 'woocommerce-delivery-notes' );
 				} else {
 					echo wp_kses_post( apply_filters( 'wcdn_address_shipping', $order->get_formatted_shipping_address(), $order ) );
+					$wdn_order_billing_id    = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_billing_email() : $order->billing_email;
+					$wdn_order_billing_phone = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_billing_phone() : $order->billing_phone;
+					if ( $wdn_order_billing_phone ) {
+						if ( isset( $data['phone_number']['active'] ) ) {
+							echo '<br>';
+							echo $wdn_order_billing_phone; // phpcs:ignore
+						}
+					}
+					if ( $wdn_order_billing_id ) {
+						if ( isset( $data['email_address']['active'] ) ) {
+							echo '<br>';
+							echo $wdn_order_billing_id; // phpcs:ignore
+						}
+					}
 				}
 				?>
 			</address>

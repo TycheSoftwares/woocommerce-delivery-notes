@@ -443,42 +443,21 @@ function wcdn_get_order_info( $order, $type = '' ) {
 		'value'  => __( $wdn_order_payment_method_title, 'woocommerce' ),
 		'active' => 'yes',
 	);
+
+
+
 	if ( $wdn_order_billing_id ) {
-		if ( isset( $data['email_address']['active'] ) ) {
-			$label                   = $data['email_address']['email_address_title'];
-			$fields['billing_email'] = array(
-				'label'     => __( $label, 'woocommerce-delivery-notes' ), // phpcs:ignore
-				'value'     => $wdn_order_billing_id,
-				'font-size' => $data['email_address']['email_address_font_size'],
-				'color'     => $data['email_address']['email_address_text_colour'],
-				'active'    => 'yes',
-			);
-		} else {
-			$fields['billing_email'] = array(
-				'label' => __( 'Email', 'woocommerce-delivery-notes' ),
-				'value' => $wdn_order_billing_id,
-			);
-		}
+		$fields['billing_email'] = array(
+			'label' => __( 'Email', 'woocommerce-delivery-notes' ),
+			'value' => $wdn_order_billing_id,
+		);
 	}
 
 	if ( $wdn_order_billing_phone ) {
-		if ( $wdn_order_billing_id ) {
-			if ( isset( $data['phone_number']['active'] ) ) {
-				$label                   = $data['phone_number']['phone_number_title'];
-				$fields['billing_phone'] = array(
-					'label'     => __( $label, 'woocommerce-delivery-notes' ), // phpcs:ignore
-					'value'     => $wdn_order_billing_id,
-					'font-size' => $data['phone_number']['phone_number_font_size'],
-					'color'     => $data['phone_number']['phone_number_text_colour'],
-					'active'    => 'yes',
-				);
-			} else {
-				$fields['billing_phone'] = array(
-					'label' => __( 'Telephone', 'woocommerce-delivery-notes' ),
-					'value' => $wdn_order_billing_phone,
-				);
-			}
-		}
+		$fields['billing_phone'] = array(
+			'label' => __( 'Telephone', 'woocommerce-delivery-notes' ),
+			'value' => $wdn_order_billing_phone,
+		);
 	}
 
 	return $fields;
