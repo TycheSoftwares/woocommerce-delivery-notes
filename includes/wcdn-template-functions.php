@@ -356,6 +356,7 @@ function wcdn_get_order_info( $order, $type = '' ) {
 	$fields                = array();
 	$create_invoice_number = get_option( 'wcdn_create_invoice_number' );
 	$data                  = get_option( 'wcdn_' . $type . '_customization' );
+	$template              = $data['template_setting']['template_setting_template'];
 
 	$wdn_order_id = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_id() : $order->id;
 	$order_post   = get_post( $wdn_order_id );
@@ -364,8 +365,10 @@ function wcdn_get_order_info( $order, $type = '' ) {
 	$wdn_order_payment_method_title = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_payment_method_title() : $order->payment_method_title;
 	$wdn_order_billing_id           = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_billing_email() : $order->billing_email;
 	$wdn_order_billing_phone        = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_billing_phone() : $order->billing_phone;
+	$date_formate                   = get_option('date_format');
+	$wdn_order_payment_date         = $order->get_date_paid();
 
-	if ( ( 'invoice' === wcdn_get_template_type() || 'order' === wcdn_get_template_type() ) && ! empty( $create_invoice_number ) && 'yes' === $create_invoice_number ) {
+	if ( ! empty( $create_invoice_number ) && 'yes' === $create_invoice_number ) {
 		if ( isset( $data['invoice_number']['active'] ) ) {
 			$label                    = $data['invoice_number']['invoice_number_text'];
 			$fields['invoice_number'] = array(
@@ -377,30 +380,20 @@ function wcdn_get_order_info( $order, $type = '' ) {
 				'active'      => 'yes',
 			);
 		} else {
-			$fields['invoice_number'] = array(
-				'label' => __( 'Invoice Number', 'woocommerce-delivery-notes' ),
-				'value' => wcdn_get_order_invoice_number( $wdn_order_id ),
-			);
+			if ( 'invoice' === wcdn_get_template_type() || 'order' === wcdn_get_template_type() ) {
+				$fields['invoice_number'] = array(
+					'label' => __( 'Invoice Number', 'woocommerce-delivery-notes' ),
+					'value' => wcdn_get_order_invoice_number( $wdn_order_id ),
+				);
+			}
 		}
 	}
 
 	if ( 'invoice:' === wcdn_get_template_type() ) {
-		if ( isset( $data['invoice_date']['active'] ) ) {
-			$label                  = $data['invoice_date']['invoice_date_text'];
-			$fields['invoice_date'] = array(
-				'label'       => __( $label, 'woocommerce-delivery-notes' ), // phpcs:ignore
-				'value'       => wcdn_get_order_invoice_date( $wdn_order_id ),
-				'font-size'   => $data['invoice_date']['invoice_date_font_size'],
-				'font-weight' => $data['invoice_date']['invoice_date_style'],
-				'color'       => $data['invoice_date']['invoice_date_text_colour'],
-				'active'      => 'yes',
-			);
-		} else {
-			$fields['invoice_date'] = array(
-				'label' => __( 'Invoice Date', 'woocommerce-delivery-notes' ),
-				'value' => wcdn_get_order_invoice_date( $wdn_order_id ),
-			);
-		}
+		$fields['invoice_date'] = array(
+			'label' => __( 'Invoice Date', 'woocommerce-delivery-notes' ),
+			'value' => wcdn_get_order_invoice_date( $wdn_order_id ),
+		);
 	}
 
 	if ( isset( $data['order_number']['active'] ) ) {
@@ -437,14 +430,44 @@ function wcdn_get_order_info( $order, $type = '' ) {
 		);
 	}
 
-	$fields['payment_method'] = array(
-		'label'  => __( 'Payment Method', 'woocommerce-delivery-notes' ),
-		// phpcs:ignore
-		'value'  => __( $wdn_order_payment_method_title, 'woocommerce' ),
-		'active' => 'yes',
-	);
 
+	if ( isset( $data['payment_method']['active'] ) ) {
+		if ( isset( $data['payment_method']['payment_method_text'] ) && ! empty( $data['payment_method']['payment_method_text'] ) ) {
+			$label = $data['payment_method']['payment_method_text'];
+		} else {
+			$label = __( 'Payment Method', 'woocommerce-delivery-notes' );
+		}
+		$fields['payment_method'] = array(
+			'label'       => __( 'Payment Method', 'woocommerce-delivery-notes' ),
+			// phpcs:ignore
+			'value'       => __( $wdn_order_payment_method_title, 'woocommerce' ),
+			'font-size'   => $data['payment_method']['payment_method_font_size'],
+			'font-weight' => $data['payment_method']['payment_method_style'],
+			'color'       => $data['payment_method']['payment_method_text_colour'],
+			'active'      => 'yes',
+		);
+	}
 
+	if ( $wdn_order_payment_date ) {
+		if ( 'receipt' === wcdn_get_template_type() && 'simple' === $template ) {
+			if ( isset( $data['payment_date']['active'] ) ) {
+				if ( isset( $data['payment_date']['payment_date_text'] ) && ! empty( $data['payment_date']['payment_date_text'] ) ) {
+					$label = $data['payment_date']['payment_date_text'];
+				} else {
+					$label = __( 'Payment date', 'woocommerce-delivery-notes' );
+				}
+				$fields['payment_date'] = array(
+					'label'       => __( 'Payment Date', 'woocommerce-delivery-notes' ),
+					// phpcs:ignore
+					'value'       => __( date( $date_formate, strtotime( $wdn_order_payment_date ) ), 'woocommerce' ),
+					'font-size'   => $data['payment_date']['payment_date_font_size'],
+					'font-weight' => $data['payment_date']['payment_date_style'],
+					'color'       => $data['payment_date']['payment_date_text_colour'],
+					'active'      => 'yes',
+				);
+			}
+		}
+	}
 
 	if ( $wdn_order_billing_id ) {
 		$fields['billing_email'] = array(
