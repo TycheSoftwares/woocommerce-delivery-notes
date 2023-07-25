@@ -268,16 +268,41 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php endif; ?>
 
 			<div class="order-thanks">
-				<?php wcdn_personal_notes(); ?>
+				<?php
+				if ( isset( $data['complimentary_close']['active'] ) ) {
+					?>
+					<style>
+						.order-thanks p {
+							color: <?php echo $data['complimentary_close']['complimentary_close_text_colour']; ?>;
+							font-size: <?php echo $data['complimentary_close']['complimentary_close_font_size']; ?>;
+						}
+					</style>
+					<div class="personal_note">
+						<?php wcdn_personal_notes(); ?>
+						<?php do_action( 'wcdn_after_thanks', $order ); ?>
+					</div><!-- .order-thanks -->
+					<?php
+				}
+				?>
 
-				<?php do_action( 'wcdn_after_thanks', $order ); ?>
+				<?php
+				if ( isset( $data['policies']['active'] ) ) {
+					?>
+					<style>
+						.colophon-policies p {
+							color: <?php echo $data['policies']['policies_text_colour']; ?>;
+							font-size: <?php echo $data['policies']['policies_font_size']; ?>;
+						}
+					</style>
+					<div class="colophon-policies">
+						<?php wcdn_policies_conditions(); ?>
+					</div>
+					<?php
+				}
+				?>
 			</div><!-- .order-thanks -->
 
 			<div class="order-colophon">
-				<div class="colophon-policies">
-					<?php wcdn_policies_conditions(); ?>
-				</div>
-
 				<?php
 				if ( isset( $data['footer']['active'] ) ) {
 					$style = 'font-size:' . $data['footer']['footer_font_size'] . 'px;color:' . $data['footer']['footer_text_colour'] . ';';
