@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php
 		// wcdn_head hook.
-		do_action( 'wcdn_head' );
+		do_action( 'wcdn_head', wcdn_get_template_type() );
 	if ( 'yes' === get_option( 'wcdn_rtl_invoice', 'no' ) ) {
 		?>
 		<style>
