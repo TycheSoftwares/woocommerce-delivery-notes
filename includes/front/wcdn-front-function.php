@@ -41,7 +41,7 @@ function create_pdf( $order, $type ) {
 	ob_start();
 	wcdn_get_document_template( $order, $type );
 	$html = ob_get_clean();
-
+	$html .= '<link type="text/css" href="' . esc_url( WooCommerce_Delivery_Notes::$plugin_url . 'templates/pdf/style.css' ) . '" rel="stylesheet" />';
 	$dompdf->loadHtml( $html );
 
 	// (Optional) Setup the paper size and orientation.

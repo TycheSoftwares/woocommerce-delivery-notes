@@ -54,8 +54,7 @@ if ( isset( $_GET['wdcn_setting'] ) ) {
 					<div class="col-sm-6 icon-flex">
 						<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'Create invoice numbers.', 'woocommerce-delivery-notes' ); ?>"></i>
 						<label class="switch">
-							<?php $checked = ( isset( $settings_db_data['numbering'] ) ) ? 'checked' : ''; ?>
-							<input type="checkbox" name="wcdn_invoice[numbering]" value="" <?php echo esc_attr( $checked ); ?>>
+							<input type="checkbox" name="wcdn_invoice[numbering]" value="" <?php echo esc_attr( ( get_option('wcdn_create_invoice_number') == 'yes' ) ? 'checked' : '' ); ?>>
 							<span class="slider round"></span>
 						</label>
 					</div>

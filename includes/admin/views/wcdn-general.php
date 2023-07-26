@@ -88,37 +88,31 @@ $shop_logotitle = get_the_title( $shop_logoid );
 	<label for="shop_name" class="col-sm-2 col-form-label"><?php esc_html_e( 'Name', 'woocommerce-delivery-notes' ); ?></label>
 	<div class="col-sm-6 icon-flex">
 		<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'The shop name. Leave blank to use the default Website or Blog title defined in WordPress settings. The name will be ignored when a Logo is set.', 'woocommerce-delivery-notes' ); ?>"></i>
-		<input type="text" class="form-control" name="wcdn_general[shop_name]" id="shop_name" value="<?php echo esc_html( isset( $data['shop_name'] ) ? stripcslashes( $data['shop_name'] ) : '' ); ?>">
+		<input type="text" class="form-control" name="wcdn_general[shop_name]" id="shop_name" value="<?php echo esc_html( stripcslashes( get_option('wcdn_custom_company_name') ) ); ?>">
 	</div>
 </div>
 <div class="form-group row">
 	<label for="shop_address" class="col-sm-2 col-form-label"><?php esc_html_e( 'Address', 'woocommerce-delivery-notes' ); ?></label>
 	<div class="col-sm-6 icon-flex">
-		<textarea name="wcdn_general[shop_address]" id="shop_address" class="form-control"><?php echo esc_html( isset( $data['shop_address'] ) ? $data['shop_address'] : '' ); ?></textarea>
+		<textarea name="wcdn_general[shop_address]" id="shop_address" class="form-control"><?php echo esc_html( get_option('wcdn_company_address') ); ?></textarea>
 	</div>
 </div>
 <div class="form-group row">
 	<label for="shop_complimentry_close" class="col-sm-2 col-form-label"><?php esc_html_e( 'Complimentary Close', 'woocommerce-delivery-notes' ); ?></label>
 	<div class="col-sm-6 icon-flex">
-		<input type="text" class="form-control" name="wcdn_general[shop_complimentry_close]" id="shop_complimentry_close" value="<?php echo esc_attr( isset( $data['shop_complimentry_close'] ) ? stripcslashes( $data['shop_complimentry_close'] ) : '' ); ?>">
+		<input type="text" class="form-control" name="wcdn_general[shop_complimentry_close]" id="shop_complimentry_close" value="<?php echo esc_attr( stripcslashes( get_option('wcdn_personal_notes') ) ); ?>">
 	</div>
 </div>
 <div class="form-group row">
 	<label for="shop_policy" class="col-sm-2 col-form-label"><?php esc_html_e( 'Policies', 'woocommerce-delivery-notes' ); ?></label>
 	<div class="col-sm-6 icon-flex">
-		<textarea name="wcdn_general[shop_policy]" id="shop_policy" class="form-control" placeholder=""><?php echo esc_attr( isset( $data['shop_policy'] ) ? stripcslashes( $data['shop_policy'] ) : '' ); ?></textarea>
+		<textarea name="wcdn_general[shop_policy]" id="shop_policy" class="form-control" placeholder=""><?php echo esc_attr( stripcslashes( get_option('wcdn_policies_conditions') ) ); ?></textarea>
 	</div>
 </div>
 <div class="form-group row">
 	<label for="shop_footer" class="col-sm-2 col-form-label"><?php esc_html_e( 'Footer', 'woocommerce-delivery-notes' ); ?></label>
 	<div class="col-sm-6 icon-flex">
-		<textarea name="wcdn_general[shop_footer]" id="shop_footer" class="form-control" placeholder=""><?php echo esc_attr( isset( $data['shop_footer'] ) ? stripcslashes( $data['shop_footer'] ) : '' ); ?></textarea>
-	</div>
-</div>
-<div class="form-group row">
-	<label for="shop_copyright" class="col-sm-2 col-form-label"><?php esc_html_e( 'Copyright Text', 'woocommerce-delivery-notes' ); ?></label>
-	<div class="col-sm-6 icon-flex">
-		<input type="text" class="form-control" name="wcdn_general[shop_copyright]" id="shop_copyright" value="<?php echo esc_attr( isset( $data['shop_copyright'] ) ? stripcslashes( $data['shop_copyright'] ) : '' ); ?>">
+		<textarea name="wcdn_general[shop_footer]" id="shop_footer" class="form-control" placeholder=""><?php echo esc_attr( stripcslashes( get_option('wcdn_footer_imprint') ) ); ?></textarea>
 	</div>
 </div>
 <div class="form-group row">
@@ -130,14 +124,14 @@ $shop_logotitle = get_the_title( $shop_logoid );
 	<label for="page_endpoint" class="col-sm-2 col-form-label"><?php esc_html_e( 'Print Page Endpoint', 'woocommerce-delivery-notes' ); ?></label>
 	<div class="col-sm-6 icon-flex">
 		<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'The endpoint is appended to the accounts page URL to print the order. It should be unique.', 'woocommerce-delivery-notes' ); ?>"></i>
-		<input type="text" class="form-control" name="wcdn_general[page_endpoint]" id="page_endpoint" value="<?php echo esc_attr( isset( $data['page_endpoint'] ) ? $data['page_endpoint'] : '' ); ?>">
+		<input type="text" class="form-control" name="wcdn_general[page_endpoint]" id="page_endpoint" value="<?php echo esc_attr( get_option( 'wcdn_print_order_page_endpoint' ) ); ?>">
 	</div>
 </div>
 <div class="form-group row">
 	<label for="print_link" class="col-sm-2 col-form-label"><?php esc_html_e( 'Email', 'woocommerce-delivery-notes' ); ?></label>
 	<div class="col-sm-6 icon-flex">
 		<label class="switch">
-		<input type="checkbox" class="form-control" name="wcdn_general[print_customer]" id="print_customer" value="" <?php echo esc_attr( isset( $data['print_customer'] ) ? 'checked' : '' ); ?> >
+		<input type="checkbox" class="form-control" name="wcdn_general[print_customer]" id="print_customer" value="" <?php echo esc_attr( ( get_option('wcdn_email_print_link') == 'yes' ) ? 'checked' : '' ); ?> >
 		<span class="slider round"></span>
 		</label>
 		<label><?php esc_html_e( 'Show print link in customer emails', 'woocommerce-delivery-notes' ); ?></label>
@@ -146,7 +140,7 @@ $shop_logotitle = get_the_title( $shop_logoid );
 	<div class="col-sm-2"></div>
 	<div class="col-sm-6 icon-flex">
 		<label class="switch">
-			<input type="checkbox" class="form-control" name="wcdn_general[print_admin]" id="print_admin" value="" <?php echo esc_attr( isset( $data['print_admin'] ) ? 'checked' : '' ); ?> >
+			<input type="checkbox" class="form-control" name="wcdn_general[print_admin]" id="print_admin" value="" <?php echo esc_attr( ( get_option('wcdn_admin_email_print_link') == 'yes' ) ? 'checked' : '' ); ?> >
 			<span class="slider round"></span>
 		</label>
 		<label><?php esc_html_e( 'Show print link in admin emails', 'woocommerce-delivery-notes' ); ?></label>
@@ -157,7 +151,7 @@ $shop_logotitle = get_the_title( $shop_logoid );
 	<div class="col-sm-6 icon-flex">
 		<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'This includes the emails for a new, processing and completed order. On top of that the customer and admin invoice emails will also include the link.', 'woocommerce-delivery-notes' ); ?>"></i>
 		<label class="switch">
-		<input type="checkbox" class="form-control" name="wcdn_general[view_order]" id="view_order" value="" <?php echo esc_attr( isset( $data['view_order'] ) ? 'checked' : '' ); ?> >
+		<input type="checkbox" class="form-control" name="wcdn_general[view_order]" id="view_order" value="" <?php echo esc_attr( ( get_option('wcdn_print_button_on_view_order_page') == 'yes' ) ? 'checked' : '' ); ?> >
 		<span class="slider round"></span>
 		</label>
 		<label><?php esc_html_e( 'Show print button on View Order page', 'woocommerce-delivery-notes' ); ?></label>
@@ -166,7 +160,7 @@ $shop_logotitle = get_the_title( $shop_logoid );
 	<div class="col-sm-2"></div>
 	<div class="col-sm-6 icon-flex">
 		<label class="switch">
-		<input type="checkbox" class="form-control" name="wcdn_general[view_account]" id="view_account" value="" <?php echo esc_attr( isset( $data['view_account'] ) ? 'checked' : '' ); ?> >
+		<input type="checkbox" class="form-control" name="wcdn_general[view_account]" id="view_account" value="" <?php echo esc_attr( ( get_option('wcdn_print_button_on_my_account_page') == 'yes' ) ? 'checked' : '' ); ?> >
 		<span class="slider round"></span>
 		</label>
 		<label><?php esc_html_e( 'Show print button on My Account page', 'woocommerce-delivery-notes' ); ?></label>
@@ -191,9 +185,17 @@ $shop_logotitle = get_the_title( $shop_logoid );
 	<div class="col-sm-6 icon-flex">
 		<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'Show text in right to left direction in Invoice, Print Receipt & Delivery note if you are using languages such as Hebrew, Arabic, etc.', 'woocommerce-delivery-notes' ); ?>"></i>
 		<label class="switch">
-			<input type="checkbox" class="form-control" name="wcdn_general[page_textdirection]" id="page_textdirection" value="" <?php echo esc_attr( isset( $data['page_textdirection'] ) ? 'checked' : '' ); ?> >
+			<input type="checkbox" class="form-control" name="wcdn_general[page_textdirection]" id="page_textdirection" value="" <?php echo esc_attr( ( get_option('wcdn_rtl_invoice') == 'yes' ) ? 'checked' : '' ); ?> >
 			<span class="slider round"></span>
 		</label>
 		<label><?php esc_html_e( 'Print Text from Right to left', 'woocommerce-delivery-notes' ); ?></label>
+	</div>
+</div>
+<div class="form-group row">
+	<label for="reset_tracking" class="col-sm-2 col-form-label"><?php esc_html_e( 'Reset usage tracking', 'woocommerce-delivery-notes' ); ?></label>
+	<div class="col-sm-6 icon-flex">
+		<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'This will reset your usage tracking settings, causing it to show the opt-in banner again and not sending any data', 'woocommerce-delivery-notes' ); ?>"></i>
+		<?php $nonce = wp_create_nonce( 'wcdn_tracker_reset' ); ?>
+		<a href="admin.php?page=wc-settings&tab=wcdn-settings&wcdn_tracker_reset_nonce=<?php echo $nonce; ?>&ts_action=wcdn_reset_tracking" name="ts_reset_tracking" id="ts_reset_tracking" class="button-secondary reset_tracking"> <?php echo __( 'Reset', 'woocommerce-delivery-notes' ); ?> </a>
 	</div>
 </div>

@@ -227,20 +227,45 @@ function wcdn_company_logo() {
 /**
  * Show pdf logo html
  */
-
 function wcdn_pdf_company_logo() {
 	global $wcdn;
 	$attachment_id = wcdn_get_company_logo_id();
 	$company       = get_option( 'wcdn_custom_company_name' );
+	$sizeh         = get_option( 'wcdn_general_settings' )['logo_size']['sizeh'];
+	$sizew         = get_option( 'wcdn_general_settings' )['logo_size']['sizew'];
 	if ( $attachment_id ) {
 		$attachment_src = wp_get_attachment_image_src( $attachment_id, 'full', false );
 		$upload_dir     = wp_upload_dir();
 		$type           = pathinfo( $attachment_src[0], PATHINFO_EXTENSION );
 		$data           = file_get_contents( $attachment_src[0] );
 		$data_uri       = 'data:image/' . $type . ';base64,' . base64_encode( $data );
-		// resize the image to a 1/4 of the original size to have a printing point density of about 288ppi.
 		?>
-		<img src="<?php echo $data_uri; ?>" width="<?php echo esc_attr( round( $attachment_src[1] / 4 ) ); ?>" height="<?php echo esc_attr( round( $attachment_src[2] / 4 ) ); ?>" alt="<?php echo esc_attr( $company ); ?>" />
+		<img src="<?php echo $data_uri; ?>" width="<?php echo esc_attr( $sizew ); ?>px" height="<?php echo esc_attr( $sizeh ); ?>px" alt="<?php echo esc_attr( $company ); ?>" />
+		<?php
+	}
+}
+
+/**
+ * Apply css if RTL is active.
+ */
+function wcdn_rtl() {
+	if ( 'yes' === get_option( 'wcdn_rtl_invoice', 'no' ) ) {
+		?>
+		<style>
+			body {
+				direction: rtl;
+			}
+			.order-items dt,
+			.order-items dd {
+				float: right;
+			}
+			.content{
+				text-align:right;	
+			}
+			th {
+				text-align:right;
+			}
+		</style>
 		<?php
 	}
 }
@@ -307,7 +332,11 @@ function wcdn_get_order_info( $order, $type = '' ) {
 
 	if ( ( 'invoice' === wcdn_get_template_type() || 'order' === wcdn_get_template_type() ) && ! empty( $create_invoice_number ) && 'yes' === $create_invoice_number ) {
 		if ( isset( $data['invoice_number']['active'] ) ) {
-			$label                    = $data['invoice_number']['invoice_number_text'];
+			if ( isset( $data['invoice_number']['invoice_number_text'] ) && ! empty( $data['invoice_number']['invoice_number_text'] ) ) {
+				$label = $data['invoice_number']['invoice_number_text'];
+			} else {
+				$label = __( 'Invoice Number', 'woocommerce-delivery-notes' );
+			}
 			$fields['invoice_number'] = array(
 				'label'       => __( $label, 'woocommerce-delivery-notes' ), // phpcs:ignore
 				'value'       => wcdn_get_order_invoice_number( $wdn_order_id ),
@@ -323,28 +352,33 @@ function wcdn_get_order_info( $order, $type = '' ) {
 			);
 		}
 	}
-
-	if ( 'invoice:' === wcdn_get_template_type() ) {
-		if ( isset( $data['invoice_date']['active'] ) ) {
-			$label                  = $data['invoice_date']['invoice_date_text'];
-			$fields['invoice_date'] = array(
-				'label'       => __( $label, 'woocommerce-delivery-notes' ), // phpcs:ignore
-				'value'       => wcdn_get_order_invoice_date( $wdn_order_id ),
-				'font-size'   => $data['invoice_date']['invoice_date_font_size'],
-				'font-weight' => $data['invoice_date']['invoice_date_style'],
-				'color'       => $data['invoice_date']['invoice_date_text_colour'],
-				'active'      => 'yes',
-			);
+	if ( isset( $data['invoice_date']['active'] ) ) {
+		if ( isset( $data['invoice_date']['invoice_date_text'] ) && ! empty( $data['invoice_date']['invoice_date_text'] ) ) {
+			$label = $data['invoice_date']['invoice_date_text'];
 		} else {
-			$fields['invoice_date'] = array(
-				'label' => __( 'Invoice Date', 'woocommerce-delivery-notes' ),
-				'value' => wcdn_get_order_invoice_date( $wdn_order_id ),
-			);
+			$label = __( 'Invoice Date', 'woocommerce-delivery-notes' );
 		}
+		$fields['invoice_date'] = array(
+			'label'       => __( $label, 'woocommerce-delivery-notes' ), // phpcs:ignore
+			'value'       => wcdn_get_order_invoice_date( $wdn_order_id ),
+			'font-size'   => $data['invoice_date']['invoice_date_font_size'],
+			'font-weight' => $data['invoice_date']['invoice_date_style'],
+			'color'       => $data['invoice_date']['invoice_date_text_colour'],
+			'active'      => 'yes',
+		);
+	} else {
+		$fields['invoice_date'] = array(
+			'label' => __( 'Invoice Date', 'woocommerce-delivery-notes' ),
+			'value' => wcdn_get_order_invoice_date( $wdn_order_id ),
+		);
 	}
 
 	if ( isset( $data['order_number']['active'] ) ) {
-		$label                  = $data['order_number']['order_number_text'];
+		if ( isset( $data['order_number']['order_number_text'] ) && ! empty( $data['order_number']['order_number_text'] ) ) {
+			$label = $data['order_number']['order_number_text'];
+		} else {
+			$label = __( 'Order Number', 'woocommerce-delivery-notes' );
+		}
 		$fields['order_number'] = array(
 			'label'       => __( $label, 'woocommerce-delivery-notes' ), // phpcs:ignore
 			'value'       => $order->get_order_number(),
@@ -361,7 +395,11 @@ function wcdn_get_order_info( $order, $type = '' ) {
 	}
 
 	if ( isset( $data['order_date']['active'] ) ) {
-		$label                = $data['order_date']['order_date_text'];
+		if ( isset( $data['order_date']['order_date_text'] ) && ! empty( $data['order_date']['order_date_text'] ) ) {
+			$label = $data['order_date']['order_date_text'];
+		} else {
+			$label = __( 'Order Date', 'woocommerce-delivery-notes' );
+		}
 		$fields['order_date'] = array(
 			'label'       => __( $label, 'woocommerce-delivery-notes' ), // phpcs:ignore
 			'value'       => date_i18n( get_option( 'date_format' ), strtotime( $wdn_order_order_date ) ),
@@ -384,7 +422,11 @@ function wcdn_get_order_info( $order, $type = '' ) {
 	);
 	if ( $wdn_order_billing_id ) {
 		if ( isset( $data['email_address']['active'] ) ) {
-			$label                   = $data['email_address']['email_address_title'];
+			if ( isset( $data['email_address']['email_address_title'] ) && ! empty( $data['email_address']['email_address_title'] ) ) {
+				$label = $data['email_address']['email_address_title'];
+			} else {
+				$label = __( 'Email', 'woocommerce-delivery-notes' );
+			}
 			$fields['billing_email'] = array(
 				'label'     => __( $label, 'woocommerce-delivery-notes' ), // phpcs:ignore
 				'value'     => $wdn_order_billing_id,
@@ -401,22 +443,24 @@ function wcdn_get_order_info( $order, $type = '' ) {
 	}
 
 	if ( $wdn_order_billing_phone ) {
-		if ( $wdn_order_billing_id ) {
-			if ( isset( $data['phone_number']['active'] ) ) {
-				$label                   = $data['phone_number']['phone_number_title'];
-				$fields['billing_phone'] = array(
-					'label'     => __( $label, 'woocommerce-delivery-notes' ), // phpcs:ignore
-					'value'     => $wdn_order_billing_id,
-					'font-size' => $data['phone_number']['phone_number_font_size'],
-					'color'     => $data['phone_number']['phone_number_text_colour'],
-					'active'    => 'yes',
-				);
+		if ( isset( $data['phone_number']['active'] ) ) {
+			if ( isset( $data['phone_number']['phone_number_title'] ) && ! empty( $data['phone_number']['phone_number_title'] ) ) {
+				$label = $data['phone_number']['phone_number_title'];
 			} else {
-				$fields['billing_phone'] = array(
-					'label' => __( 'Telephone', 'woocommerce-delivery-notes' ),
-					'value' => $wdn_order_billing_phone,
-				);
+				$label = __( 'Telephone', 'woocommerce-delivery-notes' );
 			}
+			$fields['billing_phone'] = array(
+				'label'     => __( $label, 'woocommerce-delivery-notes' ), // phpcs:ignore
+				'value'     => $wdn_order_billing_phone,
+				'font-size' => $data['phone_number']['phone_number_font_size'],
+				'color'     => $data['phone_number']['phone_number_text_colour'],
+				'active'    => 'yes',
+			);
+		} else {
+			$fields['billing_phone'] = array(
+				'label' => __( 'Telephone', 'woocommerce-delivery-notes' ),
+				'value' => $wdn_order_billing_phone,
+			);
 		}
 	}
 
@@ -426,8 +470,7 @@ function wcdn_get_order_info( $order, $type = '' ) {
 /**
  * Get the invoice number of an order
  *
- * @param int    $order_id Order ID.
- * @param string $create_invoice_number pass yes or no for creating invoice number.
+ * @param int $order_id Order ID.
  */
 function wcdn_get_order_invoice_number( $order_id ) {
 	global $wcdn;
@@ -716,7 +759,9 @@ function wcdn_imprint() {
 }
 
 /**
- * Show PIF Fileds in the invoice
+ * Show PIF Fileds in the invoice.
+ *
+ * @param array $item Cart item array.
  */
 function wcdn_print_extra_fields( $item ) {
 	// Check if Product Input Field Pro is active.
