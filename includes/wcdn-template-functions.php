@@ -370,7 +370,11 @@ function wcdn_get_order_info( $order, $type = '' ) {
 
 	if ( ! empty( $create_invoice_number ) && 'yes' === $create_invoice_number ) {
 		if ( isset( $data['invoice_number']['active'] ) ) {
-			$label                    = $data['invoice_number']['invoice_number_text'];
+			if ( isset( $data['invoice_number']['invoice_number_text'] ) && ! empty( $data['invoice_number']['invoice_number_text'] ) ) {
+				$label = $data['invoice_number']['invoice_number_text'];
+			} else {
+				$label = __( 'Invoice Number', 'woocommerce-delivery-notes' );
+			}
 			$fields['invoice_number'] = array(
 				'label'       => __( $label, 'woocommerce-delivery-notes' ), // phpcs:ignore
 				'value'       => wcdn_get_order_invoice_number( $wdn_order_id ),
@@ -397,7 +401,11 @@ function wcdn_get_order_info( $order, $type = '' ) {
 	}
 
 	if ( isset( $data['order_number']['active'] ) ) {
-		$label                  = $data['order_number']['order_number_text'];
+		if ( isset( $data['order_number']['order_number_text'] ) && ! empty( $data['order_number']['order_number_text'] ) ) {
+			$label = $data['order_number']['order_number_text'];
+		} else {
+			$label = __( 'Order Number', 'woocommerce-delivery-notes' );
+		}
 		$fields['order_number'] = array(
 			'label'       => __( $label, 'woocommerce-delivery-notes' ), // phpcs:ignore
 			'value'       => $order->get_order_number(),
@@ -414,7 +422,11 @@ function wcdn_get_order_info( $order, $type = '' ) {
 	}
 
 	if ( isset( $data['order_date']['active'] ) ) {
-		$label                = $data['order_date']['order_date_text'];
+		if ( isset( $data['order_date']['order_date_text'] ) && ! empty( $data['order_date']['order_date_text'] ) ) {
+			$label = $data['order_date']['order_date_text'];
+		} else {
+			$label = __( 'Order Date', 'woocommerce-delivery-notes' );
+		}
 		$fields['order_date'] = array(
 			'label'       => __( $label, 'woocommerce-delivery-notes' ), // phpcs:ignore
 			'value'       => date_i18n( get_option( 'date_format' ), strtotime( $wdn_order_order_date ) ),
@@ -429,7 +441,6 @@ function wcdn_get_order_info( $order, $type = '' ) {
 			'value' => date_i18n( get_option( 'date_format' ), strtotime( $wdn_order_order_date ) ),
 		);
 	}
-
 
 	if ( isset( $data['payment_method']['active'] ) ) {
 		if ( isset( $data['payment_method']['payment_method_text'] ) && ! empty( $data['payment_method']['payment_method_text'] ) ) {
@@ -447,6 +458,7 @@ function wcdn_get_order_info( $order, $type = '' ) {
 			'active'      => 'yes',
 		);
 	}
+
 
 	if ( $wdn_order_payment_date ) {
 		if ( 'receipt' === wcdn_get_template_type() && 'simple' === $template ) {
@@ -466,7 +478,7 @@ function wcdn_get_order_info( $order, $type = '' ) {
 					'active'      => 'yes',
 				);
 			}
-		}
+    }
 	}
 
 	if ( $wdn_order_billing_id ) {
