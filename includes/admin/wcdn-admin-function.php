@@ -92,7 +92,6 @@ function wcdn_customization() {
 			'company_logo'     	          => '',
 			'company_name'     	          => array( 'Text Align', 'Font Size', 'Text Colour' ),
 			'company_address'  	          => array( 'Text Align', 'Font Size', 'Text Colour' ),
-			'company_address'     		  => array( 'Text Align', 'Text Colour' ),
 			'invoice_number'      		  => array( 'Text', 'Font Size', 'Style', 'Text Colour' ),
 			'order_number'        		  => array( 'Text', 'Font Size', 'Style', 'Text Colour' ),
 			'order_date'          		  => array( 'Text', 'Format', 'Font Size', 'Style', 'Text Colour' ),
