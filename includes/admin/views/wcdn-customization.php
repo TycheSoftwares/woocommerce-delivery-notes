@@ -92,8 +92,11 @@ if ( isset( $_GET['wdcn_setting'] ) ) {
 							<?php
 							$email_classes = WC()->mailer()->get_emails();
 							foreach ( $email_classes as $email_class ) {
-								$select = ( isset( $settings_db_data['status'] ) && in_array( $email_class->id, $settings_db_data['status'], true ) ) ? 'selected' : '';
-								echo '<option value="' . esc_attr( $email_class->id ) . '" ' . esc_attr( $select ) . '>' . esc_html( $email_class->title ) . '</option>';
+								$exceptarray = array( 'customer_reset_password', 'customer_new_account' );
+								if ( ! in_array( $email_class->id, $exceptarray, true ) ) {
+									$select = ( isset( $settings_db_data['status'] ) && in_array( $email_class->id, $settings_db_data['status'], true ) ) ? 'selected' : '';
+									echo '<option value="' . esc_attr( $email_class->id ) . '" ' . esc_attr( $select ) . '>' . esc_html( $email_class->title ) . '</option>';
+								}
 							}
 							?>
 						</select>
