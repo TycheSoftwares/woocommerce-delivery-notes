@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div class="page-header">
 	<?php
-	if ( isset( $data['company_setting']['active'] ) && 'company_logo' === $data['company_setting']['company_setting_display'] ) {
+	if ( isset( $data['company_logo']['active'] ) ) {
 		?>
 		<div class="company-logo">
 			<?php
