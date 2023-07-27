@@ -19,8 +19,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<body>
 		<div class="content">
 			<div class="page-header">
-				<?php
-				if ( isset( $data['company_setting']['active'] ) && 'company_logo' === $data['company_setting']['company_setting_display'] ) {
+			<?php
+				if ( isset( $data['company_logo']['active'] ) ) {
 					?>
 					<div class="company-logo">
 						<?php
@@ -44,16 +44,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<div class="order-branding">
 				<?php
-				$com_setting = $data['company_setting'];
-				if ( isset( $com_setting['active'] ) && 'company_name' === $com_setting['company_setting_display'] ) {
+				$com_setting = $data['company_name'];
+				if ( isset( $com_setting['active'] ) ) {
+					$style = 'text-align:' . $data['company_name']['company_name_text_align'] . ';color:' . $data['company_name']['company_name_text_colour'] . ';font-size:' . $data['company_name']['company_name_font_size'] . 'px;';
 					?>
 					<div class="company-info">
-						<h3 class="company-name"><?php wcdn_company_name(); ?></h3>
+						<h3 class="company-name" style="<?php echo $style; // phpcs:ignore ?>"><?php wcdn_company_name(); ?></h3>
 					</div>
 				<?php } ?>
 				<?php
 				if ( isset( $data['company_address']['active'] ) ) {
-					$style = 'text-align:' . $data['company_address']['company_address_text_align'] . ';color:' . $data['company_address']['company_address_text_colour'] . ';';
+					$style = 'text-align:' . $data['company_address']['company_address_text_align'] . ';color:' . $data['company_address']['company_address_text_colour'] . ';font-size:' . $data['company_address']['company_address_font_size'] . 'px;';
 					?>
 					<div class="company-address" style="<?php echo $style; // phpcs:ignore ?>">
 						<?php wcdn_company_info(); ?>
@@ -181,7 +182,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<thead>
 						<tr>
 							<th class="head-name"><span><?php esc_attr_e( 'Product', 'woocommerce-delivery-notes' ); ?></span></th>
+							<?php 
+							if( isset( $data['display_price_product_table']['active'] ) ) { ?>
+								<th class="head-item-price"><span><?php esc_attr_e( 'Price', 'woocommerce-delivery-notes' ); ?></span></th>
+							<?php } ?>
 							<th class="head-quantity"><span><?php esc_attr_e( 'Quantity', 'woocommerce-delivery-notes' ); ?></span></th>
+							<?php 
+							if( isset( $data['display_price_product_table']['active'] ) ) { ?>
+								<th class="head-price"><span><?php esc_attr_e( 'Total', 'woocommerce-delivery-notes' ); ?></span></th>
+							<?php } ?>
 						</tr>
 					</thead>
 
@@ -208,9 +217,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 										<?php get_product_name( $product, $order, $item ); ?>
 										<?php do_action( 'wcdn_order_item_after', $product, $order, $item ); ?>
 									</td>
+									<?php 
+									if( isset( $data['display_price_product_table']['active'] ) ) { ?>
+										<td class="product-item-price">
+											<span><?php echo wp_kses_post( wcdn_get_formatted_item_price( $order, $item ) ); ?></span>
+										</td>
+									<?php } ?>
 									<td class="product-quantity">
 										<span><?php echo esc_attr( apply_filters( 'wcdn_order_item_quantity', $item['qty'], $item ) ); ?></span>
-									</td>								
+									</td>	
+									<?php 
+									if( isset( $data['display_price_product_table']['active'] ) ) { ?>
+										<td class="product-price">
+											<span><?php echo wp_kses_post( $order->get_formatted_line_subtotal( $item ) ); ?></span>
+										</td>
+									<?php } ?>									
 								</tr>
 							<?php endforeach; ?>
 						<?php endif; ?>

@@ -40,16 +40,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div class="order-branding">
 	<?php
-	$com_setting = $data['company_setting'];
-	if ( isset( $com_setting['active'] ) && 'company_name' === $com_setting['company_setting_display'] ) {
+	$com_setting = $data['company_name'];
+	if ( isset( $com_setting['active'] ) ) {
+		$style = 'text-align:' . $data['company_name']['company_name_text_align'] . ';color:' . $data['company_name']['company_name_text_colour'] . ';font-size:' . $data['company_name']['company_name_font_size'] . 'px;';
 		?>
 		<div class="company-info">
-			<h3 class="company-name"><?php wcdn_company_name(); ?></h3>
+			<h3 class="company-name" style="<?php echo $style; // phpcs:ignore ?>"><?php wcdn_company_name(); ?></h3>
 		</div>
 	<?php } ?>
 	<?php
 	if ( isset( $data['company_address']['active'] ) ) {
-		$style = 'text-align:' . $data['company_address']['company_address_text_align'] . ';color:' . $data['company_address']['company_address_text_colour'] . ';';
+		$style = 'text-align:' . $data['company_address']['company_address_text_align'] . ';color:' . $data['company_address']['company_address_text_colour'] . ';font-size:' . $data['company_address']['company_address_font_size'] . 'px;';
 		?>
 		<div class="company-address" style="<?php echo $style; // phpcs:ignore ?>">
 			<?php wcdn_company_info(); ?>

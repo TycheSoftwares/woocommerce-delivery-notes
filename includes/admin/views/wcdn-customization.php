@@ -7,6 +7,12 @@
 
 if ( isset( $_GET['wdcn_setting'] ) ) { 
 	$setting = htmlspecialchars( $_GET['wdcn_setting'] ); // phpcs:ignore
+	$aclass = '';
+	if ( isset( $_GET['ctab'] ) && $_GET['ctab'] === 'customization' ) { // phpcs:ignore
+		$aclass = 'active';
+	} else { 
+		$class = 'active';
+	}
 	?>
 	<div class="wcdn_top_bar">
 		<h3 class="wcdn_heading">
@@ -28,20 +34,20 @@ if ( isset( $_GET['wdcn_setting'] ) ) {
 		</h3>
 		<img src="<?php echo esc_url( WooCommerce_Delivery_Notes::$plugin_url . 'assets/images/wcdn_back_arrow.png' ); ?>" class="wcdn_back_arrow" title="Back to document page">
 	</div>
-	<ul class="nav nav-tabs non-bg" id="wcdn_tab" role="tablist">
-		<li class="nav-item" role="presentation">
-			<button class="nav-link active" id="<?php echo esc_attr( $setting ); ?>_tab" data-bs-toggle="tab" data-bs-target="#<?php echo esc_attr( $setting ); ?>" type="button" role="tab" aria-controls="<?php echo esc_attr( $setting ); ?>" aria-selected="true">
+	<ul class="nav-tabs non-bg" id="wcdn_tab">
+		<li class="nav-item">
+			<a class="nav-link <?php echo esc_attr( $class ); ?> " href="<?php echo esc_url( get_admin_url() . 'admin.php?page=wc-settings&tab=wcdn-settings&setting=wcdn_document&wdcn_setting=' . $setting ); ?>">
 				<?php esc_html_e( 'Settings', 'woocommerce-delivery-notes' ); ?>
-			</button>
+			</a>
 		</li>
-		<li class="nav-item" role="presentation">
-			<button class="nav-link" id="<?php echo esc_attr( $setting ); ?>customize_tab" data-bs-toggle="tab" data-bs-target="#<?php echo esc_attr( $setting ); ?>_customize" type="button" role="tab" aria-controls="<?php echo esc_attr( $setting ); ?>_customize" aria-selected="false">
+		<li class="nav-item">
+			<a class="nav-link <?php echo esc_attr( $aclass ); ?>" href="<?php echo esc_url( get_admin_url() . 'admin.php?page=wc-settings&tab=wcdn-settings&setting=wcdn_document&wdcn_setting=' . $setting . '&ctab=customization'); ?>">
 				<?php esc_html_e( 'Customize', 'woocommerce-delivery-notes' ); ?>
-			</button>
+			</a>
 		</li>
 	</ul>
 	<div class="tab-content" id="wcdn_tabContent">
-		<div class="tab-pane fade show active" id="<?php echo esc_attr( $setting ); ?>" role="tabpanel" aria-labelledby="wcdn-general-tab">
+		<div class="tab-pane <?php echo esc_attr( $class ); ?>" id="<?php echo esc_attr( $setting ); ?>" role="tabpanel" aria-labelledby="wcdn-general-tab">
 			<div class="tab_container">
 				<?php if ( 'wcdn_invoice' === $setting ) { ?>
 				<div class="form-group row">
@@ -101,7 +107,7 @@ if ( isset( $_GET['wdcn_setting'] ) ) {
 				</div>
 			</div>
 		</div>
-		<div class="tab-pane fade" id="<?php echo esc_attr( $setting ); ?>_customize" role="tabpanel" aria-labelledby="wcdn-document-tab">
+		<div class="tab-pane <?php echo esc_attr( $aclass ); ?>" id="<?php echo esc_attr( $setting ); ?>_customize" role="tabpanel" aria-labelledby="wcdn-document-tab">
 			<div class="tab_container">
 				<div class="row">
 					<?php include_once 'wcdn-comman-field.php'; ?>

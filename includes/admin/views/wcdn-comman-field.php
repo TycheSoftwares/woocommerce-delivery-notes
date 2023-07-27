@@ -63,9 +63,6 @@
 							} elseif ( 'Template' === $field ) {
 								$option = array( 'Default', 'Simple' );
 								wcdn_customization_selectbox( $c_tab, $field_id, $field, $key, $customization_data, $option );
-							} elseif ( 'Display' === $field ) {
-								$option = array( 'Company Logo', 'Company Name' );
-								wcdn_customization_selectbox( $c_tab, $field_id, $field, $key, $customization_data, $option );
 							} elseif ( 'Formate' === $field ) {
 								$option = array( 'm-d-Y', 'd-m-Y', 'Y-m-d', 'd/m/Y', 'd/m/y', 'd/M/y', 'd/M/Y', 'm/d/Y', 'm/d/y', 'M/d/y', 'M/d/Y' );
 								wcdn_customization_selectbox( $c_tab, $field_id, $field, $key, $customization_data, $option );

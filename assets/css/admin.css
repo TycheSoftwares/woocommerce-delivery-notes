@@ -463,6 +463,9 @@ span.remove-image {
     vertical-align: middle;
     margin-right: 15px;
 }
+.wcdn-footer-top {
+	display: none;
+}
 .wcdn-footer { padding: 30px 0; }
 .wcdn-footer .ft-text { text-align: center; }
 .wcdn-footer .ft-text a { border-bottom: 1px solid #41278D; text-decoration: none;}
