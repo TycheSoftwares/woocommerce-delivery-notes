@@ -109,5 +109,6 @@
 		<div class="wcdn_for_simple" <?php echo $styles; ?>> 
 			<img src="<?php echo esc_url( $imgurls ); ?>">
 		</div>
+		<h6>Live preview is in the Wishlist and will be available in the future.</h6>
 	</div>
 </div>
