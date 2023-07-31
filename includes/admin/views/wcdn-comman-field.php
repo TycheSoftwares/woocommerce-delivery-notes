@@ -13,10 +13,10 @@
 		$settings           = wcdn_customization();
 		$label              = wcdn_customization_label();
 		$i                  = 1;
-		$hidden             = 'disabled';
+		$hidden             = 'pointer-events:none;';
 		foreach ( $settings[ $c_tab ] as $key => $eachsetting ) {
 			$class = ( 1 === $i ) ? 'show' : '';
-			if ( isset( $customization_data['template_setting']['template_setting_template'] ) && 'simple' === $customization_data['template_setting']['template_setting_template'] && $i === 1 ) {
+			if ( isset( $customization_data['template_setting']['template_setting_template'] ) && 'simple' === $customization_data['template_setting']['template_setting_template'] && 1 === $i ) {
 				$hidden = '';
 			}
 			?>

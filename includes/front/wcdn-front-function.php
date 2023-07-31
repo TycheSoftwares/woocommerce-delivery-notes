@@ -32,7 +32,6 @@ function create_pdf( $order, $type ) {
 	$order_id = $order->id;
 
 	// Instantiate and use the dompdf class.
-	
 	$options = new \Dompdf\Options();
 	$options->set( 'isRemoteEnabled', true );
 	$options->set( 'isPhpEnabled', true );
@@ -67,17 +66,17 @@ function create_pdf( $order, $type ) {
 
 		// Get height and width of text.
 		$txtheight = $fontmetrics->getFontHeight( $font, 75 );
-		$textwidth = $fontmetrics->getTextWidth( $text, $font, 75 );
+		$txtwidth  = $fontmetrics->getTextWidth( $text, $font, 75 );
 
 		// Set text opacity.
 		$canvas->set_opacity( .2 );
 
 		// Specify horizontal and vertical position.
-		$x = ( ( $w - $textwidth ) / 2 );
+		$x = ( ( $w - $txtwidth ) / 2 );
 		$y = ( ( $h - $txtheight ) / 2 );
 
 		// Writes text at the specified x and y coordinates.
-		$canvas->text( $x, $y, $text, $font, 75 );
+		$canvas->text( $x, $y, $text, $font, 75, '', 0, 0, -45 );
 	}
 
 	$output = $dompdf->output();
