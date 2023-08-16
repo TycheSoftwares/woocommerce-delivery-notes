@@ -50,35 +50,6 @@ function create_pdf( $order, $type ) {
 	// Render the HTML as PDF.
 	$dompdf->render();
 
-	$data = get_option( 'wcdn_receipt_customization' );
-	if ( 'receipt' === $type && isset( $data['payment_received_stamp']['active'] ) ) {
-		$canvas      = $dompdf->getCanvas();
-		$fontmetrics = new FontMetrics( $canvas, $options );
-
-		// Get height and width of page.
-		$w = $canvas->get_width();
-		$h = $canvas->get_height();
-
-		$font = $fontmetrics->getFont( 'times' );
-
-		// Specify watermark text.
-		$text = $data['payment_received_stamp']['payment_received_stamp_text'];
-
-		// Get height and width of text.
-		$txtheight = $fontmetrics->getFontHeight( $font, 75 );
-		$txtwidth  = $fontmetrics->getTextWidth( $text, $font, 75 );
-
-		// Set text opacity.
-		$canvas->set_opacity( .2 );
-
-		// Specify horizontal and vertical position.
-		$x = ( ( $w - $txtwidth ) / 2 );
-		$y = ( ( $h - $txtheight ) / 2 );
-
-		// Writes text at the specified x and y coordinates.
-		$canvas->text( $x, $y, $text, $font, 75, '', 0, 0, -45 );
-	}
-
 	$output = $dompdf->output();
 	$name   = wcdn_document_name( $order_id, $type );
 	wcdn_save_document( $type, $name, $output );

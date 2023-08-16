@@ -79,3 +79,41 @@
 		?>
 	</div>
 </div>
+<?php
+	$imgarray = array (
+		'receipt' => array ( 
+			'default' => WooCommerce_Delivery_Notes::$plugin_url . 'assets/images/Default.png',
+			'simple' => WooCommerce_Delivery_Notes::$plugin_url . 'assets/images/Receipt.png',
+		),
+		'deliverynote' => array ( 
+			'default' => WooCommerce_Delivery_Notes::$plugin_url . 'assets/images/Default.png',
+			'simple' => WooCommerce_Delivery_Notes::$plugin_url . 'assets/images/Delivery_Note.png',
+		),
+		'invoice' => array ( 
+			'default' => WooCommerce_Delivery_Notes::$plugin_url . 'assets/images/Default.png',
+			'simple' => WooCommerce_Delivery_Notes::$plugin_url . 'assets/images/Invoice.png',
+		),
+	);
+	if ( 'simple' === $customization_data['template_setting']['template_setting_template'] ) {
+		$imgurls = $imgarray[$c_tab]['simple'];
+		$imgurld = $imgarray[$c_tab]['default'];
+		$styles  = 'style=display:block;';
+		$styled  = 'style=display:none;';
+	}else {
+		$imgurls = $imgarray[$c_tab]['simple'];
+		$imgurld = $imgarray[$c_tab]['default'];
+		$styles  = 'style=display:none;';
+		$styled  = 'style=display:block;';
+	}
+?>
+<div class="col-sm-6 offset-sm-2">
+	<div class="wcdn_preview_img">
+		<div class="wcdn_for_default" <?php echo $styled; ?>> 
+			<img src="<?php echo esc_url( $imgurld ); ?>">
+		</div>
+		<div class="wcdn_for_simple" <?php echo $styles; ?>> 
+			<img src="<?php echo esc_url( $imgurls ); ?>">
+		</div>
+		<h6>Live preview is in the Wishlist and will be available in the future.</h6>
+	</div>
+</div>

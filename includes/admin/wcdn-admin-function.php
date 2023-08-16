@@ -84,7 +84,7 @@ function wcdn_customization() {
 			'complimentary_close'    => array( 'Font Size', 'Text Colour' ),
 			'policies'               => array( 'Font Size', 'Text Colour' ),
 			'footer'                 => array( 'Font Size', 'Text Colour' ),
-			'payment_received_stamp' => array( 'Width', 'Height', 'Text', 'Font Size', 'Border Width', 'Line Height', 'Opacity', 'Border radius', 'Form left', 'From Top', 'Angle', 'Colour' ),
+			'payment_received_stamp' => array( 'Text' ),
 		),
 		'deliverynote' => array(
 			'template_setting'    		  => array( 'Template' ),
