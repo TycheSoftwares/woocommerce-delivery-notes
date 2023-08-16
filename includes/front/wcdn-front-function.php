@@ -40,8 +40,8 @@ function create_pdf( $order, $type ) {
 	// Load content from html file.
 	ob_start();
 	wcdn_get_document_template( $order, $type );
-	$html = ob_get_clean();
-	$html .= '<link type="text/css" href="' . esc_url( WooCommerce_Delivery_Notes::$plugin_url . 'templates/pdf/style.css' ) . '" rel="stylesheet" />';
+	$html  = ob_get_clean();
+	$html .= wcdn_get_pdf_template( $type );
 	$dompdf->loadHtml( $html );
 
 	// (Optional) Setup the paper size and orientation.
@@ -51,8 +51,7 @@ function create_pdf( $order, $type ) {
 	$dompdf->render();
 
 	$output = $dompdf->output();
-
-	$name = wcdn_document_name( $order_id, $type );
+	$name   = wcdn_document_name( $order_id, $type );
 	wcdn_save_document( $type, $name, $output );
 	return $name;
 }
@@ -60,18 +59,35 @@ function create_pdf( $order, $type ) {
 /**
  * Get pdf template.
  *
- * @param array  $order Order Object.
+ * @param string $order  Order object.
  * @param string $type  Document type.
  *
  * @since 5.0
  */
 function wcdn_get_document_template( $order, $type ) {
 	$setting = get_option( 'wcdn_' . $type . '_customization' );
-	if ( isset( $setting['template_setting']['active'] ) ) {
-		$template = $setting['template_setting']['template_setting_template'];
+	$template = $setting['template_setting']['template_setting_template'];
+	if ( $template == 'simple' ) {
 		include_once WooCommerce_Delivery_Notes::$plugin_path . 'templates/pdf/' . $template . '/' . $type . '/template.php';
 	} else {
 		include_once WooCommerce_Delivery_Notes::$plugin_path . 'templates/pdf/default/' . $type . '/template.php';
+	}
+}
+
+/**
+ * Get css file.
+ *
+ * @param string $type Document type.
+ *
+ * @since 5.0
+ */
+function wcdn_get_pdf_template( $type ) {
+	$setting = get_option( 'wcdn_' . $type . '_customization' );
+	$template = $setting['template_setting']['template_setting_template'];
+	if ( $template == 'simple' ) {
+		return '<link type="text/css" href="' . esc_url( WooCommerce_Delivery_Notes::$plugin_url . 'templates/pdf/' . $template . '/style.css' ) . '" rel = "stylesheet" />';
+	} else {
+		return '<link type="text/css" href="' . esc_url( WooCommerce_Delivery_Notes::$plugin_url . 'templates/pdf/default/style.css' ) . '" rel = "stylesheet" />';
 	}
 }
 

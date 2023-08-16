@@ -463,6 +463,9 @@ span.remove-image {
     vertical-align: middle;
     margin-right: 15px;
 }
+.wcdn-footer-top {
+	display: none;
+}
 .wcdn_preview_img img {
 	width: 100%;
 	border: 2px solid #000;

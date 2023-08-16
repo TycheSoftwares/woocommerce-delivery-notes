@@ -174,33 +174,7 @@ jQuery(document).ready(function($) {
 
 	$('[data-toggle="tooltip"]').tooltip();
 	
-	/*
-	// Toggle invoice number fields
-	$('#create-invoice-number').on('change', function(event) {
-		$('.invoice-number-row').toggle();
-		event.preventDefault();
-	});
-	
-	// Button to reset the invoice counter 
-	$('#reset-invoice-counter').on('click', function(event) {
-		event.preventDefault();
-		
-		// Text strings are pulled from wp_localize_script
-		var reset = window.confirm(WCDNText.resetCounter);
-		
-		// Reset the counter
-		if(reset) {
-			var data = {
-				action: 'wcdn_reset_counter',
-				reset: true,
-				nonce: $('#mainform #settings-nonce').val()
-			}
-
-			$.post(ajaxurl, data, function(response) {
-				$('#invoice-counter-value').text('0');
-			});
-		}
-	});
-	*/
+	var footer = jQuery(".wcdn-footer-top").html();
+	jQuery("#mainform").append( footer );
 });
 

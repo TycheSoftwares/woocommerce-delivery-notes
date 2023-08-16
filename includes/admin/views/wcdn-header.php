@@ -44,26 +44,28 @@
 			require_once $file;
 		?>
 	</div>
-	<!-- <div class="wcdn-footer">
-		<div class="tab_container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="footer-wrap">
-						<div class="alert alert-dark alert-dismissible fade show" role="alert">
-							<img class="msg-icon" src="<?php echo plugins_url() . '/woocommerce-delivery-notes/assets/images/icon-info-grey.svg'; ?>" alt="Logo" /><a href="<?php echo esc_url( 'https://www.tychesoftwares.com/store/premium-plugins/woocommerce-subscriptions-compatibility-addon-for-order-delivery-date-pro-for-woocommerce-plugin/?utm_source=ordddprofooter&utm_medium=link&utm_campaign=OrderDeliveryDatePRoPlugin' ); ?>" target="_blank">Get our Subscriptions Addon</a> & setup recurring deliveries with WooCommerce Subscriptions plugin & Order Delivery Date plugin.
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
+	<div class="wcdn-footer-top">
+		<div class="wcdn-footer">
+			<div class="tab_container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="footer-wrap">
+							<!-- <div class="alert alert-dark alert-dismissible fade show" role="alert">
+								<img class="msg-icon" src="<?php echo plugins_url() . '/woocommerce-delivery-notes/assets/images/icon-info-grey.svg'; ?>" alt="Logo" /><a href="<?php echo esc_url( 'https://www.tychesoftwares.com/store/premium-plugins/woocommerce-subscriptions-compatibility-addon-for-order-delivery-date-pro-for-woocommerce-plugin/?utm_source=ordddprofooter&utm_medium=link&utm_campaign=OrderDeliveryDatePRoPlugin' ); ?>" target="_blank">Get our Subscriptions Addon</a> & setup recurring deliveries with WooCommerce Subscriptions plugin & Order Delivery Date plugin.
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div> -->
 
-						<div class="ft-text">
-							<p><a href="<?php echo esc_url( 'https://tychesoftwares.freshdesk.com/support/home/?utm_source=ordddprofooter&utm_medium=link&utm_campaign=OrderDeliveryDatePRoPlugin' ); ?>" target="_blank">Need Support?</a> <strong>We’re always happy to help you.</strong></p>
-							<p>If this plugin helped you, <a href="<?php echo esc_url( 'https://www.tychesoftwares.com/submit-review/?utm_source=ordddprofooter&utm_medium=link&utm_campaign=OrderDeliveryDatePRoPlugin' ); ?>" target="_blank">please rate it</a> <span class="rating">★★★★★</span></p>
+							<div class="ft-text">
+								<p><a href="<?php echo esc_url( 'https://tychesoftwares.freshdesk.com/support/home/?utm_source=ordddprofooter&utm_medium=link&utm_campaign=OrderDeliveryDatePRoPlugin' ); ?>" target="_blank">Need Support?</a> <strong>We’re always happy to help you.</strong></p>
+								<p>If this plugin helped you, <a href="<?php echo esc_url( 'https://www.tychesoftwares.com/submit-review/?utm_source=ordddprofooter&utm_medium=link&utm_campaign=OrderDeliveryDatePRoPlugin' ); ?>" target="_blank">please rate it</a> <span class="rating">★★★★★</span></p>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div> -->
+	</div>
 </div>
 

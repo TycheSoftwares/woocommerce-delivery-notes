@@ -21,14 +21,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<body>
 		<div class="content">
 			<div class="page-header">
-				<?php
-				if ( isset( $data['company_setting']['active'] ) && 'company_logo' === $data['company_setting']['company_setting_display'] ) {
+			<?php
+				if ( isset( $data['company_logo']['active'] ) ) {
 					?>
 					<div class="company-logo">
 						<?php
 						if ( wcdn_get_company_logo_id() ) :
 							?>
-							<?php wcdn_pdf_company_logo(); ?>
+							<?php wcdn_pdf_company_logo( $ttype = 'simple' ); ?>
 						<?php endif; ?>
 					</div>
 				<?php } ?>
@@ -46,16 +46,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<div class="order-branding">
 				<?php
-				$com_setting = $data['company_setting'];
-				if ( isset( $com_setting['active'] ) && 'company_name' === $com_setting['company_setting_display'] ) {
+				$com_setting = $data['company_name'];
+				if ( isset( $com_setting['active'] ) ) {
+					$style = 'text-align:' . $data['company_name']['company_name_text_align'] . ';color:' . $data['company_name']['company_name_text_colour'] . ';font-size:' . $data['company_name']['company_name_font_size'] . 'px;';
 					?>
 					<div class="company-info">
-						<h3 class="company-name"><?php wcdn_company_name(); ?></h3>
+						<h3 class="company-name" style="<?php echo $style; // phpcs:ignore ?>"><?php wcdn_company_name(); ?></h3>
 					</div>
 				<?php } ?>
 				<?php
 				if ( isset( $data['company_address']['active'] ) ) {
-					$style = 'text-align:' . $data['company_address']['company_address_text_align'] . ';color:' . $data['company_address']['company_address_text_colour'] . ';';
+					$style = 'text-align:' . $data['company_address']['company_address_text_align'] . ';color:' . $data['company_address']['company_address_text_colour'] . ';font-size:' . $data['company_address']['company_address_font_size'] . 'px;';
 					?>
 					<div class="company-address" style="<?php echo $style; // phpcs:ignore ?>">
 						<?php wcdn_company_info(); ?>
@@ -84,6 +85,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 								esc_attr_e( 'N/A', 'woocommerce-delivery-notes' );
 							} else {
 								echo wp_kses_post( apply_filters( 'wcdn_address_billing', $order->get_formatted_billing_address(), $order ) );
+								$wdn_order_billing_id    = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_billing_email() : $order->billing_email;
+								$wdn_order_billing_phone = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_billing_phone() : $order->billing_phone;
+								if ( $wdn_order_billing_phone ) {
+									if ( isset( $data['phone_number']['active'] ) ) {
+										echo '<br>';
+										echo $wdn_order_billing_phone; // phpcs:ignore
+									}
+								}
+								if ( $wdn_order_billing_id ) {
+									if ( isset( $data['email_address']['active'] ) ) {
+										echo '<br>';
+										echo $wdn_order_billing_id; // phpcs:ignore
+									}
+								}
 							}
 							?>
 						</address>
@@ -109,6 +124,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 								esc_attr_e( 'N/A', 'woocommerce-delivery-notes' );
 							} else {
 								echo wp_kses_post( apply_filters( 'wcdn_address_shipping', $order->get_formatted_shipping_address(), $order ) );
+								$wdn_order_billing_id    = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_billing_email() : $order->billing_email;
+								$wdn_order_billing_phone = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_billing_phone() : $order->billing_phone;
+								if ( $wdn_order_billing_phone ) {
+									if ( isset( $data['phone_number']['active'] ) ) {
+										echo '<br>';
+										echo $wdn_order_billing_phone; // phpcs:ignore
+									}
+								}
+								if ( $wdn_order_billing_id ) {
+									if ( isset( $data['email_address']['active'] ) ) {
+										echo '<br>';
+										echo $wdn_order_billing_id; // phpcs:ignore
+									}
+								}
 							}
 							?>
 						</address>
@@ -139,7 +168,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<?php
 					foreach ( $fields as $field ) :
 						if ( isset( $field['active'] ) && 'yes' === $field['active'] ) {
-							$labelstyle = 'font-size:' . $field['font-size'] . 'px;color:' . $field['color'] . ';';
+							if ( isset( $field['font-size'] ) ) {
+								$labelstyle = 'font-size:' . $field['font-size'] . 'px;';
+							}
+							if ( isset( $field['color'] ) ) {
+								$labelstyle .= 'color:' . $field['color'] . ';';
+							}
 							if ( isset( $field['font-weight'] ) ) {
 								$labelstyle .= 'font-weight:' . $field['font-weight'] . ';';
 							}
@@ -172,9 +206,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 						if ( count( $order->get_items() ) > 0 ) :
 							?>
 							<?php foreach ( $order->get_items() as $item_id => $item ) : ?>
+								<?php
+								$product = apply_filters( 'wcdn_order_item_product', $item->get_product(), $item );
+								if ( ! $product ) {
+									continue;
+								}
+								if ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) {
+									$item_meta = new WC_Order_Item_Product( $item['item_meta'], $product );
+								} else {
+									$item_meta = new WC_Order_Item_Meta( $item['item_meta'], $product );
+								}
+								?>
 								<tr>
 									<td class="product-name">
-										<?php echo esc_attr( $item->get_name() ); ?>
+										<?php do_action( 'wcdn_order_item_before', $product, $order, $item ); ?>
+										<?php get_product_name( $product, $order, $item ); ?>
+										<?php do_action( 'wcdn_order_item_after', $product, $order, $item ); ?>
 									</td>
 									<td class="product-item-price">
 										<span><?php echo wp_kses_post( wcdn_get_formatted_item_price( $order, $item ) ); ?></span>
@@ -235,16 +282,41 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php endif; ?>
 
 			<div class="order-thanks">
-				<?php wcdn_personal_notes(); ?>
+				<?php
+				if ( isset( $data['complimentary_close']['active'] ) ) {
+					?>
+					<style>
+						.order-thanks p {
+							color: <?php echo $data['complimentary_close']['complimentary_close_text_colour']; ?>;
+							font-size: <?php echo $data['complimentary_close']['complimentary_close_font_size']; ?>;
+						}
+					</style>
+					<div class="personal_note">
+						<?php wcdn_personal_notes(); ?>
+						<?php do_action( 'wcdn_after_thanks', $order ); ?>
+					</div><!-- .order-thanks -->
+					<?php
+				}
+				?>
 
-				<?php do_action( 'wcdn_after_thanks', $order ); ?>
+				<?php
+				if ( isset( $data['policies']['active'] ) ) {
+					?>
+					<style>
+						.colophon-policies p {
+							color: <?php echo $data['policies']['policies_text_colour']; ?>;
+							font-size: <?php echo $data['policies']['policies_font_size']; ?>;
+						}
+					</style>
+					<div class="colophon-policies">
+						<?php wcdn_policies_conditions(); ?>
+					</div>
+					<?php
+				}
+				?>
 			</div><!-- .order-thanks -->
 
 			<div class="order-colophon">
-				<div class="colophon-policies">
-					<?php wcdn_policies_conditions(); ?>
-				</div>
-
 				<?php
 				if ( isset( $data['footer']['active'] ) ) {
 					$style = 'font-size:' . $data['footer']['footer_font_size'] . 'px;color:' . $data['footer']['footer_text_colour'] . ';';

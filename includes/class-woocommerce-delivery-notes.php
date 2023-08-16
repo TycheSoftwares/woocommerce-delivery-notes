@@ -442,7 +442,12 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 				}
 			}
 			if ( isset( $_POST['wcdn_general'] ) && ! empty( $_POST['wcdn_general'] ) ) {
-				update_option( 'wcdn_print_order_page_endpoint', $_POST['wcdn_general']['page_endpoint'] );
+				if ( isset( $_POST['wcdn_general']['page_endpoint'] ) && !empty( $_POST['wcdn_general']['page_endpoint'] ) ) {
+					update_option( 'wcdn_print_order_page_endpoint', $_POST['wcdn_general']['page_endpoint'] );
+				}else {
+					update_option( 'wcdn_print_order_page_endpoint', 'print-order' );
+				}
+				
 				update_option( 'wcdn_footer_imprint', $_POST['wcdn_general']['shop_footer'] );
 				update_option( 'wcdn_policies_conditions', $_POST['wcdn_general']['shop_policy'] );
 				update_option( 'wcdn_personal_notes', $_POST['wcdn_general']['shop_complimentry_close'] );

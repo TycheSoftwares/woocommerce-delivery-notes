@@ -105,20 +105,8 @@ tfoot {
 .order-items dd {
 	font-size: 0.785em;
 	font-weight: normal;
-	line-height: 150%;
 	padding: 0;
 	margin: 0;
-}
-
-.order-items dt,
-.order-items dd {
-	display: block;
-	float: left;
-}
-
-.order-items dt {
-	clear: left;
-	padding-right: 0.2em;
 }
 .order-items .product-name .attachment {
 	display: block;
@@ -137,7 +125,7 @@ tfoot {
 .order-items tfoot tr:last-child .total-price .amount:first-child {
 	font-weight: bold;
 }
-.order-items tfoot tr:last-child {
+.order-items {
 	border-bottom: 3px solid #bbb;
 }
 
@@ -166,15 +154,28 @@ tfoot {
 	margin-top: 2em;
 	margin-bottom: 2em;
 }
-.colophon-policies {
-	margin-bottom: 2em;
+.order-notes {
+	text-align: justify;
 }
 .order-colophon {
 	text-align: center;
-	padding-top: 2%; 
-	border-top: 0.24em solid black;
+	padding-top: 2%;
 	width: 100%;
-	vertical-align: middle;
+}
+.order-thanks {
+	width: 100%;
+	vertical-align: top;
+}
+.personal_note {
+	display: inline-block;
+	width: 49%;
+	vertical-align: top;
+}
+.colophon-policies {
+	display: inline-block;
+	width: 50%;
+	text-align: right;
+	vertical-align: top;
 }
 .order-stamp-container {
 	position: absolute;
