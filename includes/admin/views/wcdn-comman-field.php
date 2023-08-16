@@ -13,10 +13,10 @@
 		$settings           = wcdn_customization();
 		$label              = wcdn_customization_label();
 		$i                  = 1;
-		$hidden             = 'disabled';
+		$hidden             = 'pointer-events:none;';
 		foreach ( $settings[ $c_tab ] as $key => $eachsetting ) {
 			$class = ( 1 === $i ) ? 'show' : '';
-			if ( isset( $customization_data['template_setting']['template_setting_template'] ) && 'simple' === $customization_data['template_setting']['template_setting_template'] && $i === 1 ) {
+			if ( isset( $customization_data['template_setting']['template_setting_template'] ) && 'simple' === $customization_data['template_setting']['template_setting_template'] && 1 === $i ) {
 				$hidden = '';
 			}
 			?>
@@ -25,8 +25,8 @@
 					<button <?php echo esc_html( $hidden ); ?> class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#ct_acc_<?php echo esc_attr( $i ); ?>_content" aria-expanded="true" aria-controls="ct_acc_<?php echo esc_attr( $i ); ?>_content">
 						<?php echo esc_html( $label[ $key ] ); ?>
 					</button>
-					<label class="switch">
-						<input type="checkbox" name="<?php echo esc_attr( $c_tab . '[' . $key . '][active]' ); ?>" 
+						<label class="switch" style="<?php echo $hidden; ?>" >
+							<input type="checkbox" name="<?php echo esc_attr( $c_tab . '[' . $key . '][active]' ); ?>" 
 							<?php
 							if ( isset( $customization_data[ $key ]['active'] ) && 'on' === $customization_data[ $key ]['active'] ) {
 								echo 'checked';

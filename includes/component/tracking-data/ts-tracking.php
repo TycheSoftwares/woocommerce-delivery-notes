@@ -106,30 +106,7 @@ class WCDN_TS_tracking {
 		add_action ( 'admin_init', array( 'WCDN_TS_tracking', 'ts_reset_tracking_setting' ) ) ;
 
 		self::ts_schedule_cron_job();
-
-		add_filter( self::$plugin_prefix . '_add_settings_field', array( 'WCDN_TS_tracking', 'ts_add_new_settings_field') );
-	}
-
-	/**
-	 * It will add the New setting for the WooCommerce settings.
-	 * @hook self::$plugin_prefix . '_add_settings_field'
-	 */
-	public static function ts_add_new_settings_field ( $ts_settings ) {
-
-		$ts_settings = array (
-			'name'          => __( 'Reset usage tracking', 'deposits-for-woocommerce'),
-			'type'          => 'link',
-			'desc'          => __( 'This will reset your usage tracking settings, causing it to show the opt-in banner again and not sending any data','ts-tracking'),
-			'button_text'   => 'Reset',
-			'desc_tip'      => true,
-			'class'         => 'button-secondary reset_tracking',
-			'id'            => 'ts_reset_tracking',
-		);
-
-		return $ts_settings;
-	}
-
-
+	}	
 
 	/**
 	 * It will delete the tracking option from the database.

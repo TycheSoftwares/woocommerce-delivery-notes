@@ -133,6 +133,7 @@ h2 {
 .order-notes,
 .order-thanks,
 .order-colophon {
+	margin-top: 3em;
 	margin-bottom: 3em;
 }
 
@@ -272,19 +273,8 @@ h2 {
 	border-bottom: 0.24em solid black;
 }
 
-/* Order Notes */
-.order-notes {
-	margin-top: 3em;
-	margin-bottom: 6em;
-}
-
 .order-notes h4 {
 	margin-bottom: 0;
-}
-
-/* Order Thanks */
-.order-thanks {
-	margin-left: 50%;
 }
 
 /* Order Colophon */

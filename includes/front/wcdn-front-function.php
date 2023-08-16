@@ -17,7 +17,8 @@ require_once 'vendor/autoload.php';
 // Reference the Dompdf namespace.
 use Dompdf\Dompdf;
 use Dompdf\Options;
-use Dompdf\FontMetrics; 
+use Dompdf\FontMetrics;
+
 /**
  * Create a invoice pdf by order id.
  *
@@ -31,17 +32,16 @@ function create_pdf( $order, $type ) {
 	$order_id = $order->id;
 
 	// Instantiate and use the dompdf class.
-	
 	$options = new \Dompdf\Options();
-	$options->set('isRemoteEnabled', TRUE);
-	$options->set('isPhpEnabled', TRUE);
-	$dompdf = new Dompdf($options);
+	$options->set( 'isRemoteEnabled', true );
+	$options->set( 'isPhpEnabled', true );
+	$dompdf = new Dompdf( $options );
 
 	// Load content from html file.
 	ob_start();
 	wcdn_get_document_template( $order, $type );
 	$html = ob_get_clean();
-
+	$html .= '<link type="text/css" href="' . esc_url( WooCommerce_Delivery_Notes::$plugin_url . 'templates/pdf/style.css' ) . '" rel="stylesheet" />';
 	$dompdf->loadHtml( $html );
 
 	// (Optional) Setup the paper size and orientation.
@@ -49,35 +49,6 @@ function create_pdf( $order, $type ) {
 
 	// Render the HTML as PDF.
 	$dompdf->render();
-
-	$data = get_option( 'wcdn_receipt_customization' );
-	if ( $type == 'receipt' && isset( $data['payment_received_stamp']['active'] ) ) {
-		$canvas = $dompdf->getCanvas(); 
-		$fontMetrics = new FontMetrics($canvas, $options); 
-	 
-		// Get height and width of page 
-		$w = $canvas->get_width(); 
-		$h = $canvas->get_height();
-
-		$font = $fontMetrics->getFont('times'); 
-	 
-		// Specify watermark text 
-		$text = $data['payment_received_stamp']['payment_received_stamp_text']; 
-		 
-		// Get height and width of text 
-		$txtHeight = $fontMetrics->getFontHeight($font, 75); 
-		$textWidth = $fontMetrics->getTextWidth($text, $font, 75); 
-		 
-		// Set text opacity 
-		$canvas->set_opacity(.2); 
-		 
-		// Specify horizontal and vertical position 
-		$x = (($w-$textWidth)/2); 
-		$y = (($h-$txtHeight)/2); 
-		 
-		// Writes text at the specified x and y coordinates 
-		$canvas->text($x, $y, $text, $font, 75); 
-	}
 
 	$output = $dompdf->output();
 

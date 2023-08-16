@@ -19,8 +19,7 @@ if ( ! isset( $_GET['wdcn_setting'] ) ) { // phpcs:ignore
 						</div>
 						<p class="card-text">
 							<label class="switch">
-								<?php $checked = ( ! empty( $wcdn_document_settings ) && in_array( 'invoice', $wcdn_document_settings, true ) ) ? 'checked' : ''; ?>
-								<input type="checkbox" name="wcdn_document[]" value="invoice" <?php echo esc_attr( $checked ); ?>>
+								<input type="checkbox" name="wcdn_document[]" value="invoice" <?php echo esc_attr( ( get_option('wcdn_template_type_invoice') == 'yes' ) ? 'checked' : '' ); ?>>
 								<span class="slider round"></span>
 							</label>
 						</p>
@@ -38,8 +37,7 @@ if ( ! isset( $_GET['wdcn_setting'] ) ) { // phpcs:ignore
 						</div>
 						<p class="card-text">
 							<label class="switch">
-								<?php $checked = ( ! empty( $wcdn_document_settings ) && in_array( 'receipt', $wcdn_document_settings, true ) ) ? 'checked' : ''; ?>
-								<input type="checkbox" name="wcdn_document[]" value="receipt" <?php echo esc_attr( $checked ); ?>>
+								<input type="checkbox" name="wcdn_document[]" value="receipt" <?php echo esc_attr( ( get_option('wcdn_template_type_receipt') == 'yes' ) ? 'checked' : '' ); ?>>
 								<span class="slider round"></span>
 							</label>
 						</p>
@@ -57,8 +55,7 @@ if ( ! isset( $_GET['wdcn_setting'] ) ) { // phpcs:ignore
 						</div>
 						<p class="card-text">
 							<label class="switch">
-								<?php $checked = ( ! empty( $wcdn_document_settings ) && in_array( 'delivery_note', $wcdn_document_settings, true ) ) ? 'checked' : ''; ?>
-								<input type="checkbox"  name="wcdn_document[]" value="delivery_note" <?php echo esc_attr( $checked ); ?>>
+								<input type="checkbox"  name="wcdn_document[]" value="delivery_note" <?php echo esc_attr( ( get_option('wcdn_template_type_delivery-note') == 'yes' ) ? 'checked' : '' ); ?>>
 								<span class="slider round"></span>
 							</label>
 						</p>

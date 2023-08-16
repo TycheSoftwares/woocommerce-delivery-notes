@@ -148,26 +148,27 @@ jQuery(document).ready(function($) {
 	}).change();
 	
 	// Toggle invoice number fields
-	$('input#wcdn_create_invoice_number').on('change', function(event) {
+	$('input[name="wcdn_invoice\\[numbering\\]"]').on('change', function(event) {
 		if ($(this).is(':checked')) {
-			$('.create-invoice').closest('tr').removeClass('hidden');
+			$('.wcdn_depend_row').show();
 		} else {
-			$('.create-invoice').closest('tr').addClass('hidden');
+			$('.wcdn_depend_row').hide();
 		}
-	}).trigger('change');
+	});
 
 
 	$('select[name*="\\[template_setting\\][\\template_setting_template\\]"]').change(function () {
 		if( this.value == 'simple' ) {
 			jQuery('.accordion-button').attr('disabled', false);
+      jQuery('.accordion-item .switch').css('pointer-events', 'auto');
 			jQuery('.wcdn_for_simple').css('display','block');
 			jQuery('.wcdn_for_default').css('display','none');
 
 		} else {
 			jQuery('.accordion-button').attr('disabled', true);
+      jQuery('.accordion-item .switch').css('pointer-events', 'none');
 			jQuery('.wcdn_for_simple').css('display','none');
 			jQuery('.wcdn_for_default').css('display','block');
-
 		}
     });
 
