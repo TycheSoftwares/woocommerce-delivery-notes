@@ -359,7 +359,7 @@ function wcdn_get_order_info( $order, $type = '' ) {
 	$template              = $data['template_setting']['template_setting_template'];
 
 	$wdn_order_id = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_id() : $order->id;
-	$order_post   = get_post( $wdn_order_id );
+	$order_post   = wc_get_order( $wdn_order_id );
 
 	$wdn_order_order_date           = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order_post->post_date : $order->order_date;
 	$wdn_order_payment_method_title = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_payment_method_title() : $order->payment_method_title;
