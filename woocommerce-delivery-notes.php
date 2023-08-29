@@ -55,16 +55,3 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 	$GLOBALS['wcdn'] = WooCommerce_Delivery_Notes::instance();
 
 }
-
-add_action( 'before_woocommerce_init', 'print_custom_order_tables_compatibility' );
-
-/**
- * Sets the compatibility with Woocommerce HPOS.
- */
-function print_custom_order_tables_compatibility() {
-	if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
-			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'orders_cache', 'woocommerce-delivery-notes/woocommerce-delivery-notes.php', true );
-			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', 'woocommerce-delivery-notes/woocommerce-delivery-notes.php', true );
-	}
-}
-

@@ -146,6 +146,7 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 			add_action( 'init', array( $this, 'wcdn_create_dir' ) );
 			add_action( 'init', array( $this, 'wcdn_remove_save_btn' ) );
 			add_action( 'woocommerce_init', array( $this, 'load' ) );
+			add_action( 'before_woocommerce_init', array( $this, 'print_custom_order_tables_compatibility' ) );
 		}
 
 
@@ -215,6 +216,15 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 			}
 		}
 
+		/**
+		 * Sets the compatibility with Woocommerce HPOS.
+		 */
+		public function print_custom_order_tables_compatibility() {
+			if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
+					\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'orders_cache', 'woocommerce-delivery-notes/woocommerce-delivery-notes.php', true );
+					\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', 'woocommerce-delivery-notes/woocommerce-delivery-notes.php', true );
+			}
+		}
 
 		/**
 		 * Load the localisation.
@@ -261,7 +271,7 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 		 * @since 5.0
 		 */
 		public function wcdn_delete_file_callbak() {
-			
+
 			/** Define directory */
 			$upload_path       = wp_upload_dir()['basedir'];
 			$wcdn_invoice      = $upload_path . '/wcdn/invoice/';
