@@ -1,0 +1,9 @@
+{
+"skip-draft-prs":true,
+"lint-modified-files-only":true,
+"phpcs":true,
+"phpcs-severity": 5,
+"skip-draft-prs":true,
+"phpcs-sniffs-exclude":["WordPress.Files.FileName"],
+"results-comments-sort":true
+}
