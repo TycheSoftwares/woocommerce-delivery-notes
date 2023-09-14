@@ -6,7 +6,7 @@ failure "Please provide a summary in the PR description textfield" if github.pr_
 
 failure "This PR does not have any assignee. Please assign yourself if you are the author of this PR." unless github.pr_json["assignee"]
 
-failure "This PR has not been assigned to a reviewer. Every PR must be reviewed by a Senior Developer @ Tyche Softwares." unless github.pr_json["reviewer"]
+failure "This PR has not been assigned to a reviewer. Every PR must be reviewed by a Senior Developer @ Tyche Softwares." unless github.pr_json["requested_reviewers"]
 
 failure "This PR has not been assigned to a milestone." unless github.pr_json["milestone"]
 
@@ -15,13 +15,10 @@ if git.modified_files.empty? && git.added_files.empty? && git.deleted_files.empt
 end
 
 # Verify if PR title contains issue numbers
-fix = github.pr_body.scan(/\[(\w{1,3} #\d+)\]/)
-if fix.empty?
-  failure "This PR does not have any issue number in the description. (e.g. Fix #10)"
-end
+failure "This PR does not have any issue number in the description. (e.g. Fix #10)" unless github.pr_body.downcase.include? "fix #"
 
 if github.pr_body.include? "do-not-scan"
-  failure "Skipping of PHPCS Scan is highly discouraged."
+  failure "Skipping of PHPCS Scan is highly discouraged. Tagging Lead Developer @handelce for this oversight."
 end
 
 commit_lint.check warn: :all

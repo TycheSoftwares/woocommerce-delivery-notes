@@ -15,5 +15,8 @@ jobs:
       uses: rtCamp/action-phpcs-code-review@v3
       env:
         GH_BOT_TOKEN: ${{ secrets.DANGER_GITHUB_API_TOKEN }}
+        PHPCS_STANDARD_FILE_NAME: "tyche-phpcs.xml"
+        NAME_TO_USE: "[Tyche Softwares](https://github.com/TycheSoftwares/)"
+        INFORMATIONAL_MSG: "Powered by [Tyche Softwares](https://www.tychesoftwares.com/)"
       with:
         args: "WordPress,WordPress-Core,WordPress-Docs"
