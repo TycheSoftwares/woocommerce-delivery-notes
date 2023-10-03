@@ -38,7 +38,7 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 			add_action( 'woocommerce_admin_order_actions_end', array( $this, 'add_listing_actions' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'add_scripts' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'add_styles' ) );
-			add_action( 'add_meta_boxes_shop_order', array( $this, 'add_box' ) );
+			add_action( 'add_meta_boxes', array( $this, 'add_box' ) );
 			add_filter( 'bulk_actions-edit-shop_order', array( $this, 'register_my_bulk_actions' ) );
 			add_filter( 'handle_bulk_actions-edit-shop_order', array( $this, 'my_bulk_action_handler' ), 10, 3 );
 			add_action( 'admin_notices', array( $this, 'confirm_bulk_actions' ) );
@@ -234,20 +234,25 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 		 * Add the meta box on the single order page
 		 */
 		public function add_box() {
-			add_meta_box( 'woocommerce-delivery-notes-box', __( 'Order Printing', 'woocommerce-delivery-notes' ), array( $this, 'create_box_content' ), 'shop_order', 'side', 'low' );
-		}
+			$screen = wc_get_page_screen_id( 'shop-order' );
+
+			add_meta_box( 'woocommerce-delivery-notes-box', __( 'Order Printing', 'woocommerce-delivery-notes' ), array( $this, 'create_box_content' ), $screen, 'side', 'low' );
+		} 
 
 		/**
 		 * Create the meta box content on the single order page
 		 */
-		public function create_box_content() {
+		public function create_box_content( $post ) {
 			global $post_id, $wcdn;
+
+			$order_id = ( $post instanceof WP_Post ) ? $post->ID : $post->get_id();
+			$order    = wc_get_order( $order_id );
 			?>
 			<div class="print-actions">
 				<?php foreach ( WCDN_Print::$template_registrations as $template_registration ) : ?>
 					<?php if ( 'yes' === get_option( 'wcdn_template_type_' . $template_registration['type'] ) && 'order' !== $template_registration['type'] ) : ?>
 						<?php // phpcs:disable ?>
-						<a href="<?php echo esc_url( wcdn_get_print_link( $post_id, $template_registration['type'] ) ); ?>" class="button print-preview-button <?php echo esc_attr( $template_registration['type'] ); ?>" target="_blank" alt="<?php esc_attr_e( __( $template_registration['labels']['print'], 'woocommerce-delivery-notes' ) ); ?>"><?php esc_attr_e( $template_registration['labels']['print'], 'woocommerce-delivery-notes' ); ?></a>
+						<a href="<?php echo esc_url( wcdn_get_print_link( $order_id, $template_registration['type'] ) ); ?>" class="button print-preview-button <?php echo esc_attr( $template_registration['type'] ); ?>" target="_blank" alt="<?php esc_attr_e( __( $template_registration['labels']['print'], 'woocommerce-delivery-notes' ) ); ?>"><?php esc_attr_e( $template_registration['labels']['print'], 'woocommerce-delivery-notes' ); ?></a>
 						<?php // phpcs:enable ?>
 					<?php endif; ?>
 				<?php endforeach; ?>
@@ -255,10 +260,10 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 			</div>
 			<?php
 			$create_invoice_number = get_option( 'wcdn_create_invoice_number' );
-			$has_invoice_number    = get_post_meta( $post_id, '_wcdn_invoice_number', true );
+			$has_invoice_number    = $order->get_meta( '_wcdn_invoice_number', true );
 			if ( ! empty( $create_invoice_number ) && 'yes' === $create_invoice_number && $has_invoice_number ) :
-				$invoice_number = wcdn_get_order_invoice_number( $post_id );
-				$invoice_date   = wcdn_get_order_invoice_date( $post_id );
+				$invoice_number = wcdn_get_order_invoice_number( $order_id );
+				$invoice_date   = wcdn_get_order_invoice_date( $order_id );
 				?>
 
 				<ul class="print-info">

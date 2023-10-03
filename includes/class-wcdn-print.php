@@ -521,14 +521,15 @@ if ( ! class_exists( 'WCDN_Print' ) ) {
 			$this->orders = array();
 
 			// Get the orders.
-			$args  = array(
-				'posts_per_page' => -1,
-				'post_type'      => 'shop_order',
-				'post_status'    => 'any',
-				'post__in'       => $this->order_ids,
-				'orderby'        => 'post__in',
+			$posts = wc_get_orders(
+				array(
+					'limit'       => -1,
+					'orderby'     => 'date',
+					'order'       => 'DESC',
+					'post__in'    => $this->order_ids,
+					'post_status' => 'any',
+				)
 			);
-			$posts = get_posts( $args );
 
 			// All orders should exist.
 			if ( count( $posts ) !== count( $this->order_ids ) ) {
@@ -582,10 +583,12 @@ if ( ! class_exists( 'WCDN_Print' ) ) {
 			$invoice_count  = intval( get_option( 'wcdn_invoice_number_count', 1 ) );
 			$invoice_prefix = get_option( 'wcdn_invoice_number_prefix' );
 			$invoice_suffix = get_option( 'wcdn_invoice_number_suffix' );
+			$order          = wc_get_order( $order_id );
 
 			// Add the invoice number to the order when it doesn't yet exist.
 			$meta_key   = '_wcdn_invoice_number';
-			$meta_added = add_post_meta( $order_id, $meta_key, $invoice_prefix . $invoice_count . $invoice_suffix, true );
+			$meta_added = $order->add_meta_data( $meta_key, $invoice_prefix . $invoice_count . $invoice_suffix, true );
+			$order->save();
 
 			// Update the total count.
 			if ( $meta_added ) {
@@ -593,7 +596,7 @@ if ( ! class_exists( 'WCDN_Print' ) ) {
 			}
 
 			// Get the invoice number.
-			return apply_filters( 'wcdn_order_invoice_number', get_post_meta( $order_id, $meta_key, true ) );
+			return apply_filters( 'wcdn_order_invoice_number', $order->get_meta( $meta_key, true ) );
 		}
 
 		/**
@@ -602,12 +605,15 @@ if ( ! class_exists( 'WCDN_Print' ) ) {
 		 * @param int $order_id Order id.
 		 */
 		public function get_order_invoice_date( $order_id ) {
+			$order = wc_get_order( $order_id );
+
 			// Add the invoice date to the order when it doesn't yet exist.
 			$meta_key   = '_wcdn_invoice_date';
-			$meta_added = add_post_meta( $order_id, $meta_key, time(), true );
+			$meta_added = $order->add_meta_data( $meta_key, time(), true );
+			$order->save();
 
 			// Get the invoice date.
-			$meta_date      = get_post_meta( $order_id, $meta_key, true );
+			$meta_date      = $order->get_meta( $meta_key, true );
 			$formatted_date = date_i18n( get_option( 'date_format' ), $meta_date );
 			return apply_filters( 'wcdn_order_invoice_date', $formatted_date, $meta_date );
 		}
