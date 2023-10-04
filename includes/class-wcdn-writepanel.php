@@ -41,6 +41,9 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 			add_action( 'add_meta_boxes', array( $this, 'add_box' ) );
 			add_filter( 'bulk_actions-edit-shop_order', array( $this, 'register_my_bulk_actions' ) );
 			add_filter( 'handle_bulk_actions-edit-shop_order', array( $this, 'my_bulk_action_handler' ), 10, 3 );
+			add_filter( 'bulk_actions-woocommerce_page_wc-orders', array( $this, 'register_my_bulk_actions' ) );
+			add_filter( 'handle_bulk_actions-woocommerce_page_wc-orders', array( $this, 'my_bulk_action_handler' ), 10, 3 );
+
 			add_action( 'admin_notices', array( $this, 'confirm_bulk_actions' ) );
 		}
 
@@ -72,6 +75,8 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 			global $typenow, $pagenow;
 			if ( 'shop_order' === $typenow && 'edit.php' === $pagenow ) {
 				return true;
+			} elseif ( isset( $_GET['page'] ) && 'wc-orders' === $_GET['page'] ) {
+				return true;
 			} else {
 				return false;
 			}
@@ -83,6 +88,8 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 		public function is_order_post_page() {
 			global $typenow, $pagenow;
 			if ( 'shop_order' === $typenow && ( 'post.php' === $pagenow || 'post-new.php' === $pagenow ) ) {
+				return true;
+			} elseif ( isset( $_GET['page'] ) && 'wc-orders' === $_GET['page'] && isset( $_GET['action'] ) && 'new' === $_GET['action'] ) {
 				return true;
 			} else {
 				return false;
@@ -132,8 +139,9 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 		 * @param array  $post_ids    Array of an IDs.
 		 */
 		public function my_bulk_action_handler( $redirect_to, $doaction, $post_ids ) {
+
 			// stop if there are no post ids.
-			if ( ! isset( $_REQUEST['post'] ) ) {
+			if ( empty( $post_ids ) ) {
 				return $redirect_to;
 			}
 			// stop if the action is not of bulk printing.
@@ -153,7 +161,11 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 			}
 
 			// security check.
-			check_admin_referer( 'bulk-posts' );
+			if ( isset( $_GET['page'] ) && 'wc-orders' === $_GET['page'] ) {
+				check_admin_referer( 'bulk-orders' );
+			} else {
+				check_admin_referer( 'bulk-posts' );
+			}
 
 			// get referrer.
 			if ( ! wp_get_referer() ) {
@@ -165,9 +177,7 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 			parse_str( wp_parse_url( wp_get_referer(), PHP_URL_QUERY ), $referer_args );
 
 			// set the basic args for the sendback.
-			$args = array(
-				'post_type' => $referer_args['post_type'],
-			);
+			$args = array();
 			if ( isset( $referer_args['post_status'] ) ) {
 				$args = wp_parse_args( array( 'post_status' => $referer_args['post_status'] ), $args );
 			}
@@ -181,10 +191,17 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 				$args = wp_parse_args( array( 'orderby' => $referer_args['order'] ), $args );
 			}
 
+			if ( isset( $referer_args['post_type'] ) ) {
+				$args = wp_parse_args( array( 'post_type' => $referer_args['post_type'] ), $args );
+			}
+
+			if ( isset( $referer_args['page'] ) ) {
+				$args = wp_parse_args( array( 'page' => $referer_args['page'] ), $args );
+			}
+
 			// do the action.
-			$post_ids = array_map( 'absint', (array) $_REQUEST['post'] );
-			$total    = count( $post_ids );
-			$url      = wcdn_get_print_link( $post_ids, $template_type );
+			$total = count( $post_ids );
+			$url   = wcdn_get_print_link( $post_ids, $template_type );
 
 			// generate more args and the sendback string.
 			$args     = wp_parse_args(
