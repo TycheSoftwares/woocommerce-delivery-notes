@@ -140,8 +140,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 									</span>
 
 									<?php
-									$item_meta_fields = apply_filters( 'wcdn_product_meta_data', $item['item_meta'], $item );
-
+									$item_meta_fields = wc_display_item_meta( $item, apply_filters( 'wcdn_product_meta_data', $item['item_meta'], $item ) );
+									if ( null === $item_meta_fields ) {
+										$item_meta_fields = array();
+									}
 									$product_addons            = array();
 									$woocommerce_product_addon = 'woocommerce-product-addons/woocommerce-product-addons.php';
 									if ( in_array( $woocommerce_product_addon, apply_filters( 'active_plugins', get_option( 'active_plugins', array() ) ), true ) ) {
