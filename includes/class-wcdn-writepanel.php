@@ -251,10 +251,13 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 		 * Add the meta box on the single order page
 		 */
 		public function add_box() {
-			$screen = wc_get_page_screen_id( 'shop-order' );
-
+			if ( function_exists( 'wc_get_page_screen_id' ) ) {
+				$screen = wc_get_page_screen_id( 'shop_order' );
+			} else {
+				$screen = 'shop_order';
+			}
 			add_meta_box( 'woocommerce-delivery-notes-box', __( 'Order Printing', 'woocommerce-delivery-notes' ), array( $this, 'create_box_content' ), $screen, 'side', 'low' );
-		} 
+		}
 
 		/**
 		 * Create the meta box content on the single order page
