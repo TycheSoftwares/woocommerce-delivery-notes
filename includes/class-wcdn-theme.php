@@ -210,7 +210,7 @@ if ( ! class_exists( 'WCDN_Theme' ) ) {
 				echo "\n****************************************************\n\n";
 			else :
 				?>
-				<p><strong><?php esc_attr_e( 'Print:', 'woocommerce-delivery-notes' ); ?></strong> <a href="<?php echo esc_url_raw( $url ); ?>"><?php esc_attr_e( 'Open print view in browser', 'woocommerce-delivery-notes' ); ?></a></p>
+				<p><strong><?php echo esc_attr( apply_filters( 'wcdn_print_text_in_email', 'Print:', 'woocommerce-delivery-notes' ) ); ?></strong> <a href="<?php echo esc_url_raw( $url ); ?>"><?php echo esc_attr( apply_filters( 'wcdn_print_view_in_browser_text_in_email', 'Open print view in browser', 'woocommerce-delivery-notes' ) ); ?></a></p>
 			<?php endif;
 		}
 
