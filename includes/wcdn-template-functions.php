@@ -361,7 +361,7 @@ function wcdn_get_order_info( $order, $type = '' ) {
 	$wdn_order_id = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_id() : $order->id;
 	$order_post   = get_post( $wdn_order_id );
 
-	$wdn_order_order_date           = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order_post->post_date : $order->order_date;
+	$wdn_order_order_date           = ! is_null( $order->get_date_created() ) ? $order->get_date_created()->getOffsetTimestamp() : '';
 	$wdn_order_payment_method_title = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_payment_method_title() : $order->payment_method_title;
 	$wdn_order_billing_id           = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_billing_email() : $order->billing_email;
 	$wdn_order_billing_phone        = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_billing_phone() : $order->billing_phone;
@@ -438,7 +438,7 @@ function wcdn_get_order_info( $order, $type = '' ) {
 	} else {
 		$fields['order_date'] = array(
 			'label' => __( 'Order Date', 'woocommerce-delivery-notes' ),
-			'value' => date_i18n( get_option( 'date_format' ), strtotime( $wdn_order_order_date ) ),
+			'value' => date_i18n( get_option( 'date_format' ), $wdn_order_order_date ),
 		);
 	}
 
