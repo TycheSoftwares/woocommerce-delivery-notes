@@ -236,12 +236,12 @@ class WCDN_TS_tracking {
 
 		wp_localize_script(
 			'wcdn_ts_dismiss_notice',
-			'wcdn_ts_dismiss_notice', 
-			array (
+			'wcdn_ts_dismiss_notice',
+			array(
 				'ts_prefix_of_plugin' => self::$plugin_prefix,
 				'ts_admin_url'        => admin_url( 'admin-ajax.php' ),
 				'tracking_notice'     => $nonce,
-			) 
+			)
 		);
 	}
 
