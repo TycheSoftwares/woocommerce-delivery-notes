@@ -338,6 +338,14 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 
 == Changelog ==
 
+= 4.8.1 (10.10.2023) =
+* Fix - Same invoice number & invoice date was displayed on all invoices and the counter was not being increased.
+* Fix - Error Notice was displayed on the settings page with PHP 8.2.
+
+= 4.8.0 (04.10.2023) =
+* Enhancement - Compatibility With WooCommerce High Performance Order Storage (HPOS)
+* Fix - Fatal error was displayed in the Invoice with WooCommerce Product Add-ons plugin.
+
 = 4.7.3 (21.03.2023) =
 * Fix - Cross-Site Request Forgery vulnerability in the plugin.
 
