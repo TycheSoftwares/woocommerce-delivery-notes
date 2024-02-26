@@ -36,7 +36,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<address>
 
 				<?php
-				
 				if ( ! $order->get_formatted_billing_address() ) {
 					esc_attr_e( 'N/A', 'woocommerce-delivery-notes' );
 				} else {
@@ -48,7 +47,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</div>
 
 		<div class="shipping-address">						
-			<h3><?php esc_attr_e( 'Shipping Address', 'woocommerce-delivery-notes' ); ?></h3>
+		<h3><?php echo esc_html( apply_filters( 'wcdn_address_shipping_title', esc_attr__( 'Shipping Address', 'woocommerce-delivery-notes' ), $order ) ); ?></h3>
 			<address>
 
 				<?php

@@ -225,19 +225,24 @@ class WCDN_TS_tracking {
 	 * @access public
 	 */
 	public static function ts_admin_notices_scripts() {
-		
+		$nonce = wp_create_nonce( 'tracking_notice' );
         wp_enqueue_script(
-            self::$plugin_prefix . 'ts_dismiss_notice',
+			'wcdn_ts_dismiss_notice',
 			self::$ts_file_path . '/assets/js/dismiss-notice.js',
             '',
             '',
             false
 		);
 
-		wp_localize_script( 'ts_dismiss_notice', 'ts_dismiss_notice', array (
-			'ts_prefix_of_plugin' =>  self::$plugin_prefix,
-			'ts_admin_url'        => admin_url( 'admin-ajax.php' )
-		) );
+		wp_localize_script(
+			'wcdn_ts_dismiss_notice',
+			'wcdn_ts_dismiss_notice',
+			array(
+				'ts_prefix_of_plugin' => self::$plugin_prefix,
+				'ts_admin_url'        => admin_url( 'admin-ajax.php' ),
+				'tracking_notice'     => $nonce,
+			)
+		);
 	}
 
     /**
@@ -248,6 +253,10 @@ class WCDN_TS_tracking {
 	 */
 
     public static function ts_admin_notices() {
+		$nonce = $_POST['tracking_notice'];//phpcs:ignore
+		if ( ! wp_verify_nonce( $nonce, 'tracking_notice' ) ) {
+			return;
+		}
         update_option( self::$plugin_prefix . '_allow_tracking', 'dismissed' );
         WCDN_TS_Tracker::ts_send_tracking_data( false );
         die();

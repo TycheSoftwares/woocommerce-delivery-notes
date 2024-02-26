@@ -14,7 +14,8 @@ jQuery(document).ready( function() {
 		ajaxurl 		= admin_url + "admin-ajax.php";
 
 		var data = {
-			action: "wcdn_admin_notices"
+			action: "wcdn_admin_notices",
+			'tracking_notice': wcdn_ts_dismiss_notice.tracking_notice,
 		};
 
 		jQuery.post( ajaxurl, data, function( response ) {

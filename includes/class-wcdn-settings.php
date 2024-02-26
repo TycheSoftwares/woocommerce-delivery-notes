@@ -176,15 +176,14 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 		public function get_template_description() {
 			$description = '';
 			$args        = array(
-				'post_type'      => 'shop_order',
 				'post_status'    => array( 'wc-pending', 'wc-processing', 'wc-on-hold', 'wc-completed', 'wc-cancelled', 'wc-refunded', 'wc-failed' ),
 				'posts_per_page' => 1,
 			);
-			$query       = new WP_Query( $args );
+			$query       = new WC_Order_Query( $args );
+			$results     = $query->get_orders();
 
 			// show template preview links when an order is available.
-			if ( $query->have_posts() ) {
-				$results           = $query->get_posts();
+			if ( is_array( $results ) && count( $results ) > 0 ) {
 				$test_id           = $results[0]->ID;
 				$invoice_url       = wcdn_get_print_link( $test_id, 'invoice' );
 				$delivery_note_url = wcdn_get_print_link( $test_id, 'delivery-note' );
