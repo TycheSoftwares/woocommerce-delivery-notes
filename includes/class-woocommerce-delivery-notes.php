@@ -194,6 +194,7 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 					'script_file'       => self::$plugin_url . 'assets/js/plugin-deactivation.js',
 					'plugin_short_name' => 'wcdn',
 					'version'           => self::$plugin_version,
+					'plugin_locale'     => 'woocommerce-delivery-notes',
 				)
 			);
 		}
