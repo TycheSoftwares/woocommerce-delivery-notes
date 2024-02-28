@@ -135,6 +135,7 @@ var tyche = {
 
 			if ( btn_deactivate.length > 0 && modal.hasClass( 'no-confirmation-message' ) && !btn_deactivate.hasClass( 'allow-deactivate' ) ) {
 				btn_deactivate.addClass( 'allow-deactivate' );
+				modal.find( '.button-skip-deactivate' ).addClass( 'allow-deactivate' );
 				modal.find( '.ts-modal-panel' ).removeClass( 'active ' );
 				modal.find( '[data-panel-id="reasons"]' ).addClass( 'active' );
 			}
@@ -218,6 +219,7 @@ var tyche = {
 						data,
 						beforeSend: function() {
 							modal.find( '.button-deactivate' ).addClass( 'disabled' );
+							modal.find( '.button-skip-deactivate' ).addClass( 'disabled' );
 						},
 						complete: function() {
 							window.location.href = href;
