@@ -356,17 +356,18 @@ function wcdn_get_order_info( $order, $type = '' ) {
 	$fields                = array();
 	$create_invoice_number = get_option( 'wcdn_create_invoice_number' );
 	$data                  = get_option( 'wcdn_' . $type . '_customization' );
-	$template              = $data['template_setting']['template_setting_template'];
+	if ( isset( $data['template_setting'] ) && is_array( $data['template_setting'] ) && isset( $data['template_setting']['template_setting_template'] ) ) {
+		$template = $data['template_setting']['template_setting_template'];
+	}
 
 	$wdn_order_id = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_id() : $order->id;
 	$order_post   = wc_get_order( $wdn_order_id );
-
 
 	$wdn_order_order_date           = ! is_null( $order->get_date_created() ) ? $order->get_date_created()->getOffsetTimestamp() : '';
 	$wdn_order_payment_method_title = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_payment_method_title() : $order->payment_method_title;
 	$wdn_order_billing_id           = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_billing_email() : $order->billing_email;
 	$wdn_order_billing_phone        = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_billing_phone() : $order->billing_phone;
-	$date_formate                   = get_option('date_format');
+	$date_formate                   = get_option( 'date_format' );
 	$wdn_order_payment_date         = $order->get_date_paid();
 
 	if ( ! empty( $create_invoice_number ) && 'yes' === $create_invoice_number ) {
