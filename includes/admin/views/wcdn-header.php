@@ -10,7 +10,7 @@
 	<?php
 	$h_tab = array(
 		'wcdn_general'   => array( __( 'General', 'woocommerce-delivery-notes' ), 'wcdn-general.php' ),
-		'wcdn_document'  => array( __( 'Documents', 'woocommerce-delivery-notes' ), 'wcdn-document.php' ),
+		'wcdn_document'  => array( __( 'Templates', 'woocommerce-delivery-notes' ), 'wcdn-document.php' ),
 		'wcdn_helpguide' => array( __( 'Help & Guide', 'woocommerce-delivery-notes' ), 'wcdn-helpguide.php' ),
 	);
 	$file  = 'wcdn-general.php';
