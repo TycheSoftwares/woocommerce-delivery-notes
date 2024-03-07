@@ -356,9 +356,7 @@ function wcdn_get_order_info( $order, $type = '' ) {
 	$fields                = array();
 	$create_invoice_number = get_option( 'wcdn_create_invoice_number' );
 	$data                  = get_option( 'wcdn_' . $type . '_customization' );
-	if ( isset( $data['template_setting'] ) && is_array( $data['template_setting'] ) && isset( $data['template_setting']['template_setting_template'] ) ) {
-		$template = $data['template_setting']['template_setting_template'];
-	}
+	$template              = isset($data['template_setting']['template_setting_template']) ? $data['template_setting']['template_setting_template'] : 'default';
 
 	$wdn_order_id = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_id() : $order->id;
 	$order_post   = wc_get_order( $wdn_order_id );
