@@ -94,7 +94,7 @@
 			'simple' => WooCommerce_Delivery_Notes::$plugin_url . 'assets/images/Invoice.png',
 		),
 	);
-	if ( 'simple' === $customization_data['template_setting']['template_setting_template'] ) {
+	if ( is_array( $customization_data ) && isset( $customization_data['template_setting'] ) && isset( $customization_data['template_setting']['template_setting_template'] ) && 'simple' === $customization_data['template_setting']['template_setting_template'] ) {
 		$imgurls = $imgarray[$c_tab]['simple'];
 		$imgurld = $imgarray[$c_tab]['default'];
 		$styles  = 'style=display:block;';
