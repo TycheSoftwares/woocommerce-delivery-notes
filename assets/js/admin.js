@@ -156,7 +156,12 @@ jQuery(document).ready(function($) {
 		}
 	});
 
-
+	$(document).ready(function(){
+		$('.accordion-button').click(function(){
+			$(this).closest('.accordion-item').toggleClass('expanded');
+		});
+	});
+	
 	$('select[name*="\\[template_setting\\][\\template_setting_template\\]"]').change(function () {
 		if( this.value == 'simple' ) {
 			jQuery('.accordion-button').attr('disabled', false);
