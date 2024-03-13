@@ -130,6 +130,7 @@ $shop_logotitle = get_the_title( $shop_logoid );
 <div class="form-group row">
 	<label for="print_link" class="col-sm-2 col-form-label"><?php esc_html_e( 'Email', 'woocommerce-delivery-notes' ); ?></label>
 	<div class="col-sm-6 icon-flex">
+	<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'This includes the emails for a new, processing and completed order. On top of that the customer and admin invoice emails will also include the link.', 'woocommerce-delivery-notes' ); ?>"></i>
 		<label class="switch">
 		<input type="checkbox" class="form-control" name="wcdn_general[print_customer]" id="print_customer" value="" <?php echo esc_attr( ( get_option('wcdn_email_print_link') == 'yes' ) ? 'checked' : '' ); ?> >
 		<span class="slider round"></span>
@@ -149,7 +150,7 @@ $shop_logotitle = get_the_title( $shop_logoid );
 <div class="form-group row">
 	<label for="show_myaccount" class="col-sm-2 col-form-label"><?php esc_html_e( 'My Account', 'woocommerce-delivery-notes' ); ?></label>
 	<div class="col-sm-6 icon-flex">
-		<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'This includes the emails for a new, processing and completed order. On top of that the customer and admin invoice emails will also include the link.', 'woocommerce-delivery-notes' ); ?>"></i>
+		<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'This includes print button on View Order page and My Account page.', 'woocommerce-delivery-notes' ); ?>"></i>
 		<label class="switch">
 		<input type="checkbox" class="form-control" name="wcdn_general[view_order]" id="view_order" value="" <?php echo esc_attr( ( get_option('wcdn_print_button_on_view_order_page') == 'yes' ) ? 'checked' : '' ); ?> >
 		<span class="slider round"></span>
