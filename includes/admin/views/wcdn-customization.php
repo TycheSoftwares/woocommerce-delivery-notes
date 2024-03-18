@@ -21,14 +21,17 @@ if ( isset( $_GET['wdcn_setting'] ) ) {
 				esc_html_e( 'Invoice Settings', 'woocommerce-delivery-notes' );
 				$c_tab            = 'invoice';
 				$settings_db_data = get_option( 'wcdn_invoice_settings' );
+				print_r($settings_db_data);
 			} elseif ( 'wcdn_receipt' === $setting ) {
 				esc_html_e( 'Receipt Settings', 'woocommerce-delivery-notes' );
 				$c_tab            = 'receipt';
 				$settings_db_data = get_option( 'wcdn_receipt_settings' );
+				print_r($settings_db_data);
 			} elseif ( 'wcdn_deliverynote' === $setting ) {
 				esc_html_e( 'Delivery Notes Settings', 'woocommerce-delivery-notes' );
 				$c_tab            = 'deliverynote';
 				$settings_db_data = get_option( 'wcdn_deliverynote_settings' );
+				print_r($settings_db_data);
 			}
 			?>
 		</h3>
@@ -66,7 +69,7 @@ if ( isset( $_GET['wdcn_setting'] ) ) {
 					</div>
 				</div>
 				<?php 
-					$wcdn_depend_row_style = ( get_option('wcdn_create_invoice_number') == 'yes' ) ? 'display:flex' : 'display:none';
+					$wcdn_depend_row_style = ( get_option( 'wcdn_create_invoice_number') == 'yes' ) ? 'display:flex' : 'display:none';
 				?>
 				<div class="form-group row wcdn_depend_row" style="<?php echo $wcdn_depend_row_style; ?>;">
 					<label for="invoice_nextnumber" class="col-sm-2 col-form-label"><?php esc_html_e( 'Next Number', 'woocommerce-delivery-notes' ); ?></label>
@@ -94,6 +97,7 @@ if ( isset( $_GET['wdcn_setting'] ) ) {
 					<label for="attch_mail" class="col-sm-2 col-form-label"><?php esc_html_e( 'Attach Email To', 'woocommerce-delivery-notes' ); ?></label>
 					<div class="col-sm-6 icon-flex">
 						<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'Different mail status in which you want to send document.', 'woocommerce-delivery-notes' ); ?>"></i>
+						<input type="hidden" name="<?php echo esc_attr( $setting ); ?>[status][]" value="" />
 						<select class="wcdn_email form-control" name="<?php echo esc_attr( $setting ); ?>[status][]" multiple="multiple" style="width: 100%;">
 							<?php
 							$email_classes = WC()->mailer()->get_emails();

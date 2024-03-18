@@ -504,11 +504,17 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 				update_option( 'wcdn_create_invoice_number', $number );
 				update_option( 'wcdn_invoice_number_count', $_POST['wcdn_invoice']['invoice_nextnumber'] );
 			}
+
 			if ( isset( $_POST['wcdn_receipt'] )  && ! empty( $_POST['wcdn_receipt'] ) ) {
 				update_option( 'wcdn_receipt_settings', $_POST['wcdn_receipt'] );
+			} elseif ( isset( $_POST['wcdn_receipt'] ) && ! isset( $_POST['wcdn_receipt']['status'] ) ) {
+				update_option( 'wcdn_receipt_settings', array() );
 			}
+
 			if ( isset( $_POST['wcdn_deliverynote'] )  && ! empty( $_POST['wcdn_deliverynote'] ) ) {
 				update_option( 'wcdn_deliverynote_settings', $_POST['wcdn_deliverynote'] );
+			} elseif ( isset( $_POST['wcdn_deliverynote'] ) && ! isset( $_POST['wcdn_deliverynote']['status'] ) ) {
+				update_option( 'wcdn_deliverynote_settings', array() );
 			}
 
 			if ( isset( $_POST['invoice'] )  && ! empty( $_POST['invoice'] ) ) {
@@ -578,7 +584,6 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 				return false;
 			}
 		}
-
 	}
 }
 
@@ -588,4 +593,3 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 function wcdn_init() {
 	return WC_Delivery_Notes::instance();
 }
-
