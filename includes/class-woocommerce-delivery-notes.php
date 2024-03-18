@@ -261,7 +261,7 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 		 * @since 5.0
 		 */
 		public function wcdn_delete_file_callbak() {
-			
+
 			/** Define directory */
 			$upload_path       = wp_upload_dir()['basedir'];
 			$wcdn_invoice      = $upload_path . '/wcdn/invoice/';
@@ -442,12 +442,12 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 				}
 			}
 			if ( isset( $_POST['wcdn_general'] ) && ! empty( $_POST['wcdn_general'] ) ) {
-				if ( isset( $_POST['wcdn_general']['page_endpoint'] ) && !empty( $_POST['wcdn_general']['page_endpoint'] ) ) {
+				if ( isset( $_POST['wcdn_general']['page_endpoint'] ) && ! empty( $_POST['wcdn_general']['page_endpoint'] ) ) {
 					update_option( 'wcdn_print_order_page_endpoint', $_POST['wcdn_general']['page_endpoint'] );
-				}else {
+				} else {
 					update_option( 'wcdn_print_order_page_endpoint', 'print-order' );
 				}
-				
+
 				update_option( 'wcdn_footer_imprint', $_POST['wcdn_general']['shop_footer'] );
 				update_option( 'wcdn_policies_conditions', $_POST['wcdn_general']['shop_policy'] );
 				update_option( 'wcdn_personal_notes', $_POST['wcdn_general']['shop_complimentry_close'] );
@@ -496,7 +496,7 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 					update_option( 'wcdn_template_type_delivery-note', 'no' );
 				}
 			}
-			if ( isset( $_POST['wcdn_invoice'] )  && ! empty( $_POST['wcdn_invoice'] ) ) {
+			if ( isset( $_POST['wcdn_invoice'] ) && ! empty( $_POST['wcdn_invoice'] ) ) {
 				update_option( 'wcdn_invoice_settings', $_POST['wcdn_invoice'] );
 				update_option( 'wcdn_invoice_number_suffix', $_POST['wcdn_invoice']['invoice_suffix'] );
 				update_option( 'wcdn_invoice_number_prefix', $_POST['wcdn_invoice']['invoice_preffix'] );
@@ -504,20 +504,26 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 				update_option( 'wcdn_create_invoice_number', $number );
 				update_option( 'wcdn_invoice_number_count', $_POST['wcdn_invoice']['invoice_nextnumber'] );
 			}
-			if ( isset( $_POST['wcdn_receipt'] )  && ! empty( $_POST['wcdn_receipt'] ) ) {
+
+			if ( isset( $_POST['wcdn_receipt'] ) && ! empty( $_POST['wcdn_receipt'] ) ) {
 				update_option( 'wcdn_receipt_settings', $_POST['wcdn_receipt'] );
-			}
-			if ( isset( $_POST['wcdn_deliverynote'] )  && ! empty( $_POST['wcdn_deliverynote'] ) ) {
-				update_option( 'wcdn_deliverynote_settings', $_POST['wcdn_deliverynote'] );
+			} elseif ( isset( $_POST['wcdn_receipt'] ) && ! isset( $_POST['wcdn_receipt']['status'] ) ) {
+				update_option( 'wcdn_receipt_settings', array() );
 			}
 
-			if ( isset( $_POST['invoice'] )  && ! empty( $_POST['invoice'] ) ) {
+			if ( isset( $_POST['wcdn_deliverynote'] ) && ! empty( $_POST['wcdn_deliverynote'] ) ) {
+				update_option( 'wcdn_deliverynote_settings', $_POST['wcdn_deliverynote'] );
+			} elseif ( isset( $_POST['wcdn_deliverynote'] ) && ! isset( $_POST['wcdn_deliverynote']['status'] ) ) {
+				update_option( 'wcdn_deliverynote_settings', array() );
+			}
+
+			if ( isset( $_POST['invoice'] ) && ! empty( $_POST['invoice'] ) ) {
 				update_option( 'wcdn_invoice_customization', $_POST['invoice'] );
 			}
-			if ( isset( $_POST['receipt'] )  && ! empty( $_POST['receipt'] ) ) {
+			if ( isset( $_POST['receipt'] ) && ! empty( $_POST['receipt'] ) ) {
 				update_option( 'wcdn_receipt_customization', $_POST['receipt'] );
 			}
-			if ( isset( $_POST['deliverynote'] )  && ! empty( $_POST['deliverynote'] ) ) {
+			if ( isset( $_POST['deliverynote'] ) && ! empty( $_POST['deliverynote'] ) ) {
 				update_option( 'wcdn_deliverynote_customization', $_POST['deliverynote'] );
 			}
 
