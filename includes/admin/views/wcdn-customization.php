@@ -5,12 +5,12 @@
  * @package woocommerce-print-invoice-delivery-notes
  */
 
-if ( isset( $_GET['wdcn_setting'] ) ) { 
+if ( isset( $_GET['wdcn_setting'] ) ) {
 	$setting = htmlspecialchars( $_GET['wdcn_setting'] ); // phpcs:ignore
-	$aclass = '';
+	$aclass  = '';
 	if ( isset( $_GET['ctab'] ) && $_GET['ctab'] === 'customization' ) { // phpcs:ignore
 		$aclass = 'active';
-	} else { 
+	} else {
 		$class = 'active';
 	}
 	?>
@@ -41,7 +41,7 @@ if ( isset( $_GET['wdcn_setting'] ) ) {
 			</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link <?php echo esc_attr( $aclass ); ?>" href="<?php echo esc_url( get_admin_url() . 'admin.php?page=wc-settings&tab=wcdn-settings&setting=wcdn_document&wdcn_setting=' . $setting . '&ctab=customization'); ?>">
+			<a class="nav-link <?php echo esc_attr( $aclass ); ?>" href="<?php echo esc_url( get_admin_url() . 'admin.php?page=wc-settings&tab=wcdn-settings&setting=wcdn_document&wdcn_setting=' . $setting . '&ctab=customization' ); ?>">
 				<?php esc_html_e( 'Customize', 'woocommerce-delivery-notes' ); ?>
 			</a>
 		</li>
@@ -60,33 +60,33 @@ if ( isset( $_GET['wdcn_setting'] ) ) {
 					<div class="col-sm-6 icon-flex">
 						<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'Create invoice numbers.', 'woocommerce-delivery-notes' ); ?>"></i>
 						<label class="switch">
-							<input type="checkbox" name="wcdn_invoice[numbering]" value="" <?php echo esc_attr( ( get_option('wcdn_create_invoice_number') == 'yes' ) ? 'checked' : '' ); ?>>
+							<input type="checkbox" name="wcdn_invoice[numbering]" value="" <?php echo esc_attr( ( get_option( 'wcdn_create_invoice_number' ) == 'yes' ) ? 'checked' : '' ); ?>>
 							<span class="slider round"></span>
 						</label>
 					</div>
 				</div>
-				<?php 
-					$wcdn_depend_row_style = ( get_option('wcdn_create_invoice_number') == 'yes' ) ? 'display:flex' : 'display:none';
-				?>
+					<?php
+					$wcdn_depend_row_style = ( get_option( 'wcdn_create_invoice_number' ) == 'yes' ) ? 'display:flex' : 'display:none';
+					?>
 				<div class="form-group row wcdn_depend_row" style="<?php echo $wcdn_depend_row_style; ?>;">
 					<label for="invoice_nextnumber" class="col-sm-2 col-form-label"><?php esc_html_e( 'Next Number', 'woocommerce-delivery-notes' ); ?></label>
 					<div class="col-sm-6 icon-flex">
 						<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'The next invoice number.', 'woocommerce-delivery-notes' ); ?>"></i>
-						<input type="number" class="form-control" name="wcdn_invoice[invoice_nextnumber]" id="invoice_nextnumber" value="<?php echo esc_attr( get_option('wcdn_invoice_number_count') ); ?>">
+						<input type="number" class="form-control" name="wcdn_invoice[invoice_nextnumber]" id="invoice_nextnumber" value="<?php echo esc_attr( get_option( 'wcdn_invoice_number_count' ) ); ?>">
 					</div>
 				</div>
 				<div class="form-group row wcdn_depend_row" style="<?php echo $wcdn_depend_row_style; ?>;">
 					<label for="invoice_suffix" class="col-sm-2 col-form-label"><?php esc_html_e( 'Suffix', 'woocommerce-delivery-notes' ); ?></label>
 					<div class="col-sm-6 icon-flex">
 						<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'This text will be appended to the invoice number.', 'woocommerce-delivery-notes' ); ?>"></i>
-						<input type="text" class="form-control" name="wcdn_invoice[invoice_suffix]" id="invoice_suffix" value="<?php echo esc_attr( get_option('wcdn_invoice_number_suffix') ); ?>">
+						<input type="text" class="form-control" name="wcdn_invoice[invoice_suffix]" id="invoice_suffix" value="<?php echo esc_attr( get_option( 'wcdn_invoice_number_suffix' ) ); ?>">
 					</div>
 				</div>
 				<div class="form-group row wcdn_depend_row" style="<?php echo $wcdn_depend_row_style; ?>;">
 					<label for="invoice_preffix" class="col-sm-2 col-form-label"><?php esc_html_e( 'Preffix', 'woocommerce-delivery-notes' ); ?></label>
 					<div class="col-sm-6 icon-flex">
 						<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'This text will be prepended to the invoice number.', 'woocommerce-delivery-notes' ); ?>"></i>
-						<input type="text" class="form-control" name="wcdn_invoice[invoice_preffix]" id="invoice_preffix" value="<?php echo esc_attr( get_option('wcdn_invoice_number_prefix') ); ?>">
+						<input type="text" class="form-control" name="wcdn_invoice[invoice_preffix]" id="invoice_preffix" value="<?php echo esc_attr( get_option( 'wcdn_invoice_number_prefix' ) ); ?>">
 					</div>
 				</div>
 				<?php } ?>
@@ -94,6 +94,7 @@ if ( isset( $_GET['wdcn_setting'] ) ) {
 					<label for="attch_mail" class="col-sm-2 col-form-label"><?php esc_html_e( 'Attach Email To', 'woocommerce-delivery-notes' ); ?></label>
 					<div class="col-sm-6 icon-flex">
 						<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'Different mail status in which you want to send document.', 'woocommerce-delivery-notes' ); ?>"></i>
+						<input type="hidden" name="<?php echo esc_attr( $setting ); ?>" value="" />
 						<select class="wcdn_email form-control" name="<?php echo esc_attr( $setting ); ?>[status][]" multiple="multiple" style="width: 100%;">
 							<?php
 							$email_classes = WC()->mailer()->get_emails();
