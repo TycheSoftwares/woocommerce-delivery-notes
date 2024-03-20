@@ -142,6 +142,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 </div><!-- .order-addresses -->
 
 <div class="order-info">
+	<?php
+	if ( isset( $data['payment_received_stamp']['active'] ) ) {
+
+		// Specify watermark text.
+		$text = $data['payment_received_stamp']['payment_received_stamp_text'];
+
+		?>
+		<div class="order-stamp-container">
+			<?php echo $text; ?>
+		</div>
+		<?php
+	}
+	?>
 	<ul class="info-list">
 		<?php
 		$fields = apply_filters( 'wcdn_order_info_fields', wcdn_get_order_info( $order, 'receipt' ), $order );
