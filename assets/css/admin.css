@@ -119,6 +119,16 @@ ul.wcdn_main_tab li:last-child {
     outline: 0;
     box-shadow: none;
 }
+.wcdn_container .accordion-icon {
+    border-style: solid;
+	margin-right: 7px;
+    border-width: 6px 6px 6px 6px;
+    border-color: transparent transparent transparent rgb(11, 11, 11);
+    transition: transform 0.3s ease;
+}
+.wcdn_container .accordion-item.expanded .accordion-icon {
+    transform: rotate(90deg);
+}
 .wcdn_container .wcdn_top_bar {
 	align-items: center;
     display: flex;

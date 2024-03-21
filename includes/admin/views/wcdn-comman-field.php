@@ -23,6 +23,7 @@
 			<div class="accordion-item">
 				<h2 class="accordion-header" id="<?php echo esc_attr( 'ct_acc_' . $i ); ?>">
 					<button <?php echo esc_html( $hidden ); ?> class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#ct_acc_<?php echo esc_attr( $i ); ?>_content" aria-expanded="true" aria-controls="ct_acc_<?php echo esc_attr( $i ); ?>_content">
+					<span class="accordion-icon"></span>
 						<?php echo esc_html( $label[ $key ] ); ?>
 					</button>
 					<?php
