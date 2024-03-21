@@ -82,13 +82,19 @@ function wcdn_get_document_template( $order, $type ) {
  * @since 5.0
  */
 function wcdn_get_pdf_template( $type ) {
-	$setting = get_option( 'wcdn_' . $type . '_customization' );
-	$template = $setting['template_setting']['template_setting_template'];
+	$setting    = get_option( 'wcdn_' . $type . '_customization' );
+	$template   = $setting['template_setting']['template_setting_template'];
+	$css_styles = '';
 	if ( $template == 'simple' ) {
-		return '<link type="text/css" href="' . esc_url( WooCommerce_Delivery_Notes::$plugin_url . 'templates/pdf/' . $template . '/style.css' ) . '" rel = "stylesheet" />';
+		$css_file = WooCommerce_Delivery_Notes::$plugin_path . 'templates/pdf/' . $template . '/style.css';
 	} else {
-		return '<link type="text/css" href="' . esc_url( WooCommerce_Delivery_Notes::$plugin_url . 'templates/pdf/default/style.css' ) . '" rel = "stylesheet" />';
+		$css_file = WooCommerce_Delivery_Notes::$plugin_path . 'templates/pdf/default/style.css';
 	}
+	if ( file_exists( $css_file ) ) {
+		$css_content = file_get_contents( $css_file ); // phpcs:ignore
+		$css_styles  = '<style>' . $css_content . '</style>';
+	}
+	return $css_styles;
 }
 
 /**
