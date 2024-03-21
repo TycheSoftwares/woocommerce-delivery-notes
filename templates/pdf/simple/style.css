@@ -4,6 +4,7 @@ html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, table, ol, ul, dl, li, dt, 
 	margin: 0;
 	padding: 0;
 	vertical-align: middle;
+	font-family: DejaVu Sans !important;
 }
 ol, ul, li {
 	list-style: none;
