@@ -44,8 +44,8 @@ function create_pdf( $order, $type ) {
 	$html .= wcdn_get_pdf_template( $type );
 	$dompdf->loadHtml( $html );
 
-	// (Optional) Setup the paper size and orientation.
-	$dompdf->setPaper( 'A4', 'landscape' );
+	// Setup the paper size and orientation.
+	$dompdf->setPaper( 'A4', 'potrait' );
 
 	// Render the HTML as PDF.
 	$dompdf->render();
