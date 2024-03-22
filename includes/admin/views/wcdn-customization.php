@@ -94,7 +94,8 @@ if ( isset( $_GET['wdcn_setting'] ) ) {
 					<label for="attch_mail" class="col-sm-2 col-form-label"><?php esc_html_e( 'Attach Email To', 'woocommerce-delivery-notes' ); ?></label>
 					<div class="col-sm-6 icon-flex">
 						<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'Different mail status in which you want to send document.', 'woocommerce-delivery-notes' ); ?>"></i>
-						<input type="hidden" name="<?php echo esc_attr( $setting ); ?>" value="" />
+						<?php if ( 'wcdn_deliverynote' === $setting || 'wcdn_receipt' === $setting ) { ?>
+							<input type="hidden" name="<?php echo esc_attr( $setting ); ?>" value="" /><?php } ?>
 						<select class="wcdn_email form-control" name="<?php echo esc_attr( $setting ); ?>[status][]" multiple="multiple" style="width: 100%;">
 							<?php
 							$email_classes = WC()->mailer()->get_emails();
