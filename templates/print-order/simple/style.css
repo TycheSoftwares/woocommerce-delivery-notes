@@ -142,15 +142,14 @@ tfoot {
 	float: left;
 }
 
-.order-info li strong {
-	min-width: 18%;
-	font-weight: normal;
-	display: inline-block;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	margin-bottom: 0;
-	padding-right: 0.35em;
+.order-stamp-container {
+	position: absolute;
+	top: calc( 100vh / 2 );
+	left: 50%;
+	font-size: 75px;
+	opacity: 0.2;
+	transform: translate( -50%, -50% ) rotate(45deg);
+	font-family: 'Times New Roman', Times, serif;
 }
 
 .order-notes,
