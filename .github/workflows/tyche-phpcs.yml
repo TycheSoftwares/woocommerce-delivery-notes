@@ -19,4 +19,4 @@ jobs:
         NAME_TO_USE: "[Tyche Softwares](https://github.com/TycheSoftwares/)"
         INFORMATIONAL_MSG: "Powered by [Tyche Softwares](https://www.tychesoftwares.com/)"
       with:
-        args: "WordPress,WordPress-Core,WordPress-Docs"
+        args: "PEAR,PHPCompatibility,PHPCompatibilityWP,PSR12,PSR2,Squiz,WordPress,WordPress-Core,WordPress-Docs,WordPress-Extra,WordPress-VIP,WordPress-VIP-Go,WordPressVIPMinimum"
