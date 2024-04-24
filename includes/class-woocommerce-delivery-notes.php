@@ -481,6 +481,7 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 				update_option( 'wcdn_personal_notes', $_POST['wcdn_general']['shop_complimentry_close'] );
 				update_option( 'wcdn_company_address', $_POST['wcdn_general']['shop_address'] );
 				update_option( 'wcdn_custom_company_name', $_POST['wcdn_general']['shop_name'] );
+				update_option( 'wcdn_template_type', $_POST['wcdn_general']['template'] );
 				update_option( 'wcdn_general_settings', $_POST['wcdn_general'] );
 				if ( isset( $_POST['wcdn_general']['view_account'] ) ) {
 					update_option( 'wcdn_print_button_on_my_account_page', 'yes' );
@@ -506,24 +507,17 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 				$rtltext = ( isset( $_POST['wcdn_general']['page_textdirection'] ) ) ? 'yes' : 'no';
 				update_option( 'wcdn_rtl_invoice', $rtltext );
 			}
-			if ( isset( $_POST['wcdn_document'] ) && ! empty( $_POST['wcdn_document'] ) ) {
+
+			if ( isset( $_POST['wcdn_document'] ) &&! empty( $_POST['wcdn_document'] ) ) {
 				update_option( 'wcdn_document_settings', $_POST['wcdn_document'] );
-				if ( in_array( 'invoice', $_POST['wcdn_document'] ) ) {
-					update_option( 'wcdn_template_type_invoice', 'yes' );
-				} else {
-					update_option( 'wcdn_template_type_invoice', 'no' );
-				}
-				if ( in_array( 'receipt', $_POST['wcdn_document'] ) ) {
-					update_option( 'wcdn_template_type_receipt', 'yes' );
-				} else {
-					update_option( 'wcdn_template_type_receipt', 'no' );
-				}
-				if ( in_array( 'delivery_note', $_POST['wcdn_document'] ) ) {
-					update_option( 'wcdn_template_type_delivery-note', 'yes' );
-				} else {
-					update_option( 'wcdn_template_type_delivery-note', 'no' );
+
+				$documents = array('invoice', 'receipt', 'delivery-note');
+				foreach ($documents as $document) {
+					$option_name = "wcdn_template_type_{$document}";
+					update_option( $option_name, in_array($document, $_POST['wcdn_document'])? 'yes' : 'no' );
 				}
 			}
+
 			if ( isset( $_POST['wcdn_invoice'] ) && ! empty( $_POST['wcdn_invoice'] ) ) {
 				update_option( 'wcdn_invoice_settings', $_POST['wcdn_invoice'] );
 				update_option( 'wcdn_invoice_number_suffix', $_POST['wcdn_invoice']['invoice_suffix'] );

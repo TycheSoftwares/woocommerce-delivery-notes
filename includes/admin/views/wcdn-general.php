@@ -182,6 +182,23 @@ $shop_logotitle = get_the_title( $shop_logoid );
 	</div>
 </div>
 <div class="form-group row">
+	<div class="col-sm-8">
+		<h5 class="wcdn_title"><?php esc_html_e( 'Template Type', 'woocommerce-delivery-notes' ); ?></h5>
+	</div>
+</div>
+<div class="form-group row">
+	<label for="template" class="col-sm-2 col-form-label">Template</label>
+	<div class="col-sm-6 icon-flex">
+		<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'You have the option to customize the Simple template to your liking, or you can stick with the default display.	', 'woocommerce-delivery-notes' ); ?>"></i>
+		<select name="wcdn_general[template]" id="template">
+			<?php $template_save = get_option( 'wcdn_template_type' ); ?>
+			<option value="default" <?php selected( $template_save, 'default' ); ?>>Default</option>
+			<option value="simple" <?php selected( $template_save, 'simple' ); ?>>Simple</option>
+		</select>
+	</div>
+</div>
+
+<div class="form-group row">
 	<label for="page_textdirection" class="col-sm-2 col-form-label"><?php esc_html_e( 'Text Direction', 'woocommerce-delivery-notes' ); ?></label>
 	<div class="col-sm-6 icon-flex">
 		<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'Show text in right to left direction in Invoice, Print Receipt & Delivery note if you are using languages such as Hebrew, Arabic, etc.', 'woocommerce-delivery-notes' ); ?>"></i>
