@@ -200,9 +200,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 			if ( count( $order->get_items() ) > 0 ) :
 				?>
 				<?php foreach ( $order->get_items() as $item_id => $item ) : ?>
+					<?php
+					$product = apply_filters( 'wcdn_order_item_product', $item->get_product(), $item );
+					if ( ! $product ) {
+						continue;
+					}
+					if ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) {
+						$item_meta = new WC_Order_Item_Product( $item['item_meta'], $product );
+					} else {
+						$item_meta = new WC_Order_Item_Meta( $item['item_meta'], $product );
+					}
+					?>
 					<tr>
 						<td class="product-name">
-							<?php echo esc_attr( $item->get_name() ); ?>
+							<?php do_action( 'wcdn_order_item_before', $product, $order, $item ); ?>
+							<?php get_product_name( $product, $order, $item ); ?>
+							<?php do_action( 'wcdn_order_item_after', $product, $order, $item ); ?>
 						</td>
 						<td class="product-item-price">
 							<span><?php echo wp_kses_post( wcdn_get_formatted_item_price( $order, $item ) ); ?></span>
