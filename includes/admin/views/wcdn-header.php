@@ -30,8 +30,12 @@
 			}
 			?>
 			<li class="nav-item">
+				<?php if ( 'wcdn_document' == $key ) { ?>
+				<a class="nav-link <?php echo esc_attr( $class ); ?>" href="<?php echo esc_url( get_admin_url() . 'admin.php?page=wc-settings&tab=wcdn-settings&setting=' . $key . '&wdcn_setting=wcdn_invoice' ); ?>"><?php echo esc_html( $value[0] ); ?></a>
+				<?php } else { ?>
 				<a class="nav-link <?php echo esc_attr( $class ); ?>" href="<?php echo esc_url( get_admin_url() . 'admin.php?page=wc-settings&tab=wcdn-settings&setting=' . $key ); ?>"><?php echo esc_html( $value[0] ); ?></a>
-			</li>
+				<?php } ?>
+		</li>
 			<?php
 		}
 		?>
@@ -68,4 +72,3 @@
 		</div>
 	</div>
 </div>
-

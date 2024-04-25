@@ -155,7 +155,7 @@ jQuery(document).ready(function($) {
 			$('.wcdn_depend_row').hide();
 		}
 	});
-
+		
 	$(document).ready(function(){
 		var initialValue = $('select[name*="[template_setting][template_setting_template]"]').val();
 		if (initialValue == 'default') {
@@ -165,9 +165,48 @@ jQuery(document).ready(function($) {
 			$('.accordion-button').attr('disabled', true);
 			$('.accordion-item .switch').css('pointer-events', 'none');
 		}
-	});
+	});	
 
+	const queryString = window.location.search;
+	const urlParams = new URLSearchParams(queryString);
+	const wdcn_setting = urlParams.get('wdcn_setting');
+
+	$('#document_type').val(wdcn_setting);
 	
+	jQuery(document).ready(function($) {
+		var document_type = $('#document_type').val();
+		if (document_type === 'wcdn_invoice') {
+			// Show Invoice field
+			$('#invoice_checkbox').closest('.form-group').show();
+	
+			// Hide Receipt and Delivery Notes fields
+			$('#receipt, #delivery_note').closest('.form-group').hide();
+		} else {
+			// Hide Invoice field
+			$('#invoice-checkbox').hide();
+		}
+		if (document_type === 'wcdn_receipt') {
+			// Show Invoice field
+			$('#receipt').closest('.form-group').show();
+	
+			// Hide Receipt and Delivery Notes fields
+			$('#invoice_checkbox, #delivery_note').closest('.form-group').hide();
+		} else {
+			// Hide Invoice field
+			$('#receipt').hide();
+		}
+		if (document_type === 'wcdn_deliverynote') {
+			// Show Invoice field
+			$('#delivery_note').closest('.form-group').show();
+	
+			// Hide Receipt and Delivery Notes fields
+			$('#invoice_checkbox, #receipt').closest('.form-group').hide();
+		} else {
+			// Hide Invoice field
+			$('#delivery_note').hide();
+		}
+	});
+		
 	$('select[name*="\\[template_setting\\][\\template_setting_template\\]"]').change(function () {
 		if( this.value == 'simple' ) {
 			jQuery('.accordion-button').attr('disabled', false);

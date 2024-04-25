@@ -159,6 +159,7 @@ function wcdn_template_stylesheet( $template_type ) {
 		$template_type = 'deliverynote';
 	}
 	$setting = get_option( 'wcdn_' . $template_type . '_customization' );
+	$setting['template_setting']['template_setting_template'] = get_option( 'wcdn_template_type' );
 	if ( isset( $setting['template_setting']['template_setting_template'] ) && 'simple' == $setting['template_setting']['template_setting_template'] ) {
 		?>
 		<link rel="stylesheet" href="<?php echo esc_url( $wcdn->print->get_template_file_location( $name, true ) ) . 'simple/' . esc_html( $name ); ?>" type="text/css" media="screen,print" />
@@ -193,6 +194,7 @@ function wcdn_content( $order, $template_type ) {
 		$template_type = 'deliverynote';
 	}
 	$setting = get_option( 'wcdn_' . $template_type . '_customization' );
+	$setting['template_setting']['template_setting_template'] = get_option( 'wcdn_template_type' );
 	if ( isset( $setting['template_setting']['template_setting_template'] ) && 'simple' == $setting['template_setting']['template_setting_template'] ) {
 		$turl = 'simple/' . $template_type . '/print-content.php';
 	} else {
@@ -356,8 +358,10 @@ function wcdn_get_order_info( $order, $type = '' ) {
 	$fields                = array();
 	$create_invoice_number = get_option( 'wcdn_create_invoice_number' );
 	$data                  = get_option( 'wcdn_' . $type . '_customization' );
-	$template              = isset( $data['template_setting']['template_setting_template'] ) ? $data['template_setting']['template_setting_template'] : 'default';
 
+	$data['template_setting']['template_setting_template'] = get_option( 'wcdn_template_type' );
+
+	$template     = isset( $data['template_setting']['template_setting_template'] ) ? $data['template_setting']['template_setting_template'] : 'default';
 	$wdn_order_id = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_id() : $order->id;
 	$order_post   = wc_get_order( $wdn_order_id );
 
@@ -459,7 +463,6 @@ function wcdn_get_order_info( $order, $type = '' ) {
 		);
 	}
 
-
 	if ( $wdn_order_payment_date ) {
 		if ( 'receipt' === wcdn_get_template_type() && 'simple' === $template ) {
 			if ( isset( $data['payment_date']['active'] ) ) {
@@ -478,7 +481,7 @@ function wcdn_get_order_info( $order, $type = '' ) {
 					'active'      => 'yes',
 				);
 			}
-    }
+		}
 	}
 
 	if ( $wdn_order_billing_id ) {
@@ -826,7 +829,6 @@ function wcdn_print_extra_fields( $item ) {
 			}
 		}
 	}
-
 }
 
 /**
