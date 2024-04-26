@@ -247,8 +247,8 @@ function wcdn_customization_numbering() {
 		</div>
 	</div>
 	<div class="form-group row">
-		<label for="Preffix" class="col-sm-12 col-form-label">
-			<?php echo __( 'Preffix', 'woocommerce-delivery-notes' ); // phpcs:ignore ?>
+		<label for="Prefix" class="col-sm-12 col-form-label">
+			<?php echo __( 'Prefix', 'woocommerce-delivery-notes' ); // phpcs:ignore ?>
 		</label>
 		<div class="col-sm-12">
 			<input type="text" class="form-control"  name="wcdn_invoice[invoice_preffix]" id="invoice_preffix" value="<?php echo esc_attr( get_option( 'wcdn_invoice_number_prefix' ) ); ?>">
