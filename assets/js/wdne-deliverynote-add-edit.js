@@ -84,13 +84,6 @@ new Vue({
     mounted: function() {
         var self = this;
     },
-    methods: {        
-        change_atc_text :function(){
-            var self = this;
-            this.text = 'hiiiiiiii';
-        },
-
-    }
 })
 
 
