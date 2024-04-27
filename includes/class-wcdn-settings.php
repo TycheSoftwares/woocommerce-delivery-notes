@@ -76,6 +76,17 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 			wp_enqueue_media();
 			wp_enqueue_script( 'woocommerce-delivery-notes-print-link', WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/jquery.print-link.js', array( 'jquery' ), WooCommerce_Delivery_Notes::$plugin_version, false );
 			wp_enqueue_script( 'woocommerce-delivery-notes-admin', WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/admin.js', array( 'jquery', 'custom-header', 'woocommerce-delivery-notes-print-link' ), WooCommerce_Delivery_Notes::$plugin_version, false );
+			wp_enqueue_script( 'woocommerce-delivery-notes-vue', WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/vue.js', array(), WooCommerce_Delivery_Notes::$plugin_version, false );
+			if ( isset( $_GET['wdcn_setting'] ) && 'wcdn_invoice' === $_GET['wdcn_setting'] ) { // phpcs:ignore
+				wp_enqueue_script( 'woocommerce-delivery-notes-edit-invoice', WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/wdne-invoice-add-edit.js', array(), WooCommerce_Delivery_Notes::$plugin_version, false );
+			}
+			if ( isset( $_GET['wdcn_setting'] ) && 'wcdn_receipt' === $_GET['wdcn_setting'] ) { // phpcs:ignore
+				wp_enqueue_script( 'woocommerce-delivery-notes-edit-receipt', WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/wdne-receipt-add-edit.js', array(), WooCommerce_Delivery_Notes::$plugin_version, false );
+			}
+			if ( isset( $_GET['wdcn_setting'] ) && 'wcdn_deliverynote' === $_GET['wdcn_setting'] ) { // phpcs:ignore
+				wp_enqueue_script( 'woocommerce-delivery-notes-edit-deliverynote', WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/wdne-deliverynote-add-edit.js', array(), WooCommerce_Delivery_Notes::$plugin_version, false );
+			}
+			wp_enqueue_script( 'woocommerce-delivery-notes-admin', WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/admin.js', array( 'jquery', 'custom-header', 'woocommerce-delivery-notes-print-link' ), WooCommerce_Delivery_Notes::$plugin_version, false );
 			wp_localize_script(
 				'woocommerce-delivery-notes-admin',
 				'admin_object',
@@ -83,6 +94,344 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 					'ajax_url'  => admin_url( 'admin-ajax.php' ),
 					'admin_url' => admin_url(),
 				)
+			);
+			// Preview data for invoice.
+			$invoice_data     = get_option( 'wcdn_invoice_customization' );
+			$invoice_defaults = array(
+				'document_setting'    => array(
+					'active'                       => '',
+					'document_setting_title'       => 'Invoice',
+					'document_setting_font_size'   => 30,
+					'document_setting_text_align'  => 'left',
+					'document_setting_text_colour' => '#000000',
+				),
+				'company_logo'        => array(
+					'active' => '',
+				),
+				'email_address'       => array(
+					'active' => '',
+				),
+				'phone_number'        => array(
+					'active' => '',
+				),
+				'company_name'        => array(
+					'active'                   => '',
+					'company_name_font_size'   => 25,
+					'company_name_text_align'  => 'left',
+					'company_name_text_colour' => '#000000',
+				),
+				'company_address'     => array(
+					'active'                      => '',
+					'company_address_text_align'  => 'left',
+					'company_address_font_size'   => 20,
+					'company_address_text_colour' => '#000000',
+				),
+				'billing_address'     => array(
+					'active'                      => '',
+					'billing_address_title'       => 'Billing Title',
+					'billing_address_text_align'  => 'left',
+					'billing_address_text_colour' => '#000000',
+				),
+				'shipping_address'    => array(
+					'active'                       => '',
+					'shipping_address_title'       => 'Shipping Title',
+					'shipping_address_text_align'  => 'left',
+					'shipping_address_text_colour' => '#000000',
+				),
+				'invoice_number'      => array(
+					'active'                     => '',
+					'invoice_number_text'        => 'Invoice Number',
+					'invoice_number_font_size'   => 20,
+					'invoice_number_style'       => 'Normal',
+					'invoice_number_text_colour' => '#000000',
+				),
+				'order_number'        => array(
+					'active'                   => '',
+					'order_number_text'        => 'Order Number',
+					'order_number_font_size'   => 20,
+					'order_number_style'       => 'Normal',
+					'order_number_text_colour' => '#000000',
+				),
+				'order_date'          => array(
+					'active'                 => '',
+					'order_date_text'        => 'Order Date',
+					'order_date_font_size'   => 20,
+					'order_date_style'       => 'Normal',
+					'order_date_text_colour' => '#000000',
+				),
+				'payment_method'      => array(
+					'active'                     => '',
+					'payment_method_text'        => 'Payment Method',
+					'payment_method_font_size'   => 20,
+					'payment_method_style'       => 'Normal',
+					'payment_method_text_colour' => '#000000',
+				),
+				'payment_date'        => array(
+					'active'                   => '',
+					'payment_date_text'        => 'Payment Date',
+					'payment_date_font_size'   => 20,
+					'payment_date_text_colour' => '#000000',
+				),
+				'customer_note'       => array(
+					'active'                    => '',
+					'customer_note_title'       => 'Customer Notes',
+					'customer_note_font_size'   => 20,
+					'customer_note_text_colour' => '#000000',
+				),
+				'complimentary_close' => array(
+					'active'                          => '',
+					'complimentary_close_font_size'   => 20,
+					'complimentary_close_text_colour' => '#000000',
+				),
+				'policies'            => array(
+					'active'               => '',
+					'policies_font_size'   => 20,
+					'policies_text_colour' => '#000000',
+				),
+				'footer'              => array(
+					'active'             => '',
+					'footer_font_size'   => 20,
+					'footer_text_colour' => '#000000',
+				),
+			);
+
+			foreach ( $invoice_defaults as $parent_key => $invoice_default_values ) {
+				foreach ( $invoice_default_values as $key => $invoice_default_value ) {
+					if ( ! isset( $invoice_data[ $parent_key ][ $key ] ) || empty( $invoice_data[ $parent_key ][ $key ] ) ) {
+						$invoice_data[ $parent_key ][ $key ] = $invoice_default_value;
+					}
+				}
+			}
+
+			wp_localize_script(
+				'woocommerce-delivery-notes-edit-invoice',
+				'settings_object',
+				$invoice_data
+			);
+			// Preview data for receipt.
+			$receipt_data     = get_option( 'wcdn_receipt_customization' );
+			$receipt_defaults = array(
+				'document_setting'    => array(
+					'active'                       => '',
+					'document_setting_title'       => 'Receipt',
+					'document_setting_font_size'   => 30,
+					'document_setting_text_align'  => 'left',
+					'document_setting_text_colour' => '#000000',
+				),
+				'company_logo'        => array(
+					'active' => '',
+				),
+				'email_address'       => array(
+					'active' => '',
+				),
+				'phone_number'        => array(
+					'active' => '',
+				),
+				'company_name'        => array(
+					'active'                   => '',
+					'company_name_font_size'   => 25,
+					'company_name_text_align'  => 'left',
+					'company_name_text_colour' => '#000000',
+				),
+				'company_address'     => array(
+					'active'                      => '',
+					'company_address_text_align'  => 'left',
+					'company_address_font_size'   => 20,
+					'company_address_text_colour' => '#000000',
+				),
+				'billing_address'     => array(
+					'active'                      => '',
+					'billing_address_title'       => 'Billing Title',
+					'billing_address_text_align'  => 'left',
+					'billing_address_text_colour' => '#000000',
+				),
+				'shipping_address'    => array(
+					'active'                       => '',
+					'shipping_address_title'       => 'Shipping Title',
+					'shipping_address_text_align'  => 'left',
+					'shipping_address_text_colour' => '#000000',
+				),
+				'invoice_number'      => array(
+					'active'                     => '',
+					'invoice_number_text'        => 'Invoice Number',
+					'invoice_number_font_size'   => 20,
+					'invoice_number_style'       => 'Normal',
+					'invoice_number_text_colour' => '#000000',
+				),
+				'order_number'        => array(
+					'active'                   => '',
+					'order_number_text'        => 'Order Number',
+					'order_number_font_size'   => 20,
+					'order_number_style'       => 'Normal',
+					'order_number_text_colour' => '#000000',
+				),
+				'order_date'          => array(
+					'active'                 => '',
+					'order_date_text'        => 'Order Date',
+					'order_date_font_size'   => 20,
+					'order_date_style'       => 'Normal',
+					'order_date_text_colour' => '#000000',
+				),
+				'payment_method'      => array(
+					'active'                     => '',
+					'payment_method_text'        => 'Payment Method',
+					'payment_method_font_size'   => 20,
+					'payment_method_style'       => 'Normal',
+					'payment_method_text_colour' => '#000000',
+				),
+				'payment_date'        => array(
+					'active'                   => '',
+					'payment_date_text'        => 'Payment Date',
+					'payment_date_font_size'   => 20,
+					'payment_date_text_colour' => '#000000',
+				),
+				'customer_note'       => array(
+					'active'                    => '',
+					'customer_note_title'       => 'Customer Notes',
+					'customer_note_font_size'   => 20,
+					'customer_note_text_colour' => '#000000',
+				),
+				'complimentary_close' => array(
+					'active'                          => '',
+					'complimentary_close_font_size'   => 20,
+					'complimentary_close_text_colour' => '#000000',
+				),
+				'policies'            => array(
+					'active'               => '',
+					'policies_font_size'   => 20,
+					'policies_text_colour' => '#000000',
+				),
+				'footer'              => array(
+					'active'             => '',
+					'footer_font_size'   => 20,
+					'footer_text_colour' => '#000000',
+				),
+			);
+
+			foreach ( $receipt_defaults as $parent_key => $receipt_default_values ) {
+				foreach ( $receipt_default_values as $key => $receipt_default_value ) {
+					if ( ! isset( $receipt_data[ $parent_key ][ $key ] ) || empty( $receipt_data[ $parent_key ][ $key ] ) ) {
+						$receipt_data[ $parent_key ][ $key ] = $receipt_default_value;
+					}
+				}
+			}
+			wp_localize_script(
+				'woocommerce-delivery-notes-edit-receipt',
+				'settings_object_receipt',
+				$receipt_data
+			);
+
+			// Preview data for dilverynotes.
+			$deliverynote_data     = get_option( 'wcdn_deliverynote_customization' );
+			$deliverynote_defaults = array(
+				'document_setting'    => array(
+					'active'                       => '',
+					'document_setting_title'       => 'Dilverynotes',
+					'document_setting_font_size'   => 30,
+					'document_setting_text_align'  => 'left',
+					'document_setting_text_colour' => '#000000',
+				),
+				'company_logo'        => array(
+					'active' => '',
+				),
+				'email_address'       => array(
+					'active' => '',
+				),
+				'phone_number'        => array(
+					'active' => '',
+				),
+				'company_name'        => array(
+					'active'                   => '',
+					'company_name_font_size'   => 25,
+					'company_name_text_align'  => 'left',
+					'company_name_text_colour' => '#000000',
+				),
+				'company_address'     => array(
+					'active'                      => '',
+					'company_address_text_align'  => 'left',
+					'company_address_font_size'   => 20,
+					'company_address_text_colour' => '#000000',
+				),
+				'billing_address'     => array(
+					'active'                      => '',
+					'billing_address_title'       => 'Billing Title',
+					'billing_address_text_align'  => 'left',
+					'billing_address_text_colour' => '#000000',
+				),
+				'shipping_address'    => array(
+					'active'                       => '',
+					'shipping_address_title'       => 'Shipping Title',
+					'shipping_address_text_align'  => 'left',
+					'shipping_address_text_colour' => '#000000',
+				),
+				'invoice_number'      => array(
+					'active'                     => '',
+					'invoice_number_text'        => 'Invoice Number',
+					'invoice_number_font_size'   => 20,
+					'invoice_number_style'       => 'Normal',
+					'invoice_number_text_colour' => '#000000',
+				),
+				'order_number'        => array(
+					'active'                   => '',
+					'order_number_text'        => 'Order Number',
+					'order_number_font_size'   => 20,
+					'order_number_style'       => 'Normal',
+					'order_number_text_colour' => '#000000',
+				),
+				'order_date'          => array(
+					'active'                 => '',
+					'order_date_text'        => 'Order Date',
+					'order_date_font_size'   => 20,
+					'order_date_style'       => 'Normal',
+					'order_date_text_colour' => '#000000',
+				),
+				'payment_method'      => array(
+					'active'                     => '',
+					'payment_method_text'        => 'Payment Method',
+					'payment_method_font_size'   => 20,
+					'payment_method_style'       => 'Normal',
+					'payment_method_text_colour' => '#000000',
+				),
+				'payment_date'        => array(
+					'active'                   => '',
+					'payment_date_text'        => 'Payment Date',
+					'payment_date_font_size'   => 20,
+					'payment_date_text_colour' => '#000000',
+				),
+				'customer_note'       => array(
+					'active'                    => '',
+					'customer_note_title'       => 'Customer Notes',
+					'customer_note_font_size'   => 20,
+					'customer_note_text_colour' => '#000000',
+				),
+				'complimentary_close' => array(
+					'active'                          => '',
+					'complimentary_close_font_size'   => 20,
+					'complimentary_close_text_colour' => '#000000',
+				),
+				'policies'            => array(
+					'active'               => '',
+					'policies_font_size'   => 20,
+					'policies_text_colour' => '#000000',
+				),
+				'footer'              => array(
+					'active'             => '',
+					'footer_font_size'   => 20,
+					'footer_text_colour' => '#000000',
+				),
+			);
+
+			foreach ( $deliverynote_defaults as $parent_key => $deliverynote_default_values ) {
+				foreach ( $deliverynote_default_values as $key => $deliverynote_default_value ) {
+					if ( ! isset( $deliverynote_data[ $parent_key ][ $key ] ) || empty( $deliverynote_data[ $parent_key ][ $key ] ) ) {
+						$deliverynote_data[ $parent_key ][ $key ] = $deliverynote_default_value;
+					}
+				}
+			}
+			wp_localize_script(
+				'woocommerce-delivery-notes-edit-deliverynote',
+				'settings_object_deliverynotes',
+				$deliverynote_data
 			);
 
 			if ( isset( $_GET['tab'] ) && 'wcdn-settings' == $_GET['tab'] ) { // phpcs:ignore

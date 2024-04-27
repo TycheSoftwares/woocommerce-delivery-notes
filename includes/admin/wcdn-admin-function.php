@@ -129,7 +129,8 @@ function wcdn_customization_textfield( $tab, $id, $field, $key, $customization_d
 			<?php echo __( $field, 'woocommerce-delivery-notes' ); // phpcs:ignore ?>
 		</label>
 		<div class="col-sm-12">
-			<input type="text" class="form-control" name="<?php echo esc_attr( $tab . '[' . $key . '][' . $id . ']' ); ?>" id="<?php echo esc_attr( $id ); ?>" value="<?php echo esc_attr( isset( $customization_data[ $key ][ $id ] ) ? $customization_data[ $key ][ $id ] : '' ); ?>">
+		<?php $vmodel =  $vmodel = $tab . '.' . $id; // phpcs:ignore ?>
+			<input type="text" class="form-control" name="<?php echo esc_attr( $tab . '[' . $key . '][' . $id . ']' ); ?>" id="<?php echo esc_attr( $id ); ?>" value="<?php echo esc_attr( isset( $customization_data[ $key ][ $id ] ) ? $customization_data[ $key ][ $id ] : '' ); ?>" v-model= "<?php echo $vmodel; // phpcs:ignore ?>">
 		</div>
 	</div>
 	<?php
@@ -153,8 +154,9 @@ function wcdn_customization_numberfield( $tab, $id, $field, $key, $customization
 			<?php echo __( $field, 'woocommerce-delivery-notes' ); // phpcs:ignore ?>
 		</label>
 		<div class="col-sm-12">
+		<?php $vmodel =  $vmodel = $tab . '.' . $id; // phpcs:ignore ?>
 			<input type="number" class="form-control" name="<?php echo esc_attr( $tab . '[' . $key . '][' . $id . ']' ); ?>" id="<?php echo esc_attr( $id ); ?>"
-			value="<?php echo esc_attr( isset( $customization_data[ $key ][ $id ] ) ? $customization_data[ $key ][ $id ] : '' ); ?>">
+			value="<?php echo esc_attr( isset( $customization_data[ $key ][ $id ] ) ? $customization_data[ $key ][ $id ] : '' ); ?>" v-model= "<?php echo $vmodel; // phpcs:ignore ?>">
 		</div>
 	</div>
 	<?php
@@ -179,7 +181,8 @@ function wcdn_customization_selectbox( $tab, $id, $field, $key, $customization_d
 			<?php echo __( $field, 'woocommerce-delivery-notes' ); // phpcs:ignore ?>
 		</label>
 		<div class="col-sm-12">
-			<select name="<?php echo esc_attr( $tab . '[' . $key . '][' . $id . ']' ); ?>">
+		<?php $vmodel =  $vmodel = $tab . '.' . $id; // phpcs:ignore ?>
+			<select name="<?php echo esc_attr( $tab . '[' . $key . '][' . $id . ']' ); ?>" v-model= "<?php echo $vmodel; // phpcs:ignore ?>">
 			<?php
 			foreach ( $option as $value ) {
 				$formate_value = strtolower( str_replace( ' ', '_', $value ) );
@@ -217,7 +220,8 @@ function wcdn_customization_colorfield( $tab, $id, $field, $key, $customization_
 			<?php echo __( $field, 'woocommerce-delivery-notes' ); // phpcs:ignore ?>
 		</label>
 		<div class="col-sm-12">
-			<input type="color" class="form-control" name="<?php echo esc_attr( $tab . '[' . $key . '][' . $id . ']' ); ?>" id="<?php echo esc_attr( $id ); ?>" value="<?php echo esc_attr( isset( $customization_data[ $key ][ $id ] ) ? $customization_data[ $key ][ $id ] : '' ); ?>">
+		<?php $vmodel =  $vmodel = $tab . '.' . $id; // phpcs:ignore ?>
+			<input type="color" class="form-control" name="<?php echo esc_attr( $tab . '[' . $key . '][' . $id . ']' ); ?>" id="<?php echo esc_attr( $id ); ?>" value="<?php echo esc_attr( isset( $customization_data[ $key ][ $id ] ) ? $customization_data[ $key ][ $id ] : '' ); ?>" v-model= "<?php echo $vmodel; // phpcs:ignore ?>">
 		</div>
 	</div>
 	<?php
