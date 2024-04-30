@@ -57,6 +57,8 @@ new Vue({
                 footer_font_size: settings_object_receipt.footer.footer_font_size,
                 footer_text_colour: settings_object_receipt.footer.footer_text_colour,
 
+                payment_received_stamp_text: settings_object_receipt.payment_received_stamp.payment_received_stamp_text,
+
                 // Checkbox.
                 document_setting: settings_object_receipt.document_setting.active,
                 company_logo: true,
@@ -77,7 +79,7 @@ new Vue({
                 complimentary_close: settings_object_receipt.complimentary_close.active,
                 policies: settings_object_receipt.policies.active,
                 footer: settings_object_receipt.footer.active,
-
+                payment_received_stamp: settings_object_receipt.payment_received_stamp.active,
 
             }
         }

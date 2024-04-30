@@ -130,22 +130,27 @@ if ( isset( $_GET['wdcn_setting'] ) ) {
 					?>
 				</div>
 			</div>
+			<?php $template_save = get_option( 'wcdn_template_type' ); ?>
 			<div class="col-sm-8">
-				<div class="col-sm-10 offset-sm-2">
-					<div class="wcdn_preview_template">
-						<?php if ( 'wcdn_invoice' === $setting ) : ?>
+				<div class="col-sm-10 offset-sm-2" style="border: 2px solid black;">
+					<div class="wcdn_preview_template" style="margin-left: 20px; margin-right: 20px; margin-bottom: 20px; margin-top: 20px;">
+						<?php if ( 'wcdn_invoice' === $setting && 'simple' === $template_save ) : ?>
 							<div class="wcdn_for_invoice">
-							<?php include_once plugin_dir_path( __FILE__ ) . 'Preview_template/invoice-preview-template.php'; ?>
+								<?php include_once plugin_dir_path( __FILE__ ) . 'Preview_template/invoice-preview-template.php'; ?>
 							</div>
-						<?php elseif ( 'wcdn_receipt' === $setting ) : ?>
+						<?php elseif ( 'wcdn_receipt' === $setting && 'simple' === $template_save ) : ?>
 							<div class="wcdn_for_receipt">
-							<?php include_once plugin_dir_path( __FILE__ ) . 'Preview_template/receipt-preview-template.php'; ?>
+								<?php include_once plugin_dir_path( __FILE__ ) . 'Preview_template/receipt-preview-template.php'; ?>
 							</div>
-						<?php elseif ( 'wcdn_deliverynote' === $setting ) : ?>
+						<?php elseif ( 'wcdn_deliverynote' === $setting && 'simple' === $template_save ) : ?>
 							<div class="wcdn_for_deliverynote">
-							<?php include_once plugin_dir_path( __FILE__ ) . 'Preview_template/deliverynote-preview-template.php'; ?>
+								<?php include_once plugin_dir_path( __FILE__ ) . 'Preview_template/deliverynote-preview-template.php'; ?>
 							</div>
-						<?php endif; ?>
+						<?php else : ?>
+							<div class="wcdn_for_default">
+								<img src="<?php echo WooCommerce_Delivery_Notes::$plugin_url . 'assets/images/Default.png'; // phpcs:ignore ?>" alt="Default Image" style="width: 800px; height: 1000px;">
+							</div>
+							<?php endif; ?>
 					</div>
 				</div>
 			</div>
