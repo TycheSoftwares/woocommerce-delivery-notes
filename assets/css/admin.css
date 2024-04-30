@@ -87,9 +87,7 @@ ul.wcdn_main_tab li:last-child {
     padding-bottom: 5px;
     margin: 20px 0px;
 }
-.wcdn_container .tab_container {
-    margin: 20px 30px;
-}
+
 .wcdn_container .form-group.row {
     margin-bottom: 20px;
 }
@@ -120,15 +118,7 @@ ul.wcdn_main_tab li:last-child {
 .wcdn_container .accordion-item.expanded .accordion-icon {
     transform: rotate(90deg);
 }
-.wcdn_container .wcdn_top_bar {
-	align-items: center;
-    display: flex;
-    margin-bottom: 20px;
-}
-.wcdn_container .wcdn_top_bar .wcdn_back_arrow {
-	height: 20px;
-	cursor: pointer;
-}
+
 .wcdn_container .wcdn_heading {
 	font-size: 20px;
 	margin: 0;
