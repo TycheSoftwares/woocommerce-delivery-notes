@@ -156,6 +156,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</div><!-- .order-info -->
 
 	<div class="order-items">
+		<div class="order-stamp-container" v-show="receipt.payment_received_stamp">
+			{{ receipt.payment_received_stamp_text }}
+		</div>
 		<table>
 			<thead>
 				<tr>

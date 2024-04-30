@@ -157,14 +157,9 @@ jQuery(document).ready(function($) {
 	});
 		
 	$(document).ready(function(){
-		var initialValue = $('select[name*="[template_setting][template_setting_template]"]').val();
-		if (initialValue == 'default') {
-			$('.accordion-button').click(function(){
-				$(this).closest('.accordion-item').toggleClass('expanded');
-			});
-			$('.accordion-button').attr('disabled', true);
-			$('.accordion-item .switch').css('pointer-events', 'none');
-		}
+		$('.accordion-button').click(function(){
+			$(this).closest('.accordion-item').toggleClass('expanded');
+		});
 	});	
 
 	const queryString = window.location.search;

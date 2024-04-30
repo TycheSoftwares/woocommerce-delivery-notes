@@ -79,12 +79,15 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 			wp_enqueue_script( 'woocommerce-delivery-notes-vue', WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/vue.js', array(), WooCommerce_Delivery_Notes::$plugin_version, false );
 			if ( isset( $_GET['wdcn_setting'] ) && 'wcdn_invoice' === $_GET['wdcn_setting'] ) { // phpcs:ignore
 				wp_enqueue_script( 'woocommerce-delivery-notes-edit-invoice', WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/wdne-invoice-add-edit.js', array(), WooCommerce_Delivery_Notes::$plugin_version, false );
+				wp_enqueue_style( 'woocommerce-delivery-notes-adminstyle', WooCommerce_Delivery_Notes::$plugin_url . 'assets/css/adminstyle.css', '', WooCommerce_Delivery_Notes::$plugin_version );
 			}
 			if ( isset( $_GET['wdcn_setting'] ) && 'wcdn_receipt' === $_GET['wdcn_setting'] ) { // phpcs:ignore
 				wp_enqueue_script( 'woocommerce-delivery-notes-edit-receipt', WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/wdne-receipt-add-edit.js', array(), WooCommerce_Delivery_Notes::$plugin_version, false );
+				wp_enqueue_style( 'woocommerce-delivery-notes-adminstyle', WooCommerce_Delivery_Notes::$plugin_url . 'assets/css/adminstyle.css', '', WooCommerce_Delivery_Notes::$plugin_version );
 			}
 			if ( isset( $_GET['wdcn_setting'] ) && 'wcdn_deliverynote' === $_GET['wdcn_setting'] ) { // phpcs:ignore
 				wp_enqueue_script( 'woocommerce-delivery-notes-edit-deliverynote', WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/wdne-deliverynote-add-edit.js', array(), WooCommerce_Delivery_Notes::$plugin_version, false );
+				wp_enqueue_style( 'woocommerce-delivery-notes-adminstyle', WooCommerce_Delivery_Notes::$plugin_url . 'assets/css/adminstyle.css', '', WooCommerce_Delivery_Notes::$plugin_version );
 			}
 			wp_enqueue_script( 'woocommerce-delivery-notes-admin', WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/admin.js', array( 'jquery', 'custom-header', 'woocommerce-delivery-notes-print-link' ), WooCommerce_Delivery_Notes::$plugin_version, false );
 			wp_localize_script(
@@ -211,100 +214,104 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 			// Preview data for receipt.
 			$receipt_data     = get_option( 'wcdn_receipt_customization' );
 			$receipt_defaults = array(
-				'document_setting'    => array(
+				'document_setting'       => array(
 					'active'                       => '',
 					'document_setting_title'       => 'Receipt',
 					'document_setting_font_size'   => 30,
 					'document_setting_text_align'  => 'left',
 					'document_setting_text_colour' => '#000000',
 				),
-				'company_logo'        => array(
+				'company_logo'           => array(
 					'active' => '',
 				),
-				'email_address'       => array(
+				'email_address'          => array(
 					'active' => '',
 				),
-				'phone_number'        => array(
+				'phone_number'           => array(
 					'active' => '',
 				),
-				'company_name'        => array(
+				'company_name'           => array(
 					'active'                   => '',
 					'company_name_font_size'   => 25,
 					'company_name_text_align'  => 'left',
 					'company_name_text_colour' => '#000000',
 				),
-				'company_address'     => array(
+				'company_address'        => array(
 					'active'                      => '',
 					'company_address_text_align'  => 'left',
 					'company_address_font_size'   => 20,
 					'company_address_text_colour' => '#000000',
 				),
-				'billing_address'     => array(
+				'billing_address'        => array(
 					'active'                      => '',
 					'billing_address_title'       => 'Billing Title',
 					'billing_address_text_align'  => 'left',
 					'billing_address_text_colour' => '#000000',
 				),
-				'shipping_address'    => array(
+				'shipping_address'       => array(
 					'active'                       => '',
 					'shipping_address_title'       => 'Shipping Title',
 					'shipping_address_text_align'  => 'left',
 					'shipping_address_text_colour' => '#000000',
 				),
-				'invoice_number'      => array(
+				'invoice_number'         => array(
 					'active'                     => '',
 					'invoice_number_text'        => 'Invoice Number',
 					'invoice_number_font_size'   => 20,
 					'invoice_number_style'       => 'Normal',
 					'invoice_number_text_colour' => '#000000',
 				),
-				'order_number'        => array(
+				'order_number'           => array(
 					'active'                   => '',
 					'order_number_text'        => 'Order Number',
 					'order_number_font_size'   => 20,
 					'order_number_style'       => 'Normal',
 					'order_number_text_colour' => '#000000',
 				),
-				'order_date'          => array(
+				'order_date'             => array(
 					'active'                 => '',
 					'order_date_text'        => 'Order Date',
 					'order_date_font_size'   => 20,
 					'order_date_style'       => 'Normal',
 					'order_date_text_colour' => '#000000',
 				),
-				'payment_method'      => array(
+				'payment_method'         => array(
 					'active'                     => '',
 					'payment_method_text'        => 'Payment Method',
 					'payment_method_font_size'   => 20,
 					'payment_method_style'       => 'Normal',
 					'payment_method_text_colour' => '#000000',
 				),
-				'payment_date'        => array(
+				'payment_date'           => array(
 					'active'                   => '',
 					'payment_date_text'        => 'Payment Date',
 					'payment_date_font_size'   => 20,
 					'payment_date_text_colour' => '#000000',
 				),
-				'customer_note'       => array(
+				'customer_note'          => array(
 					'active'                    => '',
 					'customer_note_title'       => 'Customer Notes',
 					'customer_note_font_size'   => 20,
 					'customer_note_text_colour' => '#000000',
 				),
-				'complimentary_close' => array(
+				'complimentary_close'    => array(
 					'active'                          => '',
 					'complimentary_close_font_size'   => 20,
 					'complimentary_close_text_colour' => '#000000',
 				),
-				'policies'            => array(
+				'policies'               => array(
 					'active'               => '',
 					'policies_font_size'   => 20,
 					'policies_text_colour' => '#000000',
 				),
-				'footer'              => array(
+				'footer'                 => array(
 					'active'             => '',
 					'footer_font_size'   => 20,
 					'footer_text_colour' => '#000000',
+				),
+				'payment_received_stamp' => array(
+					'active'                      => '',
+					'payment_received_stamp_text' => 'this is stamp',
 				),
 			);
 
