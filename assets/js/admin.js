@@ -160,6 +160,11 @@ jQuery(document).ready(function($) {
 		$('.accordion-button').click(function(){
 			$(this).closest('.accordion-item').toggleClass('expanded');
 		});
+		if ( admin_object.template_save == 'default') {
+			$('.accordion-button').attr('disabled', true);
+			$('.accordion-button').eq(0).attr('disabled', false);
+			$('.accordion-item .switch').css('pointer-events', 'none');
+		}
 	});	
 
 	const queryString = window.location.search;
@@ -173,7 +178,11 @@ jQuery(document).ready(function($) {
 		if (document_type === 'wcdn_invoice') {
 			// Show Invoice field
 			$('#invoice_checkbox').closest('.form-group').show();
-	
+			$('.accordion-button').eq(0).attr('disabled', false);
+			$('.accordion-button').eq(1).attr('disabled', false);
+			$('.accordion-item .switch').eq(0).css('pointer-events', 'auto');
+			$('.accordion-item .switch').eq(1).css('pointer-events', 'auto');
+
 			// Hide Receipt and Delivery Notes fields
 			$('#receipt, #delivery_note').closest('.form-group').hide();
 		} else {
@@ -183,7 +192,8 @@ jQuery(document).ready(function($) {
 		if (document_type === 'wcdn_receipt') {
 			// Show Invoice field
 			$('#receipt').closest('.form-group').show();
-	
+			$('.accordion-item .switch').eq(0).css('pointer-events', 'auto');
+
 			// Hide Receipt and Delivery Notes fields
 			$('#invoice_checkbox, #delivery_note').closest('.form-group').hide();
 		} else {
@@ -193,7 +203,8 @@ jQuery(document).ready(function($) {
 		if (document_type === 'wcdn_deliverynote') {
 			// Show Invoice field
 			$('#delivery_note').closest('.form-group').show();
-	
+			$('.accordion-item .switch').eq(0).css('pointer-events', 'auto');
+			
 			// Hide Receipt and Delivery Notes fields
 			$('#invoice_checkbox, #receipt').closest('.form-group').hide();
 		} else {
@@ -201,21 +212,6 @@ jQuery(document).ready(function($) {
 			$('#delivery_note').hide();
 		}
 	});
-		
-	$('select[name*="\\[template_setting\\][\\template_setting_template\\]"]').change(function () {
-		if( this.value == 'simple' ) {
-			jQuery('.accordion-button').attr('disabled', false);
-      jQuery('.accordion-item .switch').css('pointer-events', 'auto');
-			jQuery('.wcdn_for_simple').css('display','block');
-			jQuery('.wcdn_for_default').css('display','none');
-
-		} else {
-			jQuery('.accordion-button').attr('disabled', true);
-      jQuery('.accordion-item .switch').css('pointer-events', 'none');
-			jQuery('.wcdn_for_simple').css('display','none');
-			jQuery('.wcdn_for_default').css('display','block');
-		}
-    });
 
 	$('[data-toggle="tooltip"]').tooltip();
 	
