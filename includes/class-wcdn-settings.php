@@ -90,12 +90,14 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 				wp_enqueue_style( 'woocommerce-delivery-notes-adminstyle', WooCommerce_Delivery_Notes::$plugin_url . 'assets/css/adminstyle.css', '', WooCommerce_Delivery_Notes::$plugin_version );
 			}
 			wp_enqueue_script( 'woocommerce-delivery-notes-admin', WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/admin.js', array( 'jquery', 'custom-header', 'woocommerce-delivery-notes-print-link' ), WooCommerce_Delivery_Notes::$plugin_version, false );
+			$template_save = get_option( 'wcdn_template_type' );
 			wp_localize_script(
 				'woocommerce-delivery-notes-admin',
 				'admin_object',
 				array(
-					'ajax_url'  => admin_url( 'admin-ajax.php' ),
-					'admin_url' => admin_url(),
+					'ajax_url'      => admin_url( 'admin-ajax.php' ),
+					'admin_url'     => admin_url(),
+					'template_save' => $template_save,
 				)
 			);
 			// Preview data for invoice.
