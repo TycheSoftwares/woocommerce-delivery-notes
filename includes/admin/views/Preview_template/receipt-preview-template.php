@@ -124,6 +124,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			$order_number   = $order->get_order_number();
 			$order_date     = $order->get_date_created()->format( 'F j, Y' );
 			$payment_method = $order->get_payment_method();
+			$payment_date   = 'May 1, 2024';
 			?>
 			<div class="invoice-number" v-show="receipt.invoice_number" :style="{ text: receipt.invoice_number_text, fontWeight: receipt.invoice_number_style, color: receipt.invoice_number_text_colour, fontSize: receipt.invoice_number_font_size + 'px' }">
 				<li>
@@ -150,6 +151,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<li>
 					<strong>{{ receipt.payment_method_text }}</strong>
 					<strong><?php echo wp_kses_post( $payment_method ); ?></strong>
+				</li>
+			</div>
+			<div class="payment-date" v-show="receipt.payment_date" :style="{ text: receipt.payment_date_text, fontWeight: receipt.payment_date_style, color: receipt.payment_date_text_colour, fontSize: receipt.payment_date_font_size + 'px' }">
+				<li>
+					<strong>{{ receipt.payment_date_text }}</strong>
+					<strong><?php echo wp_kses_post( $payment_date ); ?></strong>
 				</li>
 			</div>
 		</ul>

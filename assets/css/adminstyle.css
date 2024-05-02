@@ -10,7 +10,6 @@ ol, ul, li {
 }
 body {
 	background: #fff;
-	font-family: "HelveticaNeue", Helvetica, Arial, sans-serif;
 	/* padding: 5% 10%; */
 }
 h1, h2, h3, h4 {
@@ -41,7 +40,7 @@ h1, h2, h3, h4 {
 	text-align: right;
 }
 .order-info li {
-	border-bottom: 2px solid #bbb;
+	border-bottom: 1px solid #bbb;
 	width: 100%;
 	padding: 10px 0px 5px 0px;
 }
@@ -58,7 +57,7 @@ table {
 tr {
 	page-break-inside: avoid;
 	page-break-after: auto;	 
-	/* border-bottom: 0.12em solid #bbb; */
+	border-bottom: 0.12em solid #bbb;
 }
 td, th {
 	padding: 0.375em 0.75em 0.375em 0;

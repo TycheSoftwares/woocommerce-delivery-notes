@@ -77,6 +77,7 @@ new Vue({
                 complimentary_close: settings_object_deliverynotes.complimentary_close.active,
                 policies: settings_object_deliverynotes.policies.active,
                 footer: settings_object_deliverynotes.footer.active,
+                display_price_product_table: settings_object_deliverynotes.display_price_product_table.active,
 
             }
         }
@@ -85,5 +86,3 @@ new Vue({
         var self = this;
     },
 })
-
-

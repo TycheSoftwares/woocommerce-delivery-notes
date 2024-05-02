@@ -72,7 +72,7 @@ if ( isset( $_GET['wdcn_setting'] ) ) {
 						?>
 						<div class="accordion-item">
 							<h2 class="accordion-header" id="<?php echo esc_attr( 'ct_acc_' . $i ); ?>">
-								<button <?php echo esc_html( $hidden ); ?> class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#ct_acc_<?php echo esc_attr( $i ); ?>_content" aria-expanded="true" aria-controls="ct_acc_<?php echo esc_attr( $i ); ?>_content">
+								<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#ct_acc_<?php echo esc_attr( $i ); ?>_content" aria-expanded="true" aria-controls="ct_acc_<?php echo esc_attr( $i ); ?>_content">
 								<span class="accordion-icon"></span>
 									<?php echo esc_html( $label[ $key ] ); ?>
 								</button>
@@ -80,7 +80,7 @@ if ( isset( $_GET['wdcn_setting'] ) ) {
 										<?php
 										$vmodel = $c_tab . '.' . $key;
 										?>
-										<input type="checkbox" <?php echo esc_html( $hidden ); ?> name="<?php echo esc_attr( $c_tab . '[' . $key . '][active]' ); ?>" v-model= "<?php echo $vmodel; // phpcs:ignore ?>"
+										<input type="checkbox" name="<?php echo esc_attr( $c_tab . '[' . $key . '][active]' ); ?>" v-model= "<?php echo $vmodel; // phpcs:ignore ?>"
 											<?php
 											if ( isset( $customization_data[ $key ]['active'] ) && 'on' === $customization_data[ $key ]['active'] ) {
 												echo 'checked';
@@ -133,7 +133,7 @@ if ( isset( $_GET['wdcn_setting'] ) ) {
 			<?php $template_save = get_option( 'wcdn_template_type' ); ?>
 			<div class="col-sm-8">
 				<div class="col-sm-10 offset-sm-2" style="border: 2px solid black;">
-					<div class="wcdn_preview_template" style="margin-left: 20px; margin-right: 20px; margin-bottom: 20px; margin-top: 20px;">
+					<div class="wcdn_preview_template" style="margin: 100px;">
 						<?php if ( 'wcdn_invoice' === $setting && 'simple' === $template_save ) : ?>
 							<div class="wcdn_for_invoice">
 								<?php include_once plugin_dir_path( __FILE__ ) . 'Preview_template/invoice-preview-template.php'; ?>

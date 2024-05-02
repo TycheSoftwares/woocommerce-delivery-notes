@@ -87,7 +87,9 @@ ul.wcdn_main_tab li:last-child {
     padding-bottom: 5px;
     margin: 20px 0px;
 }
-
+.wcdn_container .tab_container {
+    margin: 20px 0px;
+}
 .wcdn_container .form-group.row {
     margin-bottom: 20px;
 }
