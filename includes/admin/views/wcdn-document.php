@@ -73,7 +73,9 @@ if ( isset( $_GET['wdcn_setting'] ) ) {
 						<div class="accordion-item">
 							<h2 class="accordion-header" id="<?php echo esc_attr( 'ct_acc_' . $i ); ?>">
 								<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#ct_acc_<?php echo esc_attr( $i ); ?>_content" aria-expanded="true" aria-controls="ct_acc_<?php echo esc_attr( $i ); ?>_content">
+								<?php if ( ! in_array( $key, ['email_address', 'phone_number', 'display_price_product_table', 'company_logo'] ) ) : // phpcs:ignore ?>
 								<span class="accordion-icon"></span>
+								<?php endif; ?>
 									<?php echo esc_html( $label[ $key ] ); ?>
 								</button>
 									<label class="switch">

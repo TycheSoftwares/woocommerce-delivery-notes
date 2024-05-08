@@ -128,35 +128,35 @@ if ( ! defined( 'ABSPATH' ) ) {
 			?>
 			<div class="invoice-number" v-show="receipt.invoice_number" :style="{ text: receipt.invoice_number_text, fontWeight: receipt.invoice_number_style, color: receipt.invoice_number_text_colour, fontSize: receipt.invoice_number_font_size + 'px' }">
 				<li>
-					<strong>{{ receipt.invoice_number_text }}</strong>
-					<strong><?php echo wp_kses_post( $invoice_number ); ?></strong>
+					<span>{{ receipt.invoice_number_text }}</span>
+					<span><?php echo wp_kses_post( $invoice_number ); ?></span>
 				</li>
 			</div>
 
 			<div class="order-number" v-show="receipt.order_number" :style="{ text: receipt.order_number_text, fontWeight: receipt.order_number_style, color: receipt.order_number_text_colour, fontSize: receipt.order_number_font_size + 'px' }">
 				<li>
-					<strong> {{receipt.order_number_text}} </strong>
-					<strong><?php echo wp_kses_post( $order_number ); ?></strong>
+					<span> {{receipt.order_number_text}} </span>
+					<span><?php echo wp_kses_post( $order_number ); ?></span>
 				</li>
 			</div>
 
 			<div class="order-date" v-show="receipt.order_date" :style="{ text: receipt.order_date_text, fontWeight: receipt.order_date_style, color: receipt.order_date_text_colour, fontSize: receipt.order_date_font_size + 'px' }">
 				<li>
-					<strong>{{ receipt.order_date_text }}</strong>
-					<strong><?php echo wp_kses_post( $order_date ); ?></strong>
+					<span>{{ receipt.order_date_text }}</span>
+					<span><?php echo wp_kses_post( $order_date ); ?></span>
 				</li>
 			</div>
 
 			<div class="payment-method" v-show="receipt.payment_method" :style="{ text: receipt.payment_method_text, fontWeight: receipt.payment_method_style, color: receipt.payment_method_text_colour, fontSize: receipt.payment_method_font_size + 'px' }">
 				<li>
-					<strong>{{ receipt.payment_method_text }}</strong>
-					<strong><?php echo wp_kses_post( $payment_method ); ?></strong>
+					<span>{{ receipt.payment_method_text }}</span>
+					<span><?php echo wp_kses_post( $payment_method ); ?></span>
 				</li>
 			</div>
 			<div class="payment-date" v-show="receipt.payment_date" :style="{ text: receipt.payment_date_text, fontWeight: receipt.payment_date_style, color: receipt.payment_date_text_colour, fontSize: receipt.payment_date_font_size + 'px' }">
 				<li>
-					<strong>{{ receipt.payment_date_text }}</strong>
-					<strong><?php echo wp_kses_post( $payment_date ); ?></strong>
+					<span>{{ receipt.payment_date_text }}</span>
+					<span><?php echo wp_kses_post( $payment_date ); ?></span>
 				</li>
 			</div>
 		</ul>
@@ -218,8 +218,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 				$totals_arr = $order->get_order_item_totals();
 				if ( $totals_arr ) :
 
-					foreach ( $totals_arr as $total ) :
-						?>
+					foreach ( $totals_arr as $key => $total ) :
+						if ( 'payment_method' !== $key ) :
+							?>
 						<tr>
 							<td class="total-name"><span><?php echo wp_kses_post( $total['label'] ); ?></span></td>
 							<td class="total-item-price"></td>
@@ -230,8 +231,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<?php } ?>
 							<td class="total-price"><span><?php echo wp_kses_post( $total['value'] ); ?></span></td>
 						</tr>
-					<?php endforeach; ?>
-				<?php endif; ?>
+							<?php
+						endif;
+					endforeach;
+				endif;
+				?>
 			</tfoot>
 		</table>
 		<?php do_action( 'wcdn_after_items', $order ); ?>

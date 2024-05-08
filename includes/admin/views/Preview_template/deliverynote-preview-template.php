@@ -127,29 +127,29 @@ if ( ! defined( 'ABSPATH' ) ) {
 			?>
 			<div class="invoice-number" v-show="deliverynote.invoice_number" :style="{ text: deliverynote.invoice_number_text, fontWeight: deliverynote.invoice_number_style, color: deliverynote.invoice_number_text_colour, fontSize: deliverynote.invoice_number_font_size + 'px' }">
 				<li>
-					<strong>{{ deliverynote.invoice_number_text }}</strong>
-					<strong><?php echo wp_kses_post( $invoice_number ); ?></strong>
+					<span>{{ deliverynote.invoice_number_text }}</span>
+					<span><?php echo wp_kses_post( $invoice_number ); ?></span>
 				</li>
 			</div>
 
 			<div class="order-number" v-show="deliverynote.order_number" :style="{ text: deliverynote.order_number_text, fontWeight: deliverynote.order_number_style, color: deliverynote.order_number_text_colour, fontSize: deliverynote.order_number_font_size + 'px' }">
 				<li>
-					<strong> {{deliverynote.order_number_text}} </strong>
-					<strong><?php echo wp_kses_post( $order_number ); ?></strong>
+					<span> {{deliverynote.order_number_text}} </span>
+					<span><?php echo wp_kses_post( $order_number ); ?></span>
 				</li>
 			</div>
 
 			<div class="order-date" v-show="deliverynote.order_date" :style="{ text: deliverynote.order_date_text, fontWeight: deliverynote.order_date_style, color: deliverynote.order_date_text_colour, fontSize: deliverynote.order_date_font_size + 'px' }">
 				<li>
-					<strong>{{ deliverynote.order_date_text }}</strong>
-					<strong><?php echo wp_kses_post( $order_date ); ?></strong>
+					<span>{{ deliverynote.order_date_text }}</span>
+					<span><?php echo wp_kses_post( $order_date ); ?></span>
 				</li>
 			</div>
 
 			<div class="payment-method" v-show="deliverynote.payment_method" :style="{ text: deliverynote.payment_method_text, fontWeight: deliverynote.payment_method_style, color: deliverynote.payment_method_text_colour, fontSize: deliverynote.payment_method_font_size + 'px' }">
 				<li>
-					<strong>{{ deliverynote.payment_method_text }}</strong>
-					<strong><?php echo wp_kses_post( $payment_method ); ?></strong>
+					<span>{{ deliverynote.payment_method_text }}</span>
+					<span><?php echo wp_kses_post( $payment_method ); ?></span>
 				</li>
 			</div>
 		</ul>

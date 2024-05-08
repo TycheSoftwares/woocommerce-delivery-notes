@@ -10,10 +10,9 @@ ol, ul, li {
 }
 body {
 	background: #fff;
-	/* padding: 5% 10%; */
 }
 h1, h2, h3, h4 {
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 }
 .cap {
 	text-transform: uppercase;
@@ -32,7 +31,7 @@ h1, h2, h3, h4 {
 }
 .company-logo {
 	display: inline-block;
-	width: 49%;
+	width: 47%;
 }
 .document-name {
 	display: inline-block;
@@ -40,12 +39,12 @@ h1, h2, h3, h4 {
 	text-align: right;
 }
 .order-info li {
-	border-bottom: 1px solid #bbb;
+	border-bottom: 2px solid #bbb;
 	width: 100%;
-	padding: 10px 0px 5px 0px;
+	padding: 5px 0px 5px 0px;
 }
-.order-info li strong {
-	min-width: 30%;
+.order-info li span {
+	min-width: 40%;
 	display: inline-block;
 }
 
@@ -53,16 +52,15 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 	width: 100%;
+	font-size: 15px;
 }
 tr {
 	page-break-inside: avoid;
 	page-break-after: auto;	 
-	border-bottom: 0.12em solid #bbb;
+	border-bottom: 0.12em solid #bbb;	
 }
 td, th {
-	padding: 0.375em 0.75em 0.375em 0;
 	vertical-align: middle;
-
 }
 td img, th img {
 	vertical-align: middle;
@@ -70,7 +68,7 @@ td img, th img {
 th {
 	font-weight: bold;
 	text-align: left;
-	padding-bottom: 1.25em;
+	padding-bottom: 5px;
 }
 tfoot {
 	display: table-row-group;
@@ -144,11 +142,14 @@ tfoot {
 .order-notes,
 .order-thanks,
 .order-colophon,
-.order-info,
 .order-items,
 .order-addresses {
 	margin-top: 2em;
-	margin-bottom: 2em;
+	margin-bottom: 1em;
+}
+.order-info {
+	margin-top: 10PX;
+	margin-bottom: 1em;
 }
 .info-list {
 	padding-left: 0rem;
@@ -170,7 +171,7 @@ tfoot {
 }
 .personal_note {
 	display: inline-block;
-	width: 49%;
+	width: 47%;
 	vertical-align: top;
 }
 .colophon-policies {
@@ -187,4 +188,20 @@ tfoot {
 	opacity: 0.2;
     transform: translate(-50%, -50%) rotate(45deg);
 	font-family: 'Times New Roman', Times, serif;
+}
+.wcdn_preview_template{
+	font-family: "HelveticaNeue", Helvetica, Arial, sans-serif;
+}
+
+.company-name{
+	font-weight: bold;
+}
+
+address {
+    font-style: italic;
+}
+
+.cap {
+font-size: 1em;
+font-weight: bold;
 }

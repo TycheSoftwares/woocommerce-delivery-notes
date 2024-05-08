@@ -118,29 +118,29 @@ if ( ! empty( $last_order ) ) {
 					?>
 					<div class="invoice-number" v-show="invoice.invoice_number" :style="{ text: invoice.invoice_number_text, fontWeight: invoice.invoice_number_style, color: invoice.invoice_number_text_colour, fontSize: invoice.invoice_number_font_size + 'px' }">
 						<li>
-							<strong>{{ invoice.invoice_number_text }}</strong>
-							<strong><?php echo wp_kses_post( $invoice_number ); ?></strong>
+							<span>{{ invoice.invoice_number_text }}</span>
+							<span><?php echo wp_kses_post( $invoice_number ); ?></span>
 						</li>
 					</div>
 
 					<div class="order-number" v-show="invoice.order_number" :style="{ text: invoice.order_number_text, fontWeight: invoice.order_number_style, color: invoice.order_number_text_colour, fontSize: invoice.order_number_font_size + 'px' }">
 						<li>
-							<strong> {{invoice.order_number_text}} </strong>
-							<strong><?php echo wp_kses_post( $order_number ); ?></strong>
+							<span> {{invoice.order_number_text}} </span>
+							<span><?php echo wp_kses_post( $order_number ); ?></span>
 						</li>
 					</div>
 
 					<div class="order-date" v-show="invoice.order_date" :style="{ text: invoice.order_date_text, fontWeight: invoice.order_date_style, color: invoice.order_date_text_colour, fontSize: invoice.order_date_font_size + 'px' }">
 						<li>
-							<strong>{{ invoice.order_date_text }}</strong>
-							<strong><?php echo wp_kses_post( $order_date ); ?></strong>
+							<span>{{ invoice.order_date_text }}</span>
+							<span><?php echo wp_kses_post( $order_date ); ?></span>
 						</li>
 					</div>
 
 					<div class="payment-method" v-show="invoice.payment_method" :style="{ text: invoice.payment_method_text, fontWeight: invoice.payment_method_style, color: invoice.payment_method_text_colour, fontSize: invoice.payment_method_font_size + 'px' }">
 						<li>
-							<strong>{{ invoice.payment_method_text }}</strong>
-							<strong><?php echo wp_kses_post( $payment_method ); ?></strong>
+							<span>{{ invoice.payment_method_text }}</span>
+							<span><?php echo wp_kses_post( $payment_method ); ?></span>
 						</li>
 					</div>
 				</ul>
@@ -195,24 +195,28 @@ if ( ! empty( $last_order ) ) {
 					</tbody>
 
 					<tfoot>
-						<?php
-						$totals_arr = $order->get_order_item_totals();
-						if ( $totals_arr ) :
+					<?php
+					$totals_arr = $order->get_order_item_totals();
+					if ( $totals_arr ) :
 
-							foreach ( $totals_arr as $total ) :
+						foreach ( $totals_arr as $key => $total ) :
+							if ( 'payment_method' !== $key ) :
 								?>
-								<tr>
-									<td class="total-name"><span><?php echo wp_kses_post( $total['label'] ); ?></span></td>
-									<td class="total-item-price"></td>
-									<?php if ( 'Total' === $total['label'] ) { ?>
-									<td class="total-quantity"><?php echo wp_kses_post( $order->get_item_count() ); ?></td>
-									<?php } else { ?>
-									<td class="total-quantity"></td>
-									<?php } ?>
-									<td class="total-price"><span><?php echo wp_kses_post( $total['value'] ); ?></span></td>
-								</tr>
-							<?php endforeach; ?>
-						<?php endif; ?>
+							<tr>
+								<td class="total-name"><span><?php echo wp_kses_post( $total['label'] ); ?></span></td>
+								<td class="total-item-price"></td>
+								<?php if ( 'Total' === $total['label'] ) { ?>
+								<td class="total-quantity"><?php echo wp_kses_post( $order->get_item_count() ); ?></td>
+								<?php } else { ?>
+								<td class="total-quantity"></td>
+								<?php } ?>
+								<td class="total-price"><span><?php echo wp_kses_post( $total['value'] ); ?></span></td>
+							</tr>
+								<?php
+							endif;
+						endforeach;
+					endif;
+					?>
 					</tfoot>
 				</table>
 				<?php do_action( 'wcdn_after_items', $order ); ?>
