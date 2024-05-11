@@ -40,6 +40,7 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 			$this->id = 'wcdn-settings';
 
 			// Load the hooks.
+			add_action( 'admin_menu', array( $this, 'menu' ), 999 ); // Add menu.
 			add_filter( 'woocommerce_settings_tabs_array', array( $this, 'add_settings_page' ), 200 );
 			add_action( 'woocommerce_settings_start', array( $this, 'add_assets' ) );
 			add_action( 'woocommerce_settings_' . $this->id, array( $this, 'output' ) );
@@ -453,6 +454,29 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 		public function add_settings_page( $settings_tabs ) {
 			$settings_tabs[ $this->id ] = __( 'Print', 'woocommerce-delivery-notes' );
 			return $settings_tabs;
+		}
+
+		/**
+		 * Set Invoice menu in woocomerece setting.
+		 */
+		public function menu() {
+			$parent_slug             = 'woocommerce';
+			$this->options_page_hook = add_submenu_page(
+				$parent_slug,
+				esc_html__( 'Invoice', 'woocommerce-delivery-notes' ),
+				esc_html__( 'Invoice', 'woocommerce-delivery-notes' ),
+				'manage_options',
+				'wcdn-settings',
+				array( $this, 'redirect_to_wcdn_settings' )
+			);
+		}
+
+		/**
+		 * Set genral setting page.
+		 */
+		public function redirect_to_wcdn_settings() {
+			wp_redirect( admin_url( 'admin.php?page=wc-settings&tab=wcdn-settings' ) ); // phpcs:ignore
+			exit;
 		}
 
 		/**
