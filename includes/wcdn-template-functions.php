@@ -195,8 +195,13 @@ function wcdn_content( $order, $template_type ) {
 	}
 	$setting = get_option( 'wcdn_' . $template_type . '_customization' );
 	$setting['template_setting']['template_setting_template'] = get_option( 'wcdn_template_type' );
+
 	if ( isset( $setting['template_setting']['template_setting_template'] ) && 'simple' == $setting['template_setting']['template_setting_template'] ) {
-		$turl = 'simple/' . $template_type . '/print-content.php';
+		if ( 'order' === $template_type ) {
+			$turl = 'print-content.php'; // Apply this for 'order' template if it's 'simple'.
+		} else {
+			$turl = 'simple/' . $template_type . '/print-content.php';
+		}
 	} else {
 		$turl = 'print-content.php';
 	}
