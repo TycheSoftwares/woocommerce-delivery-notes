@@ -44,6 +44,11 @@ new Vue({
                 payment_method_style: settings_object_receipt.payment_method.payment_method_style,
                 payment_method_text_colour: settings_object_receipt.payment_method.payment_method_text_colour,
 
+                payment_date_text: settings_object_receipt.payment_date.payment_date_text,
+                payment_date_font_size: settings_object_receipt.payment_date.payment_date_font_size,
+                payment_date_style: settings_object_receipt.payment_date.payment_date_style,
+                payment_date_text_colour: settings_object_receipt.payment_date.payment_date_text_colour,
+
                 customer_note_title: settings_object_receipt.customer_note.customer_note_title,
                 customer_note_font_size: settings_object_receipt.customer_note.customer_note_font_size,
                 customer_note_text_colour: settings_object_receipt.customer_note.customer_note_text_colour,
@@ -61,7 +66,7 @@ new Vue({
 
                 // Checkbox.
                 document_setting: settings_object_receipt.document_setting.active,
-                company_logo: true,
+                company_logo: settings_object_receipt.company_logo.active,
                 company_name: settings_object_receipt.company_name.active,
                 company_address: settings_object_receipt.company_address.active,
 
@@ -69,6 +74,7 @@ new Vue({
                 order_number: settings_object_receipt.order_number.active,
                 order_date: settings_object_receipt.order_date.active,
                 payment_method: settings_object_receipt.payment_method.active,
+                payment_date: settings_object_receipt.payment_date.active,
 
                 billing_address: settings_object_receipt.billing_address.active,
                 shipping_address: settings_object_receipt.shipping_address.active,

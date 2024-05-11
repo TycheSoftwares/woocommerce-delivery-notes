@@ -127,29 +127,29 @@ if ( ! defined( 'ABSPATH' ) ) {
 			?>
 			<div class="invoice-number" v-show="deliverynote.invoice_number" :style="{ text: deliverynote.invoice_number_text, fontWeight: deliverynote.invoice_number_style, color: deliverynote.invoice_number_text_colour, fontSize: deliverynote.invoice_number_font_size + 'px' }">
 				<li>
-					<strong>{{ deliverynote.invoice_number_text }}</strong>
-					<strong><?php echo wp_kses_post( $invoice_number ); ?></strong>
+					<span>{{ deliverynote.invoice_number_text }}</span>
+					<span><?php echo wp_kses_post( $invoice_number ); ?></span>
 				</li>
 			</div>
 
 			<div class="order-number" v-show="deliverynote.order_number" :style="{ text: deliverynote.order_number_text, fontWeight: deliverynote.order_number_style, color: deliverynote.order_number_text_colour, fontSize: deliverynote.order_number_font_size + 'px' }">
 				<li>
-					<strong> {{deliverynote.order_number_text}} </strong>
-					<strong><?php echo wp_kses_post( $order_number ); ?></strong>
+					<span> {{deliverynote.order_number_text}} </span>
+					<span><?php echo wp_kses_post( $order_number ); ?></span>
 				</li>
 			</div>
 
 			<div class="order-date" v-show="deliverynote.order_date" :style="{ text: deliverynote.order_date_text, fontWeight: deliverynote.order_date_style, color: deliverynote.order_date_text_colour, fontSize: deliverynote.order_date_font_size + 'px' }">
 				<li>
-					<strong>{{ deliverynote.order_date_text }}</strong>
-					<strong><?php echo wp_kses_post( $order_date ); ?></strong>
+					<span>{{ deliverynote.order_date_text }}</span>
+					<span><?php echo wp_kses_post( $order_date ); ?></span>
 				</li>
 			</div>
 
 			<div class="payment-method" v-show="deliverynote.payment_method" :style="{ text: deliverynote.payment_method_text, fontWeight: deliverynote.payment_method_style, color: deliverynote.payment_method_text_colour, fontSize: deliverynote.payment_method_font_size + 'px' }">
 				<li>
-					<strong>{{ deliverynote.payment_method_text }}</strong>
-					<strong><?php echo wp_kses_post( $payment_method ); ?></strong>
+					<span>{{ deliverynote.payment_method_text }}</span>
+					<span><?php echo wp_kses_post( $payment_method ); ?></span>
 				</li>
 			</div>
 		</ul>
@@ -160,9 +160,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<thead>
 				<tr>
 					<th class="head-name"><span><?php esc_attr_e( 'Product', 'woocommerce-delivery-notes' ); ?></span></th>
-					<th class="head-item-price"><span><?php esc_attr_e( 'Price', 'woocommerce-delivery-notes' ); ?></span></th>
+					<th class="head-item-price" v-show="deliverynote.display_price_product_table"><span><?php esc_attr_e( 'Price', 'woocommerce-delivery-notes' ); ?></span></th>
 					<th class="head-quantity"><span><?php esc_attr_e( 'Quantity', 'woocommerce-delivery-notes' ); ?></span></th>
-					<th class="head-price"><span><?php esc_attr_e( 'Total', 'woocommerce-delivery-notes' ); ?></span></th>
+					<th class="head-price" v-show="deliverynote.display_price_product_table"><span><?php esc_attr_e( 'Total', 'woocommerce-delivery-notes' ); ?></span></th>
 				</tr>
 			</thead>
 
@@ -189,40 +189,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 								<?php get_product_name( $product, $order, $item ); ?>
 								<?php do_action( 'wcdn_order_item_after', $product, $order, $item ); ?>
 							</td>
-							<td class="product-item-price">
+							<td class="product-item-price" v-show="deliverynote.display_price_product_table">
 								<span><?php echo wp_kses_post( wcdn_get_formatted_item_price( $order, $item ) ); ?></span>
 							</td>
 							<td class="product-quantity">
 								<span><?php echo esc_attr( apply_filters( 'wcdn_order_item_quantity', $item['qty'], $item ) ); ?></span>
 							</td>
-							<td class="product-price">
+							<td class="product-price" v-show="deliverynote.display_price_product_table">
 								<span><?php echo wp_kses_post( $order->get_formatted_line_subtotal( $item ) ); ?></span>
 							</td>
 						</tr>
 					<?php endforeach; ?>
 				<?php endif; ?>
 			</tbody>
-
-			<tfoot>
-				<?php
-				$totals_arr = $order->get_order_item_totals();
-				if ( $totals_arr ) :
-
-					foreach ( $totals_arr as $total ) :
-						?>
-						<tr>
-							<td class="total-name"><span><?php echo wp_kses_post( $total['label'] ); ?></span></td>
-							<td class="total-item-price"></td>
-							<?php if ( 'Total' === $total['label'] ) { ?>
-							<td class="total-quantity"><?php echo wp_kses_post( $order->get_item_count() ); ?></td>
-							<?php } else { ?>
-							<td class="total-quantity"></td>
-							<?php } ?>
-							<td class="total-price"><span><?php echo wp_kses_post( $total['value'] ); ?></span></td>
-						</tr>
-					<?php endforeach; ?>
-				<?php endif; ?>
-			</tfoot>
 		</table>
 		<?php do_action( 'wcdn_after_items', $order ); ?>
 	</div><!-- .order-items -->
