@@ -66,8 +66,9 @@ function create_pdf( $order, $type ) {
  */
 function wcdn_get_document_template( $order, $type ) {
 	$setting = get_option( 'wcdn_' . $type . '_customization' );
+	$setting['template_setting']['template_setting_template'] = get_option( 'wcdn_template_type' );
 	$template = $setting['template_setting']['template_setting_template'];
-	if ( $template == 'simple' ) {
+	if ( 'simple' === $template ) {
 		include_once WooCommerce_Delivery_Notes::$plugin_path . 'templates/pdf/' . $template . '/' . $type . '/template.php';
 	} else {
 		include_once WooCommerce_Delivery_Notes::$plugin_path . 'templates/pdf/default/' . $type . '/template.php';
@@ -82,10 +83,11 @@ function wcdn_get_document_template( $order, $type ) {
  * @since 5.0
  */
 function wcdn_get_pdf_template( $type ) {
-	$setting    = get_option( 'wcdn_' . $type . '_customization' );
+	$setting = get_option( 'wcdn_' . $type . '_customization' );
+	$setting['template_setting']['template_setting_template'] = get_option( 'wcdn_template_type' );
 	$template   = $setting['template_setting']['template_setting_template'];
 	$css_styles = '';
-	if ( $template == 'simple' ) {
+	if ( 'simple' === $template ) {
 		$css_file = WooCommerce_Delivery_Notes::$plugin_path . 'templates/pdf/' . $template . '/style.css';
 	} else {
 		$css_file = WooCommerce_Delivery_Notes::$plugin_path . 'templates/pdf/default/style.css';
