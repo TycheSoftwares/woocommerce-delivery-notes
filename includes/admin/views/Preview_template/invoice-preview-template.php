@@ -31,7 +31,6 @@ if ( ! empty( $last_order ) ) {
 			</div>
 
 			<div class="order-branding">
-				<?php $com_setting = $data['company_name']; ?>
 					<div class="company-info" >
 						<h3 class="company-name" v-show="invoice.company_name" :style="{ textAlign: invoice.company_name_text_align, fontSize: invoice.company_name_font_size + 'px', color: invoice.company_name_text_colour }"><?php wcdn_company_name(); ?></h3>
 					</div>
