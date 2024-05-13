@@ -149,11 +149,11 @@ if ( isset( $_GET['wdcn_setting'] ) ) {
 								<?php include_once plugin_dir_path( __FILE__ ) . 'Preview_template/deliverynote-preview-template.php'; ?>
 							</div>
 						<?php else : ?>
-							<div class="wcdn_for_default">
-								<img src="<?php echo WooCommerce_Delivery_Notes::$plugin_url . 'assets/images/Default.png'; // phpcs:ignore ?>" alt="Default Image" style="width: 800px; height: 1000px;">
-							</div>
-							<?php endif; ?>
 					</div>
+					<div class="wcdn_for_default">
+						<img src="<?php echo WooCommerce_Delivery_Notes::$plugin_url . 'assets/images/Default.png'; // phpcs:ignore ?>" alt="Default Image" style="width: 525px; margin-left: 10px">
+					</div>
+					<?php endif; ?>
 				</div>
 			</div>
 		</div>
