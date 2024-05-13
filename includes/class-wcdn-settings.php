@@ -460,8 +460,8 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 		 * Set Invoice menu in woocomerece setting.
 		 */
 		public function menu() {
-			$parent_slug             = 'woocommerce';
-			$this->options_page_hook = add_submenu_page(
+			$parent_slug = 'woocommerce';
+			add_submenu_page(
 				$parent_slug,
 				esc_html__( 'Invoice', 'woocommerce-delivery-notes' ),
 				esc_html__( 'Invoice', 'woocommerce-delivery-notes' ),
