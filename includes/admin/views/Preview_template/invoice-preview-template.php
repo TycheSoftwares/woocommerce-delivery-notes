@@ -12,11 +12,11 @@ if ( ! empty( $last_order ) ) {
 	$order = reset( $last_order ); // phpcs:ignore
 } ?>
 			<div class="page-header">
-				<div class="company-logo" >
+				<div class="company-logo" v-show="invoice.company_logo" >
 					<?php
 					if ( wcdn_get_company_logo_id() ) :
 						?>
-					<div v-show="invoice.company_logo">
+					<div>
 						<?php wcdn_pdf_company_logo( $ttype = 'simple' ); // phpcs:ignore ?>
 					</div>
 					<?php endif; ?>
@@ -94,6 +94,7 @@ if ( ! empty( $last_order ) ) {
 									<?php
 								}
 								if ( $wdn_order_billing_id ) {
+									echo '<br>';
 									?>
 									<span v-show="invoice.email_address">
 										<?php echo $wdn_order_billing_id; // phpcs:ignore ?>

@@ -24,11 +24,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	}
 	?>
 	<div class="page-header">
-		<div class="company-logo" >
+		<div class="company-logo" v-show="deliverynote.company_logo" >
 			<?php
 			if ( wcdn_get_company_logo_id() ) :
 				?>
-			<div v-show="deliverynote.company_logo">
+			<div>
 				<?php wcdn_pdf_company_logo( $ttype = 'simple' ); // phpcs:ignore ?>
 			</div>
 			<?php endif; ?>
@@ -104,6 +104,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<?php
 					}
 					if ( $wdn_order_billing_id ) {
+						echo '<br>';
 						?>
 						<span v-show="deliverynote.email_address">
 							<?php echo $wdn_order_billing_id; // phpcs:ignore ?>

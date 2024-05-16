@@ -62,8 +62,8 @@
 							</div> -->
 
 							<div class="ft-text">
-								<p><a href="<?php echo esc_url( 'https://tychesoftwares.freshdesk.com/support/home/?utm_source=ordddprofooter&utm_medium=link&utm_campaign=OrderDeliveryDatePRoPlugin' ); ?>" target="_blank">Need Support?</a> <strong>We’re always happy to help you.</strong></p>
-								<p>If this plugin helped you, <a href="<?php echo esc_url( 'https://www.tychesoftwares.com/submit-review/?utm_source=ordddprofooter&utm_medium=link&utm_campaign=OrderDeliveryDatePRoPlugin' ); ?>" target="_blank">please rate it</a> <span class="rating">★★★★★</span></p>
+								<p><a href="<?php echo esc_url( 'https://wordpress.org/support/plugin/woocommerce-delivery-notes/ ' ); ?>" target="_blank">Need Support?</a> <strong>We’re always happy to help you.</strong></p>
+								<p>If this plugin helped you, <a href="<?php echo esc_url( 'https://wordpress.org/plugins/woocommerce-delivery-notes/#reviews' ); ?>" target="_blank">please rate it</a> <span class="rating">★★★★★</span></p>
 							</div>
 						</div>
 					</div>

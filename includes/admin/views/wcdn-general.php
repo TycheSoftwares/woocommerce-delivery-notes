@@ -88,31 +88,35 @@ $shop_logotitle = get_the_title( $shop_logoid );
 	<label for="shop_name" class="col-sm-2 col-form-label"><?php esc_html_e( 'Name', 'woocommerce-delivery-notes' ); ?></label>
 	<div class="col-sm-6 icon-flex">
 		<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'The shop name. Leave blank to use the default Website or Blog title defined in WordPress settings. The name will be ignored when a Logo is set.', 'woocommerce-delivery-notes' ); ?>"></i>
-		<input type="text" class="form-control" name="wcdn_general[shop_name]" id="shop_name" value="<?php echo esc_html( stripcslashes( get_option('wcdn_custom_company_name') ) ); ?>">
+		<input type="text" class="form-control" name="wcdn_general[shop_name]" id="shop_name" value="<?php echo esc_html( stripcslashes( get_option( 'wcdn_custom_company_name' ) ) ); ?>">
 	</div>
 </div>
 <div class="form-group row">
 	<label for="shop_address" class="col-sm-2 col-form-label"><?php esc_html_e( 'Address', 'woocommerce-delivery-notes' ); ?></label>
 	<div class="col-sm-6 icon-flex">
-		<textarea name="wcdn_general[shop_address]" id="shop_address" class="form-control"><?php echo esc_html( get_option('wcdn_company_address') ); ?></textarea>
+	<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'The postal address of the shop or even e-mail or telephone.', 'woocommerce-delivery-notes' ); ?>"></i>
+		<textarea name="wcdn_general[shop_address]" id="shop_address" class="form-control"><?php echo esc_html( get_option( 'wcdn_company_address' ) ); ?></textarea>
 	</div>
 </div>
 <div class="form-group row">
 	<label for="shop_complimentry_close" class="col-sm-2 col-form-label"><?php esc_html_e( 'Complimentary Close', 'woocommerce-delivery-notes' ); ?></label>
 	<div class="col-sm-6 icon-flex">
-		<input type="text" class="form-control" name="wcdn_general[shop_complimentry_close]" id="shop_complimentry_close" value="<?php echo esc_attr( stripcslashes( get_option('wcdn_personal_notes') ) ); ?>">
+		<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'Add a personal close, notes or season greetings.', 'woocommerce-delivery-notes' ); ?>"></i>
+		<input type="text" class="form-control" name="wcdn_general[shop_complimentry_close]" id="shop_complimentry_close" value="<?php echo esc_attr( stripcslashes( get_option( 'wcdn_personal_notes' ) ) ); ?>">
 	</div>
 </div>
 <div class="form-group row">
 	<label for="shop_policy" class="col-sm-2 col-form-label"><?php esc_html_e( 'Policies', 'woocommerce-delivery-notes' ); ?></label>
 	<div class="col-sm-6 icon-flex">
-		<textarea name="wcdn_general[shop_policy]" id="shop_policy" class="form-control" placeholder=""><?php echo esc_attr( stripcslashes( get_option('wcdn_policies_conditions') ) ); ?></textarea>
+		<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'Add the shop policies, conditions, etc.', 'woocommerce-delivery-notes' ); ?>"></i>
+		<textarea name="wcdn_general[shop_policy]" id="shop_policy" class="form-control" placeholder=""><?php echo esc_attr( stripcslashes( get_option( 'wcdn_policies_conditions' ) ) ); ?></textarea>
 	</div>
 </div>
 <div class="form-group row">
 	<label for="shop_footer" class="col-sm-2 col-form-label"><?php esc_html_e( 'Footer', 'woocommerce-delivery-notes' ); ?></label>
 	<div class="col-sm-6 icon-flex">
-		<textarea name="wcdn_general[shop_footer]" id="shop_footer" class="form-control" placeholder=""><?php echo esc_attr( stripcslashes( get_option('wcdn_footer_imprint') ) ); ?></textarea>
+		<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'Add a footer imprint, instructions, copyright notes, e-mail, telephone, etc.', 'woocommerce-delivery-notes' ); ?>"></i>
+		<textarea name="wcdn_general[shop_footer]" id="shop_footer" class="form-control" placeholder=""><?php echo esc_attr( stripcslashes( get_option( 'wcdn_footer_imprint' ) ) ); ?></textarea>
 	</div>
 </div>
 <div class="form-group row">

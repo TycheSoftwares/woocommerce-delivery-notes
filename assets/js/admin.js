@@ -55,12 +55,11 @@ jQuery(document).ready(function($) {
 	/*
 	 * Bulk actions print button in the confirm message
 	 */	
-	$(window).on('load', function(event) {
-		var bulkButton = $('#woocommerce-delivery-notes-bulk-print-button');
-		if( bulkButton.length > 0 ) {
-			bulkButton.trigger('click');
-		}
-	});
+	$('#woocommerce-delivery-notes-bulk-print-button').on('click', function(event) {
+        event.preventDefault();
+        var printUrl = $(this).attr('href');
+        window.location.href = printUrl; // Open print URL in the same window.
+    });
 
 	/*
 	 * Settings
