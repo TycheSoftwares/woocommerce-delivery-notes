@@ -135,7 +135,7 @@ if ( isset( $_GET['wdcn_setting'] ) ) {
 			<?php $template_save = get_option( 'wcdn_template_type' ); ?>
 			<div class="col-sm-8">
 				<div class="col-sm-10 offset-sm-2" style="border: 2px solid black;">
-					<div class="wcdn_preview_template" style="margin: 100px;">
+					<div class="wcdn_preview_template" style="margin: 60px;">
 						<?php if ( 'wcdn_invoice' === $setting && 'simple' === $template_save ) : ?>
 							<div class="wcdn_for_invoice">
 								<?php include_once plugin_dir_path( __FILE__ ) . 'Preview_template/invoice-preview-template.php'; ?>

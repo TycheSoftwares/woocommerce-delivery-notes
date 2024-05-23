@@ -11,24 +11,34 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <?php
-	$data       = get_option( 'wcdn_deliverynote_customization' );
-	$last_order = wc_get_orders(
-		array(
-			'limit'   => 1,
-			'orderby' => 'date',
-			'order'   => 'DESC',
-		)
-	);
-	if ( ! empty( $last_order ) ) {
-		$order = reset( $last_order ); // phpcs:ignore
+$data            = get_option( 'wcdn_deliverynote_customization' );
+$orders_to_check = 10;
+$orders_checked  = 0;
+$parent_order    = null;
+while ( $orders_checked < $orders_to_check && is_null( $parent_order ) ) {
+		$orders = wc_get_orders(
+			array(
+				'limit'   => 1,
+				'orderby' => 'date',
+				'order'   => 'DESC',
+				'offset'  => $orders_checked,
+			)
+		);
+	if ( ! empty( $orders ) ) {
+		$order = reset($orders); // phpcs:ignore
+		if ( $order->get_parent_id() === 0 ) {
+			$parent_order = $order;
+		}
 	}
-	?>
+		$orders_checked++;
+}
+?>
 	<div class="page-header">
-		<div class="company-logo" >
+		<div class="company-logo" v-show="deliverynote.company_logo" >
 			<?php
 			if ( wcdn_get_company_logo_id() ) :
 				?>
-			<div v-show="deliverynote.company_logo">
+			<div>
 				<?php wcdn_pdf_company_logo( $ttype = 'simple' ); // phpcs:ignore ?>
 			</div>
 			<?php endif; ?>
@@ -104,6 +114,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<?php
 					}
 					if ( $wdn_order_billing_id ) {
+						echo '<br>';
 						?>
 						<span v-show="deliverynote.email_address">
 							<?php echo $wdn_order_billing_id; // phpcs:ignore ?>

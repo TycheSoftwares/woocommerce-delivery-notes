@@ -134,13 +134,13 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 				),
 				'billing_address'     => array(
 					'active'                      => '',
-					'billing_address_title'       => 'Billing Title',
+					'billing_address_title'       => 'Billing Address',
 					'billing_address_text_align'  => 'left',
 					'billing_address_text_colour' => '#000000',
 				),
 				'shipping_address'    => array(
 					'active'                       => '',
-					'shipping_address_title'       => 'Shipping Title',
+					'shipping_address_title'       => 'Shipping Address',
 					'shipping_address_text_align'  => 'left',
 					'shipping_address_text_colour' => '#000000',
 				),
@@ -241,13 +241,13 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 				),
 				'billing_address'        => array(
 					'active'                      => '',
-					'billing_address_title'       => 'Billing Title',
+					'billing_address_title'       => 'Billing Address',
 					'billing_address_text_align'  => 'left',
 					'billing_address_text_colour' => '#000000',
 				),
 				'shipping_address'       => array(
 					'active'                       => '',
-					'shipping_address_title'       => 'Shipping Title',
+					'shipping_address_title'       => 'Shipping Address',
 					'shipping_address_text_align'  => 'left',
 					'shipping_address_text_colour' => '#000000',
 				),
@@ -326,12 +326,12 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 				$receipt_data
 			);
 
-			// Preview data for dilverynotes.
+			// Preview data for deliverynotes.
 			$deliverynote_data     = get_option( 'wcdn_deliverynote_customization' );
 			$deliverynote_defaults = array(
 				'document_setting'            => array(
 					'active'                       => '',
-					'document_setting_title'       => 'Dilverynotes',
+					'document_setting_title'       => 'Delivery Notes',
 					'document_setting_font_size'   => 25,
 					'document_setting_text_align'  => 'right',
 					'document_setting_text_colour' => '#000000',
@@ -359,13 +359,13 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 				),
 				'billing_address'             => array(
 					'active'                      => '',
-					'billing_address_title'       => 'Billing Title',
+					'billing_address_title'       => 'Billing Address',
 					'billing_address_text_align'  => 'left',
 					'billing_address_text_colour' => '#000000',
 				),
 				'shipping_address'            => array(
 					'active'                       => '',
-					'shipping_address_title'       => 'Shipping Title',
+					'shipping_address_title'       => 'Shipping Address',
 					'shipping_address_text_align'  => 'left',
 					'shipping_address_text_colour' => '#000000',
 				),
