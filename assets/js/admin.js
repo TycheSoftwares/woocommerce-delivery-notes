@@ -155,13 +155,19 @@ jQuery(document).ready(function($) {
 		}
 	});
 		
-	$(document).ready(function(){
-		$('.accordion-button').click(function(){
+	$(document).ready(function() {
+		$('.accordion-button').click(function() {
 			$(this).closest('.accordion-item').toggleClass('expanded');
 		});
-		if ( admin_object.template_save == 'default') {
-			$('.accordion-button').attr('disabled', true);
-			$('.accordion-button').eq(0).attr('disabled', false);
+	
+		if (admin_object.template_save == 'default') {
+			$('.accordion-button').each(function() {
+				var target = $(this).attr('data-bs-target');
+				if (target !== '#ct_acc_2_content') {
+					$(this).attr('disabled', true).attr('title', 'This button is disabled because you have selected the default template.');
+				}
+			});
+			$('.accordion-button').eq(0).attr('disabled', false).removeAttr('title');
 			$('.accordion-item .switch').css('pointer-events', 'none');
 		}
 	});	
