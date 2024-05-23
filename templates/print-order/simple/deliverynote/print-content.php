@@ -229,6 +229,30 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<?php endforeach; ?>
 			<?php endif; ?>
 		</tbody>
+		<tfoot>
+			<?php
+			$totals_arr = $order->get_order_item_totals();
+			if ( $totals_arr ) :
+
+				foreach ( $totals_arr as $total ) :
+					if ( isset( $data['display_price_product_table']['active'] ) ) {
+						?>
+					<tr>
+						<td class="total-name"><span><?php echo wp_kses_post( $total['label'] ); ?></span></td>
+						<td class="total-item-price"></td>
+						<?php if ( 'Total' === $total['label'] ) { ?>
+						<td class="total-quantity"><?php echo wp_kses_post( $order->get_item_count() ); ?></td>
+						<?php } else { ?>
+						<td class="total-quantity"></td>
+						<?php } ?>
+						<td class="total-price"><span><?php echo wp_kses_post( $total['value'] ); ?></span></td>
+					</tr>
+						<?php
+					}
+			endforeach;
+			endif;
+			?>
+		</tfoot>
 	</table>
 
 	<?php do_action( 'wcdn_after_items', $order ); ?>
