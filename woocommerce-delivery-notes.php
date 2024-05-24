@@ -12,10 +12,10 @@
  * License URI: http://www.opensource.org/licenses/gpl-license.php
  * Text Domain: woocommerce-delivery-notes
  * Domain Path: /languages
- * Requires PHP: 5.6
+ * Requires PHP: 7.3
  * WC requires at least: 3.0.0
- * WC tested up to: 7.5.0
- * Tested up to: 6.1.1
+ * WC tested up to: 8.9.1
+ * Tested up to: 6.5.3
  *
  * Copyright 2019 Tyche Softwares
  *

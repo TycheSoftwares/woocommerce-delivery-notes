@@ -4,9 +4,9 @@ Contributors: ashokrane, tychesoftwares
 Donate link: https://www.paypal.me/TycheSoftwares
 Tags: packing slips, invoice, pdf invoice, delivery notes, woocommerce print invoice, print, pdf, invoices
 Requires at least: 4.0
-Tested up to: 6.1.1
+Tested up to: 6.5.3
 Author URI: https://www.tychesoftwares.com/
-Stable tag: trunk
+Stable tag: 5.0.0
 License: GPLv3 or later
 License URI: http://www.opensource.org/licenses/gpl-license.php
 
