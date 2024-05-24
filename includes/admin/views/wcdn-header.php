@@ -59,7 +59,6 @@
 								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
-								<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> <?php // phpcs:ignore ?>
 							</div>
 
 							<div class="ft-text">

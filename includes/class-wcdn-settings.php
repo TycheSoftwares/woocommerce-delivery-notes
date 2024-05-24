@@ -77,6 +77,7 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 			wp_enqueue_media();
 			wp_enqueue_script( 'woocommerce-delivery-notes-print-link', WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/jquery.print-link.js', array( 'jquery' ), WooCommerce_Delivery_Notes::$plugin_version, false );
 			wp_enqueue_script( 'woocommerce-delivery-notes-admin', WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/admin.js', array( 'jquery', 'custom-header', 'woocommerce-delivery-notes-print-link' ), WooCommerce_Delivery_Notes::$plugin_version, false );
+			wp_enqueue_script( 'woocommerce-delivery-notes-bootstrap', WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/bootstrap.min.js', array(), WooCommerce_Delivery_Notes::$plugin_version, false );
 			wp_enqueue_script( 'woocommerce-delivery-notes-vue', WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/vue.js', array(), WooCommerce_Delivery_Notes::$plugin_version, false );
 			if ( isset( $_GET['wdcn_setting'] ) && 'wcdn_invoice' === $_GET['wdcn_setting'] ) { // phpcs:ignore
 				wp_enqueue_script( 'woocommerce-delivery-notes-edit-invoice', WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/wdne-invoice-add-edit.js', array(), WooCommerce_Delivery_Notes::$plugin_version, false );
