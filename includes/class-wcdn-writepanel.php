@@ -279,9 +279,9 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 				<span class="print-preview-loading spinner"></span>
 			</div>
 			<?php
-			$create_invoice_number = get_option( 'wcdn_create_invoice_number' );
-			$has_invoice_number    = $order->get_meta( '_wcdn_invoice_number', true );
-			if ( ! empty( $create_invoice_number ) && 'yes' === $create_invoice_number && $has_invoice_number ) :
+			$invoice_data       = get_option( 'wcdn_invoice_customization' );
+			$has_invoice_number = $order->get_meta( '_wcdn_invoice_number', true );
+			if ( 'on' === $invoice_data['numbering']['active'] && $has_invoice_number ) :
 				$invoice_number = wcdn_get_order_invoice_number( $order_id );
 				$invoice_date   = wcdn_get_order_invoice_date( $order_id );
 				?>
