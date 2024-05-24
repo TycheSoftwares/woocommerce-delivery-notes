@@ -54,12 +54,13 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="footer-wrap">
-							<!-- <div class="alert alert-dark alert-dismissible fade show" role="alert">
-								<img class="msg-icon" src="<?php echo plugins_url() . '/woocommerce-delivery-notes/assets/images/icon-info-grey.svg'; ?>" alt="Logo" /><a href="<?php echo esc_url( 'https://www.tychesoftwares.com/store/premium-plugins/woocommerce-subscriptions-compatibility-addon-for-order-delivery-date-pro-for-woocommerce-plugin/?utm_source=ordddprofooter&utm_medium=link&utm_campaign=OrderDeliveryDatePRoPlugin' ); ?>" target="_blank">Get our Subscriptions Addon</a> & setup recurring deliveries with WooCommerce Subscriptions plugin & Order Delivery Date plugin.
+							<div class="alert alert-dark alert-dismissible fade show" role="alert">
+								<img class="msg-icon" src="<?php echo plugins_url() . '/woocommerce-delivery-notes/assets/images/icon-info-grey.svg'; // phpcs:ignore ?>" alt="Logo" /> Get our <a href="<?php echo esc_url( 'https://www.tychesoftwares.com/products/woocommerce-order-delivery-date-pro-plugin/' ); ?>" target="_blank">Order Delivery Date Pro</a> plugin to schedule and manage your local deliveries and pickups in WooCommerce.
 								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
-							</div> -->
+								<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> <?php // phpcs:ignore ?>
+							</div>
 
 							<div class="ft-text">
 								<p><a href="<?php echo esc_url( 'https://wordpress.org/support/plugin/woocommerce-delivery-notes/ ' ); ?>" target="_blank">Need Support?</a> <strong>We’re always happy to help you.</strong></p>
