@@ -359,6 +359,7 @@ function wcdn_get_order_info( $order, $type = '' ) {
 	$fields                = array();
 	$create_invoice_number = get_option( 'wcdn_create_invoice_number' );
 	$data                  = get_option( 'wcdn_' . $type . '_customization' );
+	$invoice_data          = get_option( 'wcdn_invoice_customization' );
 
 	$data['template_setting']['template_setting_template'] = get_option( 'wcdn_template_type' );
 
@@ -373,7 +374,7 @@ function wcdn_get_order_info( $order, $type = '' ) {
 	$date_formate                   = get_option( 'date_format' );
 	$wdn_order_payment_date         = $order->get_date_paid();
 
-	if ( ! empty( $create_invoice_number ) && 'yes' === $create_invoice_number ) {
+	if ( 'on' === $invoice_data['numbering']['active'] ) {
 		if ( isset( $data['invoice_number']['active'] ) ) {
 			if ( isset( $data['invoice_number']['invoice_number_text'] ) && ! empty( $data['invoice_number']['invoice_number_text'] ) ) {
 				$label = $data['invoice_number']['invoice_number_text'];

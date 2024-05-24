@@ -235,14 +235,6 @@ function wcdn_customization_colorfield( $tab, $id, $field, $key, $customization_
 function wcdn_customization_numbering() {
 	?>
 	<div class="form-group row">
-		<label for="invoice_number" class="col-sm-2 col-form-label">
-			<?php esc_html_e( 'Enable', 'woocommerce-delivery-notes' ); ?></label>
-		</label>
-		<div class="col-sm-12">
-			<input type="checkbox" name="wcdn_invoice[numbering]" value="" <?php echo esc_attr( ( get_option('wcdn_create_invoice_number') == 'yes' ) ? 'checked' : '' ); ?>>
-		</div>
-	</div>
-	<div class="form-group row">
 		<label for="Next Number" class="col-sm-12 col-form-label">
 			<?php echo __( 'Next Number', 'woocommerce-delivery-notes' ); // phpcs:ignore ?>
 		</label>
