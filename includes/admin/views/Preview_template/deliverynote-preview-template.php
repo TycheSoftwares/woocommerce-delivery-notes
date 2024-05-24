@@ -213,6 +213,30 @@ while ( $orders_checked < $orders_to_check && is_null( $parent_order ) ) {
 					<?php endforeach; ?>
 				<?php endif; ?>
 			</tbody>
+			<tfoot>
+				<?php
+				$totals_arr = $order->get_order_item_totals();
+				if ( $totals_arr ) :
+
+					foreach ( $totals_arr as $key => $total ) :
+						if ( 'payment_method' !== $key ) :
+							?>
+						<tr v-show="deliverynote.display_price_product_table">
+							<td class="total-name"><span><?php echo wp_kses_post( $total['label'] ); ?></span></td>
+							<td class="total-item-price"></td>
+							<?php if ( 'Total' === $total['label'] ) { ?>
+							<td class="total-quantity"><?php echo wp_kses_post( $order->get_item_count() ); ?></td>
+							<?php } else { ?>
+							<td class="total-quantity"></td>
+							<?php } ?>
+							<td class="total-price"><span><?php echo wp_kses_post( $total['value'] ); ?></span></td>
+						</tr>
+							<?php
+						endif;
+					endforeach;
+				endif;
+				?>
+			</tfoot>
 		</table>
 		<?php do_action( 'wcdn_after_items', $order ); ?>
 	</div><!-- .order-items -->
