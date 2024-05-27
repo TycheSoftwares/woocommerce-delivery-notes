@@ -19,12 +19,7 @@ if ( isset( $_GET['wdcn_setting'] ) ) {
 				<div class="col-sm-6 icon-flex">
 					<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'Enable button that will display on admin side order page.', 'woocommerce-delivery-notes' ); ?>"></i>
 					<label class="switch">
-					<?php
-					if ( get_option( 'wcdn_template_type_invoice' ) === false ) {
-						update_option( 'wcdn_template_type_invoice', 'yes' );
-					}
-					?>
-					<input type="checkbox" name="wcdn_document[]" id="invoice_checkbox" value="invoice" <?php echo esc_attr( ( get_option( 'wcdn_template_type_invoice' ) === 'yes' ) ? 'checked' : '' ); ?> >
+					<input type="checkbox" name="wcdn_document[]" id="invoice_checkbox" value="invoice" <?php echo esc_attr( ( get_option( 'wcdn_template_type_invoice', 'yes' ) === 'yes' ) ? 'checked' : '' ); ?> >
 					<span class="slider round"></span>
 					</label>
 				</div>
@@ -34,12 +29,7 @@ if ( isset( $_GET['wdcn_setting'] ) ) {
 				<div class="col-sm-6 icon-flex">
 					<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'Enable button that will display on admin side order page.', 'woocommerce-delivery-notes' ); ?>"></i>
 					<label class="switch">
-					<?php
-					if ( get_option( 'wcdn_template_type_receipt' ) === false ) {
-						update_option( 'wcdn_template_type_receipt', 'yes' );
-					}
-					?>
-						<input type="checkbox" name="wcdn_document[]" id='receipt' value="receipt" <?php echo esc_attr( ( get_option( 'wcdn_template_type_receipt' ) === 'yes' ) ? 'checked' : '' ); ?>>
+						<input type="checkbox" name="wcdn_document[]" id='receipt' value="receipt" <?php echo esc_attr( ( get_option( 'wcdn_template_type_receipt', 'yes' ) === 'yes' ) ? 'checked' : '' ); ?>>
 						<span class="slider round"></span>
 					</label>
 				</div>
@@ -49,12 +39,7 @@ if ( isset( $_GET['wdcn_setting'] ) ) {
 				<div class="col-sm-6 icon-flex">
 					<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'Enable button that will display on admin side order page.', 'woocommerce-delivery-notes' ); ?>"></i>
 					<label class="switch">
-					<?php
-					if ( get_option( 'wcdn_template_type_delivery' ) === false ) {
-						update_option( 'wcdn_template_type_delivery', 'yes' );
-					}
-					?>
-					<input type="checkbox"  name="wcdn_document[]" id='delivery_note' value="delivery-note" <?php echo esc_attr( ( get_option( 'wcdn_template_type_delivery-note' ) === 'yes' ) ? 'checked' : '' ); ?>>
+					<input type="checkbox"  name="wcdn_document[]" id='delivery_note' value="delivery-note" <?php echo esc_attr( ( get_option( 'wcdn_template_type_delivery-note', 'yes' ) === 'yes' ) ? 'checked' : '' ); ?>>
 						<span class="slider round"></span>
 					</label>
 				</div>

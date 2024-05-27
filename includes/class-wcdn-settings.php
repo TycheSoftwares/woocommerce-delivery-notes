@@ -453,7 +453,7 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 		 * @param array $settings_tabs Add settings tab in WooCommerce->Settings page.
 		 */
 		public function add_settings_page( $settings_tabs ) {
-			$settings_tabs[ $this->id ] = __( 'Print', 'woocommerce-delivery-notes' );
+			$settings_tabs[ $this->id ] = __( 'Invoice', 'woocommerce-delivery-notes' );
 			return $settings_tabs;
 		}
 
