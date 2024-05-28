@@ -103,7 +103,10 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 				)
 			);
 			// Preview data for invoice.
-			$invoice_data     = get_option( 'wcdn_invoice_customization' );
+			$invoice_data = get_option( 'wcdn_invoice_customization' );
+			if ( false === $invoice_data ) {
+				$invoice_data = array();
+			}
 			$invoice_defaults = array(
 				'document_setting'    => array(
 					'active'                       => '',
@@ -210,7 +213,10 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 				$invoice_data
 			);
 			// Preview data for receipt.
-			$receipt_data     = get_option( 'wcdn_receipt_customization' );
+			$receipt_data = get_option( 'wcdn_receipt_customization' );
+			if ( false === $receipt_data ) {
+				$receipt_data = array();
+			}
 			$receipt_defaults = array(
 				'document_setting'       => array(
 					'active'                       => '',
@@ -328,7 +334,10 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 			);
 
 			// Preview data for deliverynotes.
-			$deliverynote_data     = get_option( 'wcdn_deliverynote_customization' );
+			$deliverynote_data = get_option( 'wcdn_deliverynote_customization' );
+			if ( false === $deliverynote_data ) {
+				$deliverynote_data = array();
+			}
 			$deliverynote_defaults = array(
 				'document_setting'            => array(
 					'active'                       => '',
