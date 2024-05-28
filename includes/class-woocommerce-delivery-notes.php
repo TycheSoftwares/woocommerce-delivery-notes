@@ -522,6 +522,7 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 				update_option( 'wcdn_invoice_settings', $_POST['wcdn_invoice'] );
 				update_option( 'wcdn_invoice_number_suffix', $_POST['wcdn_invoice']['invoice_suffix'] );
 				update_option( 'wcdn_invoice_number_prefix', $_POST['wcdn_invoice']['invoice_preffix'] );
+				update_option( 'wcdn_invoice_number_count', $_POST['wcdn_invoice']['invoice_nextnumber'] );
 			}
 
 			if ( isset( $_POST['wcdn_receipt'] ) && ! empty( $_POST['wcdn_receipt'] ) ) {
@@ -553,7 +554,6 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 					// Group invoice numbering.
 					$invoice_start   = intval( get_option( 'wcdn_invoice_number_start', 1 ) );
 					$invoice_counter = intval( get_option( 'wcdn_invoice_number_counter', 0 ) );
-					update_option( 'wcdn_invoice_number_count', $invoice_start + $invoice_counter );
 					update_option( 'wcdn_invoice_template_type', 'default' );
 					update_option( 'wcdn_receipt_template_type', 'default' );
 					update_option( 'wcdn_delivery_note_template_type', 'default' );
