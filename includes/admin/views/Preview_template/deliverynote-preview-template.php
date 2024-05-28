@@ -32,6 +32,10 @@ while ( $orders_checked < $orders_to_check && is_null( $parent_order ) ) {
 	}
 		$orders_checked++;
 }
+if ( is_null( $parent_order ) ) {
+	echo '<div class="notices">No WooCommerce orders found! Please consider adding your first order to see this preview.</div>';
+	return;
+}
 ?>
 	<div class="page-header">
 		<div class="company-logo" v-show="deliverynote.company_logo" >
