@@ -522,9 +522,6 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 				update_option( 'wcdn_invoice_settings', $_POST['wcdn_invoice'] );
 				update_option( 'wcdn_invoice_number_suffix', $_POST['wcdn_invoice']['invoice_suffix'] );
 				update_option( 'wcdn_invoice_number_prefix', $_POST['wcdn_invoice']['invoice_preffix'] );
-				$number = ( isset( $_POST['wcdn_invoice']['numbering'] ) ) ? 'yes' : 'no';
-				update_option( 'wcdn_create_invoice_number', $number );
-				update_option( 'wcdn_invoice_number_count', $_POST['wcdn_invoice']['invoice_nextnumber'] );
 			}
 
 			if ( isset( $_POST['wcdn_receipt'] ) && ! empty( $_POST['wcdn_receipt'] ) ) {
@@ -560,6 +557,12 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 					update_option( 'wcdn_invoice_template_type', 'default' );
 					update_option( 'wcdn_receipt_template_type', 'default' );
 					update_option( 'wcdn_delivery_note_template_type', 'default' );
+					$create_invoice_number = get_option( 'wcdn_create_invoice_number' );
+					if ( 'yes' === $create_invoice_number || 'no' === $create_invoice_number ) {
+						$invoice_data                        = get_option( 'wcdn_invoice_customization', array() );
+						$invoice_data['numbering']['active'] = ( isset( $create_invoice_number ) && ( 'yes' === $create_invoice_number || 'no' === $create_invoice_number ) ) ? ( 'yes' === $create_invoice_number ? 'on' : 'off' ) : 'on';
+						update_option( 'wcdn_invoice_customization', $invoice_data );
+					}
 				}
 
 				// Flush the transients in case the endpoint changed.
