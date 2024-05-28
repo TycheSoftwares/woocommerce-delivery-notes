@@ -205,3 +205,10 @@ address {
 font-size: 1em;
 font-weight: bold;
 }
+
+.notices {
+    border: 2px solid red;
+    padding: 10px;
+    background-color: #f2e7e7;
+	font-size: 10px;
+}
