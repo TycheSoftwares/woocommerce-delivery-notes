@@ -217,7 +217,6 @@ $shop_logotitle = get_the_title( $shop_logoid );
 	<label for="reset_tracking" class="col-sm-2 col-form-label"><?php esc_html_e( 'Reset usage tracking', 'woocommerce-delivery-notes' ); ?></label>
 	<div class="col-sm-6 icon-flex">
 		<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'This will reset your usage tracking settings, causing it to show the opt-in banner again and not sending any data', 'woocommerce-delivery-notes' ); ?>"></i>
-		<?php $nonce = wp_create_nonce( 'wcdn_tracker_reset' ); ?>
-		<a href="admin.php?page=wc-settings&tab=wcdn-settings&wcdn_tracker_reset_nonce=<?php echo $nonce; ?>&ts_action=wcdn_reset_tracking" name="ts_reset_tracking" id="ts_reset_tracking" class="button-secondary reset_tracking"> <?php echo __( 'Reset', 'woocommerce-delivery-notes' ); ?> </a>
+		<input class="trietary-btn reverse reset button-secondary reset_tracking" type="button" name="" value="Reset" >
 	</div>
 </div>
