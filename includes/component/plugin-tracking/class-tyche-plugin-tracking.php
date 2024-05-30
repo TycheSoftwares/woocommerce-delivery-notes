@@ -81,7 +81,6 @@ if ( ! class_exists( 'Tyche_Plugin_Tracking' ) ) {
 			add_action( 'admin_notices', array( &$this, 'display_tracker_html_template' ) );
 			add_filter( 'cron_schedules', array( &$this, 'cron_schedule' ) );
 			add_action( 'admin_init', array( &$this, 'init_tracker' ) );
-			add_action( 'wp_ajax_ts_reset_tracking_setting', array( &$this, 'wcdn_reset_tracker_setting' ) );
 			$this->schedule_cron_job();
 		}
 
@@ -142,28 +141,6 @@ if ( ! class_exists( 'Tyche_Plugin_Tracking' ) ) {
 		public static function reset_tracker_setting( $plugin_short_name ) {
 			delete_option( $plugin_short_name . '_allow_tracking' );
 			delete_option( 'ts_tracker_last_send' );
-		}
-
-		/**
-		 * It will delete the tracking option from the database.
-		 */
-		public static function wcdn_reset_tracker_setting() {
-
-			if ( isset( $_POST['plugin_short_name'] ) ) { //phpcs:ignore
-				$plugin_short_name = $_POST['plugin_short_name']; //phpcs:ignore
-			}
-
-			delete_option( $plugin_short_name . '_allow_tracking' );
-			delete_option( 'ts_tracker_last_send' );
-
-			$url = admin_url( 'admin.php?page=wc-settings&tab=wcdn-settings&setting=wcdn_general' );
-
-			wp_send_json(
-				array(
-					'message'      => 'success',
-					'redirect_url' => $url,
-				)
-			);
 		}
 
 		/**
