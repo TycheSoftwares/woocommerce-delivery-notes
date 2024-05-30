@@ -535,13 +535,14 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 		 * It will delete the tracking option from the database.
 		 */
 		public function ts_reset_tracking_setting() {
+			if ( ! isset( $_GET['wcdn_tracker_nonce'] ) ) {
+				return $data;
+			}
 
 			if ( isset( $_GET ['ts_action'] ) && 'reset_tracking' === $_GET ['ts_action'] ) { //phpcs:ignore
-				if ( is_user_logged_in() && current_user_can( 'manage_options' ) ) {
-					Tyche_Plugin_Tracking::reset_tracker_setting( 'wcdn' );
-					$ts_url = remove_query_arg( 'ts_action' );
-					wp_safe_redirect( $ts_url );
-				}
+				Tyche_Plugin_Tracking::reset_tracker_setting( 'wcdn' );
+				$ts_url = remove_query_arg( 'ts_action' );
+				wp_safe_redirect( $ts_url );
 			}
 		}
 		/**
