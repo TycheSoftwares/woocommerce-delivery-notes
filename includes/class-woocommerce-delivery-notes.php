@@ -536,9 +536,11 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 		public function ts_reset_tracking_setting() {
 
 			if ( isset( $_GET ['ts_action'] ) && 'reset_tracking' === $_GET ['ts_action'] ) { //phpcs:ignore
-				Tyche_Plugin_Tracking::reset_tracker_setting( 'wcdn' );
-				$ts_url = remove_query_arg( 'ts_action' );
-				wp_safe_redirect( $ts_url );
+				if ( is_user_logged_in() && current_user_can( 'manage_options' ) ) {
+					Tyche_Plugin_Tracking::reset_tracker_setting( 'wcdn' );
+					$ts_url = remove_query_arg( 'ts_action' );
+					wp_safe_redirect( $ts_url );
+				}
 			}
 		}
 		/**
@@ -580,21 +582,6 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 			if ( '' === $tracker_option || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET[ $plugin_short_name . '_tracker_nonce' ] ) ), $tracker_option ) ) {
 				return $data;
 			}
-
-			$data = self::wcdn_add_plugin_tracking_data( $data );
-			return $data;
-		}
-
-		/**
-		 * Plugin's data to be tracked when Allow option is choosed.
-		 *
-		 * @hook ts_tracker_data
-		 *
-		 * @param array $data Contains the data to be tracked.
-		 *
-		 * @return array Plugin's data to track.
-		 */
-		public function wcdn_add_plugin_tracking_data( $data ) {
 
 				$plugin_data['ts_meta_data_table_name'] = 'ts_tracking_wcdn_meta_data';
 				$plugin_data['ts_plugin_name']          = 'Print invoices & delivery notes for WooCommerce';
