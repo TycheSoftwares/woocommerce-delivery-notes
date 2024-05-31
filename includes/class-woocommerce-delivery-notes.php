@@ -353,6 +353,7 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 				// Send Tracker Data.
 				add_action( 'wcdn_init_tracker_completed', array( $this, 'init_tracker_completed' ), 10, 2 );
 				add_filter( 'wcdn_ts_tracker_display_notice', array( $this, 'wcdn_ts_tracker_display_notice' ), 10, 1 );
+				add_action( 'wp_ajax_ts_reset_tracking_setting', array( &$this, 'wcdn_reset_tracker_setting' ) );
 
 				// Send out the init action.
 				do_action( 'wcdn_init' );
@@ -534,6 +535,9 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 		 * It will delete the tracking option from the database.
 		 */
 		public function ts_reset_tracking_setting() {
+			if ( ! isset( $_GET['wcdn_tracker_nonce'] ) ) {
+				return $data;
+			}
 
 			$nonce = $_POST['ts_tracker_nonce'];//phpcs:ignore
 			if ( ! wp_verify_nonce( $nonce, 'tracking_notice' ) ) {
@@ -589,11 +593,6 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 				return $data;
 			}
 
-			$tracker_option = isset( $_GET[ $plugin_short_name . '_tracker_optin' ] ) ? $plugin_short_name . '_tracker_optin' : ( isset( $_GET[ $plugin_short_name . '_tracker_optout' ] ) ? $plugin_short_name . '_tracker_optout' : '' ); // phpcs:ignore
-			if ( '' === $tracker_option || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET[ $plugin_short_name . '_tracker_nonce' ] ) ), $tracker_option ) ) {
-				return $data;
-			}
-
 				$plugin_data['ts_meta_data_table_name'] = 'ts_tracking_wcdn_meta_data';
 				$plugin_data['ts_plugin_name']          = 'Print invoices & delivery notes for WooCommerce';
 
@@ -608,6 +607,28 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 				$plugin_data['wcdn_allow_tracking'] = get_option( 'wcdn_allow_tracking' );
 				$data['plugin_data']                = $plugin_data;
 			return $data;
+		}
+
+		/**
+		 * It will delete the tracking option from the database.
+		 */
+		public static function wcdn_reset_tracker_setting() {
+
+			if ( isset( $_POST['plugin_short_name'] ) ) { //phpcs:ignore
+				$plugin_short_name = $_POST['plugin_short_name']; //phpcs:ignore
+			}
+
+			delete_option( $plugin_short_name . '_allow_tracking' );
+			delete_option( 'ts_tracker_last_send' );
+
+			$url = admin_url( 'admin.php?page=wc-settings&tab=wcdn-settings&setting=wcdn_general' );
+
+			wp_send_json(
+				array(
+					'message'      => 'success',
+					'redirect_url' => $url,
+				)
+			);
 		}
 
 	}

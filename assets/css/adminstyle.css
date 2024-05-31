@@ -3,7 +3,6 @@ html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, table, ol, ul, dl, li, dt, 
 	border: 0 none;
 	margin: 0;
 	padding: 0;
-	vertical-align: middle;
 }
 ol, ul, li {
 	list-style: none;
@@ -192,23 +191,83 @@ tfoot {
 .wcdn_preview_template{
 	font-family: "HelveticaNeue", Helvetica, Arial, sans-serif;
 }
-
 .company-name{
 	font-weight: bold;
 }
-
 address {
     font-style: italic;
 }
-
 .cap {
 font-size: 1em;
 font-weight: bold;
 }
-
 .notices {
     border: 2px solid red;
     padding: 10px;
     background-color: #f2e7e7;
 	font-size: 10px;
+}
+
+.order-infoo ul {
+	border-top: 0.24em solid black;
+}
+
+.order-infoo li {
+	border-bottom: 0.12em solid #bbb;
+}
+.order-infoo li strong {
+	min-width: 30%;
+	font-weight: normal;
+	display: inline-block;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	margin-bottom: 0;
+	padding-right: 0.35em;
+}
+.colophon-policiess {
+    margin-bottom: 1.25em;
+}
+.order-colophonn {
+    font-size: 0.785em;
+    line-height: 150%;
+    margin-bottom: 0;
+}
+.logo .mobile {
+    display: none;
+}
+.order-branding .company-logo {
+    margin-bottom: 1em;
+}
+.billing-addresss{
+	width: 50%;
+	float: left;
+}
+.billing-addresss address,
+.shipping-addresss address {
+    font-style: normal;
+}
+.billing-addresss h3,
+.shipping-addresss h3 {
+	font-weight: bold;
+	margin-bottom: 1em;
+	font-size: 1em;
+}
+.order-infoo h2 {
+	font-size: 1.4em;
+	font-weight: bold;
+	margin-bottom: 1.25em;
+}
+.order-notess h4{
+	font-size: 15px;
+	font-weight: bold;
+	margin-top: 3em;
+}
+.order-thankss {
+	font-size: 0.900em;
+	margin-top: 3em;
+    margin-bottom: 3em;
+}
+.order-notess h5 {
+	font-size: 15px;
 }

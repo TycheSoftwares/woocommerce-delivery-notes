@@ -144,28 +144,6 @@ if ( ! class_exists( 'Tyche_Plugin_Tracking' ) ) {
 		}
 
 		/**
-		 * It will delete the tracking option from the database.
-		 */
-		public static function wcdn_reset_tracker_setting() {
-
-			if ( isset( $_POST['plugin_short_name'] ) ) { //phpcs:ignore
-				$plugin_short_name = $_POST['plugin_short_name']; //phpcs:ignore
-			}
-
-			delete_option( $plugin_short_name . '_allow_tracking' );
-			delete_option( 'ts_tracker_last_send' );
-
-			$url = admin_url( 'admin.php?page=wc-settings&tab=wcdn-settings&setting=wcdn_general' );
-
-			wp_send_json(
-				array(
-					'message'      => 'success',
-					'redirect_url' => $url,
-				)
-			);
-		}
-
-		/**
 		 * Called when the dismiss icon is clicked on the notice.
 		 */
 		public function dismiss_notice() {
