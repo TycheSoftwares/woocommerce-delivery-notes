@@ -50,3 +50,20 @@ jQuery( document ).ready( function() {
 		});
 	});
 });
+
+jQuery( document ).ready( function() {
+	jQuery('.reset_tracking').click(function() {
+	var data = {
+		action: 'ts_reset_tracking_setting',
+		plugin_short_name: 'wcdn',
+		ts_tracker_nonce : wcdn_ts_dismiss_notice.tracking_notice,
+	}
+	jQuery.post(ajaxurl, data, function( res ) {
+		if ( 'success' == res.message ) {
+			window.location.href = res.redirect_url;
+		}
+		}).error(function() {
+			console.log('error');
+		});
+	});
+});

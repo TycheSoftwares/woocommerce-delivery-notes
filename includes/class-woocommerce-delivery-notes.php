@@ -346,8 +346,6 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 				add_filter( 'plugin_action_links_' . self::$plugin_basefile, array( $this, 'add_settings_link' ) );
 				add_action( 'admin_init', array( $this, 'update' ) );
 				add_action( 'init', array( $this, 'include_template_functions' ) );
-
-				add_action( 'wp_ajax_ts_reset_tracking_setting', array( $this, 'ts_reset_tracking_setting' ) );
 				// Include JS script for the notice.
 				add_filter( 'wcdn_ts_tracker_data', array( $this, 'wcdn_ts_add_plugin_tracking_data' ), 10, 1 );
 				// Send Tracker Data.
@@ -535,10 +533,6 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 		 * It will delete the tracking option from the database.
 		 */
 		public function ts_reset_tracking_setting() {
-			if ( ! isset( $_GET['wcdn_tracker_nonce'] ) ) {
-				return $data;
-			}
-
 			$nonce = $_POST['ts_tracker_nonce'];//phpcs:ignore
 			if ( ! wp_verify_nonce( $nonce, 'tracking_notice' ) ) {
 				return;
@@ -607,28 +601,6 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 				$plugin_data['wcdn_allow_tracking'] = get_option( 'wcdn_allow_tracking' );
 				$data['plugin_data']                = $plugin_data;
 			return $data;
-		}
-
-		/**
-		 * It will delete the tracking option from the database.
-		 */
-		public static function wcdn_reset_tracker_setting() {
-
-			if ( isset( $_POST['plugin_short_name'] ) ) { //phpcs:ignore
-				$plugin_short_name = $_POST['plugin_short_name']; //phpcs:ignore
-			}
-
-			delete_option( $plugin_short_name . '_allow_tracking' );
-			delete_option( 'ts_tracker_last_send' );
-
-			$url = admin_url( 'admin.php?page=wc-settings&tab=wcdn-settings&setting=wcdn_general' );
-
-			wp_send_json(
-				array(
-					'message'      => 'success',
-					'redirect_url' => $url,
-				)
-			);
 		}
 
 	}
