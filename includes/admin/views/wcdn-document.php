@@ -150,7 +150,7 @@ if ( isset( $_GET['wdcn_setting'] ) ) {
 							</div>
 						<?php else : ?>
 							<div class="wcdn_for_default">
-							<?php include_once plugin_dir_path( __FILE__ ) . 'Preview_template/default-preview-templat.php'; ?>
+							<?php include_once plugin_dir_path( __FILE__ ) . 'Preview_template/default-preview-template.php'; ?>
 							</div>
 						<?php endif; ?>
 					</div>

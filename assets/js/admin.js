@@ -224,10 +224,9 @@ jQuery(document).ready(function($) {
 		if (admin_object.template_save === 'default') {
 			var documentTypeElement = document.querySelector('#document_type');
 			var document_type = documentTypeElement ? documentTypeElement.value : null;
+			var checkboxes = document.querySelectorAll('.custom-checkbox');
 	
-			if (document_type === 'wcdn_receipt'|| document_type === 'wcdn_deliverynote') {
-				var checkboxes = document.querySelectorAll('.custom-checkbox');
-	
+			if (document_type === 'wcdn_receipt' || document_type === 'wcdn_deliverynote') {
 				for (var i = 1; i < checkboxes.length; i++) {
 					if ((document_type === 'wcdn_receipt' && (i === 5 || i === 18)) ||
 						(document_type === 'wcdn_deliverynote' && i === 5)) {
@@ -236,22 +235,14 @@ jQuery(document).ready(function($) {
 						checkboxes[i].checked = true;
 					}
 				}
-			}
-		}
-	});
-	
-	$(document).ready(function() {
-		if (admin_object.template_save === 'default') {
-			var documentTypeElement = document.querySelector('#document_type');
-			var document_type = documentTypeElement ? documentTypeElement.value : null;
-			var checkboxes = document.querySelectorAll('.custom-checkbox');
-			
-			for (var i = 2; i < checkboxes.length; i++) {
-				if ((document_type === 'wcdn_invoice' && i === 4 )) {
+			} else if (document_type === 'wcdn_invoice') {
+				for (var i = 2; i < checkboxes.length; i++) {
+					if (i === 4) {
 						checkboxes[i].checked = false;
 					} else {
 						checkboxes[i].checked = true;
 					}
+				}
 			}
 		}
 	});
