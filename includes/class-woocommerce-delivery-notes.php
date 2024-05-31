@@ -540,9 +540,10 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 			if ( isset( $_POST['plugin_short_name'] ) ) { //phpcs:ignore
 				$plugin_short_name = $_POST['plugin_short_name']; //phpcs:ignore
 			}
-
-			delete_option( $plugin_short_name . '_allow_tracking' );
-			delete_option( 'ts_tracker_last_send' );
+			if ( get_option( $plugin_short_name . '_allow_tracking' ) ) {
+				delete_option( $plugin_short_name . '_allow_tracking' );
+				delete_option( 'ts_tracker_last_send' );
+			}
 			$url = admin_url( 'admin.php?page=wc-settings&tab=wcdn-settings&setting=wcdn_general' );
 
 			wp_send_json(
