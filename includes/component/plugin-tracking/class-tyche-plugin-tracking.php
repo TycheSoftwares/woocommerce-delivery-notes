@@ -81,7 +81,6 @@ if ( ! class_exists( 'Tyche_Plugin_Tracking' ) ) {
 			add_action( 'admin_notices', array( &$this, 'display_tracker_html_template' ) );
 			add_filter( 'cron_schedules', array( &$this, 'cron_schedule' ) );
 			add_action( 'admin_init', array( &$this, 'init_tracker' ) );
-			add_action( 'wp_ajax_ts_reset_tracking_setting', array( &$this, 'wcdn_reset_tracker_setting' ) );
 			$this->schedule_cron_job();
 		}
 

@@ -224,19 +224,3 @@ jQuery(document).ready(function($) {
 	jQuery("#mainform").append( footer );
 });
 
-jQuery( document ).ready( function() {
-	jQuery('.reset_tracking').click(function() {
-	var data = {
-		action: 'ts_reset_tracking_setting',
-		plugin_short_name: 'wcdn'
-	}
-	jQuery.post(ajaxurl, data, function( res ) {
-		if ( 'success' == res.message ) {
-			window.location.href = res.redirect_url;
-		}
-		}).error(function() {
-			console.log('error');
-		});
-	});
-});
-

@@ -347,7 +347,7 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 				add_action( 'admin_init', array( $this, 'update' ) );
 				add_action( 'init', array( $this, 'include_template_functions' ) );
 
-				add_action( 'admin_init', array( $this, 'ts_reset_tracking_setting' ) );
+				add_action( 'wp_ajax_ts_reset_tracking_setting', array( $this, 'ts_reset_tracking_setting' ) );
 				// Include JS script for the notice.
 				add_filter( 'wcdn_ts_tracker_data', array( $this, 'wcdn_ts_add_plugin_tracking_data' ), 10, 1 );
 				// Send Tracker Data.
@@ -535,13 +535,24 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 		 */
 		public function ts_reset_tracking_setting() {
 
-			if ( isset( $_GET ['ts_action'] ) && 'reset_tracking' === $_GET ['ts_action'] ) { //phpcs:ignore
-				if ( is_user_logged_in() && current_user_can( 'manage_options' ) ) {
-					Tyche_Plugin_Tracking::reset_tracker_setting( 'wcdn' );
-					$ts_url = remove_query_arg( 'ts_action' );
-					wp_safe_redirect( $ts_url );
-				}
+			$nonce = $_POST['ts_tracker_nonce'];//phpcs:ignore
+			if ( ! wp_verify_nonce( $nonce, 'tracking_notice' ) ) {
+				return;
 			}
+			if ( isset( $_POST['plugin_short_name'] ) ) { //phpcs:ignore
+				$plugin_short_name = $_POST['plugin_short_name']; //phpcs:ignore
+			}
+
+			delete_option( $plugin_short_name . '_allow_tracking' );
+			delete_option( 'ts_tracker_last_send' );
+			$url = admin_url( 'admin.php?page=wc-settings&tab=wcdn-settings&setting=wcdn_general' );
+
+			wp_send_json(
+				array(
+					'message'      => 'success',
+					'redirect_url' => $url,
+				)
+			);
 		}
 		/**
 		 * Add tracker completed.
