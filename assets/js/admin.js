@@ -154,24 +154,108 @@ jQuery(document).ready(function($) {
 			$('.wcdn_depend_row').hide();
 		}
 	});
-		
+
+	// Block settings when default template is selected.
 	$(document).ready(function() {
 		$('.accordion-button').click(function() {
 			$(this).closest('.accordion-item').toggleClass('expanded');
 		});
 	
-		if (admin_object.template_save == 'default') {
+		var documentTypeElement = document.querySelector('#document_type');
+		var document_type = documentTypeElement ? documentTypeElement.value : null;
+		var targetCondition;
+	
+		if (document_type === 'wcdn_invoice') {
+			targetCondition = '#ct_acc_2_content';
+		} else if (document_type === 'wcdn_receipt' || document_type === 'wcdn_deliverynote') {
+			targetCondition = '#ct_acc_1_content';
+		}
+	
+		if (admin_object.template_save === 'default' && targetCondition) {
 			$('.accordion-button').each(function() {
 				var target = $(this).attr('data-bs-target');
-				if (target !== '#ct_acc_2_content') {
-					$(this).attr('disabled', true).attr('title', 'This button is disabled because you have selected the default template.');
+				if (target !== targetCondition) {
+					$(this).attr('disabled', true).attr('title', '');
+					if (!(document_type === 'wcdn_invoice' && target === '#ct_acc_1_content')) {
+						$(this).closest('.accordion-item').addClass('disabled');
+					}
 				}
 			});
 			$('.accordion-button').eq(0).attr('disabled', false).removeAttr('title');
 			$('.accordion-item .switch').css('pointer-events', 'none');
+			// Add hover message for parent elements of .switch with disabled accordion-button.
+			$('.accordion-item.disabled').hover(function() {
+				var switchElement = $(this).find('.switch');
+				if (switchElement.length) {
+					var tooltip = $('<div class="hover-tooltip">This setting is disabled because you have selected the default template.</div>');
+					tooltip.css({
+						position: 'absolute',
+						background: '#fff',
+						color: '#000',
+						padding: '2px',
+						border: '1px solid #000',
+						borderRadius: '3px',
+						fontSize: '12px',
+						zIndex: 1000,
+						display: 'none'
+					});
+					$('body').append(tooltip);
+					$(this).data('tooltip', tooltip);
+					$(this).mousemove(function(event) {
+						tooltip.css({
+							top: event.pageY + 10 + 'px',
+							left: event.pageX + 10 + 'px'
+						});
+					});
+					tooltip.fadeIn(200);
+				}
+			}, function() {
+				var tooltip = $(this).data('tooltip');
+				if (tooltip) {
+					tooltip.remove();
+				}
+			});
+		
 		}
-	});	
+	});
 
+	//Set checkbox on and off when default template is selected.
+	$(document).ready(function() {
+		if (admin_object.template_save === 'default') {
+			var documentTypeElement = document.querySelector('#document_type');
+			var document_type = documentTypeElement ? documentTypeElement.value : null;
+	
+			if (document_type === 'wcdn_receipt'|| document_type === 'wcdn_deliverynote') {
+				var checkboxes = document.querySelectorAll('.custom-checkbox');
+	
+				for (var i = 1; i < checkboxes.length; i++) {
+					if ((document_type === 'wcdn_receipt' && (i === 5 || i === 18)) ||
+						(document_type === 'wcdn_deliverynote' && i === 5)) {
+						checkboxes[i].checked = false;
+					} else {
+						checkboxes[i].checked = true;
+					}
+				}
+			}
+		}
+	});
+	
+	$(document).ready(function() {
+		if (admin_object.template_save === 'default') {
+			var documentTypeElement = document.querySelector('#document_type');
+			var document_type = documentTypeElement ? documentTypeElement.value : null;
+			var checkboxes = document.querySelectorAll('.custom-checkbox');
+			
+			for (var i = 2; i < checkboxes.length; i++) {
+				if ((document_type === 'wcdn_invoice' && i === 4 )) {
+						checkboxes[i].checked = false;
+					} else {
+						checkboxes[i].checked = true;
+					}
+			}
+		}
+	});
+	
 	const queryString = window.location.search;
 	const urlParams = new URLSearchParams(queryString);
 	const wdcn_setting = urlParams.get('wdcn_setting');
@@ -223,4 +307,3 @@ jQuery(document).ready(function($) {
 	var footer = jQuery(".wcdn-footer-top").html();
 	jQuery("#mainform").append( footer );
 });
-

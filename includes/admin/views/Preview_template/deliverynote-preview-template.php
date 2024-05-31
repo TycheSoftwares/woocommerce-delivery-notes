@@ -1,6 +1,6 @@
 <?php
 /**
- * Create Receipt PDF.
+ * Create live preview for deliverynote.
  *
  * @package WooCommerce Print Invoice & Delivery Note/Templates
  */
