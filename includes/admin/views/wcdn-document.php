@@ -82,7 +82,7 @@ if ( isset( $_GET['wdcn_setting'] ) ) {
 										<?php
 										$vmodel = $c_tab . '.' . $key;
 										?>
-										<input type="checkbox" name="<?php echo esc_attr( $c_tab . '[' . $key . '][active]' ); ?>" v-model= "<?php echo $vmodel; // phpcs:ignore ?>"
+										<input type="checkbox" class="custom-checkbox" name="<?php echo esc_attr( $c_tab . '[' . $key . '][active]' ); ?>" v-model= "<?php echo $vmodel; // phpcs:ignore ?>"
 											<?php
 											if ( isset( $customization_data[ $key ]['active'] ) && 'on' === $customization_data[ $key ]['active'] ) {
 												echo 'checked';
@@ -149,11 +149,11 @@ if ( isset( $_GET['wdcn_setting'] ) ) {
 								<?php include_once plugin_dir_path( __FILE__ ) . 'Preview_template/deliverynote-preview-template.php'; ?>
 							</div>
 						<?php else : ?>
+							<div class="wcdn_for_default">
+							<?php include_once plugin_dir_path( __FILE__ ) . 'Preview_template/default-preview-template.php'; ?>
+							</div>
+						<?php endif; ?>
 					</div>
-					<div class="wcdn_for_default">
-						<img src="<?php echo WooCommerce_Delivery_Notes::$plugin_url . 'assets/images/Default.png'; // phpcs:ignore ?>" alt="Default Image" style="width: 525px; margin-left: 10px">
-					</div>
-					<?php endif; ?>
 				</div>
 			</div>
 		</div>

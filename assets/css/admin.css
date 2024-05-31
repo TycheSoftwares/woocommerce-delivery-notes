@@ -15,8 +15,11 @@
 .icon-flex .dashicons {
     position: absolute;
     left: -12px;
-    top: 0;
+    top: 5px;
     font-size: 16px;
+}
+.col-sm-6.icon-flex label + label {
+	padding-left: 10px;
 }
 .wcdn_container .nav-tabs {
     background-color: #575757;
@@ -96,6 +99,7 @@ ul.wcdn_main_tab li:last-child {
 .wcdn_container .col-form-label {
     font-size: 14px;
     font-weight: 600;
+	padding-top: 0px;
 }
 .wcdn_container input.form-control {
 	border: 1px solid #ced4da;
@@ -164,8 +168,12 @@ ul.wcdn_main_tab li:last-child {
 .wcdn_container .switch {
     position: relative;
     display: inline-block;
+	padding-left: 10px;
     width: 44px;
     height: 25px;
+}
+.col-sm-6 .label{
+	padding-left: 10px;
 }
 .wcdn_container .accordion .switch {
     position: relative;
