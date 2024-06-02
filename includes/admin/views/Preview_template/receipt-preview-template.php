@@ -135,11 +135,13 @@ if ( is_null( $parent_order ) ) {
 	<div class="order-info">
 		<ul class="info-list">
 			<?php
-			$invoice_number = '1234';
-			$order_number   = $order->get_order_number();
-			$order_date     = $order->get_date_created()->format( 'F j, Y' );
-			$payment_method = $order->get_payment_method();
-			$payment_date   = 'May 1, 2024';
+			$invoice_number         = $order->get_meta( '_wcdn_invoice_number' );
+			$order_number           = $order->get_order_number();
+			$order_date             = $order->get_date_created()->format( 'F j, Y' );
+			$payment_method         = $order->get_payment_method();
+			$date_formate           = get_option( 'date_format' );
+			$wdn_order_payment_date = $order->get_date_paid();
+			$payment_date           = __( date( $date_formate, strtotime( $wdn_order_payment_date ) ), 'woocommerce' ); // phpcs:ignore
 			?>
 			<div class="invoice-number" v-show="receipt.invoice_number" :style="{ text: receipt.invoice_number_text, fontWeight: receipt.invoice_number_style, color: receipt.invoice_number_text_colour, fontSize: receipt.invoice_number_font_size + 'px' }">
 				<li>

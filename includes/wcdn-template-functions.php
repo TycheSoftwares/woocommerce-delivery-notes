@@ -463,6 +463,11 @@ function wcdn_get_order_info( $order, $type = '' ) {
 			'color'       => $data['payment_method']['payment_method_text_colour'],
 			'active'      => 'yes',
 		);
+	} else {
+		$fields['payment_method'] = array(
+			'label' => __( 'Payment Method', 'woocommerce-delivery-notes' ),
+			'value' => __( $wdn_order_payment_method_title, 'woocommerce' ), // phpcs:ignore
+		);
 	}
 
 	if ( $wdn_order_payment_date ) {
