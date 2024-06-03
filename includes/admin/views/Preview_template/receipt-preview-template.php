@@ -135,7 +135,10 @@ if ( is_null( $parent_order ) ) {
 	<div class="order-info">
 		<ul class="info-list">
 			<?php
-			$invoice_number         = $order->get_meta( '_wcdn_invoice_number' );
+			$invoice_number = $order->get_meta( '_wcdn_invoice_number' );
+			if ( empty( $invoice_number ) ) {
+				$invoice_number = get_option( 'wcdn_invoice_number_count' );
+			}
 			$order_number           = $order->get_order_number();
 			$order_date             = $order->get_date_created()->format( 'F j, Y' );
 			$payment_method         = $order->get_payment_method();
