@@ -15,8 +15,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="company-logo">
 			<?php
 			if ( wcdn_get_company_logo_id() ) :
-				?>
-				<?php wcdn_company_logo(); ?><?php endif; ?>
+				$template_save = get_option( 'wcdn_template_type' );
+				if ( 'default' === $template_save ) {
+					wcdn_company_logo();
+				} elseif ( 'simple' === $template_save ) {
+					wcdn_pdf_company_logo( $ttype = 'simple' );
+				}
+			endif;
+			?>
 		</div>
 
 		<div class="company-info">

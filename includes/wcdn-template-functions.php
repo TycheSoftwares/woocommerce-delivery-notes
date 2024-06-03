@@ -231,15 +231,13 @@ function wcdn_company_logo() {
 	global $wcdn;
 	$attachment_id = wcdn_get_company_logo_id();
 	$company       = get_option( 'wcdn_custom_company_name' );
-	$sizeh         = get_option( 'wcdn_general_settings' )['logo_size']['sizeh'];
-	$sizew         = get_option( 'wcdn_general_settings' )['logo_size']['sizew'];
 	if ( $attachment_id ) {
 		$attachment_src = wp_get_attachment_image_src( $attachment_id, 'full', false );
 		// resize the image to a 1/4 of the original size to have a printing point density of about 288ppi.
 		?>
 		<div class="logo">
-			<img src="<?php echo esc_url( $attachment_src[0] ); ?>" class="desktop" width="<?php echo esc_attr( $sizew ); ?>" height="<?php echo esc_attr( $sizeh ); ?>" alt="<?php echo esc_attr( $company ); ?>" />
-			<img src="<?php echo esc_url( $attachment_src[0] ); ?>" class="mobile" width="<?php echo esc_attr( $sizew ); ?>" height="<?php echo esc_attr( $sizeh ); ?>" alt="<?php echo esc_attr( $company ); ?>" />
+			<img src="<?php echo esc_url( $attachment_src[0] ); ?>"  class="desktop"  width="<?php echo esc_attr( round( $attachment_src[1] / 4 ) ); ?>" height="<?php echo esc_attr( round( $attachment_src[2] / 4 ) ); ?>" alt="<?php echo esc_attr( $company ); ?>" />
+			<img src="<?php echo esc_url( $attachment_src[0] ); ?>" class="mobile" width="<?php echo esc_attr( round( $attachment_src[1] / 4 ) ); ?>" height="<?php echo esc_attr( round( $attachment_src[2] / 4 ) ); ?>" alt="<?php echo esc_attr( $company ); ?>" />
 		</div>
 		<?php
 	}
@@ -262,9 +260,15 @@ function wcdn_pdf_company_logo( $ttype ) {
 		$typei          = pathinfo( $attachment_src[0], PATHINFO_EXTENSION );
 		$data           = file_get_contents( $attachment_src[0] );
 		$data_uri       = 'data:image/' . $typei . ';base64,' . base64_encode( $data );
-		?>
-		<img src="<?php echo $data_uri; // phpcs:ignore ?>" width="<?php echo esc_attr( $sizew ); ?>px" height="<?php echo esc_attr( $sizeh ); ?>px" alt="<?php echo esc_attr( $company ); ?>" /> 
-		<?php
+		if ( 'default' === $ttype ) {
+			?>
+			<img src="<?php echo esc_url( $attachment_src[0] ); ?>"  class="desktop"  width="<?php echo esc_attr( round( $attachment_src[1] / 4 ) ); ?>" height="<?php echo esc_attr( round( $attachment_src[2] / 4 ) ); ?>" alt="<?php echo esc_attr( $company ); ?>" />
+			<?php
+		} else {
+			?>
+			<img src="<?php echo $data_uri; // phpcs:ignore ?>" width="<?php echo esc_attr( $sizew ); ?>px" height="<?php echo esc_attr( $sizeh ); ?>px" alt="<?php echo esc_attr( $company ); ?>" />
+			<?php
+		}
 	}
 }
 
