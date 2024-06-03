@@ -174,7 +174,7 @@ $shop_logotitle = get_the_title( $shop_logoid );
 <div class="form-group row">
 	<label for="store_pdf" class="col-sm-2 col-form-label">Store PDF files for X days </label>
 	<div class="col-sm-6 icon-flex">
-		<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'To store PDF files for a specific duration, such as X days. Default value is 7 days.', 'woocommerce-delivery-notes' ); ?>"></i>
+		<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'To Store PDF files in the \wp-content\uploads\wcdn\ folder for a specific duration, like X days, with a default value of 7 days', 'woocommerce-delivery-notes' ); ?>"></i>
 		<?php
 		if ( isset( $data['store_pdf'] ) ) {
 			$store_pdf = $data['store_pdf'];

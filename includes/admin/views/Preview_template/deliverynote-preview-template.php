@@ -139,6 +139,9 @@ if ( is_null( $parent_order ) ) {
 			$order_number   = $order->get_order_number();
 			$order_date     = $order->get_date_created()->format( 'F j, Y' );
 			$payment_method = $order->get_payment_method();
+			if ( empty( $invoice_number ) ) {
+				$invoice_number = get_option( 'wcdn_invoice_number_count' );
+			}
 			?>
 			<div class="invoice-number" v-show="deliverynote.invoice_number" :style="{ text: deliverynote.invoice_number_text, fontWeight: deliverynote.invoice_number_style, color: deliverynote.invoice_number_text_colour, fontSize: deliverynote.invoice_number_font_size + 'px' }">
 				<li>
