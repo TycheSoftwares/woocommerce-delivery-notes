@@ -351,7 +351,7 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 				// Send Tracker Data.
 				add_action( 'wcdn_init_tracker_completed', array( $this, 'init_tracker_completed' ), 10, 2 );
 				add_filter( 'wcdn_ts_tracker_display_notice', array( $this, 'wcdn_ts_tracker_display_notice' ), 10, 1 );
-				add_action( 'wp_ajax_ts_reset_tracking_setting', array( &$this, 'wcdn_reset_tracker_setting' ) );
+				add_action( 'wp_ajax_ts_reset_tracking_setting', array( &$this, 'ts_reset_tracking_setting' ) );
 
 				// Send out the init action.
 				do_action( 'wcdn_init' );
