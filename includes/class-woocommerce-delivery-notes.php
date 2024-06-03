@@ -185,18 +185,6 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 			if ( true === is_admin() ) {
 				include_once 'wcdn-all-component.php';
 			}
-
-			require_once 'class-tyche-plugin-deactivation.php';
-			new Tyche_Plugin_Deactivation(
-				array(
-					'plugin_name'       => 'Print invoices & delivery notes for WooCommerce',
-					'plugin_base'       => 'Print-Invoice-Delivery-Notes-for-WooCommerce/woocommerce-delivery-notes.php',
-					'script_file'       => self::$plugin_url . 'assets/js/plugin-deactivation.js',
-					'plugin_short_name' => 'wcdn',
-					'version'           => self::$plugin_version,
-					'plugin_locale'     => 'woocommerce-delivery-notes',
-				)
-			);
 		}
 
 		/**
@@ -242,6 +230,25 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 				true
 			);
 			wp_enqueue_script( 'tyche' );
+
+			$nonce = wp_create_nonce( 'tracking_notice' );
+			wp_enqueue_script(
+				'wcdn_ts_dismiss_notice',
+				self::$plugin_url . 'assets/js/tyche-dismiss-tracking-notice.js',
+				array( 'jquery' ),
+				'4.5.6',
+				false
+			);
+
+			wp_localize_script(
+				'wcdn_ts_dismiss_notice',
+				'wcdn_ts_dismiss_notice',
+				array(
+					'ts_prefix_of_plugin' => 'wcdn',
+					'ts_admin_url'        => admin_url( 'admin-ajax.php' ),
+					'tracking_notice'     => $nonce,
+				)
+			);
 		}
 
 		/**
@@ -339,106 +346,19 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 				add_filter( 'plugin_action_links_' . self::$plugin_basefile, array( $this, 'add_settings_link' ) );
 				add_action( 'admin_init', array( $this, 'update' ) );
 				add_action( 'init', array( $this, 'include_template_functions' ) );
-
-				add_filter( 'ts_deativate_plugin_questions', array( &$this, 'wcdn_deactivate_add_questions' ), 10, 1 );
-				add_filter( 'ts_tracker_data', array( &$this, 'wcdn_ts_add_plugin_tracking_data' ), 10, 1 );
-				add_filter( 'ts_tracker_opt_out_data', array( &$this, 'wcdn_get_data_for_opt_out' ), 10, 1 );
+				// Include JS script for the notice.
+				add_filter( 'wcdn_ts_tracker_data', array( $this, 'wcdn_ts_add_plugin_tracking_data' ), 10, 1 );
+				// Send Tracker Data.
+				add_action( 'wcdn_init_tracker_completed', array( $this, 'init_tracker_completed' ), 10, 2 );
+				add_filter( 'wcdn_ts_tracker_display_notice', array( $this, 'wcdn_ts_tracker_display_notice' ), 10, 1 );
+				add_action( 'wp_ajax_ts_reset_tracking_setting', array( &$this, 'wcdn_reset_tracker_setting' ) );
 
 				// Send out the init action.
 				do_action( 'wcdn_init' );
 			}
 		}
 
-		/**
-		 * Plugin's data to be tracked when Allow option is choosed.
-		 *
-		 * @hook ts_tracker_data
-		 *
-		 * @param array $data Contains the data to be tracked.
-		 *
-		 * @return array Plugin's data to track.
-		 */
-		public static function wcdn_ts_add_plugin_tracking_data( $data ) {
 
-			$wcdn_tracker_nonce = isset( $_GET['wcdn_tracker_nonce'] ) ? sanitize_text_field( wp_unslash( $_GET['wcdn_tracker_nonce'] ) ) : '';
-
-			if ( isset( $_GET['wcdn_tracker_optin'] ) && isset( $_GET['wcdn_tracker_nonce'] ) && wp_verify_nonce( $wcdn_tracker_nonce, 'wcdn_tracker_optin' ) ) {
-
-				$plugin_data['ts_meta_data_table_name'] = 'ts_tracking_wcdn_meta_data';
-				$plugin_data['ts_plugin_name']          = 'WooCommerce Print Invoice & Delivery Note';
-
-				// Get all plugin options info.
-				$plugin_data['invoice_in_admin']    = get_option( 'wcdn_template_type_invoice' );
-				$plugin_data['delivery_in_admin']   = get_option( 'wcdn_template_type_delivery-note' );
-				$plugin_data['receipt_in_admin']    = get_option( 'wcdn_template_type_receipt' );
-				$plugin_data['print_in_myaccount']  = get_option( 'wcdn_print_button_on_my_account_page' );
-				$plugin_data['print_in_vieworder']  = get_option( 'wcdn_print_button_on_my_account_page' );
-				$plugin_data['print_in_email']      = get_option( 'wcdn_print_button_on_my_account_page' );
-				$plugin_data['wcdn_plugin_version'] = self::$plugin_version;
-				$plugin_data['wcdn_allow_tracking'] = get_option( 'wcdn_allow_tracking' );
-				$data['plugin_data']                = $plugin_data;
-			}
-			return $data;
-		}
-
-
-		/**
-		 * Tracking data to send when No, thanks. button is clicked.
-		 *
-		 * @hook ts_tracker_opt_out_data
-		 *
-		 * @param array $params Parameters to pass for tracking data.
-		 *
-		 * @return array Data to track when opted out.
-		 */
-		public static function wcdn_get_data_for_opt_out( $params ) {
-			$plugin_data['ts_meta_data_table_name'] = 'ts_tracking_wcdn_meta_data';
-			$plugin_data['ts_plugin_name']          = 'WooCommerce Print Invoice & Delivery Note';
-
-			// Store count info.
-			$params['plugin_data'] = $plugin_data;
-
-			return $params;
-		}
-
-		/**
-		 * It will add the question for the deactivate popup modal.
-		 *
-		 * @param array $dfw_deactivate_questions Array of all questions.
-		 *
-		 * @return array $dfw_deactivate_questions All questions.
-		 */
-		public static function wcdn_deactivate_add_questions( $dfw_deactivate_questions ) {
-
-			$dfw_deactivate_questions = array(
-				0 => array(
-					'id'                => 4,
-					'text'              => __( "I can't differentiate between Invoice, Delivery Notes & Receipt. The templates are the same. ", 'woocommerce-delivery-notes' ),
-					'input_type'        => '',
-					'input_placeholder' => '',
-				),
-				1 => array(
-					'id'                => 5,
-					'text'              => __( "The invoice sent through mail can't be downloaded as PDF directly.", 'woocommerce-delivery-notes' ),
-					'input_type'        => '',
-					'input_placeholder' => '',
-				),
-				2 => array(
-					'id'                => 6,
-					'text'              => __( 'The plugin is not compatible with another plugin.', 'woocommerce-delivery-notes' ),
-					'input_type'        => 'textfield',
-					'input_placeholder' => 'Which plugin?',
-				),
-				3 => array(
-					'id'                => 7,
-					'text'              => __( 'This plugin is not useful to me.', 'woocommerce-delivery-notes' ),
-					'input_type'        => '',
-					'input_placeholder' => '',
-				),
-
-			);
-			return $dfw_deactivate_questions;
-		}
 		/**
 		 * Install or update the default settings.
 		 */
@@ -608,6 +528,80 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 			} else {
 				return false;
 			}
+		}
+		/**
+		 * It will delete the tracking option from the database.
+		 */
+		public function ts_reset_tracking_setting() {
+			$nonce = $_POST['ts_tracker_nonce'];//phpcs:ignore
+			if ( ! wp_verify_nonce( $nonce, 'tracking_notice' ) ) {
+				return;
+			}
+			if ( isset( $_POST['plugin_short_name'] ) ) { //phpcs:ignore
+				$plugin_short_name = $_POST['plugin_short_name']; //phpcs:ignore
+			}
+			if ( get_option( $plugin_short_name . '_allow_tracking' ) ) {
+				delete_option( $plugin_short_name . '_allow_tracking' );
+				delete_option( 'ts_tracker_last_send' );
+			}
+			$url = admin_url( 'admin.php?page=wc-settings&tab=wcdn-settings&setting=wcdn_general' );
+
+			wp_send_json(
+				array(
+					'message'      => 'success',
+					'redirect_url' => $url,
+				)
+			);
+		}
+		/**
+		 * Add tracker completed.
+		 */
+		public function init_tracker_completed() {
+			header( 'Location: ' . admin_url( 'admin.php?page=wc-settings&tab=wcdn-settings&setting=wcdn_general' ) );
+			exit;
+		}
+
+		/**
+		 * Display admin notice on specific page.
+		 *
+		 * @param array $is_flag Is Flag defailt value true.
+		 */
+		public function wcdn_ts_tracker_display_notice( $is_flag ) {
+			global $current_section;
+			if ( isset( $_GET['page'] ) && 'wc-settings' === $_GET['page'] ) { // phpcs:ignore
+				$is_flag = true;
+			}
+			return $is_flag;
+		}
+
+		/**
+		 * Send the plugin data when the user has opted in
+		 *
+		 * @hook ts_tracker_data
+		 * @param array $data All data to send to server.
+		 *
+		 * @return array $plugin_data All data to send to server.
+		 */
+		public function wcdn_ts_add_plugin_tracking_data( $data ) {
+			$plugin_short_name = 'wcdn';
+			if ( ! isset( $_GET[ $plugin_short_name . '_tracker_nonce' ] ) ) {
+				return $data;
+			}
+
+				$plugin_data['ts_meta_data_table_name'] = 'ts_tracking_wcdn_meta_data';
+				$plugin_data['ts_plugin_name']          = 'Print invoices & delivery notes for WooCommerce';
+
+				// Get all plugin options info.
+				$plugin_data['invoice_in_admin']    = get_option( 'wcdn_template_type_invoice' );
+				$plugin_data['delivery_in_admin']   = get_option( 'wcdn_template_type_delivery-note' );
+				$plugin_data['receipt_in_admin']    = get_option( 'wcdn_template_type_receipt' );
+				$plugin_data['print_in_myaccount']  = get_option( 'wcdn_print_button_on_my_account_page' );
+				$plugin_data['print_in_vieworder']  = get_option( 'wcdn_print_button_on_my_account_page' );
+				$plugin_data['print_in_email']      = get_option( 'wcdn_print_button_on_my_account_page' );
+				$plugin_data['wcdn_plugin_version'] = self::$plugin_version;
+				$plugin_data['wcdn_allow_tracking'] = get_option( 'wcdn_allow_tracking' );
+				$data['plugin_data']                = $plugin_data;
+			return $data;
 		}
 
 	}

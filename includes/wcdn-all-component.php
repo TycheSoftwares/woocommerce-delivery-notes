@@ -22,13 +22,7 @@ if ( ! class_exists( 'WCDN_Component' ) ) {
 			$is_admin = is_admin();
 
 			if ( true === $is_admin ) {
-
-                
                 require_once( "component/woocommerce-check/ts-woo-active.php" );
-
-                require_once( "component/tracking-data/ts-tracking.php" );
-                require_once( "component/deactivate-survey-popup/class-ts-deactivation.php" );
-
                 require_once( "component/faq-support/ts-faq-support.php" );
                 
                 $wcdn_plugin_name          = self::ts_get_plugin_name();;
@@ -51,14 +45,30 @@ if ( ! class_exists( 'WCDN_Component' ) ) {
 
                 $wcdn_settings_page        = 'admin.php?page=wc-settings&tab=wcdn-settings';
 
+                require_once 'component/plugin-deactivation/class-tyche-plugin-deactivation.php';
+                new Tyche_Plugin_Deactivation(
+                    array(
+                        'plugin_name'       => 'Print Invoices & Delivery Notes for WooCommerce',
+                        'plugin_base'       => 'woocommerce-delivery-notes/woocommerce-delivery-notes.php',
+                        'script_file'       => $wcdn_plugin_url . '/assets/js/plugin-deactivation.js',
+                        'plugin_short_name' => 'wcdn',
+                        'version'           => $wcdn_get_previous_version,
+                        'plugin_locale'     => 'woocommerce-delivery-notes',
+                    )
+                );
+
+                require_once 'component/plugin-tracking/class-tyche-plugin-tracking.php';
+                new Tyche_Plugin_Tracking(
+                    array(
+                        'plugin_name'       => 'Print Invoices & Delivery Notes for WooCommerce',
+                        'plugin_locale'     => 'woocommerce-delivery-notes',
+                        'plugin_short_name' => 'wcdn',
+                        'version'           => $wcdn_get_previous_version,
+                        'blog_link'         => '',
+                    )
+                );
+
                 new WCDN_TS_Woo_Active ( $wcdn_plugin_name, $wcdn_file_name, $wcdn_locale );
-
-                new WCDN_TS_tracking ( $wcdn_plugin_prefix, $wcdn_plugin_name, $wcdn_blog_post_link, $wcdn_locale, $wcdn_plugin_url, $wcdn_settings_page );
-
-                new WCDN_TS_Tracker ( $wcdn_plugin_prefix, $wcdn_plugin_name );
-
-                $wcdn_deativate = new WCDN_TS_deactivate;
-                $wcdn_deativate->init ( $wcdn_file_name, $wcdn_plugin_name );
 
                 $ts_pro_faq = self::wcdn_get_faq ();
                 new WCDN_TS_Faq_Support( $wcdn_plugin_name, $wcdn_plugin_prefix, $wcdn_plugins_page, $wcdn_locale, $wcdn_plugin_folder_name, $wcdn_plugin_slug, $ts_pro_faq );
