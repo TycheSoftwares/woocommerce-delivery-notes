@@ -228,8 +228,8 @@ jQuery(document).ready(function($) {
 	
 			if (document_type === 'wcdn_receipt' || document_type === 'wcdn_deliverynote') {
 				for (var i = 1; i < checkboxes.length; i++) {
-					if ((document_type === 'wcdn_receipt' && (i === 5 || i === 18)) ||
-						(document_type === 'wcdn_deliverynote' && i === 5)) {
+					if ((document_type === 'wcdn_receipt' && (i === 3 || i === 5 || i === 9 || i === 18)) ||
+						(document_type === 'wcdn_deliverynote' && (i === 3 || i === 5))) {
 						checkboxes[i].checked = false;
 					} else {
 						checkboxes[i].checked = true;

@@ -133,7 +133,6 @@ h2 {
 .order-notes,
 .order-thanks,
 .order-colophon {
-	margin-top: 3em;
 	margin-bottom: 3em;
 }
 
@@ -273,8 +272,19 @@ h2 {
 	border-bottom: 0.24em solid black;
 }
 
+/* Order Notes */
+.order-notes {
+	margin-top: 3em;
+	margin-bottom: 6em;
+}
+
 .order-notes h4 {
 	margin-bottom: 0;
+}
+
+/* Order Thanks */
+.order-thanks {
+	margin-left: 50%;
 }
 
 /* Order Colophon */
@@ -301,5 +311,19 @@ h2 {
 	.content {
 		/* Remove padding to not generate empty follow up pages */
 		padding-bottom: 0;
+	}
+}
+
+/* hide mobile version by default */
+.logo .mobile {
+	display: none;
+}
+/* when screen is less than 600px wide show mobile version and hide desktop */
+@media ( max-width: 600px ) {
+	.logo .mobile {
+		display: block;
+	}
+	.logo .desktop {
+		display: none;
 	}
 }

@@ -237,21 +237,6 @@ function wcdn_company_logo() {
 		$attachment_src = wp_get_attachment_image_src( $attachment_id, 'full', false );
 		// resize the image to a 1/4 of the original size to have a printing point density of about 288ppi.
 		?>
-		<style>
-		/* hide mobile version by default */
-		.logo .mobile {
-			display: none;
-		}
-		/* when screen is less than 600px wide show mobile version and hide desktop */
-		@media ( max-width: 600px ) {
-			.logo .mobile {
-				display: block;
-			}
-			.logo .desktop {
-				display: none;
-			}
-		}
-		</style>
 		<div class="logo">
 			<img src="<?php echo esc_url( $attachment_src[0] ); ?>" class="desktop" width="<?php echo esc_attr( $sizew ); ?>" height="<?php echo esc_attr( $sizeh ); ?>" alt="<?php echo esc_attr( $company ); ?>" />
 			<img src="<?php echo esc_url( $attachment_src[0] ); ?>" class="mobile" width="<?php echo esc_attr( $sizew ); ?>" height="<?php echo esc_attr( $sizeh ); ?>" alt="<?php echo esc_attr( $company ); ?>" />
@@ -462,6 +447,11 @@ function wcdn_get_order_info( $order, $type = '' ) {
 			'font-weight' => $data['payment_method']['payment_method_style'],
 			'color'       => $data['payment_method']['payment_method_text_colour'],
 			'active'      => 'yes',
+		);
+	} else {
+		$fields['payment_method'] = array(
+			'label' => __( 'Payment Method', 'woocommerce-delivery-notes' ),
+			'value' => __( $wdn_order_payment_method_title, 'woocommerce' ), // phpcs:ignore
 		);
 	}
 
