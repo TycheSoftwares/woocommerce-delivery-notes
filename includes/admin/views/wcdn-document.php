@@ -15,7 +15,7 @@ if ( isset( $_GET['wdcn_setting'] ) ) {
 	</select>
 	<div style="margin-top:35px">
 		<div class="form-group row">
-			<label for="enable_invoice" class="col-sm-2 col-form-label"><?php esc_html_e( 'Enable Invoice', 'woocommerce-delivery-notes' ); ?></label>
+			<label for="enable_invoice" class="custom-label"><?php esc_html_e( 'Enable Invoice', 'woocommerce-delivery-notes' ); ?></label>
 				<div class="col-sm-6 icon-flex">
 					<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'Enable button that will display on admin side order page.', 'woocommerce-delivery-notes' ); ?>"></i>
 					<label class="switch">
@@ -25,7 +25,7 @@ if ( isset( $_GET['wdcn_setting'] ) ) {
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="enable_receipt" class="col-sm-2 col-form-label"><?php esc_html_e( 'Enable Receipt', 'woocommerce-delivery-notes' ); ?></label>
+				<label for="enable_receipt" class="custom-label"><?php esc_html_e( 'Enable Receipt', 'woocommerce-delivery-notes' ); ?></label>
 				<div class="col-sm-6 icon-flex">
 					<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'Enable button that will display on admin side order page.', 'woocommerce-delivery-notes' ); ?>"></i>
 					<label class="switch">
