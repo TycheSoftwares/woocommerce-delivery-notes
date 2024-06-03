@@ -141,7 +141,12 @@ if ( is_null( $parent_order ) ) {
 			$payment_method         = $order->get_payment_method();
 			$date_formate           = get_option( 'date_format' );
 			$wdn_order_payment_date = $order->get_date_paid();
-			$payment_date           = __( date( $date_formate, strtotime( $wdn_order_payment_date ) ), 'woocommerce' ); // phpcs:ignore
+			if ( $wdn_order_payment_date ) {
+				$payment_date_formatted = $wdn_order_payment_date->date( $date_formate );
+				$payment_date           = __( $payment_date_formatted, 'woocommerce' ); // phpcs:ignore
+			} else {
+				$payment_date = $order->get_date_created()->format( 'F j, Y' );
+			}
 			?>
 			<div class="invoice-number" v-show="receipt.invoice_number" :style="{ text: receipt.invoice_number_text, fontWeight: receipt.invoice_number_style, color: receipt.invoice_number_text_colour, fontSize: receipt.invoice_number_font_size + 'px' }">
 				<li>
