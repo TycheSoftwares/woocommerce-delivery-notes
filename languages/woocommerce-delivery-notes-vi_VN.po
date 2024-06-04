@@ -8,10 +8,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WooCommerce Print Invoice & Delivery Note\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/woocommerce-"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce-"
 "delivery-notes\n"
-"POT-Creation-Date: 2018-10-22 19:03+0530\n"
-"PO-Revision-Date: 2018-10-22 19:03+0530\n"
+"POT-Creation-Date: 2024-06-04T11:01:47+00:00\n"
+"PO-Revision-Date: 2024-06-04 17:14+0530\n"
 "Last-Translator: Nguyễn Đình Quân <dinhquan@narga.net>\n"
 "Language-Team: NARGA <dinhquan@narga.net>\n"
 "Language: vi_VN\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 3.4.4\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
 "_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;"
@@ -28,209 +28,281 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-# @ woocommerce-delivery-notes
-#: includes/class-wcdn-print.php:39 includes/class-wcdn-settings.php:237
-msgid "Invoice"
-msgstr "Hóa đơn"
-
-#: includes/class-wcdn-print.php:40
-msgid "Invoices"
-msgstr "Các hóa đơn"
-
-# @ woocommerce-delivery-notes
-#: includes/class-wcdn-print.php:41
-msgid "Print Invoice"
-msgstr "In hóa đơn"
-
-#: includes/class-wcdn-print.php:42
-msgid "Print Invoices"
-msgstr "In các hóa đơn"
-
-# @ woocommerce-delivery-notes
-#: includes/class-wcdn-print.php:43
-msgid "Invoice created."
-msgstr "Hóa đơn đã được tạo"
-
-#: includes/class-wcdn-print.php:44
-msgid "Invoices created."
-msgstr "Các hóa đơn đã được tạo"
-
-#: includes/class-wcdn-print.php:45
-msgid "Show \"Print Invoice\" button"
-msgstr ""
-
-# @ woocommerce-delivery-notes
-#: includes/class-wcdn-print.php:51
-msgid "Delivery Note"
-msgstr "Ghi chú giao nhận hàng"
-
-#: includes/class-wcdn-print.php:52
-msgid "Delivery Notes"
-msgstr "Các ghi chú giao nhận hàng"
-
-# @ woocommerce-delivery-notes
-#: includes/class-wcdn-print.php:53
-msgid "Print Delivery Note"
-msgstr "In ghi chú giao nhận hàng"
-
-#: includes/class-wcdn-print.php:54
-msgid "Print Delivery Notes"
+#. Plugin Name of the plugin
+#, fuzzy
+#| msgid "Print Delivery Notes"
+msgid "Print Invoice & Delivery Notes for WooCommerce"
 msgstr "In các ghi chú giao nhận hàng"
 
-#: includes/class-wcdn-print.php:55
-msgid "Delivery Note created."
-msgstr "Ghi chú giao nhận hàng đã được tạo"
-
-#: includes/class-wcdn-print.php:56
-msgid "Delivery Notes created."
-msgstr "Các ghi chú giao nhận hàng đã được tạo"
-
-#: includes/class-wcdn-print.php:57
-msgid "Show \"Print Delivery Note\" button"
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "https://www.tychesoftwares.com/"
 msgstr ""
 
-#: includes/class-wcdn-print.php:63
-msgid "Receipt"
-msgstr "Biên lai"
+#. Description of the plugin
+msgid "Print Invoices & Delivery Notes for WooCommerce Orders."
+msgstr ""
 
-#: includes/class-wcdn-print.php:64
-msgid "Receipts"
-msgstr "Các biên lai"
-
-#: includes/class-wcdn-print.php:65
-msgid "Print Receipt"
-msgstr "In Biên lai"
-
-#: includes/class-wcdn-print.php:66
-msgid "Print Receipts"
-msgstr "In Các biên lai"
-
-#: includes/class-wcdn-print.php:67
-msgid "Receipt created."
-msgstr "Biên lai đã được tạo"
-
-#: includes/class-wcdn-print.php:68
-msgid "Receipts created."
-msgstr "Các biên lai đã được tạo"
-
-#: includes/class-wcdn-print.php:69
-msgid "Show \"Print Receipt\" button"
+#. Author of the plugin
+msgid "Tyche Softwares"
 msgstr ""
 
 # @ woocommerce-delivery-notes
-#: includes/class-wcdn-print.php:78
-msgid "Order"
-msgstr "Đơn hàng"
-
-#: includes/class-wcdn-print.php:79
-msgid "Orders"
-msgstr "Các đơn hàng"
-
-# @ woocommerce-delivery-notes
-#: includes/class-wcdn-print.php:80
-msgid "Print Order"
-msgstr "In đơn hàng"
-
-#: includes/class-wcdn-print.php:81
-msgid "Print Orders"
-msgstr "In Các đơn hàng"
-
-#: includes/class-wcdn-print.php:93
-msgid "Default"
-msgstr ""
-
-#: includes/class-wcdn-settings.php:67
-msgid ""
-"Do you really want to reset the counter to zero? This process can't be "
-"undone."
-msgstr "Bạn có muốn đặt lại bộ đếm về không? Thao tác này không thể phục hồi."
+#: includes/admin/views/Preview_template/default-preview-template.php:61
+#: includes/admin/wcdn-admin-function.php:31
+#: templates/pdf/default/deliverynote/template.php:41
+#: templates/pdf/default/invoice/template.php:41
+#: templates/pdf/default/receipt/template.php:41
+#: templates/print-order/print-content.php:41
+msgid "Billing Address"
+msgstr "Địa chỉ thanh toán"
 
 # @ woocommerce-delivery-notes
-#: includes/class-wcdn-settings.php:75 includes/class-wcdn-theme.php:57
-#: includes/class-wcdn-theme.php:94 includes/wcdn-template-functions.php:130
-msgid "Print"
-msgstr "In"
+#: includes/admin/views/Preview_template/default-preview-template.php:66
+#: includes/admin/views/Preview_template/default-preview-template.php:81
+#: includes/admin/views/Preview_template/deliverynote-preview-template.php:75
+#: includes/admin/views/Preview_template/deliverynote-preview-template.php:107
+#: includes/admin/views/Preview_template/invoice-preview-template.php:71
+#: includes/admin/views/Preview_template/invoice-preview-template.php:104
+#: includes/admin/views/Preview_template/receipt-preview-template.php:75
+#: includes/admin/views/Preview_template/receipt-preview-template.php:108
+#: templates/pdf/default/deliverynote/template.php:45
+#: templates/pdf/default/deliverynote/template.php:59
+#: templates/pdf/default/invoice/template.php:45
+#: templates/pdf/default/invoice/template.php:59
+#: templates/pdf/default/receipt/template.php:45
+#: templates/pdf/default/receipt/template.php:59
+#: templates/pdf/simple/deliverynote/template.php:83
+#: templates/pdf/simple/deliverynote/template.php:122
+#: templates/pdf/simple/invoice/template.php:83
+#: templates/pdf/simple/invoice/template.php:122
+#: templates/pdf/simple/receipt/template.php:85
+#: templates/pdf/simple/receipt/template.php:124
+#: templates/print-order/print-content.php:46
+#: templates/print-order/print-content.php:61
+#: templates/print-order/simple/deliverynote/print-content.php:76
+#: templates/print-order/simple/deliverynote/print-content.php:115
+#: templates/print-order/simple/invoice/print-content.php:77
+#: templates/print-order/simple/invoice/print-content.php:116
+#: templates/print-order/simple/receipt/print-content.php:79
+#: templates/print-order/simple/receipt/print-content.php:118
+msgid "N/A"
+msgstr "Không"
 
-#: includes/class-wcdn-settings.php:106
-msgid "Template"
+# @ woocommerce-delivery-notes
+#: includes/admin/views/Preview_template/default-preview-template.php:76
+#: includes/admin/wcdn-admin-function.php:32
+#: templates/pdf/default/deliverynote/template.php:55
+#: templates/pdf/default/invoice/template.php:55
+#: templates/pdf/default/receipt/template.php:55
+#: templates/print-order/print-content.php:56
+msgid "Shipping Address"
+msgstr "Địa chỉ nhận hàng"
+
+# @ woocommerce-delivery-notes
+#: includes/admin/views/Preview_template/default-preview-template.php:140
+#: includes/admin/views/Preview_template/deliverynote-preview-template.php:180
+#: includes/admin/views/Preview_template/invoice-preview-template.php:177
+#: includes/admin/views/Preview_template/receipt-preview-template.php:197
+#: templates/pdf/default/deliverynote/template.php:93
+#: templates/pdf/default/invoice/template.php:93
+#: templates/pdf/default/receipt/template.php:93
+#: templates/pdf/simple/deliverynote/template.php:184
+#: templates/pdf/simple/invoice/template.php:181
+#: templates/pdf/simple/receipt/template.php:196
+#: templates/print-order/print-content.php:97
+#: templates/print-order/simple/deliverynote/print-content.php:177
+#: templates/print-order/simple/invoice/print-content.php:175
+#: templates/print-order/simple/receipt/print-content.php:190
+msgid "Product"
+msgstr "Sản phẩm"
+
+#: includes/admin/views/Preview_template/default-preview-template.php:141
+#: includes/admin/views/Preview_template/deliverynote-preview-template.php:181
+#: includes/admin/views/Preview_template/invoice-preview-template.php:178
+#: includes/admin/views/Preview_template/receipt-preview-template.php:198
+#: templates/pdf/default/deliverynote/template.php:94
+#: templates/pdf/default/invoice/template.php:94
+#: templates/pdf/default/receipt/template.php:94
+#: templates/pdf/simple/deliverynote/template.php:187
+#: templates/pdf/simple/invoice/template.php:182
+#: templates/pdf/simple/receipt/template.php:197
+#: templates/print-order/print-content.php:98
+#: templates/print-order/simple/deliverynote/print-content.php:180
+#: templates/print-order/simple/invoice/print-content.php:176
+#: templates/print-order/simple/receipt/print-content.php:191
+msgid "Price"
+msgstr "Giá"
+
+#: includes/admin/views/Preview_template/default-preview-template.php:142
+#: includes/admin/views/Preview_template/deliverynote-preview-template.php:182
+#: includes/admin/views/Preview_template/invoice-preview-template.php:179
+#: includes/admin/views/Preview_template/receipt-preview-template.php:199
+#: templates/pdf/default/deliverynote/template.php:95
+#: templates/pdf/default/invoice/template.php:95
+#: templates/pdf/default/receipt/template.php:95
+#: templates/pdf/simple/deliverynote/template.php:189
+#: templates/pdf/simple/invoice/template.php:183
+#: templates/pdf/simple/receipt/template.php:198
+#: templates/print-order/print-content.php:99
+#: templates/print-order/simple/deliverynote/print-content.php:182
+#: templates/print-order/simple/invoice/print-content.php:177
+#: templates/print-order/simple/receipt/print-content.php:192
+msgid "Quantity"
+msgstr "Số lượng"
+
+# @ woocommerce-delivery-notes
+#: includes/admin/views/Preview_template/default-preview-template.php:143
+#: includes/admin/views/Preview_template/deliverynote-preview-template.php:183
+#: includes/admin/views/Preview_template/invoice-preview-template.php:180
+#: includes/admin/views/Preview_template/receipt-preview-template.php:200
+#: templates/pdf/default/deliverynote/template.php:96
+#: templates/pdf/default/invoice/template.php:96
+#: templates/pdf/default/receipt/template.php:96
+#: templates/pdf/simple/deliverynote/template.php:192
+#: templates/pdf/simple/invoice/template.php:184
+#: templates/pdf/simple/receipt/template.php:199
+#: templates/print-order/print-content.php:100
+#: templates/print-order/simple/deliverynote/print-content.php:185
+#: templates/print-order/simple/invoice/print-content.php:178
+#: templates/print-order/simple/receipt/print-content.php:193
+msgid "Total"
+msgstr "Tổng cộng"
+
+# @ woocommerce-delivery-notes
+#: includes/admin/views/Preview_template/default-preview-template.php:257
+#: includes/wcdn-template-functions.php:948
+#: templates/print-order/print-content.php:214
+msgid "Download:"
+msgstr "Tải xuống"
+
+# @ woocommerce-delivery-notes
+#. translators: files count.
+#: includes/admin/views/Preview_template/default-preview-template.php:261
+#: includes/wcdn-template-functions.php:952
+#: templates/print-order/print-content.php:218
+msgid "%s Files"
+msgstr "%s Tập tin"
+
+# @ woocommerce-delivery-notes
+#: includes/admin/views/Preview_template/default-preview-template.php:323
+#: includes/admin/wcdn-admin-function.php:35
+#: templates/pdf/default/deliverynote/template.php:162
+#: templates/pdf/default/invoice/template.php:162
+#: templates/pdf/default/receipt/template.php:162
+#: templates/print-order/print-content.php:280
+msgid "Customer Note"
+msgstr "Ghi chú"
+
+#: includes/admin/views/wcdn-document.php:18
+#, fuzzy
+#| msgid "Enable Invoices"
+msgid "Enable Invoice"
+msgstr "Sử dụng các hóa đơn"
+
+#: includes/admin/views/wcdn-document.php:20
+#: includes/admin/views/wcdn-document.php:30
+#: includes/admin/views/wcdn-document.php:40
+msgid "Enable button that will display on admin side order page."
 msgstr ""
 
-#: includes/class-wcdn-settings.php:113
-msgid "Style"
+#: includes/admin/views/wcdn-document.php:28
+#, fuzzy
+#| msgid "Enable Receipts"
+msgid "Enable Receipt"
+msgstr "Kích hoạt Các biên lai"
+
+#: includes/admin/views/wcdn-document.php:38
+msgid "Enable Delivery Notes"
+msgstr "Kích hoạt các ghi chú giao nhận hàng"
+
+#: includes/admin/views/wcdn-general.php:15
+msgid "Shop Details"
 msgstr ""
 
-#: includes/class-wcdn-settings.php:114
-msgid ""
-"The default print style. Read the <a href=\"%1$s\">FAQ</a> to learn how to "
-"customize it."
-msgstr ""
+# @ woocommerce-delivery-notes
+#: includes/admin/views/wcdn-general.php:19
+#, fuzzy
+#| msgid "Set Logo"
+msgid "Logo"
+msgstr "Đặt làm biểu tượng"
 
-#: includes/class-wcdn-settings.php:124
-msgid "Shop Logo"
-msgstr ""
-
-#: includes/class-wcdn-settings.php:130
+#: includes/admin/views/wcdn-general.php:21
 msgid ""
 "A shop logo representing your business. When the image is printed, its pixel "
 "density will automatically be eight times higher than the original. This "
 "means, 1 printed inch will correspond to about 288 pixels on the screen."
 msgstr ""
 
-#: includes/class-wcdn-settings.php:134
-msgid "Shop Name"
+#: includes/admin/views/wcdn-general.php:67
+msgid "Logo Size"
 msgstr ""
 
-#: includes/class-wcdn-settings.php:140
+#: includes/admin/views/wcdn-general.php:69
+msgid " Shop Logo height x width value. Default value is 125 x 125."
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:88
+msgid "Name"
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:90
 msgid ""
 "The shop name. Leave blank to use the default Website or Blog title defined "
 "in WordPress settings. The name will be ignored when a Logo is set."
 msgstr ""
 
-#: includes/class-wcdn-settings.php:144
-msgid "Shop Address"
-msgstr ""
+# @ woocommerce-delivery-notes
+#: includes/admin/views/wcdn-general.php:95
+#, fuzzy
+#| msgid "Billing Address"
+msgid "Address"
+msgstr "Địa chỉ thanh toán"
 
-#: includes/class-wcdn-settings.php:145
+#: includes/admin/views/wcdn-general.php:97
 msgid "The postal address of the shop or even e-mail or telephone."
 msgstr ""
 
-#: includes/class-wcdn-settings.php:154
+#: includes/admin/views/wcdn-general.php:102
+#: includes/admin/wcdn-admin-function.php:36
 msgid "Complimentary Close"
 msgstr "Nội dung Hàng gửi tặng"
 
-#: includes/class-wcdn-settings.php:155
+#: includes/admin/views/wcdn-general.php:104
 msgid "Add a personal close, notes or season greetings."
 msgstr ""
 
-#: includes/class-wcdn-settings.php:164
+#: includes/admin/views/wcdn-general.php:109
+#: includes/admin/wcdn-admin-function.php:37
 msgid "Policies"
 msgstr ""
 
-#: includes/class-wcdn-settings.php:165
+#: includes/admin/views/wcdn-general.php:111
 msgid "Add the shop policies, conditions, etc."
 msgstr ""
 
 # @ woocommerce-delivery-notes
-#: includes/class-wcdn-settings.php:174
+#: includes/admin/views/wcdn-general.php:116
+#: includes/admin/wcdn-admin-function.php:38
 msgid "Footer"
 msgstr "Chân trang"
 
-#: includes/class-wcdn-settings.php:175
+#: includes/admin/views/wcdn-general.php:118
 msgid ""
 "Add a footer imprint, instructions, copyright notes, e-mail, telephone, etc."
 msgstr ""
 
-#: includes/class-wcdn-settings.php:189
+#: includes/admin/views/wcdn-general.php:124
 msgid "Pages & Buttons"
 msgstr ""
 
 # @ woocommerce-delivery-notes
-#: includes/class-wcdn-settings.php:196
+#: includes/admin/views/wcdn-general.php:128
 msgid "Print Page Endpoint"
 msgstr "In đánh dấu kết thúc trang"
 
 # @ woocommerce-delivery-notes
-#: includes/class-wcdn-settings.php:202
+#: includes/admin/views/wcdn-general.php:130
 msgid ""
 "The endpoint is appended to the accounts page URL to print the order. It "
 "should be unique."
@@ -239,536 +311,468 @@ msgstr ""
 "đặc biệt."
 
 # @ woocommerce-delivery-notes
-#: includes/class-wcdn-settings.php:206
-#: includes/wcdn-template-functions.php:275
+#: includes/admin/views/wcdn-general.php:135
+#: includes/wcdn-template-functions.php:485
 msgid "Email"
 msgstr "Email"
 
-#: includes/class-wcdn-settings.php:207
-msgid "Show print link in customer emails"
-msgstr "Hiện liên kết in được trong email"
-
-#: includes/class-wcdn-settings.php:211
+#: includes/admin/views/wcdn-general.php:137
+#, fuzzy
+#| msgid ""
+#| "This includes the emails for a new, processing and completed order. On "
+#| "top of that the customer invoice email also includes the link."
 msgid ""
 "This includes the emails for a new, processing and completed order. On top "
-"of that the customer invoice email also includes the link."
+"of that the customer and admin invoice emails will also include the link."
 msgstr ""
 "Nó bao gồm trong các email trạng thái đơn hàng: mới, đang xử lí và đã hoàn "
 "thành. Được đặt trên đầu của email và cũng bao gồm các liên kết."
 
-#: includes/class-wcdn-settings.php:215
+#: includes/admin/views/wcdn-general.php:142
+msgid "Show print link in customer emails"
+msgstr "Hiện liên kết in được trong email"
+
+#: includes/admin/views/wcdn-general.php:151
+#, fuzzy
+#| msgid "Show print link in customer emails"
+msgid "Show print link in admin emails"
+msgstr "Hiện liên kết in được trong email"
+
+#: includes/admin/views/wcdn-general.php:155
 msgid "My Account"
 msgstr "Tài khoản của tôi"
 
 # @ woocommerce-delivery-notes
-#: includes/class-wcdn-settings.php:216
-msgid "Show print button on the \"View Order\" page"
+#: includes/admin/views/wcdn-general.php:157
+#, fuzzy
+#| msgid "Show print buttons on the \"My Account\" page"
+msgid "This includes print button on View Order page and My Account page."
+msgstr "Hiện nút in được trong trang \"Tài khoản\""
+
+# @ woocommerce-delivery-notes
+#: includes/admin/views/wcdn-general.php:162
+#, fuzzy
+#| msgid "Show print button on the \"View Order\" page"
+msgid "Show print button on View Order page"
 msgstr "Hiện nút in được trong trang \"Xem đơn hàng\""
 
 # @ woocommerce-delivery-notes
-#: includes/class-wcdn-settings.php:224
-msgid "Show print buttons on the \"My Account\" page"
+#: includes/admin/views/wcdn-general.php:171
+#, fuzzy
+#| msgid "Show print buttons on the \"My Account\" page"
+msgid "Show print button on My Account page"
 msgstr "Hiện nút in được trong trang \"Tài khoản\""
 
-#: includes/class-wcdn-settings.php:244
-msgid "Numbering"
-msgstr ""
-
-#: includes/class-wcdn-settings.php:245
-msgid "Create invoice numbers"
-msgstr "Tạo số hóa đơn"
-
-#: includes/class-wcdn-settings.php:253
-msgid "Next Number"
-msgstr ""
-
-#: includes/class-wcdn-settings.php:260
-msgid "The next invoice number."
-msgstr ""
-
-#: includes/class-wcdn-settings.php:264
-msgid "Number Prefix"
-msgstr ""
-
-#: includes/class-wcdn-settings.php:271
-msgid "This text will be prepended to the invoice number."
-msgstr "Nội dung sẽ được thêm đằng trước vào số hóa đơn"
-
-#: includes/class-wcdn-settings.php:275
-msgid "Number Suffix"
-msgstr ""
-
-#: includes/class-wcdn-settings.php:282
-msgid "This text will be appended to the invoice number."
-msgstr "Nội dung sẽ được thêm đằng sau vào số hóa đơn"
-
-#: includes/class-wcdn-settings.php:327
-msgid "Admin"
-msgstr ""
-
-#: includes/class-wcdn-settings.php:330
+#: includes/admin/views/wcdn-general.php:177
 msgid ""
-"The print buttons are available on the order listing and on the order detail "
-"screen."
+"To Store PDF files in the \\wp-content\\uploads\\wcdn\\ folder for a "
+"specific duration, like X days, with a default value of 7 days"
 msgstr ""
 
-#: includes/class-wcdn-settings.php:372
+#: includes/admin/views/wcdn-general.php:190
+msgid "Template Type"
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:196
 msgid ""
-"This section lets you customise the content. You can preview the <a href="
-"\"%1$s\" target=\"%4$s\" class=\"%5$s\">invoice</a>, <a href=\"%2$s\" target="
-"\"%4$s\" class=\"%5$s\">delivery note</a> or <a href=\"%3$s\" target=\"%4$s"
-"\" class=\"%5$s\">receipt</a> template."
+"You have the option to customize the Simple template to your liking, or you "
+"can stick with the default display.\t"
 msgstr ""
 
-#: includes/class-wcdn-settings.php:435
-msgid "Select"
+#: includes/admin/views/wcdn-general.php:206
+msgid "Text Direction"
 msgstr ""
 
-#: includes/class-wcdn-settings.php:439
-msgid "Remove"
+#: includes/admin/views/wcdn-general.php:208
+msgid ""
+"Show text in right to left direction in Invoice, Print Receipt & Delivery "
+"note if you are using languages such as Hebrew, Arabic, etc."
 msgstr ""
 
-#: includes/class-wcdn-theme.php:112
-msgid "Print your order"
-msgstr "In đơn hàng của bạn"
-
-#: includes/class-wcdn-theme.php:119
-msgid "Print:"
-msgstr "In:"
-
-#: includes/class-wcdn-theme.php:119
-msgid "Open print view in browser"
-msgstr "Mở bản in được trong trình duyệt"
-
-# @ woocommerce-delivery-notes
-#: includes/class-wcdn-writepanel.php:218
-msgid "Print now"
-msgstr "In"
-
-# @ woocommerce-delivery-notes
-#: includes/class-wcdn-writepanel.php:232
-msgid "Order Printing"
-msgstr "In đơn hàng"
-
-#: includes/class-wcdn-writepanel.php:259
-msgid "Invoice number: "
-msgstr "Hóa đơn số:"
-
-#: includes/class-wcdn-writepanel.php:260
-msgid "Invoice date: "
-msgstr "Ngày xuất hóa đơn:"
-
-#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:75
-msgid "If you have a moment, please let us know why you are deactivating"
+#: includes/admin/views/wcdn-general.php:213
+msgid "Print Text from Right to left"
 msgstr ""
 
-#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:76
-msgid "Submit & Deactivate"
-msgstr ""
-
-#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:77
-msgid "Deactivate"
-msgstr ""
-
-#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:78
-msgid "Cancel"
-msgstr ""
-
-#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:79
-msgid "Yes - Deactivate"
-msgstr ""
-
-#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:83
-msgid "I found a better plugin"
-msgstr ""
-
-#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:84
-msgid "What's the plugin's name?"
-msgstr ""
-
-#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:85
-msgid "I only needed the plugin for a short period"
-msgstr ""
-
-#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:86
-msgid "The plugin is not working"
-msgstr ""
-
-#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:87
-msgid "Kindly share what didn't work so we can fix it for future users..."
-msgstr ""
-
-#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:88
-msgid "The plugin is great, but I need specific feature that you don't support"
-msgstr ""
-
-#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:89
-msgid "What feature?"
-msgstr ""
-
-#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:90
-msgid "I don't like to share my information with you"
-msgstr ""
-
-#: includes/component/deactivate-survey-popup/class-ts-deactivation.php:91
-msgctxt ""
-"the text of the 'other' reason for deactivating the plugin that is shown in "
-"the modal box."
-msgid "Other"
-msgstr ""
-
-#: includes/component/faq-support/ts-faq-support.php:127
-msgid "Frequently Asked Questions for %s"
-msgstr ""
-
-#: includes/component/faq-support/ts-faq-support.php:176
-msgid "FAQ & Support"
-msgstr ""
-
-#: includes/component/tracking-data/ts-tracking.php:120
-#: includes/component/tracking-data/ts-tracking.php:180
+#: includes/admin/views/wcdn-general.php:217
 msgid "Reset usage tracking"
 msgstr ""
 
-#: includes/component/tracking-data/ts-tracking.php:122
+#: includes/admin/views/wcdn-general.php:219
 msgid ""
 "This will reset your usage tracking settings, causing it to show the opt-in "
 "banner again and not sending any data"
 msgstr ""
 
-#: includes/component/tracking-data/ts-tracking.php:225
-msgid "Once in a Week"
+#: includes/admin/views/wcdn-header.php:12
+msgid "General"
 msgstr ""
 
-#: includes/component/tracking-data/ts-tracking.php:311
-msgid "Allow"
+#: includes/admin/views/wcdn-header.php:13
+msgid "Templates"
 msgstr ""
 
-#: includes/component/tracking-data/ts-tracking.php:312
-msgid "No thanks"
+#: includes/admin/views/wcdn-header.php:14
+msgid "Help & Guide"
 msgstr ""
 
-#: includes/component/welcome-page/templates/social-media-elements.php:10
-#: includes/wcdn-welcome.php:231
-msgid "Follow %s"
+#: includes/admin/views/wcdn-helpguide.php:11
+msgid "Filters"
 msgstr ""
 
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:19
-#: includes/wcdn-welcome.php:99
-msgid ""
-"Thank you for activating or updating to the latest version of WooCommerce "
-"Print Invoice & Delivery Note! If you're a first time user, welcome! You're "
-"well on your way to explore the print functionality for your WooCommerce "
-"orders."
+#: includes/admin/views/wcdn-helpguide.php:14
+msgid "FAQ"
 msgstr ""
 
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:29
-#: includes/wcdn-welcome.php:109
-msgid "Get Started with WooCommerce Print Invoice & Delivery Note"
+#: includes/admin/wcdn-admin-function.php:20
+msgid "Numbering"
 msgstr ""
 
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:33
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:62
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:68
-#: includes/wcdn-welcome.php:113 includes/wcdn-welcome.php:142
-#: includes/wcdn-welcome.php:148
-msgid "WooCommerce Print Invoice & Delivery Note"
+#: includes/admin/wcdn-admin-function.php:21
+msgid "Email Attach To"
 msgstr ""
 
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:37
-#: includes/wcdn-welcome.php:117
-msgid "Add settings"
-msgstr ""
-
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:39
-#: includes/wcdn-welcome.php:119
-msgid ""
-"To enable the print functionality for your invoices, delivery notes & "
-"receipts, you just need to set it up under WooCommerce -> Settings -> Print "
-"page. Here you can also setup the Company Logo that will appear on the "
-"printed items, Company Address & other information."
-msgstr ""
-
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:41
-#: includes/wcdn-welcome.php:121
-msgid "Click Here to go to Print page"
-msgstr ""
-
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:52
-#: includes/wcdn-welcome.php:132
-msgid "Enable Print button for Customers."
-msgstr ""
-
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:54
-#: includes/wcdn-welcome.php:134
-msgid ""
-"Allow customers to print the WooCommerce order invoice from the customer "
-"notification email, from the My Account page or from the View Order page "
-"under My Account."
-msgstr ""
-
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:56
-#: includes/wcdn-welcome.php:136
-msgid "Click Here to Enable Print button for Customers"
-msgstr ""
-
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:72
-#: includes/wcdn-welcome.php:152
-msgid "Enable Invoice Numbering"
-msgstr ""
-
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:74
-msgid ""
-"If you want to change the default invoice numbers & set some numbering "
-"scheme of your own, then you can set it here with a starting invoice number, "
-"a prefix & suffix. For example, you could set it as: TS/001/17-18."
-msgstr ""
-
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:76
-#: includes/wcdn-welcome.php:156
-msgid "Click Here to Enable Invoice Numbering"
-msgstr ""
-
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:87
-#: includes/wcdn-welcome.php:167
-msgid "Getting to Know Tyche Softwares"
-msgstr ""
-
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:90
-#: includes/wcdn-welcome.php:170
-msgid "Visit the Tyche Softwares Website"
-msgstr ""
-
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:91
-#: includes/wcdn-welcome.php:171
-msgid "View all Premium Plugins"
-msgstr ""
-
-#: includes/component/welcome-page/templates/welcome/welcome-page.php:100
-#: includes/wcdn-welcome.php:180
-msgid "Meet the team"
-msgstr ""
-
-#: includes/component/welcome-page/ts-welcome.php:167
-msgid "Welcome to %s %s"
-msgstr ""
-
-#: includes/wcdn-all-component.php:118
-msgid ""
-"Thank you for using WooCommerce Print Invoice & Delivery Note plugin! Now "
-"make your deliveries more accurate by allowing customers to select their "
-"preferred delivery date & time from Product Delivery Date Pro for "
-"WooCommerce. <strong><a target=\"_blank\" href= \"https://www.tychesoftwares."
-"com/store/premium-plugins/product-delivery-date-pro-for-woocommerce/?"
-"utm_source=wpnotice&utm_medium=first&utm_campaign=PrintInvoicePlugin\">Get "
-"it now!</a></strong>"
-msgstr ""
-
-#: includes/wcdn-all-component.php:120
-msgid ""
-"Never login to your admin to check your deliveries by syncing the delivery "
-"dates to the Google Calendar from Product Delivery Date Pro for WooCommerce. "
-"<strong><a target=\"_blank\" href= \"https://www.tychesoftwares.com/store/"
-"premium-plugins/product-delivery-date-pro-for-woocommerce/checkout?"
-"edd_action=add_to_cart&download_id=16&utm_source=wpnotice&utm_medium=first&utm_campaign=PrintInvoicePlugin"
-"\">Get it now!</a></strong>"
-msgstr ""
-
-#: includes/wcdn-all-component.php:122
-msgid ""
-"You can now view all your deliveries in list view or in calendar view from "
-"Product Delivery Date Pro for WooCommerce. <strong><a target=\"_blank\" "
-"href= \"https://www.tychesoftwares.com/store/premium-plugins/product-"
-"delivery-date-pro-for-woocommerce/checkout?"
-"edd_action=add_to_cart&download_id=16&utm_source=wpnotice&utm_medium=first&utm_campaign=PrintInvoicePlugin"
-"\">Get it now!</a></strong>."
-msgstr ""
-
-#: includes/wcdn-all-component.php:124
-msgid ""
-"Allow your customers to pay extra for delivery for certain Weekdays/Dates "
-"from Product Delivery Date Pro for WooCommerce. <strong><a target=\"_blank\" "
-"href= \"https://www.tychesoftwares.com/store/premium-plugins/product-"
-"delivery-date-pro-for-woocommerce/checkout?"
-"edd_action=add_to_cart&download_id=16&utm_source=wpnotice&utm_medium=first&utm_campaign=PrintInvoicePlugin"
-"\">Have it now!</a></strong>."
-msgstr ""
-
-#: includes/wcdn-all-component.php:126
-msgid ""
-"Customers can now edit the Delivery date & time on cart and checkout page or "
-"they can reschedule the deliveries for the already placed orders from "
-"Product Delivery Date Pro for WooCommerce. <strong><a target=\"_blank\" "
-"href= \"https://www.tychesoftwares.com/store/premium-plugins/product-"
-"delivery-date-pro-for-woocommerce/checkout?"
-"edd_action=add_to_cart&download_id=16&utm_source=wpnotice&utm_medium=first&utm_campaign=PrintInvoicePlugin"
-"\">Have it now!</a></strong>."
-msgstr ""
-
-#: includes/wcdn-template-functions.php:246
-msgid "Invoice Number"
-msgstr "Hóa đơn số"
-
-#: includes/wcdn-template-functions.php:253
-msgid "Invoice Date"
+#: includes/admin/wcdn-admin-function.php:22
+msgid "Document Title"
 msgstr ""
 
 # @ woocommerce-delivery-notes
-#: includes/wcdn-template-functions.php:259
+#: includes/admin/wcdn-admin-function.php:23
+#, fuzzy
+#| msgid "Company/Shop Logo"
+msgid "Company Logo"
+msgstr "Biểu tượng (logo) của cửa hàng/công ty"
+
+# @ woocommerce-delivery-notes
+#: includes/admin/wcdn-admin-function.php:24
+#, fuzzy
+#| msgid "Company/Shop Name"
+msgid "Company Name"
+msgstr "Tên Công ty/Cửa hàng"
+
+# @ woocommerce-delivery-notes
+#: includes/admin/wcdn-admin-function.php:25
+#, fuzzy
+#| msgid "Company/Shop Address"
+msgid "Company Address"
+msgstr "Địa chỉ Công ty/Cửa hàng"
+
+#: includes/admin/wcdn-admin-function.php:26
+#: includes/wcdn-template-functions.php:371
+#: includes/wcdn-template-functions.php:384
+msgid "Invoice Number"
+msgstr "Hóa đơn số"
+
+# @ woocommerce-delivery-notes
+#: includes/admin/wcdn-admin-function.php:27
+#: includes/wcdn-template-functions.php:402
+#: includes/wcdn-template-functions.php:414
 msgid "Order Number"
 msgstr "Đơn hàng số"
 
 # @ woocommerce-delivery-notes
-#: includes/wcdn-template-functions.php:264
+#: includes/admin/wcdn-admin-function.php:28
+#: includes/wcdn-template-functions.php:423
+#: includes/wcdn-template-functions.php:435
 msgid "Order Date"
 msgstr "Ngày đặt hàng"
 
 # @ woocommerce-delivery-notes
-#: includes/wcdn-template-functions.php:269
+#: includes/admin/wcdn-admin-function.php:29
+#: includes/wcdn-template-functions.php:444
+#: includes/wcdn-template-functions.php:447
+#: includes/wcdn-template-functions.php:457
 msgid "Payment Method"
 msgstr "Phương thức thanh toán"
 
 # @ woocommerce-delivery-notes
-#: includes/wcdn-template-functions.php:282
-msgid "Telephone"
-msgstr "Điện thoại"
-
-#: includes/wcdn-template-functions.php:315
-msgid "SKU:"
-msgstr "SKU:"
-
-#: includes/wcdn-template-functions.php:409
-#: includes/wcdn-template-functions.php:413
-msgid "(Includes %s)"
-msgstr "(Bao gồm %s)"
-
-#: includes/wcdn-template-functions.php:429
-msgid "Refund"
-msgstr "Hoàn tiền"
-
-#: includes/wcdn-template-functions.php:441
-msgid "Order Subtotal"
-msgstr "Các mục phụ"
-
-#: includes/wcdn-welcome.php:54
-msgid "Welcome to WooCommerce Print Invoice & Delivery Note %s"
-msgstr ""
-
-#: includes/wcdn-welcome.php:55
-msgid "Welcome to WooCommerce Print Invoice & Delivery Note"
-msgstr ""
-
-#: includes/wcdn-welcome.php:154
-msgid ""
-"f you want to change the default invoice numbers & set some numbering scheme "
-"of your own, then you can set it here with a starting invoice number, a "
-"prefix & suffix. For example, you could set it as: TS/001/17-18."
-msgstr ""
-
-#: includes/wcdn-welcome.php:186
-msgid "Current Offers"
-msgstr ""
+#: includes/admin/wcdn-admin-function.php:30
+#: includes/wcdn-template-functions.php:471
+#, fuzzy
+#| msgid "Payment Method"
+msgid "Payment Date"
+msgstr "Phương thức thanh toán"
 
 # @ woocommerce-delivery-notes
-#: templates/print-order/print-content.php:28
-msgid "Billing Address"
+#: includes/admin/wcdn-admin-function.php:33
+#, fuzzy
+#| msgid "Billing Address"
+msgid "Email Address"
 msgstr "Địa chỉ thanh toán"
 
-# @ woocommerce-delivery-notes
-#: templates/print-order/print-content.php:31
-#: templates/print-order/print-content.php:40
-msgid "N/A"
-msgstr "Không"
+#: includes/admin/wcdn-admin-function.php:34
+#, fuzzy
+#| msgid "Invoice Number"
+msgid "Phone Number"
+msgstr "Hóa đơn số"
+
+#: includes/admin/wcdn-admin-function.php:39
+msgid "Payment Received Stamp"
+msgstr ""
+
+#: includes/admin/wcdn-admin-function.php:40
+msgid "Display price in product details table"
+msgstr ""
+
+#: includes/admin/wcdn-admin-function.php:239
+msgid "Next Number"
+msgstr ""
+
+#: includes/admin/wcdn-admin-function.php:247
+msgid "Suffix"
+msgstr ""
+
+#: includes/admin/wcdn-admin-function.php:255
+msgid "Prefix"
+msgstr ""
 
 # @ woocommerce-delivery-notes
-#: templates/print-order/print-content.php:37
-msgid "Shipping Address"
-msgstr "Địa chỉ nhận hàng"
+#: includes/class-wcdn-print.php:101 includes/class-wcdn-settings.php:465
+#: includes/class-wcdn-settings.php:476 includes/class-wcdn-settings.php:477
+msgid "Invoice"
+msgstr "Hóa đơn"
+
+#: includes/class-wcdn-print.php:102
+msgid "Invoices"
+msgstr "Các hóa đơn"
 
 # @ woocommerce-delivery-notes
-#: templates/print-order/print-content.php:71
-msgid "Product"
-msgstr "Sản phẩm"
+#: includes/class-wcdn-print.php:103 includes/class-wcdn-writepanel.php:128
+msgid "Print Invoice"
+msgstr "In hóa đơn"
 
-#: templates/print-order/print-content.php:72
-msgid "Price"
-msgstr "Giá"
-
-#: templates/print-order/print-content.php:73
-msgid "Quantity"
-msgstr "Số lượng"
+#: includes/class-wcdn-print.php:104
+msgid "Print Invoices"
+msgstr "In các hóa đơn"
 
 # @ woocommerce-delivery-notes
-#: templates/print-order/print-content.php:74
-msgid "Total"
-msgstr "Tổng cộng"
+#: includes/class-wcdn-print.php:105
+msgid "Invoice created."
+msgstr "Hóa đơn đã được tạo"
+
+#: includes/class-wcdn-print.php:106
+msgid "Invoices created."
+msgstr "Các hóa đơn đã được tạo"
+
+#: includes/class-wcdn-print.php:107
+msgid "Show \"Print Invoice\" button"
+msgstr ""
 
 # @ woocommerce-delivery-notes
-#: templates/print-order/print-content.php:147
-msgid "Download:"
-msgstr "Tải xuống"
+#: includes/class-wcdn-print.php:116
+msgid "Delivery Note"
+msgstr "Ghi chú giao nhận hàng"
+
+#: includes/class-wcdn-print.php:117
+msgid "Delivery Notes"
+msgstr "Các ghi chú giao nhận hàng"
 
 # @ woocommerce-delivery-notes
-#: templates/print-order/print-content.php:148
-msgid "%s Files"
-msgstr "%s Tập tin"
+#: includes/class-wcdn-print.php:118 includes/class-wcdn-writepanel.php:129
+msgid "Print Delivery Note"
+msgstr "In ghi chú giao nhận hàng"
+
+#: includes/class-wcdn-print.php:119
+msgid "Print Delivery Notes"
+msgstr "In các ghi chú giao nhận hàng"
+
+#: includes/class-wcdn-print.php:120
+msgid "Delivery Note created."
+msgstr "Ghi chú giao nhận hàng đã được tạo"
+
+#: includes/class-wcdn-print.php:121
+msgid "Delivery Notes created."
+msgstr "Các ghi chú giao nhận hàng đã được tạo"
+
+#: includes/class-wcdn-print.php:122
+msgid "Show \"Print Delivery Note\" button"
+msgstr ""
+
+#: includes/class-wcdn-print.php:131
+msgid "Receipt"
+msgstr "Biên lai"
+
+#: includes/class-wcdn-print.php:132
+msgid "Receipts"
+msgstr "Các biên lai"
+
+#: includes/class-wcdn-print.php:133 includes/class-wcdn-writepanel.php:130
+msgid "Print Receipt"
+msgstr "In Biên lai"
+
+#: includes/class-wcdn-print.php:134
+msgid "Print Receipts"
+msgstr "In Các biên lai"
+
+#: includes/class-wcdn-print.php:135
+msgid "Receipt created."
+msgstr "Biên lai đã được tạo"
+
+#: includes/class-wcdn-print.php:136
+msgid "Receipts created."
+msgstr "Các biên lai đã được tạo"
+
+#: includes/class-wcdn-print.php:137
+msgid "Show \"Print Receipt\" button"
+msgstr ""
 
 # @ woocommerce-delivery-notes
-#: templates/print-order/print-content.php:202
-msgid "Customer Note"
-msgstr "Ghi chú"
+#: includes/class-wcdn-print.php:150
+msgid "Order"
+msgstr "Đơn hàng"
 
-#: woocommerce-delivery-notes.php:96 woocommerce-delivery-notes.php:103
+#: includes/class-wcdn-print.php:151
+msgid "Orders"
+msgstr "Các đơn hàng"
+
+# @ woocommerce-delivery-notes
+#: includes/class-wcdn-print.php:152
+msgid "Print Order"
+msgstr "In đơn hàng"
+
+#: includes/class-wcdn-print.php:153
+msgid "Print Orders"
+msgstr "In Các đơn hàng"
+
+#: includes/class-wcdn-print.php:168
+msgid "Default"
+msgstr ""
+
+#: includes/class-wcdn-settings.php:455
+msgid ""
+"Do you really want to reset the counter to zero? This process can't be "
+"undone."
+msgstr "Bạn có muốn đặt lại bộ đếm về không? Thao tác này không thể phục hồi."
+
+#: includes/class-wcdn-settings.php:531
+msgid "Admin"
+msgstr ""
+
+#: includes/class-wcdn-settings.php:534
+msgid ""
+"The print buttons are available on the order listing and on the order detail "
+"screen."
+msgstr ""
+
+#. translators: %s: invoice url, delivery note url, receipt url
+#: includes/class-wcdn-settings.php:576
+msgid ""
+"This section lets you customise the content. You can preview the <a "
+"href=\"%1$s\" target=\"%4$s\" class=\"%5$s\">invoice</a>, <a href=\"%2$s\" "
+"target=\"%4$s\" class=\"%5$s\">delivery note</a> or <a href=\"%3$s\" "
+"target=\"%4$s\" class=\"%5$s\">receipt</a> template."
+msgstr ""
+
+#: includes/class-wcdn-settings.php:643
+msgid "Select"
+msgstr ""
+
+#: includes/class-wcdn-settings.php:647
+msgid "Remove"
+msgstr ""
+
+# @ woocommerce-delivery-notes
+#: includes/class-wcdn-theme.php:127 includes/class-wcdn-theme.php:164
+#: includes/wcdn-template-functions.php:143
+msgid "Print"
+msgstr "In"
+
+#: includes/class-wcdn-theme.php:206
+msgid "Print your order"
+msgstr "In đơn hàng của bạn"
+
+# @ woocommerce-delivery-notes
+#: includes/class-wcdn-writepanel.php:240
+msgid "Print now"
+msgstr "In"
+
+# @ woocommerce-delivery-notes
+#: includes/class-wcdn-writepanel.php:259
+msgid "Order Printing"
+msgstr "In đơn hàng"
+
+#: includes/class-wcdn-writepanel.php:290
+msgid "Invoice number: "
+msgstr "Hóa đơn số:"
+
+#: includes/class-wcdn-writepanel.php:291
+msgid "Invoice date: "
+msgstr "Ngày xuất hóa đơn:"
+
+#: includes/class-woocommerce-delivery-notes.php:118
+#: includes/class-woocommerce-delivery-notes.php:125
 msgid "Cheatin&#8217; huh?"
 msgstr ""
 
-#: woocommerce-delivery-notes.php:275
-msgid ""
-"I can't differentiate between Invoice, Delivery Notes & Receipt. The "
-"templates are the same. "
-msgstr ""
-
-#: woocommerce-delivery-notes.php:281
-msgid "The invoice sent through mail can't be downloaded as PDF directly."
-msgstr ""
-
-#: woocommerce-delivery-notes.php:287
-msgid "The plugin is not compatible with another plugin."
-msgstr ""
-
-#: woocommerce-delivery-notes.php:293
-msgid "This plugin is not useful to me."
-msgstr ""
-
 # @ woocommerce-delivery-notes
-#: woocommerce-delivery-notes.php:351
+#: includes/class-woocommerce-delivery-notes.php:514
 msgid "Go to the settings page"
 msgstr "Tới trang thiết lập"
 
 # @ woocommerce-delivery-notes
-#: woocommerce-delivery-notes.php:351
+#: includes/class-woocommerce-delivery-notes.php:514
 msgid "Settings"
 msgstr "Thiết lập"
 
-#~ msgid "Enable Invoices"
-#~ msgstr "Sử dụng các hóa đơn"
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:182
+msgid "Please select a reason for deactivation!"
+msgstr ""
 
-#~ msgid "Enable Delivery Notes"
-#~ msgstr "Kích hoạt các ghi chú giao nhận hàng"
+#: includes/wcdn-template-functions.php:393
+msgid "Invoice Date"
+msgstr ""
 
-#~ msgid "Enable Receipts"
-#~ msgstr "Kích hoạt Các biên lai"
+# @ woocommerce-delivery-notes
+#: includes/wcdn-template-functions.php:468
+#, fuzzy
+#| msgid "Payment Method"
+msgid "Payment date"
+msgstr "Phương thức thanh toán"
+
+# @ woocommerce-delivery-notes
+#: includes/wcdn-template-functions.php:492
+msgid "Telephone"
+msgstr "Điện thoại"
+
+#: includes/wcdn-template-functions.php:533
+msgid "SKU:"
+msgstr "SKU:"
+
+#: includes/wcdn-template-functions.php:657
+msgid "Refund"
+msgstr "Hoàn tiền"
+
+#: includes/wcdn-template-functions.php:669
+msgid "Order Subtotal"
+msgstr "Các mục phụ"
+
+#~ msgid "Create invoice numbers"
+#~ msgstr "Tạo số hóa đơn"
+
+#~ msgid "This text will be prepended to the invoice number."
+#~ msgstr "Nội dung sẽ được thêm đằng trước vào số hóa đơn"
+
+#~ msgid "This text will be appended to the invoice number."
+#~ msgstr "Nội dung sẽ được thêm đằng sau vào số hóa đơn"
+
+#~ msgid "Print:"
+#~ msgstr "In:"
+
+#~ msgid "Open print view in browser"
+#~ msgstr "Mở bản in được trong trình duyệt"
+
+#~ msgid "(Includes %s)"
+#~ msgstr "(Bao gồm %s)"
 
 #~ msgid ""
-#~ "You can preview the <a href=\"%1$s\" target=\"%4$s\" class=\"%5$s"
-#~ "\">invoice</a>, <a href=\"%2$s\" target=\"%4$s\" class=\"%5$s\">delivery "
-#~ "note</a> or <a href=\"%3$s\" target=\"%4$s\" class=\"%5$s\">receipt</a> "
-#~ "template."
+#~ "You can preview the <a href=\"%1$s\" target=\"%4$s\" "
+#~ "class=\"%5$s\">invoice</a>, <a href=\"%2$s\" target=\"%4$s\" "
+#~ "class=\"%5$s\">delivery note</a> or <a href=\"%3$s\" target=\"%4$s\" "
+#~ "class=\"%5$s\">receipt</a> template."
 #~ msgstr ""
-#~ "Bạn có thể xem trước bố cục  <a href=\"%1$s\" target=\"%4$s\" class=\"%5$s"
-#~ "\">hóa đơn</a>, <a href=\"%2$s\" target=\"%4$s\" class=\"%5$s\">ghi chú "
-#~ "giao nhận</a> hoặc <a href=\"%3$s\" target=\"%4$s\" class=\"%5$s\">biên "
-#~ "lai</a> "
+#~ "Bạn có thể xem trước bố cục  <a href=\"%1$s\" target=\"%4$s\" "
+#~ "class=\"%5$s\">hóa đơn</a>, <a href=\"%2$s\" target=\"%4$s\" "
+#~ "class=\"%5$s\">ghi chú giao nhận</a> hoặc <a href=\"%3$s\" "
+#~ "target=\"%4$s\" class=\"%5$s\">biên lai</a> "
 
 # @ woocommerce-delivery-notes
 #~ msgid ""
@@ -777,16 +781,8 @@ msgstr "Thiết lập"
 #~ msgstr "Đọc phần FAQ trong tập tin readme để biết cách thay đổi bố cục."
 
 # @ woocommerce-delivery-notes
-#~ msgid "Company/Shop Logo"
-#~ msgstr "Biểu tượng (logo) của cửa hàng/công ty"
-
-# @ woocommerce-delivery-notes
 #~ msgid "Remove Logo"
 #~ msgstr "Gỡ bỏ"
-
-# @ woocommerce-delivery-notes
-#~ msgid "Set Logo"
-#~ msgstr "Đặt làm biểu tượng"
 
 # @ woocommerce-delivery-notes
 #~ msgid "A company/shop logo representing your business."
@@ -809,10 +805,6 @@ msgstr "Thiết lập"
 #~ "phân giải 576px để đảm bảo chất lượng."
 
 # @ woocommerce-delivery-notes
-#~ msgid "Company/Shop Name"
-#~ msgstr "Tên Công ty/Cửa hàng"
-
-# @ woocommerce-delivery-notes
 #~ msgid "Your company/shop name for the Delivery Note."
 #~ msgstr "Tên công ty/cửa hàng trên Ghi chú giao hàng."
 
@@ -823,10 +815,6 @@ msgstr "Thiết lập"
 #~ msgstr ""
 #~ "Để trống để in Tên của Website (trong thiết lập WordPress). Nội dung này "
 #~ "sẽ bị bỏ qua nếu bạn đặt Biểu tượng"
-
-# @ woocommerce-delivery-notes
-#~ msgid "Company/Shop Address"
-#~ msgstr "Địa chỉ Công ty/Cửa hàng"
 
 # @ woocommerce-delivery-notes
 #~ msgid ""
