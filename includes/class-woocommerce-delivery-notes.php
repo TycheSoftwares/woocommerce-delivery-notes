@@ -471,6 +471,7 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 			if ( version_compare( $option_version, self::$plugin_version, '<' ) ) {
 				// Legacy updates.
 				if ( version_compare( $option_version, '5.0.0', '<' ) ) {
+					update_option( 'wcdn_template_type', 'default' );
 					// Group invoice numbering.
 					$invoice_start   = intval( get_option( 'wcdn_invoice_number_start', 1 ) );
 					$invoice_counter = intval( get_option( 'wcdn_invoice_number_counter', 0 ) );
