@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php
 			if ( wcdn_get_company_logo_id() ) :
 				$template_save = get_option( 'wcdn_template_type' );
-				if ( 'default' === $template_save ) {
+				if ( empty( $template_save ) || 'default' === $template_save ) {
 					wcdn_company_logo();
 				} elseif ( 'simple' === $template_save ) {
 					wcdn_pdf_company_logo( $ttype = 'simple' );
