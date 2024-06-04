@@ -364,6 +364,7 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 		 */
 		public function update() {
 			$option_version = get_option( 'wcdn_version', '1' );
+			update_option( 'wcdn_template_type', 'default' );
 			if ( isset( $_FILES['shop_logo'] ) && ! empty( $_FILES['shop_logo'] ) ) {
 				$upload = wp_handle_upload(
 					$_FILES['shop_logo'], // phpcs:ignore
