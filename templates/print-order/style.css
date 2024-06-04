@@ -191,6 +191,11 @@ h2 {
 	padding-right: 0.35em;
 }
 
+.order-info li span {
+    display: inline-block;
+	overflow: hidden;
+}
+
 /* Order Items */
 .order-items {
 	margin-bottom: 1em;
