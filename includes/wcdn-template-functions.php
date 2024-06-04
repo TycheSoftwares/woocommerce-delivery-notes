@@ -424,7 +424,7 @@ function wcdn_get_order_info( $order, $type = '' ) {
 		}
 		$fields['order_date'] = array(
 			'label'       => __( $label, 'woocommerce-delivery-notes' ), // phpcs:ignore
-			'value'       => date_i18n( get_option( 'date_format' ), strtotime( $wdn_order_order_date ) ),
+			'value'       => date_i18n( get_option( 'date_format' ), $wdn_order_order_date ),
 			'font-size'   => $data['order_date']['order_date_font_size'],
 			'font-weight' => $data['order_date']['order_date_style'],
 			'color'       => $data['order_date']['order_date_text_colour'],
