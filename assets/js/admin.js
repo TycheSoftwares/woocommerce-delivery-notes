@@ -184,10 +184,23 @@ jQuery(document).ready(function($) {
 			$('.accordion-button').eq(0).attr('disabled', false).removeAttr('title');
 			$('.accordion-item .switch').css('pointer-events', 'none');
 			// Add hover message for parent elements of .switch with disabled accordion-button.
-			$('.accordion-item.disabled').hover(function() {
+			$('.accordion-item.disabled').each(function() {
 				var switchElement = $(this).find('.switch');
 				if (switchElement.length) {
-					var tooltip = $('<div class="hover-tooltip">This setting is disabled because you have selected the default template.</div>');
+					var overlay = $('<div class="checkbox-overlay"></div>');
+					var tooltip = $('<div class="hover-tooltip">Change the Template from default to Simple from the General Settings to enable customization.</div>');
+					
+					overlay.css({
+						position: 'absolute',
+						top: 0,
+						left: 0,
+						width: '100%',
+						height: '100%',
+						background: 'rgba(255, 255, 255, 0.7)',
+						zIndex: 999,
+						borderRadius: '34px'
+					}).show();
+	
 					tooltip.css({
 						position: 'absolute',
 						background: '#fff',
@@ -199,20 +212,19 @@ jQuery(document).ready(function($) {
 						zIndex: 1000,
 						display: 'none'
 					});
+					
+					switchElement.append(overlay);
 					$('body').append(tooltip);
-					$(this).data('tooltip', tooltip);
-					$(this).mousemove(function(event) {
+					$(this).hover(function() {
+						tooltip.fadeIn(200);
+					}, function() {
+						tooltip.hide();
+					}).mousemove(function(event) {
 						tooltip.css({
 							top: event.pageY + 10 + 'px',
 							left: event.pageX + 10 + 'px'
 						});
 					});
-					tooltip.fadeIn(200);
-				}
-			}, function() {
-				var tooltip = $(this).data('tooltip');
-				if (tooltip) {
-					tooltip.remove();
 				}
 			});
 		

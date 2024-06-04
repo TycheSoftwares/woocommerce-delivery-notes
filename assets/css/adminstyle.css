@@ -225,6 +225,10 @@ font-weight: bold;
 	margin-bottom: 0;
 	padding-right: 0.35em;
 }
+.order-infoo li span {
+    display: inline-block;
+	overflow: hidden;
+}
 .colophon-policiess {
     margin-bottom: 1.25em;
 }

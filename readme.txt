@@ -338,7 +338,7 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 
 == Changelog ==
 
-= 5.0.0 (28.05.2024) =
+= 5.0.0 (04.06.2024) =
 This release contains a major update for the plugin, focusing primarily on the all-new backend user interface, along with several bug fixes.
 Major Updates:
 *Changed the UI of plugin settings page.
@@ -351,6 +351,15 @@ Major Updates:
 *Added Invoice menu in the WooCommerce menu.
 Bug fixes :
 *Fix: Bulk printing being initiated multiple times
+*Fix: Translations for the print link in emails do not work
+
+= 4.9.0 (27.02.2024) =
+* Fix - Cross-site request forgery vulnerability in the plugin.
+* Fix - Added a filter called 'wcdn_print_text_in_email' & 'wcdn_print_view_in_browser_text_in_email' for changing the "Print: Open print view in browser" text in email URL.
+* Fix - Fatal Error on the edit order page.
+* Fix - Additional product metadata is printed in the invoice.
+* Fix - Added a filter called 'wcdn_address_billing' to the shipping address Title.
+* Fix - Incorrect order date in the invoice.
 
 = 4.8.1 (10.10.2023) =
 * Fix - Same invoice number & invoice date was displayed on all invoices and the counter was not being increased.
