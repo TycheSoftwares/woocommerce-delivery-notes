@@ -167,8 +167,9 @@ h2 {
 	border-bottom: 0.12em solid #bbb;
 }
 
-.order-info li strong {
-	min-width: 18%;
+.order-info li p {
+	min-width: 25%;
+	font-size: 15px;
 	font-weight: normal;
 	display: inline-block;
 	white-space: nowrap;
@@ -176,6 +177,12 @@ h2 {
 	overflow: hidden;
 	margin-bottom: 0;
 	padding-right: 0.35em;
+}
+.order-info li span {
+	font-size: 15px;
+	font-weight: normal;
+	display: inline-block;
+	overflow: hidden;
 }
 
 /* Order Items */

@@ -338,7 +338,7 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 
 == Changelog ==
 
-= 5.0.0 (04.06.2024) =
+= 5.0.0 (05.06.2024) =
 This release contains a major update for the plugin, focusing primarily on the all-new backend user interface, along with several bug fixes.
 Major Updates:
 *Changed the UI of plugin settings page.
