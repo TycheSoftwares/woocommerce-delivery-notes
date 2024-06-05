@@ -188,7 +188,7 @@ jQuery(document).ready(function($) {
 				var switchElement = $(this).find('.switch');
 				if (switchElement.length) {
 					var overlay = $('<div class="checkbox-overlay"></div>');
-					var tooltip = $('<div class="hover-tooltip">Change the Template from default to Simple from the General Settings to enable customization.</div>');
+					var tooltip = $('<div class="hover-tooltip">Change the template from Default to Simple from the General Settings to enable customization.</div>');
 					
 					overlay.css({
 						position: 'absolute',

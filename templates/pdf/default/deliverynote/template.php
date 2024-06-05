@@ -77,7 +77,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					?>
 					<?php foreach ( $fields as $field ) : ?>
 						<li>
-							<strong><?php echo wp_kses_post( apply_filters( 'wcdn_order_info_name', $field['label'], $field ) ); ?></strong>
+							<p><?php echo wp_kses_post( apply_filters( 'wcdn_order_info_name', $field['label'], $field ) ); ?></p>
 							<span><?php echo wp_kses_post( apply_filters( 'wcdn_order_info_content', $field['value'], $field ) ); ?></span>
 						</li>
 					<?php endforeach; ?>
