@@ -188,16 +188,3 @@ tfoot {
 	text-align: right;
 	vertical-align: top;
 }
-/* hide mobile version by default */
-.logo .mobile {
-	display: none;
-}
-/* when screen is less than 600px wide show mobile version and hide desktop */
-@media ( max-width: 600px ) {
-	.logo .mobile {
-		display: block;
-	}
-	.logo .desktop {
-		display: none;
-	}
-}
