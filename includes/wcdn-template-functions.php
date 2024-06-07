@@ -152,7 +152,9 @@ function wcdn_navigation() {
  */
 function wcdn_template_stylesheet( $template_type ) {
 	global $wcdn;
-	$name = apply_filters( 'wcdn_template_stylesheet_name', 'style.css' );
+	$name           = apply_filters( 'wcdn_template_stylesheet_name', 'style.css' );
+	$plugin_data    = get_plugin_data( WP_PLUGIN_DIR . '/woocommerce-delivery-notes/woocommerce-delivery-notes.php' );
+	$plugin_version = isset( $plugin_data['Version'] ) ? $plugin_data['Version'] : '1.0.0';
 	// phpcs:disable
 
 	if ( 'delivery-note' === $template_type ) {
@@ -162,11 +164,11 @@ function wcdn_template_stylesheet( $template_type ) {
 	$setting['template_setting']['template_setting_template'] = get_option( 'wcdn_template_type' );
 	if ( isset( $setting['template_setting']['template_setting_template'] ) && 'simple' == $setting['template_setting']['template_setting_template'] ) {
 		?>
-		<link rel="stylesheet" href="<?php echo esc_url( $wcdn->print->get_template_file_location( $name, true ) ) . 'simple/' . esc_html( $name ); ?>" type="text/css" media="screen,print" />
+		<link rel="stylesheet" href="<?php echo esc_url( $wcdn->print->get_template_file_location( $name, true ) ) . 'simple/' . esc_html( $name ). '?v=' . esc_html( $plugin_version ); ?>" type="text/css" media="screen,print" />
 		<?php
 	} else {
 		?>
-		<link rel="stylesheet" href="<?php echo esc_url( $wcdn->print->get_template_file_location( $name, true ) ) . esc_html( $name ); ?>" type="text/css" media="screen,print" />
+		<link rel="stylesheet" href="<?php echo esc_url( $wcdn->print->get_template_file_location( $name, true ) ) . esc_html( $name ). '?v=' . esc_html( $plugin_version ); ?>" type="text/css" media="screen,print" />
 		<?php
 	}
 
