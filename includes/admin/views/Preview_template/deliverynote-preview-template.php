@@ -59,7 +59,7 @@ if ( is_null( $parent_order ) ) {
 		<div class="company-info" >
 			<h3 class="company-name" v-show="deliverynote.company_name" :style="{ textAlign: deliverynote.company_name_text_align, fontSize: deliverynote.company_name_font_size + 'px', color: deliverynote.company_name_text_colour }"><?php wcdn_company_name(); ?></h3>
 		</div>
-		<div class="company-address" v-show="deliverynote.company_address" :style="{ textAlign: deliverynote.company_address_text_align, fontSize: deliverynote.company_address_font_size + 'px', color: deliverynote.company_address_text_colour }" >
+		<div class="company-address footer-content" v-show="deliverynote.company_address" :style="{ textAlign: deliverynote.company_address_text_align, fontSize: deliverynote.company_address_font_size + 'px', color: deliverynote.company_address_text_colour }" >
 			<?php wcdn_company_info(); ?>
 		</div>
 	</div><!-- .order-branding -->
@@ -248,7 +248,7 @@ if ( is_null( $parent_order ) ) {
 		<?php do_action( 'wcdn_after_items', $order ); ?>
 	</div><!-- .order-items -->
 
-		<div class="order-notes" v-show="deliverynote.customer_note" :style="{ fontSize: deliverynote.customer_note_font_size + 'px', color: deliverynote.customer_note_text_colour }">
+		<div class="order-notes footer-content" v-show="deliverynote.customer_note" :style="{ fontSize: deliverynote.customer_note_font_size + 'px', color: deliverynote.customer_note_text_colour }">
 			<?php if ( wcdn_has_customer_notes( $order ) ) : ?>	
 				<h4 class="cap" :style="{ text: deliverynote.customer_note_title, fontSize: deliverynote.customer_note_font_size + 'px', color: deliverynote.customer_note_text_colour }">
 				{{ deliverynote.customer_note_title }}
@@ -260,18 +260,18 @@ if ( is_null( $parent_order ) ) {
 		</div><!-- .order-notes -->
 
 		<div class="order-thanks">
-				<div class="personal_note" v-show="deliverynote.complimentary_close" > 
-					<p :style="{ fontSize: deliverynote.complimentary_close_font_size + 'px', color: deliverynote.complimentary_close_text_colour }"><?php wcdn_personal_notes(); ?></p>
+				<div class="personal_note footer-content" v-show="deliverynote.complimentary_close" :style="{ fontSize: deliverynote.complimentary_close_font_size + 'px', color: deliverynote.complimentary_close_text_colour }"> 
+					<?php wcdn_personal_notes(); ?>
 					<?php do_action( 'wcdn_after_thanks', $order ); ?>
 				</div><!-- .order-thanks -->
 
-				<div class="colophon-policies" v-show="deliverynote.policies" :style="{ fontSize: deliverynote.policies_font_size + 'px', color: deliverynote.policies_text_colour }">
+				<div class="colophon-policies footer-content" v-show="deliverynote.policies" :style="{ fontSize: deliverynote.policies_font_size + 'px', color: deliverynote.policies_text_colour }">
 					<?php wcdn_policies_conditions(); ?>
 				</div>
 		</div><!-- .order-thanks -->
 
 		<div class="order-colophon">
-				<div class="colophon-imprint" v-show="deliverynote.footer" :style="{ fontSize: deliverynote.footer_font_size + 'px', color: deliverynote.footer_text_colour }">
+				<div class="colophon-imprint footer-content" v-show="deliverynote.footer" :style="{ fontSize: deliverynote.footer_font_size + 'px', color: deliverynote.footer_text_colour }">
 					<?php wcdn_imprint(); ?>
 				</div>
 			<?php do_action( 'wcdn_after_colophon', $order ); ?>

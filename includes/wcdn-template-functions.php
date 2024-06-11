@@ -712,12 +712,8 @@ function wcdn_remove_payment_method_from_totals( $total_rows, $order ) {
  */
 function wcdn_get_customer_notes( $order ) {
 	global $wcdn;
-
 	$wdn_order_customer_notes = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_customer_note() : $order->customer_note;
-	$customer_notes           = stripslashes( wpautop( wptexturize( $wdn_order_customer_notes ) ) );
-	// Strip HTML tags.
-	$customer_notes_content = wp_strip_all_tags( $customer_notes );
-	return $customer_notes_content;
+	return stripslashes( wpautop( wptexturize( $wdn_order_customer_notes ) ) );
 }
 
 /**
@@ -749,10 +745,7 @@ function wcdn_has_customer_notes( $order ) {
  */
 function wcdn_get_personal_notes() {
 	global $wcdn;
-	$personal_notes = stripslashes( wpautop( wptexturize( get_option( 'wcdn_personal_notes' ) ) ) );
-	// Strip HTML tags.
-	$plain_text_content = wp_strip_all_tags( $personal_notes );
-	return $plain_text_content;
+	return stripslashes( wpautop( wptexturize( get_option( 'wcdn_personal_notes' ) ) ) );
 }
 
 /**
@@ -768,10 +761,7 @@ function wcdn_personal_notes() {
  */
 function wcdn_get_policies_conditions() {
 	global $wcdn;
-	$policies_conditions = stripslashes( wpautop( wptexturize( get_option( 'wcdn_policies_conditions' ) ) ) );
-	// Strip HTML tags.
-	$policies_conditions_content = wp_strip_all_tags( $policies_conditions );
-	return $policies_conditions_content;
+	return stripslashes( wpautop( wptexturize( get_option( 'wcdn_policies_conditions' ) ) ) );
 }
 
 /**
@@ -787,9 +777,7 @@ function wcdn_policies_conditions() {
  */
 function wcdn_get_imprint() {
 	global $wcdn;
-	$footer         = wp_kses_post( stripslashes( wpautop( wptexturize( get_option( 'wcdn_footer_imprint' ) ) ) ) );
-	$footer_content = wp_strip_all_tags( $footer );
-	return $footer_content;
+	return wp_kses_post( stripslashes( wpautop( wptexturize( get_option( 'wcdn_footer_imprint' ) ) ) ) );
 }
 
 /**

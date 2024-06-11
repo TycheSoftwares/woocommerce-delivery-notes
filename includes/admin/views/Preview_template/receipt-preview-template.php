@@ -59,7 +59,7 @@ if ( is_null( $parent_order ) ) {
 		<div class="company-info" >
 			<h3 class="company-name" v-show="receipt.company_name" :style="{ textAlign: receipt.company_name_text_align, fontSize: receipt.company_name_font_size + 'px', color: receipt.company_name_text_colour }"><?php wcdn_company_name(); ?></h3>
 		</div>
-		<div class="company-address" v-show="receipt.company_address" :style="{ textAlign: receipt.company_address_text_align, fontSize: receipt.company_address_font_size + 'px', color: receipt.company_address_text_colour }" >
+		<div class="company-address footer-content" v-show="receipt.company_address" :style="{ textAlign: receipt.company_address_text_align, fontSize: receipt.company_address_font_size + 'px', color: receipt.company_address_text_colour }" >
 			<?php wcdn_company_info(); ?>
 		</div>
 	</div><!-- .order-branding -->
@@ -266,7 +266,7 @@ if ( is_null( $parent_order ) ) {
 		<?php do_action( 'wcdn_after_items', $order ); ?>
 	</div><!-- .order-items -->
 
-		<div class="order-notes" v-show="receipt.customer_note" :style="{ fontSize: receipt.customer_note_font_size + 'px', color: receipt.customer_note_text_colour }">
+		<div class="order-notes footer-content" v-show="receipt.customer_note" :style="{ fontSize: receipt.customer_note_font_size + 'px', color: receipt.customer_note_text_colour }">
 			<?php if ( wcdn_has_customer_notes( $order ) ) : ?>	
 				<h4 class="cap" :style="{ text: receipt.customer_note_title, fontSize: receipt.customer_note_font_size + 'px', color: receipt.customer_note_text_colour }">
 				{{ receipt.customer_note_title }}
@@ -278,18 +278,18 @@ if ( is_null( $parent_order ) ) {
 		</div><!-- .order-notes -->
 
 		<div class="order-thanks">
-				<div class="personal_note" v-show="receipt.complimentary_close" > 
-					<p :style="{ fontSize: receipt.complimentary_close_font_size + 'px', color: receipt.complimentary_close_text_colour }"><?php wcdn_personal_notes(); ?></p>
+				<div class="personal_note footer-content" v-show="receipt.complimentary_close" :style="{ fontSize: receipt.complimentary_close_font_size + 'px', color: receipt.complimentary_close_text_colour }"> 
+					<?php wcdn_personal_notes(); ?>
 					<?php do_action( 'wcdn_after_thanks', $order ); ?>
 				</div><!-- .order-thanks -->
 
-				<div class="colophon-policies" v-show="receipt.policies" :style="{ fontSize: receipt.policies_font_size + 'px', color: receipt.policies_text_colour }">
+				<div class="colophon-policies footer-content" v-show="receipt.policies" :style="{ fontSize: receipt.policies_font_size + 'px', color: receipt.policies_text_colour }">
 					<?php wcdn_policies_conditions(); ?>
 				</div>
 		</div><!-- .order-thanks -->
 
 		<div class="order-colophon">
-				<div class="colophon-imprint" v-show="receipt.footer" :style="{ fontSize: receipt.footer_font_size + 'px', color: receipt.footer_text_colour }">
+				<div class="colophon-imprint footer-content" v-show="receipt.footer" :style="{ fontSize: receipt.footer_font_size + 'px', color: receipt.footer_text_colour }">
 					<?php wcdn_imprint(); ?>
 				</div>
 			<?php do_action( 'wcdn_after_colophon', $order ); ?>
