@@ -275,3 +275,7 @@ font-weight: bold;
 .order-notess h5 {
 	font-size: 15px;
 }
+.footer-content * {
+    font-size: inherit;
+    color: inherit;
+}
