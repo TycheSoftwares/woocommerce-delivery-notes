@@ -6,7 +6,7 @@ Tags: packing slips, invoice, pdf invoice, delivery notes, woocommerce print inv
 Requires at least: 4.4
 Tested up to: 6.5.3
 Author URI: https://www.tychesoftwares.com/
-Stable tag: 5.0.1
+Stable tag: 5.0.2
 License: GPLv3 or later
 License URI: http://www.opensource.org/licenses/gpl-license.php
 
@@ -338,13 +338,18 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 
 == Changelog ==
 
+= 5.0.2 (12.06.2024) =
+* Fix - HTML tags are not functioning properly on the invoice.
+* Fix - Fatal error while placing the order, due to conflic with PDF Invoices & Packing Slips for WooCommerce plugin.
+
 = 5.0.1 (07.06.2024) =
-* Fix - Logo printing double.
+* Fix - Logo was getting printed twice after v5.0 update.
 * Fix - Bulk Action Print Invoice issue.
 
 = 5.0.0 (05.06.2024) =
 This release contains a major update for the plugin, focusing primarily on the all-new backend user interface, along with several bug fixes.
 Major Updates:
+
 * Changed the UI of plugin settings page.
 * Added a setting for template type, and now customize your template with different settings.
 * Added a template setting page to customize the template.
@@ -353,7 +358,9 @@ Major Updates:
 * Added setting To store PDF files for a specific duration.
 * Added email attachment with template PDF files.
 * Added Invoice menu in the WooCommerce menu.
+
 Bug fixes :
+
 * Fix - Bulk printing being initiated multiple times
 * Fix - Translations for the print link in emails do not work
 
