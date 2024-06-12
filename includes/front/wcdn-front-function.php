@@ -29,7 +29,7 @@ use Dompdf\FontMetrics;
  */
 function create_pdf( $order, $type ) {
 	// Get order id from the order object.
-	$order_id = $order->id;
+	$order_id = $order->get_id();
 
 	// Instantiate and use the dompdf class.
 	$options = new \Dompdf\Options();

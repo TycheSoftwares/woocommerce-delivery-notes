@@ -64,7 +64,7 @@ if ( ! class_exists( 'WCDN_Theme' ) ) {
 				$settings = get_option( 'wcdn_invoice_settings' );
 				if ( isset( $settings['status'] ) ) {
 					if ( in_array( $email_id, $settings['status'], true ) ) {
-						$name = 'wcdn_' . $order->id . '_invoice.pdf';
+						$name = 'wcdn_' . $order->get_id() . '_invoice.pdf';
 						if ( ! file_exists( $upload_dir['basedir'] . '/wcdn/invoice/' . $name ) ) {
 							$name = create_pdf( $order, 'invoice' );
 						}
@@ -77,7 +77,7 @@ if ( ! class_exists( 'WCDN_Theme' ) ) {
 				$settings = get_option( 'wcdn_receipt_settings' );
 				if ( isset( $settings['status'] ) ) {
 					if ( in_array( $email_id, $settings['status'], true ) ) {
-						$name = 'wcdn_' . $order->id . '_receipt.pdf';
+						$name = 'wcdn_' . $order->get_id() . '_receipt.pdf';
 						if ( ! file_exists( $upload_dir['basedir'] . '/wcdn/receipt/' . $name ) ) {
 							$name = create_pdf( $order, 'receipt' );
 						}
@@ -90,7 +90,7 @@ if ( ! class_exists( 'WCDN_Theme' ) ) {
 				$settings = get_option( 'wcdn_deliverynote_settings' );
 				if ( isset( $settings['status'] ) ) {
 					if ( in_array( $email_id, $settings['status'], true ) ) {
-						$name = 'wcdn_' . $order->id . '_deliverynote.pdf';
+						$name = 'wcdn_' . $order->get_id() . '_deliverynote.pdf';
 						if ( ! file_exists( $upload_dir['basedir'] . '/wcdn/deliverynote/' . $name ) ) {
 							$name = create_pdf( $order, 'deliverynote' );
 						}
