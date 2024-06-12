@@ -340,7 +340,7 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 
 = 5.0.2 (12.06.2024) =
 * Fix - HTML tags are not functioning properly on the invoice.
-* Fix - Fatal error when placing the order.
+* Fix - Fatal error while placing the order, due to conflic with PDF Invoices & Packing Slips for WooCommerce plugin.
 
 = 5.0.1 (07.06.2024) =
 * Fix - Logo was getting printed twice after v5.0 update.
