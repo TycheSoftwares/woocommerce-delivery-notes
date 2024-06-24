@@ -188,3 +188,14 @@ tfoot {
 	text-align: right;
 	vertical-align: top;
 }
+/* CSS Media Queries for Print
+------------------------------------------*/
+
+@media print {
+	
+	.content {
+		/* Remove padding to not generate empty follow up pages */
+		padding-bottom: 0;
+		page-break-after: always;
+	}
+}
