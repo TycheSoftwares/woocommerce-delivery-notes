@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <head>
 	<meta charset="utf-8">
+	<meta name="robots" content="noindex, nofollow, noarchive">
 	<title><?php wcdn_document_title(); ?></title>
 
 	<?php
