@@ -428,7 +428,8 @@ if ( ! class_exists( 'WCDN_Print' ) ) {
 
 			// Load the print template html.
 			$location = $this->get_template_file_location( 'print-order.php' );
-			wc_get_template( 'print-order.php', null, $location, $location );
+			$args     = array();
+			wc_get_template( 'print-order.php', $args, $location, $location );
 			exit;
 		}
 
