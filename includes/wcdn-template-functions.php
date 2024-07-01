@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @param string $name Template name.
  * @param array  $args Arguments array.
  */
-function wcdn_get_template_content( $name, $args = null ) {
+function wcdn_get_template_content( $name, $args = array() ) {
 	global $wcdn;
 	$location = $wcdn->print->get_template_file_location( $name );
 	if ( $location ) {
