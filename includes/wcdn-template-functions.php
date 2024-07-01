@@ -161,7 +161,14 @@ function wcdn_template_stylesheet( $template_type ) {
 		$template_type = 'deliverynote';
 	}
 	$setting = get_option( 'wcdn_' . $template_type . '_customization' );
-	$setting['template_setting']['template_setting_template'] = get_option( 'wcdn_template_type' );
+	if ( false === $setting ) {
+		$setting = array();
+	}
+	if ( ! isset( $setting['template_setting'] ) || ! is_array( $setting['template_setting'] ) ) {
+		$setting['template_setting'] = array();
+	}
+	$template_type_option = get_option( 'wcdn_template_type' );
+	$setting['template_setting']['template_setting_template'] = $template_type_option !== false ? $template_type_option : 'default';
 	if ( isset( $setting['template_setting']['template_setting_template'] ) && 'simple' == $setting['template_setting']['template_setting_template'] ) {
 		?>
 		<link rel="stylesheet" href="<?php echo esc_url( $wcdn->print->get_template_file_location( $name, true ) ) . 'simple/' . esc_html( $name ). '?v=' . esc_html( $plugin_version ); ?>" type="text/css" media="screen,print" />
@@ -196,7 +203,15 @@ function wcdn_content( $order, $template_type ) {
 		$template_type = 'deliverynote';
 	}
 	$setting = get_option( 'wcdn_' . $template_type . '_customization' );
-	$setting['template_setting']['template_setting_template'] = get_option( 'wcdn_template_type' );
+	if ( false === $setting ) {
+		$setting = array();
+	}
+	if ( ! isset( $setting['template_setting'] ) || ! is_array( $setting['template_setting'] ) ) {
+		$setting['template_setting'] = array();
+	}
+
+	$template_type_option                                     = get_option( 'wcdn_template_type' );
+	$setting['template_setting']['template_setting_template'] = false !== $template_type_option ? $template_type_option : 'default';
 
 	if ( isset( $setting['template_setting']['template_setting_template'] ) && 'simple' == $setting['template_setting']['template_setting_template'] ) {
 		if ( 'order' === $template_type ) {
@@ -350,8 +365,17 @@ function wcdn_get_order_info( $order, $type = '' ) {
 	$create_invoice_number = get_option( 'wcdn_create_invoice_number' );
 	$data                  = get_option( 'wcdn_' . $type . '_customization' );
 	$invoice_data          = get_option( 'wcdn_invoice_customization' );
-
-	$data['template_setting']['template_setting_template'] = get_option( 'wcdn_template_type' );
+	$template_type         = get_option( 'wcdn_template_type' );
+	if ( false === $template_type ) {
+		$template_type = 'default';
+	}
+	if ( false === $data ) {
+		$data = array();
+	}
+	if ( ! isset( $data['template_setting'] ) || ! is_array( $data['template_setting'] ) ) {
+		$data['template_setting'] = array();
+	}
+	$data['template_setting']['template_setting_template'] = $template_type;
 
 	$template     = isset( $data['template_setting']['template_setting_template'] ) ? $data['template_setting']['template_setting_template'] : 'default';
 	$wdn_order_id = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_id() : $order->id;
@@ -364,7 +388,7 @@ function wcdn_get_order_info( $order, $type = '' ) {
 	$date_formate                   = get_option( 'date_format' );
 	$wdn_order_payment_date         = $order->get_date_paid();
 
-	if ( 'on' === $invoice_data['numbering']['active'] ) {
+	if ( isset( $invoice_data['numbering'] ) && 'on' === $invoice_data['numbering']['active'] ) {
 		if ( isset( $data['invoice_number']['active'] ) ) {
 			if ( isset( $data['invoice_number']['invoice_number_text'] ) && ! empty( $data['invoice_number']['invoice_number_text'] ) ) {
 				$label = $data['invoice_number']['invoice_number_text'];
