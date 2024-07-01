@@ -12,6 +12,7 @@ html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, table, ol, ul, dl, li, dt, 
 body {
 	padding: 5% 10%;
 	line-height: 1;
+	font-size: 7pt;
 }
 
 ol,
@@ -34,7 +35,6 @@ body {
 	background: #fff;
 	color: #000;
 	font-family: "HelveticaNeue", Helvetica, Arial, sans-serif;
-	font-size: 100%;
 	line-height: 1.25em;
 }
 
@@ -169,7 +169,6 @@ h2 {
 
 .order-info li p {
 	min-width: 25%;
-	font-size: 15px;
 	font-weight: normal;
 	display: inline-block;
 	white-space: nowrap;
@@ -179,7 +178,6 @@ h2 {
 	padding-right: 0.35em;
 }
 .order-info li span {
-	font-size: 15px;
 	font-weight: normal;
 	display: inline-block;
 	overflow: hidden;
