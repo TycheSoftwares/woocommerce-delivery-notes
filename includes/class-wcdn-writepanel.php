@@ -281,7 +281,7 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 			<?php
 			$invoice_data       = get_option( 'wcdn_invoice_customization' );
 			$has_invoice_number = $order->get_meta( '_wcdn_invoice_number', true );
-			if ( 'on' === $invoice_data['numbering']['active'] && $has_invoice_number ) :
+			if ( $invoice_data && isset( $invoice_data['numbering']['active'] ) && 'on' === $invoice_data['numbering']['active'] && $has_invoice_number ) :
 				$invoice_number = wcdn_get_order_invoice_number( $order_id );
 				$invoice_date   = wcdn_get_order_invoice_date( $order_id );
 				?>
