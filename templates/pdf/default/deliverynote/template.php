@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <html>
 	<head>
 	<?php
-	do_action( 'wcdn_head', wcdn_get_template_type() );
+	do_action( 'wcdn_head_pdf', wcdn_get_template_type() );
 	wcdn_rtl();
 	?>
 	</head>

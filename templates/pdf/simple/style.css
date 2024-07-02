@@ -12,6 +12,7 @@ ol, ul, li {
 body {
 	background: #fff;
 	font-family: "HelveticaNeue", Helvetica, Arial, sans-serif;
+	font-size: 13px;
 	padding: 5% 10%;
 }
 h1, h2, h3, h4 {
