@@ -2,17 +2,21 @@
 
 Contributors: ashokrane, tychesoftwares
 Donate link: https://www.paypal.me/TycheSoftwares
-Tags: packing slips, invoice, pdf invoice, delivery notes, woocommerce print invoice, print, pdf, invoices
+Tags: packing slips, invoice, pdf invoice, delivery notes, woocommerce print invoice
 Requires at least: 4.4
-Tested up to: 6.5.5
+Tested up to: 6.6.2
 Author URI: https://www.tychesoftwares.com/
 Stable tag: 5.1.0
 License: GPLv3 or later
 License URI: http://www.opensource.org/licenses/gpl-license.php
 
-Print invoices and delivery notes for WooCommerce orders.  
+Create and print PDF invoices, delivery notes and receipts for your WooCommerce orders. Choose your document format from multiple templates.  
 
 == Description ==
+
+> ###🚀&nbsp;&nbsp;New Launch: Flexi BOGO for WooCommerce
+>
+> The only BOGO plugin with a revenue tracking feature. **Now, at an attractive introductory price**. [Check out our new plugin here](https://www.tychesoftwares.com/products/woocommerce-flexi-bogo-plugin/?utm_source=wprepo&utm_medium=pluginpagetop&utm_campaign=WCDeliveryNotes).
 
 You can print out invoices and delivery notes for the WooCommerce orders. You can also edit the Company/Shop name, Company/Shop postal address and also add personal notes, conditions/policies (like a refund policy) and a footer imprint.
 
@@ -46,6 +50,8 @@ If you have a patch, or stumbled upon an issue with the source code that isn't a
 When your language is missing you can contribute a translation to the [GitHub repository](https://github.com/TycheSoftwares/woocommerce-delivery-notes#translating).
 
 **Some of our Pro plugins:**
+
+1. **[Flexi BOGO for WooCommerce](https://www.tychesoftwares.com/products/woocommerce-flexi-bogo-plugin/?utm_source=wprepo&utm_medium=link&utm_campaign=WCDeliveryNotes "Flexi BOGO for WooCommerce")**
 
 1. **[Abandoned Cart Pro for WooCommerce](https://www.tychesoftwares.com/store/premium-plugins/woocommerce-abandoned-cart-pro/?utm_source=wprepo&utm_medium=otherprolink&utm_campaign=WCDeliveryNotes "Abandoned Cart Pro for WooCommerce")**
 
