@@ -16,6 +16,7 @@
  * WC requires at least: 3.0.0
  * WC tested up to: 9.0.2
  * Tested up to: 6.5.5
+ * Requires Plugins: woocommerce
  *
  * Copyright 2019 Tyche Softwares
  *
