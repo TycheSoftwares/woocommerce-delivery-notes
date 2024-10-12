@@ -1,439 +1,25 @@
-# Copyright (C) 2024 Tyche Softwares
-# This file is distributed under the same license as the Print Invoice & Delivery Notes for WooCommerce plugin.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Print Invoice & Delivery Notes for WooCommerce 5.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce-delivery-notes\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-12 15:18+0530\n"
+"PO-Revision-Date: 2024-10-12 15:18+0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-06-04T11:01:47+00:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.4.0\n"
-"X-Domain: woocommerce-delivery-notes\n"
-
-#. Plugin Name of the plugin
-msgid "Print Invoice & Delivery Notes for WooCommerce"
-msgstr ""
-
-#. Plugin URI of the plugin
-#. Author URI of the plugin
-msgid "https://www.tychesoftwares.com/"
-msgstr ""
-
-#. Description of the plugin
-msgid "Print Invoices & Delivery Notes for WooCommerce Orders."
-msgstr ""
-
-#. Author of the plugin
-msgid "Tyche Softwares"
-msgstr ""
-
-#: includes/admin/views/Preview_template/default-preview-template.php:61
-#: includes/admin/wcdn-admin-function.php:31
-#: templates/pdf/default/deliverynote/template.php:41
-#: templates/pdf/default/invoice/template.php:41
-#: templates/pdf/default/receipt/template.php:41
-#: templates/print-order/print-content.php:41
-msgid "Billing Address"
-msgstr ""
-
-#: includes/admin/views/Preview_template/default-preview-template.php:66
-#: includes/admin/views/Preview_template/default-preview-template.php:81
-#: includes/admin/views/Preview_template/deliverynote-preview-template.php:75
-#: includes/admin/views/Preview_template/deliverynote-preview-template.php:107
-#: includes/admin/views/Preview_template/invoice-preview-template.php:71
-#: includes/admin/views/Preview_template/invoice-preview-template.php:104
-#: includes/admin/views/Preview_template/receipt-preview-template.php:75
-#: includes/admin/views/Preview_template/receipt-preview-template.php:108
-#: templates/pdf/default/deliverynote/template.php:45
-#: templates/pdf/default/deliverynote/template.php:59
-#: templates/pdf/default/invoice/template.php:45
-#: templates/pdf/default/invoice/template.php:59
-#: templates/pdf/default/receipt/template.php:45
-#: templates/pdf/default/receipt/template.php:59
-#: templates/pdf/simple/deliverynote/template.php:83
-#: templates/pdf/simple/deliverynote/template.php:122
-#: templates/pdf/simple/invoice/template.php:83
-#: templates/pdf/simple/invoice/template.php:122
-#: templates/pdf/simple/receipt/template.php:85
-#: templates/pdf/simple/receipt/template.php:124
-#: templates/print-order/print-content.php:46
-#: templates/print-order/print-content.php:61
-#: templates/print-order/simple/deliverynote/print-content.php:76
-#: templates/print-order/simple/deliverynote/print-content.php:115
-#: templates/print-order/simple/invoice/print-content.php:77
-#: templates/print-order/simple/invoice/print-content.php:116
-#: templates/print-order/simple/receipt/print-content.php:79
-#: templates/print-order/simple/receipt/print-content.php:118
-msgid "N/A"
-msgstr ""
-
-#: includes/admin/views/Preview_template/default-preview-template.php:76
-#: includes/admin/wcdn-admin-function.php:32
-#: templates/pdf/default/deliverynote/template.php:55
-#: templates/pdf/default/invoice/template.php:55
-#: templates/pdf/default/receipt/template.php:55
-#: templates/print-order/print-content.php:56
-msgid "Shipping Address"
-msgstr ""
-
-#: includes/admin/views/Preview_template/default-preview-template.php:140
-#: includes/admin/views/Preview_template/deliverynote-preview-template.php:180
-#: includes/admin/views/Preview_template/invoice-preview-template.php:177
-#: includes/admin/views/Preview_template/receipt-preview-template.php:197
-#: templates/pdf/default/deliverynote/template.php:93
-#: templates/pdf/default/invoice/template.php:93
-#: templates/pdf/default/receipt/template.php:93
-#: templates/pdf/simple/deliverynote/template.php:184
-#: templates/pdf/simple/invoice/template.php:181
-#: templates/pdf/simple/receipt/template.php:196
-#: templates/print-order/print-content.php:97
-#: templates/print-order/simple/deliverynote/print-content.php:177
-#: templates/print-order/simple/invoice/print-content.php:175
-#: templates/print-order/simple/receipt/print-content.php:190
-msgid "Product"
-msgstr ""
-
-#: includes/admin/views/Preview_template/default-preview-template.php:141
-#: includes/admin/views/Preview_template/deliverynote-preview-template.php:181
-#: includes/admin/views/Preview_template/invoice-preview-template.php:178
-#: includes/admin/views/Preview_template/receipt-preview-template.php:198
-#: templates/pdf/default/deliverynote/template.php:94
-#: templates/pdf/default/invoice/template.php:94
-#: templates/pdf/default/receipt/template.php:94
-#: templates/pdf/simple/deliverynote/template.php:187
-#: templates/pdf/simple/invoice/template.php:182
-#: templates/pdf/simple/receipt/template.php:197
-#: templates/print-order/print-content.php:98
-#: templates/print-order/simple/deliverynote/print-content.php:180
-#: templates/print-order/simple/invoice/print-content.php:176
-#: templates/print-order/simple/receipt/print-content.php:191
-msgid "Price"
-msgstr ""
-
-#: includes/admin/views/Preview_template/default-preview-template.php:142
-#: includes/admin/views/Preview_template/deliverynote-preview-template.php:182
-#: includes/admin/views/Preview_template/invoice-preview-template.php:179
-#: includes/admin/views/Preview_template/receipt-preview-template.php:199
-#: templates/pdf/default/deliverynote/template.php:95
-#: templates/pdf/default/invoice/template.php:95
-#: templates/pdf/default/receipt/template.php:95
-#: templates/pdf/simple/deliverynote/template.php:189
-#: templates/pdf/simple/invoice/template.php:183
-#: templates/pdf/simple/receipt/template.php:198
-#: templates/print-order/print-content.php:99
-#: templates/print-order/simple/deliverynote/print-content.php:182
-#: templates/print-order/simple/invoice/print-content.php:177
-#: templates/print-order/simple/receipt/print-content.php:192
-msgid "Quantity"
-msgstr ""
-
-#: includes/admin/views/Preview_template/default-preview-template.php:143
-#: includes/admin/views/Preview_template/deliverynote-preview-template.php:183
-#: includes/admin/views/Preview_template/invoice-preview-template.php:180
-#: includes/admin/views/Preview_template/receipt-preview-template.php:200
-#: templates/pdf/default/deliverynote/template.php:96
-#: templates/pdf/default/invoice/template.php:96
-#: templates/pdf/default/receipt/template.php:96
-#: templates/pdf/simple/deliverynote/template.php:192
-#: templates/pdf/simple/invoice/template.php:184
-#: templates/pdf/simple/receipt/template.php:199
-#: templates/print-order/print-content.php:100
-#: templates/print-order/simple/deliverynote/print-content.php:185
-#: templates/print-order/simple/invoice/print-content.php:178
-#: templates/print-order/simple/receipt/print-content.php:193
-msgid "Total"
-msgstr ""
-
-#: includes/admin/views/Preview_template/default-preview-template.php:257
-#: includes/wcdn-template-functions.php:948
-#: templates/print-order/print-content.php:214
-msgid "Download:"
-msgstr ""
-
-#. translators: files count.
-#: includes/admin/views/Preview_template/default-preview-template.php:261
-#: includes/wcdn-template-functions.php:952
-#: templates/print-order/print-content.php:218
-msgid "%s Files"
-msgstr ""
-
-#: includes/admin/views/Preview_template/default-preview-template.php:323
-#: includes/admin/wcdn-admin-function.php:35
-#: templates/pdf/default/deliverynote/template.php:162
-#: templates/pdf/default/invoice/template.php:162
-#: templates/pdf/default/receipt/template.php:162
-#: templates/print-order/print-content.php:280
-msgid "Customer Note"
-msgstr ""
-
-#: includes/admin/views/wcdn-document.php:18
-msgid "Enable Invoice"
-msgstr ""
-
-#: includes/admin/views/wcdn-document.php:20
-#: includes/admin/views/wcdn-document.php:30
-#: includes/admin/views/wcdn-document.php:40
-msgid "Enable button that will display on admin side order page."
-msgstr ""
-
-#: includes/admin/views/wcdn-document.php:28
-msgid "Enable Receipt"
-msgstr ""
-
-#: includes/admin/views/wcdn-document.php:38
-msgid "Enable Delivery Notes"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:15
-msgid "Shop Details"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:19
-msgid "Logo"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:21
-msgid "A shop logo representing your business. When the image is printed, its pixel density will automatically be eight times higher than the original. This means, 1 printed inch will correspond to about 288 pixels on the screen."
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:67
-msgid "Logo Size"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:69
-msgid " Shop Logo height x width value. Default value is 125 x 125."
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:88
-msgid "Name"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:90
-msgid "The shop name. Leave blank to use the default Website or Blog title defined in WordPress settings. The name will be ignored when a Logo is set."
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:95
-msgid "Address"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:97
-msgid "The postal address of the shop or even e-mail or telephone."
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:102
-#: includes/admin/wcdn-admin-function.php:36
-msgid "Complimentary Close"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:104
-msgid "Add a personal close, notes or season greetings."
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:109
-#: includes/admin/wcdn-admin-function.php:37
-msgid "Policies"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:111
-msgid "Add the shop policies, conditions, etc."
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:116
-#: includes/admin/wcdn-admin-function.php:38
-msgid "Footer"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:118
-msgid "Add a footer imprint, instructions, copyright notes, e-mail, telephone, etc."
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:124
-msgid "Pages & Buttons"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:128
-msgid "Print Page Endpoint"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:130
-msgid "The endpoint is appended to the accounts page URL to print the order. It should be unique."
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:135
-#: includes/wcdn-template-functions.php:485
-msgid "Email"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:137
-msgid "This includes the emails for a new, processing and completed order. On top of that the customer and admin invoice emails will also include the link."
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:142
-msgid "Show print link in customer emails"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:151
-msgid "Show print link in admin emails"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:155
-msgid "My Account"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:157
-msgid "This includes print button on View Order page and My Account page."
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:162
-msgid "Show print button on View Order page"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:171
-msgid "Show print button on My Account page"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:177
-msgid "To Store PDF files in the \\wp-content\\uploads\\wcdn\\ folder for a specific duration, like X days, with a default value of 7 days"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:190
-msgid "Template Type"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:196
-msgid "You have the option to customize the Simple template to your liking, or you can stick with the default display.\t"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:206
-msgid "Text Direction"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:208
-msgid "Show text in right to left direction in Invoice, Print Receipt & Delivery note if you are using languages such as Hebrew, Arabic, etc."
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:213
-msgid "Print Text from Right to left"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:217
-msgid "Reset usage tracking"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:219
-msgid "This will reset your usage tracking settings, causing it to show the opt-in banner again and not sending any data"
-msgstr ""
-
-#: includes/admin/views/wcdn-header.php:12
-msgid "General"
-msgstr ""
-
-#: includes/admin/views/wcdn-header.php:13
-msgid "Templates"
-msgstr ""
-
-#: includes/admin/views/wcdn-header.php:14
-msgid "Help & Guide"
-msgstr ""
-
-#: includes/admin/views/wcdn-helpguide.php:11
-msgid "Filters"
-msgstr ""
-
-#: includes/admin/views/wcdn-helpguide.php:14
-msgid "FAQ"
-msgstr ""
-
-#: includes/admin/wcdn-admin-function.php:20
-msgid "Numbering"
-msgstr ""
-
-#: includes/admin/wcdn-admin-function.php:21
-msgid "Email Attach To"
-msgstr ""
-
-#: includes/admin/wcdn-admin-function.php:22
-msgid "Document Title"
-msgstr ""
-
-#: includes/admin/wcdn-admin-function.php:23
-msgid "Company Logo"
-msgstr ""
-
-#: includes/admin/wcdn-admin-function.php:24
-msgid "Company Name"
-msgstr ""
-
-#: includes/admin/wcdn-admin-function.php:25
-msgid "Company Address"
-msgstr ""
-
-#: includes/admin/wcdn-admin-function.php:26
-#: includes/wcdn-template-functions.php:371
-#: includes/wcdn-template-functions.php:384
-msgid "Invoice Number"
-msgstr ""
-
-#: includes/admin/wcdn-admin-function.php:27
-#: includes/wcdn-template-functions.php:402
-#: includes/wcdn-template-functions.php:414
-msgid "Order Number"
-msgstr ""
-
-#: includes/admin/wcdn-admin-function.php:28
-#: includes/wcdn-template-functions.php:423
-#: includes/wcdn-template-functions.php:435
-msgid "Order Date"
-msgstr ""
-
-#: includes/admin/wcdn-admin-function.php:29
-#: includes/wcdn-template-functions.php:444
-#: includes/wcdn-template-functions.php:447
-#: includes/wcdn-template-functions.php:457
-msgid "Payment Method"
-msgstr ""
-
-#: includes/admin/wcdn-admin-function.php:30
-#: includes/wcdn-template-functions.php:471
-msgid "Payment Date"
-msgstr ""
-
-#: includes/admin/wcdn-admin-function.php:33
-msgid "Email Address"
-msgstr ""
-
-#: includes/admin/wcdn-admin-function.php:34
-msgid "Phone Number"
-msgstr ""
-
-#: includes/admin/wcdn-admin-function.php:39
-msgid "Payment Received Stamp"
-msgstr ""
-
-#: includes/admin/wcdn-admin-function.php:40
-msgid "Display price in product details table"
-msgstr ""
-
-#: includes/admin/wcdn-admin-function.php:239
-msgid "Next Number"
-msgstr ""
-
-#: includes/admin/wcdn-admin-function.php:247
-msgid "Suffix"
-msgstr ""
-
-#: includes/admin/wcdn-admin-function.php:255
-msgid "Prefix"
-msgstr ""
-
-#: includes/class-wcdn-print.php:101
-#: includes/class-wcdn-settings.php:465
-#: includes/class-wcdn-settings.php:476
-#: includes/class-wcdn-settings.php:477
+"Plural-Forms: \n"
+"X-Generator: Eazy Po 1.0.0.0\n"
+
+#: includes/class-wcdn-print.php:101 includes/class-wcdn-settings.php:465
+#: includes/class-wcdn-settings.php:476 includes/class-wcdn-settings.php:477
 msgid "Invoice"
 msgstr ""
 
@@ -441,8 +27,7 @@ msgstr ""
 msgid "Invoices"
 msgstr ""
 
-#: includes/class-wcdn-print.php:103
-#: includes/class-wcdn-writepanel.php:128
+#: includes/class-wcdn-print.php:103 includes/class-wcdn-writepanel.php:128
 msgid "Print Invoice"
 msgstr ""
 
@@ -470,8 +55,7 @@ msgstr ""
 msgid "Delivery Notes"
 msgstr ""
 
-#: includes/class-wcdn-print.php:118
-#: includes/class-wcdn-writepanel.php:129
+#: includes/class-wcdn-print.php:118 includes/class-wcdn-writepanel.php:129
 msgid "Print Delivery Note"
 msgstr ""
 
@@ -499,8 +83,7 @@ msgstr ""
 msgid "Receipts"
 msgstr ""
 
-#: includes/class-wcdn-print.php:133
-#: includes/class-wcdn-writepanel.php:130
+#: includes/class-wcdn-print.php:133 includes/class-wcdn-writepanel.php:130
 msgid "Print Receipt"
 msgstr ""
 
@@ -536,12 +119,14 @@ msgstr ""
 msgid "Print Orders"
 msgstr ""
 
-#: includes/class-wcdn-print.php:168
+#: includes/class-wcdn-print.php:168 includes/admin/views/wcdn-general.php:199
 msgid "Default"
 msgstr ""
 
 #: includes/class-wcdn-settings.php:455
-msgid "Do you really want to reset the counter to zero? This process can't be undone."
+msgid ""
+"Do you really want to reset the counter to zero? This process can't be "
+"undone."
 msgstr ""
 
 #: includes/class-wcdn-settings.php:531
@@ -549,12 +134,18 @@ msgid "Admin"
 msgstr ""
 
 #: includes/class-wcdn-settings.php:534
-msgid "The print buttons are available on the order listing and on the order detail screen."
+msgid ""
+"The print buttons are available on the order listing and on the order detail "
+"screen."
 msgstr ""
 
-#. translators: %s: invoice url, delivery note url, receipt url
 #: includes/class-wcdn-settings.php:576
-msgid "This section lets you customise the content. You can preview the <a href=\"%1$s\" target=\"%4$s\" class=\"%5$s\">invoice</a>, <a href=\"%2$s\" target=\"%4$s\" class=\"%5$s\">delivery note</a> or <a href=\"%3$s\" target=\"%4$s\" class=\"%5$s\">receipt</a> template."
+#, php-format
+msgid ""
+"This section lets you customise the content. You can preview the <a href="
+"\"%1$s\" target=\"%4$s\" class=\"%5$s\">invoice</a>, <a href=\"%2$s\" target="
+"\"%4$s\" class=\"%5$s\">delivery note</a> or <a href=\"%3$s\" target=\"%4$s"
+"\" class=\"%5$s\">receipt</a> template."
 msgstr ""
 
 #: includes/class-wcdn-settings.php:643
@@ -565,8 +156,7 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: includes/class-wcdn-theme.php:127
-#: includes/class-wcdn-theme.php:164
+#: includes/class-wcdn-theme.php:127 includes/class-wcdn-theme.php:164
 #: includes/wcdn-template-functions.php:143
 msgid "Print"
 msgstr ""
@@ -604,30 +194,500 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
+#: includes/wcdn-template-functions.php:396
+#: includes/wcdn-template-functions.php:409
+#: includes/admin/wcdn-admin-function.php:26
+msgid "Invoice Number"
+msgstr ""
+
+#: includes/wcdn-template-functions.php:418
+msgid "Invoice Date"
+msgstr ""
+
+#: includes/wcdn-template-functions.php:427
+#: includes/wcdn-template-functions.php:439
+#: includes/admin/wcdn-admin-function.php:27
+msgid "Order Number"
+msgstr ""
+
+#: includes/wcdn-template-functions.php:448
+#: includes/wcdn-template-functions.php:460
+#: includes/admin/wcdn-admin-function.php:28
+msgid "Order Date"
+msgstr ""
+
+#: includes/wcdn-template-functions.php:469
+#: includes/wcdn-template-functions.php:472
+#: includes/wcdn-template-functions.php:482
+#: includes/admin/wcdn-admin-function.php:29
+msgid "Payment Method"
+msgstr ""
+
+#: includes/wcdn-template-functions.php:493
+msgid "Payment date"
+msgstr ""
+
+#: includes/wcdn-template-functions.php:496
+#: includes/admin/wcdn-admin-function.php:30
+msgid "Payment Date"
+msgstr ""
+
+#: includes/wcdn-template-functions.php:510
+#: includes/admin/views/wcdn-general.php:135
+msgid "Email"
+msgstr ""
+
+#: includes/wcdn-template-functions.php:517
+msgid "Telephone"
+msgstr ""
+
+#: includes/wcdn-template-functions.php:558
+msgid "SKU:"
+msgstr ""
+
+#: includes/wcdn-template-functions.php:662
+#: includes/wcdn-template-functions.php:667
+#, php-format
+msgid "(Includes %s)"
+msgstr ""
+
+#: includes/wcdn-template-functions.php:682
+msgid "Refund"
+msgstr ""
+
+#: includes/wcdn-template-functions.php:694
+msgid "Order Subtotal"
+msgstr ""
+
+#: includes/wcdn-template-functions.php:961
+#: includes/admin/views/Preview_template/default-preview-template.php:257
+#: templates/print-order/print-content.php:214
+msgid "Download:"
+msgstr ""
+
+#: includes/wcdn-template-functions.php:965
+#: includes/admin/views/Preview_template/default-preview-template.php:261
+#: templates/print-order/print-content.php:218
+#, php-format
+msgid "%s Files"
+msgstr ""
+
+#: includes/admin/wcdn-admin-function.php:20
+msgid "Numbering"
+msgstr ""
+
+#: includes/admin/wcdn-admin-function.php:21
+msgid "Email Attach To"
+msgstr ""
+
+#: includes/admin/wcdn-admin-function.php:22
+msgid "Document Title"
+msgstr ""
+
+#: includes/admin/wcdn-admin-function.php:23
+msgid "Company Logo"
+msgstr ""
+
+#: includes/admin/wcdn-admin-function.php:24
+msgid "Company Name"
+msgstr ""
+
+#: includes/admin/wcdn-admin-function.php:25
+msgid "Company Address"
+msgstr ""
+
+#: includes/admin/wcdn-admin-function.php:31
+#: includes/admin/views/Preview_template/default-preview-template.php:61
+#: templates/pdf/default/deliverynote/template.php:42
+#: templates/pdf/default/invoice/template.php:42
+#: templates/pdf/default/receipt/template.php:42
+#: templates/print-order/print-content.php:41
+msgid "Billing Address"
+msgstr ""
+
+#: includes/admin/wcdn-admin-function.php:32
+#: includes/admin/views/Preview_template/default-preview-template.php:76
+#: templates/pdf/default/deliverynote/template.php:56
+#: templates/pdf/default/invoice/template.php:56
+#: templates/pdf/default/receipt/template.php:56
+#: templates/print-order/print-content.php:56
+msgid "Shipping Address"
+msgstr ""
+
+#: includes/admin/wcdn-admin-function.php:33
+msgid "Email Address"
+msgstr ""
+
+#: includes/admin/wcdn-admin-function.php:34
+msgid "Phone Number"
+msgstr ""
+
+#: includes/admin/wcdn-admin-function.php:35
+#: includes/admin/views/Preview_template/default-preview-template.php:323
+#: templates/pdf/default/deliverynote/template.php:163
+#: templates/pdf/default/invoice/template.php:163
+#: templates/pdf/default/receipt/template.php:163
+#: templates/print-order/print-content.php:280
+msgid "Customer Note"
+msgstr ""
+
+#: includes/admin/wcdn-admin-function.php:36
+#: includes/admin/views/wcdn-general.php:102
+msgid "Complimentary Close"
+msgstr ""
+
+#: includes/admin/wcdn-admin-function.php:37
+#: includes/admin/views/wcdn-general.php:109
+msgid "Policies"
+msgstr ""
+
+#: includes/admin/wcdn-admin-function.php:38
+#: includes/admin/views/wcdn-general.php:116
+msgid "Footer"
+msgstr ""
+
+#: includes/admin/wcdn-admin-function.php:39
+msgid "Payment Received Stamp"
+msgstr ""
+
+#: includes/admin/wcdn-admin-function.php:40
+msgid "Display price in product details table"
+msgstr ""
+
+#: includes/admin/wcdn-admin-function.php:239
+msgid "Next Number"
+msgstr ""
+
+#: includes/admin/wcdn-admin-function.php:247
+msgid "Suffix"
+msgstr ""
+
+#: includes/admin/wcdn-admin-function.php:255
+msgid "Prefix"
+msgstr ""
+
+#: includes/admin/views/wcdn-document.php:18
+msgid "Enable Invoice"
+msgstr ""
+
+#: includes/admin/views/wcdn-document.php:20
+msgid "Enable Print Invoice option on the WooCommerce Orders page."
+msgstr ""
+
+#: includes/admin/views/wcdn-document.php:28
+msgid "Enable Receipt"
+msgstr ""
+
+#: includes/admin/views/wcdn-document.php:30
+msgid "Enable Print Receipt option on the WooCommerce Orders page."
+msgstr ""
+
+#: includes/admin/views/wcdn-document.php:38
+msgid "Enable Delivery Notes"
+msgstr ""
+
+#: includes/admin/views/wcdn-document.php:40
+msgid "Enable Print Delivery Notes option on the WooCommerce Orders page."
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:15
+msgid "Shop Details"
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:19
+msgid "Logo"
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:21
+msgid ""
+"A shop logo representing your business. When the image is printed, its pixel "
+"density will automatically be eight times higher than the original. This "
+"means, 1 printed inch will correspond to about 288 pixels on the screen."
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:67
+msgid "Logo Size"
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:69
+msgid " Shop Logo height x width value. Default value is 125 x 125."
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:88
+msgid "Name"
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:90
+msgid ""
+"The shop name. Leave blank to use the default Website or Blog title defined "
+"in WordPress settings. The name will be ignored when a Logo is set."
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:95
+msgid "Address"
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:97
+msgid "The postal address of the shop or even e-mail or telephone."
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:104
+msgid "Add a personal close, notes or season greetings."
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:111
+msgid "Add the shop policies, conditions, etc."
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:118
+msgid ""
+"Add a footer imprint, instructions, copyright notes, e-mail, telephone, etc."
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:124
+msgid "Pages & Buttons"
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:128
+msgid "Print Page Endpoint"
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:130
+msgid ""
+"The endpoint is appended to the accounts page URL to print the order. It "
+"should be unique."
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:137
+msgid ""
+"This includes the emails for a new, processing and completed order. On top "
+"of that the customer and admin invoice emails will also include the link."
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:142
+msgid "Show print link in customer emails"
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:151
+msgid "Show print link in admin emails"
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:155
+msgid "My Account"
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:157
+msgid "This includes print button on View Order page and My Account page."
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:162
+msgid "Show print button on View Order page"
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:171
+msgid "Show print button on My Account page"
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:177
+msgid ""
+"To Store PDF files in the \\wp-content\\uploads\\wcdn\\ folder for a "
+"specific duration, like X days, with a default value of 7 days"
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:190
+msgid "Template Type"
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:196
+msgid ""
+"You have the option to customize the Simple template to your liking, or you "
+"can stick with the default display.\t"
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:200
+msgid "Simple"
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:206
+msgid "Text Direction"
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:208
+msgid ""
+"Show text in right to left direction in Invoice, Print Receipt & Delivery "
+"note if you are using languages such as Hebrew, Arabic, etc."
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:213
+msgid "Print Text from Right to left"
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:217
+msgid "Reset usage tracking"
+msgstr ""
+
+#: includes/admin/views/wcdn-general.php:219
+msgid ""
+"This will reset your usage tracking settings, causing it to show the opt-in "
+"banner again and not sending any data"
+msgstr ""
+
+#: includes/admin/views/wcdn-header.php:12
+msgid "General"
+msgstr ""
+
+#: includes/admin/views/wcdn-header.php:13
+msgid "Templates"
+msgstr ""
+
+#: includes/admin/views/wcdn-header.php:14
+msgid "Help & Guide"
+msgstr ""
+
+#: includes/admin/views/wcdn-helpguide.php:11
+msgid "Filters"
+msgstr ""
+
+#: includes/admin/views/wcdn-helpguide.php:14
+msgid "FAQ"
+msgstr ""
+
+#: includes/admin/views/Preview_template/default-preview-template.php:66
+#: includes/admin/views/Preview_template/default-preview-template.php:81
+#: includes/admin/views/Preview_template/deliverynote-preview-template.php:75
+#: includes/admin/views/Preview_template/deliverynote-preview-template.php:107
+#: includes/admin/views/Preview_template/invoice-preview-template.php:71
+#: includes/admin/views/Preview_template/invoice-preview-template.php:104
+#: includes/admin/views/Preview_template/receipt-preview-template.php:75
+#: includes/admin/views/Preview_template/receipt-preview-template.php:108
+#: templates/pdf/default/deliverynote/template.php:46
+#: templates/pdf/default/deliverynote/template.php:60
+#: templates/pdf/default/invoice/template.php:46
+#: templates/pdf/default/invoice/template.php:60
+#: templates/pdf/default/receipt/template.php:46
+#: templates/pdf/default/receipt/template.php:60
+#: templates/pdf/simple/deliverynote/template.php:84
+#: templates/pdf/simple/deliverynote/template.php:123
+#: templates/pdf/simple/invoice/template.php:84
+#: templates/pdf/simple/invoice/template.php:123
+#: templates/pdf/simple/receipt/template.php:86
+#: templates/pdf/simple/receipt/template.php:125
+#: templates/print-order/print-content.php:46
+#: templates/print-order/print-content.php:61
+#: templates/print-order/simple/deliverynote/print-content.php:76
+#: templates/print-order/simple/deliverynote/print-content.php:115
+#: templates/print-order/simple/invoice/print-content.php:77
+#: templates/print-order/simple/invoice/print-content.php:116
+#: templates/print-order/simple/receipt/print-content.php:79
+#: templates/print-order/simple/receipt/print-content.php:118
+msgid "N/A"
+msgstr ""
+
+#: includes/admin/views/Preview_template/default-preview-template.php:140
+#: includes/admin/views/Preview_template/deliverynote-preview-template.php:180
+#: includes/admin/views/Preview_template/invoice-preview-template.php:177
+#: includes/admin/views/Preview_template/receipt-preview-template.php:197
+#: templates/pdf/default/deliverynote/template.php:94
+#: templates/pdf/default/invoice/template.php:94
+#: templates/pdf/default/receipt/template.php:94
+#: templates/pdf/simple/deliverynote/template.php:185
+#: templates/pdf/simple/invoice/template.php:182
+#: templates/pdf/simple/receipt/template.php:197
+#: templates/print-order/print-content.php:97
+#: templates/print-order/simple/deliverynote/print-content.php:177
+#: templates/print-order/simple/invoice/print-content.php:175
+#: templates/print-order/simple/receipt/print-content.php:190
+msgid "Product"
+msgstr ""
+
+#: includes/admin/views/Preview_template/default-preview-template.php:141
+#: includes/admin/views/Preview_template/deliverynote-preview-template.php:181
+#: includes/admin/views/Preview_template/invoice-preview-template.php:178
+#: includes/admin/views/Preview_template/receipt-preview-template.php:198
+#: templates/pdf/default/deliverynote/template.php:95
+#: templates/pdf/default/invoice/template.php:95
+#: templates/pdf/default/receipt/template.php:95
+#: templates/pdf/simple/deliverynote/template.php:188
+#: templates/pdf/simple/invoice/template.php:183
+#: templates/pdf/simple/receipt/template.php:198
+#: templates/print-order/print-content.php:98
+#: templates/print-order/simple/deliverynote/print-content.php:180
+#: templates/print-order/simple/invoice/print-content.php:176
+#: templates/print-order/simple/receipt/print-content.php:191
+msgid "Price"
+msgstr ""
+
+#: includes/admin/views/Preview_template/default-preview-template.php:142
+#: includes/admin/views/Preview_template/deliverynote-preview-template.php:182
+#: includes/admin/views/Preview_template/invoice-preview-template.php:179
+#: includes/admin/views/Preview_template/receipt-preview-template.php:199
+#: templates/pdf/default/deliverynote/template.php:96
+#: templates/pdf/default/invoice/template.php:96
+#: templates/pdf/default/receipt/template.php:96
+#: templates/pdf/simple/deliverynote/template.php:190
+#: templates/pdf/simple/invoice/template.php:184
+#: templates/pdf/simple/receipt/template.php:199
+#: templates/print-order/print-content.php:99
+#: templates/print-order/simple/deliverynote/print-content.php:182
+#: templates/print-order/simple/invoice/print-content.php:177
+#: templates/print-order/simple/receipt/print-content.php:192
+msgid "Quantity"
+msgstr ""
+
+#: includes/admin/views/Preview_template/default-preview-template.php:143
+#: includes/admin/views/Preview_template/deliverynote-preview-template.php:183
+#: includes/admin/views/Preview_template/invoice-preview-template.php:180
+#: includes/admin/views/Preview_template/receipt-preview-template.php:200
+#: templates/pdf/default/deliverynote/template.php:97
+#: templates/pdf/default/invoice/template.php:97
+#: templates/pdf/default/receipt/template.php:97
+#: templates/pdf/simple/deliverynote/template.php:193
+#: templates/pdf/simple/invoice/template.php:185
+#: templates/pdf/simple/receipt/template.php:200
+#: templates/print-order/print-content.php:100
+#: templates/print-order/simple/deliverynote/print-content.php:185
+#: templates/print-order/simple/invoice/print-content.php:178
+#: templates/print-order/simple/receipt/print-content.php:193
+msgid "Total"
+msgstr ""
+
+#: includes/component/faq-support/ts-faq-support.php:127
+#, php-format
+msgid "Frequently Asked Questions for %s"
+msgstr ""
+
+#: includes/component/faq-support/ts-faq-support.php:128
+msgid "Frequently Asked Questions for "
+msgstr ""
+
+#: includes/component/faq-support/ts-faq-support.php:176
+msgid "FAQ & Support"
+msgstr ""
+
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:182
 msgid "Please select a reason for deactivation!"
 msgstr ""
 
-#: includes/wcdn-template-functions.php:393
-msgid "Invoice Date"
+#: includes/component/plugin-tracking/class-tyche-plugin-tracking.php:121
+msgid "Once in a Week"
 msgstr ""
 
-#: includes/wcdn-template-functions.php:468
-msgid "Payment date"
+#: includes/component/plugin-tracking/class-tyche-plugin-tracking.php:257
+#, php-format
+msgid ""
+"Want to help make %1$s even more awesome? Allow %1$s to collect non-"
+"sensitive diagnostic data and usage information and get 20%% off on your "
+"next purchase. <a href=\"%2$s\">Find out more</a>."
 msgstr ""
 
-#: includes/wcdn-template-functions.php:492
-msgid "Telephone"
+#: includes/component/plugin-tracking/class-tyche-plugin-tracking.php:260
+msgid "Allow"
 msgstr ""
 
-#: includes/wcdn-template-functions.php:533
-msgid "SKU:"
+#: includes/component/plugin-tracking/class-tyche-plugin-tracking.php:261
+msgid "No thanks"
 msgstr ""
 
-#: includes/wcdn-template-functions.php:657
-msgid "Refund"
-msgstr ""
-
-#: includes/wcdn-template-functions.php:669
-msgid "Order Subtotal"
+#: includes/component/woocommerce-check/ts-woo-active.php:77
+msgid " plugin requires WooCommerce installed and active."
 msgstr ""
