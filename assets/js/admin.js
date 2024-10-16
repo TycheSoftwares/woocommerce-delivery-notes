@@ -306,7 +306,9 @@ jQuery(document).ready(function($) {
 		}
 	});
 
-	$('[data-toggle="tooltip"]').tooltip();
+	if (typeof $.fn.tooltip === 'function') {
+		$('[data-toggle="tooltip"]').tooltip();
+	}
 	
 	var footer = jQuery(".wcdn-footer-top").html();
 	jQuery("#mainform").append( footer );
