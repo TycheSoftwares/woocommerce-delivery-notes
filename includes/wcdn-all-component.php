@@ -45,17 +45,17 @@ if ( ! class_exists( 'WCDN_Component' ) ) {
 
                 $wcdn_settings_page        = 'admin.php?page=wc-settings&tab=wcdn-settings';
 
-                require_once 'component/plugin-deactivation/class-tyche-plugin-deactivation.php';
-                new Tyche_Plugin_Deactivation(
-                    array(
+                if (strpos($_SERVER['REQUEST_URI'], 'plugins.php') !== false || strpos($_SERVER['REQUEST_URI'], 'action=deactivate') !== false || strpos($_SERVER['REQUEST_URI'], 'admin-ajax.php') !== false) { // phpcs:ignore
+                    require_once 'component/plugin-deactivation/class-tyche-plugin-deactivation.php';
+                    new Tyche_Plugin_Deactivation(array(
                         'plugin_name'       => 'Print Invoices & Delivery Notes for WooCommerce',
                         'plugin_base'       => 'woocommerce-delivery-notes/woocommerce-delivery-notes.php',
                         'script_file'       => $wcdn_plugin_url . '/assets/js/plugin-deactivation.js',
                         'plugin_short_name' => 'wcdn',
                         'version'           => $wcdn_get_previous_version,
                         'plugin_locale'     => 'woocommerce-delivery-notes',
-                    )
-                );
+                    ));
+                }                
 
                 require_once 'component/plugin-tracking/class-tyche-plugin-tracking.php';
                 new Tyche_Plugin_Tracking(

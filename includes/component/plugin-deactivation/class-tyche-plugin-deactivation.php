@@ -144,6 +144,10 @@ if ( ! class_exists( 'Tyche_Plugin_Deactivation' ) ) {
 		 * @since 1.1
 		 */
 		public function enqueue_scripts() {
+			$current_screen = get_current_screen();
+			if ( isset( $current_screen->id ) && 'plugins' !== $current_screen->id ) {
+				return;
+			}
 
 			wp_enqueue_style(
 				'tyche_plugin_deactivation',
@@ -195,6 +199,13 @@ if ( ! class_exists( 'Tyche_Plugin_Deactivation' ) ) {
 
 			if ( ! wp_verify_nonce( $_POST['nonce'], 'tyche_plugin_deactivation_submit_action' ) || ! isset( $_POST['reason_id'] ) || ! isset( $_POST['reason_text'] ) || ! isset( $_POST['plugin_short_name'] ) || ! isset( $_POST['plugin_name'] ) ) { // phpcs:ignore
 				wp_send_json_error( 0 );
+			}
+
+			$reason_id = isset( $_POST['reason_id'] ) ? sanitize_text_field( wp_unslash( $_POST['reason_id'] ) ) : '';
+
+			if ( 0 === (int) $reason_id ) {
+				wp_send_json_error( 0 );
+				exit;
 			}
 
 			wp_safe_remote_post(
