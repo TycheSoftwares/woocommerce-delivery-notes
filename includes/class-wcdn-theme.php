@@ -119,7 +119,9 @@ if ( ! class_exists( 'WCDN_Theme' ) ) {
 		 * @param object $order Order object.
 		 */
 		public function create_print_button_account_page( $actions, $order ) {
-			if ( 'yes' === get_option( 'wcdn_print_button_on_my_account_page' ) ) {
+			// Add a filter to allow controlling the order status for which the print button is shown.
+			$show_print_button = apply_filters( 'wcdn_show_print_button_for_order_status', $order->get_status(), $order );
+			if ( 'yes' === get_option( 'wcdn_print_button_on_my_account_page' ) && $show_print_button ) {
 				// Add the print button.
 				$wdn_order_id     = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_id() : $order->id;
 				$actions['print'] = array(
