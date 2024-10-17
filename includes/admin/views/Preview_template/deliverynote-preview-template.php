@@ -195,9 +195,8 @@ if ( is_null( $parent_order ) ) {
 						if ( ! $product ) {
 							continue;
 						}
-						$original_qty = $item->get_quantity();
-						$qty_refunded = $order->get_qty_refunded_for_item( $item_id );
-						$adjusted_qty = $original_qty + $qty_refunded;
+						// Call the function to get the adjusted quantity.
+						$adjusted_qty = get_adjusted_item_quantity( $order, $item, $item_id );
 						if ( $adjusted_qty <= 0 ) {
 							continue;
 						}
