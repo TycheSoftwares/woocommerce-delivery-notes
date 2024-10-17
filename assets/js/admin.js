@@ -172,7 +172,7 @@ jQuery(document).ready(function($) {
 			targetCondition = '#ct_acc_1_content';
 		}
 	
-		if (admin_object.template_save === 'default' && targetCondition) {
+		if (typeof admin_object !== 'undefined' && admin_object.template_save === 'default' && targetCondition) {
 			$('.accordion-button').each(function() {
 				var target = $(this).attr('data-bs-target');
 				if (target !== targetCondition) {
@@ -234,7 +234,7 @@ jQuery(document).ready(function($) {
 
 	//Set checkbox on and off when default template is selected.
 	$(document).ready(function() {
-		if (admin_object.template_save === 'default') {
+		if (typeof admin_object !== 'undefined' && admin_object.template_save === 'default') {
 			var documentTypeElement = document.querySelector('#document_type');
 			var document_type = documentTypeElement ? documentTypeElement.value : null;
 			var checkboxes = document.querySelectorAll('.custom-checkbox');
@@ -306,7 +306,9 @@ jQuery(document).ready(function($) {
 		}
 	});
 
-	$('[data-toggle="tooltip"]').tooltip();
+	if (typeof $.fn.tooltip === 'function') {
+		$('[data-toggle="tooltip"]').tooltip();
+	}
 	
 	var footer = jQuery(".wcdn-footer-top").html();
 	jQuery("#mainform").append( footer );
