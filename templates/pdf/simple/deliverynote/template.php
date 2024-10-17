@@ -206,6 +206,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 								if ( ! $product ) {
 									continue;
 								}
+								$original_qty = $item->get_quantity();
+								$qty_refunded = $order->get_qty_refunded_for_item( $item_id );
+								$adjusted_qty = $original_qty + $qty_refunded;
+								if ( $adjusted_qty <= 0 ) {
+									continue;
+								}
+								$item['qty'] = $adjusted_qty;
 								if ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) {
 									$item_meta = new WC_Order_Item_Product( $item['item_meta'], $product );
 								} else {
