@@ -205,6 +205,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 					if ( ! $product ) {
 						continue;
 					}
+					// Call the function to get the adjusted quantity.
+					$adjusted_qty = get_adjusted_item_quantity( $order, $item, $item_id );
+					if ( $adjusted_qty <= 0 ) {
+						continue;
+					}
+					$item['qty'] = $adjusted_qty;
 					if ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) {
 						$item_meta = new WC_Order_Item_Product( $item['item_meta'], $product );
 					} else {
