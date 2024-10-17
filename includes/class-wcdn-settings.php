@@ -71,13 +71,13 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 			if ( isset( $_GET['tab'] ) && 'wcdn-settings' === $_GET['tab'] ) { // phpcs:ignore
 				wp_enqueue_style( 'woocommerce-delivery-notes-bootstrap-style', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css', '', WooCommerce_Delivery_Notes::$plugin_version );
 				wp_enqueue_style( 'woocommerce-delivery-notes-select2-style', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css', '', WooCommerce_Delivery_Notes::$plugin_version );
+				wp_enqueue_script( 'woocommerce-delivery-notes-bootstrap', WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/bootstrap.min.js', array(), WooCommerce_Delivery_Notes::$plugin_version, false );
 			}
 
 			// Scripts.
 			wp_enqueue_media();
 			wp_enqueue_script( 'woocommerce-delivery-notes-print-link', WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/jquery.print-link.js', array( 'jquery' ), WooCommerce_Delivery_Notes::$plugin_version, false );
 			wp_enqueue_script( 'woocommerce-delivery-notes-admin', WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/admin.js', array( 'jquery', 'custom-header', 'woocommerce-delivery-notes-print-link' ), WooCommerce_Delivery_Notes::$plugin_version, false );
-			wp_enqueue_script( 'woocommerce-delivery-notes-bootstrap', WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/bootstrap.min.js', array(), WooCommerce_Delivery_Notes::$plugin_version, false );
 			wp_enqueue_script( 'woocommerce-delivery-notes-vue', WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/vue.js', array(), WooCommerce_Delivery_Notes::$plugin_version, false );
 			if ( isset( $_GET['wdcn_setting'] ) && 'wcdn_invoice' === $_GET['wdcn_setting'] ) { // phpcs:ignore
 				wp_enqueue_script( 'woocommerce-delivery-notes-edit-invoice', WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/wdne-invoice-add-edit.js', array(), WooCommerce_Delivery_Notes::$plugin_version, false );
