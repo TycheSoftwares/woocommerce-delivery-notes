@@ -23,7 +23,6 @@ if ( ! class_exists( 'WCDN_Component' ) ) {
 
 			if ( true === $is_admin ) {
                 require_once( "component/woocommerce-check/ts-woo-active.php" );
-                require_once( "component/faq-support/ts-faq-support.php" );
                 
                 $wcdn_plugin_name          = self::ts_get_plugin_name();;
                 $wcdn_locale               = self::ts_get_plugin_locale();
