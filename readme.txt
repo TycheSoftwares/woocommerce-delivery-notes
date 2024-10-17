@@ -26,16 +26,21 @@ The plugin adds a new side panel on the order page to allow shop administrators 
 = Features =
 
 * Print invoices and delivery notes via the side panel on the "Order Edit" page
-* Quickly print invoices and delivery notes on the "Orders" page
+* **New!** 2 different layouts for invoice and delivery notes
+* **New!** Live preview for templates
+* **New!** Attach PDF file to emails based on selected order status
+* **New!** Store PDF files in a folder for a specific duration
+* **New!** Adjust logo size with custom length and height settings
+* Print invoices, delivery notes and receipts via the side panel on the “Order Edit” page
+* Quickly print invoices, delivery notes and receipts on the “Orders” page
 * Bulk print invoices and delivery notes
-* Allow customers to print the order in the "My Account" page
-* Include a print link in customer E-Mails
-* Add a company address, a logo and many other information to the invoice and delivery note
-* Completely customize the invoice and delivery note template
-* Simple invoice numbering
+* Allow customers to print the order in the “My Account” page
+* Include a print link in customer emails
+* Add a company address, a logo, and many other details to the invoice and delivery note
+* Offers advanced customization support via hooks and filters
+* Simple invoice numbering with prefix and suffix options
 * Supports sequential order numbers
 * Supports the WooCommerce refund system
-* Intelligent invoice and delivery note template system with hooks and functions.php support  
 
 = Support =
 
@@ -321,7 +326,7 @@ You can use the functions from WordPress, WooCommerce and every installed plugin
 
 = Can I download the order as PDF instead of printing it out? =
 
-No, this isn't possible. Look for another plugin that can do this.
+No, this isn't possible. However, you can store the PDF and attach it to your email.
 
 = I need some more content on the order, how can I add it? =
 
@@ -335,12 +340,12 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 
 == Screenshots ==
 
-1. The clean invoice print view. 
-2. Print panel.
-3. Quick print actions.
-4. Bulk print orders.
-5. Enter company and contact information.
-6. Customers can also print the order.
+1. The clean invoice print view.
+2. Live preview for Invoice, Receipt, and Delivery notes.
+3. Attach PDF file to emails based on selected order status.
+4. Quick print buttons on the order edit page.
+5. Customers can also print the order.
+6. Quick print actions.
 
 == Changelog ==
 
