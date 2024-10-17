@@ -196,8 +196,8 @@ $shop_logotitle = get_the_title( $shop_logoid );
 		<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'You have the option to customize the Simple template to your liking, or you can stick with the default display.	', 'woocommerce-delivery-notes' ); ?>"></i>
 		<select name="wcdn_general[template]" id="template">
 			<?php $template_save = get_option( 'wcdn_template_type' ); ?>
-			<option value="default" <?php selected( $template_save, 'default' ); ?>>Default</option>
-			<option value="simple" <?php selected( $template_save, 'simple' ); ?>>Simple</option>
+			<option value="default" <?php selected( $template_save, 'default' ); ?>><?php esc_html_e( 'Default', 'woocommerce-delivery-notes' ); ?></option>
+			<option value="simple" <?php selected( $template_save, 'simple' ); ?>><?php esc_html_e( 'Simple', 'woocommerce-delivery-notes' ); ?></option>
 		</select>
 	</div>
 </div>
