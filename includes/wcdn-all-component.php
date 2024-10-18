@@ -70,8 +70,6 @@ if ( ! class_exists( 'WCDN_Component' ) ) {
                 new WCDN_TS_Woo_Active ( $wcdn_plugin_name, $wcdn_file_name, $wcdn_locale );
 
                 $ts_pro_faq = self::wcdn_get_faq ();
-                new WCDN_TS_Faq_Support( $wcdn_plugin_name, $wcdn_plugin_prefix, $wcdn_plugins_page, $wcdn_locale, $wcdn_plugin_folder_name, $wcdn_plugin_slug, $ts_pro_faq );
-
             }
         }
 
