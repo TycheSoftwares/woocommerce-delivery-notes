@@ -6,7 +6,7 @@ Tags: packing slips, invoice, pdf invoice, delivery notes, woocommerce print inv
 Requires at least: 4.4
 Tested up to: 6.6.2
 Author URI: https://www.tychesoftwares.com/
-Stable tag: 5.1.0
+Stable tag: 5.2.0
 License: GPLv3 or later
 License URI: http://www.opensource.org/licenses/gpl-license.php
 
