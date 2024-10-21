@@ -191,6 +191,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php
 
 			if ( count( $order->get_items() ) > 0 ) :
+				$total_adjusted_quantity = 0;
 				?>
 				<?php foreach ( $order->get_items() as $item_id => $item ) : ?>
 					<?php
@@ -199,11 +200,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 						continue;
 					}
 					// Call the function to get the adjusted quantity.
-					$adjusted_qty = get_adjusted_item_quantity( $order, $item, $item_id );
-					if ( $adjusted_qty <= 0 ) {
+					$adjusted_qty = get_adjusted_quantity( $order, $item_id );
+					if ( $adjusted_qty > 0 ) {
+						$total_adjusted_quantity += $adjusted_qty;
+					} else {
 						continue;
 					}
-					$item['qty'] = $adjusted_qty;
+
 					if ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) {
 						$item_meta = new WC_Order_Item_Product( $item['item_meta'], $product );
 					} else {
@@ -223,7 +226,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							</td>
 						<?php } ?>
 						<td class="product-quantity">
-							<span><?php echo esc_attr( apply_filters( 'wcdn_order_item_quantity', $item['qty'], $item ) ); ?></span>
+							<span><?php echo esc_attr( apply_filters( 'wcdn_order_item_quantity', $adjusted_qty, $item ) ); ?></span>
 						</td>	
 						<?php 
 						if( isset( $data['display_price_product_table']['active'] ) ) { ?>
@@ -247,7 +250,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<td class="total-name"><span><?php echo wp_kses_post( $total['label'] ); ?></span></td>
 						<td class="total-item-price"></td>
 						<?php if ( 'Total' === $total['label'] ) { ?>
-						<td class="total-quantity"><?php echo wp_kses_post( $order->get_item_count() ); ?></td>
+						<td class="total-quantity"><?php echo wp_kses_post( $total_adjusted_quantity ); ?></td>
 						<?php } else { ?>
 						<td class="total-quantity"></td>
 						<?php } ?>
