@@ -982,18 +982,13 @@ function get_product_name( $product, $order, $item ) {
 /**
  * Function to adjust the item quantity.
  *
- * @param WC_Order $order   The WooCommerce order object.
- * @param WC_Order_Item $item  The order item object containing product details.
- * @param int $item_id  The unique identifier for the order item.
- *
+ * @param WC_Order      $order   The WooCommerce order object.
+ * @param WC_Order_Item $item_id  The order item object containing product details.
  */
-function get_adjusted_item_quantity( $order, $item, $item_id ) {
+function get_adjusted_quantity( $order, $item_id ) {
+	$item         = $order->get_item( $item_id );
 	$original_qty = $item->get_quantity();
 	$qty_refunded = $order->get_qty_refunded_for_item( $item_id );
 	$adjusted_qty = $original_qty + $qty_refunded;
-	if ( $adjusted_qty <= 0 ) {
-		return 0;
-	}
-	return $adjusted_qty;
+	return $adjusted_qty > 0 ? $adjusted_qty : 0;
 }
-?>
