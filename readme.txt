@@ -349,6 +349,16 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 
 == Changelog ==
 
+= 5.2.0 - (22.10.2024) =
+* Enhancement - Added the 'wcdn_show_print_button_for_order_status' filter to control the visibility of the print button on the My Account page based on order status.
+* Fix - Deactivation survey request was being sent even though 'Skip & deactivate' was selected while deactivating the plugin.
+* Fix - Invoice, receipt, and delivery notes buttons not appearing on the order edit page.
+* Fix - Refunded products not being removed from the invoice, receipt, and delivery notes.
+* Fix - FAQ page incorrectly appearing in the Dashboard menu.
+* Fix - Resolved admin.js loading error on order edit and listing pages.
+* Fix - Conflict with the Conditional Checkout Fields for WooCommerce plugin, where it was not allowing to add or edit conditional checkout fields.
+* Fix - Strings that have not been translation ready.
+
 = 5.1.0 (02.07.2024) =
 * Fix- Fixed an error in the debug log when the "Numbering" option is disabled.
 * Fix- Fixed a critical error on the invoice with the Woo Donations plugin to ensure compatibility.
