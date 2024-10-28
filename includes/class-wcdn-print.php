@@ -543,6 +543,11 @@ if ( ! class_exists( 'WCDN_Print' ) ) {
 				$order = $post;
 
 				$wdn_order_id = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_id() : $order->id;
+				// Allow admins to view all orders.
+				if ( current_user_can( 'administrator' ) ) {
+					$this->orders[$wdn_order_id] = $order;
+					continue;
+				}
 				// Logged in users.
 				if ( is_user_logged_in() ) {
 					// Check if user can edit shop orders or view this specific order.
