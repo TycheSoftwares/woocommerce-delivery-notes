@@ -94,8 +94,8 @@ $shop_logotitle = get_the_title( $shop_logoid );
 <div class="form-group row">
 	<label for="shop_address" class="col-sm-2 col-form-label"><?php esc_html_e( 'Address', 'woocommerce-delivery-notes' ); ?></label>
 	<div class="col-sm-6 icon-flex">
-	<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'The postal address of the shop or even e-mail or telephone.', 'woocommerce-delivery-notes' ); ?>"></i>
-		<textarea name="wcdn_general[shop_address]" id="shop_address" class="form-control"><?php echo esc_html( get_option( 'wcdn_company_address' ) ); ?></textarea>
+		<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'The postal address of the shop or even e-mail or telephone.', 'woocommerce-delivery-notes' ); ?>"></i>
+		<textarea name="wcdn_general[shop_address]" id="shop_address" class="form-control"><?php echo esc_attr( stripcslashes( get_option( 'wcdn_company_address' ) ) ); ?></textarea>
 	</div>
 </div>
 <div class="form-group row">
