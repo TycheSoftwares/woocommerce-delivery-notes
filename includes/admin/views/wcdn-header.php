@@ -17,7 +17,7 @@
 	?>
 	<ul class="nav-tabs wcdn_main_tab">
 		<li style="padding: 0px 30px;">
-			<img src="<?php echo esc_url( WooCommerce_Delivery_Notes::$plugin_url . 'assets/images/invoice-logo.svg' ); ?>">
+		<img src="<?php echo esc_url( WooCommerce_Delivery_Notes::$plugin_url . 'assets/images/invoice-logo.png' ); ?>">
 		</li>
 		<?php
 		foreach ( $h_tab as $key => $value ) {
@@ -30,7 +30,7 @@
 			}
 			?>
 			<li class="nav-item">
-				<?php if ( 'wcdn_document' == $key ) { ?>
+				<?php if ( 'wcdn_document' == $key ) { // phpcs:ignore ?>
 				<a class="nav-link <?php echo esc_attr( $class ); ?>" href="<?php echo esc_url( get_admin_url() . 'admin.php?page=wc-settings&tab=wcdn-settings&setting=' . $key . '&wdcn_setting=wcdn_invoice' ); ?>"><?php echo esc_html( $value[0] ); ?></a>
 				<?php } else { ?>
 				<a class="nav-link <?php echo esc_attr( $class ); ?>" href="<?php echo esc_url( get_admin_url() . 'admin.php?page=wc-settings&tab=wcdn-settings&setting=' . $key ); ?>"><?php echo esc_html( $value[0] ); ?></a>
@@ -55,7 +55,7 @@
 					<div class="col-md-12">
 						<div class="footer-wrap">
 							<div class="alert alert-dark alert-dismissible fade show" role="alert">
-								<img class="msg-icon" src="<?php echo plugins_url() . '/woocommerce-delivery-notes/assets/images/icon-info-grey.svg'; // phpcs:ignore ?>" alt="Logo" /> Get our <a href="<?php echo esc_url( 'https://www.tychesoftwares.com/products/woocommerce-order-delivery-date-pro-plugin/' ); ?>" target="_blank">Order Delivery Date Pro</a> plugin to schedule and manage your local deliveries and pickups in WooCommerce.
+								<img class="msg-icon" src="<?php echo esc_url( WooCommerce_Delivery_Notes::$plugin_url . 'assets/images/icon-info-grey.png' ); // phpcs:ignore ?>" alt="Logo" /> Get our <a href="<?php echo esc_url( 'https://www.tychesoftwares.com/products/woocommerce-order-delivery-date-pro-plugin/' ); ?>" target="_blank">Order Delivery Date Pro</a> plugin to schedule and manage your local deliveries and pickups in WooCommerce.
 								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
