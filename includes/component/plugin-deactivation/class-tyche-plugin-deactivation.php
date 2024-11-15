@@ -151,7 +151,7 @@ if ( ! class_exists( 'Tyche_Plugin_Deactivation' ) ) {
 
 			wp_enqueue_style(
 				'tyche_plugin_deactivation',
-				$this->api_url . '/assets/plugin-deactivation/css/style.css',
+				plugins_url( '/assets/css/style.css', __FILE__ ),
 				array(),
 				$this->plugin_version
 			);

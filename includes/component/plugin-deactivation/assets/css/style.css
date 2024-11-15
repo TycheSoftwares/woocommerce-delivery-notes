@@ -1,0 +1,148 @@
+.ts-modal {
+    position: fixed;
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    z-index: 100000;
+    display: none;
+    background: rgba(0, 0, 0, 0.6)
+}
+
+.ts-modal .ts-modal-dialog {
+    background: transparent;
+    position: absolute;
+    left: 50%;
+    margin-left: -298px;
+    padding-bottom: 30px;
+    top: -100%;
+    z-index: 100001;
+    width: 596px
+}
+
+.ts-modal li.reason.has_html .reason_html {
+    display: none;
+    border: 1px solid #ddd;
+    padding: 4px 6px;
+    margin: 6px 0 0 20px;
+}
+
+.ts-modal li.reason.has_html.li-active .reason_html {
+    display: block;
+}
+
+@media (max-width: 650px) {
+    .ts-modal .ts-modal-dialog {
+        margin-left: -50%;
+        box-sizing: border-box;
+        padding-left: 10px;
+        padding-right: 10px;
+        width: 100%
+    }
+
+    .ts-modal .ts-modal-dialog .ts-modal-panel>h3>strong {
+        font-size: 1.3em
+    }
+
+    .ts-modal .ts-modal-dialog li.reason {
+        margin-bottom: 10px
+    }
+
+    .ts-modal .ts-modal-dialog li.reason .reason-input {
+        margin-left: 29px
+    }
+
+    .ts-modal .ts-modal-dialog li.reason label {
+        display: table
+    }
+
+    .ts-modal .ts-modal-dialog li.reason label>span {
+        display: table-cell;
+        font-size: 1.3em
+    }
+}
+
+.ts-modal.active {
+    display: block
+}
+
+.ts-modal.active:before {
+    display: block
+}
+
+.ts-modal.active .ts-modal-dialog {
+    top: 10%
+}
+
+.ts-modal .ts-modal-body,
+.ts-modal .ts-modal-footer {
+    border: 0;
+    background: #fefefe;
+    padding: 20px
+}
+
+.ts-modal .ts-modal-body {
+    border-bottom: 0
+}
+
+.ts-modal .ts-modal-body h2 {
+    font-size: 20px
+}
+
+.ts-modal .ts-modal-body>div {
+    margin-top: 10px
+}
+
+.ts-modal .ts-modal-body>div h2 {
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 0
+}
+
+.ts-modal .ts-modal-footer {
+    border-top: #eeeeee solid 1px;
+    text-align: right
+}
+
+.ts-modal .ts-modal-footer>.button {
+    margin: 0 7px
+}
+
+.ts-modal .ts-modal-footer>.button:first-child {
+    margin: 0
+}
+
+.ts-modal .ts-modal-panel:not(.active) {
+    display: none
+}
+
+.ts-modal .reason-input {
+    margin: 3px 0 3px 22px
+}
+
+.ts-modal .reason-input input,
+.ts-modal .reason-input textarea {
+    width: 100%
+}
+
+body.has-ts-modal {
+    overflow: hidden
+}
+
+#the-list .deactivate>.ts-slug {
+    display: none
+}
+
+.ts-modal li.reason-hide {
+    display: none;
+}
+
+.ts-modal-footer p {
+	/* display: inline-block; */
+    margin: 0 10px;
+    vertical-align: middle;
+    font-weight: 500;
+    color: red;
+    padding: 5px 0;
+    display: none;
+}
