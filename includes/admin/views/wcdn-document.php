@@ -65,6 +65,13 @@ if ( isset( $_GET['wdcn_setting'] ) ) {
 					$i                  = 1;
 					$hidden             = 'pointer-events:none;';
 					foreach ( $settings[ $c_tab ] as $key => $eachsetting ) {
+						// Ensure $customization_data is an array before accessing or modifying it.
+						if ( ! is_array( $customization_data ) ) {
+							$customization_data = array();
+						}
+						if ( ! isset( $customization_data['template_setting'] ) ) {
+							$customization_data['template_setting'] = array();
+						}
 						$customization_data['template_setting']['template_setting_template'] = get_option( 'wcdn_template_type' );
 						if ( isset( $customization_data['template_setting']['template_setting_template'] ) && 'simple' === $customization_data['template_setting']['template_setting_template'] && 1 === $i ) {
 							$hidden = '';
