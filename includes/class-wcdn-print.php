@@ -543,16 +543,29 @@ if ( ! class_exists( 'WCDN_Print' ) ) {
 				$order = $post;
 
 				$wdn_order_id = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_id() : $order->id;
+				// Allow admins to view all orders.
+				if ( current_user_can( 'manage_woocommerce' ) ) {
+					$this->orders[$wdn_order_id] = $order;
+					continue;
+				}
 				// Logged in users.
-				if ( is_user_logged_in() && ( ! current_user_can( 'edit_shop_orders' ) && ! current_user_can( 'view_order', $wdn_order_id ) ) ) {
-					$this->orders = null;
-					return false;
+				if ( is_user_logged_in() ) {
+					// Check if user can edit shop orders or view this specific order.
+					if ( ! current_user_can( 'edit_shop_orders' ) && ! current_user_can( 'view_order', $wdn_order_id ) ) { // phpcs:ignore
+						$this->orders = null;
+						return false;
+					}
+				} else {
+					// Not logged in users require an email match with the order billing email.
+					$wdn_order_billing_id = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ? $order->get_billing_email() : $order->billing_email );
+					if ( empty( $this->order_email ) || strtolower( $wdn_order_billing_id ) !== $this->order_email ) {
+						$this->orders = null;
+						return false;
+					}
 				}
 
-				$wdn_order_billing_id = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_billing_email() : $order->billing_email;
-
-				// An email is required for not logged in users.
-				if ( ! is_user_logged_in() && ( empty( $this->order_email ) || strtolower( $wdn_order_billing_id ) !== $this->order_email ) ) {
+				// Additional check for user ownership if necessary.
+				if ( ! is_user_logged_in() || ( get_current_user_id() !== $order->get_customer_id() ) ) {
 					$this->orders = null;
 					return false;
 				}
