@@ -8,17 +8,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-12 15:18+0530\n"
+"POT-Creation-Date: 2024-11-18 10:03+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: includes/class-wcdn-print.php:101 includes/class-wcdn-settings.php:465
-#: includes/class-wcdn-settings.php:476 includes/class-wcdn-settings.php:477
+#: includes/class-wcdn-print.php:101 includes/class-wcdn-settings.php:459
+#: includes/class-wcdn-settings.php:470 includes/class-wcdn-settings.php:471
 msgid "Invoice"
 msgstr ""
 
@@ -122,23 +122,23 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-#: includes/class-wcdn-settings.php:455
+#: includes/class-wcdn-settings.php:449
 msgid ""
 "Do you really want to reset the counter to zero? This process can't be "
 "undone."
 msgstr ""
 
-#: includes/class-wcdn-settings.php:531
+#: includes/class-wcdn-settings.php:525
 msgid "Admin"
 msgstr ""
 
-#: includes/class-wcdn-settings.php:534
+#: includes/class-wcdn-settings.php:528
 msgid ""
 "The print buttons are available on the order listing and on the order detail "
 "screen."
 msgstr ""
 
-#: includes/class-wcdn-settings.php:576
+#: includes/class-wcdn-settings.php:570
 #, php-format
 msgid ""
 "This section lets you customise the content. You can preview the <a href="
@@ -147,20 +147,20 @@ msgid ""
 "\" class=\"%5$s\">receipt</a> template."
 msgstr ""
 
-#: includes/class-wcdn-settings.php:643
+#: includes/class-wcdn-settings.php:637
 msgid "Select"
 msgstr ""
 
-#: includes/class-wcdn-settings.php:647
+#: includes/class-wcdn-settings.php:641
 msgid "Remove"
 msgstr ""
 
-#: includes/class-wcdn-theme.php:127 includes/class-wcdn-theme.php:164
+#: includes/class-wcdn-theme.php:129 includes/class-wcdn-theme.php:166
 #: includes/wcdn-template-functions.php:143
 msgid "Print"
 msgstr ""
 
-#: includes/class-wcdn-theme.php:206
+#: includes/class-wcdn-theme.php:208
 msgid "Print your order"
 msgstr ""
 
@@ -185,11 +185,11 @@ msgstr ""
 msgid "Cheatin&#8217; huh?"
 msgstr ""
 
-#: includes/class-woocommerce-delivery-notes.php:514
+#: includes/class-woocommerce-delivery-notes.php:527
 msgid "Go to the settings page"
 msgstr ""
 
-#: includes/class-woocommerce-delivery-notes.php:514
+#: includes/class-woocommerce-delivery-notes.php:527
 msgid "Settings"
 msgstr ""
 
@@ -259,14 +259,14 @@ msgid "Order Subtotal"
 msgstr ""
 
 #: includes/wcdn-template-functions.php:961
-#: includes/admin/views/Preview_template/default-preview-template.php:257
-#: templates/print-order/print-content.php:214
+#: includes/admin/views/Preview_template/default-preview-template.php:266
+#: templates/print-order/print-content.php:223
 msgid "Download:"
 msgstr ""
 
 #: includes/wcdn-template-functions.php:965
-#: includes/admin/views/Preview_template/default-preview-template.php:261
-#: templates/print-order/print-content.php:218
+#: includes/admin/views/Preview_template/default-preview-template.php:270
+#: templates/print-order/print-content.php:227
 #, php-format
 msgid "%s Files"
 msgstr ""
@@ -322,11 +322,11 @@ msgid "Phone Number"
 msgstr ""
 
 #: includes/admin/wcdn-admin-function.php:35
-#: includes/admin/views/Preview_template/default-preview-template.php:323
-#: templates/pdf/default/deliverynote/template.php:163
-#: templates/pdf/default/invoice/template.php:163
-#: templates/pdf/default/receipt/template.php:163
-#: templates/print-order/print-content.php:280
+#: includes/admin/views/Preview_template/default-preview-template.php:332
+#: templates/pdf/default/deliverynote/template.php:171
+#: templates/pdf/default/invoice/template.php:172
+#: templates/pdf/default/receipt/template.php:172
+#: templates/print-order/print-content.php:289
 msgid "Customer Note"
 msgstr ""
 
@@ -650,20 +650,90 @@ msgstr ""
 msgid "Total"
 msgstr ""
 
-#: includes/component/faq-support/ts-faq-support.php:127
-#, php-format
-msgid "Frequently Asked Questions for %s"
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:183
+msgid "I only needed the plugin for a short period."
 msgstr ""
 
-#: includes/component/faq-support/ts-faq-support.php:128
-msgid "Frequently Asked Questions for "
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:189
+msgid "I found a better plugin."
 msgstr ""
 
-#: includes/component/faq-support/ts-faq-support.php:176
-msgid "FAQ & Support"
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:191
+msgid "Please let us have the plugin's name so that we can make improvements"
 msgstr ""
 
-#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:182
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:195
+msgid "The plugin is not working."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:197
+msgid ""
+"Please share what was faulty with the plugin so that we may get the issue "
+"fixed."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:201
+msgid "The plugin is causing issues on my site"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:203
+msgid ""
+"We’re sorry! Please tell us about the issues so that we can get them fixed."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:207
+msgid "Some features I need are not working as per my expectations"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:209
+msgid "Please tell us about these features."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:213
+msgid "The plugin is not compatible with another plugin/theme"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:215
+msgid ""
+"We’re sorry! We would like you to tell us the plugin/theme so that we can "
+"work on the compatibility."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:219
+msgid ""
+"I can't differentiate between Invoice, Delivery Notes & Receipt. The "
+"templates are the same."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:225
+msgid "The invoice sent through mail can't be downloaded as PDF directly."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:231
+msgid "This plugin is not useful to me."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:237
+msgid "Other"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:251
+msgid "If you have a moment, please let us know why you are deactivating:"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:262
+msgid "Skip & Deactivate"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:263
+msgid "Submit & Deactivate"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:264
+msgid "Cancel"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:278
 msgid "Please select a reason for deactivation!"
 msgstr ""
 
@@ -671,7 +741,7 @@ msgstr ""
 msgid "Once in a Week"
 msgstr ""
 
-#: includes/component/plugin-tracking/class-tyche-plugin-tracking.php:257
+#: includes/component/plugin-tracking/class-tyche-plugin-tracking.php:256
 #, php-format
 msgid ""
 "Want to help make %1$s even more awesome? Allow %1$s to collect non-"
@@ -679,11 +749,11 @@ msgid ""
 "next purchase. <a href=\"%2$s\">Find out more</a>."
 msgstr ""
 
-#: includes/component/plugin-tracking/class-tyche-plugin-tracking.php:260
+#: includes/component/plugin-tracking/class-tyche-plugin-tracking.php:259
 msgid "Allow"
 msgstr ""
 
-#: includes/component/plugin-tracking/class-tyche-plugin-tracking.php:261
+#: includes/component/plugin-tracking/class-tyche-plugin-tracking.php:260
 msgid "No thanks"
 msgstr ""
 

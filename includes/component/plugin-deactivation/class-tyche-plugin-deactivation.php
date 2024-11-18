@@ -169,61 +169,61 @@ if ( ! class_exists( 'Tyche_Plugin_Deactivation' ) ) {
 				'reasons'  => array(
 					array(
 						'id'                => 1,
-						'text'              => 'I only needed the plugin for a short period.',
+						'text'              => __( 'I only needed the plugin for a short period.', 'woocommerce-delivery-notes' ),
 						'input_type'        => '',
 						'input_placeholder' => '',
 					),
 					array(
 						'id'                => 2,
-						'text'              => 'I found a better plugin.',
+						'text'              => __( 'I found a better plugin.', 'woocommerce-delivery-notes' ),
 						'input_type'        => 'textfield',
-						'input_placeholder' => 'Please let us have the plugin\'s name so that we can make improvements',
+						'input_placeholder' => __( 'Please let us have the plugin\'s name so that we can make improvements', 'woocommerce-delivery-notes' ),
 					),
 					array(
 						'id'                => 3,
-						'text'              => 'The plugin is not working.',
+						'text'              => __( 'The plugin is not working.', 'woocommerce-delivery-notes' ),
 						'input_type'        => 'textfield',
-						'input_placeholder' => 'Please share what was faulty with the plugin so that we may get the issue fixed.',
+						'input_placeholder' => __( 'Please share what was faulty with the plugin so that we may get the issue fixed.', 'woocommerce-delivery-notes' ),
 					),
 					array(
 						'id'                => 4,
-						'text'              => 'The plugin is causing issues on my site',
+						'text'              => __( 'The plugin is causing issues on my site', 'woocommerce-delivery-notes' ),
 						'input_type'        => 'textfield',
-						'input_placeholder' => 'We’re sorry! Please tell us about the issues so that we can get them fixed.',
+						'input_placeholder' => __( 'We’re sorry! Please tell us about the issues so that we can get them fixed.', 'woocommerce-delivery-notes' ),
 					),
 					array(
 						'id'                => 6,
-						'text'              => 'Some features I need are not working as per my expectations',
+						'text'              => __( 'Some features I need are not working as per my expectations', 'woocommerce-delivery-notes' ),
 						'input_type'        => 'textfield',
-						'input_placeholder' => 'Please tell us about these features.',
+						'input_placeholder' => __( 'Please tell us about these features.', 'woocommerce-delivery-notes' ),
 					),
 					array(
 						'id'                => 7,
-						'text'              => 'The plugin is not compatible with another plugin/theme',
+						'text'              => __( 'The plugin is not compatible with another plugin/theme', 'woocommerce-delivery-notes' ),
 						'input_type'        => 'textfield',
-						'input_placeholder' => 'We’re sorry! We would like you to tell us the plugin/theme so that we can work on the compatibility.',
+						'input_placeholder' => __( 'We’re sorry! We would like you to tell us the plugin/theme so that we can work on the compatibility.', 'woocommerce-delivery-notes' ),
 					),
 					array(
 						'id'                => 11,
-						'text'              => 'I can\'t differentiate between Invoice, Delivery Notes & Receipt. The templates are the same.',
+						'text'              => __( 'I can\'t differentiate between Invoice, Delivery Notes & Receipt. The templates are the same.', 'woocommerce-delivery-notes' ),
 						'input_type'        => '',
 						'input_placeholder' => '',
 					),
 					array(
 						'id'                => 12,
-						'text'              => 'The invoice sent through mail can\'t be downloaded as PDF directly.',
+						'text'              => __( 'The invoice sent through mail can\'t be downloaded as PDF directly.', 'woocommerce-delivery-notes' ),
 						'input_type'        => '',
 						'input_placeholder' => '',
 					),
 					array(
 						'id'                => 12,
-						'text'              => 'This plugin is not useful to me.',
+						'text'              => __( 'This plugin is not useful to me.', 'woocommerce-delivery-notes' ),
 						'input_type'        => '',
 						'input_placeholder' => '',
 					),
 					array(
 						'id'                => 10,
-						'text'              => 'Other',
+						'text'              => __( 'Other', 'woocommerce-delivery-notes' ),
 						'input_type'        => 'textfield',
 						'input_placeholder' => '',
 					),
@@ -237,7 +237,7 @@ if ( ! class_exists( 'Tyche_Plugin_Deactivation' ) ) {
 										<div class="ts-modal-panel active" data-panel-id="reasons">
 											<h3>
 												<strong>
-													If you have a moment, please let us know why you are deactivating:
+													' . __( 'If you have a moment, please let us know why you are deactivating:', 'woocommerce-delivery-notes' ) . '
 												</strong>
 											</h3>
 											
@@ -248,10 +248,9 @@ if ( ! class_exists( 'Tyche_Plugin_Deactivation' ) ) {
 									</div>
 		
 									<div class="ts-modal-footer">
-										
-										<a href="javascript:void(0);" class="button button-secondary button-skip-deactivate"> Skip & Deactivate</a>
-										<a href="javascript:void(0);" class="button button-secondary button-deactivate"> Submit & Deactivate</a>
-										<a href="javascript:void(0);" class="button button-primary button-close">Cancel</a>
+										<a href="javascript:void(0);" class="button button-secondary button-skip-deactivate"> ' . __( 'Skip & Deactivate', 'woocommerce-delivery-notes' ) . '</a>
+										<a href="javascript:void(0);" class="button button-secondary button-deactivate"> ' . __( 'Submit & Deactivate', 'woocommerce-delivery-notes' ) . '</a>
+										<a href="javascript:void(0);" class="button button-primary button-close">' . __( 'Cancel', 'woocommerce-delivery-notes' ) . '</a>
 									</div>
 								</div>
 							</div>',
