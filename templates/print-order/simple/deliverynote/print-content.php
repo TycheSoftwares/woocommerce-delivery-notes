@@ -37,12 +37,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div class="order-branding">
 	<?php
-	$com_setting = $data['company_name'];
-	if ( isset( $com_setting['active'] ) ) {
+	if ( isset( $data['company_name'] ) && is_array( $data['company_name'] ) && isset( $data['company_name']['active'] ) ) {
 		$style = 'text-align:' . $data['company_name']['company_name_text_align'] . ';color:' . $data['company_name']['company_name_text_colour'] . ';font-size:' . $data['company_name']['company_name_font_size'] . 'px;';
 		?>
 		<div class="company-info">
-			<h3 class="company-name" style="<?php echo $style; // phpcs:ignore ?>"><?php wcdn_company_name(); ?></h3>
+			<h3 class="company-name" style="<?php echo esc_attr( $style ); // phpcs:ignore ?>"><?php wcdn_company_name(); ?></h3>
 		</div>
 	<?php } ?>
 	<?php
