@@ -4,9 +4,9 @@ Contributors: ashokrane, tychesoftwares
 Donate link: https://www.paypal.me/TycheSoftwares
 Tags: packing slips, invoice, pdf invoice, delivery notes, woocommerce print invoice
 Requires at least: 4.4
-Tested up to: 6.6.2
+Tested up to: 6.7
 Author URI: https://www.tychesoftwares.com/
-Stable tag: 5.2.0
+Stable tag: 5.3.0
 License: GPLv3 or later
 License URI: http://www.opensource.org/licenses/gpl-license.php
 
@@ -402,6 +402,11 @@ For more information about the usage tracking, please visit our documentation:
 By using this plugin, you consent to the collection of the data mentioned above for the purpose of improving the plugin. If you do not wish to share this data, you can easily opt-out via the plugin settings.
 
 == Changelog ==
+
+= 5.3.0 - (19.11.2024) =
+* Fix - Anyone could view customer invoices by simply visiting the URL in the format sent in the email.
+* Fix - PHP Notice: Trying to access array offset on value of type bool.
+* Fix - A slash was added before single quotes in the Shop address field after saving setting.
 
 = 5.2.0 - (22.10.2024) =
 * Enhancement - Added the 'wcdn_show_print_button_for_order_status' filter to control the visibility of the print button on the My Account page based on order status.
