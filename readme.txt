@@ -403,10 +403,12 @@ By using this plugin, you consent to the collection of the data mentioned above 
 
 == Changelog ==
 
-= 5.3.0 - (19.11.2024) =
+= 5.3.0 - (21.11.2024) =
 * Fix - Anyone could view customer invoices by simply visiting the URL in the format sent in the email.
 * Fix - PHP Notice: Trying to access array offset on value of type bool.
 * Fix - A slash was added before single quotes in the Shop address field after saving setting.
+* Tweak - Started loading the external resources(js, css, images) from the plugin itself instead of external URLs.
+* Tweak - Removed the call to our tracking server to fetch the deactivation reasons and added them in the plugin itself.
 
 = 5.2.0 - (22.10.2024) =
 * Enhancement - Added the 'wcdn_show_print_button_for_order_status' filter to control the visibility of the print button on the My Account page based on order status.
