@@ -403,7 +403,7 @@ By using this plugin, you consent to the collection of the data mentioned above 
 
 == Changelog ==
 
-= 5.3.0 - (19.11.2024) =
+= 5.3.0 - (21.11.2024) =
 * Fix - Anyone could view customer invoices by simply visiting the URL in the format sent in the email.
 * Fix - PHP Notice: Trying to access array offset on value of type bool.
 * Fix - A slash was added before single quotes in the Shop address field after saving setting.
