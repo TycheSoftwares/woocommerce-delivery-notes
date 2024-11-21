@@ -13,7 +13,7 @@
  * Text Domain: woocommerce-delivery-notes
  * Domain Path: /languages
  * WC tested up to: 9.4.1
- * Tested up to: 6.7
+ * Tested up to: 6.7.1
  * WC requires at least: 5.0.0
  * Requires PHP: 7.4
  * Requires Plugins: woocommerce
