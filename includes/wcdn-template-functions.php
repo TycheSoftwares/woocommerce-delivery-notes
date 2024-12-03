@@ -992,3 +992,42 @@ function get_adjusted_quantity( $order, $item_id ) {
 	$adjusted_qty = $original_qty + $qty_refunded;
 	return $adjusted_qty > 0 ? $adjusted_qty : 0;
 }
+
+/**
+ * Adds a guest access token for normal checkout.
+ *
+ * @param WC_Order $order The WooCommerce order object.
+ * @param array    $data  The checkout data.
+ */
+function add_guest_access_token_to_order( $order, $data ) {
+	if ( ! is_user_logged_in() ) {
+		add_guest_access_token( $order );
+	}
+}
+
+/**
+ * Adds a guest access token for block-based checkout.
+ *
+ * @param WC_Order $order The WooCommerce order object.
+ */
+function add_guest_access_token_to_order_blocks( $order ) {
+	if ( ! is_user_logged_in() ) {
+		add_guest_access_token( $order );
+	}
+}
+
+/**
+ * Generates and saves a guest access token to the order meta.
+ *
+ * @param WC_Order $order The WooCommerce order object.
+ */
+function add_guest_access_token( $order ) {
+	// Generate a random token for the guest user.
+	$guest_token = bin2hex( random_bytes( 16 ) );
+
+	// Save the generated token as order meta.
+	$order->update_meta_data( '_guest_access_token', $guest_token );
+
+	// Persist the order meta changes to the database.
+	$order->save();
+}

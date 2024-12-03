@@ -487,6 +487,18 @@ if ( ! class_exists( 'WCDN_Print' ) ) {
 			// Generate the url.
 			$order_ids_slug = implode( '-', $order_ids );
 
+			// Check for guest access token in the order meta.
+			$guest_token = '';
+			foreach ( $order_ids as $order_id ) {
+				$order = wc_get_order( $order_id );
+				if ( $order && ! is_user_logged_in() ) {
+					$guest_token = $order->get_meta( '_guest_access_token' );
+					if ( $guest_token ) {
+						break; // If we found a token, we can stop searching.
+					}
+				}
+			}
+
 			// Create another url depending on where the user prints. This prevents some issues with ssl when the my-account page is secured with ssl but the admin isn't.
 			if ( is_admin() && current_user_can( 'edit_shop_orders' ) && false === $permalink ) {
 				// For the admin we use the ajax.php for better security.
@@ -511,6 +523,11 @@ if ( ! class_exists( 'WCDN_Print' ) ) {
 
 			// Add all other args.
 			$url = add_query_arg( $args, $url );
+
+			// If a guest token exists, add it as a query parameter AFTER the email.
+			if ( $guest_token ) {
+				$url = add_query_arg( 'guest_token', $guest_token, $url );
+			}
 
 			return esc_url( $url );
 		}
@@ -544,10 +561,25 @@ if ( ! class_exists( 'WCDN_Print' ) ) {
 
 				$wdn_order_id = ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) ? $order->get_id() : $order->id;
 				// Allow admins to view all orders.
-				if ( current_user_can( 'manage_woocommerce' ) ) {
-					$this->orders[$wdn_order_id] = $order;
+				if ( current_user_can( 'manage_woocommerce' ) ) { // phpcs:ignore
+					$this->orders[ $wdn_order_id ] = $order;
 					continue;
 				}
+
+				// Check if the guest token exists in the URL.
+				$guest_token_from_url = isset( $_GET['guest_token'] ) ? sanitize_text_field( $_GET['guest_token'] ) : ''; // phpcs:ignore
+
+				// If the guest token is present, bypass ownership check.
+				if ( ! is_user_logged_in() && ! empty( $guest_token_from_url ) ) {
+					// Check if the guest token matches the order's token.
+					$order_guest_token = $order->get_meta( '_guest_access_token' );
+					if ( $order_guest_token === $guest_token_from_url ) {
+						// If the token matches, allow the order to be populated.
+						$this->orders[ $wdn_order_id ] = $order;
+						continue;
+					}
+				}
+
 				// Logged in users.
 				if ( is_user_logged_in() ) {
 					// Check if user can edit shop orders or view this specific order.
@@ -567,6 +599,15 @@ if ( ! class_exists( 'WCDN_Print' ) ) {
 				// Additional check for user ownership if necessary.
 				if ( ! is_user_logged_in() || ( get_current_user_id() !== $order->get_customer_id() ) ) {
 					$this->orders = null;
+					if ( isset( $_SERVER['REQUEST_URI'] ) ) {
+						$redirect_url = esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) );
+						$login_url    = wp_login_url( $redirect_url );
+						wp_safe_redirect( $login_url );
+						exit;
+					} else {
+						wp_safe_redirect( wp_login_url() );
+						exit;
+					}
 					return false;
 				}
 
