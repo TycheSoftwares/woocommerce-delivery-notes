@@ -29,3 +29,8 @@ add_action( 'wcdn_before_page', 'wcdn_navigation' );
 add_action( 'wcdn_loop_content', 'wcdn_content', 10, 2 );
 add_filter( 'wcdn_order_item_fields', 'wcdn_additional_product_fields', 10, 3 );
 
+/**
+ * Add a guest access token to the order.
+ */
+add_action( 'woocommerce_checkout_create_order', 'add_guest_access_token_to_order', 10, 2 );
+add_action( 'woocommerce_store_api_checkout_update_order_meta', 'add_guest_access_token_to_order_blocks', 10, 1 );
