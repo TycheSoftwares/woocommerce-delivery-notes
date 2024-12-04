@@ -613,9 +613,6 @@ if ( ! class_exists( 'WCDN_Print' ) ) {
 						wp_safe_redirect( add_query_arg( 'need_login_message', 'true', $redirect_url ) );
 						exit;
 					}
-					// Fallback to redirect if the logic above doesn't match.
-					wp_safe_redirect( wp_login_url( $redirect_url ) );
-					exit;
 				}
 				// Save the order to get it without an additional database call.
 				$this->orders[ $wdn_order_id ] = $order;
