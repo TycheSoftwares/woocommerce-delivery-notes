@@ -601,16 +601,19 @@ if ( ! class_exists( 'WCDN_Print' ) ) {
 					$this->orders = null;
 					if ( isset( $_SERVER['REQUEST_URI'] ) ) {
 						$redirect_url = esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) );
-						$login_url    = wp_login_url( $redirect_url );
-						wp_safe_redirect( $login_url );
+					} else {
+						$redirect_url = home_url();
+					}
+					if ( isset( $_GET['need_login_message'] ) && $_GET['need_login_message'] === 'true' ) { // phpcs:ignore
+						echo '<div class="notice notice-info"><p>' . __( 'You need to be logged in to access this page. Please log in first.' ) . '</p></div>'; // phpcs:ignore
+						// Display a confirmation button to redirect the user to the login page.
+						echo '<a href="' . wp_login_url( $redirect_url ) . '" class="button">Proceed to Login</a>'; // phpcs:ignore
 						exit;
 					} else {
-						wp_safe_redirect( wp_login_url() );
+						wp_safe_redirect( add_query_arg( 'need_login_message', 'true', $redirect_url ) );
 						exit;
 					}
-					return false;
 				}
-
 				// Save the order to get it without an additional database call.
 				$this->orders[ $wdn_order_id ] = $order;
 			}
