@@ -353,8 +353,8 @@ This plugin communicates with our tracking server to send usage data **only** if
 == Changelog ==
 
 = 5.4.0 - (05.12.2024) =
-* Fix- Issue where guest user can not be able to see the print invoice using the print button on order thank you page.
-* Tweak- added login notice for non-login users when they access the invoice using the email attached link and print button.
+* Fix- Resolved an issue preventing guest users from viewing the invoice via the Print button on the order received page and the print link in the order email.
+* Fix- Added a notice for logged-out users to log in when attempting to access invoices via a direct link or Print link in the order email.
 
 = 5.3.0 - (21.11.2024) =
 * Fix - Anyone could view customer invoices by simply visiting the URL in the format sent in the email.
