@@ -605,7 +605,7 @@ if ( ! class_exists( 'WCDN_Print' ) ) {
 						$redirect_url = home_url();
 					}
 					if ( isset( $_GET['need_login_message'] ) && $_GET['need_login_message'] === 'true' ) { // phpcs:ignore
-						echo '<div class="notice notice-info"><p>' . __( 'You need to be logged in to access this page. Please log in first.' ) . '</p></div>'; // phpcs:ignore
+						echo '<div class="notice notice-info"><p>' . __( 'You need to be logged into your account to access the Invoice. Please login first.' ) . '</p></div>'; // phpcs:ignore
 						// Display a confirmation button to redirect the user to the login page.
 						echo '<a href="' . wp_login_url( $redirect_url ) . '" class="button">Proceed to Login</a>'; // phpcs:ignore
 						exit;
