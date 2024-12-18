@@ -494,7 +494,7 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 		 * Ajax Call For remove shop logo.
 		 */
 		public function wcdn_remove_shoplogo() {
-			if ( ! empty( $_POST['shop_logoid'] ) ) { // phpcs:ignore
+			if ( ! empty( $_POST['shop_logoid'] ) && ( current_user_can( 'manage_options' ) || current_user_can( 'manage_woocommerce' ) ) ) { // phpcs:ignore
 				update_option( 'wcdn_company_logo_image_id', '' );
 				wp_delete_attachment( $_POST['shop_logoid'] ); // phpcs:ignore
 			}
