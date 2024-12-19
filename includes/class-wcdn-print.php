@@ -597,7 +597,9 @@ if ( ! class_exists( 'WCDN_Print' ) ) {
 				}
 
 				// Additional check for user ownership if necessary.
-				if ( ! is_user_logged_in() || ( get_current_user_id() !== $order->get_customer_id() ) ) {
+				$is_allowed_for_non_logged_in = apply_filters( 'allow_user_email_order_access', false, $order );
+
+				if ( ! is_user_logged_in() && ( get_current_user_id() !== $order->get_customer_id() ) && ! $is_allowed_for_non_logged_in ) {
 					$this->orders = null;
 					if ( isset( $_SERVER['REQUEST_URI'] ) ) {
 						$redirect_url = esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) );
