@@ -181,6 +181,10 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 			if ( isset( $referer_args['post_status'] ) ) {
 				$args = wp_parse_args( array( 'post_status' => $referer_args['post_status'] ), $args );
 			}
+			// support HPOS order status
+			if ( isset( $referer_args['status'] ) ) {
+				$args = wp_parse_args( array( 'status' => $referer_args['status'] ), $args );
+			}
 			if ( isset( $referer_args['paged'] ) ) {
 				$args = wp_parse_args( array( 'paged' => $referer_args['paged'] ), $args );
 			}
