@@ -50,9 +50,17 @@ function create_pdf( $order, $type ) {
 	// Render the HTML as PDF.
 	$dompdf->render();
 
-	$output = $dompdf->output();
-	$name   = wcdn_document_name( $order_id, $type );
-	wcdn_save_document( $type, $name, $output );
+	// Generate unique filename.
+	$unique_key = uniqid();
+	$name       = 'wcdn_' . $order_id . '_' . $type . '_' . $unique_key . '.pdf';
+
+	// Save the file.
+	wcdn_save_document( $type, $name, $dompdf->output() );
+
+	// Store filename in order meta.
+	$order->update_meta_data( '_wcdn_' . $type . '_pdf', $name );
+	$order->save();
+
 	return $name;
 }
 
@@ -110,24 +118,44 @@ function wcdn_get_pdf_template( $type ) {
  */
 function wcdn_save_document( $type, $name, $data ) {
 	$upload_dir = wp_upload_dir();
-	if ( 'invoice' === $type ) {
-		file_put_contents( $upload_dir['basedir'] . '/wcdn/invoice/' . $name, $data ); // phpcs:ignore
-	} elseif ( 'receipt' === $type ) {
-		file_put_contents( $upload_dir['basedir'] . '/wcdn/receipt/' . $name, $data ); // phpcs:ignore
-	} elseif ( 'deliverynote' === $type ) {
-		file_put_contents( $upload_dir['basedir'] . '/wcdn/deliverynote/' . $name, $data ); // phpcs:ignore
-	}
-}
+	$base_path  = trailingslashit( $upload_dir['basedir'] ) . 'wcdn/';
 
-/**
- * This function returns document name.
- *
- * @param int    $order_id Order Id.
- * @param string $type  Document type.
- *
- * @since 5.0
- */
-function wcdn_document_name( $order_id, $type ) {
-	$name = 'wcdn_' . $order_id . '_' . $type . '.pdf';
-	return $name;
+	// Define the document paths based on type.
+	$document_paths = array(
+		'invoice'      => $base_path . 'invoice/',
+		'receipt'      => $base_path . 'receipt/',
+		'deliverynote' => $base_path . 'deliverynote/',
+	);
+
+	// Check if the type exists in our paths.
+	if ( isset( $document_paths[ $type ] ) ) {
+		$document_dir = $document_paths[ $type ];
+
+		// Ensure directory exists.
+		if ( ! file_exists( $document_dir ) ) {
+			wp_mkdir_p( $document_dir );
+		}
+
+		// Save the document.
+		file_put_contents( $document_dir . $name, $data ); // phpcs:ignore
+
+		// Add security files (.htaccess & index.html).
+		$security_files = array(
+			array(
+				'file'    => 'index.html',
+				'content' => '', // Empty file to prevent directory listing.
+			),
+			array(
+				'file'    => '.htaccess',
+				'content' => "Deny from all\n", // Block direct access to the folder.
+			),
+		);
+
+		foreach ( $security_files as $file ) {
+			$file_path = $document_dir . $file['file'];
+			if ( ! file_exists( $file_path ) ) {
+				file_put_contents( $file_path, $file['content'] ); // phpcs:ignore
+			}
+		}
+	}
 }
