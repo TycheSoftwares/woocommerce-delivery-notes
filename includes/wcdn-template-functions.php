@@ -267,24 +267,32 @@ function wcdn_company_logo() {
 function wcdn_pdf_company_logo( $ttype ) {
 	global $wcdn;
 	$attachment_id = wcdn_get_company_logo_id();
-	$company       = get_option( 'wcdn_custom_company_name' );
-	$sizeh         = get_option( 'wcdn_general_settings' )['logo_size']['sizeh'];
-	$sizew         = get_option( 'wcdn_general_settings' )['logo_size']['sizew'];
-	if ( $attachment_id ) {
-		$attachment_src = wp_get_attachment_image_src( $attachment_id, 'full', false );
-		$upload_dir     = wp_upload_dir();
-		$typei          = pathinfo( $attachment_src[0], PATHINFO_EXTENSION );
-		$data           = file_get_contents( $attachment_src[0] );
-		$data_uri       = 'data:image/' . $typei . ';base64,' . base64_encode( $data );
-		if ( 'default' === $ttype ) {
-			?>
-			<img src="<?php echo esc_url( $attachment_src[0] ); ?>"  class="desktop"  width="<?php echo esc_attr( round( $attachment_src[1] / 4 ) ); ?>" height="<?php echo esc_attr( round( $attachment_src[2] / 4 ) ); ?>" alt="<?php echo esc_attr( $company ); ?>" />
-			<?php
-		} else {
-			?>
-			<img src="<?php echo $data_uri; // phpcs:ignore ?>" width="<?php echo esc_attr( $sizew ); ?>px" height="<?php echo esc_attr( $sizeh ); ?>px" alt="<?php echo esc_attr( $company ); ?>" />
-			<?php
-		}
+	$company       = get_option( 'wcdn_custom_company_name', 'Company Name' );
+
+	// Get logo size settings safely.
+	$general_settings = get_option( 'wcdn_general_settings', array() );
+	$sizeh            = $general_settings['logo_size']['sizeh'] ?? 125;
+	$sizew            = $general_settings['logo_size']['sizew'] ?? 125;
+	if ( ! $attachment_id ) {
+		return;
+	}
+	$attachment_src = wp_get_attachment_image_src( $attachment_id, 'full' );
+	if ( empty( $attachment_src[0] ) ) {
+		return;
+	}
+	$typei      = pathinfo( $attachment_src[0], PATHINFO_EXTENSION );
+	$image_path = get_attached_file( $attachment_id );
+	$data       = @file_get_contents( $image_path ); // phpcs:ignore
+	if ( false === $data ) {
+		return;
+	}
+	$data_uri = 'data:image/' . esc_attr( $typei ) . ';base64,' . base64_encode( $data ); // phpcs:ignore
+
+	// Output logo.
+	if ( 'default' === $ttype ) {
+		echo '<img src="' . esc_url( $attachment_src[0] ) . '" class="desktop" width="' . esc_attr( round( $attachment_src[1] / 4 ) ) . '" height="' . esc_attr( round( $attachment_src[2] / 4 ) ) . '" alt="' . esc_attr( $company ) . '" />';
+	} else {
+		echo '<img src="' . esc_attr( $data_uri ) . '" width="' . esc_attr( $sizew ) . 'px" height="' . esc_attr( $sizeh ) . 'px" alt="' . esc_attr( $company ) . '" />';
 	}
 }
 
