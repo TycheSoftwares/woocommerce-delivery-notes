@@ -267,6 +267,9 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 
 			$order_id = ( $post instanceof WP_Post ) ? $post->ID : $post->get_id();
 			$order    = wc_get_order( $order_id );
+			if ( ! $order ) {
+				return;
+			}
 			?>
 			<div class="print-actions">
 				<?php foreach ( WCDN_Print::$template_registrations as $template_registration ) : ?>
@@ -279,21 +282,24 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 				<span class="print-preview-loading spinner"></span>
 			</div>
 			<?php
-			$invoice_data       = get_option( 'wcdn_invoice_customization' );
-			$has_invoice_number = $order->get_meta( '_wcdn_invoice_number', true );
-			if ( $invoice_data && isset( $invoice_data['numbering']['active'] ) && 'on' === $invoice_data['numbering']['active'] && $has_invoice_number ) :
-				$invoice_number = wcdn_get_order_invoice_number( $order_id );
-				$invoice_date   = wcdn_get_order_invoice_date( $order_id );
-				?>
-
-				<ul class="print-info">
-					<li><strong><?php esc_html_e( 'Invoice number: ', 'woocommerce-delivery-notes' ); ?></strong> <?php echo esc_attr( $invoice_number ); ?></li>
-					<li><strong><?php esc_html_e( 'Invoice date: ', 'woocommerce-delivery-notes' ); ?></strong> <?php echo esc_attr( $invoice_date ); ?></li>
-				</ul>
-
-			<?php endif; ?>
-			<?php
+			$invoice_data = get_option( 'wcdn_invoice_customization' );
+			if ( $invoice_data && isset( $invoice_data['numbering']['active'] ) && 'on' === $invoice_data['numbering']['active'] ) {
+				$has_invoice_number = $order->get_meta( '_wcdn_invoice_number', true );
+				if ( $has_invoice_number ) {
+					$invoice_number = wcdn_get_order_invoice_number( $order_id );
+					$invoice_date   = wcdn_get_order_invoice_date( $order_id );
+					?>
+					<ul class="print-info">
+						<li><strong><?php esc_html_e( 'Invoice number: ', 'woocommerce-delivery-notes' ); ?></strong> 
+							<?php echo esc_html( $invoice_number ); ?>
+						</li>
+						<li><strong><?php esc_html_e( 'Invoice date: ', 'woocommerce-delivery-notes' ); ?></strong> 
+							<?php echo esc_html( $invoice_date ); ?>
+						</li>
+					</ul>
+					<?php
+				}
+			}
 		}
-
 	}
 }
