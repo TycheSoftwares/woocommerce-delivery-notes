@@ -62,42 +62,37 @@ if ( ! class_exists( 'WCDN_Theme' ) ) {
 
 			if ( 'yes' === $invoice ) {
 				$settings = get_option( 'wcdn_invoice_settings' );
-				if ( isset( $settings['status'] ) ) {
-					if ( in_array( $email_id, $settings['status'], true ) ) {
-						$name = 'wcdn_' . $order->get_id() . '_invoice.pdf';
-						if ( ! file_exists( $upload_dir['basedir'] . '/wcdn/invoice/' . $name ) ) {
-							$name = create_pdf( $order, 'invoice' );
-						}
-						$attachments[] = $upload_dir['basedir'] . '/wcdn/invoice/' . $name;
+				if ( isset( $settings['status'] ) && in_array( $email_id, $settings['status'], true ) ) {
+					$name = $order->get_meta( '_wcdn_invoice_pdf' );
+					if ( ! $name || ! file_exists( $upload_dir['basedir'] . '/wcdn/invoice/' . $name ) ) {
+						$name = create_pdf( $order, 'invoice' );
 					}
+					$attachments[] = $upload_dir['basedir'] . '/wcdn/invoice/' . $name;
 				}
 			}
 
 			if ( 'yes' === $receipt ) {
 				$settings = get_option( 'wcdn_receipt_settings' );
-				if ( isset( $settings['status'] ) ) {
-					if ( in_array( $email_id, $settings['status'], true ) ) {
-						$name = 'wcdn_' . $order->get_id() . '_receipt.pdf';
-						if ( ! file_exists( $upload_dir['basedir'] . '/wcdn/receipt/' . $name ) ) {
-							$name = create_pdf( $order, 'receipt' );
-						}
-						$attachments[] = $upload_dir['basedir'] . '/wcdn/receipt/' . $name;
+				if ( isset( $settings['status'] ) && in_array( $email_id, $settings['status'], true ) ) {
+					$name = $order->get_meta( '_wcdn_receipt_pdf' );
+					if ( ! $name || ! file_exists( $upload_dir['basedir'] . '/wcdn/receipt/' . $name ) ) {
+						$name = create_pdf( $order, 'receipt' );
 					}
+					$attachments[] = $upload_dir['basedir'] . '/wcdn/receipt/' . $name;
 				}
 			}
 
 			if ( 'yes' === $delivery_note ) {
 				$settings = get_option( 'wcdn_deliverynote_settings' );
-				if ( isset( $settings['status'] ) ) {
-					if ( in_array( $email_id, $settings['status'], true ) ) {
-						$name = 'wcdn_' . $order->get_id() . '_deliverynote.pdf';
-						if ( ! file_exists( $upload_dir['basedir'] . '/wcdn/deliverynote/' . $name ) ) {
-							$name = create_pdf( $order, 'deliverynote' );
-						}
-						$attachments[] = $upload_dir['basedir'] . '/wcdn/deliverynote/' . $name;
+				if ( isset( $settings['status'] ) && in_array( $email_id, $settings['status'], true ) ) {
+					$name = $order->get_meta( '_wcdn_deliverynote_pdf' );
+					if ( ! $name || ! file_exists( $upload_dir['basedir'] . '/wcdn/deliverynote/' . $name ) ) {
+						$name = create_pdf( $order, 'deliverynote' );
 					}
+					$attachments[] = $upload_dir['basedir'] . '/wcdn/deliverynote/' . $name;
 				}
 			}
+
 			return $attachments;
 		}
 
