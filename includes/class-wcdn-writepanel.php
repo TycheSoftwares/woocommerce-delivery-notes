@@ -205,12 +205,13 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 							showModal: true,
 							totalOrders: "<?php echo esc_js( ucfirst( $total ) ); ?>",
 							templateType: "<?php echo esc_js( ucfirst( $template_type ) ); ?>",
-							printUrl: "<?php echo htmlspecialchars_decode( wcdn_get_print_link( $post_ids, $template_type ) ); ?>"  // phpcs:ignore
+							printUrl: "<?php echo htmlspecialchars_decode( wcdn_get_print_link( $post_ids, $template_type ) ); ?>",// phpcs:ignore
+							ordersPageUrl: "<?php echo esc_url( $orders_page_url ); ?>"
 						},
 						methods: {
 							closeModal() {
 								this.showModal = false;
-								window.location.href = "admin.php?page=wc-orders"; // Redirect to orders page
+								window.location.href = this.ordersPageUrl; // Redirect to orders page
 							},
 							printDocument() {
 								let printWindow = window.open(this.printUrl, "_blank");
