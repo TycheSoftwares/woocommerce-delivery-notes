@@ -160,61 +160,79 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 				return $redirect_to;
 			}
 
-			// security check.
-			if ( isset( $_GET['page'] ) && 'wc-orders' === $_GET['page'] ) {
-				check_admin_referer( 'bulk-orders' );
+			// Get the total number of post IDs.
+			$total     = count( $post_ids );
+			$print_url = htmlspecialchars_decode( wcdn_get_print_link( $post_ids, $template_type ) );
+
+			// WooCommerce orders page URL.
+			if ( class_exists( '\Automattic\WooCommerce\Internal\DataStores\Orders\CustomOrdersTableController' ) && 
+				wc_get_container()->get( \Automattic\WooCommerce\Internal\DataStores\Orders\CustomOrdersTableController::class )->custom_orders_table_usage_is_enabled() ) {
+				$orders_page_url = admin_url( 'admin.php?page=wc-orders' );
 			} else {
-				check_admin_referer( 'bulk-posts' );
+				$orders_page_url = admin_url( 'edit.php?post_type=shop_order' );
 			}
 
-			// get referrer.
-			if ( ! wp_get_referer() ) {
-				return $redirect_to;
-			}
+			// Output the modal with Vue.js.
+			?>
+			<div id="custom-modal-app">
+				<div v-if="showModal" class="custom-modal">
+					<div class="custom-modal-content">
+						<!-- Modal Header -->
+						<div class="custom-modal-header">
+						<h1>Print {{ templateType }}</h1>
+							<button class="custom-modal-close" @click="closeModal()">×</button>
+						</div>
 
-			// filter the referer args.
-			$referer_args = array();
-			parse_str( wp_parse_url( wp_get_referer(), PHP_URL_QUERY ), $referer_args );
+						<!-- Modal Body -->
+						<div class="custom-modal-body">
+							<p>Ready to print {{ totalOrders }}  {{ templateType }} .</p>
+						</div>
 
-			// set the basic args for the sendback.
-			$args = array();
-			if ( isset( $referer_args['post_status'] ) ) {
-				$args = wp_parse_args( array( 'post_status' => $referer_args['post_status'] ), $args );
-			}
-			if ( isset( $referer_args['paged'] ) ) {
-				$args = wp_parse_args( array( 'paged' => $referer_args['paged'] ), $args );
-			}
-			if ( isset( $referer_args['orderby'] ) ) {
-				$args = wp_parse_args( array( 'orderby' => $referer_args['orderby'] ), $args );
-			}
-			if ( isset( $referer_args['order'] ) ) {
-				$args = wp_parse_args( array( 'orderby' => $referer_args['order'] ), $args );
-			}
-
-			if ( isset( $referer_args['post_type'] ) ) {
-				$args = wp_parse_args( array( 'post_type' => $referer_args['post_type'] ), $args );
-			}
-
-			if ( isset( $referer_args['page'] ) ) {
-				$args = wp_parse_args( array( 'page' => $referer_args['page'] ), $args );
-			}
-
-			// do the action.
-			$total = count( $post_ids );
-			$url   = wcdn_get_print_link( $post_ids, $template_type );
-
-			// generate more args and the sendback string.
-			$args     = wp_parse_args(
-				array(
-					$report_action => true,
-					'total'        => $total,
-					'print_url'    => rawurlencode( $url ),
-				),
-				$args
-			);
-			$sendback = add_query_arg( $args, '' );
-			wp_safe_redirect( $sendback );
-			exit;
+						<!-- Modal Footer -->
+						<div class="custom-modal-footer">
+							<button class="cancel-button button" @click="closeModal()">Cancel</button>
+							<button class="primary-button button" @click="printDocument()">Print</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+			<script>
+				document.addEventListener("DOMContentLoaded", function() {
+					new Vue({
+						el: "#custom-modal-app",
+						data: {
+							showModal: true,
+							totalOrders: "<?php echo esc_js( ucfirst( $total ) ); ?>",
+							templateType: "<?php echo esc_js( ucfirst( $template_type ) ); ?>",
+							printUrl: "<?php echo htmlspecialchars_decode( wcdn_get_print_link( $post_ids, $template_type ) ); ?>",// phpcs:ignore
+							ordersPageUrl: "<?php echo esc_url( $orders_page_url ); ?>"
+						},
+						methods: {
+							closeModal() {
+								this.showModal = false;
+								window.location.href = this.ordersPageUrl; // Redirect to orders page
+							},
+							printDocument() {
+								let printWindow = window.open(this.printUrl, "_blank");
+								if (!printWindow) {
+									alert("Pop-up blocked! Please allow pop-ups and try again.");
+									return;
+								}
+								let interval = setInterval(function () {
+									if (printWindow.document.readyState === "complete") {
+										clearInterval(interval);
+										printWindow.print();
+									}
+								}, 500);
+								this.closeModal();
+							}
+						}
+					});
+				});
+			</script>
+			<?php
+			exit; // Prevent further processing.
 		}
 
 		/**
@@ -224,7 +242,7 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 			if ( $this->is_order_edit_page() ) {
 				foreach ( WCDN_Print::$template_registrations as $template_registration ) {
 					if ( isset( $_REQUEST[ 'printed_' . $template_registration['type'] ] ) ) {
-						
+
 						// use singular or plural form.
 						$total   = isset( $_REQUEST['total'] ) ? absint( $_REQUEST['total'] ) : 0;
 						$message = $total <= 1 ? $message = $template_registration['labels']['message'] : $template_registration['labels']['message_plural'];
@@ -302,4 +320,100 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 			}
 		}
 	}
+	?>
+	<style>
+	.custom-modal {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: fixed;
+		z-index: 1000;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+
+	.custom-modal-content {
+		font-family: "HelveticaNeue", Helvetica, Arial, sans-serif;
+		background-color: #fff;
+		padding: 20px 20px 0px 20px;
+		width: 623px;
+		height: 160px;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.custom-modal-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		border-bottom: 1px solid #ddd;
+		padding-bottom: 10px;
+	}
+
+	.custom-modal-header h1 {
+		font-size: 18px;
+		margin: 0;
+	}
+
+	.custom-modal-close {
+		cursor: pointer;
+		font-size: 20px;
+		border: none;
+		background: none;
+		color: #777;
+	}
+
+	.custom-modal-body {
+		padding: 25px 0px 0px 0px;
+	}
+
+	.custom-modal-body p {
+		font-size: 14px;
+	}
+
+	.custom-modal-footer {
+		display: flex;
+		justify-content: flex-end;
+		gap: 10px;
+		padding-top: 10px;
+		border-top: 1px solid #ddd;
+	}
+
+	.custom-modal-footer .button {
+		padding: 10px 15px;
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+	}
+
+	.custom-modal-footer .primary-button {
+		background-color:rgb(8, 114, 163);
+		color: white;
+	}
+
+	.custom-modal-footer .cancel-button {
+		background-color: #f1f1f1;
+		color: black;
+	}
+
+	/* Button hover effects */
+	.primary-button:hover {
+		background-color: #005177;
+	}
+	.primary-button button {
+		width : 10px;
+	}
+
+	.cancel-button:hover {
+		background-color: #ddd;
+	}
+	.primary-button {
+		width: 70px;
+	}
+	</style>
+	<?php
 }
