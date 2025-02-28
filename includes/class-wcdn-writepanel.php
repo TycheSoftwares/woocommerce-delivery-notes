@@ -160,15 +160,17 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 				return $redirect_to;
 			}
 
-			// security check.
-			check_admin_referer( 'bulk-orders' );
-
 			// Get the total number of post IDs.
 			$total     = count( $post_ids );
 			$print_url = htmlspecialchars_decode( wcdn_get_print_link( $post_ids, $template_type ) );
 
 			// WooCommerce orders page URL.
-			$orders_page_url = admin_url( 'admin.php?page=wc-orders' );
+			if ( class_exists( '\Automattic\WooCommerce\Internal\DataStores\Orders\CustomOrdersTableController' ) && 
+				wc_get_container()->get( \Automattic\WooCommerce\Internal\DataStores\Orders\CustomOrdersTableController::class )->custom_orders_table_usage_is_enabled() ) {
+				$orders_page_url = admin_url( 'admin.php?page=wc-orders' );
+			} else {
+				$orders_page_url = admin_url( 'edit.php?post_type=shop_order' );
+			}
 
 			// Output the modal with Vue.js.
 			?>
@@ -194,8 +196,8 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 					</div>
 				</div>
 			</div>
+			<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 			<script>
-				src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js">
 				document.addEventListener("DOMContentLoaded", function() {
 					new Vue({
 						el: "#custom-modal-app",
