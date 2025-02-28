@@ -329,6 +329,7 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 	}
 
 	.custom-modal-content {
+		font-family: "HelveticaNeue", Helvetica, Arial, sans-serif;
 		background-color: #fff;
 		padding: 20px 20px 0px 20px;
 		width: 623px;
@@ -360,7 +361,11 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 	}
 
 	.custom-modal-body {
-		padding: 10px 0px 0px 0px;
+		padding: 25px 0px 0px 0px;
+	}
+
+	.custom-modal-body p {
+		font-size: 14px;
 	}
 
 	.custom-modal-footer {
