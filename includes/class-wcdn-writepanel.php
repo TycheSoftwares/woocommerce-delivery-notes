@@ -231,6 +231,101 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 					});
 				});
 			</script>
+
+			<style>
+				.custom-modal {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					position: fixed;
+					z-index: 1000;
+					left: 0;
+					top: 0;
+					width: 100%;
+					height: 100%;
+					background-color: rgba(0, 0, 0, 0.5);
+				}
+
+				.custom-modal-content {
+					font-family: "HelveticaNeue", Helvetica, Arial, sans-serif;
+					background-color: #fff;
+					padding: 20px 20px 0px 20px;
+					width: 623px;
+					height: 160px;
+					position: relative;
+					display: flex;
+					flex-direction: column;
+				}
+
+				.custom-modal-header {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					border-bottom: 1px solid #ddd;
+					padding-bottom: 10px;
+				}
+
+				.custom-modal-header h1 {
+					font-size: 18px;
+					margin: 0;
+				}
+
+				.custom-modal-close {
+					cursor: pointer;
+					font-size: 20px;
+					border: none;
+					background: none;
+					color: #777;
+				}
+
+				.custom-modal-body {
+					padding: 25px 0px 0px 0px;
+				}
+
+				.custom-modal-body p {
+					font-size: 14px;
+				}
+
+				.custom-modal-footer {
+					display: flex;
+					justify-content: flex-end;
+					gap: 10px;
+					padding-top: 10px;
+					border-top: 1px solid #ddd;
+				}
+
+				.custom-modal-footer .button {
+					padding: 10px 15px;
+					border: none;
+					border-radius: 5px;
+					cursor: pointer;
+				}
+
+				.custom-modal-footer .primary-button {
+					background-color:rgb(8, 114, 163);
+					color: white;
+				}
+
+				.custom-modal-footer .cancel-button {
+					background-color: #f1f1f1;
+					color: black;
+				}
+
+				/* Button hover effects */
+				.primary-button:hover {
+					background-color: #005177;
+				}
+				.primary-button button {
+					width : 10px;
+				}
+
+				.cancel-button:hover {
+					background-color: #ddd;
+				}
+				.primary-button {
+					width: 70px;
+				}
+			</style>
 			<?php
 			exit; // Prevent further processing.
 		}
@@ -320,100 +415,4 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 			}
 		}
 	}
-	?>
-	<style>
-	.custom-modal {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		position: fixed;
-		z-index: 1000;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		background-color: rgba(0, 0, 0, 0.5);
-	}
-
-	.custom-modal-content {
-		font-family: "HelveticaNeue", Helvetica, Arial, sans-serif;
-		background-color: #fff;
-		padding: 20px 20px 0px 20px;
-		width: 623px;
-		height: 160px;
-		position: relative;
-		display: flex;
-		flex-direction: column;
-	}
-
-	.custom-modal-header {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		border-bottom: 1px solid #ddd;
-		padding-bottom: 10px;
-	}
-
-	.custom-modal-header h1 {
-		font-size: 18px;
-		margin: 0;
-	}
-
-	.custom-modal-close {
-		cursor: pointer;
-		font-size: 20px;
-		border: none;
-		background: none;
-		color: #777;
-	}
-
-	.custom-modal-body {
-		padding: 25px 0px 0px 0px;
-	}
-
-	.custom-modal-body p {
-		font-size: 14px;
-	}
-
-	.custom-modal-footer {
-		display: flex;
-		justify-content: flex-end;
-		gap: 10px;
-		padding-top: 10px;
-		border-top: 1px solid #ddd;
-	}
-
-	.custom-modal-footer .button {
-		padding: 10px 15px;
-		border: none;
-		border-radius: 5px;
-		cursor: pointer;
-	}
-
-	.custom-modal-footer .primary-button {
-		background-color:rgb(8, 114, 163);
-		color: white;
-	}
-
-	.custom-modal-footer .cancel-button {
-		background-color: #f1f1f1;
-		color: black;
-	}
-
-	/* Button hover effects */
-	.primary-button:hover {
-		background-color: #005177;
-	}
-	.primary-button button {
-		width : 10px;
-	}
-
-	.cancel-button:hover {
-		background-color: #ddd;
-	}
-	.primary-button {
-		width: 70px;
-	}
-	</style>
-	<?php
 }
