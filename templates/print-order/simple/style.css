@@ -198,4 +198,8 @@ tfoot {
 		padding-bottom: 0;
 		page-break-after: always;
 	}
+
+	.content:last-child {
+        page-break-after: auto; /* Prevents an extra blank page at the end */
+    }
 }
