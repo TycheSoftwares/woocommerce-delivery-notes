@@ -4,9 +4,9 @@ Contributors: ashokrane, tychesoftwares
 Donate link: https://www.paypal.me/TycheSoftwares
 Tags: packing slips, invoice, pdf invoice, delivery notes, woocommerce print invoice
 Requires at least: 4.4
-Tested up to: 6.7.1
+Tested up to: 6.7.2
 Author URI: https://www.tychesoftwares.com/
-Stable tag: 5.4.1
+Stable tag: 5.5.0
 License: GPLv3 or later
 License URI: http://www.opensource.org/licenses/gpl-license.php
 
@@ -351,6 +351,13 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 This plugin communicates with our tracking server to send usage data **only** if the user has explicitly opted in to usage tracking. For detailed information about what is tracked, please refer to our [usage tracking documentation](https://www.tychesoftwares.com/docs/woocommerce-print-invoice-delivery-note/print-invoice-usage-trackings/).
 
 == Changelog ==
+
+= 5.5.0 - (04.03.2025) =
+* Fix- Issue where bulk printing was being initiated multiple times. Added a popup for bulk action selection and a print button to open the print window in a new tab.
+* Fix- Added the 'allow_user_email_order_access' filter to allow non-logged-in users to access the Print link in emails.
+* Fix- Fixed broken logo issue in the Simple template of the plugin.
+* Fix- Security vulnerability by preventing direct access to PDF files and adding unique keys to PDF filenames.
+* Fix- PHP fatal error: "Uncaught Error: Call to a member function get_meta() on bool" when the invoice number was missing on the edit order page.
 
 = 5.4.1 - (18.12.2024) =
 * Fix- Vulnerability in the 'wcdn_remove_shoplogo' AJAX action by adding proper capability checks. This ensures that only authorized users can modify the shop logo.
