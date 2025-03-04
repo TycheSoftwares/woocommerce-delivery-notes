@@ -161,8 +161,10 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 			}
 
 			// Get the total number of post IDs.
-			$total     = count( $post_ids );
-			$print_url = htmlspecialchars_decode( wcdn_get_print_link( $post_ids, $template_type ) );
+			$total        = count( $post_ids );
+			$print_url    = htmlspecialchars_decode( wcdn_get_print_link( $post_ids, $template_type ) );
+			$templatetype = ucwords( str_replace( '-', ' ', $template_type ) );
+
 
 			// WooCommerce orders page URL.
 			if ( class_exists( '\Automattic\WooCommerce\Internal\DataStores\Orders\CustomOrdersTableController' ) && 
@@ -185,7 +187,7 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 
 						<!-- Modal Body -->
 						<div class="custom-modal-body">
-							<p>Ready to print {{ totalOrders }}  {{ templateType }} .</p>
+						<p>Ready to print {{ totalOrders }} {{ pluralizedTemplate }}.</p>
 						</div>
 
 						<!-- Modal Footer -->
@@ -204,9 +206,24 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 						data: {
 							showModal: true,
 							totalOrders: "<?php echo esc_js( ucfirst( $total ) ); ?>",
-							templateType: "<?php echo esc_js( ucfirst( $template_type ) ); ?>",
-							printUrl: "<?php echo htmlspecialchars_decode( wcdn_get_print_link( $post_ids, $template_type ) ); ?>",// phpcs:ignore
+							templateType: "<?php echo esc_js( ucfirst( $templatetype ) ); ?>",
+							printUrl: "<?php echo htmlspecialchars_decode( wcdn_get_print_link( $post_ids, $template_type ) ); // phpcs:ignore ?>",
 							ordersPageUrl: "<?php echo esc_url( $orders_page_url ); ?>"
+						},
+						computed: {
+							pluralizedTemplate() {
+								let templateMapping = {
+									"Invoice": "Invoices",
+									"Delivery Note": "Delivery Notes",
+									"Receipt": "Receipts"
+								};
+
+								if (this.totalOrders > 1 && templateMapping[this.templateType]) {
+									return templateMapping[this.templateType];
+								} else {
+									return this.templateType;
+								}
+							}
 						},
 						methods: {
 							closeModal() {
