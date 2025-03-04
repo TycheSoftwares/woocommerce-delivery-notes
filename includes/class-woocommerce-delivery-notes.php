@@ -36,7 +36,7 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 		 *
 		 * @var string $plugin_version Current plugin version number
 		 */
-		public static $plugin_version = '5.4.1';
+		public static $plugin_version = '5.5.0';
 
 		/**
 		 * Plugin URL on current installation
