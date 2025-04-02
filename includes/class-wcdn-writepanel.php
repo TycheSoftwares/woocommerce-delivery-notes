@@ -174,6 +174,18 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 				$orders_page_url = admin_url( 'edit.php?post_type=shop_order' );
 			}
 
+			if ( is_plugin_active( 'sales-by-state/sales-by-state.php' ) ) {
+				// Check if the XML Content Type header is set and remove it.
+				$headers = headers_list();
+				foreach ( $headers as $header ) {
+					if ( stripos( $header, 'Content-Type: application/xml' ) !== false ) {
+						header_remove( 'Content-Type' );
+						header( 'Content-Type: text/html; charset=utf-8' );
+						break;
+					}
+				}
+			}
+
 			// Output the modal with Vue.js.
 			?>
 			<div id="custom-modal-app">
