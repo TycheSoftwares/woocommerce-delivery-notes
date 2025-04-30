@@ -19,6 +19,7 @@ $shop_logotitle = get_the_title( $shop_logoid );
 	<label for="shop_logo" class="col-sm-2 col-form-label" name="wcdn_general[shop_logo]"><?php esc_html_e( 'Logo', 'woocommerce-delivery-notes' ); ?></label>
 	<div class="col-sm-6 icon-flex">
 		<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'A shop logo representing your business. When the image is printed, its pixel density will automatically be eight times higher than the original. This means, 1 printed inch will correspond to about 288 pixels on the screen.', 'woocommerce-delivery-notes' ); ?>"></i>
+		<?php wp_nonce_field( 'wcdn_remove_shoplogo_action', 'wcdn_remove_shoplogo_nonce' ); ?>
 		<input type="hidden" name="shop_logoid" value="
 		<?php
 		if ( isset( $shop_logoid ) && ! empty( $shop_logoid ) ) {

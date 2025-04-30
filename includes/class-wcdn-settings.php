@@ -494,6 +494,9 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 		 * Ajax Call For remove shop logo.
 		 */
 		public function wcdn_remove_shoplogo() {
+			if ( ! isset( $_POST['wcdn_remove_shoplogo_nonce'] ) || ! wp_verify_nonce( $_POST['wcdn_remove_shoplogo_nonce'], 'wcdn_remove_shoplogo_action' ) ) { // phpcs:ignore
+				wp_die();
+			}
 			if ( ! empty( $_POST['shop_logoid'] ) && ( current_user_can( 'manage_options' ) || current_user_can( 'manage_woocommerce' ) ) ) { // phpcs:ignore
 				update_option( 'wcdn_company_logo_image_id', '' );
 				wp_delete_attachment( $_POST['shop_logoid'] ); // phpcs:ignore
