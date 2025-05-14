@@ -194,7 +194,7 @@ if ( is_null( $parent_order ) ) {
 									continue;
 								}
 								// Call the function to get the adjusted quantity.
-								$adjusted_qty = get_adjusted_quantity( $order, $item_id );
+								$adjusted_qty = wcdn_get_adjusted_quantity( $order, $item_id );
 								if ( $adjusted_qty > 0 ) {
 									$total_adjusted_quantity += $adjusted_qty;
 								} else {
@@ -210,7 +210,7 @@ if ( is_null( $parent_order ) ) {
 								<tr>
 									<td class="product-name">
 										<?php do_action( 'wcdn_order_item_before', $product, $order, $item ); ?>
-										<?php get_product_name( $product, $order, $item ); ?>
+										<?php wcdn_get_product_name( $product, $order, $item ); ?>
 										<?php do_action( 'wcdn_order_item_after', $product, $order, $item ); ?>
 									</td>
 									<td class="product-item-price">
