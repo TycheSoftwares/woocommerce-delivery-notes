@@ -891,7 +891,7 @@ add_filter( 'woocommerce_get_item_count', 'wcdn_order_item_count', 20, 3 );
  * @param WC_Order $order Order object.
  * @param object   $item Item Type.
  */
-function get_product_name( $product, $order, $item ) {
+function wcdn_get_product_name( $product, $order, $item ) {
 	echo '<div class="name">';
 	$addon_name  = $item->get_meta( '_wc_pao_addon_name', true );
 	$addon_value = $item->get_meta( '_wc_pao_addon_value', true );
@@ -993,7 +993,7 @@ function get_product_name( $product, $order, $item ) {
  * @param WC_Order      $order   The WooCommerce order object.
  * @param WC_Order_Item $item_id  The order item object containing product details.
  */
-function get_adjusted_quantity( $order, $item_id ) {
+function wcdn_get_adjusted_quantity( $order, $item_id ) {
 	$item         = $order->get_item( $item_id );
 	$original_qty = $item->get_quantity();
 	$qty_refunded = $order->get_qty_refunded_for_item( $item_id );
@@ -1007,9 +1007,9 @@ function get_adjusted_quantity( $order, $item_id ) {
  * @param WC_Order $order The WooCommerce order object.
  * @param array    $data  The checkout data.
  */
-function add_guest_access_token_to_order( $order, $data ) {
+function wcdn_add_guest_access_token_to_order( $order, $data ) {
 	if ( ! is_user_logged_in() ) {
-		add_guest_access_token( $order );
+		wcdn_add_guest_access_token( $order );
 	}
 }
 
@@ -1018,9 +1018,9 @@ function add_guest_access_token_to_order( $order, $data ) {
  *
  * @param WC_Order $order The WooCommerce order object.
  */
-function add_guest_access_token_to_order_blocks( $order ) {
+function wcdn_add_guest_access_token_to_order_blocks( $order ) {
 	if ( ! is_user_logged_in() ) {
-		add_guest_access_token( $order );
+		wcdn_add_guest_access_token( $order );
 	}
 }
 
@@ -1029,7 +1029,7 @@ function add_guest_access_token_to_order_blocks( $order ) {
  *
  * @param WC_Order $order The WooCommerce order object.
  */
-function add_guest_access_token( $order ) {
+function wcdn_add_guest_access_token( $order ) {
 	// Generate a random token for the guest user.
 	$guest_token = bin2hex( random_bytes( 16 ) );
 

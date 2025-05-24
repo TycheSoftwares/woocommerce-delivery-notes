@@ -116,7 +116,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							continue;
 						}
 
-						$adjusted_qty = get_adjusted_quantity( $order, $item_id );
+						$adjusted_qty = wcdn_get_adjusted_quantity( $order, $item_id );
 						if ( $adjusted_qty > 0 ) {
 							$total_adjusted_quantity += $adjusted_qty;
 						} else {
