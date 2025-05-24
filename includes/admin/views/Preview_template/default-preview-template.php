@@ -308,7 +308,7 @@ if ( is_null( $parent_order ) ) {
 				if ( $totals_arr ) :
 
 					foreach ( $totals_arr as $total ) :
-						$modified_label = apply_filters( 'custom_order_total_label', $total['label'], $key, $order );
+						$modified_label = apply_filters( 'wcdn_invoice_order_total_label', $total['label'], $key, $order );
 						?>
 						<tr>
 							<td class="total-name"><span><?php echo wp_kses_post( $modified_label ); ?></span></td>
