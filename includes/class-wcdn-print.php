@@ -542,7 +542,7 @@ if ( ! class_exists( 'WCDN_Print' ) ) {
 			$posts = wc_get_orders(
 				array(
 					'limit'       => -1,
-					'orderby'     => 'date',
+					'orderby'     => 'post__in',
 					'order'       => 'DESC',
 					'post__in'    => $this->order_ids,
 					'post_status' => 'any',
