@@ -18,16 +18,20 @@ function readURL(input) {
 function removeUpload() {
   	jQuery('.file-upload-input').replaceWith(jQuery('.file-upload-input').clone());
   	var shop_logoid = jQuery('input[name="shop_logoid"]').val();
-  	jQuery.ajax({
-		type : "post",
-        dataType : "json",
-        url : admin_object.ajax_url,
-        data : {action: "wcdn_remove_shoplogo", 'shop_logoid': shop_logoid },
-        success: function(response) {
-           	jQuery('.file-upload-content').hide();
-			jQuery('.image-upload-wrap').show();
+    var nonce = jQuery('#wcdn_remove_shoplogo_nonce').val();
+    jQuery.ajax({
+        type: "POST",
+        url: admin_object.ajax_url,
+        data: {
+            action: "wcdn_remove_shoplogo",
+            shop_logoid: shop_logoid,
+            wcdn_remove_shoplogo_nonce: nonce
+        },
+        success: function() {
+            jQuery('.file-upload-content').hide();
+            jQuery('.image-upload-wrap').show();
         }
-    }) 
+    });
 }
 
 jQuery(document).ready(function($) {
