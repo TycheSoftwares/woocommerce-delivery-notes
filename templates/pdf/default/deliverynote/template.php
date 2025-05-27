@@ -147,7 +147,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						if ( $totals_arr ) :
 
 							foreach ( $totals_arr as $total ) :
-								$modified_label = apply_filters( 'wcdn_invoice_order_total_label', $total['label'] );
+								$modified_label = apply_filters( 'wcdn_invoice_order_total_label', $total['label'], $order );
 								?>
 								<tr>
 									<td class="total-name"><span><?php echo wp_kses_post( $modified_label ); ?></span></td>
