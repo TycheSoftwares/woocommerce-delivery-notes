@@ -250,12 +250,14 @@ function wcdn_company_logo() {
 	$company       = get_option( 'wcdn_custom_company_name' );
 	if ( $attachment_id ) {
 		$attachment_src = wp_get_attachment_image_src( $attachment_id, 'full', false );
-		// resize the image to a 1/4 of the original size to have a printing point density of about 288ppi.
-		?>
-		<div class="logo">
-			<img src="<?php echo esc_url( $attachment_src[0] ); ?>"  class="desktop"  width="<?php echo esc_attr( round( $attachment_src[1] / 4 ) ); ?>" height="<?php echo esc_attr( round( $attachment_src[2] / 4 ) ); ?>" alt="<?php echo esc_attr( $company ); ?>" />
-		</div>
-		<?php
+		if ( $attachment_src ) {
+			// resize the image to a 1/4 of the original size to have a printing point density of about 288ppi.
+			?>
+			<div class="logo">
+				<img src="<?php echo esc_url( $attachment_src[0] ); ?>"  class="desktop"  width="<?php echo esc_attr( round( $attachment_src[1] / 4 ) ); ?>" height="<?php echo esc_attr( round( $attachment_src[2] / 4 ) ); ?>" alt="<?php echo esc_attr( $company ); ?>" />
+			</div>
+			<?php
+		}
 	}
 }
 
