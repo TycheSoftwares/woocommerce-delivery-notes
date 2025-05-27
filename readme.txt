@@ -4,9 +4,9 @@ Contributors: ashokrane, tychesoftwares
 Donate link: https://www.paypal.me/TycheSoftwares
 Tags: packing slips, invoice, pdf invoice, delivery notes, woocommerce print invoice
 Requires at least: 4.4
-Tested up to: 6.7.2
+Tested up to: 6.8.1
 Author URI: https://www.tychesoftwares.com/
-Stable tag: 5.5.0
+Stable tag: 5.6.0
 License: GPLv3 or later
 License URI: http://www.opensource.org/licenses/gpl-license.php
 
@@ -351,6 +351,14 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 This plugin communicates with our tracking server to send usage data **only** if the user has explicitly opted in to usage tracking. For detailed information about what is tracked, please refer to our [usage tracking documentation](https://www.tychesoftwares.com/docs/woocommerce-print-invoice-delivery-note/print-invoice-usage-trackings/).
 
 == Changelog ==
+
+= 5.6.0 - 27/05/2025 =
+* Fix - Invoice numbers were not generated in ascending order based on the order ID.
+* Fix - Added wcdn_invoice_order_total_label filter to allow "Total" and "Subtotal" labels in the default invoice template.
+* Fix - Compatibility issue with the Sales By State plugin, causing a critical error when printing the invoice template.
+* Fix - Function name conflict by adding a wcdn prefix to all plugin functions, preventing issues like PHP Fatal error: Cannot redeclare function get_product_name().
+* Tweak - Updated for compatibility with WordPress 6.8.1.
+* Tweak - Updated for compatibility with WooCommerce 9.8.5.
 
 = 5.5.0 - (04.03.2025) =
 * Fix- Issue where bulk printing was being initiated multiple times. Added a popup for bulk action selection and a print button to open the print window in a new tab.
