@@ -166,6 +166,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 											$product_addons = WC_Product_Addons_Helper::get_product_addons( $product_id );
 										}
 									}
+									// Extra Product Options (ThemeComplete EPO) support.
+									$epo_data = $item->get_meta( '_tmcartepo_data', true );
+									if ( ! empty( $epo_data ) && is_array( $epo_data ) ) {
+										foreach ( $epo_data as $epo ) {
+											if ( ! empty( $epo['name'] ) && isset( $epo['value'] ) ) {
+												echo '<br>' . wp_kses_post( '<strong>' . $epo['name'] . ' : </strong>' . $epo['value'] );
+											}
+										}
+									}
 									if ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) {
 										if ( isset( $item['variation_id'] ) && 0 !== $item['variation_id'] ) {
 											$variation = wc_get_product( $item['product_id'] );
