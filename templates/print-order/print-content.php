@@ -154,7 +154,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 									</span>
 
 									<?php
-									$item_meta_fields = wc_display_item_meta( $item, apply_filters( 'wcdn_product_meta_data', $item['item_meta'], $item ) );
+									$item_meta_fields = apply_filters( 'wcdn_product_meta_data', $item['item_meta'], $item  );
 									if ( null === $item_meta_fields ) {
 										$item_meta_fields = array();
 									}
@@ -186,9 +186,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 														}
 													}
 													if ( isset( $term_wp->name ) ) {
-														echo '<br>' . wp_kses_post( $attribute_name . ':' . $term_wp->name );
+														echo '<br>' . wp_kses_post( '<strong>' . $attribute_name . ' : </strong>' . $term_wp->name );
 													} else {
-														echo '<br>' . wp_kses_post( $attribute_name . ':' . $value );
+														echo '<br>' . wp_kses_post( '<strong>' . $attribute_name . ' : </strong>' . $value );
 													}
 												}
 											}
@@ -207,7 +207,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 															}
 														}
 													}
-													echo '<br>' . wp_kses_post( $key . ':' . $value );
+													echo '<br>' . wp_kses_post( '<strong>' . wc_attribute_label( $key ) . '</strong> : ' . $value );
 												}
 											}
 										}
