@@ -197,7 +197,7 @@ if ( is_null( $parent_order ) ) {
 									</span>
 
 									<?php
-									$item_meta_fields = wc_display_item_meta( $item, apply_filters( 'wcdn_product_meta_data', $item['item_meta'], $item ) );
+									$item_meta_fields = apply_filters( 'wcdn_product_meta_data', $item['item_meta'], $item  );
 									if ( null === $item_meta_fields ) {
 										$item_meta_fields = array();
 									}
@@ -209,7 +209,44 @@ if ( is_null( $parent_order ) ) {
 											$product_addons = WC_Product_Addons_Helper::get_product_addons( $product_id );
 										}
 									}
-									// Extra Product Options (ThemeComplete EPO) support.
+
+									// --- handle YITH add-ons: print labels and remove raw ywapo-* meta to avoid duplicates ---
+									$yith_addon_meta_map = array();
+									if ( isset( $item_meta_fields['_ywapo_meta_data'] ) && is_array( $item_meta_fields['_ywapo_meta_data'] ) ) {
+										foreach ( $item_meta_fields['_ywapo_meta_data'] as $group ) {
+											if ( ! is_array( $group ) ) {
+												continue;
+											}
+											foreach ( (array) $group as $maybe ) {
+												if ( isset( $maybe['addon_id'] ) ) {
+													$option_id                        = isset( $maybe['option_id'] ) ? $maybe['option_id'] : 0;
+													$meta_key                         = 'ywapo-addon-' . $maybe['addon_id'] . '-' . $option_id;
+													$yith_addon_meta_map[ $meta_key ] = $maybe;
+												} else {
+													foreach ( (array) $maybe as $sub ) {
+														if ( isset( $sub['addon_id'] ) ) {
+															$option_id                        = isset( $sub['option_id'] ) ? $sub['option_id'] : 0;
+															$meta_key                         = 'ywapo-addon-' . $sub['addon_id'] . '-' . $option_id;
+															$yith_addon_meta_map[ $meta_key ] = $sub;
+														}
+													}
+												}
+											}
+										}
+										foreach ( $yith_addon_meta_map as $meta_key => $addon ) {
+											if ( isset( $addon['display_label'] ) && isset( $addon['display_value'] ) ) {
+												echo '<br><strong>' . esc_html( $addon['display_label'] ) . ' : </strong>' . wp_kses_post( $addon['display_value'] );
+											} else {
+												if ( isset( $item_meta_fields[ $meta_key ] ) ) {
+													echo '<br><strong>' . esc_html( $meta_key ) . ' : </strong>' . wp_kses_post( $item_meta_fields[ $meta_key ] );
+												}
+											}
+											if ( isset( $item_meta_fields[ $meta_key ] ) ) {
+												unset( $item_meta_fields[ $meta_key ] );
+											}
+										}
+									} // --- end handle YITH add-ons ---
+                  // Extra Product Options (ThemeComplete EPO) support.
 									$epo_data = $item->get_meta( '_tmcartepo_data', true );
 									if ( ! empty( $epo_data ) && is_array( $epo_data ) ) {
 										foreach ( $epo_data as $epo ) {
@@ -218,6 +255,7 @@ if ( is_null( $parent_order ) ) {
 											}
 										}
 									}
+
 									if ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) {
 										if ( isset( $item['variation_id'] ) && 0 !== $item['variation_id'] ) {
 											$variation = wc_get_product( $item['product_id'] );
@@ -238,9 +276,9 @@ if ( is_null( $parent_order ) ) {
 														}
 													}
 													if ( isset( $term_wp->name ) ) {
-														echo '<br>' . wp_kses_post( $attribute_name . ':' . $term_wp->name );
+														echo '<br>' . wp_kses_post( '<strong>' . $attribute_name . ' : </strong>' . $term_wp->name );
 													} else {
-														echo '<br>' . wp_kses_post( $attribute_name . ':' . $value );
+														echo '<br>' . wp_kses_post( '<strong>' . $attribute_name . ' : </strong>' . $value );
 													}
 												}
 											}
@@ -259,7 +297,7 @@ if ( is_null( $parent_order ) ) {
 															}
 														}
 													}
-													echo '<br>' . wp_kses_post( $key . ':' . $value );
+													echo '<br>' . wp_kses_post( '<strong>' . wc_attribute_label( $key ) . '</strong> : ' . $value );
 												}
 											}
 										}
