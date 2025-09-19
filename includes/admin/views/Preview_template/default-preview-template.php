@@ -209,6 +209,7 @@ if ( is_null( $parent_order ) ) {
 											$product_addons = WC_Product_Addons_Helper::get_product_addons( $product_id );
 										}
 									}
+
 									// --- handle YITH add-ons: print labels and remove raw ywapo-* meta to avoid duplicates ---
 									$yith_addon_meta_map = array();
 									if ( isset( $item_meta_fields['_ywapo_meta_data'] ) && is_array( $item_meta_fields['_ywapo_meta_data'] ) ) {
@@ -245,6 +246,16 @@ if ( is_null( $parent_order ) ) {
 											}
 										}
 									} // --- end handle YITH add-ons ---
+                  // Extra Product Options (ThemeComplete EPO) support.
+									$epo_data = $item->get_meta( '_tmcartepo_data', true );
+									if ( ! empty( $epo_data ) && is_array( $epo_data ) ) {
+										foreach ( $epo_data as $epo ) {
+											if ( ! empty( $epo['name'] ) && isset( $epo['value'] ) ) {
+												echo '<br>' . wp_kses_post( '<strong>' . $epo['name'] . ' : </strong>' . $epo['value'] );
+											}
+										}
+									}
+
 									if ( version_compare( get_option( 'woocommerce_version' ), '3.0.0', '>=' ) ) {
 										if ( isset( $item['variation_id'] ) && 0 !== $item['variation_id'] ) {
 											$variation = wc_get_product( $item['product_id'] );
