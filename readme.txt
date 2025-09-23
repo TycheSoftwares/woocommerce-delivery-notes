@@ -4,9 +4,9 @@ Contributors: ashokrane, tychesoftwares
 Donate link: https://www.paypal.me/TycheSoftwares
 Tags: packing slips, invoice, pdf invoice, delivery notes, woocommerce print invoice
 Requires at least: 4.4
-Tested up to: 6.8.1
+Tested up to: 6.8.2
 Author URI: https://www.tychesoftwares.com/
-Stable tag: 5.7.0
+Stable tag: 5.8.0
 License: GPLv3 or later
 License URI: http://www.opensource.org/licenses/gpl-license.php
 
@@ -351,6 +351,11 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 This plugin communicates with our tracking server to send usage data **only** if the user has explicitly opted in to usage tracking. For detailed information about what is tracked, please refer to our [usage tracking documentation](https://www.tychesoftwares.com/docs/woocommerce-print-invoice-delivery-note/print-invoice-usage-trackings/).
 
 == Changelog ==
+
+= 5.8.0 - 23/09/2025 =
+* Fix - Additional options created with the Extra Product Options & Add-Ons for WooCommerce plugin not displaying on item meta on Invoice, Delivery Notes, and Receipt templates.
+* Fix - Meta keys showing instead of addon values for the YITH WooCommerce Product Add-Ons plugin on Invoice, Delivery Notes, and Receipt templates.
+* Fix - Item meta data styling and layout issues on templates.
 
 = 5.7.0 - 13/06/2025 =
 * Fix - Issue where variation item meta (such as size and color) was not appearing on invoices due to changes in the latest WooCommerce update v9.9.0.
