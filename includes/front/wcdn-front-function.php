@@ -34,7 +34,7 @@ function create_pdf( $order, $type ) {
 	// Instantiate and use the dompdf class.
 	$options = new \Dompdf\Options();
 	$options->set( 'isRemoteEnabled', true );
-	$options->set( 'isPhpEnabled', true );
+	$options->set( 'isPhpEnabled', false );
 	$dompdf = new Dompdf( $options );
 
 	// Load content from html file.
