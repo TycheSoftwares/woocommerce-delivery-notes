@@ -7,6 +7,7 @@
 
 if ( isset( $_GET['wdcn_setting'] ) ) {
 	$setting = htmlspecialchars( $_GET['wdcn_setting'] ); // phpcs:ignore
+	wp_nonce_field( 'wcdn_general_settings_action', 'wcdn_general_settings_nonce' );
 	?>
 	<select class="card-body" name="document_type" id="document_type" onchange="location = 'admin.php?page=wc-settings&tab=wcdn-settings&setting=wcdn_document&wdcn_setting=' + this.value;" >
 		<option value="wcdn_invoice"  >Invoice</option>
