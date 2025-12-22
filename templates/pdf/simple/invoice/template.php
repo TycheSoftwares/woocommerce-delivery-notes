@@ -36,7 +36,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					$style = 'font-size:' . $data['document_setting']['document_setting_font_size'] . 'px; text-align:' . $data['document_setting']['document_setting_text_align'] . '; color:' . $data['document_setting']['document_setting_text_colour'] . ';';
 					?>
 					<div class="document-name cap">						
-						<h1 style="<?php echo $style; // phpcs:ignore ?>">
+						<h1 style="<?php echo esc_attr( $style ); // phpcs:ignore ?>">
 							<?php echo esc_html( $data['document_setting']['document_setting_title'] ); ?>
 						</h1>
 					</div>
@@ -50,14 +50,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 					$style = 'text-align:' . $data['company_name']['company_name_text_align'] . ';color:' . $data['company_name']['company_name_text_colour'] . ';font-size:' . $data['company_name']['company_name_font_size'] . 'px;';
 					?>
 					<div class="company-info">
-						<h3 class="company-name" style="<?php echo $style; // phpcs:ignore ?>"><?php wcdn_company_name(); ?></h3>
+						<h3 class="company-name" style="<?php echo esc_attr( $style ); // phpcs:ignore ?>"><?php wcdn_company_name(); ?></h3>
 					</div>
 				<?php } ?>
 				<?php
 				if ( isset( $data['company_address']['active'] ) ) {
 					$style = 'text-align:' . $data['company_address']['company_address_text_align'] . ';color:' . $data['company_address']['company_address_text_colour'] . ';font-size:' . $data['company_address']['company_address_font_size'] . 'px;';
 					?>
-					<div class="company-address" style="<?php echo $style; // phpcs:ignore ?>">
+					<div class="company-address" style="<?php echo esc_attr( $style ); // phpcs:ignore ?>">
 						<?php wcdn_company_info(); ?>
 					</div>
 				<?php } ?>
@@ -74,7 +74,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						$blabel = 'Billing Address';
 					}
 					?>
-					<div class="billing-address" style="<?php echo $style; // phpcs:ignore ?>">
+					<div class="billing-address" style="<?php echo esc_attr( $style ); // phpcs:ignore ?>">
 						<h3 class="cap">
 							<?php esc_attr_e( $blabel, 'woocommerce-delivery-notes' ); // phpcs:ignore ?>
 						</h3>
@@ -113,7 +113,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						$slabel = 'Shipping Address';
 					}
 					?>
-					<div class="shipping-address" style="<?php echo $style; // phpcs:ignore ?>">	
+					<div class="shipping-address" style="<?php echo esc_attr( $style ); // phpcs:ignore ?>">	
 						<h3 class="cap">
 							<?php esc_attr_e( $slabel, 'woocommerce-delivery-notes' );  // phpcs:ignore ?>
 						</h3>
@@ -165,8 +165,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 							}
 							?>
 							<li>
-								<strong style="<?php echo $labelstyle; // phpcs:ignore ?>"><?php echo wp_kses_post( apply_filters( 'wcdn_order_info_name', $field['label'], $field ) ); ?></strong>
-								<strong style="<?php echo $labelstyle; // phpcs:ignore ?>"><?php echo wp_kses_post( apply_filters( 'wcdn_order_info_content', $field['value'], $field ) ); ?></strong>
+								<strong style="<?php echo esc_attr( $labelstyle ); // phpcs:ignore ?>"><?php echo wp_kses_post( apply_filters( 'wcdn_order_info_name', $field['label'], $field ) ); ?></strong>
+								<strong style="<?php echo esc_attr( $labelstyle ); // phpcs:ignore ?>"><?php echo wp_kses_post( apply_filters( 'wcdn_order_info_content', $field['value'], $field ) ); ?></strong>
 							</li>
 						<?php } ?>
 					<?php endforeach; ?>
@@ -266,7 +266,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					$clabel = 'Customer Note';
 				}
 				?>
-				<div class="order-notes" style="<?php echo $style; // phpcs:ignore ?>">
+				<div class="order-notes" style="<?php echo esc_attr( $style ); // phpcs:ignore ?>">
 					<?php if ( wcdn_has_customer_notes( $order ) ) : ?>
 						<h4><?php esc_attr_e( $clabel, 'woocommerce-delivery-notes' ); // phpcs:ignore ?></h4>
 						<?php wcdn_customer_notes( $order ); ?>
@@ -279,28 +279,42 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<div class="order-thanks">
 				<?php
 				if ( isset( $data['complimentary_close']['active'] ) ) {
+					$color = ! empty( $data['complimentary_close']['complimentary_close_text_colour'] )
+						? sanitize_hex_color( $data['complimentary_close']['complimentary_close_text_colour'] )
+						: '#000000';
+
+					$font_size = ! empty( $data['complimentary_close']['complimentary_close_font_size'] )
+						? absint( $data['complimentary_close']['complimentary_close_font_size'] )
+						: 14;
 					?>
 					<style>
 						.order-thanks p {
-							color: <?php echo $data['complimentary_close']['complimentary_close_text_colour']; ?>;
-							font-size: <?php echo $data['complimentary_close']['complimentary_close_font_size']; ?>;
+							color: <?php echo esc_attr( $color ); ?>;
+							font-size: <?php echo esc_attr( $font_size ); ?>px;
 						}
 					</style>
 					<div class="personal_note">
 						<?php wcdn_personal_notes(); ?>
 						<?php do_action( 'wcdn_after_thanks', $order ); ?>
-					</div><!-- .order-thanks -->
+					</div>
 					<?php
 				}
 				?>
 
 				<?php
 				if ( isset( $data['policies']['active'] ) ) {
+					$policies_color = ! empty( $data['policies']['policies_text_colour'] )
+						? sanitize_hex_color( $data['policies']['policies_text_colour'] )
+						: '#000000';
+
+					$policies_font_size = ! empty( $data['policies']['policies_font_size'] )
+						? absint( $data['policies']['policies_font_size'] )
+						: 12;
 					?>
 					<style>
 						.colophon-policies p {
-							color: <?php echo $data['policies']['policies_text_colour']; ?>;
-							font-size: <?php echo $data['policies']['policies_font_size']; ?>;
+							color: <?php echo esc_attr( $policies_color ); ?>;
+							font-size: <?php echo esc_attr( $policies_font_size ); ?>px;
 						}
 					</style>
 					<div class="colophon-policies">
@@ -316,7 +330,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				if ( isset( $data['footer']['active'] ) ) {
 					$style = 'font-size:' . $data['footer']['footer_font_size'] . 'px;color:' . $data['footer']['footer_text_colour'] . ';';
 					?>
-					<div class="colophon-imprint" style="<?php echo $style; // phpcs:ignore ?>">
+					<div class="colophon-imprint" style="<?php echo esc_attr( $style ); // phpcs:ignore ?>">
 						<?php wcdn_imprint(); ?>
 					</div>
 				<?php } ?>	
