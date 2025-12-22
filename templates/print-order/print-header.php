@@ -37,6 +37,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 			th {
 				text-align:right;
 			}
+			.company-address p {
+				direction: ltr !important;
+			}
 		</style>
 		<?php
 	}
