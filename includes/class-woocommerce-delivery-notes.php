@@ -364,9 +364,6 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 		 */
 		public function update() {
 			// Admin Permission check.
-			if ( ! isset( $_SERVER['REQUEST_METHOD'] ) || 'POST' !== $_SERVER['REQUEST_METHOD'] ) {
-				return;
-			}
 			if ( ! is_admin() ) {
 				return;
 			}
@@ -374,11 +371,11 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 				return;
 			}
 			if ( ! isset( $_POST['wcdn_general_settings_nonce'] ) ) {
-				wp_die( esc_html__( 'Security nonce is missing.', 'woocommerce-delivery-notes' ) );
+				return;
 			}
 			$nonce = sanitize_text_field( wp_unslash( $_POST['wcdn_general_settings_nonce'] ) );
 			if ( ! wp_verify_nonce( $nonce, 'wcdn_general_settings_action' ) ) {
-				wp_die( esc_html__( 'Security nonce verification failed.', 'woocommerce-delivery-notes' ) );
+				return;
 			}
 			// Set default template type for invoice, receipt, and delivery-note if not set.
 			if ( false === get_option( 'wcdn_template_type_invoice', false ) ) {
