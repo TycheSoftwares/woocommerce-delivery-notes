@@ -353,7 +353,7 @@ This plugin communicates with our tracking server to send usage data **only** if
 == Changelog ==
 
 = 5.9.0 - 23/12/2025 =
-* Fix - Invoice address lines in the invoice displayed incorrectly in RTL mode
+* Fix - Address lines in the invoice displayed incorrectly in RTL mode.
 * Fix - Improved input sanitization and validation in invoice template settings to prevent a potential remote code execution vulnerability.
 * Tweak - Updated for compatibility with WordPress 6.9.0.
 * Tweak - Updated for compatibility with WooCommerce 10.4.3.
