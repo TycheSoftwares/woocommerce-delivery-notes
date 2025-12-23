@@ -40,6 +40,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 			.company-address p {
 				direction: ltr !important;
 			}
+			.billing-address address {
+				direction: ltr !important;
+			}
+			.shipping-address address {
+				direction: ltr !important;
+			}
 		</style>
 		<?php
 	}
