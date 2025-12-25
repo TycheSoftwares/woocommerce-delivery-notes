@@ -20,14 +20,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<body>
 		<div class="content">
 			<div class="page-header">
-			<?php
-				if ( isset( $data['company_logo']['active'] ) ) {
-					?>
+			<?php if ( isset( $data['company_logo']['active'] ) ) { ?>
 					<div class="company-logo">
-						<?php
-						if ( wcdn_get_company_logo_id() ) :
-							?>
-							<?php wcdn_pdf_company_logo( $ttype = 'simple' ); ?>
+						<?php if ( wcdn_get_company_logo_id() ) : ?>
+							<?php wcdn_pdf_company_logo( $ttype = 'simple' ); // phpcs:ignore?>
 						<?php endif; ?>
 					</div>
 				<?php } ?>

@@ -110,7 +110,7 @@ $filters = array(
 			</div>
 		</div>
 		<?php
-		$i++;
+		++$i;
 	}
 	?>
 </div>

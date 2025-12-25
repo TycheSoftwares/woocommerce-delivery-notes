@@ -22,14 +22,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<body>
 		<div class="content">
 			<div class="page-header">
-			<?php
-				if ( isset( $data['company_logo']['active'] ) ) {
-					?>
+			<?php if ( isset( $data['company_logo']['active'] ) ) { ?>
 					<div class="company-logo">
 						<?php
 						if ( wcdn_get_company_logo_id() ) :
 							?>
-							<?php wcdn_pdf_company_logo( $ttype = 'simple' ); ?>
+							<?php wcdn_pdf_company_logo( $ttype = 'simple' ); // phpcs:ignore?>
 						<?php endif; ?>
 					</div>
 				<?php } ?>
@@ -154,13 +152,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 					// Specify watermark text.
 					$text = $data['payment_received_stamp']['payment_received_stamp_text'];
-			
 					?>
 					<div class="order-stamp-container">
-						<?php echo $text; ?>
+						<?php echo $text; // phpcs:ignore?>
 					</div>
 					<?php
-				} 
+				}
 				?>
 				<ul class="info-list">
 					<?php

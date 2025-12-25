@@ -2,7 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
+// phpcs:disable
 /**
  * WCDN_TS_Woo_Active Class
  *

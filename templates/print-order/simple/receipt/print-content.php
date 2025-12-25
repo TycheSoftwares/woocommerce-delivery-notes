@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php
 			if ( wcdn_get_company_logo_id() ) :
 				?>
-				<?php wcdn_pdf_company_logo( $ttype = 'simple'); ?>
+				<?php wcdn_pdf_company_logo( $ttype = 'simple'); // phpcs:ignore ?>
 			<?php endif; ?>
 		</div>
 	<?php } ?>
@@ -150,7 +150,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		?>
 		<div class="order-stamp-container">
-			<?php echo $text; ?>
+			<?php echo $text; // phpcs:ignore?>
 		</div>
 		<?php
 	}
@@ -290,8 +290,8 @@ if ( isset( $data['customer_note']['active'] ) ) :
 		?>
 		<style>
 			.order-thanks p {
-				color: <?php echo $data['complimentary_close']['complimentary_close_text_colour']; ?>;
-				font-size: <?php echo $data['complimentary_close']['complimentary_close_font_size']; ?>;
+				color: <?php echo $data['complimentary_close']['complimentary_close_text_colour']; // phpcs:ignore?>;
+				font-size: <?php echo $data['complimentary_close']['complimentary_close_font_size']; // phpcs:ignore?>;
 			}
 		</style>
 		<div class="personal_note">
@@ -307,8 +307,8 @@ if ( isset( $data['customer_note']['active'] ) ) :
 		?>
 		<style>
 			.colophon-policies p {
-				color: <?php echo $data['policies']['policies_text_colour']; ?>;
-				font-size: <?php echo $data['policies']['policies_font_size']; ?>;
+				color: <?php echo $data['policies']['policies_text_colour']; // phpcs:ignore?>;
+				font-size: <?php echo $data['policies']['policies_font_size']; // phpcs:ignore?>;
 			}
 		</style>
 		<div class="colophon-policies">

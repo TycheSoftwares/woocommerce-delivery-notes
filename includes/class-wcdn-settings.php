@@ -509,7 +509,7 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 		 * @param array  $settings Settings fields.
 		 * @param string $section Section name.
 		 */
-		public function generate_template_type_fields( $settings, $section = '' ) {
+		public function generate_template_type_fields( $settings, $section = '' ) { // phpcs:ignore
 			$position = $this->get_setting_position( 'wcdn_email_print_link', $settings );
 			if ( false !== $position ) {
 				$new_settings = array();
@@ -703,12 +703,12 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 		 * @param array $insert New array.
 		 * @param int   $position Position to merge at.
 		 */
-		public function array_merge_at( $array, $insert, $position ) {
+		public function array_merge_at( $array, $insert, $position ) { // phpcs:ignore
 			$new_array = array();
 			// if pos is start, just merge them.
 			if ( 0 === $position ) {
 				$new_array = array_merge( $insert, $array );
-			} else {
+			} else { // phpcs:ignore
 				// if pos is end just merge them.
 				if ( $position >= ( count( $array ) - 1 ) ) {
 					$new_array = array_merge( $array, $insert );

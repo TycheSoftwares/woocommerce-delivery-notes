@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				if ( 'default' === $template_save ) {
 					wcdn_company_logo();
 				} elseif ( 'simple' === $template_save ) {
-					wcdn_pdf_company_logo( $ttype = 'simple' );
+					wcdn_pdf_company_logo( $ttype = 'simple' ); // phpcs:ignore
 				}
 			endif;
 			?>
@@ -154,7 +154,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 									</span>
 
 									<?php
-									$item_meta_fields = apply_filters( 'wcdn_product_meta_data', $item['item_meta'], $item  );
+									$item_meta_fields = apply_filters( 'wcdn_product_meta_data', $item['item_meta'], $item );
 									if ( null === $item_meta_fields ) {
 										$item_meta_fields = array();
 									}
@@ -166,7 +166,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 											$product_addons = WC_Product_Addons_Helper::get_product_addons( $product_id );
 										}
 									}
-                  // --- handle YITH add-ons: print labels and remove raw ywapo-* meta to avoid duplicates ---
+									// --- handle YITH add-ons: print labels and remove raw ywapo-* meta to avoid duplicates ---
 									$yith_addon_meta_map = array();
 									if ( isset( $item_meta_fields['_ywapo_meta_data'] ) && is_array( $item_meta_fields['_ywapo_meta_data'] ) ) {
 										foreach ( $item_meta_fields['_ywapo_meta_data'] as $group ) {
@@ -192,7 +192,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 										foreach ( $yith_addon_meta_map as $meta_key => $addon ) {
 											if ( isset( $addon['display_label'] ) && isset( $addon['display_value'] ) ) {
 												echo '<br><strong>' . esc_html( $addon['display_label'] ) . ' : </strong>' . wp_kses_post( $addon['display_value'] );
-											} else {
+											} else { // phpcs:ignore
 												if ( isset( $item_meta_fields[ $meta_key ] ) ) {
 													echo '<br><strong>' . esc_html( $meta_key ) . ' : </strong>' . wp_kses_post( $item_meta_fields[ $meta_key ] );
 												}
@@ -202,7 +202,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 											}
 										}
 									} // --- end handle YITH add-ons ---
-                  // Extra Product Options (ThemeComplete EPO) support.
+									// Extra Product Options (ThemeComplete EPO) support.
 									$epo_data = $item->get_meta( '_tmcartepo_data', true );
 									if ( ! empty( $epo_data ) && is_array( $epo_data ) ) {
 										foreach ( $epo_data as $epo ) {

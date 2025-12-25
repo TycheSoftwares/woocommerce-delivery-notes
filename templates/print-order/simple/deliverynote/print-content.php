@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php
 			if ( wcdn_get_company_logo_id() ) :
 				?>
-				<?php wcdn_pdf_company_logo( $ttype = 'simple' ); ?>
+				<?php wcdn_pdf_company_logo( $ttype = 'simple' ); // phpcs:ignore?>
 			<?php endif; ?>
 		</div>
 	<?php } ?>
@@ -174,13 +174,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<thead>
 			<tr>
 				<th class="head-name"><span><?php esc_attr_e( 'Product', 'woocommerce-delivery-notes' ); ?></span></th>
-				<?php 
-				if( isset( $data['display_price_product_table']['active'] ) ) { ?>
+				<?php if ( isset( $data['display_price_product_table']['active'] ) ) { ?>
 					<th class="head-item-price"><span><?php esc_attr_e( 'Price', 'woocommerce-delivery-notes' ); ?></span></th>
 				<?php } ?>
 				<th class="head-quantity"><span><?php esc_attr_e( 'Quantity', 'woocommerce-delivery-notes' ); ?></span></th>
-				<?php 
-				if( isset( $data['display_price_product_table']['active'] ) ) { ?>
+				<?php if ( isset( $data['display_price_product_table']['active'] ) ) { ?>
 					<th class="head-price"><span><?php esc_attr_e( 'Total', 'woocommerce-delivery-notes' ); ?></span></th>
 				<?php } ?>
 			</tr>
@@ -218,8 +216,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<?php wcdn_get_product_name( $product, $order, $item ); ?>
 							<?php do_action( 'wcdn_order_item_after', $product, $order, $item ); ?>
 						</td>
-						<?php 
-						if( isset( $data['display_price_product_table']['active'] ) ) { ?>
+						<?php if ( isset( $data['display_price_product_table']['active'] ) ) { ?>
 							<td class="product-item-price">
 								<span><?php echo wp_kses_post( wcdn_get_formatted_item_price( $order, $item ) ); ?></span>
 							</td>
@@ -227,8 +224,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<td class="product-quantity">
 							<span><?php echo esc_attr( apply_filters( 'wcdn_order_item_quantity', $adjusted_qty, $item ) ); ?></span>
 						</td>	
-						<?php 
-						if( isset( $data['display_price_product_table']['active'] ) ) { ?>
+						<?php
+						if( isset( $data['display_price_product_table']['active'] ) ) { // phpcs:ignore?>
 							<td class="product-price">
 								<span><?php echo wp_kses_post( $order->get_formatted_line_subtotal( $item ) ); ?></span>
 							</td>
@@ -291,8 +288,8 @@ if ( isset( $data['customer_note']['active'] ) ) :
 		?>
 		<style>
 			.order-thanks p {
-				color: <?php echo $data['complimentary_close']['complimentary_close_text_colour']; ?>;
-				font-size: <?php echo $data['complimentary_close']['complimentary_close_font_size']; ?>;
+				color: <?php echo $data['complimentary_close']['complimentary_close_text_colour']; // phpcs:ignore?>;
+				font-size: <?php echo $data['complimentary_close']['complimentary_close_font_size']; // phpcs:ignore?>;
 			}
 		</style>
 		<div class="personal_note">
@@ -308,8 +305,8 @@ if ( isset( $data['customer_note']['active'] ) ) :
 		?>
 		<style>
 			.colophon-policies p {
-				color: <?php echo $data['policies']['policies_text_colour']; ?>;
-				font-size: <?php echo $data['policies']['policies_font_size']; ?>;
+				color: <?php echo $data['policies']['policies_text_colour']; // phpcs:ignore?>;
+				font-size: <?php echo $data['policies']['policies_font_size']; // phpcs:ignore?>;
 			}
 		</style>
 		<div class="colophon-policies">

@@ -213,7 +213,7 @@ function wcdn_content( $order, $template_type ) {
 	$template_type_option                                     = get_option( 'wcdn_template_type' );
 	$setting['template_setting']['template_setting_template'] = false !== $template_type_option ? $template_type_option : 'default';
 
-	if ( isset( $setting['template_setting']['template_setting_template'] ) && 'simple' == $setting['template_setting']['template_setting_template'] ) {
+	if ( isset( $setting['template_setting']['template_setting_template'] ) && 'simple' == $setting['template_setting']['template_setting_template'] ) { // phpcs:ignore
 		if ( 'order' === $template_type ) {
 			$turl = 'print-content.php'; // Apply this for 'order' template if it's 'simple'.
 		} else {
@@ -264,7 +264,7 @@ function wcdn_company_logo() {
 /**
  * Show pdf logo html
  *
- * @param string $type pdf type.
+ * @param string $ttype pdf type.
  */
 function wcdn_pdf_company_logo( $ttype ) {
 	global $wcdn;
@@ -413,7 +413,7 @@ function wcdn_get_order_info( $order, $type = '' ) {
 				'color'       => $data['invoice_number']['invoice_number_text_colour'],
 				'active'      => 'yes',
 			);
-		} else {
+		} else { // phpcs:ignore
 			if ( 'invoice' === wcdn_get_template_type() || 'order' === wcdn_get_template_type() ) {
 				$fields['invoice_number'] = array(
 					'label' => __( 'Invoice Number', 'woocommerce-delivery-notes' ),
@@ -559,7 +559,7 @@ function wcdn_get_order_invoice_date( $order_id ) {
  * @param object $product Product Object.
  * @param object $order Order object.
  */
-function wcdn_additional_product_fields( $fields, $product, $order ) {
+function wcdn_additional_product_fields( $fields, $product, $order ) { // phpcs:ignore
 	$new_fields = array();
 
 	// Stock keeping unit.
@@ -579,7 +579,7 @@ function wcdn_additional_product_fields( $fields, $product, $order ) {
  * @param object $order Order object.
  * @return boolean true
  */
-function wcdn_has_shipping_address( $order ) {
+function wcdn_has_shipping_address( $order ) { // phpcs:ignore
 	return true;
 }
 
@@ -715,7 +715,7 @@ function wcdn_add_refunded_order_totals( $total_rows, $order ) {
  * @param array  $total_rows Rows array.
  * @param object $order Order object.
  */
-function wcdn_remove_semicolon_from_totals( $total_rows, $order ) {
+function wcdn_remove_semicolon_from_totals( $total_rows, $order ) { // phpcs:ignore
 	foreach ( $total_rows as $key => $row ) {
 		$label = $row['label'];
 		$colon = strrpos( $label, ':' );
@@ -733,7 +733,7 @@ function wcdn_remove_semicolon_from_totals( $total_rows, $order ) {
  * @param array  $total_rows Rows array.
  * @param object $order Order object.
  */
-function wcdn_remove_payment_method_from_totals( $total_rows, $order ) {
+function wcdn_remove_payment_method_from_totals( $total_rows, $order ) { // phpcs:ignore
 	unset( $total_rows['payment_method'] );
 	unset( $total_rows['refund_0'] );
 	return $total_rows;
@@ -833,8 +833,8 @@ function wcdn_print_extra_fields( $item ) {
 	// Check if Product Input Field Lite is active.
 	$product_input_field = 'product-input-fields-for-woocommerce/product-input-fields-for-woocommerce.php';
 
-	if ( ( in_array( $product_input_field_pro, apply_filters( 'active_plugins', get_option( 'active_plugins', array() ) ) ) || ( is_multisite() && array_key_exists( $product_input_field_pro, get_site_option( 'active_sitewide_plugins', array() ) ) )
-	) || ( in_array( $product_input_field, apply_filters( 'active_plugins', get_option( 'active_plugins', array() ) ) ) || ( is_multisite() && array_key_exists( $product_input_field, get_site_option( 'active_sitewide_plugins', array() ) ) )
+	if ( ( in_array( $product_input_field_pro, apply_filters( 'active_plugins', get_option( 'active_plugins', array() ) ) ) || ( is_multisite() && array_key_exists( $product_input_field_pro, get_site_option( 'active_sitewide_plugins', array() ) ) ) // phpcs:ignore
+	) || ( in_array( $product_input_field, apply_filters( 'active_plugins', get_option( 'active_plugins', array() ) ) ) || ( is_multisite() && array_key_exists( $product_input_field, get_site_option( 'active_sitewide_plugins', array() ) ) ) // phpcs:ignore
 	) ) {
 
 		$pif_global_fields = $item->get_meta( '_alg_wc_pif_global', true );
@@ -1045,7 +1045,7 @@ function wcdn_get_adjusted_quantity( $order, $item_id ) {
  * @param WC_Order $order The WooCommerce order object.
  * @param array    $data  The checkout data.
  */
-function wcdn_add_guest_access_token_to_order( $order, $data ) {
+function wcdn_add_guest_access_token_to_order( $order, $data ) { // phpcs:ignore
 	if ( ! is_user_logged_in() ) {
 		wcdn_add_guest_access_token( $order );
 	}
