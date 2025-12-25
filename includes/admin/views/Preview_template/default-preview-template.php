@@ -35,6 +35,17 @@ if ( is_null( $parent_order ) ) {
 	echo '<div class="notices">No WooCommerce orders found! Please consider adding your first order to see this preview.</div>';
 	return;
 }
+// Ensure we always have a valid WC_Order object.
+if ( ! ( $parent_order instanceof WC_Order ) ) {
+	echo '<div class="notices">';
+	esc_html_e(
+		'No valid WooCommerce order found! Please create an order to preview this template.',
+		'woocommerce-delivery-notes'
+	);
+	echo '</div>';
+	return;
+}
+$order = $parent_order; //phpcs:ignore
 ?>
 
 	<div class="order-brandings">
