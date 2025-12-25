@@ -29,7 +29,7 @@ while ( $orders_checked < $orders_to_check && is_null( $parent_order ) ) {
 			$parent_order = $order;
 		}
 	}
-		$orders_checked++;
+		++$orders_checked;
 }
 if ( is_null( $parent_order ) ) {
 	echo '<div class="notices">No WooCommerce orders found! Please consider adding your first order to see this preview.</div>';
@@ -197,14 +197,14 @@ if ( is_null( $parent_order ) ) {
 									</span>
 
 									<?php
-									$item_meta_fields = apply_filters( 'wcdn_product_meta_data', $item['item_meta'], $item  );
+									$item_meta_fields = apply_filters( 'wcdn_product_meta_data', $item['item_meta'], $item );
 									if ( null === $item_meta_fields ) {
 										$item_meta_fields = array();
 									}
 									$product_addons            = array();
 									$woocommerce_product_addon = 'woocommerce-product-addons/woocommerce-product-addons.php';
 									if ( in_array( $woocommerce_product_addon, apply_filters( 'active_plugins', get_option( 'active_plugins', array() ) ), true ) ) {
-										$product_id     = $item['product_id'];
+										$product_id = $item['product_id'];
 										if ( class_exists( 'WC_Product_Addons_Helper' ) ) {
 											$product_addons = WC_Product_Addons_Helper::get_product_addons( $product_id );
 										}
@@ -236,7 +236,7 @@ if ( is_null( $parent_order ) ) {
 										foreach ( $yith_addon_meta_map as $meta_key => $addon ) {
 											if ( isset( $addon['display_label'] ) && isset( $addon['display_value'] ) ) {
 												echo '<br><strong>' . esc_html( $addon['display_label'] ) . ' : </strong>' . wp_kses_post( $addon['display_value'] );
-											} else {
+											} else { // phpcs:ignore
 												if ( isset( $item_meta_fields[ $meta_key ] ) ) {
 													echo '<br><strong>' . esc_html( $meta_key ) . ' : </strong>' . wp_kses_post( $item_meta_fields[ $meta_key ] );
 												}
@@ -246,7 +246,7 @@ if ( is_null( $parent_order ) ) {
 											}
 										}
 									} // --- end handle YITH add-ons ---
-                  // Extra Product Options (ThemeComplete EPO) support.
+									// Extra Product Options (ThemeComplete EPO) support.
 									$epo_data = $item->get_meta( '_tmcartepo_data', true );
 									if ( ! empty( $epo_data ) && is_array( $epo_data ) ) {
 										foreach ( $epo_data as $epo ) {
@@ -362,7 +362,7 @@ if ( is_null( $parent_order ) ) {
 							<td class="total-item-price"></td>
 							<?php if ( 'Total' === $total['label'] ) { ?>
 							<td class="total-quantity"><?php echo wp_kses_post( $total_adjusted_quantity ); ?></td>
-							<?php } else {  ?>
+							<?php } else { ?>
 							<td class="total-quantity"></td>
 							<?php } ?>
 							<td class="total-price"><span><?php echo wp_kses_post( $total['value'] ); ?></span></td>

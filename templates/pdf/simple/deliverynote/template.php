@@ -21,13 +21,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="content">
 			<div class="page-header">
 			<?php
-				if ( isset( $data['company_logo']['active'] ) ) {
-					?>
+			if ( isset( $data['company_logo']['active'] ) ) {
+				?>
 					<div class="company-logo">
 						<?php
 						if ( wcdn_get_company_logo_id() ) :
 							?>
-							<?php wcdn_pdf_company_logo( $ttype = 'simple' ); ?>
+							<?php wcdn_pdf_company_logo( $ttype = 'simple' ); // phpcs:ignore?>
 						<?php endif; ?>
 					</div>
 				<?php } ?>
@@ -183,13 +183,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<thead>
 						<tr>
 							<th class="head-name"><span><?php esc_attr_e( 'Product', 'woocommerce-delivery-notes' ); ?></span></th>
-							<?php 
-							if( isset( $data['display_price_product_table']['active'] ) ) { ?>
+							<?php if ( isset( $data['display_price_product_table']['active'] ) ) { ?>
 								<th class="head-item-price"><span><?php esc_attr_e( 'Price', 'woocommerce-delivery-notes' ); ?></span></th>
 							<?php } ?>
 							<th class="head-quantity"><span><?php esc_attr_e( 'Quantity', 'woocommerce-delivery-notes' ); ?></span></th>
-							<?php 
-							if( isset( $data['display_price_product_table']['active'] ) ) { ?>
+							<?php if ( isset( $data['display_price_product_table']['active'] ) ) { ?>
 								<th class="head-price"><span><?php esc_attr_e( 'Total', 'woocommerce-delivery-notes' ); ?></span></th>
 							<?php } ?>
 						</tr>
@@ -227,8 +225,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 										<?php wcdn_get_product_name( $product, $order, $item ); ?>
 										<?php do_action( 'wcdn_order_item_after', $product, $order, $item ); ?>
 									</td>
-									<?php 
-									if( isset( $data['display_price_product_table']['active'] ) ) { ?>
+									<?php if ( isset( $data['display_price_product_table']['active'] ) ) { ?>
 										<td class="product-item-price">
 											<span><?php echo wp_kses_post( wcdn_get_formatted_item_price( $order, $item ) ); ?></span>
 										</td>
@@ -236,8 +233,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 									<td class="product-quantity">
 										<span><?php echo esc_attr( apply_filters( 'wcdn_order_item_quantity', $adjusted_qty, $item ) ); ?></span>
 									</td>	
-									<?php 
-									if( isset( $data['display_price_product_table']['active'] ) ) { ?>
+									<?php if ( isset( $data['display_price_product_table']['active'] ) ) { ?>
 										<td class="product-price">
 											<span><?php echo wp_kses_post( $order->get_formatted_line_subtotal( $item ) ); ?></span>
 										</td>

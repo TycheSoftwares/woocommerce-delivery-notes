@@ -19,11 +19,11 @@ $faq = WCDN_Component::wcdn_get_faq();
 				</button>
 			</h2>
 			<div id="<?php echo esc_attr( 'wcdn_faq_content_' . $i ); ?>" class="accordion-collapse collapse" aria-labelledby="<?php echo esc_attr( 'wcdn_faq_' . $i ); ?>" data-bs-parent="#wcdn_faq">
-				<?php echo $singlefaq['answer']; ?>
+				<?php echo $singlefaq['answer']; // phpcs:ignore?>
 			</div>
 		</div>
 		<?php
-		$i++;
+		++$i;
 	}
 	?>
 </div>

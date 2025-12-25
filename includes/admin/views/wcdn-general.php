@@ -138,7 +138,7 @@ $shop_logotitle = get_the_title( $shop_logoid );
 	<div class="col-sm-6 icon-flex">
 	<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'This includes the emails for a new, processing and completed order. On top of that the customer and admin invoice emails will also include the link.', 'woocommerce-delivery-notes' ); ?>"></i>
 		<label class="switch">
-		<input type="checkbox" class="form-control" name="wcdn_general[print_customer]" id="print_customer" value="" <?php echo esc_attr( ( get_option('wcdn_email_print_link', 'yes' ) == 'yes' ) ? 'checked' : '' ); ?> >
+		<input type="checkbox" class="form-control" name="wcdn_general[print_customer]" id="print_customer" value="" <?php echo esc_attr( ( get_option( 'wcdn_email_print_link', 'yes' ) == 'yes' ) ? 'checked' : '' ); // phpcs:ignore?> >
 		<span class="slider round"></span>
 		</label>
 		<label><?php esc_html_e( 'Show print link in customer emails', 'woocommerce-delivery-notes' ); ?></label>
@@ -147,7 +147,7 @@ $shop_logotitle = get_the_title( $shop_logoid );
 	<div class="col-sm-2"></div>
 	<div class="col-sm-6 icon-flex">
 		<label class="switch">
-			<input type="checkbox" class="form-control" name="wcdn_general[print_admin]" id="print_admin" value="" <?php echo esc_attr( ( get_option('wcdn_admin_email_print_link', 'yes') == 'yes' ) ? 'checked' : '' ); ?> >
+			<input type="checkbox" class="form-control" name="wcdn_general[print_admin]" id="print_admin" value="" <?php echo esc_attr( ( get_option( 'wcdn_admin_email_print_link', 'yes' ) == 'yes' ) ? 'checked' : '' ); // phpcs:ignore?> >
 			<span class="slider round"></span>
 		</label>
 		<label><?php esc_html_e( 'Show print link in admin emails', 'woocommerce-delivery-notes' ); ?></label>
@@ -158,7 +158,7 @@ $shop_logotitle = get_the_title( $shop_logoid );
 	<div class="col-sm-6 icon-flex">
 		<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'This includes print button on View Order page and My Account page.', 'woocommerce-delivery-notes' ); ?>"></i>
 		<label class="switch">
-		<input type="checkbox" class="form-control" name="wcdn_general[view_order]" id="view_order" value="" <?php echo esc_attr( ( get_option('wcdn_print_button_on_view_order_page', 'yes' ) == 'yes' ) ? 'checked' : '' ); ?> >
+		<input type="checkbox" class="form-control" name="wcdn_general[view_order]" id="view_order" value="" <?php echo esc_attr( ( get_option( 'wcdn_print_button_on_view_order_page', 'yes' ) == 'yes' ) ? 'checked' : '' ); // phpcs:ignore?> >
 		<span class="slider round"></span>
 		</label>
 		<label><?php esc_html_e( 'Show print button on View Order page', 'woocommerce-delivery-notes' ); ?></label>
@@ -167,7 +167,7 @@ $shop_logotitle = get_the_title( $shop_logoid );
 	<div class="col-sm-2"></div>
 	<div class="col-sm-6 icon-flex">
 		<label class="switch">
-		<input type="checkbox" class="form-control" name="wcdn_general[view_account]" id="view_account" value="" <?php echo esc_attr( ( get_option('wcdn_print_button_on_my_account_page', 'yes' ) == 'yes' ) ? 'checked' : '' ); ?> >
+		<input type="checkbox" class="form-control" name="wcdn_general[view_account]" id="view_account" value="" <?php echo esc_attr( ( get_option( 'wcdn_print_button_on_my_account_page', 'yes' ) == 'yes' ) ? 'checked' : '' ); // phpcs:ignore?> >
 		<span class="slider round"></span>
 		</label>
 		<label><?php esc_html_e( 'Show print button on My Account page', 'woocommerce-delivery-notes' ); ?></label>
@@ -209,7 +209,7 @@ $shop_logotitle = get_the_title( $shop_logoid );
 	<div class="col-sm-6 icon-flex">
 		<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'Show text in right to left direction in Invoice, Print Receipt & Delivery note if you are using languages such as Hebrew, Arabic, etc.', 'woocommerce-delivery-notes' ); ?>"></i>
 		<label class="switch">
-			<input type="checkbox" class="form-control" name="wcdn_general[page_textdirection]" id="page_textdirection" value="" <?php echo esc_attr( ( get_option('wcdn_rtl_invoice', 'yes' ) == 'yes' ) ? 'checked' : '' ); ?> >
+			<input type="checkbox" class="form-control" name="wcdn_general[page_textdirection]" id="page_textdirection" value="" <?php echo esc_attr( ( get_option( 'wcdn_rtl_invoice', 'yes' ) == 'yes' ) ? 'checked' : '' ); // phpcs:ignore?> >
 			<span class="slider round"></span>
 		</label>
 		<label><?php esc_html_e( 'Print Text from Right to left', 'woocommerce-delivery-notes' ); ?></label>

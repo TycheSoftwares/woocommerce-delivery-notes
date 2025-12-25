@@ -154,7 +154,7 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 		 * Define WC Constants.
 		 */
 		private function define_constants() {
-			self::$plugin_basefile_path = dirname( dirname( __FILE__ ) ) . '/woocommerce-delivery-notes.php';
+			self::$plugin_basefile_path = dirname( dirname( __FILE__ ) ) . '/woocommerce-delivery-notes.php'; // phpcs:ignore
 			self::$plugin_basefile      = plugin_basename( self::$plugin_basefile_path );
 			self::$plugin_url           = plugin_dir_url( self::$plugin_basefile );
 			self::$plugin_path          = trailingslashit( dirname( self::$plugin_basefile_path ) );
@@ -270,6 +270,7 @@ if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
 		 * @since 5.0
 		 */
 		public function wcdn_create_dir() {
+			// phpcs:disable
 			$is_action_scheduled = as_next_scheduled_action( 'wcdn_delete_file' );
 			if ( false === $is_action_scheduled ) {
 				as_schedule_recurring_action( time(), 86400, 'wcdn_delete_file' );

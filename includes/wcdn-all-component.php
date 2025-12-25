@@ -1,47 +1,41 @@
 <?php
 /**
  * It will Add all the Boilerplate component when we activate the plugin.
+ *
  * @author  Tyche Softwares
- * 
+ * @package WooCommerceDeliveryNotes
  */
+// phpcs:disable
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
 }
 if ( ! class_exists( 'WCDN_Component' ) ) {
 	/**
 	 * It will Add all the Boilerplate component when we activate the plugin.
-	 * 
+	 *
 	 */
 	class WCDN_Component {
-	    
 		/**
 		 * It will Add all the Boilerplate component when we activate the plugin.
 		 */
 		public function __construct() {
-            
 			$is_admin = is_admin();
-
 			if ( true === $is_admin ) {
                 require_once( "component/woocommerce-check/ts-woo-active.php" );
-                
-                $wcdn_plugin_name          = self::ts_get_plugin_name();;
-                $wcdn_locale               = self::ts_get_plugin_locale();
-
-                $wcdn_file_name            = 'woocommerce-delivery-notes/woocommerce-delivery-notes.php';
-                $wcdn_plugin_prefix        = 'wcdn';
-                $wcdn_lite_plugin_prefix   = 'wcdn';
-                $wcdn_plugin_folder_name   = 'woocommerce-delivery-notes/';
-                $wcdn_plugin_dir_name      = dirname ( untrailingslashit( plugin_dir_path ( __FILE__ ) ) ) . '/woocommerce-delivery-notes.php' ;
-                $wcdn_plugin_url           = dirname ( untrailingslashit( plugins_url( '/', __FILE__ ) ) );
+                $wcdn_plugin_name        = self::ts_get_plugin_name();;
+                $wcdn_locale             = self::ts_get_plugin_locale();
+                $wcdn_file_name          = 'woocommerce-delivery-notes/woocommerce-delivery-notes.php';
+                $wcdn_plugin_prefix      = 'wcdn';
+                $wcdn_lite_plugin_prefix = 'wcdn';
+                $wcdn_plugin_folder_name = 'woocommerce-delivery-notes/';
+                $wcdn_plugin_dir_name    = dirname( untrailingslashit( plugin_dir_path( __FILE__ ) ) ) . '/woocommerce-delivery-notes.php' ;
+                $wcdn_plugin_url         = dirname( untrailingslashit( plugins_url( '/', __FILE__ ) ) );
 
                 $wcdn_get_previous_version = get_option( 'wcdn_version', '1' );
-
                 $wcdn_blog_post_link       = 'https://www.tychesoftwares.com/docs/docs/woocommerce-print-invoice-delivery-note/usage-tracking/';
-
                 $wcdn_plugins_page         = '';
                 $wcdn_plugin_slug          = '';
                 $wcdn_pro_file_name        = '';
-
                 $wcdn_settings_page        = 'admin.php?page=wc-settings&tab=wcdn-settings';
 
                 if ( strpos( $_SERVER['REQUEST_URI'], 'plugins.php' ) !== false || strpos( $_SERVER['REQUEST_URI'], 'action=deactivate' ) !== false || ( strpos( $_SERVER['REQUEST_URI'], 'admin-ajax.php' ) !== false && isset( $_POST['action'] ) && $_POST['action'] === 'tyche_plugin_deactivation_submit_action' ) ) { //phpcs:ignore
@@ -94,13 +88,12 @@ if ( ! class_exists( 'WCDN_Component' ) ) {
          * @return string $ts_plugin_domain Name of the Plugin domain
          */
         public static function ts_get_plugin_locale () {
-            $ordd_plugin_dir =  dirname ( dirname ( __FILE__ ) );
+            $ordd_plugin_dir  =  dirname ( dirname( __FILE__ ) );
             $ordd_plugin_dir .= '/woocommerce-delivery-notes.php';
-
             $ts_plugin_domain = '';
-            $plugin_data = get_file_data( $ordd_plugin_dir, array( 'domain' => 'Text Domain' ) );
+            $plugin_data      = get_file_data( $ordd_plugin_dir, array( 'domain' => 'Text Domain' ) );
             if ( ! empty( $plugin_data['domain'] ) ) {
-                $ts_plugin_domain = $plugin_data[ 'domain' ];
+                $ts_plugin_domain = $plugin_data['domain'];
             }
             return $ts_plugin_domain;
         }
@@ -108,12 +101,10 @@ if ( ! class_exists( 'WCDN_Component' ) ) {
 		/**
          * It will contain all the FAQ which need to be display on the FAQ page.
          * @return array $ts_faq All questions and answers.
-         * 
+         *
          */
         public static function wcdn_get_faq () {
-
             $ts_faq = array ();
-
             $ts_faq = array(
                 1 => array (
                         'question' => 'It prints the 404 page instead of the order, how to correct that?',

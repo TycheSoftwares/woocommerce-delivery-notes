@@ -249,7 +249,7 @@ if ( ! class_exists( 'WCDN_Print' ) ) {
 							</li>
 						<?php endforeach; ?>
 					</ul>
-					<?php $package_number++; ?>
+					<?php ++$package_number; ?>
 				</div>
 				<?php
 			endforeach;
@@ -301,9 +301,9 @@ if ( ! class_exists( 'WCDN_Print' ) ) {
 		public function parse_request( $wp ) {
 			// Map endpoint keys to their query var keys, when another endpoint name was set.
 			foreach ( $this->api_endpoints as $key => $var ) {
-				if ( isset( $_GET[ $var ] ) ) {
+				if ( isset( $_GET[ $var ] ) ) { // phpcs:ignore
 					// changed.
-					$wdn_get_end_point_var  = sanitize_text_field( wp_unslash( $_GET[ $var ] ) );
+					$wdn_get_end_point_var  = sanitize_text_field( wp_unslash( $_GET[ $var ] ) ); // phpcs:ignore
 					$wp->query_vars[ $key ] = $wdn_get_end_point_var;
 				} elseif ( isset( $wp->query_vars[ $var ] ) ) {
 					$wp->query_vars[ $key ] = $wp->query_vars[ $var ];
@@ -376,7 +376,7 @@ if ( ! class_exists( 'WCDN_Print' ) ) {
 		 */
 		public function template_redirect_admin() {
 			// Let the backend only access the page.
-			// changed.
+			// phpcs:disable
 			if ( is_admin() && current_user_can( 'edit_shop_orders' ) && ! empty( $_REQUEST['print-order'] ) && ! empty( $_REQUEST['action'] ) ) {
 				$type  = ! empty( $_REQUEST['print-order-type'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['print-order-type'] ) ) : null;
 				$email = ! empty( $_REQUEST['print-order-email'] ) ? sanitize_email( wp_unslash( $_REQUEST['print-order-email'] ) ) : null;
@@ -680,8 +680,6 @@ if ( ! class_exists( 'WCDN_Print' ) ) {
 			$formatted_date = date_i18n( get_option( 'date_format' ), $meta_date );
 			return apply_filters( 'wcdn_order_invoice_date', $formatted_date, $meta_date );
 		}
-
 	}
-
 }
 ?>

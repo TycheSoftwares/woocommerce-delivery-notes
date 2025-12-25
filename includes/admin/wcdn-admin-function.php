@@ -27,7 +27,7 @@ function wcdn_customization_label() {
 		'order_number'                => __( 'Order Number', 'woocommerce-delivery-notes' ),
 		'order_date'                  => __( 'Order Date', 'woocommerce-delivery-notes' ),
 		'payment_method'              => __( 'Payment Method', 'woocommerce-delivery-notes' ),
-		'payment_date'                => __( 'Payment Date', 'woocommerce-delivery-notes' ), 
+		'payment_date'                => __( 'Payment Date', 'woocommerce-delivery-notes' ),
 		'billing_address'             => __( 'Billing Address', 'woocommerce-delivery-notes' ),
 		'shipping_address'            => __( 'Shipping Address', 'woocommerce-delivery-notes' ),
 		'email_address'               => __( 'Email Address', 'woocommerce-delivery-notes' ),

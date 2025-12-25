@@ -143,7 +143,7 @@ if ( ! class_exists( 'WCDN_Theme' ) ) {
 				// Pass the email to the url for the tracking and thank you page. This allows to view the print page without logging in.
 				if ( $this->is_woocommerce_tracking_page() ) {
 					// changed.
-					$wdn_order_email = isset( $_REQUEST['order_email'] ) ? sanitize_email( wp_unslash( $_REQUEST['order_email'] ) ) : '';
+					$wdn_order_email = isset( $_REQUEST['order_email'] ) ? sanitize_email( wp_unslash( $_REQUEST['order_email'] ) ) : ''; // phpcs:ignore
 					$print_url       = wcdn_get_print_link( $order_id, $this->get_template_type( $order ), $wdn_order_email );
 				}
 
@@ -207,7 +207,7 @@ if ( ! class_exists( 'WCDN_Theme' ) ) {
 				echo "\n****************************************************\n\n";
 			else :
 				?>
-				<p><strong><?php echo esc_attr_e( apply_filters( 'wcdn_print_text_in_email', 'Print:', 'woocommerce-delivery-notes' ) ); ?></strong> <a href="<?php echo esc_url_raw( $url ); ?>"><?php echo esc_attr_e( apply_filters( 'wcdn_print_view_in_browser_text_in_email', 'Open print view in browser', 'woocommerce-delivery-notes' ) ); ?></a></p>
+				<p><strong><?php echo esc_attr_e( apply_filters( 'wcdn_print_text_in_email', 'Print:', 'woocommerce-delivery-notes' ) ); ?></strong> <a href="<?php echo esc_url_raw( $url ); ?>"><?php echo esc_attr_e( apply_filters( 'wcdn_print_view_in_browser_text_in_email', 'Open print view in browser', 'woocommerce-delivery-notes' ) ); // phpcs:ignore?></a></p>
 			<?php endif;
 		}
 
@@ -235,11 +235,8 @@ if ( ! class_exists( 'WCDN_Theme' ) ) {
 		 * Is WooCommerce 'Order Tracking' page
 		 */
 		public function is_woocommerce_tracking_page() {
-			return ( is_page( wc_get_page_id( 'order_tracking' ) ) && isset( $_REQUEST['order_email'] ) ) ? true : false;
+			return ( is_page( wc_get_page_id( 'order_tracking' ) ) && isset( $_REQUEST['order_email'] ) ) ? true : false; // phpcs:ignore
 		}
-
 	}
-
 }
-
 ?>

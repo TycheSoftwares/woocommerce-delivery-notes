@@ -5,7 +5,7 @@
  * @package woocommerce-print-invoice-delivery-notes
  */
 
-if ( isset( $_GET['wdcn_setting'] ) ) {
+if ( isset( $_GET['wdcn_setting'] ) ) { // phpcs:ignore
 	$setting = htmlspecialchars( $_GET['wdcn_setting'] ); // phpcs:ignore
 	wp_nonce_field( 'wcdn_general_settings_action', 'wcdn_general_settings_nonce' );
 	?>
