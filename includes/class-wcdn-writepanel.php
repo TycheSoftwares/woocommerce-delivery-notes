@@ -107,14 +107,21 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 			?>
 			<?php foreach ( WCDN_Print::$template_registrations as $template_registration ) : ?>
 				<?php if ( 'yes' === get_option( 'wcdn_template_type_' . $template_registration['type'] ) && 'order' !== $template_registration['type'] ) : ?>
-					<?php // phpcs:disable ?>
-					<a href="<?php echo esc_url( wcdn_get_print_link( $wdn_order_id, $template_registration['type'] ) ); ?>" class="button tips print-preview-button <?php echo esc_attr( $template_registration['type'] ); ?>" target="_blank" alt="<?php esc_attr_e( __( $template_registration['labels']['print'], 'woocommerce-delivery-notes' ) ); ?>" data-tip="<?php esc_attr_e( __( $template_registration['labels']['print'], 'woocommerce-delivery-notes' ) ); ?>">
+					<?php // phpcs:disable
+						$print_url = apply_filters(
+							'wcdn_custom_print_url',
+							wcdn_get_print_link( $wdn_order_id, $template_registration['type'] ),
+							$wdn_order_id,
+							$template_registration['type']
+						);
+						?>
+						<a href="<?php echo esc_url( $print_url ); ?>
+						" class="button tips print-preview-button <?php echo esc_attr( $template_registration['type'] ); ?>" target="_blank" alt="<?php esc_attr_e( __( $template_registration['labels']['print'], 'woocommerce-delivery-notes' ) ); ?>" data-tip="<?php esc_attr_e( __( $template_registration['labels']['print'], 'woocommerce-delivery-notes' ) ); ?>">
 						<?php esc_html_e( $template_registration['labels']['print'], 'woocommerce-delivery-notes' ); ?>
 					</a>
 					<?php // phpcs:enable ?>
 				<?php endif; ?>
 			<?php endforeach; ?>
-
 			<span class="print-preview-loading spinner"></span>
 			<?php
 		}
