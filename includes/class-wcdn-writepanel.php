@@ -210,7 +210,7 @@ if ( ! class_exists( 'WCDN_Writepanel' ) ) {
 					</div>
 				</div>
 			</div>
-			<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+			<script src="<?php echo esc_url( WooCommerce_Delivery_Notes::$plugin_url . 'assets/js/vue.js' ); ?>"></script>
 			<script>
 				document.addEventListener("DOMContentLoaded", function() {
 					new Vue({
