@@ -426,6 +426,26 @@ if ( ! class_exists( 'WCDN_Print' ) ) {
 				die();
 			}
 
+			/**
+			 * 🔐 ACCESS VERIFICATION
+			 */
+			foreach ( $this->order_ids as $order_id ) {
+				$order = wc_get_order( $order_id );
+				if ( ! $order ) {
+					wp_die( 'Invalid order.' );
+				}
+				if ( ! is_user_logged_in() ) {
+					$provided_token = sanitize_text_field( $_GET['guest_token'] ?? '' );
+					$saved_token    = $order->get_meta( '_guest_access_token' );
+					if ( empty( $provided_token ) || empty( $saved_token ) ) {
+						wp_die( 'Invalid or expired order link.' );
+					}
+					if ( ! hash_equals( $saved_token, $provided_token ) ) {
+						wp_die( 'Invalid or expired order link.' );
+					}
+				}
+			}
+
 			// Load the print template html.
 			$location = $this->get_template_file_location( 'print-order.php' );
 			$args     = array();
