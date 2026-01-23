@@ -199,6 +199,9 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 			);
 
 			foreach ( $invoice_defaults as $parent_key => $invoice_default_values ) {
+				if ( ! isset( $invoice_data[ $parent_key ] ) || ! is_array( $invoice_data[ $parent_key ] ) ) {
+					$invoice_data[ $parent_key ] = array();
+				}
 				foreach ( $invoice_default_values as $key => $invoice_default_value ) {
 					if ( ! isset( $invoice_data[ $parent_key ][ $key ] ) || empty( $invoice_data[ $parent_key ][ $key ] ) ) {
 						$invoice_data[ $parent_key ][ $key ] = $invoice_default_value;
