@@ -1,5 +1,12 @@
 *** Print Invoice & Delivery Notes for WooCommerce ***
 
+2026-01-27 - version 6.0.0
+* Fix - Fatal error on the template settings page caused by an invalid string offset type.
+* Fix - Fatal error triggered by an undefined method call when all orders are archived on the site.
+* Fix - Added the wcdn_custom_print_url filter for print action buttons on the order edit page.
+* Fix - Fixed a security vulnerability that allowed guest users to access invoices without a valid token.
+* Fix - Resolved all PHPCS warnings and aligned the code with WordPress Coding Standards to enhance quality and maintainability.
+
 2025-12-23 - version 5.9.0
 * Fix - Address lines in the invoice displayed incorrectly in RTL mode.
 * Fix - Improved input sanitization and validation in invoice template settings to prevent a potential remote code execution vulnerability.

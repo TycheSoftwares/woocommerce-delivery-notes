@@ -6,7 +6,7 @@ Tags: packing slips, invoice, pdf invoice, delivery notes, woocommerce print inv
 Requires at least: 4.4
 Tested up to: 6.9.0
 Author URI: https://www.tychesoftwares.com/
-Stable tag: 5.9.0
+Stable tag: 6.0.0
 License: GPLv3 or later
 License URI: http://www.opensource.org/licenses/gpl-license.php
 
@@ -351,6 +351,13 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 This plugin communicates with our tracking server to send usage data **only** if the user has explicitly opted in to usage tracking. For detailed information about what is tracked, please refer to our [usage tracking documentation](https://www.tychesoftwares.com/docs/woocommerce-print-invoice-delivery-note/print-invoice-usage-trackings/).
 
 == Changelog ==
+
+= 6.0.0 - 27/01/2026 =
+* Fix - Fatal error on the template settings page caused by an invalid string offset type.
+* Fix - Fatal error triggered by an undefined method call when all orders are archived on the site.
+* Fix - Added the wcdn_custom_print_url filter for print action buttons on the order edit page.
+* Fix - Fixed a security vulnerability that allowed guest users to access invoices without a valid token.
+* Fix - Resolved all PHPCS warnings and aligned the code with WordPress Coding Standards to enhance quality and maintainability.
 
 = 5.9.0 - 23/12/2025 =
 * Fix - Address lines in the invoice displayed incorrectly in RTL mode.
