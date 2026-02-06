@@ -209,7 +209,7 @@ $shop_logotitle = get_the_title( $shop_logoid );
 	<div class="col-sm-6 icon-flex">
 		<i class="dashicons dashicons-info" data-toggle="tooltip" data-placement="bottom" title="<?php esc_html_e( 'Show text in right to left direction in Invoice, Print Receipt & Delivery note if you are using languages such as Hebrew, Arabic, etc.', 'woocommerce-delivery-notes' ); ?>"></i>
 		<label class="switch">
-			<input type="checkbox" class="form-control" name="wcdn_general[page_textdirection]" id="page_textdirection" value="" <?php echo esc_attr( ( get_option( 'wcdn_rtl_invoice', 'yes' ) == 'yes' ) ? 'checked' : '' ); // phpcs:ignore?> >
+			<input type="checkbox" class="form-control" name="wcdn_general[page_textdirection]" id="page_textdirection" value="" <?php echo esc_attr( ( get_option( 'wcdn_rtl_invoice', 'no' ) == 'yes' ) ? 'checked' : '' ); // phpcs:ignore?> >
 			<span class="slider round"></span>
 		</label>
 		<label><?php esc_html_e( 'Print Text from Right to left', 'woocommerce-delivery-notes' ); ?></label>
