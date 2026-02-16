@@ -4,7 +4,7 @@ Contributors: ashokrane, tychesoftwares
 Donate link: https://www.paypal.me/TycheSoftwares
 Tags: packing slips, invoice, pdf invoice, delivery notes, woocommerce print invoice
 Requires at least: 4.4
-Tested up to: 6.9.0
+Tested up to: 6.9.1
 Author URI: https://www.tychesoftwares.com/
 Stable tag: 6.0.0
 License: GPLv3 or later
@@ -18,33 +18,75 @@ Create and print PDF invoices, delivery notes and receipts for your WooCommerce 
 >
 > The only BOGO plugin with a revenue tracking feature. **Now, at an attractive introductory price**. [Check out our new plugin here](https://www.tychesoftwares.com/products/woocommerce-flexi-bogo-plugin/?utm_source=wprepo&utm_medium=pluginpagetop&utm_campaign=WCDeliveryNotes).
 
-You can print out invoices and delivery notes for the WooCommerce orders. You can also edit the Company/Shop name, Company/Shop postal address and also add personal notes, conditions/policies (like a refund policy) and a footer imprint.
+Print Invoice & Delivery Notes for WooCommerce allows store owners to print invoices, delivery notes, and receipts for WooCommerce orders.
 
-The plugin adds a new side panel on the order page to allow shop administrators to print out the invoice or delivery note. Registered customers can also print their order with a button that is added to the order screen.
+Store owners can print invoices, attach them to emails, and allow customers to download invoices from their account page.
+
+Ideal for stores that want a simple way to manage WooCommerce invoices and delivery notes for customers and accounting, without creating them manually.
 
 
-= Features =
+== Key Features ==
 
-* Print invoices and delivery notes via the side panel on the "Order Edit" page
-* **New!** 2 different layouts for invoice and delivery notes
-* **New!** Live preview for templates
-* **New!** Attach PDF file to emails based on selected order status
-* **New!** Store PDF files in a folder for a specific duration
-* **New!** Adjust logo size with custom length and height settings
-* Print invoices, delivery notes and receipts via the side panel on the “Order Edit” page
-* Quickly print invoices, delivery notes and receipts on the “Orders” page
-* Bulk print invoices and delivery notes
-* Allow customers to print the order in the “My Account” page
-* Include a print link in customer emails
-* Add a company address, a logo, and many other details to the invoice and delivery note
-* Offers advanced customization support via hooks and filters
-* Simple invoice numbering with prefix and suffix options
-* Supports sequential order numbers
-* Supports the WooCommerce refund system
+= Print Invoices, Delivery Notes, and Receipts =
 
-= Support =
+* Adds an **Order Printing** panel to the individual order edit page for quick access
+* Provides print options for invoices, delivery notes, and receipts directly from the WooCommerce **Orders** page
+* Generate documents while managing orders to streamline order processing and fulfilment
 
-Support can take place in the [public support forums](http://wordpress.org/support/plugin/woocommerce-delivery-notes), where the community can help each other out.
+= Add Print Links to Order Emails =
+
+* Display invoice and delivery note print links in WooCommerce order emails
+* Control which order statuses (Processing, Completed, etc.) include print links
+* Allows customers and admins to open and print order documents directly from emails
+
+= Customize Invoice, Receipt, and Delivery Note Templates =
+
+Templates can be customized from the plugin settings to match your store branding. Choose from two built-in layouts and configure:
+
+* Company logo, name, and address
+* Invoice titles and numbering formats
+* Billing and shipping details
+* Payment information
+* Footer text, policies, and customer notes
+* Customer contact details
+
+= Bulk Print WooCommerce Order Documents =
+
+* Select multiple orders from the WooCommerce Orders page
+* Print invoices, delivery notes, or receipts using **Bulk Actions**
+* Ideal for stores handling large order volumes
+
+= Customer Access to Invoices and Receipts =
+
+Customers can print invoices and receipts from:
+
+* **My Account → Orders** page
+* Order confirmation and order-related emails
+
+This improves the post-purchase experience and reduces support requests.
+
+== Additional Features ==
+
+* **Live preview for templates** – see changes in real-time before saving
+* **Adjust logo size** – set custom width and height for your company logo
+* Add company logo, name, and address to invoices
+* Customize invoice numbering with prefix and suffix
+* Display print links in emails based on order status
+* Store generated PDF files for a configurable duration
+* Supports sequential and custom invoice numbers
+* Keeps invoices accurate when orders are refunded
+* Advanced customization available via hooks and filters
+
+== Developer Support and Extensibility ==
+
+The plugin provides hooks and filters for developers to customize invoice templates, numbering logic, and other behaviors.
+
+== Need Help? ==
+
+* Visit the [WordPress support forums](https://wordpress.org/support/plugin/woocommerce-delivery-notes/)
+* Check the [documentation](https://www.tychesoftwares.com/docs/docs/print-invoice-delivery-notes-for-woocommerce/) for common answers
+
+If you find the plugin useful, a ⭐⭐⭐⭐⭐ rating is always appreciated — it helps other store owners discover the plugin.
 
 = Contributing =
 
@@ -340,12 +382,17 @@ Please [contribute your translation](https://github.com/TycheSoftwares/woocommer
 
 == Screenshots ==
 
-1. The clean invoice print view.
-2. Live preview for Invoice, Receipt, and Delivery notes.
-3. Attach PDF file to emails based on selected order status.
-4. Quick print buttons on the order edit page.
-5. Customers can also print the order.
-6. Quick print actions.
+1. Invoice Numbering
+2. Refund Invoice
+3. One-Click Printing
+4. Developer Support
+5. Invoice Link in Email
+6. My Account Page
+7. Footer
+8. Shop Details
+9. Side Panel
+10. Bulk Actions
+11. Live Preview
 
 == External Services ==
 This plugin communicates with our tracking server to send usage data **only** if the user has explicitly opted in to usage tracking. For detailed information about what is tracked, please refer to our [usage tracking documentation](https://www.tychesoftwares.com/docs/woocommerce-print-invoice-delivery-note/print-invoice-usage-trackings/).
