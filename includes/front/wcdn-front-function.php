@@ -31,6 +31,13 @@ function create_pdf( $order, $type ) {
 	// Get order id from the order object.
 	$order_id = $order->get_id();
 
+	if ( ! class_exists( '\Dompdf\Options' ) ) {
+		$autoload = plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
+		if ( file_exists( $autoload ) ) {
+			require_once $autoload;
+		}
+	}
+
 	// Instantiate and use the dompdf class.
 	$options = new \Dompdf\Options();
 	$options->set( 'isRemoteEnabled', true );
