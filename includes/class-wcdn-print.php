@@ -501,7 +501,7 @@ if ( ! class_exists( 'WCDN_Print' ) ) {
 
 			// Set the email arg.
 			if ( ! empty( $order_email ) ) {
-				$args = wp_parse_args( array( 'print-order-email' => $order_email ), $args );
+				$args = wp_parse_args( array( 'print-order-email' => rawurlencode( $order_email ) ), $args );
 			}
 
 			// Generate the url.
