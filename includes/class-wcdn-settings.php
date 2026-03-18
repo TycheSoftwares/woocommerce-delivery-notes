@@ -323,6 +323,9 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 			);
 
 			foreach ( $receipt_defaults as $parent_key => $receipt_default_values ) {
+				if ( ! isset( $receipt_data[ $parent_key ] ) || ! is_array( $receipt_data[ $parent_key ] ) ) {
+					$receipt_data[ $parent_key ] = array();
+				}
 				foreach ( $receipt_default_values as $key => $receipt_default_value ) {
 					if ( ! isset( $receipt_data[ $parent_key ][ $key ] ) || empty( $receipt_data[ $parent_key ][ $key ] ) ) {
 						$receipt_data[ $parent_key ][ $key ] = $receipt_default_value;
@@ -436,6 +439,9 @@ if ( ! class_exists( 'WCDN_Settings' ) ) {
 			);
 
 			foreach ( $deliverynote_defaults as $parent_key => $deliverynote_default_values ) {
+				if ( ! isset( $deliverynote_data[ $parent_key ] ) || ! is_array( $deliverynote_data[ $parent_key ] ) ) {
+					$deliverynote_data[ $parent_key ] = array();
+				}
 				foreach ( $deliverynote_default_values as $key => $deliverynote_default_value ) {
 					if ( ! isset( $deliverynote_data[ $parent_key ][ $key ] ) || empty( $deliverynote_data[ $parent_key ][ $key ] ) ) {
 						$deliverynote_data[ $parent_key ][ $key ] = $deliverynote_default_value;
