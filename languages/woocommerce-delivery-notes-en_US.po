@@ -1,0 +1,1120 @@
+# Copyright (C) 2026 Tyche Softwares
+# This file is distributed under the GPLv3.
+msgid ""
+msgstr ""
+"Project-Id-Version: Print Invoice & Delivery Notes for WooCommerce 7.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce-"
+"delivery-notes\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-04-17T12:57:23+00:00\n"
+"PO-Revision-Date: 2026-04-17T12:57:23+00:00\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: woocommerce-delivery-notes\n"
+"Language: en_US\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. Plugin Name of the plugin
+#: woocommerce-delivery-notes.php
+msgid "Print Invoice & Delivery Notes for WooCommerce"
+msgstr "Print Invoice & Delivery Notes for WooCommerce"
+
+#. Plugin URI of the plugin
+#: woocommerce-delivery-notes.php
+msgid "https://www.tychesoftwares.com"
+msgstr "https://www.tychesoftwares.com"
+
+#. Description of the plugin
+#: woocommerce-delivery-notes.php
+msgid ""
+"This plugin lets you generate, customize, print, and email professional "
+"order documents directly from your WooCommerce store."
+msgstr ""
+"This plugin lets you generate, customize, print, and email professional "
+"order documents directly from your WooCommerce store."
+
+#. Author of the plugin
+#: woocommerce-delivery-notes.php build/admin.js:1
+#: src/admin/components/Footer.js:53
+msgid "Tyche Softwares"
+msgstr "Tyche Softwares"
+
+#. Author URI of the plugin
+#: woocommerce-delivery-notes.php
+msgid "http://www.tychesoftwares.com"
+msgstr "http://www.tychesoftwares.com"
+
+#: includes/admin/class-backend.php:171
+msgid "Order Printing"
+msgstr "Order Printing"
+
+#: includes/admin/class-backend.php:204
+msgid "Invoice number: "
+msgstr "Invoice number: "
+
+#: includes/admin/class-backend.php:207
+msgid "Invoice date: "
+msgstr "Invoice date: "
+
+#. translators: %1$d: number of documents, %2$s: document type label.
+#: includes/admin/class-backend.php:319
+#, php-format
+msgid "Print %1$d %2$s"
+msgstr "Print %1$d %2$s"
+
+#: includes/admin/class-backend.php:324
+msgid "Are you sure you want to proceed?"
+msgstr "Are you sure you want to proceed?"
+
+#: includes/admin/class-backend.php:329
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:257
+msgid "Cancel"
+msgstr "Cancel"
+
+#: includes/admin/class-backend.php:333 includes/api/class-settings.php:329
+#: includes/api/class-settings.php:330 includes/api/class-settings.php:349
+#: includes/frontend/class-frontend.php:676
+#: includes/helpers/class-utils.php:575
+msgid "Print"
+msgstr "Print"
+
+#: includes/admin/class-backend.php:362
+msgid "Pop-up blocked. Please allow pop-ups and try again."
+msgstr "Pop-up blocked. Please allow pop-ups and try again."
+
+#: includes/admin/class-backend.php:446
+msgid "Print now"
+msgstr "Print now"
+
+#: includes/admin/class-menu.php:40 includes/admin/class-menu.php:41
+msgid "Print Invoices & Delivery Notes"
+msgstr "Print Invoices & Delivery Notes"
+
+#: includes/admin/class-notices.php:110
+msgid "Action failed. Please refresh the page and retry."
+msgstr "Action failed. Please refresh the page and retry."
+
+#: includes/admin/class-notices.php:114
+msgid "You don't have the permission to hide the selected notice."
+msgstr "You don't have the permission to hide the selected notice."
+
+#: includes/api/class-settings.php:184 includes/api/class-templates.php:837
+msgid "Authentication has failed."
+msgstr "Authentication has failed."
+
+#: includes/api/class-settings.php:195
+msgid "No data received."
+msgstr "No data received."
+
+#: includes/api/class-settings.php:207
+msgid "Tracking data settings reset successfully."
+msgstr "Tracking data settings reset successfully."
+
+#: includes/api/class-settings.php:215
+msgid "Tracking data already reset."
+msgstr "Tracking data already reset."
+
+#. translators: %d: minimum allowed invoice number.
+#: includes/api/class-settings.php:241
+#, php-format
+msgid "Next invoice number must be greater than or equal to %d."
+msgstr "Next invoice number must be greater than or equal to %d."
+
+#: includes/api/class-settings.php:254
+msgid "Year starting number must be greater than 0."
+msgstr "Year starting number must be greater than 0."
+
+#: includes/api/class-settings.php:296
+msgid "Settings saved successfully."
+msgstr "Settings saved successfully."
+
+#: includes/api/class-settings.php:320 templates/base.php:252
+msgid "Document"
+msgstr "Document"
+
+#: includes/api/class-settings.php:324
+msgid "View and print your invoice"
+msgstr "View and print your invoice"
+
+#: includes/api/class-settings.php:326
+msgid "Print order documents"
+msgstr "Print order documents"
+
+#: includes/api/class-settings.php:331 includes/helpers/class-utils.php:404
+msgid "Print Invoice"
+msgstr "Print Invoice"
+
+#: includes/api/class-settings.php:332 includes/helpers/class-utils.php:419
+msgid "Print Delivery Note"
+msgstr "Print Delivery Note"
+
+#: includes/api/class-settings.php:333 includes/helpers/class-utils.php:434
+msgid "Print Receipt"
+msgstr "Print Receipt"
+
+#: includes/api/class-settings.php:334 includes/helpers/class-utils.php:449
+msgid "Print Credit Note"
+msgstr "Print Credit Note"
+
+#: includes/api/class-settings.php:335 includes/helpers/class-utils.php:464
+msgid "Print Packing Slip"
+msgstr "Print Packing Slip"
+
+#: includes/api/class-settings.php:336
+msgid "invoice"
+msgstr "invoice"
+
+#: includes/api/class-templates.php:299 includes/api/class-templates.php:977
+msgid "Customer returned item"
+msgstr "Customer returned item"
+
+#: includes/api/class-templates.php:388
+msgid "N/A"
+msgstr "N/A"
+
+#: includes/api/class-templates.php:684
+msgid "Download"
+msgstr "Download"
+
+#. translators: %s: number of files
+#: includes/api/class-templates.php:686
+#, php-format
+msgid "%s Files"
+msgstr "%s Files"
+
+#: includes/api/class-templates.php:850
+msgid "Invalid request payload."
+msgstr "Invalid request payload."
+
+#: includes/api/class-templates.php:869
+msgid "Invalid template type."
+msgstr "Invalid template type."
+
+#: includes/api/class-templates.php:903
+msgid "Template saved successfully."
+msgstr "Template saved successfully."
+
+#: includes/class-woocommerce-delivery-notes.php:116
+#: includes/class-woocommerce-delivery-notes.php:125
+msgid "Not allowed."
+msgstr "Not allowed."
+
+#. translators: 1. Plugin Name, 2. WordPress Version
+#: includes/class-woocommerce-delivery-notes.php:231
+#, php-format
+msgid ""
+"You are using an outdated version of WordPress. %1$s requires WP version "
+"%2$s or higher."
+msgstr ""
+"You are using an outdated version of WordPress. %1$s requires WP version "
+"%2$s or higher."
+
+#. translators: 1. Plugin Name, 2. PHP Version
+#: includes/class-woocommerce-delivery-notes.php:237
+#, php-format
+msgid ""
+"%1$s requires PHP version %2$s or above. Please update PHP to run this "
+"plugin."
+msgstr ""
+"%1$s requires PHP version %2$s or above. Please update PHP to run this "
+"plugin."
+
+#. translators: 1. Plugin Name, 2. WooCommerce Version
+#: includes/class-woocommerce-delivery-notes.php:243
+#, php-format
+msgid "WooCommerce not found. %1$s requires WooCommerce v%2$s or higher."
+msgstr "WooCommerce not found. %1$s requires WooCommerce v%2$s or higher."
+
+#. translators: 1. Plugin Name, 2. WooCommerce Version
+#: includes/class-woocommerce-delivery-notes.php:246
+#, php-format
+msgid ""
+"You are using an outdated version of WooCommerce. %1$s requires WooCommerce "
+"v%2$s or higher."
+msgstr ""
+"You are using an outdated version of WooCommerce. %1$s requires WooCommerce "
+"v%2$s or higher."
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:176
+msgid "I only needed the plugin for a short period."
+msgstr "I only needed the plugin for a short period."
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:182
+msgid "I found a better plugin."
+msgstr "I found a better plugin."
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:184
+msgid "Please let us have the plugin's name so that we can make improvements"
+msgstr "Please let us have the plugin's name so that we can make improvements"
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:188
+msgid "The plugin is not working."
+msgstr "The plugin is not working."
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:190
+msgid ""
+"Please share what was faulty with the plugin so that we may get the issue "
+"fixed."
+msgstr ""
+"Please share what was faulty with the plugin so that we may get the issue "
+"fixed."
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:194
+msgid "The plugin is causing issues on my site"
+msgstr "The plugin is causing issues on my site"
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:196
+msgid ""
+"We’re sorry! Please tell us about the issues so that we can get them fixed."
+msgstr ""
+"We’re sorry! Please tell us about the issues so that we can get them fixed."
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:200
+msgid "Some features I need are not working as per my expectations"
+msgstr "Some features I need are not working as per my expectations"
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:202
+msgid "Please tell us about these features."
+msgstr "Please tell us about these features."
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:206
+msgid "The plugin is not compatible with another plugin/theme"
+msgstr "The plugin is not compatible with another plugin/theme"
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:208
+msgid ""
+"We’re sorry! We would like you to tell us the plugin/theme so that we can "
+"work on the compatibility."
+msgstr ""
+"We’re sorry! We would like you to tell us the plugin/theme so that we can "
+"work on the compatibility."
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:212
+msgid ""
+"I can't differentiate between Invoice, Delivery Notes & Receipt. The "
+"templates are the same."
+msgstr ""
+"I can't differentiate between Invoice, Delivery Notes & Receipt. The "
+"templates are the same."
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:218
+msgid "The invoice sent through mail can't be downloaded as PDF directly."
+msgstr "The invoice sent through mail can't be downloaded as PDF directly."
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:224
+msgid "This plugin is not useful to me."
+msgstr "This plugin is not useful to me."
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:230
+msgid "Other"
+msgstr "Other"
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:244
+msgid "If you have a moment, please let us know why you are deactivating:"
+msgstr "If you have a moment, please let us know why you are deactivating:"
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:255
+msgid "Skip & Deactivate"
+msgstr "Skip & Deactivate"
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:256
+msgid "Submit & Deactivate"
+msgstr "Submit & Deactivate"
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:270
+msgid "Please select a reason for deactivation!"
+msgstr "Please select a reason for deactivation!"
+
+#. translators: 1. Plugin name, 2. URL to find out more about usage tracking
+#: includes/component/plugin-tracking/class-tyche-plugin-tracking.php:262
+#, php-format
+msgid ""
+"Want to help make %1$s even more awesome? Allow %1$s to collect non-"
+"sensitive diagnostic data and usage information and get 20%% off on your "
+"next purchase. <a href=\"%2$s\" target=\"_blank\">Find out more</a>."
+msgstr ""
+"Want to help make %1$s even more awesome? Allow %1$s to collect non-"
+"sensitive diagnostic data and usage information and get 20%% off on your "
+"next purchase. <a href=\"%2$s\" target=\"_blank\">Find out more</a>."
+
+#: includes/core/class-hooks.php:71
+msgid "Go to the settings page"
+msgstr "Go to the settings page"
+
+#: includes/core/class-hooks.php:72 build/admin.js:1
+#: src/admin/components/Header.js:23
+msgid "Settings"
+msgstr "Settings"
+
+#: includes/frontend/class-frontend.php:323
+msgid "No orders provided."
+msgstr "No orders provided."
+
+#: includes/frontend/class-frontend.php:337
+msgid "Invalid order."
+msgstr "Invalid order."
+
+#: includes/frontend/class-frontend.php:341
+msgid "Access denied."
+msgstr "Access denied."
+
+#: includes/frontend/class-frontend.php:347
+msgid "Access to this document is denied."
+msgstr "Access to this document is denied."
+
+#: includes/frontend/class-frontend.php:364
+msgid "No valid documents found."
+msgstr "No valid documents found."
+
+#: includes/frontend/class-frontend.php:467
+msgid ""
+"You need to be logged into your account to access this document. Please "
+"login first."
+msgstr ""
+"You need to be logged into your account to access this document. Please "
+"login first."
+
+#: includes/frontend/class-frontend.php:469
+msgid "Proceed to Login"
+msgstr "Proceed to Login"
+
+#: includes/frontend/class-frontend.php:676
+msgid "Print All"
+msgstr "Print All"
+
+#: includes/frontend/class-frontend.php:681
+msgid "Download PDF"
+msgstr "Download PDF"
+
+#: includes/functions/template-functions.php:269
+msgid "Refund"
+msgstr "Refund"
+
+#: includes/functions/template-functions.php:281
+msgid "Order Subtotal"
+msgstr "Order Subtotal"
+
+#: includes/helpers/class-utils.php:402 includes/helpers/class-utils.php:591
+msgid "Invoice"
+msgstr "Invoice"
+
+#: includes/helpers/class-utils.php:403
+msgid "Invoices"
+msgstr "Invoices"
+
+#: includes/helpers/class-utils.php:405
+msgid "Print Invoices"
+msgstr "Print Invoices"
+
+#: includes/helpers/class-utils.php:406
+msgid "Invoice created."
+msgstr "Invoice created."
+
+#: includes/helpers/class-utils.php:407
+msgid "Invoices created."
+msgstr "Invoices created."
+
+#: includes/helpers/class-utils.php:408
+msgid "Show \"Print Invoice\" button"
+msgstr "Show \"Print Invoice\" button"
+
+#: includes/helpers/class-utils.php:417 includes/helpers/class-utils.php:592
+msgid "Delivery Note"
+msgstr "Delivery Note"
+
+#: includes/helpers/class-utils.php:418
+msgid "Delivery Notes"
+msgstr "Delivery Notes"
+
+#: includes/helpers/class-utils.php:420
+msgid "Print Delivery Notes"
+msgstr "Print Delivery Notes"
+
+#: includes/helpers/class-utils.php:421
+msgid "Delivery Note created."
+msgstr "Delivery Note created."
+
+#: includes/helpers/class-utils.php:422
+msgid "Delivery Notes created."
+msgstr "Delivery Notes created."
+
+#: includes/helpers/class-utils.php:423
+msgid "Show \"Print Delivery Note\" button"
+msgstr "Show \"Print Delivery Note\" button"
+
+#: includes/helpers/class-utils.php:432 includes/helpers/class-utils.php:593
+msgid "Receipt"
+msgstr "Receipt"
+
+#: includes/helpers/class-utils.php:433
+msgid "Receipts"
+msgstr "Receipts"
+
+#: includes/helpers/class-utils.php:435
+msgid "Print Receipts"
+msgstr "Print Receipts"
+
+#: includes/helpers/class-utils.php:436
+msgid "Receipt created."
+msgstr "Receipt created."
+
+#: includes/helpers/class-utils.php:437
+msgid "Receipts created."
+msgstr "Receipts created."
+
+#: includes/helpers/class-utils.php:438
+msgid "Show \"Print Receipt\" button"
+msgstr "Show \"Print Receipt\" button"
+
+#: includes/helpers/class-utils.php:447 includes/helpers/class-utils.php:594
+msgid "Credit Note"
+msgstr "Credit Note"
+
+#: includes/helpers/class-utils.php:448
+msgid "Credit Notes"
+msgstr "Credit Notes"
+
+#: includes/helpers/class-utils.php:450
+msgid "Print Credit Notes"
+msgstr "Print Credit Notes"
+
+#: includes/helpers/class-utils.php:451
+msgid "Credit Note created."
+msgstr "Credit Note created."
+
+#: includes/helpers/class-utils.php:452
+msgid "Credit Notes created."
+msgstr "Credit Notes created."
+
+#: includes/helpers/class-utils.php:453
+msgid "Show \"Credit Note\" button"
+msgstr "Show \"Credit Note\" button"
+
+#: includes/helpers/class-utils.php:462 includes/helpers/class-utils.php:595
+msgid "Packing Slip"
+msgstr "Packing Slip"
+
+#: includes/helpers/class-utils.php:463
+msgid "Packing Slips"
+msgstr "Packing Slips"
+
+#: includes/helpers/class-utils.php:465
+msgid "Print Packing Slips"
+msgstr "Print Packing Slips"
+
+#: includes/helpers/class-utils.php:466
+msgid "Packing Slip created."
+msgstr "Packing Slip created."
+
+#: includes/helpers/class-utils.php:467
+msgid "Packing Slips created."
+msgstr "Packing Slips created."
+
+#: includes/helpers/class-utils.php:468
+msgid "Show \"Print Packing Slip\" button"
+msgstr "Show \"Print Packing Slip\" button"
+
+#. translators: 1. Order number, 2. Document type (e.g. Invoice)
+#: includes/integrations/class-emails.php:218
+#, php-format
+msgid "New Order #%1$s — %2$s Attached"
+msgstr "New Order #%1$s — %2$s Attached"
+
+#. translators: 1. Document type (e.g. Invoice), 2. Order number
+#: includes/integrations/class-emails.php:228
+#, php-format
+msgid ""
+"A new order has been placed. Please find the %1$s for Order #%2$s attached "
+"to this email."
+msgstr ""
+"A new order has been placed. Please find the %1$s for Order #%2$s attached "
+"to this email."
+
+#: includes/integrations/class-emails.php:377
+msgid "Print:"
+msgstr "Print:"
+
+#: includes/services/template/class-template-engine.php:92
+msgid "Invoice Settings"
+msgstr "Invoice Settings"
+
+#: includes/services/template/class-template-engine.php:98
+#: includes/services/template/class-template-engine.php:117
+#: includes/services/template/class-template-engine.php:136
+#: includes/services/template/class-template-engine.php:155
+#: includes/services/template/class-template-engine.php:174
+msgid "Template Settings"
+msgstr "Template Settings"
+
+#: includes/services/template/class-template-engine.php:111
+msgid "Receipt Settings"
+msgstr "Receipt Settings"
+
+#: includes/services/template/class-template-engine.php:130
+msgid "Delivery Note Settings"
+msgstr "Delivery Note Settings"
+
+#: includes/services/template/class-template-engine.php:149
+msgid "Packing Slip Settings"
+msgstr "Packing Slip Settings"
+
+#: includes/services/template/class-template-engine.php:168
+msgid "Credit Note Settings"
+msgstr "Credit Note Settings"
+
+#: includes/services/template/class-template-engine.php:531
+msgid "Enable Invoice"
+msgstr "Enable Invoice"
+
+#: includes/services/template/class-template-engine.php:532
+msgid "Enable Receipt"
+msgstr "Enable Receipt"
+
+#: includes/services/template/class-template-engine.php:533
+msgid "Enable Delivery Note"
+msgstr "Enable Delivery Note"
+
+#: includes/services/template/class-template-engine.php:534
+msgid "Enable Packing Slip"
+msgstr "Enable Packing Slip"
+
+#: includes/services/template/class-template-engine.php:535
+msgid "Enable Credit Note"
+msgstr "Enable Credit Note"
+
+#: includes/services/template/class-template-engine.php:540
+msgid ""
+"An invoice ia a detailed bill showing items purchased, taxes, shipping "
+"charges, and the total amount due."
+msgstr ""
+"An invoice ia a detailed bill showing items purchased, taxes, shipping "
+"charges, and the total amount due."
+
+#: includes/services/template/class-template-engine.php:544
+msgid ""
+"A receipt is used to issue a payment confirmation document showing items "
+"purchased and the amount paid."
+msgstr ""
+"A receipt is used to issue a payment confirmation document showing items "
+"purchased and the amount paid."
+
+#: includes/services/template/class-template-engine.php:548
+msgid ""
+"The delivery note template generates a document listing delivered items."
+msgstr ""
+"The delivery note template generates a document listing delivered items."
+
+#: includes/services/template/class-template-engine.php:552
+msgid ""
+"The packing slip includes a document inside the package detailing the "
+"shipment contents for verification."
+msgstr ""
+"The packing slip includes a document inside the package detailing the "
+"shipment contents for verification."
+
+#: includes/services/template/class-template-engine.php:556
+msgid ""
+"The credit note is a document created to refund or adjust a previously "
+"issued invoice."
+msgstr ""
+"The credit note is a document created to refund or adjust a previously "
+"issued invoice."
+
+#: includes/services/template/class-template-engine.php:568
+msgid "Date Format"
+msgstr "Date Format"
+
+#: includes/services/template/class-template-engine.php:606
+msgid "PDF Filename"
+msgstr "PDF Filename"
+
+#: includes/services/template/class-template-engine.php:607
+msgid "Available placeholders: {order_number}, {order_date}, {customer_name}"
+msgstr "Available placeholders: {order_number}, {order_date}, {customer_name}"
+
+#: includes/services/template/class-template-engine.php:626
+msgid "Attach PDF to customer emails"
+msgstr "Attach PDF to customer emails"
+
+#: includes/services/template/class-template-engine.php:636
+msgid "Send the PDF as an attachment to all administrator email addresses."
+msgstr "Send the PDF as an attachment to all administrator email addresses."
+
+#: includes/services/template/class-template-engine.php:646
+msgid "Attach PDF to custom email addresses"
+msgstr "Attach PDF to custom email addresses"
+
+#: includes/services/template/class-template-engine.php:656
+msgid "Enter multiple email addresses separated by commas."
+msgstr "Enter multiple email addresses separated by commas."
+
+#: includes/services/template/class-template-engine.php:669
+msgid "Attach PDF to selected order status(es)"
+msgstr "Attach PDF to selected order status(es)"
+
+#: includes/services/template/class-template-engine.php:688
+msgid "Start typing to select order statuses."
+msgstr "Start typing to select order statuses."
+
+#: includes/services/template/class-template-engine.php:699
+msgid "Attach PDF to selected WooCommerce Email(s)"
+msgstr "Attach PDF to selected WooCommerce Email(s)"
+
+#: includes/services/template/class-template-engine.php:712
+msgid "Start typing to select WooCommerce email types."
+msgstr "Start typing to select WooCommerce email types."
+
+#: includes/services/template/class-template-engine.php:722
+msgid "Show Shop Logo"
+msgstr "Show Shop Logo"
+
+#: includes/services/template/class-template-engine.php:737
+msgid "Scale"
+msgstr "Scale"
+
+#: includes/services/template/class-template-engine.php:747
+msgid "Alignment"
+msgstr "Alignment"
+
+#: includes/services/template/class-template-engine.php:758
+msgid "Document Title"
+msgstr "Document Title"
+
+#: includes/services/template/class-template-engine.php:765
+#: includes/services/template/class-template-engine.php:1730
+msgid "Title"
+msgstr "Title"
+
+#: includes/services/template/class-template-engine.php:767
+msgid "INVOICE"
+msgstr "INVOICE"
+
+#: includes/services/template/class-template-engine.php:768
+msgid "RECEIPT"
+msgstr "RECEIPT"
+
+#: includes/services/template/class-template-engine.php:769
+msgid "DELIVERY NOTE"
+msgstr "DELIVERY NOTE"
+
+#: includes/services/template/class-template-engine.php:770
+msgid "PACKING SLIP"
+msgstr "PACKING SLIP"
+
+#: includes/services/template/class-template-engine.php:771
+msgid "CREDIT NOTE"
+msgstr "CREDIT NOTE"
+
+#: includes/services/template/class-template-engine.php:779
+#: includes/services/template/class-template-engine.php:832
+#: includes/services/template/class-template-engine.php:885
+#: includes/services/template/class-template-engine.php:946
+#: includes/services/template/class-template-engine.php:989
+#: includes/services/template/class-template-engine.php:1032
+#: includes/services/template/class-template-engine.php:1093
+#: includes/services/template/class-template-engine.php:1154
+#: includes/services/template/class-template-engine.php:1227
+#: includes/services/template/class-template-engine.php:1288
+#: includes/services/template/class-template-engine.php:1349
+#: includes/services/template/class-template-engine.php:1410
+#: includes/services/template/class-template-engine.php:1471
+#: includes/services/template/class-template-engine.php:1583
+#: includes/services/template/class-template-engine.php:1644
+#: includes/services/template/class-template-engine.php:1738
+#: includes/services/template/class-template-engine.php:1782
+#: includes/services/template/class-template-engine.php:1817
+#: includes/services/template/class-template-engine.php:1852
+#: includes/services/template/class-template-engine.php:1898
+msgid "Font Size"
+msgstr "Font Size"
+
+#: includes/services/template/class-template-engine.php:789
+#: includes/services/template/class-template-engine.php:842
+#: includes/services/template/class-template-engine.php:895
+#: includes/services/template/class-template-engine.php:1042
+#: includes/services/template/class-template-engine.php:1103
+#: includes/services/template/class-template-engine.php:1164
+#: includes/services/template/class-template-engine.php:1237
+#: includes/services/template/class-template-engine.php:1298
+#: includes/services/template/class-template-engine.php:1359
+#: includes/services/template/class-template-engine.php:1420
+#: includes/services/template/class-template-engine.php:1481
+#: includes/services/template/class-template-engine.php:1532
+#: includes/services/template/class-template-engine.php:1593
+#: includes/services/template/class-template-engine.php:1654
+#: includes/services/template/class-template-engine.php:1748
+msgid "Font Style"
+msgstr "Font Style"
+
+#: includes/services/template/class-template-engine.php:798
+#: includes/services/template/class-template-engine.php:851
+#: includes/services/template/class-template-engine.php:904
+#: includes/services/template/class-template-engine.php:1051
+#: includes/services/template/class-template-engine.php:1112
+#: includes/services/template/class-template-engine.php:1173
+#: includes/services/template/class-template-engine.php:1246
+#: includes/services/template/class-template-engine.php:1307
+#: includes/services/template/class-template-engine.php:1368
+#: includes/services/template/class-template-engine.php:1429
+#: includes/services/template/class-template-engine.php:1490
+#: includes/services/template/class-template-engine.php:1541
+#: includes/services/template/class-template-engine.php:1602
+#: includes/services/template/class-template-engine.php:1663
+msgid "Text Align"
+msgstr "Text Align"
+
+#: includes/services/template/class-template-engine.php:807
+#: includes/services/template/class-template-engine.php:860
+#: includes/services/template/class-template-engine.php:913
+#: includes/services/template/class-template-engine.php:956
+#: includes/services/template/class-template-engine.php:999
+#: includes/services/template/class-template-engine.php:1060
+#: includes/services/template/class-template-engine.php:1121
+#: includes/services/template/class-template-engine.php:1182
+#: includes/services/template/class-template-engine.php:1255
+#: includes/services/template/class-template-engine.php:1316
+#: includes/services/template/class-template-engine.php:1377
+#: includes/services/template/class-template-engine.php:1438
+#: includes/services/template/class-template-engine.php:1499
+#: includes/services/template/class-template-engine.php:1550
+#: includes/services/template/class-template-engine.php:1611
+#: includes/services/template/class-template-engine.php:1672
+#: includes/services/template/class-template-engine.php:1757
+#: includes/services/template/class-template-engine.php:1792
+#: includes/services/template/class-template-engine.php:1827
+#: includes/services/template/class-template-engine.php:1862
+msgid "Text Color"
+msgstr "Text Color"
+
+#: includes/services/template/class-template-engine.php:817
+msgid "Show Shop Name"
+msgstr "Show Shop Name"
+
+#: includes/services/template/class-template-engine.php:870
+msgid "Show Shop Address"
+msgstr "Show Shop Address"
+
+#: includes/services/template/class-template-engine.php:923
+msgid "Show Shop Phone Number"
+msgstr "Show Shop Phone Number"
+
+#: includes/services/template/class-template-engine.php:938
+#: includes/services/template/class-template-engine.php:981
+#: includes/services/template/class-template-engine.php:1024
+#: includes/services/template/class-template-engine.php:1085
+#: includes/services/template/class-template-engine.php:1146
+#: includes/services/template/class-template-engine.php:1213
+#: includes/services/template/class-template-engine.php:1280
+#: includes/services/template/class-template-engine.php:1341
+#: includes/services/template/class-template-engine.php:1402
+#: includes/services/template/class-template-engine.php:1463
+#: includes/services/template/class-template-engine.php:1524
+#: includes/services/template/class-template-engine.php:1575
+#: includes/services/template/class-template-engine.php:1636
+#: includes/services/template/class-template-engine.php:1887
+msgid "Text"
+msgstr "Text"
+
+#: includes/services/template/class-template-engine.php:966
+msgid "Show Shop Email Address"
+msgstr "Show Shop Email Address"
+
+#: includes/services/template/class-template-engine.php:1009
+msgid "Show Billing Address"
+msgstr "Show Billing Address"
+
+#: includes/services/template/class-template-engine.php:1070
+msgid "Show Shipping Address"
+msgstr "Show Shipping Address"
+
+#: includes/services/template/class-template-engine.php:1131
+msgid "Show Invoice Number"
+msgstr "Show Invoice Number"
+
+#: includes/services/template/class-template-engine.php:1193
+msgid "Show Invoice Date"
+msgstr "Show Invoice Date"
+
+#: includes/services/template/class-template-engine.php:1194
+msgid "Show Receipt Date"
+msgstr "Show Receipt Date"
+
+#: includes/services/template/class-template-engine.php:1195
+msgid "Show Delivery Note Date"
+msgstr "Show Delivery Note Date"
+
+#: includes/services/template/class-template-engine.php:1196
+msgid "Show Packing Slip Date"
+msgstr "Show Packing Slip Date"
+
+#: includes/services/template/class-template-engine.php:1197
+msgid "Show Credit Note Date"
+msgstr "Show Credit Note Date"
+
+#: includes/services/template/class-template-engine.php:1215
+msgid "Invoice Date"
+msgstr "Invoice Date"
+
+#: includes/services/template/class-template-engine.php:1216
+msgid "Receipt Date"
+msgstr "Receipt Date"
+
+#: includes/services/template/class-template-engine.php:1217
+msgid "Delivery Note Date"
+msgstr "Delivery Note Date"
+
+#: includes/services/template/class-template-engine.php:1218
+msgid "Packing Slip Date"
+msgstr "Packing Slip Date"
+
+#: includes/services/template/class-template-engine.php:1219
+msgid "Credit Note Date"
+msgstr "Credit Note Date"
+
+#: includes/services/template/class-template-engine.php:1265
+msgid "Show Order Number"
+msgstr "Show Order Number"
+
+#: includes/services/template/class-template-engine.php:1326
+msgid "Show Order Date"
+msgstr "Show Order Date"
+
+#: includes/services/template/class-template-engine.php:1387
+msgid "Show Payment Method"
+msgstr "Show Payment Method"
+
+#: includes/services/template/class-template-engine.php:1403
+#: includes/services/template/class-template-engine.php:1464
+msgid "Payment Method"
+msgstr "Payment Method"
+
+#: includes/services/template/class-template-engine.php:1448
+msgid "Show Payment Date"
+msgstr "Show Payment Date"
+
+#: includes/services/template/class-template-engine.php:1509
+msgid "Show Shipping Method"
+msgstr "Show Shipping Method"
+
+#: includes/services/template/class-template-engine.php:1525
+msgid "Shipping Method"
+msgstr "Shipping Method"
+
+#: includes/services/template/class-template-engine.php:1560
+msgid "Show Refund Date"
+msgstr "Show Refund Date"
+
+#: includes/services/template/class-template-engine.php:1576
+msgid "Refund Date"
+msgstr "Refund Date"
+
+#: includes/services/template/class-template-engine.php:1621
+msgid "Show Refund Reason"
+msgstr "Show Refund Reason"
+
+#: includes/services/template/class-template-engine.php:1637
+msgid "Refund Reason"
+msgstr "Refund Reason"
+
+#: includes/services/template/class-template-engine.php:1682
+msgid "Show Pay Now Button"
+msgstr "Show Pay Now Button"
+
+#: includes/services/template/class-template-engine.php:1697
+msgid "Button Label"
+msgstr "Button Label"
+
+#: includes/services/template/class-template-engine.php:1698
+msgid "Pay Now"
+msgstr "Pay Now"
+
+#: includes/services/template/class-template-engine.php:1705
+msgid "Button Color"
+msgstr "Button Color"
+
+#: includes/services/template/class-template-engine.php:1715
+msgid "Show Customer Note"
+msgstr "Show Customer Note"
+
+#: includes/services/template/class-template-engine.php:1767
+msgid "Show Complimentary Close"
+msgstr "Show Complimentary Close"
+
+#: includes/services/template/class-template-engine.php:1802
+msgid "Show Policies"
+msgstr "Show Policies"
+
+#: includes/services/template/class-template-engine.php:1837
+msgid "Show Footer"
+msgstr "Show Footer"
+
+#: includes/services/template/class-template-engine.php:1872
+msgid "Show Watermark"
+msgstr "Show Watermark"
+
+#: includes/services/template/class-template-engine.php:1889
+msgid "PAID"
+msgstr "PAID"
+
+#: includes/services/template/class-template-engine.php:1890
+msgid "REFUNDED"
+msgstr "REFUNDED"
+
+#: includes/services/template/class-template-engine.php:1908
+msgid "Opacity"
+msgstr "Opacity"
+
+#: includes/services/template/class-template-engine.php:1919
+msgid "Angle"
+msgstr "Angle"
+
+#: includes/services/template/class-template-engine.php:1930
+msgid "Layout"
+msgstr "Layout"
+
+#: includes/services/template/class-template-engine.php:1948
+msgid "Color"
+msgstr "Color"
+
+#: includes/services/template/class-template-engine.php:1958
+msgid "Display Price in Product Details Table"
+msgstr "Display Price in Product Details Table"
+
+#: includes/services/template/class-template-engine.php:1975
+msgid "Display Refund Items in Product Table"
+msgstr "Display Refund Items in Product Table"
+
+#: includes/services/template/class-template-engine.php:2006
+msgid "Left"
+msgstr "Left"
+
+#: includes/services/template/class-template-engine.php:2010
+msgid "Center"
+msgstr "Center"
+
+#: includes/services/template/class-template-engine.php:2014
+msgid "Right"
+msgstr "Right"
+
+#: includes/services/template/class-template-engine.php:2020
+msgid "Normal"
+msgstr "Normal"
+
+#: includes/services/template/class-template-engine.php:2024
+msgid "Bold"
+msgstr "Bold"
+
+#: templates/base.php:334
+msgid "Refunded Item"
+msgstr "Refunded Item"
+
+#: templates/base.php:334
+msgid "Product"
+msgstr "Product"
+
+#: templates/base.php:341
+msgid "Price"
+msgstr "Price"
+
+#: templates/base.php:344
+msgid "Quantity"
+msgstr "Quantity"
+
+#: templates/base.php:350
+msgid "Total Refunded"
+msgstr "Total Refunded"
+
+#: templates/base.php:350
+msgid "Total"
+msgstr "Total"
+
+#: templates/base.php:419
+msgid "Subtotal:"
+msgstr "Subtotal:"
+
+#: templates/base.php:426
+msgid "Tax:"
+msgstr "Tax:"
+
+#: templates/base.php:433
+msgid "Shipping:"
+msgstr "Shipping:"
+
+#: templates/base.php:440
+msgid "Order Total:"
+msgstr "Order Total:"
+
+#: templates/base.php:444
+msgid "Refund:"
+msgstr "Refund:"
+
+#: templates/base.php:448 templates/base.php:458
+msgid "Total:"
+msgstr "Total:"
+
+#: build/admin.js:1 src/admin/components/Header.js:17
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: build/admin.js:1 src/admin/components/Header.js:19
+msgid "Templates"
+msgstr "Templates"
+
+#: build/admin.js:1 src/admin/components/Header.js:26
+msgid "FAQs"
+msgstr "FAQs"
+
+#: build/admin.js:1 src/admin/components/Alert.js:22
+msgid "Dismiss"
+msgstr "Dismiss"
+
+#: build/admin.js:1 src/admin/components/Footer.js:16
+msgid "Get our"
+msgstr "Get our"
+
+#: build/admin.js:1 src/admin/components/Footer.js:18
+msgid "Order Delivery Date Pro"
+msgstr "Order Delivery Date Pro"
+
+#: build/admin.js:1 src/admin/components/Footer.js:20
+msgid ""
+"plugin to schedule and manage your local deliveries and pickups in "
+"WooCommerce."
+msgstr ""
+"plugin to schedule and manage your local deliveries and pickups in "
+"WooCommerce."
+
+#: build/admin.js:1 src/admin/components/Footer.js:27
+msgid "Open the support forum for this plugin on WordPress.org"
+msgstr "Open the support forum for this plugin on WordPress.org"
+
+#: build/admin.js:1 src/admin/components/Footer.js:29
+msgid "Need Support?"
+msgstr "Need Support?"
+
+#: build/admin.js:1 src/admin/components/Footer.js:31
+msgid "We're always happy to help you."
+msgstr "We're always happy to help you."
+
+#: build/admin.js:1 src/admin/components/Footer.js:34
+msgid "If this plugin helped you,"
+msgstr "If this plugin helped you,"
+
+#: build/admin.js:1 src/admin/components/Footer.js:39
+msgid "Leave a review for this plugin on WordPress.org"
+msgstr "Leave a review for this plugin on WordPress.org"
+
+#: build/admin.js:1 src/admin/components/Footer.js:41
+msgid "please rate it"
+msgstr "please rate it"
+
+#: build/admin.js:1 src/admin/components/Footer.js:46
+msgid "Check out more plugins by"
+msgstr "Check out more plugins by"
+
+#: build/admin.js:1 src/admin/components/Footer.js:51
+msgid "Visit Tyche Softwares to explore more WooCommerce plugins"
+msgstr "Visit Tyche Softwares to explore more WooCommerce plugins"

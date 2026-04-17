@@ -1,5 +1,20 @@
 *** Print Invoice & Delivery Notes for WooCommerce ***
 
+2026-04-09 - version 7.0.0
+This release is a complete overhaul of the plugin. The admin interface has been rebuilt using React and the plugin codebase has been fully restructured.
+* Enhancement - Rebuilt the admin interface using React, with dedicated Dashboard, Templates, Settings, and FAQs pages.
+* Enhancement - Added support for five document types: Invoice, Delivery Note, Receipt, Credit Note, and Packing Slip.
+* Enhancement - Added PDF generation and storage for order documents, powered by Dompdf, with configurable file expiration.
+* Enhancement - Added sequential invoice numbering with optional yearly reset and a configurable starting number per year.
+* Enhancement - Added per-template customisation options including logo, colours, font sizes, watermark, and layout settings.
+* Enhancement - Added support for attaching documents to WooCommerce order emails.
+* Enhancement - Added a REST API layer for all admin operations including settings, templates, and PDF generation.
+* Enhancement - Added a data migration routine to carry over settings and invoice counters from previous versions.
+* Tweak - Restructured the plugin codebase with a service-based architecture and Composer autoloading.
+* Tweak - Replaced the legacy template engine with a new renderer supporting theme overrides.
+* Tweak - Added SCRIPT_DEBUG and WCDN_SCRIPT_DEBUG support to switch between minified and unminified assets.
+* Tweak - Updated codebase to align with WordPress Coding Standards.
+
 2026-01-27 - version 6.0.0
 * Fix - Fatal error on the template settings page caused by an invalid string offset type.
 * Fix - Fatal error triggered by an undefined method call when all orders are archived on the site.

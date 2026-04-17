@@ -1,0 +1,309 @@
+.wcdn-document {
+    position: relative;
+}
+
+/* -------------------------------
+   Title
+-------------------------------- */
+
+.wcdn-title {
+    text-align: center;
+    font-size: 28px;
+    margin: 20px 0;
+}
+
+/* -------------------------------
+   Divider
+-------------------------------- */
+
+hr {
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+    margin: 20px 0;
+}
+
+/* -------------------------------
+   Logo
+-------------------------------- */
+
+.wcdn-logo {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.wcdn-logo.align-left {
+    text-align: left;
+}
+
+.wcdn-logo.align-right {
+    text-align: right;
+}
+
+.wcdn-logo img {
+    max-height: 80px;
+    width: auto;
+}
+
+/* -------------------------------
+   Shop Section
+-------------------------------- */
+
+.wcdn-shop {
+    text-align: center;
+}
+
+.wcdn-shop-name {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.wcdn-shop-address {
+    font-size: 14px;
+}
+
+/* -------------------------------
+   Address Grid
+-------------------------------- */
+
+.wcdn-billing-address p,
+.wcdn-shipping-address p {
+    margin: 0;
+}
+
+/* -------------------------------
+   Order Meta
+-------------------------------- */
+
+.wcdn-order-meta table {
+    border-collapse: collapse;
+}
+
+.wcdn-order-meta td {
+    padding: 0 8px 2px 0;
+    vertical-align: top;
+    line-height: 1.3;
+}
+
+.wcdn-order-meta td.label {
+    white-space: nowrap;
+}
+
+/* -------------------------------
+   Item Meta & Addons
+-------------------------------- */
+
+.wcdn-item-sku {
+    color: #888;
+    font-size: 0.9em;
+    margin-left: 4px;
+}
+
+.wcdn-item-meta {
+    margin: 4px 0 0 0;
+    padding: 0;
+}
+
+.wcdn-item-meta dt,
+.wcdn-item-meta dd {
+    display: inline;
+    margin: 0;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.wcdn-item-meta dt::after {
+    content: ': ';
+}
+
+.wcdn-item-meta dd::after {
+    content: '\A';
+    white-space: pre;
+}
+
+.wcdn-item-addon-name {
+    font-weight: 600;
+}
+
+.wcdn-item-addon-value {
+    color: #555;
+    font-size: 0.9em;
+}
+
+/* -------------------------------
+   Items Table
+-------------------------------- */
+
+.wcdn-items,
+.wcdn-totals {
+    table-layout: fixed;
+}
+
+.wcdn-col-product {
+    width: 50%;
+}
+
+.wcdn-col-price {
+    width: 15%;
+}
+
+.wcdn-col-qty {
+    width: 15%;
+}
+
+.wcdn-col-total {
+    width: 20%;
+}
+
+.wcdn-items {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.wcdn-items th {
+    background: #f6f7f7;
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    color: #3c434a;
+}
+
+/* .wcdn-items th,
+.wcdn-items td,
+.wcdn-totals th,
+.wcdn-totals td {
+    color: #3c434a;
+} */
+
+.wcdn-items td {
+    border-bottom: 1px solid #eee;
+}
+
+.wcdn-items td {
+    padding: 10px;
+}
+
+.wcdn-totals td {
+    padding: 2px 10px;
+}
+
+/* -------------------------------
+   Totals
+-------------------------------- */
+
+.wcdn-totals {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.wcdn-totals-label {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.wcdn-totals-value {
+    text-align: left;
+}
+
+.wcdn-total {
+    font-weight: 700;
+}
+
+/* -------------------------------
+   Pay Now Button
+-------------------------------- */
+
+.wcdn-pay {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.wcdn-pay button {
+    padding: 10px 30px;
+    border: none;
+    border-radius: 4px;
+    color: #ffffff;
+    background: #2271b1;
+    font-weight: 600;
+}
+
+/* -------------------------------
+   Policies / Complimentary / Footer
+-------------------------------- */
+
+.wcdn-policies,
+.wcdn-complimentary-close,
+.wcdn-footer,
+.wcdn-customer-note {
+    text-align: center;
+}
+
+/* -------------------------------
+   Watermark
+-------------------------------- */
+
+.wcdn-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.08;
+    font-size: 100px;
+    font-weight: 700;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+.wcdn-watermark-repeat {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    z-index: 1;
+}
+
+.wcdn-watermark-repeat span {
+    display: inline-block;
+    margin: 60px;
+    opacity: 0.08;
+    font-size: 80px;
+    font-weight: 700;
+}
+
+.wcdn-payment-button {
+    display: inline-block;
+    padding: 8px 20px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    background: #2271b1;
+}
+
+.wcdn-address-grid strong {
+    display: block;
+    margin-bottom: 6px;
+}
+
+
+.is-rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+.is-rtl table {
+    direction: rtl;
+}
+
+.is-rtl .wcdn-totals-label {
+    text-align: left;
+}
+
+.is-rtl .wcdn-logo.align-left {
+    text-align: right;
+}
+
+.is-rtl .wcdn-logo.align-right {
+    text-align: left;
+}
