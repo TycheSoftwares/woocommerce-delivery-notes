@@ -191,7 +191,7 @@ class Pdf {
 		$options->set( 'dpi', apply_filters( 'wcdn_pdf_dpi', 150 ) );
 
 		$dompdf = new Dompdf( $options );
-		$dompdf->loadHtml( $html );
+		$dompdf->loadHtml( $html, 'UTF-8' );
 
 		$paper_size  = apply_filters( 'wcdn_pdf_paper_size', 'A4', $order_id );
 		$orientation = apply_filters( 'wcdn_pdf_orientation', 'portrait', $order_id );

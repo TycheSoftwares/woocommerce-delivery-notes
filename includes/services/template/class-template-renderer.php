@@ -77,7 +77,7 @@ class Template_Renderer {
 		$html = ob_get_clean();
 		$css  = self::get_css( $type, $data );
 
-		return '<html><head>' . $css . '</head><body>' . $html . '</body></html>';
+		return '<html><head><meta charset="UTF-8">' . $css . '</head><body>' . $html . '</body></html>';
 	}
 
 	/**
@@ -93,8 +93,14 @@ class Template_Renderer {
 		$css    = '';
 		$subdir = trailingslashit( "css/{$context}" );
 
+		$cjk_font_name = '';
+
 		if ( 'pdf' === $context ) {
-			$css .= self::get_font_face_css();
+			// Locale font CSS must come first: @import rules are only valid before @font-face.
+			$locale_font   = self::get_locale_font_face_css();
+			$css          .= $locale_font['css'];
+			$css          .= self::get_inter_font_face_css();
+			$cjk_font_name = $locale_font['name'];
 		}
 
 		$css .= self::import_css( get_stylesheet_directory() . '/' . self::TEMPLATE_OVERRIDE_PATH . 'css/style.css', self::TEMPLATE_PATH . 'css/style.css' );
@@ -104,6 +110,15 @@ class Template_Renderer {
 
 		// Context stylesheet loaded last; corrects px → pt for PDF via dompdf.
 		$css .= self::import_css( get_stylesheet_directory() . '/' . self::TEMPLATE_OVERRIDE_PATH . $subdir . 'style.css', self::TEMPLATE_PATH . $subdir . 'style.css' );
+
+		// Inject CJK font as fallback in the font stack so dompdf picks it up for every element.
+		if ( $cjk_font_name ) {
+			$escaped = esc_attr( $cjk_font_name );
+			$css    .= 'body,td,th,.wcdn-title,.wcdn-shop-name,.wcdn-shop-address,.wcdn-shop-phone,.wcdn-shop-email,'
+				. '.wcdn-billing-address,.wcdn-shipping-address,.wcdn-policies,.wcdn-complimentary-close,'
+				. '.wcdn-customer-note,.wcdn-footer{'
+				. "font-family:Inter,'{$escaped}',DejaVuSans,sans-serif;}";
+		}
 
 		$css = apply_filters( 'wcdn_template_css', $css, $context, $data );
 
@@ -159,12 +174,12 @@ class Template_Renderer {
 	}
 
 	/**
-	 * Build @font-face declarations for the PDF context. Loads Inter from plugin-bundled TTF files when present.
+	 * Build @font-face declarations for Inter from plugin-bundled TTF files.
 	 *
 	 * @return string
 	 * @since 7.0
 	 */
-	protected static function get_font_face_css() {
+	protected static function get_inter_font_face_css() {
 
 		$font_dir = WCDN_PLUGIN_PATH . '/assets/fonts/inter/';
 
@@ -195,6 +210,204 @@ class Template_Renderer {
 		}
 
 		return $css;
+	}
+
+	/**
+	 * Build @font-face CSS for non-Latin locales and return the registered font name.
+	 *
+	 * Covers scripts not included in Inter or DejaVu: CJK, Arabic, Hebrew,
+	 * Devanagari, Thai, Bengali, Tamil, and many more.
+	 *
+	 * Cyrillic, Greek, and Latin-extended scripts (most European languages) are
+	 * already covered by the DejaVu fallback and need no extra font.
+	 *
+	 * Resolution order:
+	 *   1. Local file path via wcdn_pdf_locale_font_path filter.
+	 *   2. Remote TTF/OTF URL via wcdn_pdf_locale_font_url filter.
+	 *   3. Google Fonts @import (requires isRemoteEnabled; disable via wcdn_pdf_use_google_fonts_for_locale).
+	 *
+	 * @return array { css: string, name: string }
+	 * @since 7.0
+	 */
+	protected static function get_locale_font_face_css() {
+
+		$empty = array(
+			'css'  => '',
+			'name' => '',
+		);
+
+		$locale = get_locale();
+
+		/*
+		 * Locale prefix → font config map.
+		 * More-specific prefixes must come before shorter ones (e.g. zh_CN before zh).
+		 * Values: 'name' = CSS font-family identifier; 'google' = Google Fonts family param.
+		 *
+		 * Omitted scripts (covered by DejaVu Sans bundled with dompdf):
+		 *   Latin Extended, Cyrillic, Greek, Armenian-basic.
+		 */
+		$locale_font_map = array(
+
+			// Chinese — Simplified.
+			'zh_CN' => array( 'name' => 'NotoSansSC', 'google' => 'Noto Sans SC' ),
+			'zh_SG' => array( 'name' => 'NotoSansSC', 'google' => 'Noto Sans SC' ),
+
+			// Chinese — Traditional.
+			'zh_TW' => array( 'name' => 'NotoSansTC', 'google' => 'Noto Sans TC' ),
+			'zh_HK' => array( 'name' => 'NotoSansHK', 'google' => 'Noto Sans HK' ),
+
+			// Japanese.
+			'ja'    => array( 'name' => 'NotoSansJP', 'google' => 'Noto Sans JP' ),
+
+			// Korean.
+			'ko_KR' => array( 'name' => 'NotoSansKR', 'google' => 'Noto Sans KR' ),
+			'ko'    => array( 'name' => 'NotoSansKR', 'google' => 'Noto Sans KR' ),
+
+			// Arabic script (Arabic, Persian/Farsi, Urdu, Pashto, Kurdish Sorani).
+			'ar'    => array( 'name' => 'NotoNaskhArabic', 'google' => 'Noto Naskh Arabic' ),
+			'fa'    => array( 'name' => 'NotoNaskhArabic', 'google' => 'Noto Naskh Arabic' ),
+			'ur'    => array( 'name' => 'NotoNaskhArabic', 'google' => 'Noto Naskh Arabic' ),
+			'ps'    => array( 'name' => 'NotoNaskhArabic', 'google' => 'Noto Naskh Arabic' ),
+			'ckb'   => array( 'name' => 'NotoNaskhArabic', 'google' => 'Noto Naskh Arabic' ),
+
+			// Hebrew.
+			'he_IL' => array( 'name' => 'NotoSansHebrew', 'google' => 'Noto Sans Hebrew' ),
+			'he'    => array( 'name' => 'NotoSansHebrew', 'google' => 'Noto Sans Hebrew' ),
+
+			// Devanagari (Hindi, Marathi, Nepali, Sanskrit, Bhojpuri).
+			'hi_IN' => array( 'name' => 'NotoSansDevanagari', 'google' => 'Noto Sans Devanagari' ),
+			'hi'    => array( 'name' => 'NotoSansDevanagari', 'google' => 'Noto Sans Devanagari' ),
+			'mr'    => array( 'name' => 'NotoSansDevanagari', 'google' => 'Noto Sans Devanagari' ),
+			'ne_NP' => array( 'name' => 'NotoSansDevanagari', 'google' => 'Noto Sans Devanagari' ),
+			'ne'    => array( 'name' => 'NotoSansDevanagari', 'google' => 'Noto Sans Devanagari' ),
+			'sa_IN' => array( 'name' => 'NotoSansDevanagari', 'google' => 'Noto Sans Devanagari' ),
+			'bho'   => array( 'name' => 'NotoSansDevanagari', 'google' => 'Noto Sans Devanagari' ),
+
+			// Bengali.
+			'bn_BD' => array( 'name' => 'NotoSansBengali', 'google' => 'Noto Sans Bengali' ),
+			'bn_IN' => array( 'name' => 'NotoSansBengali', 'google' => 'Noto Sans Bengali' ),
+			'bn'    => array( 'name' => 'NotoSansBengali', 'google' => 'Noto Sans Bengali' ),
+
+			// Tamil.
+			'ta_IN' => array( 'name' => 'NotoSansTamil', 'google' => 'Noto Sans Tamil' ),
+			'ta_LK' => array( 'name' => 'NotoSansTamil', 'google' => 'Noto Sans Tamil' ),
+			'ta'    => array( 'name' => 'NotoSansTamil', 'google' => 'Noto Sans Tamil' ),
+
+			// Telugu.
+			'te'    => array( 'name' => 'NotoSansTelugu', 'google' => 'Noto Sans Telugu' ),
+
+			// Kannada.
+			'kn'    => array( 'name' => 'NotoSansKannada', 'google' => 'Noto Sans Kannada' ),
+
+			// Malayalam.
+			'ml_IN' => array( 'name' => 'NotoSansMalayalam', 'google' => 'Noto Sans Malayalam' ),
+			'ml'    => array( 'name' => 'NotoSansMalayalam', 'google' => 'Noto Sans Malayalam' ),
+
+			// Gujarati.
+			'gu'    => array( 'name' => 'NotoSansGujarati', 'google' => 'Noto Sans Gujarati' ),
+
+			// Punjabi / Gurmukhi.
+			'pa_IN' => array( 'name' => 'NotoSansGurmukhi', 'google' => 'Noto Sans Gurmukhi' ),
+
+			// Sinhala.
+			'si_LK' => array( 'name' => 'NotoSansSinhala', 'google' => 'Noto Sans Sinhala' ),
+			'si'    => array( 'name' => 'NotoSansSinhala', 'google' => 'Noto Sans Sinhala' ),
+
+			// Thai.
+			'th'    => array( 'name' => 'NotoSansThai', 'google' => 'Noto Sans Thai' ),
+
+			// Khmer.
+			'km'    => array( 'name' => 'NotoSansKhmer', 'google' => 'Noto Sans Khmer' ),
+
+			// Myanmar / Burmese.
+			'my_MM' => array( 'name' => 'NotoSansMyanmar', 'google' => 'Noto Sans Myanmar' ),
+			'my'    => array( 'name' => 'NotoSansMyanmar', 'google' => 'Noto Sans Myanmar' ),
+
+			// Lao.
+			'lo'    => array( 'name' => 'NotoSansLao', 'google' => 'Noto Sans Lao' ),
+
+			// Tibetan.
+			'bo'    => array( 'name' => 'NotoSerifTibetan', 'google' => 'Noto Serif Tibetan' ),
+
+			// Georgian.
+			'ka_GE' => array( 'name' => 'NotoSansGeorgian', 'google' => 'Noto Sans Georgian' ),
+			'ka'    => array( 'name' => 'NotoSansGeorgian', 'google' => 'Noto Sans Georgian' ),
+
+			// Armenian.
+			'hy'    => array( 'name' => 'NotoSansArmenian', 'google' => 'Noto Sans Armenian' ),
+
+			// Amharic / Ethiopic.
+			'am'    => array( 'name' => 'NotoSansEthiopic', 'google' => 'Noto Sans Ethiopic' ),
+		);
+
+		$config = null;
+		foreach ( $locale_font_map as $prefix => $data ) {
+			if ( 0 === strpos( $locale, $prefix ) ) {
+				$config = $data;
+				break;
+			}
+		}
+
+		/**
+		 * Filter the locale font config for the current locale.
+		 * Return null to disable non-Latin font loading entirely.
+		 *
+		 * @param array|null $config { name: string, google: string }|null
+		 * @param string     $locale Current WordPress locale.
+		 * @since 7.0
+		 */
+		$config = apply_filters( 'wcdn_pdf_locale_font_config', $config, $locale );
+
+		if ( ! $config ) {
+			return $empty;
+		}
+
+		$font_name = $config['name'];
+
+		// 1. Local font file (fastest — base64-embedded into the PDF CSS).
+		$local_path = apply_filters( 'wcdn_pdf_locale_font_path', '', $locale );
+		if ( $local_path && file_exists( $local_path ) ) {
+			$ext  = strtolower( pathinfo( $local_path, PATHINFO_EXTENSION ) );
+			$mime = 'otf' === $ext ? 'opentype' : 'truetype';
+			$b64  = base64_encode( file_get_contents( $local_path ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode, WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+			$css  = '@font-face{'
+				. "font-family:'{$font_name}';"
+				. "src:url('data:font/{$mime};base64,{$b64}') format('{$mime}');"
+				. 'font-weight:400;font-style:normal;}';
+			return array(
+				'css'  => $css,
+				'name' => $font_name,
+			);
+		}
+
+		// 2. Remote TTF/OTF URL (served directly — dompdf fetches and caches the file).
+		$remote_url = apply_filters( 'wcdn_pdf_locale_font_url', '', $locale );
+		if ( $remote_url ) {
+			$css = '@font-face{'
+				. "font-family:'{$font_name}';"
+				. "src:url('" . esc_url_raw( $remote_url ) . "') format('truetype');"
+				. 'font-weight:400;font-style:normal;}';
+			return array(
+				'css'  => $css,
+				'name' => $font_name,
+			);
+		}
+
+		/*
+		 * 3. Google Fonts @import — dompdf fetches the CSS and then the font file.
+		 *    Requires isRemoteEnabled=true (already set) and outbound HTTP from the server.
+		 *    Disable with: add_filter( 'wcdn_pdf_use_google_fonts_for_locale', '__return_false' );
+		 */
+		if ( apply_filters( 'wcdn_pdf_use_google_fonts_for_locale', true ) ) {
+			$google_url = 'https://fonts.googleapis.com/css?family=' . rawurlencode( $config['google'] );
+			$css        = "@import url('{$google_url}');";
+			return array(
+				'css'  => $css,
+				'name' => $font_name,
+			);
+		}
+
+		return $empty;
 	}
 
 	/**
