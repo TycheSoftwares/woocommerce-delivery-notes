@@ -1,0 +1,44 @@
+{
+    "name": "woocommerce-delivery-notes",
+    "version": "7.0.0",
+    "private": true,
+    "description": "Print Invoice & Delivery Notes for WooCommerce",
+    "author": "Tyche Softwares",
+    "license": "Tyche Softwares",
+    "main": "build/index.js",
+    "scripts": {
+        "build": "wp-scripts build",
+        "start": "wp-scripts start",
+        "format": "prettier --write \"src/**/*.{js,jsx}\"",
+        "lint:css": "wp-scripts lint-style",
+        "lint:js": "wp-scripts lint-js",
+        "packages-update": "wp-scripts packages-update",
+        "makejsstring": "node .bin/make-string.js",
+        "makepot": "wp i18n make-pot . languages/woocommerce-delivery-notes.pot --skip-js --exclude=src,vendor,node_modules --merge=languages/js.pot",
+        "deploy": "npm-run-all build makepot copy",
+        "composer": "composer install --no-dev --optimize-autoloader",
+        "clean": "rm -rf dist && rm -rf languages",
+        "i18n:pot": "wp i18n make-pot . languages/woocommerce-delivery-notes.pot",
+        "i18n:po": "node generate-po.js",
+        "i18n:mo": "node compile-mo.js",
+        "i18n": "npm run i18n:pot && npm run i18n:po && npm run i18n:mo",
+        "package": "node build-plugin.js",
+        "release": "npm run clean && npm run composer && npm run build && npm run i18n && npm run package"
+    },
+    "devDependencies": {
+        "@wordpress/eslint-plugin": "^22.22.0",
+        "@wordpress/scripts": "^30.12.0",
+        "archiver": "^7.0.1",
+        "browser-sync": "^3.0.4",
+        "browser-sync-webpack-plugin": "^2.4.0",
+        "eslint": "^8.57.1",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-react": "^7.37.5"
+    },
+    "dependencies": {
+        "@fontsource/inter": "^5.2.8",
+        "@wordpress/icons": "^11.7.0",
+        "react-router-dom": "^6.23.1",
+        "react-select": "^5.8.0"
+    }
+}

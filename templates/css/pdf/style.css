@@ -1,0 +1,102 @@
+@page {
+    margin: 40px 80px;
+}
+
+/* Override watermark for dompdf: position:fixed is page-relative and works correctly;
+   translate() is not supported so we use text-align centering instead. */
+.wcdn-watermark {
+    position: fixed;
+    top: 40%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    white-space: nowrap;
+}
+
+body {
+    background: #ffffff;
+    margin: 0;
+    font-size: 9.5pt;
+    line-height: 1.4;
+    font-family: Inter, DejaVuSans, sans-serif;
+}
+
+html {
+    font-size: 9.5pt;
+}
+
+h1 {
+    margin: 0 0 10px 0;
+}
+
+p {
+    margin: 0 0 5px 0;
+}
+
+body,
+td,
+th {
+    font-family: Inter, DejaVuSans, sans-serif;
+    font-size: 9.5pt;
+    line-height: 1.4;
+}
+
+.wcdn-document {
+    padding: 10px 0;
+}
+
+/* Override px-based sizes from style.css with pt equivalents.
+   Loaded last so these always win over static px values and dynamic CSS.
+   Conversion: pt = px * 72 / 96.
+   font-family is set explicitly because dompdf does not reliably inherit
+   font-family from body onto block-level div elements. */
+.wcdn-title {
+    font-size: 19pt;
+    font-family: Inter, DejaVuSans, sans-serif;
+}
+
+.wcdn-shop-name {
+    font-size: 13.5pt;
+    font-family: Inter, DejaVuSans, sans-serif;
+}
+
+.wcdn-shop-address,
+.wcdn-shop-phone,
+.wcdn-shop-email {
+    font-size: 10.5pt;
+    font-family: Inter, DejaVuSans, sans-serif;
+}
+
+.wcdn-policies,
+.wcdn-complimentary-close,
+.wcdn-customer-note,
+.wcdn-footer {
+    font-size: 9.5pt;
+    font-family: Inter, DejaVuSans, sans-serif;
+}
+
+.wcdn-logo img {
+    max-height: 90pt;
+    width: auto;
+}
+
+
+
+.wcdn-address-grid td {
+    padding-right: 25px;
+    vertical-align: top;
+}
+
+.wcdn-address-grid td:last-child {
+    padding-right: 0;
+}
+
+.is-rtl .wcdn-address-grid td {
+    vertical-align: top;
+    padding-right: 0;
+    padding-left: 25px;
+}
+
+.is-rtl .wcdn-address-grid td:last-child {
+    padding-left: 0;
+}

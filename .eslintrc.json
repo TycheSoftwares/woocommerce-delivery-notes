@@ -1,0 +1,25 @@
+{
+    "extends": [
+        "plugin:react/recommended",
+        "@wordpress/eslint-plugin/recommended"
+    ],
+    "plugins": [
+        "react"
+    ],
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
+    "rules": {
+        "react/react-in-jsx-scope": "off",
+        "react/prop-types": "off",
+        "quotes": ["error", "double"],
+        "semi": ["error", "always"],
+        "indent": ["error", 4]
+    }
+}

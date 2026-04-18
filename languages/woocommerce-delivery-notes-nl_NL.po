@@ -1,892 +1,1087 @@
-# Translation of WooCommerce Print Invoices & Delivery Notes in Dutch
-# This file is distributed under the same license as the WooCommerce Print Invoices & Delivery Notes package.
+# Copyright (C) 2026 Tyche Softwares
+# This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce Print Invoices & Delivery Notes\n"
+"Project-Id-Version: Print Invoice & Delivery Notes for WooCommerce 7.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce-"
 "delivery-notes\n"
-"POT-Creation-Date: 2024-06-04T11:01:47+00:00\n"
-"PO-Revision-Date: 2024-06-04 17:13+0530\n"
-"Last-Translator: Bas Middelham <bas@middelham.nl>\n"
-"Language-Team: \n"
-"Language: nl_NL\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 3.4.4\n"
+"POT-Creation-Date: 2026-04-17T21:06:54+00:00\n"
+"PO-Revision-Date: 2026-04-17T21:06:54+00:00\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: woocommerce-delivery-notes\n"
+"Language: nl_NL\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. Plugin Name of the plugin
-#, fuzzy
-#| msgid "WooCommerce Print Invoices & Delivery Notes"
+#: woocommerce-delivery-notes.php
 msgid "Print Invoice & Delivery Notes for WooCommerce"
-msgstr "WooCommerce Print Invoices & Delivery Notes"
+msgstr ""
 
 #. Plugin URI of the plugin
-#. Author URI of the plugin
-msgid "https://www.tychesoftwares.com/"
+#: woocommerce-delivery-notes.php
+msgid "https://www.tychesoftwares.com"
 msgstr ""
 
 #. Description of the plugin
-#, fuzzy
-#| msgid "WooCommerce Print Invoices & Delivery Notes"
-msgid "Print Invoices & Delivery Notes for WooCommerce Orders."
-msgstr "WooCommerce Print Invoices & Delivery Notes"
+#: woocommerce-delivery-notes.php
+msgid ""
+"This plugin lets you generate, customize, print, and email professional "
+"order documents directly from your WooCommerce store."
+msgstr ""
 
 #. Author of the plugin
+#: woocommerce-delivery-notes.php build/admin.js:1
+#: src/admin/components/Footer.js:53
 msgid "Tyche Softwares"
 msgstr ""
 
-# @ woocommerce-delivery-notes
-#: includes/admin/views/Preview_template/default-preview-template.php:61
-#: includes/admin/wcdn-admin-function.php:31
-#: templates/pdf/default/deliverynote/template.php:41
-#: templates/pdf/default/invoice/template.php:41
-#: templates/pdf/default/receipt/template.php:41
-#: templates/print-order/print-content.php:41
-msgid "Billing Address"
-msgstr "Factuuradres"
-
-#: includes/admin/views/Preview_template/default-preview-template.php:66
-#: includes/admin/views/Preview_template/default-preview-template.php:81
-#: includes/admin/views/Preview_template/deliverynote-preview-template.php:75
-#: includes/admin/views/Preview_template/deliverynote-preview-template.php:107
-#: includes/admin/views/Preview_template/invoice-preview-template.php:71
-#: includes/admin/views/Preview_template/invoice-preview-template.php:104
-#: includes/admin/views/Preview_template/receipt-preview-template.php:75
-#: includes/admin/views/Preview_template/receipt-preview-template.php:108
-#: templates/pdf/default/deliverynote/template.php:45
-#: templates/pdf/default/deliverynote/template.php:59
-#: templates/pdf/default/invoice/template.php:45
-#: templates/pdf/default/invoice/template.php:59
-#: templates/pdf/default/receipt/template.php:45
-#: templates/pdf/default/receipt/template.php:59
-#: templates/pdf/simple/deliverynote/template.php:83
-#: templates/pdf/simple/deliverynote/template.php:122
-#: templates/pdf/simple/invoice/template.php:83
-#: templates/pdf/simple/invoice/template.php:122
-#: templates/pdf/simple/receipt/template.php:85
-#: templates/pdf/simple/receipt/template.php:124
-#: templates/print-order/print-content.php:46
-#: templates/print-order/print-content.php:61
-#: templates/print-order/simple/deliverynote/print-content.php:76
-#: templates/print-order/simple/deliverynote/print-content.php:115
-#: templates/print-order/simple/invoice/print-content.php:77
-#: templates/print-order/simple/invoice/print-content.php:116
-#: templates/print-order/simple/receipt/print-content.php:79
-#: templates/print-order/simple/receipt/print-content.php:118
-msgid "N/A"
-msgstr "N.v.t."
-
-# @ woocommerce-delivery-notes
-#: includes/admin/views/Preview_template/default-preview-template.php:76
-#: includes/admin/wcdn-admin-function.php:32
-#: templates/pdf/default/deliverynote/template.php:55
-#: templates/pdf/default/invoice/template.php:55
-#: templates/pdf/default/receipt/template.php:55
-#: templates/print-order/print-content.php:56
-msgid "Shipping Address"
-msgstr "Verzendadres"
-
-#: includes/admin/views/Preview_template/default-preview-template.php:140
-#: includes/admin/views/Preview_template/deliverynote-preview-template.php:180
-#: includes/admin/views/Preview_template/invoice-preview-template.php:177
-#: includes/admin/views/Preview_template/receipt-preview-template.php:197
-#: templates/pdf/default/deliverynote/template.php:93
-#: templates/pdf/default/invoice/template.php:93
-#: templates/pdf/default/receipt/template.php:93
-#: templates/pdf/simple/deliverynote/template.php:184
-#: templates/pdf/simple/invoice/template.php:181
-#: templates/pdf/simple/receipt/template.php:196
-#: templates/print-order/print-content.php:97
-#: templates/print-order/simple/deliverynote/print-content.php:177
-#: templates/print-order/simple/invoice/print-content.php:175
-#: templates/print-order/simple/receipt/print-content.php:190
-msgid "Product"
-msgstr "Product"
-
-#: includes/admin/views/Preview_template/default-preview-template.php:141
-#: includes/admin/views/Preview_template/deliverynote-preview-template.php:181
-#: includes/admin/views/Preview_template/invoice-preview-template.php:178
-#: includes/admin/views/Preview_template/receipt-preview-template.php:198
-#: templates/pdf/default/deliverynote/template.php:94
-#: templates/pdf/default/invoice/template.php:94
-#: templates/pdf/default/receipt/template.php:94
-#: templates/pdf/simple/deliverynote/template.php:187
-#: templates/pdf/simple/invoice/template.php:182
-#: templates/pdf/simple/receipt/template.php:197
-#: templates/print-order/print-content.php:98
-#: templates/print-order/simple/deliverynote/print-content.php:180
-#: templates/print-order/simple/invoice/print-content.php:176
-#: templates/print-order/simple/receipt/print-content.php:191
-msgid "Price"
-msgstr "Prijs"
-
-#: includes/admin/views/Preview_template/default-preview-template.php:142
-#: includes/admin/views/Preview_template/deliverynote-preview-template.php:182
-#: includes/admin/views/Preview_template/invoice-preview-template.php:179
-#: includes/admin/views/Preview_template/receipt-preview-template.php:199
-#: templates/pdf/default/deliverynote/template.php:95
-#: templates/pdf/default/invoice/template.php:95
-#: templates/pdf/default/receipt/template.php:95
-#: templates/pdf/simple/deliverynote/template.php:189
-#: templates/pdf/simple/invoice/template.php:183
-#: templates/pdf/simple/receipt/template.php:198
-#: templates/print-order/print-content.php:99
-#: templates/print-order/simple/deliverynote/print-content.php:182
-#: templates/print-order/simple/invoice/print-content.php:177
-#: templates/print-order/simple/receipt/print-content.php:192
-msgid "Quantity"
-msgstr "Hoeveelheid"
-
-#: includes/admin/views/Preview_template/default-preview-template.php:143
-#: includes/admin/views/Preview_template/deliverynote-preview-template.php:183
-#: includes/admin/views/Preview_template/invoice-preview-template.php:180
-#: includes/admin/views/Preview_template/receipt-preview-template.php:200
-#: templates/pdf/default/deliverynote/template.php:96
-#: templates/pdf/default/invoice/template.php:96
-#: templates/pdf/default/receipt/template.php:96
-#: templates/pdf/simple/deliverynote/template.php:192
-#: templates/pdf/simple/invoice/template.php:184
-#: templates/pdf/simple/receipt/template.php:199
-#: templates/print-order/print-content.php:100
-#: templates/print-order/simple/deliverynote/print-content.php:185
-#: templates/print-order/simple/invoice/print-content.php:178
-#: templates/print-order/simple/receipt/print-content.php:193
-msgid "Total"
-msgstr "Totaal"
-
-#: includes/admin/views/Preview_template/default-preview-template.php:257
-#: includes/wcdn-template-functions.php:948
-#: templates/print-order/print-content.php:214
-msgid "Download:"
-msgstr "Download:"
-
-# @ woocommerce-delivery-notes
-#. translators: files count.
-#: includes/admin/views/Preview_template/default-preview-template.php:261
-#: includes/wcdn-template-functions.php:952
-#: templates/print-order/print-content.php:218
-msgid "%s Files"
-msgstr "%s Bestanden"
-
-# @ woocommerce-delivery-notes
-#: includes/admin/views/Preview_template/default-preview-template.php:323
-#: includes/admin/wcdn-admin-function.php:35
-#: templates/pdf/default/deliverynote/template.php:162
-#: templates/pdf/default/invoice/template.php:162
-#: templates/pdf/default/receipt/template.php:162
-#: templates/print-order/print-content.php:280
-msgid "Customer Note"
-msgstr "Klantnotitie"
-
-#: includes/admin/views/wcdn-document.php:18
-#, fuzzy
-#| msgid "Print Invoice"
-msgid "Enable Invoice"
-msgstr "Print Factuur"
-
-#: includes/admin/views/wcdn-document.php:20
-#: includes/admin/views/wcdn-document.php:30
-#: includes/admin/views/wcdn-document.php:40
-msgid "Enable button that will display on admin side order page."
+#. Author URI of the plugin
+#: woocommerce-delivery-notes.php
+msgid "http://www.tychesoftwares.com"
 msgstr ""
 
-#: includes/admin/views/wcdn-document.php:28
-#, fuzzy
-#| msgid "Print Receipt"
-msgid "Enable Receipt"
-msgstr "Print Kwitantie"
-
-#: includes/admin/views/wcdn-document.php:38
-#, fuzzy
-#| msgid "Delivery Note"
-msgid "Enable Delivery Notes"
-msgstr "Pakbon"
-
-#: includes/admin/views/wcdn-general.php:15
-msgid "Shop Details"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:19
-#, fuzzy
-#| msgid "Set Logo"
-msgid "Logo"
-msgstr "Plaats Logo"
-
-#: includes/admin/views/wcdn-general.php:21
-msgid ""
-"A shop logo representing your business. When the image is printed, its pixel "
-"density will automatically be eight times higher than the original. This "
-"means, 1 printed inch will correspond to about 288 pixels on the screen."
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:67
-msgid "Logo Size"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:69
-msgid " Shop Logo height x width value. Default value is 125 x 125."
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:88
-msgid "Name"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:90
-msgid ""
-"The shop name. Leave blank to use the default Website or Blog title defined "
-"in WordPress settings. The name will be ignored when a Logo is set."
-msgstr ""
-
-# @ woocommerce-delivery-notes
-#: includes/admin/views/wcdn-general.php:95
-#, fuzzy
-#| msgid "Billing Address"
-msgid "Address"
-msgstr "Factuuradres"
-
-#: includes/admin/views/wcdn-general.php:97
-msgid "The postal address of the shop or even e-mail or telephone."
-msgstr ""
-
-# @ woocommerce-delivery-notes
-#: includes/admin/views/wcdn-general.php:102
-#: includes/admin/wcdn-admin-function.php:36
-msgid "Complimentary Close"
-msgstr "Ondertekening"
-
-#: includes/admin/views/wcdn-general.php:104
-msgid "Add a personal close, notes or season greetings."
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:109
-#: includes/admin/wcdn-admin-function.php:37
-msgid "Policies"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:111
-msgid "Add the shop policies, conditions, etc."
-msgstr ""
-
-# @ woocommerce-delivery-notes
-#: includes/admin/views/wcdn-general.php:116
-#: includes/admin/wcdn-admin-function.php:38
-msgid "Footer"
-msgstr "Voettekst"
-
-#: includes/admin/views/wcdn-general.php:118
-msgid ""
-"Add a footer imprint, instructions, copyright notes, e-mail, telephone, etc."
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:124
-msgid "Pages & Buttons"
-msgstr ""
-
-# @ woocommerce-delivery-notes
-#: includes/admin/views/wcdn-general.php:128
-msgid "Print Page Endpoint"
-msgstr "Printpagina Eindpunt"
-
-# @ woocommerce-delivery-notes
-#: includes/admin/views/wcdn-general.php:130
-msgid ""
-"The endpoint is appended to the accounts page URL to print the order. It "
-"should be unique."
-msgstr ""
-"Het eindpunt wordt toegevoegd aan de URL van de accounts pagina om het te "
-"printen. Deze moet uniek zijn."
-
-# @ woocommerce-delivery-notes
-#: includes/admin/views/wcdn-general.php:135
-#: includes/wcdn-template-functions.php:485
-msgid "Email"
-msgstr "E-mail"
-
-#: includes/admin/views/wcdn-general.php:137
-msgid ""
-"This includes the emails for a new, processing and completed order. On top "
-"of that the customer and admin invoice emails will also include the link."
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:142
-msgid "Show print link in customer emails"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:151
-msgid "Show print link in admin emails"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:155
-msgid "My Account"
-msgstr ""
-
-# @ woocommerce-delivery-notes
-#: includes/admin/views/wcdn-general.php:157
-#, fuzzy
-#| msgid "Show print buttons on the \"My Account\" page"
-msgid "This includes print button on View Order page and My Account page."
-msgstr "Toon printknop op de \"Mijn Account\" pagina"
-
-# @ woocommerce-delivery-notes
-#: includes/admin/views/wcdn-general.php:162
-#, fuzzy
-#| msgid "Show print button on the \"View Order\" page"
-msgid "Show print button on View Order page"
-msgstr "Toon printknop op de \"Bekijk Bestelling\" pagina"
-
-# @ woocommerce-delivery-notes
-#: includes/admin/views/wcdn-general.php:171
-#, fuzzy
-#| msgid "Show print buttons on the \"My Account\" page"
-msgid "Show print button on My Account page"
-msgstr "Toon printknop op de \"Mijn Account\" pagina"
-
-#: includes/admin/views/wcdn-general.php:177
-msgid ""
-"To Store PDF files in the \\wp-content\\uploads\\wcdn\\ folder for a "
-"specific duration, like X days, with a default value of 7 days"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:190
-msgid "Template Type"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:196
-msgid ""
-"You have the option to customize the Simple template to your liking, or you "
-"can stick with the default display.\t"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:206
-msgid "Text Direction"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:208
-msgid ""
-"Show text in right to left direction in Invoice, Print Receipt & Delivery "
-"note if you are using languages such as Hebrew, Arabic, etc."
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:213
-msgid "Print Text from Right to left"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:217
-msgid "Reset usage tracking"
-msgstr ""
-
-#: includes/admin/views/wcdn-general.php:219
-msgid ""
-"This will reset your usage tracking settings, causing it to show the opt-in "
-"banner again and not sending any data"
-msgstr ""
-
-#: includes/admin/views/wcdn-header.php:12
-msgid "General"
-msgstr ""
-
-#: includes/admin/views/wcdn-header.php:13
-msgid "Templates"
-msgstr ""
-
-#: includes/admin/views/wcdn-header.php:14
-msgid "Help & Guide"
-msgstr ""
-
-#: includes/admin/views/wcdn-helpguide.php:11
-msgid "Filters"
-msgstr ""
-
-#: includes/admin/views/wcdn-helpguide.php:14
-msgid "FAQ"
-msgstr "FAQ"
-
-#: includes/admin/wcdn-admin-function.php:20
-msgid "Numbering"
-msgstr ""
-
-#: includes/admin/wcdn-admin-function.php:21
-msgid "Email Attach To"
-msgstr ""
-
-#: includes/admin/wcdn-admin-function.php:22
-msgid "Document Title"
-msgstr ""
-
-#: includes/admin/wcdn-admin-function.php:23
-#, fuzzy
-#| msgid "Company/Shop Logo"
-msgid "Company Logo"
-msgstr "Winkel- of bedrijfslogo"
-
-#: includes/admin/wcdn-admin-function.php:24
-#, fuzzy
-#| msgid "Company/Shop Name"
-msgid "Company Name"
-msgstr "Winkel- of bedrijfsnaam"
-
-#: includes/admin/wcdn-admin-function.php:25
-#, fuzzy
-#| msgid "Company/Shop Address"
-msgid "Company Address"
-msgstr "Winkel- of bedrijfsadres"
-
-#: includes/admin/wcdn-admin-function.php:26
-#: includes/wcdn-template-functions.php:371
-#: includes/wcdn-template-functions.php:384
-msgid "Invoice Number"
-msgstr "Factuurnummer"
-
-#: includes/admin/wcdn-admin-function.php:27
-#: includes/wcdn-template-functions.php:402
-#: includes/wcdn-template-functions.php:414
-msgid "Order Number"
-msgstr "Bestelnummer"
-
-#: includes/admin/wcdn-admin-function.php:28
-#: includes/wcdn-template-functions.php:423
-#: includes/wcdn-template-functions.php:435
-msgid "Order Date"
-msgstr "Besteldatum"
-
-#: includes/admin/wcdn-admin-function.php:29
-#: includes/wcdn-template-functions.php:444
-#: includes/wcdn-template-functions.php:447
-#: includes/wcdn-template-functions.php:457
-msgid "Payment Method"
-msgstr "Betaalmethode"
-
-#: includes/admin/wcdn-admin-function.php:30
-#: includes/wcdn-template-functions.php:471
-#, fuzzy
-#| msgid "Payment Method"
-msgid "Payment Date"
-msgstr "Betaalmethode"
-
-# @ woocommerce-delivery-notes
-#: includes/admin/wcdn-admin-function.php:33
-#, fuzzy
-#| msgid "Billing Address"
-msgid "Email Address"
-msgstr "Factuuradres"
-
-#: includes/admin/wcdn-admin-function.php:34
-#, fuzzy
-#| msgid "Invoice Number"
-msgid "Phone Number"
-msgstr "Factuurnummer"
-
-#: includes/admin/wcdn-admin-function.php:39
-msgid "Payment Received Stamp"
-msgstr ""
-
-#: includes/admin/wcdn-admin-function.php:40
-msgid "Display price in product details table"
-msgstr ""
-
-#: includes/admin/wcdn-admin-function.php:239
-msgid "Next Number"
-msgstr ""
-
-#: includes/admin/wcdn-admin-function.php:247
-msgid "Suffix"
-msgstr ""
-
-#: includes/admin/wcdn-admin-function.php:255
-msgid "Prefix"
-msgstr ""
-
-#: includes/class-wcdn-print.php:101 includes/class-wcdn-settings.php:465
-#: includes/class-wcdn-settings.php:476 includes/class-wcdn-settings.php:477
-msgid "Invoice"
-msgstr "Factuur"
-
-#: includes/class-wcdn-print.php:102
-msgid "Invoices"
-msgstr ""
-
-#: includes/class-wcdn-print.php:103 includes/class-wcdn-writepanel.php:128
-msgid "Print Invoice"
-msgstr "Print Factuur"
-
-#: includes/class-wcdn-print.php:104
-msgid "Print Invoices"
-msgstr ""
-
-#: includes/class-wcdn-print.php:105
-#, fuzzy
-msgid "Invoice created."
-msgstr "Factuur is gemaakt."
-
-#: includes/class-wcdn-print.php:106
-msgid "Invoices created."
-msgstr ""
-
-#: includes/class-wcdn-print.php:107
-msgid "Show \"Print Invoice\" button"
-msgstr ""
-
-#: includes/class-wcdn-print.php:116
-msgid "Delivery Note"
-msgstr "Pakbon"
-
-#: includes/class-wcdn-print.php:117
-msgid "Delivery Notes"
-msgstr ""
-
-#: includes/class-wcdn-print.php:118 includes/class-wcdn-writepanel.php:129
-msgid "Print Delivery Note"
-msgstr "Print Pakbon"
-
-#: includes/class-wcdn-print.php:119
-msgid "Print Delivery Notes"
-msgstr ""
-
-#: includes/class-wcdn-print.php:120
-msgid "Delivery Note created."
-msgstr ""
-
-#: includes/class-wcdn-print.php:121
-msgid "Delivery Notes created."
-msgstr ""
-
-#: includes/class-wcdn-print.php:122
-msgid "Show \"Print Delivery Note\" button"
-msgstr ""
-
-#: includes/class-wcdn-print.php:131
-msgid "Receipt"
-msgstr "Kwitantie"
-
-#: includes/class-wcdn-print.php:132
-msgid "Receipts"
-msgstr ""
-
-#: includes/class-wcdn-print.php:133 includes/class-wcdn-writepanel.php:130
-msgid "Print Receipt"
-msgstr "Print Kwitantie"
-
-#: includes/class-wcdn-print.php:134
-msgid "Print Receipts"
-msgstr ""
-
-#: includes/class-wcdn-print.php:135
-#, fuzzy
-msgid "Receipt created."
-msgstr "Kwitantie is gemaakt."
-
-#: includes/class-wcdn-print.php:136
-msgid "Receipts created."
-msgstr ""
-
-#: includes/class-wcdn-print.php:137
-msgid "Show \"Print Receipt\" button"
-msgstr ""
-
-#: includes/class-wcdn-print.php:150
-msgid "Order"
-msgstr "Bestelling"
-
-#: includes/class-wcdn-print.php:151
-msgid "Orders"
-msgstr ""
-
-#: includes/class-wcdn-print.php:152
-msgid "Print Order"
-msgstr "Print bestelling"
-
-#: includes/class-wcdn-print.php:153
-msgid "Print Orders"
-msgstr ""
-
-#: includes/class-wcdn-print.php:168
-msgid "Default"
-msgstr ""
-
-#: includes/class-wcdn-settings.php:455
-msgid ""
-"Do you really want to reset the counter to zero? This process can't be "
-"undone."
-msgstr ""
-
-#: includes/class-wcdn-settings.php:531
-msgid "Admin"
-msgstr ""
-
-#: includes/class-wcdn-settings.php:534
-msgid ""
-"The print buttons are available on the order listing and on the order detail "
-"screen."
-msgstr ""
-
-#. translators: %s: invoice url, delivery note url, receipt url
-#: includes/class-wcdn-settings.php:576
-msgid ""
-"This section lets you customise the content. You can preview the <a "
-"href=\"%1$s\" target=\"%4$s\" class=\"%5$s\">invoice</a>, <a href=\"%2$s\" "
-"target=\"%4$s\" class=\"%5$s\">delivery note</a> or <a href=\"%3$s\" "
-"target=\"%4$s\" class=\"%5$s\">receipt</a> template."
-msgstr ""
-
-#: includes/class-wcdn-settings.php:643
-msgid "Select"
-msgstr ""
-
-#: includes/class-wcdn-settings.php:647
-msgid "Remove"
-msgstr ""
-
-#: includes/class-wcdn-theme.php:127 includes/class-wcdn-theme.php:164
-#: includes/wcdn-template-functions.php:143
-msgid "Print"
-msgstr "Print"
-
-#: includes/class-wcdn-theme.php:206
-msgid "Print your order"
-msgstr ""
-
-#: includes/class-wcdn-writepanel.php:240
-msgid "Print now"
-msgstr "Print nu"
-
-#: includes/class-wcdn-writepanel.php:259
+#: includes/admin/class-backend.php:171
 msgid "Order Printing"
-msgstr "Print Bestelling "
-
-#: includes/class-wcdn-writepanel.php:290
-msgid "Invoice number: "
-msgstr "Factuurnummer:"
-
-#: includes/class-wcdn-writepanel.php:291
-msgid "Invoice date: "
-msgstr "Factuurdatum:"
-
-#: includes/class-woocommerce-delivery-notes.php:118
-#: includes/class-woocommerce-delivery-notes.php:125
-msgid "Cheatin&#8217; huh?"
 msgstr ""
 
-#: includes/class-woocommerce-delivery-notes.php:514
-msgid "Go to the settings page"
-msgstr "Ga naar de instellingen"
+#: includes/admin/class-backend.php:204
+msgid "Invoice number: "
+msgstr ""
 
-#: includes/class-woocommerce-delivery-notes.php:514
-msgid "Settings"
-msgstr "Instellingen"
+#: includes/admin/class-backend.php:207
+msgid "Invoice date: "
+msgstr ""
+
+#. translators: %1$d: number of documents, %2$s: document type label.
+#: includes/admin/class-backend.php:319
+#, php-format
+msgid "Print %1$d %2$s"
+msgstr ""
+
+#: includes/admin/class-backend.php:324
+msgid "Are you sure you want to proceed?"
+msgstr ""
+
+#: includes/admin/class-backend.php:329
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:257
+msgid "Cancel"
+msgstr ""
+
+#: includes/admin/class-backend.php:333 includes/api/class-settings.php:329
+#: includes/api/class-settings.php:330 includes/api/class-settings.php:349
+#: includes/frontend/class-frontend.php:676
+#: includes/helpers/class-utils.php:575
+msgid "Print"
+msgstr ""
+
+#: includes/admin/class-backend.php:362
+msgid "Pop-up blocked. Please allow pop-ups and try again."
+msgstr ""
+
+#: includes/admin/class-backend.php:446
+msgid "Print now"
+msgstr ""
+
+#: includes/admin/class-menu.php:40 includes/admin/class-menu.php:41
+msgid "Print Invoices & Delivery Notes"
+msgstr ""
+
+#: includes/admin/class-notices.php:110
+msgid "Action failed. Please refresh the page and retry."
+msgstr ""
+
+#: includes/admin/class-notices.php:114
+msgid "You don't have the permission to hide the selected notice."
+msgstr ""
+
+#: includes/api/class-settings.php:184 includes/api/class-templates.php:837
+msgid "Authentication has failed."
+msgstr ""
+
+#: includes/api/class-settings.php:195
+msgid "No data received."
+msgstr ""
+
+#: includes/api/class-settings.php:207
+msgid "Tracking data settings reset successfully."
+msgstr ""
+
+#: includes/api/class-settings.php:215
+msgid "Tracking data already reset."
+msgstr ""
+
+#. translators: %d: minimum allowed invoice number.
+#: includes/api/class-settings.php:241
+#, php-format
+msgid "Next invoice number must be greater than or equal to %d."
+msgstr ""
+
+#: includes/api/class-settings.php:254
+msgid "Year starting number must be greater than 0."
+msgstr ""
+
+#: includes/api/class-settings.php:296
+msgid "Settings saved successfully."
+msgstr ""
+
+#: includes/api/class-settings.php:320 templates/base.php:252
+msgid "Document"
+msgstr ""
+
+#: includes/api/class-settings.php:324
+msgid "View and print your invoice"
+msgstr ""
+
+#: includes/api/class-settings.php:326
+msgid "Print order documents"
+msgstr ""
+
+#: includes/api/class-settings.php:331 includes/helpers/class-utils.php:404
+msgid "Print Invoice"
+msgstr ""
+
+#: includes/api/class-settings.php:332 includes/helpers/class-utils.php:419
+msgid "Print Delivery Note"
+msgstr ""
+
+#: includes/api/class-settings.php:333 includes/helpers/class-utils.php:434
+msgid "Print Receipt"
+msgstr ""
+
+#: includes/api/class-settings.php:334 includes/helpers/class-utils.php:449
+msgid "Print Credit Note"
+msgstr ""
+
+#: includes/api/class-settings.php:335 includes/helpers/class-utils.php:464
+msgid "Print Packing Slip"
+msgstr ""
+
+#: includes/api/class-settings.php:336
+msgid "invoice"
+msgstr ""
+
+#: includes/api/class-templates.php:299 includes/api/class-templates.php:977
+msgid "Customer returned item"
+msgstr ""
+
+#: includes/api/class-templates.php:388
+msgid "N/A"
+msgstr ""
+
+#: includes/api/class-templates.php:684
+msgid "Download"
+msgstr ""
+
+#. translators: %s: number of files
+#: includes/api/class-templates.php:686
+#, php-format
+msgid "%s Files"
+msgstr ""
+
+#: includes/api/class-templates.php:850
+msgid "Invalid request payload."
+msgstr ""
+
+#: includes/api/class-templates.php:869
+msgid "Invalid template type."
+msgstr ""
+
+#: includes/api/class-templates.php:903
+msgid "Template saved successfully."
+msgstr ""
+
+#: includes/class-woocommerce-delivery-notes.php:116
+#: includes/class-woocommerce-delivery-notes.php:125
+msgid "Not allowed."
+msgstr ""
+
+#. translators: 1. Plugin Name, 2. WordPress Version
+#: includes/class-woocommerce-delivery-notes.php:231
+#, php-format
+msgid ""
+"You are using an outdated version of WordPress. %1$s requires WP version "
+"%2$s or higher."
+msgstr ""
+
+#. translators: 1. Plugin Name, 2. PHP Version
+#: includes/class-woocommerce-delivery-notes.php:237
+#, php-format
+msgid ""
+"%1$s requires PHP version %2$s or above. Please update PHP to run this "
+"plugin."
+msgstr ""
+
+#. translators: 1. Plugin Name, 2. WooCommerce Version
+#: includes/class-woocommerce-delivery-notes.php:243
+#, php-format
+msgid "WooCommerce not found. %1$s requires WooCommerce v%2$s or higher."
+msgstr ""
+
+#. translators: 1. Plugin Name, 2. WooCommerce Version
+#: includes/class-woocommerce-delivery-notes.php:246
+#, php-format
+msgid ""
+"You are using an outdated version of WooCommerce. %1$s requires WooCommerce "
+"v%2$s or higher."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:176
+msgid "I only needed the plugin for a short period."
+msgstr ""
 
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:182
+msgid "I found a better plugin."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:184
+msgid "Please let us have the plugin's name so that we can make improvements"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:188
+msgid "The plugin is not working."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:190
+msgid ""
+"Please share what was faulty with the plugin so that we may get the issue "
+"fixed."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:194
+msgid "The plugin is causing issues on my site"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:196
+msgid ""
+"We’re sorry! Please tell us about the issues so that we can get them fixed."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:200
+msgid "Some features I need are not working as per my expectations"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:202
+msgid "Please tell us about these features."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:206
+msgid "The plugin is not compatible with another plugin/theme"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:208
+msgid ""
+"We’re sorry! We would like you to tell us the plugin/theme so that we can "
+"work on the compatibility."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:212
+msgid ""
+"I can't differentiate between Invoice, Delivery Notes & Receipt. The "
+"templates are the same."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:218
+msgid "The invoice sent through mail can't be downloaded as PDF directly."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:224
+msgid "This plugin is not useful to me."
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:230
+msgid "Other"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:244
+msgid "If you have a moment, please let us know why you are deactivating:"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:255
+msgid "Skip & Deactivate"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:256
+msgid "Submit & Deactivate"
+msgstr ""
+
+#: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:270
 msgid "Please select a reason for deactivation!"
 msgstr ""
 
-#: includes/wcdn-template-functions.php:393
-msgid "Invoice Date"
+#. translators: 1. Plugin name, 2. URL to find out more about usage tracking
+#: includes/component/plugin-tracking/class-tyche-plugin-tracking.php:262
+#, php-format
+msgid ""
+"Want to help make %1$s even more awesome? Allow %1$s to collect non-"
+"sensitive diagnostic data and usage information and get 20%% off on your "
+"next purchase. <a href=\"%2$s\" target=\"_blank\">Find out more</a>."
 msgstr ""
 
-#: includes/wcdn-template-functions.php:468
-#, fuzzy
-#| msgid "Payment Method"
-msgid "Payment date"
-msgstr "Betaalmethode"
+#: includes/core/class-hooks.php:71
+msgid "Go to the settings page"
+msgstr ""
 
-# @ woocommerce-delivery-notes
-#: includes/wcdn-template-functions.php:492
-msgid "Telephone"
-msgstr "Telefoon"
+#: includes/core/class-hooks.php:72 build/admin.js:1
+#: src/admin/components/Header.js:23
+msgid "Settings"
+msgstr ""
 
-#: includes/wcdn-template-functions.php:533
-msgid "SKU:"
-msgstr "Art.Nr."
+#: includes/frontend/class-frontend.php:323
+msgid "No orders provided."
+msgstr ""
 
-#: includes/wcdn-template-functions.php:657
+#: includes/frontend/class-frontend.php:337
+msgid "Invalid order."
+msgstr ""
+
+#: includes/frontend/class-frontend.php:341
+msgid "Access denied."
+msgstr ""
+
+#: includes/frontend/class-frontend.php:347
+msgid "Access to this document is denied."
+msgstr ""
+
+#: includes/frontend/class-frontend.php:364
+msgid "No valid documents found."
+msgstr ""
+
+#: includes/frontend/class-frontend.php:467
+msgid ""
+"You need to be logged into your account to access this document. Please "
+"login first."
+msgstr ""
+
+#: includes/frontend/class-frontend.php:469
+msgid "Proceed to Login"
+msgstr ""
+
+#: includes/frontend/class-frontend.php:676
+msgid "Print All"
+msgstr ""
+
+#: includes/frontend/class-frontend.php:681
+msgid "Download PDF"
+msgstr ""
+
+#: includes/functions/template-functions.php:269
 msgid "Refund"
 msgstr ""
 
-#: includes/wcdn-template-functions.php:669
+#: includes/functions/template-functions.php:281
 msgid "Order Subtotal"
 msgstr ""
 
-#~ msgid "Create invoice numbers"
-#~ msgstr "Maak factuurnummers"
+#: includes/helpers/class-utils.php:402 includes/helpers/class-utils.php:591
+msgid "Invoice"
+msgstr ""
 
-#~ msgid "This text will be prepended to the invoice number."
-#~ msgstr "Deze tekst wordt achteraan het factuurnummer aangehecht."
+#: includes/helpers/class-utils.php:403
+msgid "Invoices"
+msgstr ""
 
-#~ msgid "This text will be appended to the invoice number."
-#~ msgstr "Deze tekst wordt vooraan het factuurnummer aangehecht."
+#: includes/helpers/class-utils.php:405
+msgid "Print Invoices"
+msgstr ""
 
-# @ woocommerce-delivery-notes
-#~ msgid ""
-#~ "You can preview the <a href=\"%1$s\" target=\"%3$s\" "
-#~ "class=\"%4$s\">invoice template</a> or <a href=\"%2$s\" target=\"%3$s\" "
-#~ "class=\"%4$s\">delivery note template</a>."
-#~ msgstr ""
-#~ "Bekijk een voorbeeld van het <a href=\"%1$s\" target=\"%3$s\" "
-#~ "class=\"%4$s\">factuur sjabloon</a> of het <a href=\"%2$s\" "
-#~ "target=\"%3$s\" class=\"%4$s\">pakbon sjabloon</a>."
+#: includes/helpers/class-utils.php:406
+msgid "Invoice created."
+msgstr ""
 
-# @ woocommerce-delivery-notes
-#~ msgid ""
-#~ "With the FAQ in the readme file you can learn how to customize the "
-#~ "template."
-#~ msgstr ""
-#~ "Lees de FAQ in het readme bestand om te leren hoe je een sjabloon kan "
-#~ "aanpassen."
+#: includes/helpers/class-utils.php:407
+msgid "Invoices created."
+msgstr ""
 
-#~ msgid "Remove Logo"
-#~ msgstr "Verwijder Logo"
+#: includes/helpers/class-utils.php:408
+msgid "Show \"Print Invoice\" button"
+msgstr ""
 
-#~ msgid "A company/shop logo representing your business."
-#~ msgstr "Een logo voor je winkel of bedrijf. "
+#: includes/helpers/class-utils.php:417 includes/helpers/class-utils.php:592
+msgid "Delivery Note"
+msgstr ""
 
-#~ msgid "Note:"
-#~ msgstr "Opmerking:"
+#: includes/helpers/class-utils.php:418
+msgid "Delivery Notes"
+msgstr ""
 
-#~ msgid ""
-#~ "When the image is printed, its pixel density will automatically be eight "
-#~ "times higher than the original. This means, 1 printed inch will "
-#~ "correspond to about 288 pixels on the screen. Example: an image with a "
-#~ "width of 576 pixels and a height of 288 pixels will have a printed size "
-#~ "of about 2 inches to 1 inch."
-#~ msgstr ""
-#~ "Als de afbeelding wordt geprint is de resolutie anders is dan het "
-#~ "origineel. 1 cm komt overeen met 142 pixels. Voorbeeld: aan afbeelding "
-#~ "met een breedte van 994 pixels en een hoogte van 568  pixels wordt "
-#~ "afgedrukt met 7cm breedte en 4 cm hoogte."
+#: includes/helpers/class-utils.php:420
+msgid "Print Delivery Notes"
+msgstr ""
 
-#~ msgid "Your company/shop name for the Delivery Note."
-#~ msgstr "Jouw winkel- of bedrijfsnaam voor op de pakbon"
+#: includes/helpers/class-utils.php:421
+msgid "Delivery Note created."
+msgstr ""
 
-# @ woocommerce-delivery-notes
-#~ msgid ""
-#~ "Leave blank to use the default Website/Blog title defined in WordPress "
-#~ "settings. The name will be ignored when a Logo is set."
-#~ msgstr ""
-#~ "Laat leeg om de naam te gebruiken die in de WordPress settings staat. De "
-#~ "naam zal worden genegeerd als er een logo wordt gebruikt."
+#: includes/helpers/class-utils.php:422
+msgid "Delivery Notes created."
+msgstr ""
 
-# @ woocommerce-delivery-notes
-#~ msgid ""
-#~ "The postal address of the company/shop or even e-mail or telephone, which "
-#~ "gets printed right after the company/shop name."
-#~ msgstr ""
-#~ "Het postadres, e-mail of telefoonnummer van de winkel of het bedrijf. "
-#~ "Deze wordt onder het logo of bedrijfsnaam geprint. "
+#: includes/helpers/class-utils.php:423
+msgid "Show \"Print Delivery Note\" button"
+msgstr ""
 
-#~ msgid "Leave blank to not print an address."
-#~ msgstr "Laat leeg om geen adres te printen."
+#: includes/helpers/class-utils.php:432 includes/helpers/class-utils.php:593
+msgid "Receipt"
+msgstr ""
 
-#~ msgid ""
-#~ "Add some personal notes, or season greetings or whatever (e.g. Thank You "
-#~ "for Your Order!, Merry Christmas!, etc.)."
-#~ msgstr ""
-#~ "Voeg persoonlijke opmerkingen of andere info toe (bv. Bedankt voor uw "
-#~ "bestelling!, Fijne Kerstdagen!, etc.)."
+#: includes/helpers/class-utils.php:433
+msgid "Receipts"
+msgstr ""
 
-#~ msgid "Leave blank to not print any personal notes."
-#~ msgstr "Laat leeg om geen opmerkingen te printen."
+#: includes/helpers/class-utils.php:435
+msgid "Print Receipts"
+msgstr ""
 
-#~ msgid "Returns Policy, Conditions, etc"
-#~ msgstr "Algemene Voorwaarden"
+#: includes/helpers/class-utils.php:436
+msgid "Receipt created."
+msgstr ""
 
-#~ msgid ""
-#~ "Here you can add some more policies, conditions etc. For example add a "
-#~ "returns policy in case the client would like to send back some goods. In "
-#~ "some countries (e.g. in the European Union) this is required so please "
-#~ "add any required info in accordance with the statutory regulations."
-#~ msgstr ""
-#~ "Voeg hier meer richtlijnen en voorwaarden toe. Bijvoorbeeld iets over de "
-#~ "retourregels voor het geval de klant iets wil terugsturen. In sommige "
-#~ "landen (zoals de EU) is dit verplicht."
+#: includes/helpers/class-utils.php:437
+msgid "Receipts created."
+msgstr ""
 
-#~ msgid "Leave blank to not print any policies or conditions."
-#~ msgstr "Laat leeg om geen algemene voorwaarden te printen."
+#: includes/helpers/class-utils.php:438
+msgid "Show \"Print Receipt\" button"
+msgstr ""
 
-# @ woocommerce-delivery-notes
-#~ msgid ""
-#~ "Add some further footer imprint, e-mail, telephone, copyright notes etc. "
-#~ "This makes the printed sheets a bit more branded."
-#~ msgstr ""
-#~ "Voeg wat meer voettekst info toe zoals e-mail, telefoon, copyright, etc. "
+#: includes/helpers/class-utils.php:447 includes/helpers/class-utils.php:594
+msgid "Credit Note"
+msgstr ""
 
-#~ msgid "Leave blank to not print a footer."
-#~ msgstr "Laat leeg om geen voettekst te printen."
+#: includes/helpers/class-utils.php:448
+msgid "Credit Notes"
+msgstr ""
 
-#~ msgid "Front-end Options"
-#~ msgstr "Front-end Opties"
+#: includes/helpers/class-utils.php:450
+msgid "Print Credit Notes"
+msgstr ""
 
-#~ msgid "Print Buttons"
-#~ msgstr "Printknoppen"
+#: includes/helpers/class-utils.php:451
+msgid "Credit Note created."
+msgstr ""
 
-#~ msgid "Order Numbering"
-#~ msgstr "Bestelnummers"
+#: includes/helpers/class-utils.php:452
+msgid "Credit Notes created."
+msgstr ""
 
-#~ msgid "Invoice Number Start"
-#~ msgstr "Factuurnummer Start"
+#: includes/helpers/class-utils.php:453
+msgid "Show \"Credit Note\" button"
+msgstr ""
 
-#~ msgid "Start the numbering at the specified number."
-#~ msgstr "Begin de nummering bij een specifiek getal."
+#: includes/helpers/class-utils.php:462 includes/helpers/class-utils.php:595
+msgid "Packing Slip"
+msgstr ""
 
-#~ msgid "Use only integers."
-#~ msgstr "Gebruik alleen gehele getallen."
+#: includes/helpers/class-utils.php:463
+msgid "Packing Slips"
+msgstr ""
 
-#~ msgid "Already created invoice numbers are not affected by changes."
-#~ msgstr "Reeds gemaakte factuurnummers worden niet aangepast."
+#: includes/helpers/class-utils.php:465
+msgid "Print Packing Slips"
+msgstr ""
 
-#~ msgid "Invoice Number Prefix"
-#~ msgstr "Factuurnummer voorvoegsel"
+#: includes/helpers/class-utils.php:466
+msgid "Packing Slip created."
+msgstr ""
 
-#~ msgid "Leave blank to not add a prefix."
-#~ msgstr "Laat leeg om geen voorvoegsel te gebruiken."
+#: includes/helpers/class-utils.php:467
+msgid "Packing Slips created."
+msgstr ""
 
-#~ msgid "Invoice Number Suffix"
-#~ msgstr "Factuurnummer achtervoegsel"
+#: includes/helpers/class-utils.php:468
+msgid "Show \"Print Packing Slip\" button"
+msgstr ""
 
-#~ msgid "Leave blank to not add a suffix."
-#~ msgstr "Laat leeg om geen achtervoegsel te gebruiken."
+#. translators: 1. Order number, 2. Document type (e.g. Invoice)
+#: includes/integrations/class-emails.php:218
+#, php-format
+msgid "New Order #%1$s — %2$s Attached"
+msgstr ""
 
-#~ msgid "Sequential Order Number"
-#~ msgstr "Sequential Order Numbers"
+#. translators: 1. Document type (e.g. Invoice), 2. Order number
+#: includes/integrations/class-emails.php:228
+#, php-format
+msgid ""
+"A new order has been placed. Please find the %1$s for Order #%2$s attached "
+"to this email."
+msgstr ""
 
-#~ msgid "Sequential numbering is enabled."
-#~ msgstr "'Sequential Order Numbers' is ingeschakeld."
+#: includes/integrations/class-emails.php:377
+msgid "Print:"
+msgstr ""
 
-#~ msgid ""
-#~ "Install and activate the free <a href=\"%s\">WooCommerce Sequential Order "
-#~ "Numbers</a> Plugin."
-#~ msgstr ""
-#~ "Installeer en activeer de gratis <a href=\"%s\">WooCommerce Sequential "
-#~ "Order Numbers</a> Plugin."
+#: includes/services/template/class-template-engine.php:92
+msgid "Invoice Settings"
+msgstr ""
 
-#~ msgid "Delivery note created."
-#~ msgid_plural "%s delivery notes created."
-#~ msgstr[0] "Pakbon is gemaakt."
-#~ msgstr[1] "%s pakbonnen zijn gemaakt."
+#: includes/services/template/class-template-engine.php:98
+#: includes/services/template/class-template-engine.php:117
+#: includes/services/template/class-template-engine.php:136
+#: includes/services/template/class-template-engine.php:155
+#: includes/services/template/class-template-engine.php:174
+msgid "Template Settings"
+msgstr ""
 
-#~ msgid "2.0"
-#~ msgstr "2.0"
+#: includes/services/template/class-template-engine.php:111
+msgid "Receipt Settings"
+msgstr ""
 
-#~ msgid "https://github.com/piffpaffpuff/woocommerce-delivery-notes"
-#~ msgstr "https://github.com/piffpaffpuff/woocommerce-delivery-notes"
+#: includes/services/template/class-template-engine.php:130
+msgid "Delivery Note Settings"
+msgstr ""
 
-#~ msgid "You do not have sufficient permissions to access this page."
-#~ msgstr "U heeft niet voldoende rechten om deze pagina te bekijken."
+#: includes/services/template/class-template-engine.php:149
+msgid "Packing Slip Settings"
+msgstr ""
 
-#~ msgid "Support"
-#~ msgstr "Ondersteuning"
+#: includes/services/template/class-template-engine.php:168
+msgid "Credit Note Settings"
+msgstr ""
 
-#~ msgid "Weight:"
-#~ msgstr "Gewicht:"
+#: includes/services/template/class-template-engine.php:531
+msgid "Enable Invoice"
+msgstr ""
 
-#~ msgid "Plugin: WooCommerce Print Invoices & Delivery Notes"
-#~ msgstr "Plugin: WooCommerce Print Invoices & Delivery Notes "
+#: includes/services/template/class-template-engine.php:532
+msgid "Enable Receipt"
+msgstr ""
 
-#~ msgid "Project on GitHub"
-#~ msgstr "Project op GitHub "
+#: includes/services/template/class-template-engine.php:533
+msgid "Enable Delivery Note"
+msgstr ""
 
-#~ msgid "Recipient"
-#~ msgstr "Ontvanger"
+#: includes/services/template/class-template-engine.php:534
+msgid "Enable Packing Slip"
+msgstr ""
 
-#~ msgid "Steve Clark, Triggvy Gunderson, David Decker"
-#~ msgstr "Steve Clark, Triggvy Gunderson, David Decker"
+#: includes/services/template/class-template-engine.php:535
+msgid "Enable Credit Note"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:540
+msgid ""
+"An invoice ia a detailed bill showing items purchased, taxes, shipping "
+"charges, and the total amount due."
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:544
+msgid ""
+"A receipt is used to issue a payment confirmation document showing items "
+"purchased and the amount paid."
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:548
+msgid ""
+"The delivery note template generates a document listing delivered items."
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:552
+msgid ""
+"The packing slip includes a document inside the package detailing the "
+"shipment contents for verification."
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:556
+msgid ""
+"The credit note is a document created to refund or adjust a previously "
+"issued invoice."
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:568
+msgid "Date Format"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:606
+msgid "PDF Filename"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:607
+msgid "Available placeholders: {order_number}, {order_date}, {customer_name}"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:626
+msgid "Attach PDF to customer emails"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:636
+msgid "Send the PDF as an attachment to all administrator email addresses."
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:646
+msgid "Attach PDF to custom email addresses"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:656
+msgid "Enter multiple email addresses separated by commas."
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:669
+msgid "Attach PDF to selected order status(es)"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:688
+msgid "Start typing to select order statuses."
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:699
+msgid "Attach PDF to selected WooCommerce Email(s)"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:712
+msgid "Start typing to select WooCommerce email types."
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:722
+msgid "Show Shop Logo"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:737
+msgid "Scale"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:747
+msgid "Alignment"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:758
+msgid "Document Title"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:765
+#: includes/services/template/class-template-engine.php:1730
+msgid "Title"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:767
+msgid "INVOICE"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:768
+msgid "RECEIPT"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:769
+msgid "DELIVERY NOTE"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:770
+msgid "PACKING SLIP"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:771
+msgid "CREDIT NOTE"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:779
+#: includes/services/template/class-template-engine.php:832
+#: includes/services/template/class-template-engine.php:885
+#: includes/services/template/class-template-engine.php:946
+#: includes/services/template/class-template-engine.php:989
+#: includes/services/template/class-template-engine.php:1032
+#: includes/services/template/class-template-engine.php:1093
+#: includes/services/template/class-template-engine.php:1154
+#: includes/services/template/class-template-engine.php:1227
+#: includes/services/template/class-template-engine.php:1288
+#: includes/services/template/class-template-engine.php:1349
+#: includes/services/template/class-template-engine.php:1410
+#: includes/services/template/class-template-engine.php:1471
+#: includes/services/template/class-template-engine.php:1583
+#: includes/services/template/class-template-engine.php:1644
+#: includes/services/template/class-template-engine.php:1738
+#: includes/services/template/class-template-engine.php:1782
+#: includes/services/template/class-template-engine.php:1817
+#: includes/services/template/class-template-engine.php:1852
+#: includes/services/template/class-template-engine.php:1898
+msgid "Font Size"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:789
+#: includes/services/template/class-template-engine.php:842
+#: includes/services/template/class-template-engine.php:895
+#: includes/services/template/class-template-engine.php:1042
+#: includes/services/template/class-template-engine.php:1103
+#: includes/services/template/class-template-engine.php:1164
+#: includes/services/template/class-template-engine.php:1237
+#: includes/services/template/class-template-engine.php:1298
+#: includes/services/template/class-template-engine.php:1359
+#: includes/services/template/class-template-engine.php:1420
+#: includes/services/template/class-template-engine.php:1481
+#: includes/services/template/class-template-engine.php:1532
+#: includes/services/template/class-template-engine.php:1593
+#: includes/services/template/class-template-engine.php:1654
+#: includes/services/template/class-template-engine.php:1748
+msgid "Font Style"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:798
+#: includes/services/template/class-template-engine.php:851
+#: includes/services/template/class-template-engine.php:904
+#: includes/services/template/class-template-engine.php:1051
+#: includes/services/template/class-template-engine.php:1112
+#: includes/services/template/class-template-engine.php:1173
+#: includes/services/template/class-template-engine.php:1246
+#: includes/services/template/class-template-engine.php:1307
+#: includes/services/template/class-template-engine.php:1368
+#: includes/services/template/class-template-engine.php:1429
+#: includes/services/template/class-template-engine.php:1490
+#: includes/services/template/class-template-engine.php:1541
+#: includes/services/template/class-template-engine.php:1602
+#: includes/services/template/class-template-engine.php:1663
+msgid "Text Align"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:807
+#: includes/services/template/class-template-engine.php:860
+#: includes/services/template/class-template-engine.php:913
+#: includes/services/template/class-template-engine.php:956
+#: includes/services/template/class-template-engine.php:999
+#: includes/services/template/class-template-engine.php:1060
+#: includes/services/template/class-template-engine.php:1121
+#: includes/services/template/class-template-engine.php:1182
+#: includes/services/template/class-template-engine.php:1255
+#: includes/services/template/class-template-engine.php:1316
+#: includes/services/template/class-template-engine.php:1377
+#: includes/services/template/class-template-engine.php:1438
+#: includes/services/template/class-template-engine.php:1499
+#: includes/services/template/class-template-engine.php:1550
+#: includes/services/template/class-template-engine.php:1611
+#: includes/services/template/class-template-engine.php:1672
+#: includes/services/template/class-template-engine.php:1757
+#: includes/services/template/class-template-engine.php:1792
+#: includes/services/template/class-template-engine.php:1827
+#: includes/services/template/class-template-engine.php:1862
+msgid "Text Color"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:817
+msgid "Show Shop Name"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:870
+msgid "Show Shop Address"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:923
+msgid "Show Shop Phone Number"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:938
+#: includes/services/template/class-template-engine.php:981
+#: includes/services/template/class-template-engine.php:1024
+#: includes/services/template/class-template-engine.php:1085
+#: includes/services/template/class-template-engine.php:1146
+#: includes/services/template/class-template-engine.php:1213
+#: includes/services/template/class-template-engine.php:1280
+#: includes/services/template/class-template-engine.php:1341
+#: includes/services/template/class-template-engine.php:1402
+#: includes/services/template/class-template-engine.php:1463
+#: includes/services/template/class-template-engine.php:1524
+#: includes/services/template/class-template-engine.php:1575
+#: includes/services/template/class-template-engine.php:1636
+#: includes/services/template/class-template-engine.php:1887
+msgid "Text"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:966
+msgid "Show Shop Email Address"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1009
+msgid "Show Billing Address"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1070
+msgid "Show Shipping Address"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1131
+msgid "Show Invoice Number"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1193
+msgid "Show Invoice Date"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1194
+msgid "Show Receipt Date"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1195
+msgid "Show Delivery Note Date"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1196
+msgid "Show Packing Slip Date"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1197
+msgid "Show Credit Note Date"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1215
+msgid "Invoice Date"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1216
+msgid "Receipt Date"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1217
+msgid "Delivery Note Date"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1218
+msgid "Packing Slip Date"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1219
+msgid "Credit Note Date"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1265
+msgid "Show Order Number"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1326
+msgid "Show Order Date"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1387
+msgid "Show Payment Method"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1403
+#: includes/services/template/class-template-engine.php:1464
+msgid "Payment Method"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1448
+msgid "Show Payment Date"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1509
+msgid "Show Shipping Method"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1525
+msgid "Shipping Method"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1560
+msgid "Show Refund Date"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1576
+msgid "Refund Date"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1621
+msgid "Show Refund Reason"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1637
+msgid "Refund Reason"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1682
+msgid "Show Pay Now Button"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1697
+msgid "Button Label"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1698
+msgid "Pay Now"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1705
+msgid "Button Color"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1715
+msgid "Show Customer Note"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1767
+msgid "Show Complimentary Close"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1802
+msgid "Show Policies"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1837
+msgid "Show Footer"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1872
+msgid "Show Watermark"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1889
+msgid "PAID"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1890
+msgid "REFUNDED"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1908
+msgid "Opacity"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1919
+msgid "Angle"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1930
+msgid "Layout"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1948
+msgid "Color"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1958
+msgid "Display Price in Product Details Table"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:1975
+msgid "Display Refund Items in Product Table"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:2006
+msgid "Left"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:2010
+msgid "Center"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:2014
+msgid "Right"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:2020
+msgid "Normal"
+msgstr ""
+
+#: includes/services/template/class-template-engine.php:2024
+msgid "Bold"
+msgstr ""
+
+#: templates/base.php:334
+msgid "Refunded Item"
+msgstr ""
+
+#: templates/base.php:334
+msgid "Product"
+msgstr ""
+
+#: templates/base.php:341
+msgid "Price"
+msgstr ""
+
+#: templates/base.php:344
+msgid "Quantity"
+msgstr ""
+
+#: templates/base.php:350
+msgid "Total Refunded"
+msgstr ""
+
+#: templates/base.php:350
+msgid "Total"
+msgstr ""
+
+#: templates/base.php:419
+msgid "Subtotal:"
+msgstr ""
+
+#: templates/base.php:426
+msgid "Tax:"
+msgstr ""
+
+#: templates/base.php:433
+msgid "Shipping:"
+msgstr ""
+
+#: templates/base.php:440
+msgid "Order Total:"
+msgstr ""
+
+#: templates/base.php:444
+msgid "Refund:"
+msgstr ""
+
+#: templates/base.php:448 templates/base.php:458
+msgid "Total:"
+msgstr ""
+
+#: build/admin.js:1 src/admin/components/Header.js:17
+msgid "Dashboard"
+msgstr ""
+
+#: build/admin.js:1 src/admin/components/Header.js:19
+msgid "Templates"
+msgstr ""
+
+#: build/admin.js:1 src/admin/components/Header.js:26
+msgid "FAQs"
+msgstr ""
+
+#: build/admin.js:1 src/admin/components/Alert.js:22
+msgid "Dismiss"
+msgstr ""
+
+#: build/admin.js:1 src/admin/components/Footer.js:16
+msgid "Get our"
+msgstr ""
+
+#: build/admin.js:1 src/admin/components/Footer.js:18
+msgid "Order Delivery Date Pro"
+msgstr ""
+
+#: build/admin.js:1 src/admin/components/Footer.js:20
+msgid ""
+"plugin to schedule and manage your local deliveries and pickups in "
+"WooCommerce."
+msgstr ""
+
+#: build/admin.js:1 src/admin/components/Footer.js:27
+msgid "Open the support forum for this plugin on WordPress.org"
+msgstr ""
+
+#: build/admin.js:1 src/admin/components/Footer.js:29
+msgid "Need Support?"
+msgstr ""
+
+#: build/admin.js:1 src/admin/components/Footer.js:31
+msgid "We're always happy to help you."
+msgstr ""
+
+#: build/admin.js:1 src/admin/components/Footer.js:34
+msgid "If this plugin helped you,"
+msgstr ""
+
+#: build/admin.js:1 src/admin/components/Footer.js:39
+msgid "Leave a review for this plugin on WordPress.org"
+msgstr ""
+
+#: build/admin.js:1 src/admin/components/Footer.js:41
+msgid "please rate it"
+msgstr ""
+
+#: build/admin.js:1 src/admin/components/Footer.js:46
+msgid "Check out more plugins by"
+msgstr ""
+
+#: build/admin.js:1 src/admin/components/Footer.js:51
+msgid "Visit Tyche Softwares to explore more WooCommerce plugins"
+msgstr ""

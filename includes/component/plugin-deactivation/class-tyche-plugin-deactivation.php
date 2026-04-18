@@ -10,9 +10,11 @@
  * @since       1.2
  */
 
+namespace Tyche\WCDN;
+
 defined( 'ABSPATH' ) || exit;
 
-if ( ! class_exists( 'Tyche_Plugin_Deactivation' ) ) {
+if ( ! class_exists( 'Tyche\WCDN\Tyche_Plugin_Deactivation' ) ) {
 
 	/**
 	 * Plugin Deactivation.
@@ -80,8 +82,9 @@ if ( ! class_exists( 'Tyche_Plugin_Deactivation' ) ) {
 		/**
 		 * Construct
 		 *
-		 * @since 1.1
 		 * @param array $options Options.
+		 *
+		 * @since 1.1
 		 */
 		public function __construct( $options ) {
 
@@ -127,6 +130,7 @@ if ( ! class_exists( 'Tyche_Plugin_Deactivation' ) ) {
 		 * @param mixed $links Plugin Action links.
 		 *
 		 * @return    array
+		 *
 		 * @since 1.1
 		 */
 		public function plugin_action_links( $links ) {

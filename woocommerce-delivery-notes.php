@@ -1,24 +1,28 @@
 <?php
 /**
- * Print invoices & delivery notes for WooCommerce orders.
+ * Print Invoice & Delivery Notes for WooCommerce
  *
- * Plugin Name: Print Invoice & Delivery Notes for WooCommerce
- * Plugin URI: https://www.tychesoftwares.com/
- * Description: Print Invoices & Delivery Notes for WooCommerce Orders.
- * Version: 6.0.0
- * Author: Tyche Softwares
- * Author URI: https://www.tychesoftwares.com/
- * License: GPLv3 or later
- * License URI: http://www.opensource.org/licenses/gpl-license.php
- * Text Domain: woocommerce-delivery-notes
+ * @package      woocommerce-print-invoice-delivery-notes
+ * @copyright    Copyright (C) 2026, Tyche Softwares - support@tychesoftwares.com
+ * @link         https://www.tychesoftwares.com
+ * @since        6.0
+ *
+ * @wordpress-plugin
+ * Plugin Name:  Print Invoice & Delivery Notes for WooCommerce
+ * Plugin URI:   https://www.tychesoftwares.com
+ * Description:  This plugin lets you generate, customize, print, and email professional order documents directly from your WooCommerce store.
+ * Version:      7.0.0
+ * Author:       Tyche Softwares
+ * Author URI:   http://www.tychesoftwares.com
+ * Text Domain:  woocommerce-delivery-notes
  * Domain Path: /languages
- * WC tested up to: 10.4.3
- * Tested up to: 6.9.0
- * WC requires at least: 5.0.0
  * Requires PHP: 7.4
+ * WC requires at least: 5.0.0
+ * WC tested up to: 6.9.0
  * Requires Plugins: woocommerce
+ * License: GPLv3
  *
- * Copyright 2019 Tyche Softwares
+ * Copyright 2026 Tyche Softwares
  *
  *     This file is part of Print Invoice & Delivery Notes for WooCommerce,
  *     a plugin for WordPress.
@@ -36,36 +40,29 @@
  *
  *     You should have received a copy of the GNU General Public License
  *     along with WordPress. If not, see <http://www.gnu.org/licenses/>.
- *
- * @package woocommerce-print-invoice-delivery-notes
  */
+
+namespace Tyche\WCDN;
+
+defined( 'ABSPATH' ) || exit;
+
+if ( ! defined( 'WCDN_FILE' ) ) {
+	define( 'WCDN_FILE', __FILE__ );
+}
+
+// Include the WCDN class.
+if ( ! class_exists( 'WooCommerce_Delivery_Notes', false ) ) {
+	include_once dirname( WCDN_FILE ) . '/includes/class-woocommerce-delivery-notes.php';
+}
 
 /**
- * Exit if accessed directly
+ * Returns the instance of WCDN.
+ *
+ * @since  7.0
+ * @return WCDN
  */
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+function WCDN() { // phpcs:ignore WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid
+	return WooCommerce_Delivery_Notes::instance();
 }
 
-if ( ! class_exists( 'WooCommerce_Delivery_Notes' ) ) {
-	include_once 'includes/class-woocommerce-delivery-notes.php';
-
-	/**
-	 * Global for backwards compatibility.
-	 */
-	$GLOBALS['wcdn'] = WooCommerce_Delivery_Notes::instance();
-
-	/**
-	 * Sets the compatibility with Woocommerce HPOS.
-	 */
-	add_action(
-		'before_woocommerce_init',
-		function () {
-			if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
-				\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', 'woocommerce-delivery-notes/woocommerce-delivery-notes.php', true );
-				\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'orders_cache', 'woocommerce-delivery-notes/woocommerce-delivery-notes.php', true );
-			}
-		}
-	);
-
-}
+WCDN();
