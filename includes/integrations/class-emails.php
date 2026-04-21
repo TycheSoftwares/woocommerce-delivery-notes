@@ -102,6 +102,10 @@ class Emails {
 		$upload_dir = wp_upload_dir();
 		$filesystem = Utils::get_filesystem();
 
+		if ( $order instanceof \WC_Order_Refund ) {
+			$order = wc_get_order( $order->get_parent_id() );
+		}
+
 		if ( ! $order instanceof \WC_Order || ! $filesystem ) {
 			return $attachments;
 		}
@@ -187,6 +191,13 @@ class Emails {
 	 * @since 7.0
 	 */
 	protected function send_to_custom_email( $emails, $order, $file_path, $template ) {
+
+		if ( $order instanceof \WC_Order_Refund ) {
+			$order = wc_get_order( $order->get_parent_id() );
+			if ( ! $order ) {
+				return;
+			}
+		}
 
 		$already_sent = $order->get_meta( '_email_pdf_sent', true );
 
@@ -285,6 +296,13 @@ class Emails {
 	 * @since 7.0
 	 */
 	public function add_email_print_url( $order, $sent_to_admin = true, $plain_text = false ) {
+
+		if ( $order instanceof \WC_Order_Refund ) {
+			$order = wc_get_order( $order->get_parent_id() );
+			if ( ! $order ) {
+				return;
+			}
+		}
 
 		$show_customer_email_link = Settings::get( 'showCustomerEmailLink' );
 		$show_admin_email_link    = Settings::get( 'showAdminEmailLink' );

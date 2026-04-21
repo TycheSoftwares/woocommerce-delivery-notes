@@ -92,8 +92,8 @@ class Frontend {
 
 		$endpoint = Settings::get( 'printEndpoint' );
 
-		if ( isset( $_GET[ $endpoint ] ) ) { // phpcs:ignore
-			$wp->query_vars[$endpoint] = sanitize_text_field( wp_unslash( $_GET[ $endpoint ] ) ); // phpcs:ignore
+		if ( isset( $_GET[ $endpoint ] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- frontend print endpoint, no nonce applicable
+			$wp->query_vars[ $endpoint ] = sanitize_text_field( wp_unslash( $_GET[ $endpoint ] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		} elseif ( isset( $wp->query_vars[ $endpoint ] ) ) {
 			$wp->query_vars[ $endpoint ] = $wp->query_vars[ $endpoint ];
 		}
@@ -126,6 +126,10 @@ class Frontend {
 	 */
 	public function create_print_button_account_page( $actions, $order ) {
 
+		if ( $order instanceof \WC_Order_Refund ) {
+			return $actions;
+		}
+
 		$order_id       = wcdn_order_id( $order );
 		$template_types = Utils::get_template_types( $order );
 
@@ -153,7 +157,7 @@ class Frontend {
 			$actions[ 'wcdn_print_' . $type ] = array(
 				'url'  => Utils::get_print_page_url( $order_id, $type ),
 				'name' => esc_html(
-					Utils::get_label_for_template_type( $type, 'my_account' )
+					Utils::get_label_for_template_type( $type )
 				),
 			);
 		}
@@ -172,7 +176,7 @@ class Frontend {
 
 		$order = wc_get_order( $order_id );
 
-		if ( ! $order ) {
+		if ( ! $order || $order instanceof \WC_Order_Refund ) {
 			return;
 		}
 
@@ -203,7 +207,7 @@ class Frontend {
 
 			// Tracking page support.
 			if ( $this->is_woocommerce_tracking_page() ) {
-				$wdn_order_email = isset( $_REQUEST['order_email'] ) ? sanitize_email( wp_unslash( $_REQUEST['order_email'] ) ) : ''; // phpcs:ignore
+				$wdn_order_email = isset( $_REQUEST['order_email'] ) ? sanitize_email( wp_unslash( $_REQUEST['order_email'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- WooCommerce order tracking page, no nonce applicable
 
 				$print_url = Utils::get_print_page_url( $order_id, $type, $wdn_order_email );
 			}
@@ -222,7 +226,7 @@ class Frontend {
 	<a href="<?php echo esc_url( $print_url ); ?>" class="button print" target="_blank" rel="noopener">
 			<?php
 				echo esc_html(
-					Utils::get_label_for_template_type( $type, 'view_order' )
+					Utils::get_label_for_template_type( $type )
 				);
 			?>
 	</a>
@@ -240,7 +244,7 @@ class Frontend {
 	 * @since 7.0
 	 */
 	public function is_woocommerce_tracking_page() {
-		return ( is_page( wc_get_page_id( 'order_tracking' ) ) && isset( $_REQUEST['order_email'] ) ) ? true : false; // phpcs:ignore
+		return ( is_page( wc_get_page_id( 'order_tracking' ) ) && isset( $_REQUEST['order_email'] ) ) ? true : false; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only presence check, no data processed
 	}
 
 	/**
@@ -285,10 +289,10 @@ class Frontend {
 			return;
 		}
 
-		$type      = ! empty( $_REQUEST['print-order-type'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['print-order-type'] ) ) : null; // phpcs:ignore
-		$email     = ! empty( $_REQUEST['print-order-email'] ) ? sanitize_email( wp_unslash( $_REQUEST['print-order-email'] ) ) : null; // phpcs:ignore
-		$order_ids = isset( $_GET[ $endpoint ] ) ? sanitize_text_field( wp_unslash( $_GET[ $endpoint ] ) ) : ''; // phpcs:ignore
-		$is_sample = isset( $_GET['sample'] ) && $_GET['sample']; // phpcs:ignore
+		$type      = ! empty( $_REQUEST['print-order-type'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['print-order-type'] ) ) : null; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- frontend print page, no nonce applicable
+		$email     = ! empty( $_REQUEST['print-order-email'] ) ? sanitize_email( wp_unslash( $_REQUEST['print-order-email'] ) ) : null; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$order_ids = isset( $_GET[ $endpoint ] ) ? sanitize_text_field( wp_unslash( $_GET[ $endpoint ] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$is_sample = ! empty( $_GET['sample'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- presence check only, value is not used
 
 		$this->render_document( $order_ids, $type, $email );
 
@@ -335,6 +339,14 @@ class Frontend {
 
 				if ( ! $order ) {
 					wp_die( esc_html__( 'Invalid order.', 'woocommerce-delivery-notes' ) );
+				}
+
+				// Refund IDs resolve to WC_Order_Refund — use the parent order instead.
+				if ( $order instanceof \WC_Order_Refund ) {
+					$order = wc_get_order( $order->get_parent_id() );
+					if ( ! $order ) {
+						wp_die( esc_html__( 'Invalid order.', 'woocommerce-delivery-notes' ) );
+					}
 				}
 
 				if ( ! $this->can_view_order( $order, $email ) ) {
@@ -463,10 +475,10 @@ class Frontend {
 
 				$redirect_url = isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : home_url();
 
-				if ( isset( $_GET['need_login_message'] ) && 'true' === $_GET['need_login_message'] ) { // phpcs:ignore
-					echo '<div class="notice notice-info"><p>' . __( 'You need to be logged into your account to access this document. Please login first.', 'woocommerce-delivery-notes' ) . '</p></div>'; // phpcs:ignore
+				if ( isset( $_GET['need_login_message'] ) && 'true' === $_GET['need_login_message'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only flag set by this plugin's own redirect
+					echo '<div class="notice notice-info"><p>' . esc_html__( 'You need to be logged into your account to access this document. Please login first.', 'woocommerce-delivery-notes' ) . '</p></div>';
 					// Display a confirmation button to redirect the user to the login page.
-					echo '<a href="' . wp_login_url( $redirect_url ) . '" class="button">' . __( 'Proceed to Login', 'woocommerce-delivery-notes' ) . '</a>'; // phpcs:ignore
+					echo '<a href="' . esc_url( wp_login_url( $redirect_url ) ) . '" class="button">' . esc_html__( 'Proceed to Login', 'woocommerce-delivery-notes' ) . '</a>';
 					exit;
 				} else {
 					wp_safe_redirect( add_query_arg( 'need_login_message', 'true', $redirect_url ) );
@@ -663,7 +675,7 @@ class Frontend {
 
 		<?php foreach ( $documents as $doc ) : ?>
 		<div class="wcdn-document-wrapper">
-			<?php echo $doc['html']; // phpcs:ignore ?>
+			<?php echo $doc['html']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Rendered HTML from Template_Renderer, escaping would break the document output ?>
 		</div>
 		<?php endforeach; ?>
 

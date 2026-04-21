@@ -13,12 +13,12 @@
  * Description:  This plugin lets you generate, customize, print, and email professional order documents directly from your WooCommerce store.
  * Version:      7.0.0
  * Author:       Tyche Softwares
- * Author URI:   http://www.tychesoftwares.com
+ * Author URI:   https://www.tychesoftwares.com
  * Text Domain:  woocommerce-delivery-notes
  * Domain Path: /languages
  * Requires PHP: 7.4
  * WC requires at least: 5.0.0
- * WC tested up to: 6.9.0
+ * WC tested up to: 10.7.0
  * Requires Plugins: woocommerce
  * License: GPLv3
  *

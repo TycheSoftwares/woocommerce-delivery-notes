@@ -42,6 +42,7 @@ class Pdf {
 	public function __construct() {
 		add_action( 'init', array( $this, 'init' ), 100 );
 		add_action( 'wcdn_delete_pdf_files', array( $this, 'delete_pdf_files' ), 100 );
+		add_action( 'wcdn_prefetch_locale_fonts', array( $this, 'prefetch_locale_fonts' ), 10 );
 	}
 
 	/**
@@ -70,6 +71,18 @@ class Pdf {
 				wp_mkdir_p( $folder );
 			}
 		}
+	}
+
+	/**
+	 * Background Action Scheduler handler: pre-download the locale font.
+	 *
+	 * Scheduled on plugin activation so the font is cached before the first
+	 * PDF is generated. Falls back gracefully if the download fails.
+	 *
+	 * @since 7.0
+	 */
+	public function prefetch_locale_fonts() {
+		Template_Renderer::prefetch_locale_font();
 	}
 
 	/**
@@ -184,13 +197,68 @@ class Pdf {
 			return false;
 		}
 
+		$upload_fonts_dir = trailingslashit( wp_upload_dir()['basedir'] ) . 'wcdn/fonts';
+		wp_mkdir_p( $upload_fonts_dir );
+
 		$options = new Options();
 		$options->set( 'isRemoteEnabled', true );
 		$options->set( 'isHtml5ParserEnabled', true );
 		$options->set( 'isFontSubsettingEnabled', true );
 		$options->set( 'dpi', apply_filters( 'wcdn_pdf_dpi', 150 ) );
 
+		/*
+		 * Use uploads/wcdn/fonts/ as the font cache directory so locale fonts
+		 * (which can be 5–20 MB for CJK scripts) are stored outside the vendor
+		 * directory and survive Composer updates.
+		 *
+		 * The chroot is extended to include ABSPATH and the fonts directory so
+		 * dompdf can read locale font files registered via FontMetrics::registerFont().
+		 * dompdf's own rootDir is kept so it can access its bundled DejaVu fonts.
+		 */
+		$options->set( 'fontDir', $upload_fonts_dir );
+		$options->set( 'fontCache', $upload_fonts_dir );
+		$options->set(
+			'chroot',
+			array_values(
+				array_filter(
+					array(
+						$options->getRootDir(),
+						realpath( ABSPATH ),
+						realpath( $upload_fonts_dir ),
+					)
+				)
+			)
+		);
+
 		$dompdf = new Dompdf( $options );
+
+		// Register locale font directly with FontMetrics — avoids base64-encoding
+		// large font files into the CSS, which can exhaust PHP memory for CJK scripts.
+		// Register Inter and locale fonts via registerFont() rather than base64 @font-face.
+		// Base64-embedding 4 font weights inflates the HTML to 2+ MB which causes dompdf's
+		// CSS parser to exhaust memory before reaching the font-family declarations.
+		$inter_dir     = WCDN_PLUGIN_PATH . '/assets/fonts/inter/';
+		$inter_weights = array(
+			'400' => 'Inter-Regular.ttf',
+			'500' => 'Inter-Medium.ttf',
+			'600' => 'Inter-SemiBold.ttf',
+			'700' => 'Inter-Bold.ttf',
+		);
+		foreach ( $inter_weights as $weight => $filename ) {
+			$path = $inter_dir . $filename;
+			if ( file_exists( $path ) ) {
+				$dompdf->getFontMetrics()->registerFont(
+					array(
+						'family' => 'Inter',
+						'weight' => $weight,
+						'style'  => 'normal',
+					),
+					$path
+				);
+			}
+		}
+		Template_Renderer::register_locale_font( $dompdf );
+
 		$dompdf->loadHtml( $html, 'UTF-8' );
 
 		$paper_size  = apply_filters( 'wcdn_pdf_paper_size', 'A4', $order_id );

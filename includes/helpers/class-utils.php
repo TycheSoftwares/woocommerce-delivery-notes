@@ -60,7 +60,7 @@ class Utils {
 		// Check for guest access token in the order meta.
 		$guest_token       = '';
 		$current_user_id   = get_current_user_id();
-		$current_user_type = $current_user_id ? ( current_user_can( 'manage_woocommerce' ) ? 'admin' : 'customer' ) : 'guest';
+		$current_user_type = $current_user_id ? ( current_user_can( 'manage_woocommerce' ) ? 'admin' : 'customer' ) : 'guest'; // phpcs:ignore WordPress.WP.Capabilities.Unknown
 
 		$should_check_guest_token = apply_filters(
 			'wcdn_allow_check_for_guest_token',
@@ -81,7 +81,7 @@ class Utils {
 		}
 
 		// Create another url depending on where the user prints. This prevents some issues with ssl when the my-account page is secured with ssl but the admin isn't.
-		if ( is_admin() && current_user_can( 'edit_shop_orders' ) && false === $permalink ) {
+		if ( is_admin() && current_user_can( 'edit_shop_orders' ) && false === $permalink ) { // phpcs:ignore WordPress.WP.Capabilities.Unknown
 
 			// For the admin we use the ajax.php for better security.
 			$args     = wp_parse_args( array( 'action' => 'print_order' ), $args );
@@ -143,6 +143,10 @@ class Utils {
 
 		if ( is_numeric( $order ) ) {
 			$order = wc_get_order( $order );
+		}
+
+		if ( $order instanceof \WC_Order_Refund ) {
+			$order = wc_get_order( $order->get_parent_id() );
 		}
 
 		if ( ! $order instanceof \WC_Order ) {
@@ -484,6 +488,13 @@ class Utils {
 	 */
 	public static function get_template_types( $order ) {
 
+		if ( $order instanceof \WC_Order_Refund ) {
+			$order = wc_get_order( $order->get_parent_id() );
+			if ( ! $order ) {
+				return array();
+			}
+		}
+
 		$types  = array();
 		$status = $order->get_status();
 
@@ -550,15 +561,7 @@ class Utils {
 	 * @return string Translated label for the given template type.
 	 * @since 7.0
 	 */
-	public static function get_label_for_template_type( $template_type, $context = 'bulk' ) {
-
-		if ( 'my_account' === $context ) {
-			return Settings::get( 'myAccountPageButtonLabel' );
-		}
-
-		if ( 'view_order' === $context ) {
-			return Settings::get( 'viewOrderButtonLabel' );
-		}
+	public static function get_label_for_template_type( $template_type ) {
 
 		$map = array(
 			'invoice'      => 'invoiceButtonLabel',
@@ -569,10 +572,14 @@ class Utils {
 		);
 
 		if ( isset( $map[ $template_type ] ) ) {
-			return Settings::get( $map[ $template_type ] );
+			$override = Settings::get( $map[ $template_type ] );
+			if ( ! empty( $override ) ) {
+				return $override;
+			}
 		}
 
-		return __( 'Print', 'woocommerce-delivery-notes' );
+		$label_data = self::template_label( $template_type );
+		return $label_data['labels']['print'] ?? __( 'Print', 'woocommerce-delivery-notes' );
 	}
 
 	/**

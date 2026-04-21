@@ -180,7 +180,7 @@ function wcdn_get_order_invoice_date( $order_id ) {
  * @param object $product Product Object.
  * @param object $order Order object.
  */
-function wcdn_additional_product_fields( $fields, $product, $order ) { // phpcs:ignore
+function wcdn_additional_product_fields( $fields, $product, $order ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter -- deprecated stub, parameters kept for backwards-compatible signature
 	_deprecated_function( __METHOD__, '7.0' );
 }
 
@@ -190,7 +190,7 @@ function wcdn_additional_product_fields( $fields, $product, $order ) { // phpcs:
  *
  * @param object $order Order object.
  */
-function wcdn_has_shipping_address( $order ) { // phpcs:ignore
+function wcdn_has_shipping_address( $order ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter -- deprecated stub, parameter kept for backwards-compatible signature
 	_deprecated_function( __METHOD__, '7.0' );
 }
 
@@ -292,7 +292,7 @@ function wcdn_add_refunded_order_totals( $total_rows, $order ) {
  * @param array  $total_rows Rows array.
  * @param object $order Order object.
  */
-function wcdn_remove_semicolon_from_totals( $total_rows, $order ) { // phpcs:ignore
+function wcdn_remove_semicolon_from_totals( $total_rows, $order ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter -- $order required by WooCommerce filter signature
 	foreach ( $total_rows as $key => $row ) {
 		$label = $row['label'];
 		$colon = strrpos( $label, ':' );
@@ -310,7 +310,7 @@ function wcdn_remove_semicolon_from_totals( $total_rows, $order ) { // phpcs:ign
  * @param array  $total_rows Rows array.
  * @param object $order Order object.
  */
-function wcdn_remove_payment_method_from_totals( $total_rows, $order ) { // phpcs:ignore
+function wcdn_remove_payment_method_from_totals( $total_rows, $order ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter -- $order required by WooCommerce filter signature
 	unset( $total_rows['payment_method'] );
 	unset( $total_rows['refund_0'] );
 	return $total_rows;
@@ -411,7 +411,7 @@ function wcdn_get_adjusted_quantity( $order, $item_id ) {
  * @param WC_Order $order The WooCommerce order object.
  * @param array    $data  The checkout data.
  */
-function wcdn_add_guest_access_token_to_order( $order, $data ) { // phpcs:ignore
+function wcdn_add_guest_access_token_to_order( $order, $data ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter -- deprecated stub, parameters kept for backwards-compatible signature
 	_deprecated_function( __METHOD__, '7.0' );
 }
 

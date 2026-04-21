@@ -145,6 +145,9 @@ class Install {
 
 		do_action( WCDN_SLUG . '_installed' );
 
+		// Pre-download the locale font in the background so it is ready before the first PDF.
+		as_enqueue_async_action( 'wcdn_prefetch_locale_fonts', array(), 'wcdn' );
+
 		wp_clear_scheduled_hook( 'wcdn_ts_tracker_send_event' );
 
 		update_option( 'wcdn_flush_rewrite_rules', 1 );

@@ -1,17 +1,15 @@
 === Print Invoice & Delivery Notes for WooCommerce ===
 
 Contributors: ashokrane, tychesoftwares
-Donate link: https://www.paypal.me/TycheSoftwares
 Tags: packing slips, invoice, pdf invoice, delivery notes, woocommerce print invoice
 Requires at least: 6.0
 Requires PHP: 7.4
-Tested up to: 6.9.1
+Tested up to: 6.9.4
 WC requires at least: 5.0.0
-WC tested up to: 6.9.1
-Author URI: https://www.tychesoftwares.com/
+WC tested up to: 10.7.0
 Stable tag: 7.0.0
 License: GPLv3 or later
-License URI: http://www.opensource.org/licenses/gpl-license.php
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 Create and print PDF invoices, delivery notes, receipts, credit notes, and packing slips for your WooCommerce orders.
 

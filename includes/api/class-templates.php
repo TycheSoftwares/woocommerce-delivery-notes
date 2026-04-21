@@ -318,6 +318,15 @@ class Templates extends \Tyche\WCDN\Api\Api {
 			return $sample;
 		}
 
+		// WC_Order_Refund objects lack address/payment methods; always work with the parent order.
+		if ( $order instanceof \WC_Order_Refund ) {
+			$parent = wc_get_order( $order->get_parent_id() );
+			if ( ! $parent ) {
+				return array();
+			}
+			$order = $parent;
+		}
+
 		$items = array();
 
 		foreach ( $order->get_items() as $item_id => $item ) {

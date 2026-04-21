@@ -10,8 +10,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-17T21:06:54+00:00\n"
-"PO-Revision-Date: 2026-04-17T21:06:54+00:00\n"
+"POT-Creation-Date: 2026-04-21T22:25:37+00:00\n"
+"PO-Revision-Date: 2026-04-21T22:25:37+00:00\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: woocommerce-delivery-notes\n"
 "Language: en_US\n"
@@ -23,6 +23,7 @@ msgid "Print Invoice & Delivery Notes for WooCommerce"
 msgstr "Print Invoice & Delivery Notes for WooCommerce"
 
 #. Plugin URI of the plugin
+#. Author URI of the plugin
 #: woocommerce-delivery-notes.php
 msgid "https://www.tychesoftwares.com"
 msgstr "https://www.tychesoftwares.com"
@@ -38,56 +39,63 @@ msgstr ""
 
 #. Author of the plugin
 #: woocommerce-delivery-notes.php build/admin.js:1
-#: src/admin/components/Footer.js:53
+#: src/admin/components/Footer.js:57
 msgid "Tyche Softwares"
 msgstr "Tyche Softwares"
 
-#. Author URI of the plugin
-#: woocommerce-delivery-notes.php
-msgid "http://www.tychesoftwares.com"
-msgstr "http://www.tychesoftwares.com"
-
-#: includes/admin/class-backend.php:171
+#: includes/admin/class-backend.php:177
 msgid "Order Printing"
 msgstr "Order Printing"
 
-#: includes/admin/class-backend.php:204
+#: includes/admin/class-backend.php:211
 msgid "Invoice number: "
 msgstr "Invoice number: "
 
-#: includes/admin/class-backend.php:207
+#: includes/admin/class-backend.php:214
 msgid "Invoice date: "
 msgstr "Invoice date: "
 
 #. translators: %1$d: number of documents, %2$s: document type label.
-#: includes/admin/class-backend.php:319
+#: includes/admin/class-backend.php:326
 #, php-format
 msgid "Print %1$d %2$s"
 msgstr "Print %1$d %2$s"
 
-#: includes/admin/class-backend.php:324
+#: includes/admin/class-backend.php:331
 msgid "Are you sure you want to proceed?"
 msgstr "Are you sure you want to proceed?"
 
-#: includes/admin/class-backend.php:329
+#: includes/admin/class-backend.php:336
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:257
 msgid "Cancel"
 msgstr "Cancel"
 
-#: includes/admin/class-backend.php:333 includes/api/class-settings.php:329
+#: includes/admin/class-backend.php:340 includes/api/class-settings.php:329
 #: includes/api/class-settings.php:330 includes/api/class-settings.php:349
-#: includes/frontend/class-frontend.php:676
-#: includes/helpers/class-utils.php:575
+#: includes/frontend/class-frontend.php:688
+#: includes/helpers/class-utils.php:582
 msgid "Print"
 msgstr "Print"
 
-#: includes/admin/class-backend.php:362
+#: includes/admin/class-backend.php:369
 msgid "Pop-up blocked. Please allow pop-ups and try again."
 msgstr "Pop-up blocked. Please allow pop-ups and try again."
 
-#: includes/admin/class-backend.php:446
+#: includes/admin/class-backend.php:452
 msgid "Print now"
 msgstr "Print now"
+
+#. translators: 1: font display name, 2: settings page URL
+#: includes/admin/class-backend.php:558
+#, php-format
+msgid ""
+"<strong>Print Invoice & Delivery Notes:</strong> Your store language "
+"requires the <strong>%1$s</strong> font for correct PDF output. <a "
+"href=\"%2$s\">Upload it in Font Settings &rarr;</a>"
+msgstr ""
+"<strong>Print Invoice & Delivery Notes:</strong> Your store language "
+"requires the <strong>%1$s</strong> font for correct PDF output. <a "
+"href=\"%2$s\">Upload it in Font Settings &rarr;</a>"
 
 #: includes/admin/class-menu.php:40 includes/admin/class-menu.php:41
 msgid "Print Invoices & Delivery Notes"
@@ -101,7 +109,43 @@ msgstr "Action failed. Please refresh the page and retry."
 msgid "You don't have the permission to hide the selected notice."
 msgstr "You don't have the permission to hide the selected notice."
 
-#: includes/api/class-settings.php:184 includes/api/class-templates.php:837
+#: includes/api/class-fonts.php:93
+msgid "No valid font file provided."
+msgstr "No valid font file provided."
+
+#: includes/api/class-fonts.php:100
+msgid "Font file is too small. Please upload a complete font file."
+msgstr "Font file is too small. Please upload a complete font file."
+
+#: includes/api/class-fonts.php:108
+msgid "Invalid font file. Please upload a TTF or OTF file."
+msgstr "Invalid font file. Please upload a TTF or OTF file."
+
+#: includes/api/class-fonts.php:114
+msgid "No font is required for the current site language."
+msgstr "No font is required for the current site language."
+
+#: includes/api/class-fonts.php:136
+msgid "Failed to save the font file."
+msgstr "Failed to save the font file."
+
+#: includes/api/class-fonts.php:144
+msgid "Font uploaded successfully."
+msgstr "Font uploaded successfully."
+
+#: includes/api/class-fonts.php:170
+msgid "No font is configured for the current site language."
+msgstr "No font is configured for the current site language."
+
+#: includes/api/class-fonts.php:193
+msgid "No font file found to delete."
+msgstr "No font file found to delete."
+
+#: includes/api/class-fonts.php:201
+msgid "Font deleted successfully."
+msgstr "Font deleted successfully."
+
+#: includes/api/class-settings.php:184 includes/api/class-templates.php:846
 msgid "Authentication has failed."
 msgstr "Authentication has failed."
 
@@ -143,57 +187,37 @@ msgstr "View and print your invoice"
 msgid "Print order documents"
 msgstr "Print order documents"
 
-#: includes/api/class-settings.php:331 includes/helpers/class-utils.php:404
-msgid "Print Invoice"
-msgstr "Print Invoice"
-
-#: includes/api/class-settings.php:332 includes/helpers/class-utils.php:419
-msgid "Print Delivery Note"
-msgstr "Print Delivery Note"
-
-#: includes/api/class-settings.php:333 includes/helpers/class-utils.php:434
-msgid "Print Receipt"
-msgstr "Print Receipt"
-
-#: includes/api/class-settings.php:334 includes/helpers/class-utils.php:449
-msgid "Print Credit Note"
-msgstr "Print Credit Note"
-
-#: includes/api/class-settings.php:335 includes/helpers/class-utils.php:464
-msgid "Print Packing Slip"
-msgstr "Print Packing Slip"
-
 #: includes/api/class-settings.php:336
 msgid "invoice"
 msgstr "invoice"
 
-#: includes/api/class-templates.php:299 includes/api/class-templates.php:977
+#: includes/api/class-templates.php:299 includes/api/class-templates.php:986
 msgid "Customer returned item"
 msgstr "Customer returned item"
 
-#: includes/api/class-templates.php:388
+#: includes/api/class-templates.php:397
 msgid "N/A"
 msgstr "N/A"
 
-#: includes/api/class-templates.php:684
+#: includes/api/class-templates.php:693
 msgid "Download"
 msgstr "Download"
 
 #. translators: %s: number of files
-#: includes/api/class-templates.php:686
+#: includes/api/class-templates.php:695
 #, php-format
 msgid "%s Files"
 msgstr "%s Files"
 
-#: includes/api/class-templates.php:850
+#: includes/api/class-templates.php:859
 msgid "Invalid request payload."
 msgstr "Invalid request payload."
 
-#: includes/api/class-templates.php:869
+#: includes/api/class-templates.php:878
 msgid "Invalid template type."
 msgstr "Invalid template type."
 
-#: includes/api/class-templates.php:903
+#: includes/api/class-templates.php:912
 msgid "Template saved successfully."
 msgstr "Template saved successfully."
 
@@ -349,27 +373,28 @@ msgstr "Go to the settings page"
 msgid "Settings"
 msgstr "Settings"
 
-#: includes/frontend/class-frontend.php:323
+#: includes/frontend/class-frontend.php:327
 msgid "No orders provided."
 msgstr "No orders provided."
 
-#: includes/frontend/class-frontend.php:337
+#: includes/frontend/class-frontend.php:341
+#: includes/frontend/class-frontend.php:348
 msgid "Invalid order."
 msgstr "Invalid order."
 
-#: includes/frontend/class-frontend.php:341
+#: includes/frontend/class-frontend.php:353
 msgid "Access denied."
 msgstr "Access denied."
 
-#: includes/frontend/class-frontend.php:347
+#: includes/frontend/class-frontend.php:359
 msgid "Access to this document is denied."
 msgstr "Access to this document is denied."
 
-#: includes/frontend/class-frontend.php:364
+#: includes/frontend/class-frontend.php:376
 msgid "No valid documents found."
 msgstr "No valid documents found."
 
-#: includes/frontend/class-frontend.php:467
+#: includes/frontend/class-frontend.php:479
 msgid ""
 "You need to be logged into your account to access this document. Please "
 "login first."
@@ -377,15 +402,15 @@ msgstr ""
 "You need to be logged into your account to access this document. Please "
 "login first."
 
-#: includes/frontend/class-frontend.php:469
+#: includes/frontend/class-frontend.php:481
 msgid "Proceed to Login"
 msgstr "Proceed to Login"
 
-#: includes/frontend/class-frontend.php:676
+#: includes/frontend/class-frontend.php:688
 msgid "Print All"
 msgstr "Print All"
 
-#: includes/frontend/class-frontend.php:681
+#: includes/frontend/class-frontend.php:693
 msgid "Download PDF"
 msgstr "Download PDF"
 
@@ -397,134 +422,154 @@ msgstr "Refund"
 msgid "Order Subtotal"
 msgstr "Order Subtotal"
 
-#: includes/helpers/class-utils.php:402 includes/helpers/class-utils.php:591
+#: includes/helpers/class-utils.php:406 includes/helpers/class-utils.php:598
 msgid "Invoice"
 msgstr "Invoice"
 
-#: includes/helpers/class-utils.php:403
+#: includes/helpers/class-utils.php:407
 msgid "Invoices"
 msgstr "Invoices"
 
-#: includes/helpers/class-utils.php:405
+#: includes/helpers/class-utils.php:408
+msgid "Print Invoice"
+msgstr "Print Invoice"
+
+#: includes/helpers/class-utils.php:409
 msgid "Print Invoices"
 msgstr "Print Invoices"
 
-#: includes/helpers/class-utils.php:406
+#: includes/helpers/class-utils.php:410
 msgid "Invoice created."
 msgstr "Invoice created."
 
-#: includes/helpers/class-utils.php:407
+#: includes/helpers/class-utils.php:411
 msgid "Invoices created."
 msgstr "Invoices created."
 
-#: includes/helpers/class-utils.php:408
+#: includes/helpers/class-utils.php:412
 msgid "Show \"Print Invoice\" button"
 msgstr "Show \"Print Invoice\" button"
 
-#: includes/helpers/class-utils.php:417 includes/helpers/class-utils.php:592
+#: includes/helpers/class-utils.php:421 includes/helpers/class-utils.php:599
 msgid "Delivery Note"
 msgstr "Delivery Note"
 
-#: includes/helpers/class-utils.php:418
+#: includes/helpers/class-utils.php:422
 msgid "Delivery Notes"
 msgstr "Delivery Notes"
 
-#: includes/helpers/class-utils.php:420
+#: includes/helpers/class-utils.php:423
+msgid "Print Delivery Note"
+msgstr "Print Delivery Note"
+
+#: includes/helpers/class-utils.php:424
 msgid "Print Delivery Notes"
 msgstr "Print Delivery Notes"
 
-#: includes/helpers/class-utils.php:421
+#: includes/helpers/class-utils.php:425
 msgid "Delivery Note created."
 msgstr "Delivery Note created."
 
-#: includes/helpers/class-utils.php:422
+#: includes/helpers/class-utils.php:426
 msgid "Delivery Notes created."
 msgstr "Delivery Notes created."
 
-#: includes/helpers/class-utils.php:423
+#: includes/helpers/class-utils.php:427
 msgid "Show \"Print Delivery Note\" button"
 msgstr "Show \"Print Delivery Note\" button"
 
-#: includes/helpers/class-utils.php:432 includes/helpers/class-utils.php:593
+#: includes/helpers/class-utils.php:436 includes/helpers/class-utils.php:600
 msgid "Receipt"
 msgstr "Receipt"
 
-#: includes/helpers/class-utils.php:433
+#: includes/helpers/class-utils.php:437
 msgid "Receipts"
 msgstr "Receipts"
 
-#: includes/helpers/class-utils.php:435
+#: includes/helpers/class-utils.php:438
+msgid "Print Receipt"
+msgstr "Print Receipt"
+
+#: includes/helpers/class-utils.php:439
 msgid "Print Receipts"
 msgstr "Print Receipts"
 
-#: includes/helpers/class-utils.php:436
+#: includes/helpers/class-utils.php:440
 msgid "Receipt created."
 msgstr "Receipt created."
 
-#: includes/helpers/class-utils.php:437
+#: includes/helpers/class-utils.php:441
 msgid "Receipts created."
 msgstr "Receipts created."
 
-#: includes/helpers/class-utils.php:438
+#: includes/helpers/class-utils.php:442
 msgid "Show \"Print Receipt\" button"
 msgstr "Show \"Print Receipt\" button"
 
-#: includes/helpers/class-utils.php:447 includes/helpers/class-utils.php:594
+#: includes/helpers/class-utils.php:451 includes/helpers/class-utils.php:601
 msgid "Credit Note"
 msgstr "Credit Note"
 
-#: includes/helpers/class-utils.php:448
+#: includes/helpers/class-utils.php:452
 msgid "Credit Notes"
 msgstr "Credit Notes"
 
-#: includes/helpers/class-utils.php:450
+#: includes/helpers/class-utils.php:453
+msgid "Print Credit Note"
+msgstr "Print Credit Note"
+
+#: includes/helpers/class-utils.php:454
 msgid "Print Credit Notes"
 msgstr "Print Credit Notes"
 
-#: includes/helpers/class-utils.php:451
+#: includes/helpers/class-utils.php:455
 msgid "Credit Note created."
 msgstr "Credit Note created."
 
-#: includes/helpers/class-utils.php:452
+#: includes/helpers/class-utils.php:456
 msgid "Credit Notes created."
 msgstr "Credit Notes created."
 
-#: includes/helpers/class-utils.php:453
+#: includes/helpers/class-utils.php:457
 msgid "Show \"Credit Note\" button"
 msgstr "Show \"Credit Note\" button"
 
-#: includes/helpers/class-utils.php:462 includes/helpers/class-utils.php:595
+#: includes/helpers/class-utils.php:466 includes/helpers/class-utils.php:602
 msgid "Packing Slip"
 msgstr "Packing Slip"
 
-#: includes/helpers/class-utils.php:463
+#: includes/helpers/class-utils.php:467
 msgid "Packing Slips"
 msgstr "Packing Slips"
 
-#: includes/helpers/class-utils.php:465
+#: includes/helpers/class-utils.php:468
+msgid "Print Packing Slip"
+msgstr "Print Packing Slip"
+
+#: includes/helpers/class-utils.php:469
 msgid "Print Packing Slips"
 msgstr "Print Packing Slips"
 
-#: includes/helpers/class-utils.php:466
+#: includes/helpers/class-utils.php:470
 msgid "Packing Slip created."
 msgstr "Packing Slip created."
 
-#: includes/helpers/class-utils.php:467
+#: includes/helpers/class-utils.php:471
 msgid "Packing Slips created."
 msgstr "Packing Slips created."
 
-#: includes/helpers/class-utils.php:468
+#: includes/helpers/class-utils.php:472
 msgid "Show \"Print Packing Slip\" button"
 msgstr "Show \"Print Packing Slip\" button"
 
 #. translators: 1. Order number, 2. Document type (e.g. Invoice)
-#: includes/integrations/class-emails.php:218
+#: includes/integrations/class-emails.php:229
 #, php-format
 msgid "New Order #%1$s — %2$s Attached"
 msgstr "New Order #%1$s — %2$s Attached"
 
 #. translators: 1. Document type (e.g. Invoice), 2. Order number
-#: includes/integrations/class-emails.php:228
+#: includes/integrations/class-emails.php:239
 #, php-format
 msgid ""
 "A new order has been placed. Please find the %1$s for Order #%2$s attached "
@@ -533,7 +578,7 @@ msgstr ""
 "A new order has been placed. Please find the %1$s for Order #%2$s attached "
 "to this email."
 
-#: includes/integrations/class-emails.php:377
+#: includes/integrations/class-emails.php:395
 msgid "Print:"
 msgstr "Print:"
 
@@ -1071,15 +1116,15 @@ msgstr "FAQs"
 msgid "Dismiss"
 msgstr "Dismiss"
 
-#: build/admin.js:1 src/admin/components/Footer.js:16
+#: build/admin.js:1 src/admin/components/Footer.js:20
 msgid "Get our"
 msgstr "Get our"
 
-#: build/admin.js:1 src/admin/components/Footer.js:18
+#: build/admin.js:1 src/admin/components/Footer.js:22
 msgid "Order Delivery Date Pro"
 msgstr "Order Delivery Date Pro"
 
-#: build/admin.js:1 src/admin/components/Footer.js:20
+#: build/admin.js:1 src/admin/components/Footer.js:24
 msgid ""
 "plugin to schedule and manage your local deliveries and pickups in "
 "WooCommerce."
@@ -1087,34 +1132,34 @@ msgstr ""
 "plugin to schedule and manage your local deliveries and pickups in "
 "WooCommerce."
 
-#: build/admin.js:1 src/admin/components/Footer.js:27
+#: build/admin.js:1 src/admin/components/Footer.js:31
 msgid "Open the support forum for this plugin on WordPress.org"
 msgstr "Open the support forum for this plugin on WordPress.org"
 
-#: build/admin.js:1 src/admin/components/Footer.js:29
+#: build/admin.js:1 src/admin/components/Footer.js:33
 msgid "Need Support?"
 msgstr "Need Support?"
 
-#: build/admin.js:1 src/admin/components/Footer.js:31
+#: build/admin.js:1 src/admin/components/Footer.js:35
 msgid "We're always happy to help you."
 msgstr "We're always happy to help you."
 
-#: build/admin.js:1 src/admin/components/Footer.js:34
+#: build/admin.js:1 src/admin/components/Footer.js:38
 msgid "If this plugin helped you,"
 msgstr "If this plugin helped you,"
 
-#: build/admin.js:1 src/admin/components/Footer.js:39
+#: build/admin.js:1 src/admin/components/Footer.js:43
 msgid "Leave a review for this plugin on WordPress.org"
 msgstr "Leave a review for this plugin on WordPress.org"
 
-#: build/admin.js:1 src/admin/components/Footer.js:41
+#: build/admin.js:1 src/admin/components/Footer.js:45
 msgid "please rate it"
 msgstr "please rate it"
 
-#: build/admin.js:1 src/admin/components/Footer.js:46
+#: build/admin.js:1 src/admin/components/Footer.js:50
 msgid "Check out more plugins by"
 msgstr "Check out more plugins by"
 
-#: build/admin.js:1 src/admin/components/Footer.js:51
+#: build/admin.js:1 src/admin/components/Footer.js:55
 msgid "Visit Tyche Softwares to explore more WooCommerce plugins"
 msgstr "Visit Tyche Softwares to explore more WooCommerce plugins"
