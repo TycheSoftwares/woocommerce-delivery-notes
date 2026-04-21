@@ -61,6 +61,9 @@ class Files {
 		WCDN()::include_file( 'api/class-settings.php' );
 		new \Tyche\WCDN\Api\Settings();
 
+		WCDN()::include_file( 'api/class-fonts.php' );
+		new \Tyche\WCDN\Api\Fonts();
+
 		WCDN()::include_file( 'helpers/class-helper.php' );
 		WCDN()::include_file( 'helpers/class-settings.php' );
 

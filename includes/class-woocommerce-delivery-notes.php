@@ -196,7 +196,7 @@ final class WooCommerce_Delivery_Notes {
 		$file = $is_plugin_include_file ? WCDN_PLUGIN_PATH . '/includes/' . $file : $file;
 
 		if ( file_exists( $file ) ) {
-			include_once $file;
+			include_once $file; // nosemgrep: audit.php.lang.security.file.inclusion-arg -- all callers pass hardcoded string literals; path is prefixed with WCDN_PLUGIN_PATH.
 		}
 	}
 
@@ -272,8 +272,8 @@ final class WooCommerce_Delivery_Notes {
 			deactivate_plugins( plugin_basename( WCDN_FILE ) );
 		}
 
-		if ( isset( $_GET['activate'] ) ) { // phpcs:ignore
-			unset( $_GET['activate'] ); // phpcs:ignore
+		if ( isset( $_GET['activate'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- standard WP activation flag, no user data processed
+			unset( $_GET['activate'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		}
 	}
 

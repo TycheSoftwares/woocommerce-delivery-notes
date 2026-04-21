@@ -12,6 +12,12 @@
 
 defined( 'WP_UNINSTALL_PLUGIN' ) || exit;
 
-require_once __DIR__ . '/woocommerce-delivery-notes.php';
-require_once __DIR__ . '/includes/woocommerce-delivery-notes.php';
-WCDN_Uninstall::init();
+if ( ! defined( 'WCDN_FILE' ) ) {
+	define( 'WCDN_FILE', __FILE__ );
+}
+
+require_once __DIR__ . '/includes/class-woocommerce-delivery-notes.php';
+\Tyche\WCDN\WooCommerce_Delivery_Notes::define_constants();
+
+require_once __DIR__ . '/includes/core/class-uninstall.php';
+\Tyche\WCDN\Uninstall::init();

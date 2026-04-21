@@ -35,6 +35,7 @@ class Backend {
 	 */
 	public function __construct() {
 		add_action( 'admin_init', array( $this, 'admin_hooks' ) );
+		add_action( 'admin_notices', array( $this, 'locale_font_notice' ) );
 		add_filter( 'wcdn_ts_tracker_data', array( $this, 'tracker_data' ), 10, 1 );
 	}
 
@@ -63,6 +64,11 @@ class Backend {
 	 * @since 7.0
 	 */
 	public function add_listing_actions( $order ) {
+
+		if ( $order instanceof \WC_Order_Refund ) {
+			return;
+		}
+
 		$wdn_order_id = wcdn_order_id( $order );
 		?>
 		<?php foreach ( Template_Engine::get_template_keys() as $template ) : ?>
@@ -135,7 +141,7 @@ class Backend {
 
 		if ( 'shop_order' === $typenow && 'edit.php' === $pagenow ) {
 			return true;
-			} elseif ( isset( $_GET['page'] ) && 'wc-orders' === $_GET['page'] ) { // phpcs:ignore
+		} elseif ( isset( $_GET['page'] ) && 'wc-orders' === $_GET['page'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- reading admin URL param for context detection only
 			return true;
 		} else {
 			return false;
@@ -153,7 +159,7 @@ class Backend {
 
 		if ( 'shop_order' === $typenow && ( 'post.php' === $pagenow || 'post-new.php' === $pagenow ) ) {
 			return true;
-			} elseif ( isset( $_GET['page'] ) && 'wc-orders' === $_GET['page'] && isset( $_GET['action'] ) && 'new' === $_GET['action'] ) { // phpcs:ignore
+		} elseif ( isset( $_GET['page'] ) && 'wc-orders' === $_GET['page'] && isset( $_GET['action'] ) && 'new' === $_GET['action'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- reading admin URL param for context detection only
 			return true;
 		} else {
 			return false;
@@ -183,7 +189,8 @@ class Backend {
 
 		$order_id = ( $post instanceof WP_Post ) ? $post->ID : $post->get_id();
 		$order    = wc_get_order( $order_id );
-		if ( ! $order ) {
+
+		if ( ! $order || $order instanceof \WC_Order_Refund ) {
 			return;
 		}
 		?>
@@ -428,21 +435,20 @@ document.addEventListener('DOMContentLoaded', function() {
 	public function confirm_bulk_actions() {
 		if ( $this->is_order_edit_page() ) {
 			foreach ( Template_Engine::get_template_keys() as $template ) {
-				if ( isset( $_REQUEST[ 'printed_' . $template ] ) ) { // phpcs:ignore
+				if ( isset( $_REQUEST[ 'printed_' . $template ] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- bulk action result display, no data processed
 
 					// use singular or plural form.
-					$total   = isset( $_REQUEST['total'] ) ? absint( $_REQUEST['total'] ) : 0; // phpcs:ignore
+					$total   = isset( $_REQUEST['total'] ) ? absint( $_REQUEST['total'] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- display only, sanitized with absint
 					$message = $total <= 1 ? Utils::template_label( $template )['labels']['message'] : Utils::template_label( $template )['labels']['message_plural'];
 
 					// Print URL - Fix Issue #214: Reflected XSS Vulnerability in Plugin.
-					$print_url = isset( $_REQUEST['print_url'] ) ? $_REQUEST['print_url'] : ''; // phpcs:ignore
-					$print_url = '' !== $print_url && strtolower( esc_url_raw( $print_url ) ) === strtolower( $print_url ) ? esc_url_raw( $print_url ) : '';
+					$print_url = isset( $_REQUEST['print_url'] ) ? esc_url_raw( wp_unslash( $_REQUEST['print_url'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- display-only after bulk action, no state change
 
 					if ( '' !== $print_url ) {
 						?>
 <div id="woocommerce-delivery-notes-bulk-print-message" class="updated">
 	<p><?php echo wp_kses_post( $message, 'woocommerce-delivery-notes' ); ?>
-		<a href="<?php echo $print_url; // phpcs:ignore ?>" target="_blank" class="print-preview-button"
+		<a href="<?php echo esc_url( $print_url ); ?>" target="_blank" class="print-preview-button"
 			id="woocommerce-delivery-notes-bulk-print-button"><?php esc_attr_e( 'Print now', 'woocommerce-delivery-notes' ); ?></a>
 		<span class="print-preview-loading spinner"></span>
 	</p>
@@ -514,5 +520,46 @@ document.addEventListener('DOMContentLoaded', function() {
 		$data['data']['template_data'] = $template_data;
 
 		return $data;
+	}
+
+	/**
+	 * Show an admin notice when the current locale requires a font that has not been uploaded yet.
+	 *
+	 * The notice is persistent — it reappears on every admin page load until the font is present.
+	 *
+	 * @return void
+	 * @since 7.0
+	 */
+	public function locale_font_notice() {
+
+		if ( ! current_user_can( 'manage_woocommerce' ) ) { // phpcs:ignore WordPress.WP.Capabilities.Unknown
+			return;
+		}
+
+		$status = \Tyche\WCDN\Services\Template_Renderer::get_font_admin_status();
+
+		if ( empty( $status['needed'] ) || ! empty( $status['regular'] ) ) {
+			return;
+		}
+
+		$settings_url = add_query_arg(
+			array(
+				'page' => 'wcdn_page',
+				'tab'  => 'fonts',
+			),
+			admin_url( 'admin.php' )
+		);
+
+		printf(
+			'<div class="notice notice-warning"><p>%s</p></div>',
+			wp_kses_post(
+				sprintf(
+					/* translators: 1: font display name, 2: settings page URL */
+					__( '<strong>Print Invoice & Delivery Notes:</strong> Your store language requires the <strong>%1$s</strong> font for correct PDF output. <a href="%2$s">Upload it in Font Settings &rarr;</a>', 'woocommerce-delivery-notes' ),
+					esc_html( $status['display_name'] ?? '' ),
+					esc_url( $settings_url )
+				)
+			)
+		);
 	}
 }

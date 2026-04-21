@@ -10,6 +10,10 @@ const REVIEW_URL =
     "https://wordpress.org/support/plugin/woocommerce-delivery-notes/reviews/#new-post";
 
 function Footer() {
+    if ( process.env.WCDN_WC_BUILD === 'true' ) {
+        return null;
+    }
+
     return (
         <div id="wcdn-footer">
             <Alert storageKey="wcdn_orddd_promo_dismissed">

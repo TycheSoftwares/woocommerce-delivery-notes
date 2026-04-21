@@ -105,8 +105,8 @@ class Notices {
 	 * Hide a notice.
 	 */
 	public static function hide_notice() {
-		if ( isset( $_GET['wcdn-hide-notice'] ) && isset( $_GET['_wcdn_notice_nonce'] ) ) { // phpcs:ignore
-			if ( ! wp_verify_nonce( sanitize_key( wp_unslash( $_GET['_wcdn_notice_nonce'] ) ), 'woocommerce_wcdn_hide_notice_nonce' ) ) { // phpcs:ignore
+		if ( isset( $_GET['wcdn-hide-notice'] ) && isset( $_GET['_wcdn_notice_nonce'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- nonce verified on next line
+			if ( ! wp_verify_nonce( sanitize_key( wp_unslash( $_GET['_wcdn_notice_nonce'] ) ), 'woocommerce_wcdn_hide_notice_nonce' ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- this IS the nonce verification
 				wp_die( esc_html__( 'Action failed. Please refresh the page and retry.', 'woocommerce-delivery-notes' ) );
 			}
 
@@ -114,7 +114,7 @@ class Notices {
 				wp_die( esc_html__( "You don't have the permission to hide the selected notice.", 'woocommerce-delivery-notes' ) );
 			}
 
-			self::hide_notice( sanitize_text_field( wp_unslash( $_GET['wcdn-hide-notice'] ) ) ); // phpcs:ignore
+			self::hide_notice( sanitize_text_field( wp_unslash( $_GET['wcdn-hide-notice'] ) ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- nonce already verified above
 		}
 	}
 

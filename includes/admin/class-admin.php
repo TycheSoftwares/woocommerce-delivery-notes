@@ -36,7 +36,7 @@ class Admin {
 	 */
 	public static function is_on_wcdn_page() {
 		global $pagenow;
-		return 'admin.php' === $pagenow && isset( $_GET['page'] ) && 'wcdn_page' === $_GET['page']; // phpcs:ignore
+		return 'admin.php' === $pagenow && isset( $_GET['page'] ) && 'wcdn_page' === $_GET['page']; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- reading admin URL param for context detection only
 	}
 
 	/**
@@ -46,6 +46,6 @@ class Admin {
 	 */
 	public static function is_on_wp_plugin_page() {
 		global $pagenow;
-		return 'plugins.php' === $pagenow; // phpcs:ignore
+		return 'plugins.php' === $pagenow;
 	}
 }

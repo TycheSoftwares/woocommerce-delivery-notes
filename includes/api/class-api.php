@@ -97,7 +97,7 @@ class Api extends \Tyche\WCDN\Admin {
 		if ( ! wp_verify_nonce( $request->get_header( 'X-WP-Nonce' ), 'wp_rest' ) ) {
 
 			if ( $stop_execution ) {
-				die( self::error() ); // phpcs:ignore
+				wp_die( self::error() ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- JSON REST error response
 			}
 
 			return false;
@@ -157,7 +157,7 @@ class Api extends \Tyche\WCDN\Admin {
 	 * @since 7.0
 	 */
 	public static function permissions() {
-		return current_user_can( 'manage_woocommerce' );
+		return current_user_can( 'manage_woocommerce' ); // phpcs:ignore WordPress.WP.Capabilities.Unknown
 	}
 
 	/**

@@ -1,5 +1,6 @@
 // @ts-nocheck
 const path = require('path');
+const { DefinePlugin } = require('webpack');
 const defaultConfig = require('@wordpress/scripts/config/webpack.config');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
@@ -11,6 +12,9 @@ module.exports = {
 	},
 	plugins: [
 		...defaultConfig.plugins,
+		new DefinePlugin({
+			'process.env.WCDN_WC_BUILD': JSON.stringify( process.env.WCDN_WC_BUILD || 'false' ),
+		}),
 		new BrowserSyncPlugin(
 			{
 				proxy: 'http://localhost:10014/wp-admin/admin.php?page=wcdn_page',
