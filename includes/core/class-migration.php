@@ -49,6 +49,11 @@ class Migration {
 			$success = self::migrate_to_v7();
 		}
 
+		// Migrate to 7.0.2
+		if ( version_compare( (string) $from_version, '7.0.2', '<' ) ) {
+			$success = self::migrate_to_v702();
+		}
+
 		return $success;
 	}
 
@@ -91,6 +96,23 @@ class Migration {
 		update_option( Templates::OPTION_KEY, $templates );
 		self::cleanup_old_options( $options );
 		update_option( 'wcdn_migration_7_completed', true );
+
+		return true;
+	}
+
+	public static function migrate_to_v702() {
+		if ( get_option( 'wcdn_migration_7_0_2_completed' ) ) {
+			return true;
+		}
+
+		$settings  = self::build_settings();
+
+		// Validate before saving.
+		if ( ! is_array( $settings ) ) {
+			return false;
+		}
+		update_option( Settings::OPTION_KEY, $settings );
+		update_option( 'wcdn_migration_7_0_2_completed', true );
 
 		return true;
 	}

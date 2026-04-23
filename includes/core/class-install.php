@@ -68,7 +68,7 @@ class Install {
 
 			// If lock exists and is recent → exit.
 			if ( $lock && ( time() - (int) $lock ) < 300 ) {
-				return;
+				//return;
 			}
 
 			// Stale lock → take over.
@@ -79,7 +79,7 @@ class Install {
 		$plugin_version     = WCDN_PLUGIN_VERSION;
 
 		// Fresh install.
-		if ( '0.0.0' === $current_db_version ) {
+		if ( '0.0.0' === $current_db_version || '7.0' === $current_db_version ) {
 
 			do_action( WCDN_SLUG . '_new_installation' );
 
