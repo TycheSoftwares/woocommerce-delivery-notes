@@ -72,3 +72,28 @@ function wcdn_get_all_administrator_emails() {
 function wcdn_order_id( $order ) {
 	return wcdn_woocommerce_version_3_0_0() ? $order->get_id() : $order->id;
 }
+
+/**
+ * Format a phone number for display on documents.
+ *
+ * Passes the raw phone and billing country through the
+ * `wcdn_format_phone_number` filter so store owners can
+ * apply locale-specific formatting without modifying the plugin.
+ *
+ * @param string $phone   Raw phone number.
+ * @param string $country ISO 3166-1 alpha-2 billing country code.
+ * @return string
+ *
+ * @since 7.0
+ */
+function wcdn_format_phone_number( $phone, $country = '' ) {
+
+	/**
+	 * Filter the phone number displayed on documents.
+	 *
+	 * @param string $phone   Raw phone number.
+	 * @param string $country Billing country code (e.g. 'US', 'GB').
+	 * @since 7.0
+	 */
+	return apply_filters( 'wcdn_format_phone_number', $phone, $country );
+}

@@ -56,9 +56,33 @@ class Uninstall {
 	/**
 	 * Plugin Deactivation.
 	 *
+	 * Snapshots current v7 settings before restoring legacy options, so that:
+	 * - A downgrade to v6 finds its original settings intact.
+	 * - Re-activating v7 restores the snapshot instead of re-running migration.
+	 *
 	 * @since 7.0
 	 */
 	public static function deactivate_plugin() {
-		self::remove_cron_jobs(); // Remove scheduled cron jobs on plugin deactivation.
+		self::remove_cron_jobs();
+		self::snapshot_v7_settings();
+		Migration::rollback();
+	}
+
+	/**
+	 * Saves current v7 settings to snapshot options before rollback.
+	 *
+	 * @since 7.0
+	 */
+	private static function snapshot_v7_settings() {
+		$settings  = get_option( \Tyche\WCDN\Api\Settings::OPTION_KEY );
+		$templates = get_option( \Tyche\WCDN\Api\Templates::OPTION_KEY );
+
+		if ( $settings ) {
+			update_option( WCDN_SLUG . '_v7_settings_snapshot', $settings, false );
+		}
+
+		if ( $templates ) {
+			update_option( WCDN_SLUG . '_v7_templates_snapshot', $templates, false );
+		}
 	}
 }

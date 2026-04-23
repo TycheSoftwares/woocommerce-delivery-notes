@@ -61,9 +61,18 @@ hr {
     font-size: 14px;
 }
 
+.wcdn-shop-phone,
+.wcdn-shop-email {
+    font-size: 14px;
+}
+
 /* -------------------------------
    Address Grid
 -------------------------------- */
+
+.wcdn-address-grid {
+    width: 100%;
+}
 
 .wcdn-billing-address p,
 .wcdn-shipping-address p {
@@ -89,8 +98,42 @@ hr {
 }
 
 /* -------------------------------
+   Order Meta — below addresses
+-------------------------------- */
+
+.wcdn-order-meta-below {
+    border-collapse: collapse;
+    margin-top: 8px;
+}
+
+.wcdn-order-meta-below td {
+    padding: 4px 0;
+}
+
+.wcdn-order-meta-below td.label {
+    width: 40%;
+    padding-right: 8px;
+}
+
+.wcdn-order-meta-below tr + tr td {
+    border-top: 1px solid #e0e0e0;
+}
+
+/* -------------------------------
    Item Meta & Addons
 -------------------------------- */
+
+.wcdn-item-image {
+    display: block;
+    object-fit: cover;
+    margin-bottom: 4px;
+}
+
+.wcdn-item-image-placeholder {
+    display: block;
+    background: #f0f0f0;
+    margin-bottom: 4px;
+}
 
 .wcdn-item-sku {
     color: #888;

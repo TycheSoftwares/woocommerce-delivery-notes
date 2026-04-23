@@ -73,6 +73,20 @@ class Migration {
 			return true;
 		}
 
+		// Re-activation after deactivation — restore from the v7 snapshot instead
+		// of re-running the full legacy migration, preserving any v7 customisations.
+		$snapshot_settings  = get_option( WCDN_SLUG . '_v7_settings_snapshot' );
+		$snapshot_templates = get_option( WCDN_SLUG . '_v7_templates_snapshot' );
+
+		if ( $snapshot_settings && $snapshot_templates ) {
+			update_option( Settings::OPTION_KEY, $snapshot_settings );
+			update_option( Templates::OPTION_KEY, $snapshot_templates );
+			delete_option( WCDN_SLUG . '_v7_settings_snapshot' );
+			delete_option( WCDN_SLUG . '_v7_templates_snapshot' );
+			update_option( 'wcdn_migration_7_completed', true );
+			return true;
+		}
+
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 		$options = $wpdb->get_results(
 			"SELECT option_name, option_value 
@@ -152,9 +166,12 @@ class Migration {
 						return null;
 					}
 
-					$url = wp_get_attachment_url( (int) $value );
+					$id  = (int) $value;
+					$url = wp_get_attachment_url( $id );
 
-					return $url ? $url : null;
+					// Store the attachment ID (consistent with v7.0 admin format)
+					// so get_store_data() can resolve both the URL and the file path.
+					return $url ? $id : null;
 				},
 			),
 			'storeName'                    => array(

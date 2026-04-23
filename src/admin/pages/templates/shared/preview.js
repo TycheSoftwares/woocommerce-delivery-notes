@@ -24,6 +24,8 @@ function Preview({ template, settings, preview }) {
             fontWeight: settings[`${prefix}FontStyle`] === "bold" ? 600 : 400,
         };
     };
+    const metaPosition = settings.orderMetaPosition ?? "columns";
+
     const orderMetaFields = [
         {
             key: "invoiceNumber",
@@ -88,6 +90,40 @@ function Preview({ template, settings, preview }) {
             value: order?.refund?.reason,
             style: buildOrderMetaStyle(settings, "refundReason"),
         },
+        ...(metaPosition === "below" && settings.showBillingPhone && order?.billing?.phone
+            ? [
+                  {
+                      key: "billingPhone",
+                      show: true,
+                      label: settings.billingPhoneText ?? "Phone",
+                      value: order.billing.phone,
+                      style: {
+                          fontSize: `${settings.billingPhoneFontSize ?? 14}px`,
+                          fontWeight:
+                              settings.billingPhoneFontStyle === "bold" ? 600 : 400,
+                          textAlign: settings.billingPhoneAlign ?? "left",
+                          color: settings.billingPhoneTextColor ?? "#000000",
+                      },
+                  },
+              ]
+            : []),
+        ...(metaPosition === "below" && settings.showBillingEmail && order?.billing?.email
+            ? [
+                  {
+                      key: "billingEmail",
+                      show: true,
+                      label: settings.billingEmailText ?? "Email",
+                      value: order.billing.email,
+                      style: {
+                          fontSize: `${settings.billingEmailFontSize ?? 14}px`,
+                          fontWeight:
+                              settings.billingEmailFontStyle === "bold" ? 600 : 400,
+                          textAlign: settings.billingEmailAlign ?? "left",
+                          color: settings.billingEmailTextColor ?? "#000000",
+                      },
+                  },
+              ]
+            : []),
     ];
     const hasOrderMeta = orderMetaFields.some((f) => f.show && f.value);
 
@@ -205,135 +241,214 @@ function Preview({ template, settings, preview }) {
                                     fontWeight: settings.addressFontStyle === "bold" ? 600 : 400,
                                 }}
                             >
-                                {shop.address}
+                                {shop.address.split("\n").map((line, i) => (
+                                    <span key={i}>
+                                        {i > 0 && <br />}
+                                        {line}
+                                    </span>
+                                ))}
                             </div>
                         )}
 
-                        <div className="shop-contact">
-                            {separate([
-                                settings.showShopPhone && shop.phone && (
-                                    <span
-                                        style={{
-                                            fontSize: settings.shopPhoneFontSize,
-                                            color: settings.shopPhoneTextColor,
-                                        }}
-                                    >
-                                        {settings.shopPhoneText}: {shop.phone}
-                                    </span>
-                                ),
-                                settings.showShopEmail && shop.email && (
-                                    <span
-                                        style={{
-                                            fontSize: settings.shopEmailFontSize,
-                                            color: settings.shopEmailTextColor,
-                                        }}
-                                    >
-                                        {settings.shopEmailText}: {shop.email}
-                                    </span>
-                                ),
-                            ])}
-                        </div>
+                        {settings.showShopPhone && shop.phone && (
+                            <div
+                                className="shop-phone"
+                                style={{
+                                    fontSize: settings.shopPhoneFontSize,
+                                    color: settings.shopPhoneTextColor,
+                                    fontWeight: settings.shopPhoneFontStyle === "bold" ? 600 : 400,
+                                    textAlign: settings.shopPhoneAlign,
+                                    marginTop: settings.shopPhoneMarginTop,
+                                    marginBottom: settings.shopPhoneMarginBottom,
+                                }}
+                            >
+                                {settings.shopPhoneText ? `${settings.shopPhoneText}: ` : ""}{shop.phone}
+                            </div>
+                        )}
+
+                        {settings.showShopEmail && shop.email && (
+                            <div
+                                className="shop-email"
+                                style={{
+                                    fontSize: settings.shopEmailFontSize,
+                                    color: settings.shopEmailTextColor,
+                                    fontWeight: settings.shopEmailFontStyle === "bold" ? 600 : 400,
+                                    textAlign: settings.shopEmailAlign,
+                                    marginTop: settings.shopEmailMarginTop,
+                                    marginBottom: settings.shopEmailMarginBottom,
+                                }}
+                            >
+                                {settings.shopEmailText ? `${settings.shopEmailText}: ` : ""}{shop.email}
+                            </div>
+                        )}
                     </div>
                 </>
             )}
 
             {/* Addresses & Order Meta */}
-            {(settings.showBillingAddress && order?.billing) ||
-            (settings.showShippingAddress && order?.shipping) ||
-            hasOrderMeta ? (
-                <>
-                    <div className="wcdn-preview-divider" />
+            {(() => {
+                const metaBelow = metaPosition === "below";
+                const showGrid =
+                    (settings.showBillingAddress && order?.billing) ||
+                    (settings.showShippingAddress && order?.shipping) ||
+                    (!metaBelow && hasOrderMeta);
+                const showMetaBelow = metaBelow && hasOrderMeta;
 
-                    <div className="wcdn-preview-address-grid">
-                        {settings.showBillingAddress && order?.billing && (
-                            <div
-                                style={{
-                                    textAlign: settings.billingAddressAlign,
-                                    fontSize: settings.billingAddressFontSize,
-                                    fontWeight:
-                                        settings.billingAddressFontStyle === "bold" ? 600 : 400,
-                                    color: settings.billingAddressTextColor,
-                                }}
-                            >
-                                <h4>{settings.billingAddressText}</h4>
+                if (!showGrid && !showMetaBelow) return null;
 
-                                <p style={{ fontSize: settings.billingAddressFontSize }}>
-                                    {order.billing.name}
+                return (
+                    <>
+                        <div className="wcdn-preview-divider" />
 
-                                    {order.billing.address?.map((line, i) => (
-                                        <span key={i}>
-                                            <br />
-                                            {line}
-                                        </span>
-                                    ))}
+                        {showGrid && (
+                            <div className="wcdn-preview-address-grid">
+                                {settings.showBillingAddress && order?.billing && (
+                                    <div
+                                        style={{
+                                            textAlign: settings.billingAddressAlign,
+                                            fontSize: settings.billingAddressFontSize,
+                                            fontWeight:
+                                                settings.billingAddressFontStyle === "bold"
+                                                    ? 600
+                                                    : 400,
+                                            color: settings.billingAddressTextColor,
+                                        }}
+                                    >
+                                        <h4>{settings.billingAddressText}</h4>
 
-                                    {order.billing.phone && (
-                                        <>
-                                            <br />
-                                            {settings.shopPhoneText}: {order.billing.phone}
-                                        </>
-                                    )}
+                                        <p style={{ fontSize: settings.billingAddressFontSize }}>
+                                            {order.billing.name}
 
-                                    {order.billing.email && (
-                                        <>
-                                            <br />
-                                            {settings.shopEmailText}: {order.billing.email}
-                                        </>
-                                    )}
-                                </p>
-                            </div>
-                        )}
+                                            {order.billing.address?.map((line, i) => (
+                                                <span key={i}>
+                                                    <br />
+                                                    {line}
+                                                </span>
+                                            ))}
 
-                        {settings.showShippingAddress && order?.shipping && (
-                            <div
-                                style={{
-                                    textAlign: settings.shippingAddressAlign,
-                                    fontSize: settings.shippingAddressFontSize,
-                                    fontWeight:
-                                        settings.shippingAddressFontStyle === "bold" ? 600 : 400,
-                                    color: settings.shippingAddressTextColor,
-                                }}
-                            >
-                                <h4>{settings.shippingAddressText}</h4>
+                                            {metaPosition === "columns" &&
+                                                settings.showBillingPhone &&
+                                                order.billing.phone && (
+                                                    <>
+                                                        <br />
+                                                        {settings.billingPhoneText ?? "Phone"}:{" "}
+                                                        {order.billing.phone}
+                                                    </>
+                                                )}
 
-                                <p style={{ fontSize: settings.shippingAddressFontSize }}>
-                                    {order.shipping.name}
+                                            {metaPosition === "columns" &&
+                                                settings.showBillingEmail &&
+                                                order.billing.email && (
+                                                    <>
+                                                        <br />
+                                                        {settings.billingEmailText ?? "Email"}:{" "}
+                                                        {order.billing.email}
+                                                    </>
+                                                )}
+                                        </p>
+                                    </div>
+                                )}
 
-                                    {order.shipping.address?.map((line, i) => (
-                                        <span key={i}>
-                                            <br />
-                                            {line}
-                                        </span>
-                                    ))}
+                                {settings.showShippingAddress && order?.shipping && (
+                                    <div
+                                        style={{
+                                            textAlign: settings.shippingAddressAlign,
+                                            fontSize: settings.shippingAddressFontSize,
+                                            fontWeight:
+                                                settings.shippingAddressFontStyle === "bold"
+                                                    ? 600
+                                                    : 400,
+                                            color: settings.shippingAddressTextColor,
+                                        }}
+                                    >
+                                        <h4>{settings.shippingAddressText}</h4>
 
-                                    {order.shipping.email && (
-                                        <>
-                                            <br />
-                                            Email: {order.shipping.email}
-                                        </>
-                                    )}
-                                </p>
-                            </div>
-                        )}
+                                        <p style={{ fontSize: settings.shippingAddressFontSize }}>
+                                            {order.shipping.name}
 
-                        {/* Order Meta */}
-                        {hasOrderMeta && (
-                            <div className="wcdn-preview-order-meta">
-                                {separate(
-                                    orderMetaFields
-                                        .filter((field) => field.show && field.value)
-                                        .map((field) => (
-                                            <p key={field.key} style={field.style}>
-                                                <span>{field.label}:</span> {field.value}
-                                            </p>
-                                        )),
-                                    ""
+                                            {order.shipping.address?.map((line, i) => (
+                                                <span key={i}>
+                                                    <br />
+                                                    {line}
+                                                </span>
+                                            ))}
+
+                                            {order.shipping.email && (
+                                                <>
+                                                    <br />
+                                                    Email: {order.shipping.email}
+                                                </>
+                                            )}
+                                        </p>
+                                    </div>
+                                )}
+
+                                {/* Order Meta as column */}
+                                {!metaBelow && hasOrderMeta && (
+                                    <div className="wcdn-preview-order-meta">
+                                        {separate(
+                                            orderMetaFields
+                                                .filter((field) => field.show && field.value)
+                                                .map((field) => (
+                                                    <p key={field.key} style={field.style}>
+                                                        <span>{field.label}:</span> {field.value}
+                                                    </p>
+                                                )),
+                                            ""
+                                        )}
+                                    </div>
                                 )}
                             </div>
                         )}
-                    </div>
-                </>
-            ) : null}
+
+                        {/* Order Data Header */}
+                        {showMetaBelow &&
+                            settings.showOrderDataHeader &&
+                            settings.orderDataHeaderText && (
+                                <p
+                                    style={{
+                                        marginTop: `${settings.orderDataHeaderSpacingTop ?? 20}px`,
+                                        marginBottom: `${settings.orderDataHeaderSpacingBottom ?? 5}px`,
+                                        fontSize: `${settings.orderDataHeaderFontSize ?? 17}px`,
+                                        fontWeight:
+                                            settings.orderDataHeaderFontStyle === "bold"
+                                                ? 600
+                                                : 400,
+                                        textAlign: settings.orderDataHeaderAlign ?? "left",
+                                        color: settings.orderDataHeaderTextColor ?? "#000000",
+                                    }}
+                                >
+                                    {settings.orderDataHeaderText}
+                                </p>
+                            )}
+                        {showMetaBelow &&
+                            settings.showOrderDataHeader &&
+                            settings.showOrderDataHeaderBorder !== false && (
+                                <div className="wcdn-preview-divider" style={{ margin: "0 0 8px" }} />
+                            )}
+
+                        {/* Order Meta below addresses */}
+                        {showMetaBelow && (
+                            <table className="wcdn-preview-order-meta-below">
+                                <tbody>
+                                    {orderMetaFields
+                                        .filter((field) => field.show && field.value)
+                                        .map((field) => (
+                                            <tr key={field.key}>
+                                                <td className="label" style={field.style}>
+                                                    {field.label}:
+                                                </td>
+                                                <td className="value" style={field.style}>
+                                                    {field.value}
+                                                </td>
+                                            </tr>
+                                        ))}
+                                </tbody>
+                            </table>
+                        )}
+                    </>
+                );
+            })()}
 
             {/* Items Table */}
             {items.length > 0 && (
@@ -392,7 +507,13 @@ function Preview({ template, settings, preview }) {
                                                 </div>
                                             </>
                                         ) : (
-                                            <>
+                                            <div style={settings.showProductImages ? { display: "flex", alignItems: "flex-start", gap: 8 } : {}}>
+                                                {settings.showProductImages && (
+                                                    item.image_url
+                                                        ? <img className="wcdn-item-image" src={item.image_url} width={settings.productImageSize ?? 40} height={settings.productImageSize ?? 40} alt="" style={{ flexShrink: 0 }} />
+                                                        : <div className="wcdn-item-image-placeholder" style={{ width: settings.productImageSize ?? 40, height: settings.productImageSize ?? 40, flexShrink: 0 }} />
+                                                )}
+                                                <div style={{ flex: 1, minWidth: 0 }}>
                                                 {item.name}
                                                 {item.sku && (
                                                     <span className="wcdn-item-sku">
@@ -412,7 +533,8 @@ function Preview({ template, settings, preview }) {
                                                         ))}
                                                     </dl>
                                                 )}
-                                            </>
+                                                </div>
+                                            </div>
                                         )}
                                     </td>
 
@@ -465,18 +587,33 @@ function Preview({ template, settings, preview }) {
                             <col className="wcdn-col-qty" />
                             <col className="wcdn-col-total" />
                         </colgroup>
-                        <tr>
-                            <td colSpan={3} className="wcdn-preview-totals-label">{__("Subtotal:", TEXT_DOMAIN)}</td>
-                            <td className="wcdn-preview-totals-value" dangerouslySetInnerHTML={{ __html: totals.subtotal }} />
-                        </tr>
-                        <tr>
-                            <td colSpan={3} className="wcdn-preview-totals-label">{__("Tax:", TEXT_DOMAIN)}</td>
-                            <td className="wcdn-preview-totals-value" dangerouslySetInnerHTML={{ __html: totals.tax }} />
-                        </tr>
-                        <tr>
-                            <td colSpan={3} className="wcdn-preview-totals-label">{__("Shipping:", TEXT_DOMAIN)}</td>
-                            <td className="wcdn-preview-totals-value" dangerouslySetInnerHTML={{ __html: totals.shipping }} />
-                        </tr>
+                        {settings.showProductCharges !== false && settings.showSubtotal !== false && (
+                            <tr>
+                                <td colSpan={3} className="wcdn-preview-totals-label">{__("Subtotal:", TEXT_DOMAIN)}</td>
+                                <td className="wcdn-preview-totals-value" dangerouslySetInnerHTML={{ __html: totals.subtotal }} />
+                            </tr>
+                        )}
+                        {settings.showProductCharges !== false && settings.showTax !== false && (
+                            totals.tax_lines?.length > 0
+                                ? totals.tax_lines.map((line, i) => (
+                                    <tr key={i}>
+                                        <td colSpan={3} className="wcdn-preview-totals-label">{line.label}:</td>
+                                        <td className="wcdn-preview-totals-value" dangerouslySetInnerHTML={{ __html: line.value }} />
+                                    </tr>
+                                ))
+                                : totals.tax && (
+                                    <tr>
+                                        <td colSpan={3} className="wcdn-preview-totals-label">{__("Tax:", TEXT_DOMAIN)}</td>
+                                        <td className="wcdn-preview-totals-value" dangerouslySetInnerHTML={{ __html: totals.tax }} />
+                                    </tr>
+                                )
+                        )}
+                        {settings.showProductCharges !== false && settings.showShipping !== false && (
+                            <tr>
+                                <td colSpan={3} className="wcdn-preview-totals-label">{__("Shipping:", TEXT_DOMAIN)}</td>
+                                <td className="wcdn-preview-totals-value" dangerouslySetInnerHTML={{ __html: totals.shipping }} />
+                            </tr>
+                        )}
 
                         {totals.has_refund ? (
                             <>
