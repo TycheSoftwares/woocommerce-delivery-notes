@@ -187,7 +187,7 @@ class Backend {
 	public function create_box_content( $post ) {
 		global $post_id;
 
-		$order_id = ( $post instanceof WP_Post ) ? $post->ID : $post->get_id();
+		$order_id = ( $post instanceof \WP_Post ) ? $post->ID : $post->get_id();
 		$order    = wc_get_order( $order_id );
 
 		if ( ! $order || $order instanceof \WC_Order_Refund ) {
