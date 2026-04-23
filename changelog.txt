@@ -1,6 +1,13 @@
 *** Print Invoice & Delivery Notes for WooCommerce ***
 
-2026-04-09 - version 7.0.0
+2026-04-23 - version 7.0.2
+* Fix - Fatal error displayed on edit order page after 7.0 update when HPOS was disabled.
+* Fix - Bulk actions dropdown displayed blank labels after 7.0 update.
+
+2026-04-22 - version 7.0.1
+* Fix - Resolved an issue where a missing static file prevented the page from loading correctly after 7.0.0 update.
+
+2026-04-22 - version 7.0.0
 This release is a complete overhaul of the plugin. The admin interface has been rebuilt using React and the plugin codebase has been fully restructured.
 * Enhancement - Rebuilt the admin interface using React, with dedicated Dashboard, Templates, Settings, and FAQs pages.
 * Enhancement - Added support for five document types: Invoice, Delivery Note, Receipt, Credit Note, and Packing Slip.
