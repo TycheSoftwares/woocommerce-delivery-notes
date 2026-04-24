@@ -511,7 +511,7 @@ class Utils {
 		}
 
 		// Invoice.
-		if ( in_array( $status, array( 'pending', 'on-hold', 'processing', 'completed' ), true ) ) {
+		if ( ! in_array( $status, array( 'failed', 'cancelled', 'refunded' ), true ) ) {
 			$types[] = 'invoice';
 		}
 
@@ -526,7 +526,7 @@ class Utils {
 			$types[] = 'packingslip';
 
 			// Optional: stricter delivery note logic.
-			if ( in_array( $status, array( 'processing', 'completed' ), true ) ) {
+			if ( $order->is_paid() ) {
 				$types[] = 'deliverynote';
 			}
 		}
