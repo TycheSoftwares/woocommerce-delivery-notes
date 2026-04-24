@@ -1,5 +1,28 @@
 *** Print Invoice & Delivery Notes for WooCommerce ***
 
+2026-04-25 - version 7.1.0
+* Enhancement - Added Show/Hide controls for Subtotal, Tax, and Shipping rows in the product table. Configurable per document type under Template Settings → Show Product Table Charges.
+* Enhancement - Added option to display Order Data beside or below the Billing/Shipping address section. Configurable under Invoice Settings → Template Order Data Position. Default matches the v6 layout (below).
+* Enhancement - Added settings to show/hide and style Billing Email and Billing Phone Number independently, including font size, font style, text align, and colour.
+* Enhancement - Added wcdn_format_phone_number filter to allow custom formatting of the billing phone number in document templates.
+* Enhancement - Separated Store Phone Number and Store Email into individual rows with dedicated CSS settings for font style, text align, margin top, and margin bottom.
+* Enhancement - Added option to display product images alongside the product title in the items table.
+* Fix - Store logo disappeared for some sites after updating to 7.0. The migration now resolves the attachment URL at migration time rather than storing a raw attachment ID.
+* Fix - Plugin data is now restored to v6.0 format on deactivation, and the v7 state is snapshotted so it can be fully restored on re-activation without re-running the migration.
+* Fix - Shipping method was not displayed in document templates.
+* Fix - Shop address was rendered on a single line. It now correctly renders as multi-line.
+* Fix - A trailing semicolon was shown after an empty store phone or store email label. The semicolon is now omitted when the value is empty.
+* Fix - Store logo was not displaying in the HTML admin preview.
+* Fix - Print button controls for Invoice, Delivery Note, Packing Slip, and Receipt were not shown on the WooCommerce Admin Edit Order page.
+* Fix - All show/hide toggles (logo, shop name, address, phone, email, etc.) were set to false after migrating from v6 sites that had no customisation options saved. The v6 default (all sections visible) is now correctly preserved.
+* Fix - Email attachment (Attach to WooCommerce emails) was incorrectly enabled after migration from v6 when it had never been configured. The feature remains off unless explicitly enabled.
+* Fix - Template preview in the admin broke when the site had no orders, or when order items referenced deleted products. The preview now falls back to generated sample data and fills any blank renderable fields with placeholder values.
+* Fix - Address font size was inflated after migrating from v6 sites that used the Simple template type. The template default is now used for address font size in that case.
+* Fix - Per-template settings (show/hide toggles, alignments, font sizes) were not recovered by the v7.1.0 migration for users upgrading from v7.0.2.
+* Fix - Document title font size was shown as 40 after a fresh install or migration. The default is now 25 and the migration normalises any stored value of 40 to 25.
+* Tweak - Default alignment for logo, document title, shop name, address, phone, and email changed from centre to left.
+* Tweak - The v7.1.0 settings-recovery migration now resets alignment fields to left for sites that used the v6.0 default template type and had not customised those settings.
+
 2026-04-23 - version 7.0.2
 * Fix - Fatal error displayed on edit order page after 7.0 update when HPOS was disabled.
 * Fix - Bulk actions dropdown displayed blank labels after 7.0 update.
