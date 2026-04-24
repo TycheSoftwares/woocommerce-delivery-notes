@@ -2,7 +2,7 @@
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Print Invoice & Delivery Notes for WooCommerce 7.0.2\n"
+"Project-Id-Version: Print Invoice & Delivery Notes for WooCommerce 7.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce-"
 "delivery-notes\n"
 "Last-Translator: Automatically generated\n"
@@ -10,8 +10,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-23T23:37:58+00:00\n"
-"PO-Revision-Date: 2026-04-23T23:37:58+00:00\n"
+"POT-Creation-Date: 2026-04-24T19:53:22+00:00\n"
+"PO-Revision-Date: 2026-04-24T19:53:22+00:00\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: woocommerce-delivery-notes\n"
 "Language: it_IT\n"
@@ -140,7 +140,7 @@ msgstr ""
 msgid "Font deleted successfully."
 msgstr ""
 
-#: includes/api/class-settings.php:184 includes/api/class-templates.php:914
+#: includes/api/class-settings.php:184 includes/api/class-templates.php:962
 msgid "Authentication has failed."
 msgstr ""
 
@@ -171,7 +171,6 @@ msgid "Settings saved successfully."
 msgstr ""
 
 #: includes/api/class-settings.php:320 templates/base.php:286
-#: templates/examples/base.php:171
 msgid "Document"
 msgstr ""
 
@@ -207,33 +206,37 @@ msgstr ""
 msgid "invoice"
 msgstr ""
 
-#: includes/api/class-templates.php:321 includes/api/class-templates.php:1054
+#: includes/api/class-templates.php:119
+msgid "Sample Product"
+msgstr ""
+
+#: includes/api/class-templates.php:362 includes/api/class-templates.php:1102
 msgid "Customer returned item"
 msgstr ""
 
-#: includes/api/class-templates.php:424
+#: includes/api/class-templates.php:466
 msgid "N/A"
 msgstr ""
 
-#: includes/api/class-templates.php:761
+#: includes/api/class-templates.php:809
 msgid "Download"
 msgstr ""
 
 #. translators: %s: number of files
-#: includes/api/class-templates.php:763
+#: includes/api/class-templates.php:811
 #, php-format
 msgid "%s Files"
 msgstr ""
 
-#: includes/api/class-templates.php:927
+#: includes/api/class-templates.php:975
 msgid "Invalid request payload."
 msgstr ""
 
-#: includes/api/class-templates.php:946
+#: includes/api/class-templates.php:994
 msgid "Invalid template type."
 msgstr ""
 
-#: includes/api/class-templates.php:980
+#: includes/api/class-templates.php:1028
 msgid "Template saved successfully."
 msgstr ""
 
@@ -852,7 +855,7 @@ msgstr ""
 
 #: includes/services/template/class-template-engine.php:966
 #: includes/services/template/class-template-engine.php:1189
-#: templates/base.php:111 templates/base.php:176
+#: templates/base.php:111 templates/base.php:177
 msgid "Phone"
 msgstr ""
 
@@ -872,7 +875,7 @@ msgstr ""
 
 #: includes/services/template/class-template-engine.php:1047
 #: includes/services/template/class-template-engine.php:1254
-#: templates/base.php:120 templates/base.php:180
+#: templates/base.php:120 templates/base.php:181
 msgid "Email"
 msgstr ""
 
@@ -905,7 +908,6 @@ msgid "Show Order Data Header"
 msgstr ""
 
 #: includes/services/template/class-template-engine.php:1382
-#: templates/examples/base.php:264
 msgid "Order"
 msgstr ""
 
@@ -1161,52 +1163,69 @@ msgstr ""
 msgid "Below Addresses"
 msgstr ""
 
-#: templates/base.php:400 templates/examples/base.php:311
+#: templates/base.php:400
 msgid "Refunded Item"
 msgstr ""
 
-#: templates/base.php:400 templates/examples/base.php:311
+#: templates/base.php:400
 msgid "Product"
 msgstr ""
 
-#: templates/base.php:403 templates/examples/base.php:318
+#: templates/base.php:403
 msgid "Price"
 msgstr ""
 
-#: templates/base.php:406 templates/examples/base.php:321
+#: templates/base.php:406
 msgid "Quantity"
 msgstr ""
 
-#: templates/base.php:409 templates/examples/base.php:327
+#: templates/base.php:409
 msgid "Total Refunded"
 msgstr ""
 
-#: templates/base.php:409 templates/examples/base.php:327
+#: templates/base.php:409
 msgid "Total"
 msgstr ""
 
-#: templates/base.php:495 templates/examples/base.php:396
+#: templates/base.php:435
+msgid ""
+"The wcdn_order_item_before hook argument order changed in v7.0. Update your "
+"callback to accept ( $item, $order, $template ) instead of ( $product, "
+"$order, $item )."
+msgstr ""
+
+#: templates/base.php:480
+msgid ""
+"The wcdn_order_item_after hook argument order changed in v7.0. Update your "
+"callback to accept ( $item, $order, $template ) instead of ( $product, "
+"$order, $item )."
+msgstr ""
+
+#: templates/base.php:530
 msgid "Subtotal:"
 msgstr ""
 
-#: templates/base.php:510 templates/examples/base.php:403
+#: templates/base.php:537
+msgid "Discount:"
+msgstr ""
+
+#: templates/base.php:552
 msgid "Tax:"
 msgstr ""
 
-#: templates/base.php:518 templates/examples/base.php:410
+#: templates/base.php:560
 msgid "Shipping:"
 msgstr ""
 
-#: templates/base.php:525 templates/examples/base.php:417
+#: templates/base.php:567
 msgid "Order Total:"
 msgstr ""
 
-#: templates/base.php:529 templates/examples/base.php:421
+#: templates/base.php:571
 msgid "Refund:"
 msgstr ""
 
-#: templates/base.php:533 templates/base.php:543
-#: templates/examples/base.php:425 templates/examples/base.php:435
+#: templates/base.php:575 templates/base.php:585
 msgid "Total:"
 msgstr ""
 

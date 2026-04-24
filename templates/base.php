@@ -170,17 +170,17 @@ if ( $show_billing ) {
 				<?php echo esc_html( $line ); ?><br />
 		<?php endforeach; ?>
 		<?php endif; ?>
+	</p>
 
 		<?php if ( 'columns' === $order_meta_position ) : ?>
 			<?php if ( ! empty( $settings['showBillingPhone'] ) && ! empty( $order['billing']['phone'] ) ) : ?>
-				<?php echo esc_html( ( $settings['billingPhoneText'] ?? __( 'Phone', 'woocommerce-delivery-notes' ) ) . ': ' . wcdn_format_phone_number( $order['billing']['phone'], $order['billing']['country'] ?? '' ) ); ?><br />
+				<p class="wcdn-columns-billingPhone"><?php echo esc_html( ( $settings['billingPhoneText'] ?? __( 'Phone', 'woocommerce-delivery-notes' ) ) . ': ' . wcdn_format_phone_number( $order['billing']['phone'], $order['billing']['country'] ?? '' ) ); ?></p>
 			<?php endif; ?>
 
 			<?php if ( ! empty( $settings['showBillingEmail'] ) && ! empty( $order['billing']['email'] ) ) : ?>
-				<?php echo esc_html( ( $settings['billingEmailText'] ?? __( 'Email', 'woocommerce-delivery-notes' ) ) . ': ' . $order['billing']['email'] ); ?><br />
+				<p class="wcdn-columns-billingEmail"><?php echo esc_html( ( $settings['billingEmailText'] ?? __( 'Email', 'woocommerce-delivery-notes' ) ) . ': ' . $order['billing']['email'] ); ?></p>
 			<?php endif; ?>
 		<?php endif; ?>
-	</p>
 </td>
 		<?php
 	};
@@ -412,10 +412,30 @@ if ( $is_rtl ) {
 		</thead>
 
 		<tbody>
+			<?php
+			// Load the WC_Order once so the deprecated backward-compat hooks below can
+			// pass the original WC objects that v6 callbacks expected.
+			$_wcdn_wc_order = ! empty( $order['id'] ) ? wc_get_order( $order['id'] ) : null;
+			?>
 			<?php foreach ( $items as $item ) : ?>
+				<?php
+				$_wcdn_wc_product    = ! empty( $item['product_id'] ) ? wc_get_product( $item['product_id'] ) : null;
+				$_wcdn_wc_order_item = ( $_wcdn_wc_order && ! empty( $item['order_item_id'] ) )
+					? $_wcdn_wc_order->get_item( $item['order_item_id'] )
+					: null;
+				?>
 			<tr>
 				<td>
-					<?php do_action( 'wcdn_order_item_before', $item, $order, $template ); ?>
+					<?php
+					do_action_deprecated(
+						'wcdn_order_item_before',
+						array( $_wcdn_wc_product, $_wcdn_wc_order, $_wcdn_wc_order_item ),
+						'7.0.0',
+						'wcdn_order_item_before',
+						esc_html__( 'The wcdn_order_item_before hook argument order changed in v7.0. Update your callback to accept ( $item, $order, $template ) instead of ( $product, $order, $item ).', 'woocommerce-delivery-notes' )
+					);
+					do_action( 'wcdn_order_item_before', $item, $order, $template );
+					?>
 					<?php if ( ! empty( $item['addon'] ) ) : ?>
 					<div class="wcdn-item-addon-name"><?php echo esc_html( $item['addon']['name'] ); ?></div>
 					<div class="wcdn-item-addon-value"><?php echo esc_html( $item['addon']['value'] ); ?></div>
@@ -451,6 +471,16 @@ if ( $is_rtl ) {
 						</td></tr></table>
 						<?php endif; ?>
 					<?php endif; ?>
+					<?php
+					do_action_deprecated(
+						'wcdn_order_item_after',
+						array( $_wcdn_wc_product, $_wcdn_wc_order, $_wcdn_wc_order_item ),
+						'7.0.0',
+						'wcdn_order_item_after',
+						esc_html__( 'The wcdn_order_item_after hook argument order changed in v7.0. Update your callback to accept ( $item, $order, $template ) instead of ( $product, $order, $item ).', 'woocommerce-delivery-notes' )
+					);
+					do_action( 'wcdn_order_item_after', $item, $order, $template );
+					?>
 				</td>
 
 				<?php
@@ -469,7 +499,6 @@ if ( $is_rtl ) {
 				<td><?php echo wp_kses_post( $item['total'] ); ?></td>
 				<?php endif; ?>
 
-				<?php do_action( 'wcdn_order_item_after', $item, $order, $template ); ?>
 			</tr>
 			<?php endforeach; ?>
 		</tbody>
@@ -485,11 +514,17 @@ if ( $is_rtl ) {
 
 	<table class="wcdn-totals" width="100%">
 		<colgroup>
-			<col class="wcdn-col-product">
-			<col class="wcdn-col-price">
-			<col class="wcdn-col-qty">
-			<col class="wcdn-col-total">
+			<col class="wcdn-col-product" style="width:50%;">
+			<col class="wcdn-col-price" style="width:15%;">
+			<col class="wcdn-col-qty" style="width:15%;">
+			<col class="wcdn-col-total" style="width:20%;">
 		</colgroup>
+		<tr style="line-height:0;font-size:0;">
+			<td style="width:50%;height:0;padding:0;border:none;"></td>
+			<td style="width:15%;height:0;padding:0;border:none;"></td>
+			<td style="width:15%;height:0;padding:0;border:none;"></td>
+			<td style="width:20%;height:0;padding:0;border:none;"></td>
+		</tr>
 		<?php if ( isset( $totals['subtotal'] ) && ! empty( $settings['showProductCharges'] ) && ! empty( $settings['showSubtotal'] ) ) : ?>
 		<tr>
 			<td colspan="3" class="wcdn-totals-label"><?php echo esc_html( apply_filters( 'wcdn_invoice_order_total_label', __( 'Subtotal:', 'woocommerce-delivery-notes' ), $order ) ); ?></td>
@@ -497,20 +532,27 @@ if ( $is_rtl ) {
 		</tr>
 		<?php endif; ?>
 
-		<?php if ( ( isset( $totals['tax'] ) || ! empty( $totals['tax_lines'] ) ) && ! empty( $settings['showProductCharges'] ) && ! empty( $settings['showTax'] ) ) : ?>
-		<?php if ( ! empty( $totals['tax_lines'] ) ) : ?>
-			<?php foreach ( $totals['tax_lines'] as $tax_line ) : ?>
-			<tr>
-				<td colspan="3" class="wcdn-totals-label"><?php echo esc_html( apply_filters( 'wcdn_invoice_order_total_label', $tax_line['label'] . ':', $order ) ); ?></td>
-				<td class="wcdn-totals-value"><?php echo wp_kses_post( $tax_line['value'] ); ?></td>
-			</tr>
-			<?php endforeach; ?>
-		<?php elseif ( isset( $totals['tax'] ) ) : ?>
+		<?php if ( isset( $totals['discount'] ) ) : ?>
 		<tr>
-			<td colspan="3" class="wcdn-totals-label"><?php echo esc_html( apply_filters( 'wcdn_invoice_order_total_label', __( 'Tax:', 'woocommerce-delivery-notes' ), $order ) ); ?></td>
-			<td class="wcdn-totals-value"><?php echo wp_kses_post( $totals['tax'] ); ?></td>
+			<td colspan="3" class="wcdn-totals-label"><?php echo esc_html( apply_filters( 'wcdn_invoice_order_total_label', __( 'Discount:', 'woocommerce-delivery-notes' ), $order ) ); ?></td>
+			<td class="wcdn-totals-value"><?php echo wp_kses_post( $totals['discount'] ); ?></td>
 		</tr>
 		<?php endif; ?>
+
+		<?php if ( ( isset( $totals['tax'] ) || ! empty( $totals['tax_lines'] ) ) && ! empty( $settings['showProductCharges'] ) && ! empty( $settings['showTax'] ) ) : ?>
+			<?php if ( ! empty( $totals['tax_lines'] ) ) : ?>
+				<?php foreach ( $totals['tax_lines'] as $tax_line ) : ?>
+				<tr>
+					<td colspan="3" class="wcdn-totals-label"><?php echo esc_html( apply_filters( 'wcdn_invoice_order_total_label', $tax_line['label'] . ':', $order ) ); ?></td>
+					<td class="wcdn-totals-value"><?php echo wp_kses_post( $tax_line['value'] ); ?></td>
+				</tr>
+				<?php endforeach; ?>
+			<?php elseif ( isset( $totals['tax'] ) ) : ?>
+			<tr>
+				<td colspan="3" class="wcdn-totals-label"><?php echo esc_html( apply_filters( 'wcdn_invoice_order_total_label', __( 'Tax:', 'woocommerce-delivery-notes' ), $order ) ); ?></td>
+				<td class="wcdn-totals-value"><?php echo wp_kses_post( $totals['tax'] ); ?></td>
+			</tr>
+			<?php endif; ?>
 		<?php endif; ?>
 
 		<?php if ( isset( $totals['shipping'] ) && ! empty( $settings['showProductCharges'] ) && ! empty( $settings['showShipping'] ) ) : ?>

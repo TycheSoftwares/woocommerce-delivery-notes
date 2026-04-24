@@ -325,27 +325,35 @@ function Preview({ template, settings, preview }) {
                                                     {line}
                                                 </span>
                                             ))}
-
-                                            {metaPosition === "columns" &&
-                                                settings.showBillingPhone &&
-                                                order.billing.phone && (
-                                                    <>
-                                                        <br />
-                                                        {settings.billingPhoneText ?? "Phone"}:{" "}
-                                                        {order.billing.phone}
-                                                    </>
-                                                )}
-
-                                            {metaPosition === "columns" &&
-                                                settings.showBillingEmail &&
-                                                order.billing.email && (
-                                                    <>
-                                                        <br />
-                                                        {settings.billingEmailText ?? "Email"}:{" "}
-                                                        {order.billing.email}
-                                                    </>
-                                                )}
                                         </p>
+
+                                        {metaPosition === "columns" &&
+                                            settings.showBillingPhone &&
+                                            order.billing.phone && (
+                                                <div style={{
+                                                    fontSize: `${settings.billingPhoneFontSize ?? 14}px`,
+                                                    fontWeight: settings.billingPhoneFontStyle === "bold" ? 600 : 400,
+                                                    textAlign: settings.billingPhoneAlign ?? "left",
+                                                    color: settings.billingPhoneTextColor ?? "#000000",
+                                                }}>
+                                                    {settings.billingPhoneText ? `${settings.billingPhoneText}: ` : ""}
+                                                    {order.billing.phone}
+                                                </div>
+                                            )}
+
+                                        {metaPosition === "columns" &&
+                                            settings.showBillingEmail &&
+                                            order.billing.email && (
+                                                <div style={{
+                                                    fontSize: `${settings.billingEmailFontSize ?? 14}px`,
+                                                    fontWeight: settings.billingEmailFontStyle === "bold" ? 600 : 400,
+                                                    textAlign: settings.billingEmailAlign ?? "left",
+                                                    color: settings.billingEmailTextColor ?? "#000000",
+                                                }}>
+                                                    {settings.billingEmailText ? `${settings.billingEmailText}: ` : ""}
+                                                    {order.billing.email}
+                                                </div>
+                                            )}
                                     </div>
                                 )}
 

@@ -225,6 +225,20 @@ class Template_Style {
 			);
 		}
 
+		// Columns-mode billing phone/email (rendered as <p> siblings, not table rows).
+		foreach ( array( 'billingPhone', 'billingEmail' ) as $key ) {
+			$css .= self::rule(
+				".wcdn-billing-address .wcdn-columns-{$key}",
+				array(
+					'text-align'  => $settings[ "{$key}Align" ] ?? null,
+					'font-size'   => $settings[ "{$key}FontSize" ] ?? null,
+					'color'       => $settings[ "{$key}TextColor" ] ?? null,
+					'font-weight' => self::font_weight( $settings[ "{$key}FontStyle" ] ?? null ),
+				),
+				$context
+			);
+		}
+
 		return apply_filters( 'wcdn_dynamic_css', $css, $settings );
 	}
 

@@ -45,13 +45,18 @@ class Migration {
 		$success = true;
 
 		// Migrate to 7.0.
-		if ( version_compare( (string) $from_version, '7.0', '<' ) ) {
+		if ( $success && version_compare( (string) $from_version, '7.0', '<' ) ) {
 			$success = self::migrate_to_v7();
 		}
 
-		// Migrate to 7.0.2
-		if ( version_compare( (string) $from_version, '7.0.2', '<' ) ) {
-			$success = self::migrate_to_v702();
+		// 7.0.2 had no data transform — mark it complete so the flag is consistent.
+		if ( $success && version_compare( (string) $from_version, '7.0.2', '<' ) ) {
+			update_option( 'wcdn_migration_7_0_2_completed', true );
+		}
+
+		// Recover settings wiped by the v702 migration bug.
+		if ( $success && version_compare( (string) $from_version, '7.1.0', '<' ) ) {
+			$success = self::migrate_to_v71();
 		}
 
 		return $success;
@@ -89,8 +94,8 @@ class Migration {
 
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 		$options = $wpdb->get_results(
-			"SELECT option_name, option_value 
-            FROM {$wpdb->options} 
+			"SELECT option_name, option_value, autoload
+            FROM {$wpdb->options}
             WHERE option_name LIKE 'wcdn_%'",
 			ARRAY_A
 		);
@@ -114,20 +119,136 @@ class Migration {
 		return true;
 	}
 
-	public static function migrate_to_v702() {
-		if ( get_option( 'wcdn_migration_7_0_2_completed' ) ) {
+	/**
+	 * Run migration to v7.1.0.
+	 *
+	 * Recovers global settings (storeName, storeLogo, policies, etc.) and
+	 * per-template settings (alignments, font sizes, show/hide toggles) that
+	 * were wiped to defaults by the v7.0.2 migration bug. The bug caused
+	 * migrate_to_v702() to call build_settings() in a fresh request after
+	 * cleanup_old_options() had already deleted the legacy options, producing
+	 * an all-defaults settings array that silently overwrote correctly-migrated
+	 * v7.0 data.
+	 *
+	 * Recovery reads from the wcdn_legacy_backup saved during the original v7
+	 * migration and restores any key whose current value still matches the
+	 * default, leaving any settings the user re-entered manually untouched.
+	 *
+	 * @return bool
+	 * @since 7.1.0
+	 */
+	public static function migrate_to_v71() {
+
+		if ( get_option( 'wcdn_migration_7_1_0_completed' ) ) {
 			return true;
 		}
 
-		$settings  = self::build_settings();
+		$backup = get_option( 'wcdn_legacy_backup' );
 
-		// Validate before saving.
-		if ( ! is_array( $settings ) ) {
-			return false;
+		if ( is_array( $backup ) && ! empty( $backup ) ) {
+
+			// Seed the source cache from the backup so build_settings() and
+			// build_templates() can resolve values without the original options
+			// being in the database.
+			foreach ( $backup as $option_name => $value ) {
+				self::$source_cache[ $option_name ] = $value;
+			}
+
+			$recovered_settings  = self::build_settings();
+			$recovered_templates = self::build_templates();
+			self::$source_cache  = array();
+
+			// Recover global settings.
+			if ( is_array( $recovered_settings ) ) {
+
+				$current  = get_option( Settings::OPTION_KEY, array() );
+				$defaults = Settings::default_settings();
+
+				// Only apply recovered values where the current value still matches
+				// the default, indicating the setting was wiped rather than changed.
+				foreach ( $recovered_settings as $key => $recovered_value ) {
+					$default_value = $defaults[ $key ] ?? null;
+					$current_value = $current[ $key ] ?? null;
+
+					if ( $current_value === $default_value && $recovered_value !== $default_value ) {
+						$current[ $key ] = $recovered_value;
+					}
+				}
+
+				update_option( Settings::OPTION_KEY, $current );
+			}
+
+			// Recover per-template settings (alignments, font sizes, show/hide toggles, etc.).
+			if ( is_array( $recovered_templates ) ) {
+
+				$current_templates = get_option( Templates::OPTION_KEY, array() );
+
+				foreach ( $recovered_templates as $template => $recovered_fields ) {
+
+					$structure = Template_Engine::get_structure( $template );
+					$defaults  = $structure ? Template_Engine::build_defaults( $template, $structure ) : array();
+					$current   = $current_templates[ $template ] ?? array();
+
+					foreach ( $recovered_fields as $key => $recovered_value ) {
+						$default_value = $defaults[ $key ] ?? null;
+						$current_value = $current[ $key ] ?? null;
+
+						if ( $current_value === $default_value && $recovered_value !== $default_value ) {
+							// Standard: value matches template default → was wiped → restore.
+							$current_templates[ $template ][ $key ] = $recovered_value;
+						} elseif ( false === $current_value && true === $recovered_value ) {
+							// Boolean show toggles set to false by the old v7.0 migration
+							// (active_flag returned false for missing source options) when v6
+							// defaults had them on. Restore to true so sections are visible.
+							$current_templates[ $template ][ $key ] = $recovered_value;
+						}
+					}
+				}
+
+				// If the site used the default template type in v6, the user never
+				// customised alignments — update any field still at the old 'center'
+				// default to the new 'left' default introduced in v7.1.0.
+				if ( 'default' === ( $backup['wcdn_template_type'] ?? null ) ) {
+
+					$left_aligned_fields = array(
+						'logoAlignment',
+						'documentTitleAlign',
+						'shopNameAlign',
+						'addressAlign',
+						'shopPhoneAlign',
+						'shopEmailAlign',
+					);
+
+					foreach ( array_keys( $current_templates ) as $tmpl ) {
+						foreach ( $left_aligned_fields as $field ) {
+							if ( 'center' === ( $current_templates[ $tmpl ][ $field ] ?? null ) ) {
+								$current_templates[ $tmpl ][ $field ] = 'left';
+							}
+						}
+					}
+				}
+
+				update_option( Templates::OPTION_KEY, $current_templates );
+			}
 		}
-		update_option( Settings::OPTION_KEY, $settings );
-		update_option( 'wcdn_migration_7_0_2_completed', true );
 
+		// Normalize documentTitleFontSize: the default changed from 40 → 25 in v7.1.0.
+		// Update any template still holding the old default value.
+		$ct         = get_option( Templates::OPTION_KEY, array() );
+		$ct_updated = false;
+
+		foreach ( array_keys( $ct ) as $tmpl ) {
+			if ( 40 === ( $ct[ $tmpl ]['documentTitleFontSize'] ?? null ) ) {
+				$ct[ $tmpl ]['documentTitleFontSize'] = 25;
+				$ct_updated                           = true;
+			}
+		}
+
+		if ( $ct_updated ) {
+			update_option( Templates::OPTION_KEY, $ct );
+		}
+
+		update_option( 'wcdn_migration_7_1_0_completed', true );
 		return true;
 	}
 
@@ -140,13 +261,16 @@ class Migration {
 	 */
 	protected static function backup_old_data( $options ) {
 
-		$backup = array();
+		$backup   = array();
+		$autoload = array();
 
 		foreach ( $options as $row ) {
-			$backup[ $row['option_name'] ] = maybe_unserialize( $row['option_value'] );
+			$backup[ $row['option_name'] ]   = maybe_unserialize( $row['option_value'] );
+			$autoload[ $row['option_name'] ] = $row['autoload'] ?? 'yes';
 		}
 
-		update_option( 'wcdn_legacy_backup', $backup );
+		update_option( 'wcdn_legacy_backup', $backup, false );
+		update_option( 'wcdn_legacy_backup_autoload', $autoload, false );
 	}
 
 	/**
@@ -166,17 +290,25 @@ class Migration {
 						return null;
 					}
 
-					$id  = (int) $value;
-					$url = wp_get_attachment_url( $id );
-
-					// Store the attachment ID (consistent with v7.0 admin format)
-					// so get_store_data() can resolve both the URL and the file path.
-					return $url ? $id : null;
+					$url = wp_get_attachment_url( (int) $value );
+					return $url ? $url : null;
 				},
 			),
 			'storeName'                    => array(
-				'source' => 'wcdn_general_settings',
-				'path'   => 'shop_name',
+				'source'    => 'wcdn_custom_company_name',
+				'transform' => function ( $value ) {
+
+					// Primary: standalone wcdn_custom_company_name option.
+					if ( ! empty( $value ) ) {
+						return sanitize_text_field( $value );
+					}
+
+					// Fallback: nested shop_name inside wcdn_general_settings.
+					$general = self::get_source( 'wcdn_general_settings' );
+					return ! empty( $general['shop_name'] )
+						? sanitize_text_field( $general['shop_name'] )
+						: null;
+				},
 			),
 			'storeAddress'                 => array(
 				'source' => 'wcdn_company_address',
@@ -223,8 +355,8 @@ class Migration {
 				'source'    => 'wcdn_invoice_number_prefix',
 				'transform' => function ( $prefix ) {
 
-					$suffix  = get_option( 'wcdn_invoice_number_suffix' );
-					$counter = (int) get_option( 'wcdn_invoice_number_counter', 0 );
+					$suffix  = self::get_source( 'wcdn_invoice_number_suffix' );
+					$counter = (int) ( self::get_source( 'wcdn_invoice_number_counter' ) ?? 0 );
 
 					if ( empty( $prefix ) && empty( $suffix ) && 0 === $counter ) {
 						return null;
@@ -278,7 +410,13 @@ class Migration {
 				'attachToWoocommerceEmails'   => array(
 					'source'    => 'wcdn_invoice_customization',
 					'path'      => 'email_attach_to',
-					'transform' => 'active_flag',
+					'transform' => function ( $value ) {
+						// Email attachment was opt-in in v6. Absent section = off.
+						if ( ! is_array( $value ) ) {
+							return false;
+						}
+						return isset( $value['active'] ) && 'on' === $value['active'];
+					},
 				),
 				'woocommerceEmailsToAttachTo' => array(
 					'source' => 'wcdn_invoice_settings',
@@ -322,7 +460,9 @@ class Migration {
 				'documentTitleFontSize'       => array(
 					'source'    => 'wcdn_invoice_customization',
 					'path'      => 'document_setting.document_setting_font_size',
-					'transform' => 'int',
+					'transform' => function () {
+						return 25;
+					},
 				),
 				'documentTitleAlign'          => array(
 					'source'    => 'wcdn_invoice_customization',
@@ -344,7 +484,12 @@ class Migration {
 				'addressFontSize'             => array(
 					'source'    => 'wcdn_invoice_customization',
 					'path'      => 'company_address.company_address_font_size',
-					'transform' => 'int',
+					'transform' => function ( $value ) {
+						if ( 'simple' === self::get_source( 'wcdn_template_type' ) ) {
+							return null;
+						}
+						return is_numeric( $value ) ? (int) $value : null;
+					},
 				),
 				'addressAlign'                => array(
 					'source'    => 'wcdn_invoice_customization',
@@ -614,7 +759,13 @@ class Migration {
 				'attachToWoocommerceEmails'   => array(
 					'source'    => 'wcdn_receipt_customization',
 					'path'      => 'email_attach_to',
-					'transform' => 'active_flag',
+					'transform' => function ( $value ) {
+						// Email attachment was opt-in in v6. Absent section = off.
+						if ( ! is_array( $value ) ) {
+							return false;
+						}
+						return isset( $value['active'] ) && 'on' === $value['active'];
+					},
 				),
 				'woocommerceEmailsToAttachTo' => array(
 					'source' => 'wcdn_receipt_settings',
@@ -658,7 +809,9 @@ class Migration {
 				'documentTitleFontSize'       => array(
 					'source'    => 'wcdn_receipt_customization',
 					'path'      => 'document_setting.document_setting_font_size',
-					'transform' => 'int',
+					'transform' => function () {
+						return 25;
+					},
 				),
 				'documentTitleAlign'          => array(
 					'source'    => 'wcdn_receipt_customization',
@@ -680,7 +833,12 @@ class Migration {
 				'addressFontSize'             => array(
 					'source'    => 'wcdn_receipt_customization',
 					'path'      => 'company_address.company_address_font_size',
-					'transform' => 'int',
+					'transform' => function ( $value ) {
+						if ( 'simple' === self::get_source( 'wcdn_template_type' ) ) {
+							return null;
+						}
+						return is_numeric( $value ) ? (int) $value : null;
+					},
 				),
 				'addressAlign'                => array(
 					'source'    => 'wcdn_receipt_customization',
@@ -991,7 +1149,13 @@ class Migration {
 				'attachToWoocommerceEmails'         => array(
 					'source'    => 'wcdn_deliverynote_customization',
 					'path'      => 'email_attach_to',
-					'transform' => 'active_flag',
+					'transform' => function ( $value ) {
+						// Email attachment was opt-in in v6. Absent section = off.
+						if ( ! is_array( $value ) ) {
+							return false;
+						}
+						return isset( $value['active'] ) && 'on' === $value['active'];
+					},
 				),
 				'woocommerceEmailsToAttachTo'       => array(
 					'source' => 'wcdn_deliverynote_settings',
@@ -1035,7 +1199,9 @@ class Migration {
 				'documentTitleFontSize'             => array(
 					'source'    => 'wcdn_deliverynote_customization',
 					'path'      => 'document_setting.document_setting_font_size',
-					'transform' => 'int',
+					'transform' => function () {
+						return 25;
+					},
 				),
 				'documentTitleAlign'                => array(
 					'source'    => 'wcdn_deliverynote_customization',
@@ -1057,7 +1223,12 @@ class Migration {
 				'addressFontSize'                   => array(
 					'source'    => 'wcdn_deliverynote_customization',
 					'path'      => 'company_address.company_address_font_size',
-					'transform' => 'int',
+					'transform' => function ( $value ) {
+						if ( 'simple' === self::get_source( 'wcdn_template_type' ) ) {
+							return null;
+						}
+						return is_numeric( $value ) ? (int) $value : null;
+					},
 				),
 				'addressAlign'                      => array(
 					'source'    => 'wcdn_deliverynote_customization',
@@ -1342,10 +1513,11 @@ class Migration {
 			? self::get_from_path( $data, $path )
 			: $data;
 
-		// For active_flag transforms, a missing section means the feature was
-		// disabled in the old plugin — pass null through so the transform can
-		// explicitly return false rather than falling back to the new default.
-		if ( 'active_flag' !== $transform && ( null === $value || '' === $value ) ) {
+		// Callable transforms receive null so they can implement their own
+		// fallback logic (e.g. checking a secondary option key).
+		// active_flag also receives null so the transform can return true for
+		// absent source options (v6 default was all-on).
+		if ( 'active_flag' !== $transform && ! is_callable( $transform ) && ( null === $value || '' === $value ) ) {
 			return null;
 		}
 
@@ -1435,9 +1607,12 @@ class Migration {
 				return self::to_bool( $value );
 
 			case 'active_flag':
-				// Value is the whole section array. A null/non-array value means the
-				// section did not exist in the old plugin — treat as disabled (false)
-				// so the new plugin default is not applied when the old plugin had it off.
+				// Value is the whole section array.
+				// null  → source option absent entirely; v6 default was all-on → true.
+				// non-array, non-null → malformed value → treat as disabled.
+				if ( null === $value ) {
+					return true;
+				}
 				if ( ! is_array( $value ) ) {
 					return false;
 				}
@@ -1525,27 +1700,57 @@ class Migration {
 	/**
 	 * Rollback migration.
 	 *
+	 * Restores legacy options to the exact state captured by backup_old_data():
+	 * same values, same autoload settings. Keys created by the migration that
+	 * did not exist pre-migration are removed so the DB is left in a clean
+	 * pre-v7 state. The backup itself is deleted so it is regenerated fresh on
+	 * next activation rather than accumulating stale data.
+	 *
 	 * @return bool
 	 * @since 7.0
 	 */
 	public static function rollback() {
 
-		$backup = get_option( 'wcdn_legacy_backup' );
+		$backup   = get_option( 'wcdn_legacy_backup' );
+		$autoload = get_option( 'wcdn_legacy_backup_autoload', array() );
 
 		if ( empty( $backup ) || ! is_array( $backup ) ) {
 			return false;
 		}
 
 		foreach ( $backup as $option => $value ) {
-			update_option( $option, $value );
+			// Restore with the original autoload setting when available (new backups).
+			// Fall back to null for old backups that pre-date autoload tracking: null
+			// preserves the existing autoload for options still in the DB, and lets
+			// WordPress default to 'yes' only for options being freshly recreated.
+			$original_autoload = isset( $autoload[ $option ] )
+				? ( 'no' !== $autoload[ $option ] )
+				: null;
+			update_option( $option, $value, $original_autoload );
 		}
+
+		// Remove keys created by the migration that were not in the pre-v7 snapshot.
+		// migrate_invoice_counter() creates wcdn_invoice_number_counter after the SQL
+		// snapshot runs, so it is absent from $backup if it did not already exist.
+		if ( ! isset( $backup['wcdn_invoice_number_counter'] ) ) {
+			delete_option( 'wcdn_invoice_number_counter' );
+		}
+		if ( ! isset( $backup['wcdn_invoice_number_counter_lock'] ) ) {
+			delete_option( 'wcdn_invoice_number_counter_lock' );
+		}
+
+		// Delete backup artifacts — they will be regenerated on next activation.
+		delete_option( 'wcdn_legacy_backup' );
+		delete_option( 'wcdn_legacy_backup_autoload' );
 
 		// Remove new data.
 		delete_option( Settings::OPTION_KEY );
 		delete_option( Templates::OPTION_KEY );
 
-		// Reset flags.
+		// Reset all migration flags so run() can re-execute cleanly.
 		delete_option( 'wcdn_migration_7_completed' );
+		delete_option( 'wcdn_migration_7_0_2_completed' );
+		delete_option( 'wcdn_migration_7_1_0_completed' );
 
 		return true;
 	}

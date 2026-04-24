@@ -772,7 +772,7 @@ class Template_Engine {
 						'schema'    => 'text',
 						'fieldType' => 'radio',
 						'label'     => __( 'Alignment', 'woocommerce-delivery-notes' ),
-						'default'   => 'center',
+						'default'   => 'left',
 						'options'   => self::field_options( 'alignOptions' ),
 					),
 				),
@@ -804,7 +804,7 @@ class Template_Engine {
 						'schema'    => 'number',
 						'fieldType' => 'slider',
 						'label'     => __( 'Font Size', 'woocommerce-delivery-notes' ),
-						'default'   => 40,
+						'default'   => 25,
 						'min'       => 14,
 						'max'       => 40,
 					),
@@ -823,7 +823,7 @@ class Template_Engine {
 						'schema'    => 'text',
 						'fieldType' => 'radio',
 						'label'     => __( 'Text Align', 'woocommerce-delivery-notes' ),
-						'default'   => 'center',
+						'default'   => 'left',
 						'options'   => self::field_options( 'alignOptions' ),
 					),
 					array(
@@ -876,7 +876,7 @@ class Template_Engine {
 						'schema'    => 'text',
 						'fieldType' => 'radio',
 						'label'     => __( 'Text Align', 'woocommerce-delivery-notes' ),
-						'default'   => 'center',
+						'default'   => 'left',
 						'options'   => self::field_options( 'alignOptions' ),
 					),
 					array(
@@ -929,7 +929,7 @@ class Template_Engine {
 						'schema'    => 'text',
 						'fieldType' => 'radio',
 						'label'     => __( 'Text Align', 'woocommerce-delivery-notes' ),
-						'default'   => 'center',
+						'default'   => 'left',
 						'options'   => self::field_options( 'alignOptions' ),
 					),
 					array(
@@ -990,7 +990,7 @@ class Template_Engine {
 						'schema'    => 'text',
 						'fieldType' => 'radio',
 						'label'     => __( 'Text Align', 'woocommerce-delivery-notes' ),
-						'default'   => 'center',
+						'default'   => 'left',
 						'options'   => self::field_options( 'alignOptions' ),
 					),
 					array(
@@ -1071,7 +1071,7 @@ class Template_Engine {
 						'schema'    => 'text',
 						'fieldType' => 'radio',
 						'label'     => __( 'Text Align', 'woocommerce-delivery-notes' ),
-						'default'   => 'center',
+						'default'   => 'left',
 						'options'   => self::field_options( 'alignOptions' ),
 					),
 					array(

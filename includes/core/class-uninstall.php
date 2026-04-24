@@ -65,7 +65,15 @@ class Uninstall {
 	public static function deactivate_plugin() {
 		self::remove_cron_jobs();
 		self::snapshot_v7_settings();
-		Migration::rollback();
+
+		$rolled_back = Migration::rollback();
+
+		if ( $rolled_back ) {
+			// rollback() deleted the v7 settings and reset the migration flags.
+			// Reset db_version so maybe_update() calls Migration::run() on
+			// re-activation, which will find and restore the snapshot.
+			update_option( WCDN_SLUG . '_db_version', '0.0.0' );
+		}
 	}
 
 	/**
