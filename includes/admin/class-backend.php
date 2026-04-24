@@ -72,7 +72,7 @@ class Backend {
 		$wdn_order_id = wcdn_order_id( $order );
 		?>
 		<?php foreach ( Template_Engine::get_template_keys() as $template ) : ?>
-			<?php if ( Templates::get( $template, 'enabled' ) && in_array( $template, Utils::get_template_types( $order ), true ) ) : ?>
+			<?php if ( Templates::get( $template, 'enabled' ) && ( 'creditnote' !== $template || (float) $order->get_total_refunded() > 0 ) ) : ?>
 				<?php
 						$print_url = apply_filters(
 							'wcdn_custom_print_url',
@@ -196,7 +196,7 @@ class Backend {
 		?>
 <div class="print-actions">
 		<?php foreach ( Template_Engine::get_template_keys() as $template ) : ?>
-			<?php if ( Templates::get( $template, 'enabled' ) && in_array( $template, Utils::get_template_types( $order ), true ) ) : ?>
+			<?php if ( Templates::get( $template, 'enabled' ) && ( 'creditnote' !== $template || (float) $order->get_total_refunded() > 0 ) ) : ?>
 	<a href="<?php echo esc_url( Utils::get_print_page_url( $order_id, $template ) ); ?>"
 		class="button print-preview-button <?php echo esc_attr( $template ); ?>" target="_blank"
 		alt="<?php echo esc_attr( Utils::template_label( $template )['labels']['print'] ); ?>"><?php echo esc_attr( Utils::template_label( $template )['labels']['print'] ); ?></a>

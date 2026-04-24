@@ -82,6 +82,10 @@ th {
 
 
 
+.wcdn-address-grid {
+    width: 100%;
+}
+
 .wcdn-address-grid td {
     padding-right: 25px;
     vertical-align: top;
@@ -99,4 +103,42 @@ th {
 
 .is-rtl .wcdn-address-grid td:last-child {
     padding-left: 0;
+}
+
+.wcdn-order-meta-below {
+    margin-top: 6pt;
+}
+
+.wcdn-order-meta-below td {
+    padding: 3pt 0;
+}
+
+.wcdn-order-meta-below td.label {
+    width: 40%;
+    padding-right: 6pt;
+}
+
+.wcdn-order-meta-below tr + tr td {
+    border-top: 1px solid #e0e0e0;
+}
+
+.wcdn-col-product {
+    width: 50%;
+}
+
+.wcdn-col-price {
+    width: 15%;
+}
+
+.wcdn-col-qty {
+    width: 15%;
+}
+
+.wcdn-col-total {
+    width: 20%;
+}
+
+.wcdn-item-image {
+    display: block;
+    margin-bottom: 3pt;
 }

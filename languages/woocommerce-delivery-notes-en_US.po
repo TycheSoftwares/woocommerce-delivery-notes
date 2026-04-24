@@ -2,7 +2,7 @@
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Print Invoice & Delivery Notes for WooCommerce 7.0.0\n"
+"Project-Id-Version: Print Invoice & Delivery Notes for WooCommerce 7.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce-"
 "delivery-notes\n"
 "Last-Translator: Automatically generated\n"
@@ -10,8 +10,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-21T22:25:37+00:00\n"
-"PO-Revision-Date: 2026-04-21T22:25:37+00:00\n"
+"POT-Creation-Date: 2026-04-24T19:53:22+00:00\n"
+"PO-Revision-Date: 2026-04-24T19:53:22+00:00\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: woocommerce-delivery-notes\n"
 "Language: en_US\n"
@@ -145,7 +145,7 @@ msgstr "No font file found to delete."
 msgid "Font deleted successfully."
 msgstr "Font deleted successfully."
 
-#: includes/api/class-settings.php:184 includes/api/class-templates.php:846
+#: includes/api/class-settings.php:184 includes/api/class-templates.php:962
 msgid "Authentication has failed."
 msgstr "Authentication has failed."
 
@@ -175,7 +175,7 @@ msgstr "Year starting number must be greater than 0."
 msgid "Settings saved successfully."
 msgstr "Settings saved successfully."
 
-#: includes/api/class-settings.php:320 templates/base.php:252
+#: includes/api/class-settings.php:320 templates/base.php:286
 msgid "Document"
 msgstr "Document"
 
@@ -187,37 +187,61 @@ msgstr "View and print your invoice"
 msgid "Print order documents"
 msgstr "Print order documents"
 
+#: includes/api/class-settings.php:331 includes/helpers/class-utils.php:408
+msgid "Print Invoice"
+msgstr "Print Invoice"
+
+#: includes/api/class-settings.php:332 includes/helpers/class-utils.php:423
+msgid "Print Delivery Note"
+msgstr "Print Delivery Note"
+
+#: includes/api/class-settings.php:333 includes/helpers/class-utils.php:438
+msgid "Print Receipt"
+msgstr "Print Receipt"
+
+#: includes/api/class-settings.php:334 includes/helpers/class-utils.php:453
+msgid "Print Credit Note"
+msgstr "Print Credit Note"
+
+#: includes/api/class-settings.php:335 includes/helpers/class-utils.php:468
+msgid "Print Packing Slip"
+msgstr "Print Packing Slip"
+
 #: includes/api/class-settings.php:336
 msgid "invoice"
 msgstr "invoice"
 
-#: includes/api/class-templates.php:299 includes/api/class-templates.php:986
+#: includes/api/class-templates.php:119
+msgid "Sample Product"
+msgstr "Sample Product"
+
+#: includes/api/class-templates.php:362 includes/api/class-templates.php:1102
 msgid "Customer returned item"
 msgstr "Customer returned item"
 
-#: includes/api/class-templates.php:397
+#: includes/api/class-templates.php:466
 msgid "N/A"
 msgstr "N/A"
 
-#: includes/api/class-templates.php:693
+#: includes/api/class-templates.php:809
 msgid "Download"
 msgstr "Download"
 
 #. translators: %s: number of files
-#: includes/api/class-templates.php:695
+#: includes/api/class-templates.php:811
 #, php-format
 msgid "%s Files"
 msgstr "%s Files"
 
-#: includes/api/class-templates.php:859
+#: includes/api/class-templates.php:975
 msgid "Invalid request payload."
 msgstr "Invalid request payload."
 
-#: includes/api/class-templates.php:878
+#: includes/api/class-templates.php:994
 msgid "Invalid template type."
 msgstr "Invalid template type."
 
-#: includes/api/class-templates.php:912
+#: includes/api/class-templates.php:1028
 msgid "Template saved successfully."
 msgstr "Template saved successfully."
 
@@ -430,10 +454,6 @@ msgstr "Invoice"
 msgid "Invoices"
 msgstr "Invoices"
 
-#: includes/helpers/class-utils.php:408
-msgid "Print Invoice"
-msgstr "Print Invoice"
-
 #: includes/helpers/class-utils.php:409
 msgid "Print Invoices"
 msgstr "Print Invoices"
@@ -457,10 +477,6 @@ msgstr "Delivery Note"
 #: includes/helpers/class-utils.php:422
 msgid "Delivery Notes"
 msgstr "Delivery Notes"
-
-#: includes/helpers/class-utils.php:423
-msgid "Print Delivery Note"
-msgstr "Print Delivery Note"
 
 #: includes/helpers/class-utils.php:424
 msgid "Print Delivery Notes"
@@ -486,10 +502,6 @@ msgstr "Receipt"
 msgid "Receipts"
 msgstr "Receipts"
 
-#: includes/helpers/class-utils.php:438
-msgid "Print Receipt"
-msgstr "Print Receipt"
-
 #: includes/helpers/class-utils.php:439
 msgid "Print Receipts"
 msgstr "Print Receipts"
@@ -514,10 +526,6 @@ msgstr "Credit Note"
 msgid "Credit Notes"
 msgstr "Credit Notes"
 
-#: includes/helpers/class-utils.php:453
-msgid "Print Credit Note"
-msgstr "Print Credit Note"
-
 #: includes/helpers/class-utils.php:454
 msgid "Print Credit Notes"
 msgstr "Print Credit Notes"
@@ -541,10 +549,6 @@ msgstr "Packing Slip"
 #: includes/helpers/class-utils.php:467
 msgid "Packing Slips"
 msgstr "Packing Slips"
-
-#: includes/helpers/class-utils.php:468
-msgid "Print Packing Slip"
-msgstr "Print Packing Slip"
 
 #: includes/helpers/class-utils.php:469
 msgid "Print Packing Slips"
@@ -610,27 +614,27 @@ msgstr "Packing Slip Settings"
 msgid "Credit Note Settings"
 msgstr "Credit Note Settings"
 
-#: includes/services/template/class-template-engine.php:531
+#: includes/services/template/class-template-engine.php:558
 msgid "Enable Invoice"
 msgstr "Enable Invoice"
 
-#: includes/services/template/class-template-engine.php:532
+#: includes/services/template/class-template-engine.php:559
 msgid "Enable Receipt"
 msgstr "Enable Receipt"
 
-#: includes/services/template/class-template-engine.php:533
+#: includes/services/template/class-template-engine.php:560
 msgid "Enable Delivery Note"
 msgstr "Enable Delivery Note"
 
-#: includes/services/template/class-template-engine.php:534
+#: includes/services/template/class-template-engine.php:561
 msgid "Enable Packing Slip"
 msgstr "Enable Packing Slip"
 
-#: includes/services/template/class-template-engine.php:535
+#: includes/services/template/class-template-engine.php:562
 msgid "Enable Credit Note"
 msgstr "Enable Credit Note"
 
-#: includes/services/template/class-template-engine.php:540
+#: includes/services/template/class-template-engine.php:567
 msgid ""
 "An invoice ia a detailed bill showing items purchased, taxes, shipping "
 "charges, and the total amount due."
@@ -638,7 +642,7 @@ msgstr ""
 "An invoice ia a detailed bill showing items purchased, taxes, shipping "
 "charges, and the total amount due."
 
-#: includes/services/template/class-template-engine.php:544
+#: includes/services/template/class-template-engine.php:571
 msgid ""
 "A receipt is used to issue a payment confirmation document showing items "
 "purchased and the amount paid."
@@ -646,13 +650,13 @@ msgstr ""
 "A receipt is used to issue a payment confirmation document showing items "
 "purchased and the amount paid."
 
-#: includes/services/template/class-template-engine.php:548
+#: includes/services/template/class-template-engine.php:575
 msgid ""
 "The delivery note template generates a document listing delivered items."
 msgstr ""
 "The delivery note template generates a document listing delivered items."
 
-#: includes/services/template/class-template-engine.php:552
+#: includes/services/template/class-template-engine.php:579
 msgid ""
 "The packing slip includes a document inside the package detailing the "
 "shipment contents for verification."
@@ -660,7 +664,7 @@ msgstr ""
 "The packing slip includes a document inside the package detailing the "
 "shipment contents for verification."
 
-#: includes/services/template/class-template-engine.php:556
+#: includes/services/template/class-template-engine.php:583
 msgid ""
 "The credit note is a document created to refund or adjust a previously "
 "issued invoice."
@@ -668,435 +672,600 @@ msgstr ""
 "The credit note is a document created to refund or adjust a previously "
 "issued invoice."
 
-#: includes/services/template/class-template-engine.php:568
+#: includes/services/template/class-template-engine.php:595
 msgid "Date Format"
 msgstr "Date Format"
 
-#: includes/services/template/class-template-engine.php:606
+#: includes/services/template/class-template-engine.php:633
 msgid "PDF Filename"
 msgstr "PDF Filename"
 
-#: includes/services/template/class-template-engine.php:607
+#: includes/services/template/class-template-engine.php:634
 msgid "Available placeholders: {order_number}, {order_date}, {customer_name}"
 msgstr "Available placeholders: {order_number}, {order_date}, {customer_name}"
 
-#: includes/services/template/class-template-engine.php:626
+#: includes/services/template/class-template-engine.php:653
 msgid "Attach PDF to customer emails"
 msgstr "Attach PDF to customer emails"
 
-#: includes/services/template/class-template-engine.php:636
+#: includes/services/template/class-template-engine.php:663
 msgid "Send the PDF as an attachment to all administrator email addresses."
 msgstr "Send the PDF as an attachment to all administrator email addresses."
 
-#: includes/services/template/class-template-engine.php:646
+#: includes/services/template/class-template-engine.php:673
 msgid "Attach PDF to custom email addresses"
 msgstr "Attach PDF to custom email addresses"
 
-#: includes/services/template/class-template-engine.php:656
+#: includes/services/template/class-template-engine.php:683
 msgid "Enter multiple email addresses separated by commas."
 msgstr "Enter multiple email addresses separated by commas."
 
-#: includes/services/template/class-template-engine.php:669
+#: includes/services/template/class-template-engine.php:696
 msgid "Attach PDF to selected order status(es)"
 msgstr "Attach PDF to selected order status(es)"
 
-#: includes/services/template/class-template-engine.php:688
+#: includes/services/template/class-template-engine.php:715
 msgid "Start typing to select order statuses."
 msgstr "Start typing to select order statuses."
 
-#: includes/services/template/class-template-engine.php:699
+#: includes/services/template/class-template-engine.php:726
 msgid "Attach PDF to selected WooCommerce Email(s)"
 msgstr "Attach PDF to selected WooCommerce Email(s)"
 
-#: includes/services/template/class-template-engine.php:712
+#: includes/services/template/class-template-engine.php:739
 msgid "Start typing to select WooCommerce email types."
 msgstr "Start typing to select WooCommerce email types."
 
-#: includes/services/template/class-template-engine.php:722
+#: includes/services/template/class-template-engine.php:749
 msgid "Show Shop Logo"
 msgstr "Show Shop Logo"
 
-#: includes/services/template/class-template-engine.php:737
+#: includes/services/template/class-template-engine.php:764
 msgid "Scale"
 msgstr "Scale"
 
-#: includes/services/template/class-template-engine.php:747
+#: includes/services/template/class-template-engine.php:774
 msgid "Alignment"
 msgstr "Alignment"
 
-#: includes/services/template/class-template-engine.php:758
+#: includes/services/template/class-template-engine.php:785
 msgid "Document Title"
 msgstr "Document Title"
 
-#: includes/services/template/class-template-engine.php:765
-#: includes/services/template/class-template-engine.php:1730
+#: includes/services/template/class-template-engine.php:792
+#: includes/services/template/class-template-engine.php:2075
 msgid "Title"
 msgstr "Title"
 
-#: includes/services/template/class-template-engine.php:767
+#: includes/services/template/class-template-engine.php:794
 msgid "INVOICE"
 msgstr "INVOICE"
 
-#: includes/services/template/class-template-engine.php:768
+#: includes/services/template/class-template-engine.php:795
 msgid "RECEIPT"
 msgstr "RECEIPT"
 
-#: includes/services/template/class-template-engine.php:769
+#: includes/services/template/class-template-engine.php:796
 msgid "DELIVERY NOTE"
 msgstr "DELIVERY NOTE"
 
-#: includes/services/template/class-template-engine.php:770
+#: includes/services/template/class-template-engine.php:797
 msgid "PACKING SLIP"
 msgstr "PACKING SLIP"
 
-#: includes/services/template/class-template-engine.php:771
+#: includes/services/template/class-template-engine.php:798
 msgid "CREDIT NOTE"
 msgstr "CREDIT NOTE"
 
-#: includes/services/template/class-template-engine.php:779
-#: includes/services/template/class-template-engine.php:832
-#: includes/services/template/class-template-engine.php:885
-#: includes/services/template/class-template-engine.php:946
-#: includes/services/template/class-template-engine.php:989
-#: includes/services/template/class-template-engine.php:1032
-#: includes/services/template/class-template-engine.php:1093
-#: includes/services/template/class-template-engine.php:1154
-#: includes/services/template/class-template-engine.php:1227
-#: includes/services/template/class-template-engine.php:1288
-#: includes/services/template/class-template-engine.php:1349
-#: includes/services/template/class-template-engine.php:1410
-#: includes/services/template/class-template-engine.php:1471
-#: includes/services/template/class-template-engine.php:1583
-#: includes/services/template/class-template-engine.php:1644
-#: includes/services/template/class-template-engine.php:1738
-#: includes/services/template/class-template-engine.php:1782
-#: includes/services/template/class-template-engine.php:1817
-#: includes/services/template/class-template-engine.php:1852
-#: includes/services/template/class-template-engine.php:1898
+#: includes/services/template/class-template-engine.php:806
+#: includes/services/template/class-template-engine.php:859
+#: includes/services/template/class-template-engine.php:912
+#: includes/services/template/class-template-engine.php:973
+#: includes/services/template/class-template-engine.php:1054
+#: includes/services/template/class-template-engine.php:1135
+#: includes/services/template/class-template-engine.php:1196
+#: includes/services/template/class-template-engine.php:1261
+#: includes/services/template/class-template-engine.php:1326
+#: includes/services/template/class-template-engine.php:1389
+#: includes/services/template/class-template-engine.php:1489
+#: includes/services/template/class-template-engine.php:1562
+#: includes/services/template/class-template-engine.php:1623
+#: includes/services/template/class-template-engine.php:1684
+#: includes/services/template/class-template-engine.php:1745
+#: includes/services/template/class-template-engine.php:1806
+#: includes/services/template/class-template-engine.php:1867
+#: includes/services/template/class-template-engine.php:1928
+#: includes/services/template/class-template-engine.php:1989
+#: includes/services/template/class-template-engine.php:2083
+#: includes/services/template/class-template-engine.php:2127
+#: includes/services/template/class-template-engine.php:2162
+#: includes/services/template/class-template-engine.php:2197
+#: includes/services/template/class-template-engine.php:2243
 msgid "Font Size"
 msgstr "Font Size"
 
-#: includes/services/template/class-template-engine.php:789
-#: includes/services/template/class-template-engine.php:842
-#: includes/services/template/class-template-engine.php:895
-#: includes/services/template/class-template-engine.php:1042
-#: includes/services/template/class-template-engine.php:1103
-#: includes/services/template/class-template-engine.php:1164
-#: includes/services/template/class-template-engine.php:1237
-#: includes/services/template/class-template-engine.php:1298
-#: includes/services/template/class-template-engine.php:1359
-#: includes/services/template/class-template-engine.php:1420
-#: includes/services/template/class-template-engine.php:1481
-#: includes/services/template/class-template-engine.php:1532
-#: includes/services/template/class-template-engine.php:1593
-#: includes/services/template/class-template-engine.php:1654
-#: includes/services/template/class-template-engine.php:1748
+#: includes/services/template/class-template-engine.php:816
+#: includes/services/template/class-template-engine.php:869
+#: includes/services/template/class-template-engine.php:922
+#: includes/services/template/class-template-engine.php:983
+#: includes/services/template/class-template-engine.php:1064
+#: includes/services/template/class-template-engine.php:1145
+#: includes/services/template/class-template-engine.php:1206
+#: includes/services/template/class-template-engine.php:1271
+#: includes/services/template/class-template-engine.php:1336
+#: includes/services/template/class-template-engine.php:1399
+#: includes/services/template/class-template-engine.php:1499
+#: includes/services/template/class-template-engine.php:1572
+#: includes/services/template/class-template-engine.php:1633
+#: includes/services/template/class-template-engine.php:1694
+#: includes/services/template/class-template-engine.php:1755
+#: includes/services/template/class-template-engine.php:1816
+#: includes/services/template/class-template-engine.php:1877
+#: includes/services/template/class-template-engine.php:1938
+#: includes/services/template/class-template-engine.php:1999
+#: includes/services/template/class-template-engine.php:2093
 msgid "Font Style"
 msgstr "Font Style"
 
-#: includes/services/template/class-template-engine.php:798
-#: includes/services/template/class-template-engine.php:851
-#: includes/services/template/class-template-engine.php:904
-#: includes/services/template/class-template-engine.php:1051
-#: includes/services/template/class-template-engine.php:1112
-#: includes/services/template/class-template-engine.php:1173
-#: includes/services/template/class-template-engine.php:1246
-#: includes/services/template/class-template-engine.php:1307
-#: includes/services/template/class-template-engine.php:1368
-#: includes/services/template/class-template-engine.php:1429
-#: includes/services/template/class-template-engine.php:1490
-#: includes/services/template/class-template-engine.php:1541
-#: includes/services/template/class-template-engine.php:1602
-#: includes/services/template/class-template-engine.php:1663
+#: includes/services/template/class-template-engine.php:825
+#: includes/services/template/class-template-engine.php:878
+#: includes/services/template/class-template-engine.php:931
+#: includes/services/template/class-template-engine.php:992
+#: includes/services/template/class-template-engine.php:1073
+#: includes/services/template/class-template-engine.php:1154
+#: includes/services/template/class-template-engine.php:1215
+#: includes/services/template/class-template-engine.php:1280
+#: includes/services/template/class-template-engine.php:1345
+#: includes/services/template/class-template-engine.php:1408
+#: includes/services/template/class-template-engine.php:1508
+#: includes/services/template/class-template-engine.php:1581
+#: includes/services/template/class-template-engine.php:1642
+#: includes/services/template/class-template-engine.php:1703
+#: includes/services/template/class-template-engine.php:1764
+#: includes/services/template/class-template-engine.php:1825
+#: includes/services/template/class-template-engine.php:1886
+#: includes/services/template/class-template-engine.php:1947
+#: includes/services/template/class-template-engine.php:2008
 msgid "Text Align"
 msgstr "Text Align"
 
-#: includes/services/template/class-template-engine.php:807
-#: includes/services/template/class-template-engine.php:860
-#: includes/services/template/class-template-engine.php:913
-#: includes/services/template/class-template-engine.php:956
-#: includes/services/template/class-template-engine.php:999
-#: includes/services/template/class-template-engine.php:1060
-#: includes/services/template/class-template-engine.php:1121
-#: includes/services/template/class-template-engine.php:1182
-#: includes/services/template/class-template-engine.php:1255
-#: includes/services/template/class-template-engine.php:1316
-#: includes/services/template/class-template-engine.php:1377
-#: includes/services/template/class-template-engine.php:1438
-#: includes/services/template/class-template-engine.php:1499
-#: includes/services/template/class-template-engine.php:1550
-#: includes/services/template/class-template-engine.php:1611
-#: includes/services/template/class-template-engine.php:1672
-#: includes/services/template/class-template-engine.php:1757
-#: includes/services/template/class-template-engine.php:1792
-#: includes/services/template/class-template-engine.php:1827
-#: includes/services/template/class-template-engine.php:1862
+#: includes/services/template/class-template-engine.php:834
+#: includes/services/template/class-template-engine.php:887
+#: includes/services/template/class-template-engine.php:940
+#: includes/services/template/class-template-engine.php:1001
+#: includes/services/template/class-template-engine.php:1082
+#: includes/services/template/class-template-engine.php:1163
+#: includes/services/template/class-template-engine.php:1228
+#: includes/services/template/class-template-engine.php:1293
+#: includes/services/template/class-template-engine.php:1354
+#: includes/services/template/class-template-engine.php:1417
+#: includes/services/template/class-template-engine.php:1517
+#: includes/services/template/class-template-engine.php:1590
+#: includes/services/template/class-template-engine.php:1651
+#: includes/services/template/class-template-engine.php:1712
+#: includes/services/template/class-template-engine.php:1773
+#: includes/services/template/class-template-engine.php:1834
+#: includes/services/template/class-template-engine.php:1895
+#: includes/services/template/class-template-engine.php:1956
+#: includes/services/template/class-template-engine.php:2017
+#: includes/services/template/class-template-engine.php:2102
+#: includes/services/template/class-template-engine.php:2137
+#: includes/services/template/class-template-engine.php:2172
+#: includes/services/template/class-template-engine.php:2207
 msgid "Text Color"
 msgstr "Text Color"
 
-#: includes/services/template/class-template-engine.php:817
+#: includes/services/template/class-template-engine.php:844
 msgid "Show Shop Name"
 msgstr "Show Shop Name"
 
-#: includes/services/template/class-template-engine.php:870
+#: includes/services/template/class-template-engine.php:897
 msgid "Show Shop Address"
 msgstr "Show Shop Address"
 
-#: includes/services/template/class-template-engine.php:923
+#: includes/services/template/class-template-engine.php:950
 msgid "Show Shop Phone Number"
 msgstr "Show Shop Phone Number"
 
-#: includes/services/template/class-template-engine.php:938
-#: includes/services/template/class-template-engine.php:981
-#: includes/services/template/class-template-engine.php:1024
-#: includes/services/template/class-template-engine.php:1085
-#: includes/services/template/class-template-engine.php:1146
-#: includes/services/template/class-template-engine.php:1213
-#: includes/services/template/class-template-engine.php:1280
-#: includes/services/template/class-template-engine.php:1341
-#: includes/services/template/class-template-engine.php:1402
-#: includes/services/template/class-template-engine.php:1463
-#: includes/services/template/class-template-engine.php:1524
-#: includes/services/template/class-template-engine.php:1575
-#: includes/services/template/class-template-engine.php:1636
-#: includes/services/template/class-template-engine.php:1887
+#: includes/services/template/class-template-engine.php:965
+#: includes/services/template/class-template-engine.php:1046
+#: includes/services/template/class-template-engine.php:1127
+#: includes/services/template/class-template-engine.php:1188
+#: includes/services/template/class-template-engine.php:1253
+#: includes/services/template/class-template-engine.php:1318
+#: includes/services/template/class-template-engine.php:1381
+#: includes/services/template/class-template-engine.php:1481
+#: includes/services/template/class-template-engine.php:1548
+#: includes/services/template/class-template-engine.php:1615
+#: includes/services/template/class-template-engine.php:1676
+#: includes/services/template/class-template-engine.php:1737
+#: includes/services/template/class-template-engine.php:1798
+#: includes/services/template/class-template-engine.php:1859
+#: includes/services/template/class-template-engine.php:1920
+#: includes/services/template/class-template-engine.php:1981
+#: includes/services/template/class-template-engine.php:2232
 msgid "Text"
 msgstr "Text"
 
 #: includes/services/template/class-template-engine.php:966
+#: includes/services/template/class-template-engine.php:1189
+#: templates/base.php:111 templates/base.php:177
+msgid "Phone"
+msgstr "Phone"
+
+#: includes/services/template/class-template-engine.php:1009
+#: includes/services/template/class-template-engine.php:1090
+msgid "Margin Top"
+msgstr "Margin Top"
+
+#: includes/services/template/class-template-engine.php:1019
+#: includes/services/template/class-template-engine.php:1100
+msgid "Margin Bottom"
+msgstr "Margin Bottom"
+
+#: includes/services/template/class-template-engine.php:1031
 msgid "Show Shop Email Address"
 msgstr "Show Shop Email Address"
 
-#: includes/services/template/class-template-engine.php:1009
+#: includes/services/template/class-template-engine.php:1047
+#: includes/services/template/class-template-engine.php:1254
+#: templates/base.php:120 templates/base.php:181
+msgid "Email"
+msgstr "Email"
+
+#: includes/services/template/class-template-engine.php:1112
 msgid "Show Billing Address"
 msgstr "Show Billing Address"
 
-#: includes/services/template/class-template-engine.php:1070
+#: includes/services/template/class-template-engine.php:1128
+msgid "Billing Address"
+msgstr "Billing Address"
+
+#: includes/services/template/class-template-engine.php:1173
+msgid "Show Billing Phone"
+msgstr "Show Billing Phone"
+
+#: includes/services/template/class-template-engine.php:1238
+msgid "Show Billing Email"
+msgstr "Show Billing Email"
+
+#: includes/services/template/class-template-engine.php:1303
 msgid "Show Shipping Address"
 msgstr "Show Shipping Address"
 
-#: includes/services/template/class-template-engine.php:1131
+#: includes/services/template/class-template-engine.php:1319
+msgid "Shipping Address"
+msgstr "Shipping Address"
+
+#: includes/services/template/class-template-engine.php:1364
+msgid "Show Order Data Header"
+msgstr "Show Order Data Header"
+
+#: includes/services/template/class-template-engine.php:1382
+msgid "Order"
+msgstr "Order"
+
+#: includes/services/template/class-template-engine.php:1425
+msgid "Spacing Top"
+msgstr "Spacing Top"
+
+#: includes/services/template/class-template-engine.php:1435
+msgid "Spacing Bottom"
+msgstr "Spacing Bottom"
+
+#: includes/services/template/class-template-engine.php:1445
+msgid "Show Border"
+msgstr "Show Border"
+
+#: includes/services/template/class-template-engine.php:1456
+msgid "Template Order Data Position"
+msgstr "Template Order Data Position"
+
+#: includes/services/template/class-template-engine.php:1466
 msgid "Show Invoice Number"
 msgstr "Show Invoice Number"
 
-#: includes/services/template/class-template-engine.php:1193
+#: includes/services/template/class-template-engine.php:1482
+#: templates/base.php:52
+msgid "Invoice No"
+msgstr "Invoice No"
+
+#: includes/services/template/class-template-engine.php:1528
 msgid "Show Invoice Date"
 msgstr "Show Invoice Date"
 
-#: includes/services/template/class-template-engine.php:1194
+#: includes/services/template/class-template-engine.php:1529
 msgid "Show Receipt Date"
 msgstr "Show Receipt Date"
 
-#: includes/services/template/class-template-engine.php:1195
+#: includes/services/template/class-template-engine.php:1530
 msgid "Show Delivery Note Date"
 msgstr "Show Delivery Note Date"
 
-#: includes/services/template/class-template-engine.php:1196
+#: includes/services/template/class-template-engine.php:1531
 msgid "Show Packing Slip Date"
 msgstr "Show Packing Slip Date"
 
-#: includes/services/template/class-template-engine.php:1197
+#: includes/services/template/class-template-engine.php:1532
 msgid "Show Credit Note Date"
 msgstr "Show Credit Note Date"
 
-#: includes/services/template/class-template-engine.php:1215
+#: includes/services/template/class-template-engine.php:1550
 msgid "Invoice Date"
 msgstr "Invoice Date"
 
-#: includes/services/template/class-template-engine.php:1216
+#: includes/services/template/class-template-engine.php:1551
 msgid "Receipt Date"
 msgstr "Receipt Date"
 
-#: includes/services/template/class-template-engine.php:1217
+#: includes/services/template/class-template-engine.php:1552
 msgid "Delivery Note Date"
 msgstr "Delivery Note Date"
 
-#: includes/services/template/class-template-engine.php:1218
+#: includes/services/template/class-template-engine.php:1553
 msgid "Packing Slip Date"
 msgstr "Packing Slip Date"
 
-#: includes/services/template/class-template-engine.php:1219
+#: includes/services/template/class-template-engine.php:1554
 msgid "Credit Note Date"
 msgstr "Credit Note Date"
 
-#: includes/services/template/class-template-engine.php:1265
+#: includes/services/template/class-template-engine.php:1600
 msgid "Show Order Number"
 msgstr "Show Order Number"
 
-#: includes/services/template/class-template-engine.php:1326
+#: includes/services/template/class-template-engine.php:1616
+#: templates/base.php:64
+msgid "Order No"
+msgstr "Order No"
+
+#: includes/services/template/class-template-engine.php:1661
 msgid "Show Order Date"
 msgstr "Show Order Date"
 
-#: includes/services/template/class-template-engine.php:1387
+#: includes/services/template/class-template-engine.php:1677
+#: templates/base.php:70
+msgid "Date"
+msgstr "Date"
+
+#: includes/services/template/class-template-engine.php:1722
 msgid "Show Payment Method"
 msgstr "Show Payment Method"
 
-#: includes/services/template/class-template-engine.php:1403
-#: includes/services/template/class-template-engine.php:1464
+#: includes/services/template/class-template-engine.php:1738
+#: templates/base.php:76
 msgid "Payment Method"
 msgstr "Payment Method"
 
-#: includes/services/template/class-template-engine.php:1448
+#: includes/services/template/class-template-engine.php:1783
 msgid "Show Payment Date"
 msgstr "Show Payment Date"
 
-#: includes/services/template/class-template-engine.php:1509
+#: includes/services/template/class-template-engine.php:1799
+#: templates/base.php:82
+msgid "Payment Date"
+msgstr "Payment Date"
+
+#: includes/services/template/class-template-engine.php:1844
 msgid "Show Shipping Method"
 msgstr "Show Shipping Method"
 
-#: includes/services/template/class-template-engine.php:1525
+#: includes/services/template/class-template-engine.php:1860
+#: templates/base.php:88
 msgid "Shipping Method"
 msgstr "Shipping Method"
 
-#: includes/services/template/class-template-engine.php:1560
+#: includes/services/template/class-template-engine.php:1905
 msgid "Show Refund Date"
 msgstr "Show Refund Date"
 
-#: includes/services/template/class-template-engine.php:1576
+#: includes/services/template/class-template-engine.php:1921
+#: templates/base.php:94
 msgid "Refund Date"
 msgstr "Refund Date"
 
-#: includes/services/template/class-template-engine.php:1621
+#: includes/services/template/class-template-engine.php:1966
 msgid "Show Refund Reason"
 msgstr "Show Refund Reason"
 
-#: includes/services/template/class-template-engine.php:1637
+#: includes/services/template/class-template-engine.php:1982
+#: templates/base.php:100
 msgid "Refund Reason"
 msgstr "Refund Reason"
 
-#: includes/services/template/class-template-engine.php:1682
+#: includes/services/template/class-template-engine.php:2027
 msgid "Show Pay Now Button"
 msgstr "Show Pay Now Button"
 
-#: includes/services/template/class-template-engine.php:1697
+#: includes/services/template/class-template-engine.php:2042
 msgid "Button Label"
 msgstr "Button Label"
 
-#: includes/services/template/class-template-engine.php:1698
+#: includes/services/template/class-template-engine.php:2043
 msgid "Pay Now"
 msgstr "Pay Now"
 
-#: includes/services/template/class-template-engine.php:1705
+#: includes/services/template/class-template-engine.php:2050
 msgid "Button Color"
 msgstr "Button Color"
 
-#: includes/services/template/class-template-engine.php:1715
+#: includes/services/template/class-template-engine.php:2060
 msgid "Show Customer Note"
 msgstr "Show Customer Note"
 
-#: includes/services/template/class-template-engine.php:1767
+#: includes/services/template/class-template-engine.php:2076
+msgid "Customer Note"
+msgstr "Customer Note"
+
+#: includes/services/template/class-template-engine.php:2112
 msgid "Show Complimentary Close"
 msgstr "Show Complimentary Close"
 
-#: includes/services/template/class-template-engine.php:1802
+#: includes/services/template/class-template-engine.php:2147
 msgid "Show Policies"
 msgstr "Show Policies"
 
-#: includes/services/template/class-template-engine.php:1837
+#: includes/services/template/class-template-engine.php:2182
 msgid "Show Footer"
 msgstr "Show Footer"
 
-#: includes/services/template/class-template-engine.php:1872
+#: includes/services/template/class-template-engine.php:2217
 msgid "Show Watermark"
 msgstr "Show Watermark"
 
-#: includes/services/template/class-template-engine.php:1889
+#: includes/services/template/class-template-engine.php:2234
 msgid "PAID"
 msgstr "PAID"
 
-#: includes/services/template/class-template-engine.php:1890
+#: includes/services/template/class-template-engine.php:2235
 msgid "REFUNDED"
 msgstr "REFUNDED"
 
-#: includes/services/template/class-template-engine.php:1908
+#: includes/services/template/class-template-engine.php:2253
 msgid "Opacity"
 msgstr "Opacity"
 
-#: includes/services/template/class-template-engine.php:1919
+#: includes/services/template/class-template-engine.php:2264
 msgid "Angle"
 msgstr "Angle"
 
-#: includes/services/template/class-template-engine.php:1930
+#: includes/services/template/class-template-engine.php:2275
 msgid "Layout"
 msgstr "Layout"
 
-#: includes/services/template/class-template-engine.php:1948
+#: includes/services/template/class-template-engine.php:2293
 msgid "Color"
 msgstr "Color"
 
-#: includes/services/template/class-template-engine.php:1958
+#: includes/services/template/class-template-engine.php:2303
 msgid "Display Price in Product Details Table"
 msgstr "Display Price in Product Details Table"
 
-#: includes/services/template/class-template-engine.php:1975
+#: includes/services/template/class-template-engine.php:2320
+msgid "Show Product Table Charges"
+msgstr "Show Product Table Charges"
+
+#: includes/services/template/class-template-engine.php:2336
+msgid "Show Subtotal"
+msgstr "Show Subtotal"
+
+#: includes/services/template/class-template-engine.php:2344
+msgid "Show Tax"
+msgstr "Show Tax"
+
+#: includes/services/template/class-template-engine.php:2352
+msgid "Show Shipping"
+msgstr "Show Shipping"
+
+#: includes/services/template/class-template-engine.php:2362
+msgid "Show Product Images"
+msgstr "Show Product Images"
+
+#: includes/services/template/class-template-engine.php:2377
+msgid "Image Size"
+msgstr "Image Size"
+
+#: includes/services/template/class-template-engine.php:2389
 msgid "Display Refund Items in Product Table"
 msgstr "Display Refund Items in Product Table"
 
-#: includes/services/template/class-template-engine.php:2006
+#: includes/services/template/class-template-engine.php:2420
 msgid "Left"
 msgstr "Left"
 
-#: includes/services/template/class-template-engine.php:2010
+#: includes/services/template/class-template-engine.php:2424
 msgid "Center"
 msgstr "Center"
 
-#: includes/services/template/class-template-engine.php:2014
+#: includes/services/template/class-template-engine.php:2428
 msgid "Right"
 msgstr "Right"
 
-#: includes/services/template/class-template-engine.php:2020
+#: includes/services/template/class-template-engine.php:2434
 msgid "Normal"
 msgstr "Normal"
 
-#: includes/services/template/class-template-engine.php:2024
+#: includes/services/template/class-template-engine.php:2438
 msgid "Bold"
 msgstr "Bold"
 
-#: templates/base.php:334
+#: includes/services/template/class-template-engine.php:2444
+msgid "Alongside Addresses"
+msgstr "Alongside Addresses"
+
+#: includes/services/template/class-template-engine.php:2448
+msgid "Below Addresses"
+msgstr "Below Addresses"
+
+#: templates/base.php:400
 msgid "Refunded Item"
 msgstr "Refunded Item"
 
-#: templates/base.php:334
+#: templates/base.php:400
 msgid "Product"
 msgstr "Product"
 
-#: templates/base.php:341
+#: templates/base.php:403
 msgid "Price"
 msgstr "Price"
 
-#: templates/base.php:344
+#: templates/base.php:406
 msgid "Quantity"
 msgstr "Quantity"
 
-#: templates/base.php:350
+#: templates/base.php:409
 msgid "Total Refunded"
 msgstr "Total Refunded"
 
-#: templates/base.php:350
+#: templates/base.php:409
 msgid "Total"
 msgstr "Total"
 
-#: templates/base.php:419
+#: templates/base.php:435
+msgid ""
+"The wcdn_order_item_before hook argument order changed in v7.0. Update your "
+"callback to accept ( $item, $order, $template ) instead of ( $product, "
+"$order, $item )."
+msgstr ""
+"The wcdn_order_item_before hook argument order changed in v7.0. Update your "
+"callback to accept ( $item, $order, $template ) instead of ( $product, "
+"$order, $item )."
+
+#: templates/base.php:480
+msgid ""
+"The wcdn_order_item_after hook argument order changed in v7.0. Update your "
+"callback to accept ( $item, $order, $template ) instead of ( $product, "
+"$order, $item )."
+msgstr ""
+"The wcdn_order_item_after hook argument order changed in v7.0. Update your "
+"callback to accept ( $item, $order, $template ) instead of ( $product, "
+"$order, $item )."
+
+#: templates/base.php:530
 msgid "Subtotal:"
 msgstr "Subtotal:"
 
-#: templates/base.php:426
+#: templates/base.php:537
+msgid "Discount:"
+msgstr "Discount:"
+
+#: templates/base.php:552
 msgid "Tax:"
 msgstr "Tax:"
 
-#: templates/base.php:433
+#: templates/base.php:560
 msgid "Shipping:"
 msgstr "Shipping:"
 
-#: templates/base.php:440
+#: templates/base.php:567
 msgid "Order Total:"
 msgstr "Order Total:"
 
-#: templates/base.php:444
+#: templates/base.php:571
 msgid "Refund:"
 msgstr "Refund:"
 
-#: templates/base.php:448 templates/base.php:458
+#: templates/base.php:575 templates/base.php:585
 msgid "Total:"
 msgstr "Total:"
 

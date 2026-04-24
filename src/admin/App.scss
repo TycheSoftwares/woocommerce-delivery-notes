@@ -894,7 +894,7 @@ body {
 
 .wcdn-preview-document {
     background: #fff;
-    padding: 50px;
+    padding: 35px 50px;
     font-family: var(--font-family);
     border: 1px solid #e0e0e0;
     position: relative;
@@ -949,7 +949,7 @@ body {
 
 .wcdn-preview-address-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
 }
 
 .wcdn-preview-address-grid {
@@ -962,6 +962,36 @@ body {
 .wcdn-preview-order-meta p span {
     width: 130px;
     display: inline-block;
+}
+
+.wcdn-preview-order-meta-below {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+
+    td {
+        padding: 3px 0;
+
+        &.label {
+            width: 40%;
+        }
+    }
+
+    tr + tr td {
+        border-top: 1px solid #e5e5e5;
+    }
+}
+
+.wcdn-item-image {
+    display: block;
+    object-fit: cover;
+    margin-bottom: 4px;
+}
+
+.wcdn-item-image-placeholder {
+    display: block;
+    background: #e8e8e8;
+    margin-bottom: 4px;
 }
 
 .wcdn-item-sku {

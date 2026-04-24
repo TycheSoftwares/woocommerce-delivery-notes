@@ -105,12 +105,59 @@ class Templates extends \Tyche\WCDN\Api\Api {
 	 */
 	private static function get_preview_data() {
 
-		$order = self::get_random_order();
+		$order      = self::get_random_order();
+		$order_data = $order ? self::format_order_data( $order ) : null;
+
+		// Fall back to fully-generated sample when no order exists or the order
+		// produced no items (e.g. all its products were deleted).
+		if ( empty( $order_data ) || empty( $order_data['items'] ) ) {
+			$order_data = self::format_order_data( null, true );
+		} else {
+			// Merge each real item with sample values so missing properties
+			// (deleted product, no SKU, etc.) always render something in the preview.
+			$sample_item = array(
+				'name'          => __( 'Sample Product', 'woocommerce-delivery-notes' ),
+				'sku'           => 'SKU-001',
+				'price'         => wc_price( 25 ),
+				'quantity'      => 2,
+				'total'         => wc_price( 50 ),
+				'product_id'    => 0,
+				'order_item_id' => 0,
+				'meta'          => array(),
+				'addon'         => null,
+				'image_url'     => '',
+				'image_path'    => '',
+			);
+
+			$order_data['items'] = array_map(
+				function ( $item ) use ( $sample_item ) {
+					// Structural keys: fill only when absent.
+					$item = wp_parse_args( $item, $sample_item );
+
+					// Renderable string keys: also substitute when empty so the
+					// preview never shows a blank cell.
+					foreach ( array( 'name', 'sku', 'price', 'quantity', 'total' ) as $key ) {
+						if ( isset( $sample_item[ $key ] ) && ( ! isset( $item[ $key ] ) || '' === (string) $item[ $key ] ) ) {
+							$item[ $key ] = $sample_item[ $key ];
+						}
+					}
+
+					return $item;
+				},
+				$order_data['items']
+			);
+		}
+
+		// When the preview order has no tax (taxes disabled or zero-tax order),
+		// inject a sample amount so the tax row is always visible in the preview.
+		if ( empty( $order_data['totals']['tax'] ) ) {
+			$order_data['totals']['tax'] = wc_price( 5 );
+		}
 
 		return array(
 			'shop'     => self::get_store_data(),
 			'document' => self::get_document_data(),
-			'order'    => $order ? self::format_order_data( $order ) : array(),
+			'order'    => $order_data,
 		);
 	}
 
@@ -136,6 +183,14 @@ class Templates extends \Tyche\WCDN\Api\Api {
 			$attached  = get_attached_file( (int) $logo );
 			$logo_path = $attached ? $attached : '';
 			$logo      = wp_get_attachment_url( $logo );
+		} elseif ( ! empty( $logo ) ) {
+			// storeLogo stored as URL — legacy migration format. Resolve back to
+			// a file path so dompdf can embed the image in PDFs.
+			$attachment_id = attachment_url_to_postid( $logo );
+			if ( $attachment_id ) {
+				$attached  = get_attached_file( $attachment_id );
+				$logo_path = $attached ? $attached : '';
+			}
 		}
 
 		return array(
@@ -280,19 +335,27 @@ class Templates extends \Tyche\WCDN\Api\Api {
 				'currency'       => get_woocommerce_currency(),
 				'items'          => array(
 					array(
-						'name'     => 'Sample Product',
-						'sku'      => 'SKU-001',
-						'quantity' => 2,
-						'price'    => wc_price( 25 ),
-						'total'    => wc_price( 50 ),
+						'name'       => 'Sample Product',
+						'sku'        => 'SKU-001',
+						'quantity'   => 2,
+						'price'      => wc_price( 25 ),
+						'total'      => wc_price( 50 ),
+						'image_url'  => '',
+						'image_path' => '',
 					),
 				),
-				'totals'         => array(
-					'subtotal'   => wc_price( 50 ),
-					'tax'        => wc_price( 5 ),
-					'shipping'   => wc_price( 10 ),
-					'total'      => wc_price( 65 ),
-					'has_refund' => false,
+				'totals'         => apply_filters(
+					'wcdn_order_totals',
+					array(
+						'subtotal'   => wc_price( 50 ),
+						'discount'   => wc_price( -5 ),
+						'tax'        => wc_price( 5 ),
+						'shipping'   => wc_price( 10 ),
+						'total'      => wc_price( 65 ),
+						'has_refund' => false,
+					),
+					null,
+					$template
 				),
 				'refund'         => array(
 					'date'   => gmdate( 'c' ),
@@ -344,15 +407,21 @@ class Templates extends \Tyche\WCDN\Api\Api {
 				continue;
 			}
 
+			$image_id   = $product->get_image_id();
+			$image_file = $image_id ? get_attached_file( $image_id ) : false;
+
 			$items[] = array(
-				'name'       => self::format_order_item( 'name', $product, $order, $item ),
-				'sku'        => self::format_order_item( 'sku', $product, $order, $item ),
-				'price'      => self::format_order_item( 'price', $product, $order, $item ),
-				'quantity'   => self::format_order_item( 'quantity', $product, $order, $item ),
-				'total'      => self::format_order_item( 'total', $product, $order, $item ),
-				'product_id' => $product->get_id(),
-				'meta'       => self::format_order_item( 'meta', $product, $order, $item ),
-				'addon'      => self::format_order_item( 'addon', $product, $order, $item ),
+				'name'          => self::format_order_item( 'name', $product, $order, $item ),
+				'sku'           => self::format_order_item( 'sku', $product, $order, $item ),
+				'price'         => self::format_order_item( 'price', $product, $order, $item ),
+				'quantity'      => self::format_order_item( 'quantity', $product, $order, $item ),
+				'total'         => self::format_order_item( 'total', $product, $order, $item ),
+				'product_id'    => $product->get_id(),
+				'order_item_id' => $item_id,
+				'meta'          => self::format_order_item( 'meta', $product, $order, $item ),
+				'addon'         => self::format_order_item( 'addon', $product, $order, $item ),
+				'image_url'     => $image_id ? wp_get_attachment_url( $image_id ) : '',
+				'image_path'    => $image_file ? $image_file : '',
 			);
 		}
 
@@ -399,6 +468,7 @@ class Templates extends \Tyche\WCDN\Api\Api {
 		}
 
 		$data = array(
+			'id'             => $order->get_id(),
 			'invoiceNumber'  => self::format_invoice_number( $order ),
 			'documentDate'   => Utils::get_order_document_date( $order->get_id(), $template ),
 			'orderNumber'    => $order->get_order_number(),
@@ -413,7 +483,7 @@ class Templates extends \Tyche\WCDN\Api\Api {
 			'billing'        => array(
 				'name'    => $order->get_formatted_billing_full_name(),
 				'address' => $billing_address,
-				'phone'   => $order->get_billing_phone(),
+				'phone'   => wcdn_format_phone_number( $order->get_billing_phone(), $order->get_billing_country() ),
 				'email'   => $order->get_billing_email(),
 			),
 
@@ -422,7 +492,7 @@ class Templates extends \Tyche\WCDN\Api\Api {
 				'address' => $shipping_address,
 			),
 			'items'          => $items,
-			'totals'         => self::format_order_totals( $order ),
+			'totals'         => self::format_order_totals( $order, $template ),
 			'refund'         => self::generate_refund_preview( $order, $items ),
 			'status'         => $order->get_status(),
 		);
@@ -441,26 +511,71 @@ class Templates extends \Tyche\WCDN\Api\Api {
 	 *  - 'net_total' — order total minus refunded amount
 	 *  - 'tax_label' — inclusive-tax note for the net total (empty string when not applicable)
 	 *
-	 * @param \WC_Order $order Order object.
+	 * @param \WC_Order $order    Order object.
+	 * @param string    $template Template key ('invoice', 'receipt', etc.).
 	 * @return array
 	 * @since 7.0
 	 */
-	private static function format_order_totals( $order ) {
+	private static function format_order_totals( $order, $template = '' ) {
 
-		$currency = $order->get_currency();
+		$currency       = $order->get_currency();
+		$total_refunded = (float) $order->get_total_refunded();
 
 		$totals = array(
 			'subtotal' => wc_price( $order->get_subtotal(), array( 'currency' => $currency ) ),
-			'tax'      => wc_price( $order->get_total_tax(), array( 'currency' => $currency ) ),
 			'shipping' => wc_price( $order->get_shipping_total(), array( 'currency' => $currency ) ),
 			'total'    => wc_price( $order->get_total(), array( 'currency' => $currency ) ),
 		);
 
-		$total_refunded = (float) $order->get_total_refunded();
+		if ( $order->get_discount_total() > 0 ) {
+			$totals['discount'] = wc_price( -$order->get_discount_total(), array( 'currency' => $currency ) );
+		}
+
+		// Tax rows — only when WC taxes are enabled and the order has a non-zero tax amount.
+		if ( wc_tax_enabled() && $order->get_total_tax() > 0 ) {
+
+			$tax_totals = $order->get_tax_totals();
+
+			if ( 'itemized' === get_option( 'woocommerce_tax_total_display' ) && ! empty( $tax_totals ) ) {
+
+				$tax_lines = array();
+
+				foreach ( $tax_totals as $tax ) {
+					$amount = $total_refunded > 0
+						? $tax->amount - $order->get_total_tax_refunded_by_rate_id( $tax->rate_id )
+						: $tax->amount;
+
+					if ( $amount > 0 ) {
+						$tax_lines[] = array(
+							'label' => $tax->label,
+							'value' => wc_price( $amount, array( 'currency' => $currency ) ),
+						);
+					}
+				}
+
+				if ( ! empty( $tax_lines ) ) {
+					$totals['tax_lines'] = $tax_lines;
+				}
+			}
+
+			// Always keep the aggregate 'tax' key for backward-compat with the wcdn_order_totals filter.
+			$totals['tax'] = wc_price( $order->get_total_tax(), array( 'currency' => $currency ) );
+		}
 
 		if ( $total_refunded <= 0 ) {
-			return $totals;
+			/**
+			 * Filter the order totals array used in document templates.
+			 *
+			 * Unset any key to hide that row. Recognised keys: subtotal, tax, tax_lines, shipping,
+			 * total, has_refund, refunded, net_total, tax_label.
+			 *
+			 * @param array         $totals   Totals array.
+			 * @param WC_Order|null $order    WooCommerce order object (null in preview mode).
+			 * @param string        $template Template key (invoice, receipt, deliverynote, etc.).
+			 */
+			return apply_filters( 'wcdn_order_totals', $totals, $order, $template );
 		}
+
 		$tax_label = '';
 
 		if ( wc_tax_enabled() && 'incl' === get_option( 'woocommerce_tax_display_cart' ) ) {
@@ -498,7 +613,8 @@ class Templates extends \Tyche\WCDN\Api\Api {
 		$totals['net_total']  = wc_price( $order->get_total() - $total_refunded, array( 'currency' => $currency ) );
 		$totals['tax_label']  = $tax_label;
 
-		return $totals;
+		/** This filter is documented in includes/api/class-templates.php */
+		return apply_filters( 'wcdn_order_totals', $totals, $order, $template );
 	}
 
 	/**
@@ -659,7 +775,7 @@ class Templates extends \Tyche\WCDN\Api\Api {
 		/**
 		 * Variation attributes and remaining visible meta.
 		 */
-		$item_meta = apply_filters( 'wcdn_product_meta_data', $item->get_formatted_meta_data( '' ), $item );
+		$item_meta = apply_filters( 'wcdn_product_meta_data', $item->get_formatted_meta_data( '_' ), $item );
 
 		if ( $item_meta ) {
 			foreach ( $item_meta as $meta_field ) {

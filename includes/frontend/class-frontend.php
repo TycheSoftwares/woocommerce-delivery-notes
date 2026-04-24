@@ -557,7 +557,7 @@ class Frontend {
 
 	.wcdn-document-wrapper {
 		background: #fff;
-		padding: 30px;
+		padding: 10px;
 		margin-bottom: 30px;
 		page-break-after: always;
 	}

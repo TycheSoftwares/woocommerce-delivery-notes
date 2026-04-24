@@ -9,8 +9,14 @@ function Settings({ data, update, config }) {
     return config.map((section) => (
         <FormSection key={section.id} title={section.title} className="wcdn-template-settings">
             {section.items.map((item) => {
+                const conditionMet = !item.condition || (
+                    item.conditionValue !== undefined
+                        ? data[item.condition] === item.conditionValue
+                        : !!data[item.condition]
+                );
+
                 if (item.type === "field") {
-                    if (item.condition && !data[item.condition]) {
+                    if (!conditionMet) {
                         return null;
                     }
 
@@ -28,6 +34,10 @@ function Settings({ data, update, config }) {
                 }
 
                 if (item.type === "group") {
+                    if (!conditionMet) {
+                        return null;
+                    }
+
                     const enabled = item.toggle ? data[item.toggle] : true;
 
                     return (
@@ -38,17 +48,33 @@ function Settings({ data, update, config }) {
                             onToggle={item.toggle ? (v) => update(item.toggle, v) : undefined}
                             disabled={disabled}
                         >
-                            {item.items.map((field) => (
-                                <FieldRenderer
-                                    key={field.field}
-                                    {...field}
-                                    type={field.fieldType}
-                                    data={data}
-                                    update={update}
-                                    disabled={disabled}
-                                    className="mt-20"
-                                />
-                            ))}
+                            {item.items.map((field) => {
+                                const subConditionMet = !field.condition || (
+                                    field.conditionValue !== undefined
+                                        ? data[field.condition] === field.conditionValue
+                                        : !!data[field.condition]
+                                );
+
+                                if (!subConditionMet) return null;
+
+                                let fieldDisabled = disabled;
+                                if (!fieldDisabled && field.disabledWhen) {
+                                    fieldDisabled =
+                                        data[field.disabledWhen.field] ===
+                                        field.disabledWhen.value;
+                                }
+                                return (
+                                    <FieldRenderer
+                                        key={field.field}
+                                        {...field}
+                                        type={field.fieldType}
+                                        data={data}
+                                        update={update}
+                                        disabled={fieldDisabled}
+                                        className="mt-20"
+                                    />
+                                );
+                            })}
                         </SectionItem>
                     );
                 }

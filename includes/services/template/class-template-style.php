@@ -86,13 +86,21 @@ class Template_Style {
 				),
 
 				'.wcdn-shop-phone'            => array(
-					'font-size' => 'shopPhoneFontSize',
-					'color'     => 'shopPhoneTextColor',
+					'font-size'     => 'shopPhoneFontSize',
+					'color'         => 'shopPhoneTextColor',
+					'font-weight'   => array( 'shopPhoneFontStyle', 'bold' ),
+					'text-align'    => 'shopPhoneAlign',
+					'margin-top'    => 'shopPhoneMarginTop',
+					'margin-bottom' => 'shopPhoneMarginBottom',
 				),
 
 				'.wcdn-shop-email'            => array(
-					'font-size' => 'shopEmailFontSize',
-					'color'     => 'shopEmailTextColor',
+					'font-size'     => 'shopEmailFontSize',
+					'color'         => 'shopEmailTextColor',
+					'font-weight'   => array( 'shopEmailFontStyle', 'bold' ),
+					'text-align'    => 'shopEmailAlign',
+					'margin-top'    => 'shopEmailMarginTop',
+					'margin-bottom' => 'shopEmailMarginBottom',
 				),
 
 				'.wcdn-billing-address'       => array(
@@ -171,6 +179,22 @@ class Template_Style {
 		}
 
 		/**
+		 * ORDER DATA HEADER
+		 */
+		$css .= self::rule(
+			'.wcdn-order-data-header',
+			array(
+				'font-size'     => $settings['orderDataHeaderFontSize'] ?? null,
+				'font-weight'   => 'bold' === ( $settings['orderDataHeaderFontStyle'] ?? 'bold' ) ? 'bold' : 'normal',
+				'text-align'    => $settings['orderDataHeaderAlign'] ?? null,
+				'color'         => $settings['orderDataHeaderTextColor'] ?? null,
+				'margin-top'    => $settings['orderDataHeaderSpacingTop'] ?? null,
+				'margin-bottom' => $settings['orderDataHeaderSpacingBottom'] ?? null,
+			),
+			$context
+		);
+
+		/**
 		 * ORDER META (DYNAMIC LOOP 🔥)
 		 */
 		$meta_keys = array(
@@ -183,12 +207,28 @@ class Template_Style {
 			'shippingMethod',
 			'refundDate',
 			'refundReason',
+			'billingPhone',
+			'billingEmail',
 		);
 
 		foreach ( $meta_keys as $key ) {
 
 			$css .= self::rule(
 				".wcdn-meta-{$key} td",
+				array(
+					'text-align'  => $settings[ "{$key}Align" ] ?? null,
+					'font-size'   => $settings[ "{$key}FontSize" ] ?? null,
+					'color'       => $settings[ "{$key}TextColor" ] ?? null,
+					'font-weight' => self::font_weight( $settings[ "{$key}FontStyle" ] ?? null ),
+				),
+				$context
+			);
+		}
+
+		// Columns-mode billing phone/email (rendered as <p> siblings, not table rows).
+		foreach ( array( 'billingPhone', 'billingEmail' ) as $key ) {
+			$css .= self::rule(
+				".wcdn-billing-address .wcdn-columns-{$key}",
 				array(
 					'text-align'  => $settings[ "{$key}Align" ] ?? null,
 					'font-size'   => $settings[ "{$key}FontSize" ] ?? null,
@@ -278,7 +318,8 @@ class Template_Style {
 				continue;
 			}
 
-			if ( 'font-size' === $prop && is_numeric( $value ) ) {
+			$px_props = array( 'font-size', 'margin-top', 'margin-bottom' );
+			if ( in_array( $prop, $px_props, true ) && is_numeric( $value ) ) {
 				if ( 'pdf' === $context ) {
 					// Convert px (at 96 DPI) to pt for dompdf, which uses 72 pt/inch.
 					$value = round( $value * 72 / 96, 2 ) . 'pt';
