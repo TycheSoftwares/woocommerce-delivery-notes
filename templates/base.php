@@ -304,7 +304,7 @@ if ( $is_rtl ) {
 		<?php endif; ?>
 
 		<?php if ( ! empty( $settings['showShopAddress'] ) && ! empty( $shop['address'] ) ) : ?>
-		<div class="wcdn-shop-address"><?php echo nl2br( esc_html( $shop['address'] ) ); ?></div>
+		<div class="wcdn-shop-address"><?php echo nl2br( wp_kses_post( $shop['address'] ) ); ?></div>
 		<?php endif; ?>
 
 		<?php if ( ! empty( $settings['showShopPhone'] ) && ! empty( $shop['phone'] ) ) : ?>
