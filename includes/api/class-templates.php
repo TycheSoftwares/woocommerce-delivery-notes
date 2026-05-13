@@ -193,13 +193,33 @@ class Templates extends \Tyche\WCDN\Api\Api {
 			}
 		}
 
-		return array(
-			'name'      => $settings['storeName'] ?? '',
-			'logo'      => $logo,
-			'logo_path' => $logo_path,
-			'address'   => $settings['storeAddress'] ?? '',
-			'phone'     => $settings['phone'] ?? '',
-			'email'     => $settings['email'] ?? '',
+		/**
+		 * Filter the shop/store data array before it is passed to document templates.
+		 *
+		 * Use this filter to override individual store fields (name, address, phone,
+		 * email, logo) without copying base.php, or to inject extra keys your custom
+		 * template expects.
+		 *
+		 * @param array $shop {
+		 *   @type string $name       Store name.
+		 *   @type string $logo       Logo URL (used in HTML context).
+		 *   @type string $logo_path  Logo absolute file path (used in PDF context).
+		 *   @type string $address    Store address (may contain HTML line breaks).
+		 *   @type string $phone      Store phone number.
+		 *   @type string $email      Store email address.
+		 * }
+		 * @since 7.1.2
+		 */
+		return apply_filters(
+			'wcdn_shop_data',
+			array(
+				'name'      => $settings['storeName'] ?? '',
+				'logo'      => $logo,
+				'logo_path' => $logo_path,
+				'address'   => $settings['storeAddress'] ?? '',
+				'phone'     => $settings['phone'] ?? '',
+				'email'     => $settings['email'] ?? '',
+			)
 		);
 	}
 
@@ -218,11 +238,28 @@ class Templates extends \Tyche\WCDN\Api\Api {
 			array()
 		);
 
-		return array(
-			'footer'             => $settings['footerText'] ?? '',
-			'complimentaryClose' => $settings['complimentaryClose'] ?? '',
-			'policies'           => $settings['policies'] ?? '',
-			'isRTL'              => 'rtl' === ( $settings['textDirection'] ?? 'ltr' ),
+		/**
+		 * Filter the document-level content array before it is passed to templates.
+		 *
+		 * Use this filter to override or extend the footer, policies, complimentary
+		 * close text, or RTL direction flag programmatically.
+		 *
+		 * @param array $document {
+		 *   @type string $footer             Footer text (HTML allowed via wp_kses_post).
+		 *   @type string $complimentaryClose Complimentary close text (HTML allowed).
+		 *   @type string $policies           Policies text (HTML allowed).
+		 *   @type bool   $isRTL             Whether the site locale is right-to-left.
+		 * }
+		 * @since 7.1.2
+		 */
+		return apply_filters(
+			'wcdn_document_data',
+			array(
+				'footer'             => $settings['footerText'] ?? '',
+				'complimentaryClose' => $settings['complimentaryClose'] ?? '',
+				'policies'           => $settings['policies'] ?? '',
+				'isRTL'              => 'rtl' === ( $settings['textDirection'] ?? 'ltr' ),
+			)
 		);
 	}
 
@@ -453,8 +490,29 @@ class Templates extends \Tyche\WCDN\Api\Api {
 		$billing_address = WC()->countries->get_formatted_address( $billing );
 		$billing_address = array_filter( explode( '<br/>', $billing_address ) );
 
+		/**
+		 * Filter the formatted billing address lines before they appear in the document.
+		 *
+		 * Each element is one address line (company, street, city/state/postcode, country).
+		 * Return a flat array of strings to replace the default output.
+		 *
+		 * @param array     $billing_address Address lines.
+		 * @param \WC_Order $order           Order object.
+		 * @since 7.1.2
+		 */
+		$billing_address = apply_filters( 'wcdn_billing_address', $billing_address, $order );
+
 		$shipping_address = WC()->countries->get_formatted_address( $shipping );
 		$shipping_address = array_filter( explode( '<br/>', $shipping_address ) );
+
+		/**
+		 * Filter the formatted shipping address lines before they appear in the document.
+		 *
+		 * @param array     $shipping_address Address lines.
+		 * @param \WC_Order $order            Order object.
+		 * @since 7.1.2
+		 */
+		$shipping_address = apply_filters( 'wcdn_shipping_address', $shipping_address, $order );
 
 		$shipping_method_name = '';
 		$methods              = $order->get_shipping_methods();

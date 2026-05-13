@@ -257,11 +257,14 @@ This plugin communicates with our tracking server to send usage data **only** if
 * Enhancement - Added a WooCommerce_Delivery_Notes global class alias so third-party plugins that detect the plugin via class_exists( 'WooCommerce_Delivery_Notes' ) continue to work after the v7 namespace refactor.
 * Enhancement - The HTML print preview now declares a @page size rule matching the configured PDF paper size, so the browser print preview page dimensions match the generated PDF.
 * Enhancement - Added wcdn_print_document_title, wcdn_pdf_zoom_mode, wcdn_order_info_fields, and wcdn_order_items developer filters. wcdn_order_items allows sorting or reordering line items in the document table by name, SKU, quantity, or any other item field.
+* Enhancement - Added thirteen new action hooks to base.php covering every document section: wcdn_before_logo, wcdn_before_title, wcdn_before_branding, wcdn_before_addresses, wcdn_before_totals, wcdn_before_pay_button, wcdn_before_notes, wcdn_before_policies, wcdn_after_policies, wcdn_before_complimentary_close, wcdn_after_complimentary_close, wcdn_before_footer, and wcdn_after_footer.
+* Enhancement - Added six new developer filters: wcdn_shop_data (store name, logo, address, phone, email), wcdn_document_data (footer, policies, complimentary close text), wcdn_billing_address, wcdn_shipping_address, wcdn_order_meta_fields (reorder or remove order meta rows), and wcdn_watermark_text.
 * Fix - Fatal error when generating a PDF for a refund email on orders containing downloadable products.
 * Fix - PDF generation for email attachments was triggered unconditionally, which could exhaust server memory on sites using locale fonts (e.g. CJK scripts). Generation is now skipped entirely when no attachment target has the feature enabled.
 * Fix - The wcdn_pdf_paper_size filter's default value was hardcoded to A4. It now correctly uses the paper size configured under PDF Settings.
 * Fix - Generated PDF filenames now include a per-order cryptographic token, preventing enumeration of stored PDFs by order number alone.
 * Fix - An interval-based readyState polling loop in the admin print button handler could cause double-prints on slow connections. The polling loop has been removed.
+* Tweak - Rewrote base.php with comprehensive inline documentation: a full @var block describing every variable available to template overrides ($shop, $order, $document, $settings, $items, $totals), standardised section comment blocks throughout the file, a hooks-at-a-glance reference listing all 26 actions and their signatures, and guidance on overriding the template or its CSS from a theme.
 * Tweak - PDF base font size increased from 9.5pt to 9.75pt and line height reduced to 1.2 for improved readability and more compact layout.
 * Tweak - Reduced spacing above and below horizontal rules, and reduced the top margin of the order totals table.
 

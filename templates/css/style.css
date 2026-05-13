@@ -209,13 +209,6 @@ hr {
     color: #3c434a;
 }
 
-/* .wcdn-items th,
-.wcdn-items td,
-.wcdn-totals th,
-.wcdn-totals td {
-    color: #3c434a;
-} */
-
 .wcdn-items td {
     border-bottom: 1px solid #eee;
 }
@@ -227,6 +220,11 @@ hr {
 .wcdn-items td.wcdn-product-cell {
     padding-left: 0;
     padding-right: 0;
+}
+
+.wcdn-items .wcdn-item-layout td {
+    border-bottom: none;
+    padding: 0;
 }
 
 .wcdn-totals td {

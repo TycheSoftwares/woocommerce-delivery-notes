@@ -346,6 +346,22 @@ class Template_Renderer {
 			);
 		}
 
+		/**
+		 * Filter the order meta fields shown in the document's order data block.
+		 *
+		 * Each field is an associative array: [ 'key', 'label', 'value', 'show' ].
+		 * Use this filter to remove, reorder, or modify existing rows, or to add
+		 * rows that need access to $order or $settings that wcdn_order_info_fields
+		 * does not expose.
+		 *
+		 * @param array  $order_meta_fields Meta field rows.
+		 * @param array  $order             Formatted order data array.
+		 * @param array  $settings          Per-template settings array.
+		 * @param string $template          Template key (e.g. 'invoice', 'receipt').
+		 * @since 7.1.2
+		 */
+		$order_meta_fields = apply_filters( 'wcdn_order_meta_fields', $order_meta_fields, $order, $settings, $template );
+
 		$has_order_meta = false;
 		foreach ( $order_meta_fields as $field ) {
 			if ( $field['show'] && ! empty( $field['value'] ) ) {
