@@ -66,6 +66,7 @@ function FieldRenderer({
                     options={options}
                     onChange={(v) => update(field, v)}
                     disabled={disabled}
+                    bottomLabel={bottomLabel}
                 />
             );
 

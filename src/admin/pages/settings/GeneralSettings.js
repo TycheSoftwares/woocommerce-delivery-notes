@@ -3,10 +3,10 @@ import { Button } from "@wordpress/components";
 import {
     FormSection,
     Text,
-    Textarea,
     Checkbox,
     RadioGroup,
     Number,
+    Select,
 } from "@admin/components/form";
 import { TEXT_DOMAIN } from "../../constants";
 
@@ -39,6 +39,17 @@ function GeneralSettings({ settings, updateSetting, validation, saveSettingsHand
                     onChange={(v) => updateSetting("defaultDocumentLabel", v)}
                     bottomLabel={__(
                         "Controls the text shown in the browser tab when a document is opened.",
+                        TEXT_DOMAIN
+                    )}
+                />
+
+                <Checkbox
+                    className="mt-20"
+                    label={__("Open print dialog on page load", TEXT_DOMAIN)}
+                    checked={settings.autoPrintDialog}
+                    onChange={(v) => updateSetting("autoPrintDialog", v)}
+                    bottomLabel={__(
+                        "When enabled, the browser's print dialog will open automatically as soon as a document page finishes loading.",
                         TEXT_DOMAIN
                     )}
                 />
@@ -147,6 +158,39 @@ function GeneralSettings({ settings, updateSetting, validation, saveSettingsHand
                             value: "rtl",
                         },
                     ]}
+                />
+
+                <Select
+                    className="mt-20"
+                    label={__("PDF Paper Size", TEXT_DOMAIN)}
+                    tooltip={__(
+                        "Paper size used when generating PDF documents.",
+                        TEXT_DOMAIN
+                    )}
+                    value={settings.pdfPaperSize}
+                    onChange={(v) => updateSetting("pdfPaperSize", v)}
+                    options={[
+                        { label: "A4", value: "A4" },
+                        { label: "A3", value: "A3" },
+                        { label: "A5", value: "A5" },
+                        { label: __("Letter", TEXT_DOMAIN), value: "letter" },
+                        { label: __("Legal", TEXT_DOMAIN), value: "legal" },
+                    ]}
+                />
+
+                <Checkbox
+                    className="mt-20"
+                    label={__("Use ISO currency code in PDFs", TEXT_DOMAIN)}
+                    tooltip={__(
+                        "Show the ISO currency code (e.g. INR, JPY) instead of the currency symbol in generated PDFs.",
+                        TEXT_DOMAIN
+                    )}
+                    bottomLabel={__(
+                        "Disable this to show the currency symbol (e.g. ₹, ¥) — only do so if your currency symbol renders correctly in PDFs.",
+                        TEXT_DOMAIN
+                    )}
+                    checked={settings.pdfUseCurrencyCode}
+                    onChange={(v) => updateSetting("pdfUseCurrencyCode", v)}
                 />
             </FormSection>
 

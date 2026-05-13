@@ -3,1290 +3,2284 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Print Invoice & Delivery Notes for WooCommerce 7.1.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce-"
-"delivery-notes\n"
+"Report-Msgid-Bugs-To: "
+"https://wordpress.org/support/plugin/woocommerce-delivery-notes\n"
+"POT-Creation-Date: 2026-05-11T10:33:53+00:00\n"
+"PO-Revision-Date: 2026-04-24T19:53:22+00:00\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
+"Language: ko_KR\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-24T19:53:22+00:00\n"
-"PO-Revision-Date: 2026-04-24T19:53:22+00:00\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: woocommerce-delivery-notes\n"
-"Language: ko_KR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. Plugin Name of the plugin
 #: woocommerce-delivery-notes.php
+#. Plugin Name of the plugin
 msgid "Print Invoice & Delivery Notes for WooCommerce"
-msgstr ""
+msgstr "WooCommerce용 송장 및 배송 메모 인쇄"
 
+#: woocommerce-delivery-notes.php
 #. Plugin URI of the plugin
 #. Author URI of the plugin
-#: woocommerce-delivery-notes.php
 msgid "https://www.tychesoftwares.com"
-msgstr ""
+msgstr "https://www.tychesoftwares.com"
 
-#. Description of the plugin
 #: woocommerce-delivery-notes.php
+#. Description of the plugin
 msgid ""
 "This plugin lets you generate, customize, print, and email professional "
 "order documents directly from your WooCommerce store."
-msgstr ""
+msgstr "이 플러그인을 사용하면 WooCommerce 스토어에서 직접 전문 주문 문서를 생성, 사용자 지정, 인쇄 및 이메일로 보낼 수 있습니다."
 
+#: woocommerce-delivery-notes.php build/admin.js:5523
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Footer.js:57 build/admin.js:5360
 #. Author of the plugin
-#: woocommerce-delivery-notes.php build/admin.js:1
-#: src/admin/components/Footer.js:57
 msgid "Tyche Softwares"
-msgstr ""
+msgstr "Tyche 소프트웨어"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:177
+#: dist/wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:150
 #: includes/admin/class-backend.php:177
 msgid "Order Printing"
-msgstr ""
+msgstr "인쇄 주문"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:211
+#: dist/wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:184
 #: includes/admin/class-backend.php:211
 msgid "Invoice number: "
-msgstr ""
+msgstr "송장 번호:"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:214
+#: dist/wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:187
 #: includes/admin/class-backend.php:214
 msgid "Invoice date: "
-msgstr ""
+msgstr "송장 날짜:"
 
-#. translators: %1$d: number of documents, %2$s: document type label.
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:326
+#: dist/wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:299
 #: includes/admin/class-backend.php:326
+#. translators: %1$d: number of documents, %2$s: document type label.
 #, php-format
 msgid "Print %1$d %2$s"
-msgstr ""
+msgstr "1$d %2$s 인쇄"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:331
+#: dist/wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:304
 #: includes/admin/class-backend.php:331
 msgid "Are you sure you want to proceed?"
-msgstr ""
+msgstr "계속 진행하시겠습니까?"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:336
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:257
+#: dist/wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:309
 #: includes/admin/class-backend.php:336
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:257
 msgid "Cancel"
-msgstr ""
+msgstr "취소"
 
-#: includes/admin/class-backend.php:340 includes/api/class-settings.php:329
-#: includes/api/class-settings.php:330 includes/api/class-settings.php:349
-#: includes/frontend/class-frontend.php:688
-#: includes/helpers/class-utils.php:582
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:340
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:335
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:336
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:355
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:726
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:580
+#: dist/wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:313
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:315
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:316
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:335
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:726
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:580
+#: includes/admin/class-backend.php:340 includes/api/class-settings.php:335
+#: includes/api/class-settings.php:336 includes/api/class-settings.php:355
+#: includes/frontend/class-frontend.php:734
+#: includes/helpers/class-utils.php:580
 msgid "Print"
-msgstr ""
+msgstr "인쇄"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:369
+#: dist/wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:342
 #: includes/admin/class-backend.php:369
 msgid "Pop-up blocked. Please allow pop-ups and try again."
-msgstr ""
+msgstr "팝업이 차단되었습니다. 팝업을 허용하고 다시 시도하세요."
 
-#: includes/admin/class-backend.php:452
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:445
+#: dist/wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:418
+#: includes/admin/class-backend.php:445
 msgid "Print now"
-msgstr ""
+msgstr "지금 인쇄"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:551
+#: dist/wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:464
+#: includes/admin/class-backend.php:551
 #. translators: 1: font display name, 2: settings page URL
-#: includes/admin/class-backend.php:558
 #, php-format
 msgid ""
 "<strong>Print Invoice & Delivery Notes:</strong> Your store language "
 "requires the <strong>%1$s</strong> font for correct PDF output. <a "
 "href=\"%2$s\">Upload it in Font Settings &rarr;</a>"
 msgstr ""
+"<strong>송장 및 배송 참고 사항 인쇄:</strong> 스토어 언어에 올바른 PDF 출력을 위해 "
+"<strong>%1$s</strong> 글꼴이 필요합니다. <a href=\"%2$s\">글꼴 설정에서 업로드 &rarr;</a>"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/admin/class-menu.php:40
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/admin/class-menu.php:41
+#: dist/wc-version/woocommerce-delivery-notes/includes/admin/class-menu.php:40
+#: dist/wc-version/woocommerce-delivery-notes/includes/admin/class-menu.php:41
 #: includes/admin/class-menu.php:40 includes/admin/class-menu.php:41
+#: build/admin.js:5557
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: dist/wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Header.js:9 build/admin.js:5378
 msgid "Print Invoices & Delivery Notes"
-msgstr ""
+msgstr "송장 및 배송 메모 인쇄"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/admin/class-notices.php:110
+#: dist/wc-version/woocommerce-delivery-notes/includes/admin/class-notices.php:110
 #: includes/admin/class-notices.php:110
 msgid "Action failed. Please refresh the page and retry."
-msgstr ""
+msgstr "작업이 실패했습니다. 페이지를 새로고침하고 다시 시도하세요."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/admin/class-notices.php:114
+#: dist/wc-version/woocommerce-delivery-notes/includes/admin/class-notices.php:114
 #: includes/admin/class-notices.php:114
 msgid "You don't have the permission to hide the selected notice."
-msgstr ""
+msgstr "선택한 알림을 숨길 수 있는 권한이 없습니다."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:93
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:93
 #: includes/api/class-fonts.php:93
 msgid "No valid font file provided."
-msgstr ""
+msgstr "제공된 유효한 글꼴 파일이 없습니다."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:100
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:100
 #: includes/api/class-fonts.php:100
 msgid "Font file is too small. Please upload a complete font file."
-msgstr ""
+msgstr "글꼴 파일이 너무 작습니다. 전체 글꼴 파일을 업로드하세요."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:108
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:108
 #: includes/api/class-fonts.php:108
 msgid "Invalid font file. Please upload a TTF or OTF file."
-msgstr ""
+msgstr "잘못된 글꼴 파일입니다. TTF 또는 OTF 파일을 업로드하세요."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:114
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:114
 #: includes/api/class-fonts.php:114
 msgid "No font is required for the current site language."
-msgstr ""
+msgstr "현재 사이트 언어에는 글꼴이 필요하지 않습니다."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:136
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:136
 #: includes/api/class-fonts.php:136
 msgid "Failed to save the font file."
-msgstr ""
+msgstr "글꼴 파일을 저장하지 못했습니다."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:144
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:144
 #: includes/api/class-fonts.php:144
 msgid "Font uploaded successfully."
-msgstr ""
+msgstr "글꼴이 성공적으로 업로드되었습니다."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:170
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:170
 #: includes/api/class-fonts.php:170
 msgid "No font is configured for the current site language."
-msgstr ""
+msgstr "현재 사이트 언어에 대해 구성된 글꼴이 없습니다."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:193
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:193
 #: includes/api/class-fonts.php:193
 msgid "No font file found to delete."
-msgstr ""
+msgstr "삭제할 글꼴 파일을 찾을 수 없습니다."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:201
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:201
 #: includes/api/class-fonts.php:201
 msgid "Font deleted successfully."
-msgstr ""
+msgstr "글꼴이 성공적으로 삭제되었습니다."
 
-#: includes/api/class-settings.php:184 includes/api/class-templates.php:962
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:187
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:961
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:187
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:961
+#: includes/api/class-settings.php:187 includes/api/class-templates.php:992
 msgid "Authentication has failed."
-msgstr ""
+msgstr "인증에 실패했습니다."
 
-#: includes/api/class-settings.php:195
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:198
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:198
+#: includes/api/class-settings.php:198
 msgid "No data received."
-msgstr ""
+msgstr "수신된 데이터가 없습니다."
 
-#: includes/api/class-settings.php:207
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:210
+#: includes/api/class-settings.php:210
 msgid "Tracking data settings reset successfully."
-msgstr ""
+msgstr "추적 데이터 설정이 성공적으로 재설정되었습니다."
 
-#: includes/api/class-settings.php:215
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:218
+#: includes/api/class-settings.php:218
 msgid "Tracking data already reset."
-msgstr ""
+msgstr "추적 데이터가 이미 초기화되었습니다."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:244
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:224
+#: includes/api/class-settings.php:244
 #. translators: %d: minimum allowed invoice number.
-#: includes/api/class-settings.php:241
 #, php-format
 msgid "Next invoice number must be greater than or equal to %d."
-msgstr ""
+msgstr "다음 인보이스 번호는 %d보다 크거나 같아야 합니다."
 
-#: includes/api/class-settings.php:254
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:257
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:237
+#: includes/api/class-settings.php:257
 msgid "Year starting number must be greater than 0."
-msgstr ""
+msgstr "연도 시작 숫자는 0보다 커야 합니다."
 
-#: includes/api/class-settings.php:296
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:299
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:279
+#: includes/api/class-settings.php:299
 msgid "Settings saved successfully."
-msgstr ""
+msgstr "설정이 성공적으로 저장되었습니다."
 
-#: includes/api/class-settings.php:320 templates/base.php:286
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:324
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:299
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:304
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:299
+#: includes/api/class-settings.php:324 templates/base.php:299
 msgid "Document"
-msgstr ""
+msgstr "문서"
 
-#: includes/api/class-settings.php:324
-msgid "View and print your invoice"
-msgstr ""
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:330
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:310
+#: includes/api/class-settings.php:330
+msgid "View and print your"
+msgstr "보기 및 인쇄"
 
-#: includes/api/class-settings.php:326
-msgid "Print order documents"
-msgstr ""
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:332
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:312
+#: includes/api/class-settings.php:332
+msgid "Print order"
+msgstr "주문 인쇄"
 
-#: includes/api/class-settings.php:331 includes/helpers/class-utils.php:408
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:337
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:409
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:317
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:409
+#: includes/api/class-settings.php:337 includes/helpers/class-utils.php:409
 msgid "Print Invoice"
-msgstr ""
+msgstr "송장 인쇄"
 
-#: includes/api/class-settings.php:332 includes/helpers/class-utils.php:423
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:338
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:424
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:318
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:424
+#: includes/api/class-settings.php:338 includes/helpers/class-utils.php:424
 msgid "Print Delivery Note"
-msgstr ""
+msgstr "배송 메모 인쇄"
 
-#: includes/api/class-settings.php:333 includes/helpers/class-utils.php:438
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:339
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:439
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:319
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:439
+#: includes/api/class-settings.php:339 includes/helpers/class-utils.php:439
 msgid "Print Receipt"
-msgstr ""
+msgstr "영수증 인쇄"
 
-#: includes/api/class-settings.php:334 includes/helpers/class-utils.php:453
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:340
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:454
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:320
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:454
+#: includes/api/class-settings.php:340 includes/helpers/class-utils.php:454
 msgid "Print Credit Note"
-msgstr ""
+msgstr "크레딧 노트 인쇄"
 
-#: includes/api/class-settings.php:335 includes/helpers/class-utils.php:468
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:341
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:469
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:321
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:469
+#: includes/api/class-settings.php:341 includes/helpers/class-utils.php:469
 msgid "Print Packing Slip"
-msgstr ""
+msgstr "포장 명세서 인쇄"
 
-#: includes/api/class-settings.php:336
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:342
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:322
+#: includes/api/class-settings.php:342
 msgid "invoice"
-msgstr ""
+msgstr "인보이스"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:119
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:119
 #: includes/api/class-templates.php:119
 msgid "Sample Product"
-msgstr ""
+msgstr "샘플 제품"
 
-#: includes/api/class-templates.php:362 includes/api/class-templates.php:1102
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:364
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:1101
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:364
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:1101
+#: includes/api/class-templates.php:364 includes/api/class-templates.php:1132
 msgid "Customer returned item"
-msgstr ""
+msgstr "고객 반품 품목"
 
-#: includes/api/class-templates.php:466
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:464
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:464
+#: includes/api/class-templates.php:464
 msgid "N/A"
-msgstr ""
+msgstr "N/A"
 
-#: includes/api/class-templates.php:809
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:808
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:808
+#: includes/api/class-templates.php:839
 msgid "Download"
-msgstr ""
+msgstr "다운로드"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:810
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:810
+#: includes/api/class-templates.php:841
 #. translators: %s: number of files
-#: includes/api/class-templates.php:811
 #, php-format
 msgid "%s Files"
-msgstr ""
+msgstr "%s 파일"
 
-#: includes/api/class-templates.php:975
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:974
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:974
+#: includes/api/class-templates.php:1005
 msgid "Invalid request payload."
-msgstr ""
+msgstr "잘못된 요청 페이로드입니다."
 
-#: includes/api/class-templates.php:994
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:993
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:993
+#: includes/api/class-templates.php:1024
 msgid "Invalid template type."
-msgstr ""
+msgstr "잘못된 템플릿 유형입니다."
 
-#: includes/api/class-templates.php:1028
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:1027
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:1027
+#: includes/api/class-templates.php:1058
 msgid "Template saved successfully."
-msgstr ""
+msgstr "템플릿이 성공적으로 저장되었습니다."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/class-woocommerce-delivery-notes.php:116
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/class-woocommerce-delivery-notes.php:125
+#: dist/wc-version/woocommerce-delivery-notes/includes/class-woocommerce-delivery-notes.php:116
+#: dist/wc-version/woocommerce-delivery-notes/includes/class-woocommerce-delivery-notes.php:125
 #: includes/class-woocommerce-delivery-notes.php:116
 #: includes/class-woocommerce-delivery-notes.php:125
 msgid "Not allowed."
-msgstr ""
+msgstr "허용되지 않습니다."
 
-#. translators: 1. Plugin Name, 2. WordPress Version
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/class-woocommerce-delivery-notes.php:231
+#: dist/wc-version/woocommerce-delivery-notes/includes/class-woocommerce-delivery-notes.php:231
 #: includes/class-woocommerce-delivery-notes.php:231
+#. translators: 1. Plugin Name, 2. WordPress Version
 #, php-format
 msgid ""
 "You are using an outdated version of WordPress. %1$s requires WP version "
 "%2$s or higher."
-msgstr ""
+msgstr "오래된 버전의 워드프레스를 사용하고 있습니다. 1$s에는 WP 버전 %2$s 이상이 필요합니다."
 
-#. translators: 1. Plugin Name, 2. PHP Version
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/class-woocommerce-delivery-notes.php:237
+#: dist/wc-version/woocommerce-delivery-notes/includes/class-woocommerce-delivery-notes.php:237
 #: includes/class-woocommerce-delivery-notes.php:237
+#. translators: 1. Plugin Name, 2. PHP Version
 #, php-format
 msgid ""
 "%1$s requires PHP version %2$s or above. Please update PHP to run this "
 "plugin."
-msgstr ""
+msgstr "1$s에는 PHP 버전 %2$s 이상이 필요합니다. 이 플러그인을 실행하려면 PHP를 업데이트하세요."
 
-#. translators: 1. Plugin Name, 2. WooCommerce Version
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/class-woocommerce-delivery-notes.php:243
+#: dist/wc-version/woocommerce-delivery-notes/includes/class-woocommerce-delivery-notes.php:243
 #: includes/class-woocommerce-delivery-notes.php:243
+#. translators: 1. Plugin Name, 2. WooCommerce Version
 #, php-format
 msgid "WooCommerce not found. %1$s requires WooCommerce v%2$s or higher."
-msgstr ""
+msgstr "WooCommerce를 찾을 수 없습니다. 1$s에는 WooCommerce v%2$s 이상이 필요합니다."
 
-#. translators: 1. Plugin Name, 2. WooCommerce Version
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/class-woocommerce-delivery-notes.php:246
+#: dist/wc-version/woocommerce-delivery-notes/includes/class-woocommerce-delivery-notes.php:246
 #: includes/class-woocommerce-delivery-notes.php:246
+#. translators: 1. Plugin Name, 2. WooCommerce Version
 #, php-format
 msgid ""
 "You are using an outdated version of WooCommerce. %1$s requires WooCommerce "
 "v%2$s or higher."
-msgstr ""
+msgstr "오래된 버전의 WooCommerce를 사용하고 있습니다. 1$s에는 WooCommerce v%2$s 이상이 필요합니다."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:176
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:176
 msgid "I only needed the plugin for a short period."
-msgstr ""
+msgstr "저는 짧은 기간 동안만 플러그인이 필요했습니다."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:182
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:182
 msgid "I found a better plugin."
-msgstr ""
+msgstr "더 좋은 플러그인을 찾았습니다."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:184
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:184
 msgid "Please let us have the plugin's name so that we can make improvements"
-msgstr ""
+msgstr "개선할 수 있도록 플러그인 이름을 알려주세요."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:188
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:188
 msgid "The plugin is not working."
-msgstr ""
+msgstr "플러그인이 작동하지 않습니다."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:190
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:190
 msgid ""
 "Please share what was faulty with the plugin so that we may get the issue "
 "fixed."
-msgstr ""
+msgstr "문제를 해결할 수 있도록 플러그인의 결함을 공유해 주세요."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:194
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:194
 msgid "The plugin is causing issues on my site"
-msgstr ""
+msgstr "플러그인으로 인해 내 사이트에 문제가 발생하고 있습니다."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:196
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:196
-msgid ""
-"We’re sorry! Please tell us about the issues so that we can get them fixed."
-msgstr ""
+msgid "We’re sorry! Please tell us about the issues so that we can get them fixed."
+msgstr "죄송합니다! 문제를 해결할 수 있도록 문제를 알려주세요."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:200
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:200
 msgid "Some features I need are not working as per my expectations"
-msgstr ""
+msgstr "필요한 일부 기능이 기대한 대로 작동하지 않습니다."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:202
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:202
 msgid "Please tell us about these features."
-msgstr ""
+msgstr "이러한 기능에 대해 알려주세요."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:206
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:206
 msgid "The plugin is not compatible with another plugin/theme"
-msgstr ""
+msgstr "플러그인이 다른 플러그인/테마와 호환되지 않습니다."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:208
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:208
 msgid ""
 "We’re sorry! We would like you to tell us the plugin/theme so that we can "
 "work on the compatibility."
-msgstr ""
+msgstr "죄송합니다! 호환성 문제를 해결할 수 있도록 플러그인/테마를 알려주시기 바랍니다."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:212
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:212
 msgid ""
 "I can't differentiate between Invoice, Delivery Notes & Receipt. The "
 "templates are the same."
-msgstr ""
+msgstr "송장, 배송 메모 및 영수증을 구분할 수 없습니다. 템플릿은 동일합니다."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:218
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:218
 msgid "The invoice sent through mail can't be downloaded as PDF directly."
-msgstr ""
+msgstr "메일로 전송된 인보이스는 PDF로 바로 다운로드할 수 없습니다."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:224
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:224
 msgid "This plugin is not useful to me."
-msgstr ""
+msgstr "이 플러그인은 저에게는 유용하지 않습니다."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:230
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:230
 msgid "Other"
-msgstr ""
+msgstr "기타"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:244
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:244
 msgid "If you have a moment, please let us know why you are deactivating:"
-msgstr ""
+msgstr "잠시 시간을 내어 비활성화하는 이유를 알려주세요:"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:255
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:255
 msgid "Skip & Deactivate"
-msgstr ""
+msgstr "건너뛰기 및 비활성화"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:256
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:256
 msgid "Submit & Deactivate"
-msgstr ""
+msgstr "제출 및 비활성화"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:270
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:270
 msgid "Please select a reason for deactivation!"
-msgstr ""
+msgstr "비활성화 이유를 선택해 주세요!"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-tracking/class-tyche-plugin-tracking.php:262
+#: includes/component/plugin-tracking/class-tyche-plugin-tracking.php:264
 #. translators: 1. Plugin name, 2. URL to find out more about usage tracking
-#: includes/component/plugin-tracking/class-tyche-plugin-tracking.php:262
 #, php-format
 msgid ""
-"Want to help make %1$s even more awesome? Allow %1$s to collect non-"
-"sensitive diagnostic data and usage information and get 20%% off on your "
-"next purchase. <a href=\"%2$s\" target=\"_blank\">Find out more</a>."
+"Want to help make %1$s even more awesome? Allow %1$s to collect "
+"non-sensitive diagnostic data and usage information and get 20%% off on "
+"your next purchase. <a href=\"%2$s\" target=\"_blank\">Find out more</a>."
 msgstr ""
+"1$를 더욱 멋지게 만드는 데 도움을 주고 싶으신가요? 1$s가 민감하지 않은 진단 데이터 및 사용 정보를 수집하도록 허용하고 다음 "
+"구매 시 20%% 할인을 받으세요. <a href=\"%2$s\" target=\"_blank\">자세히 알아보기</a>."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/core/class-hooks.php:71
+#: dist/wc-version/woocommerce-delivery-notes/includes/core/class-hooks.php:71
 #: includes/core/class-hooks.php:71
 msgid "Go to the settings page"
-msgstr ""
+msgstr "설정 페이지로 이동"
 
-#: includes/core/class-hooks.php:72 build/admin.js:1
-#: src/admin/components/Header.js:23
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/core/class-hooks.php:72
+#: dist/wc-version/woocommerce-delivery-notes/includes/core/class-hooks.php:72
+#: includes/core/class-hooks.php:72 build/admin.js:5578
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: dist/wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Header.js:23 build/admin.js:5392
 msgid "Settings"
-msgstr ""
+msgstr "설정"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:328
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:825
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:328
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:825
 #: includes/frontend/class-frontend.php:327
+#: includes/frontend/class-frontend.php:841
 msgid "No orders provided."
-msgstr ""
+msgstr "주문이 제공되지 않습니다."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:342
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:349
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:342
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:349
 #: includes/frontend/class-frontend.php:341
 #: includes/frontend/class-frontend.php:348
 msgid "Invalid order."
-msgstr ""
+msgstr "잘못된 주문입니다."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:354
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:354
 #: includes/frontend/class-frontend.php:353
 msgid "Access denied."
-msgstr ""
+msgstr "액세스가 거부되었습니다."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:360
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:360
 #: includes/frontend/class-frontend.php:359
 msgid "Access to this document is denied."
-msgstr ""
+msgstr "이 문서에 대한 액세스가 거부되었습니다."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:377
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:377
 #: includes/frontend/class-frontend.php:376
 msgid "No valid documents found."
-msgstr ""
+msgstr "유효한 문서를 찾을 수 없습니다."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:480
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:480
 #: includes/frontend/class-frontend.php:479
 msgid ""
 "You need to be logged into your account to access this document. Please "
 "login first."
-msgstr ""
+msgstr "이 문서에 액세스하려면 계정에 로그인해야 합니다. 먼저 로그인하세요."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:482
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:482
 #: includes/frontend/class-frontend.php:481
 msgid "Proceed to Login"
-msgstr ""
+msgstr "로그인 진행"
 
-#: includes/frontend/class-frontend.php:688
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:708
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:708
+#: includes/frontend/class-frontend.php:716
+msgid "Preparing document…"
+msgstr "문서 준비 중..."
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:726
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:726
+#: includes/frontend/class-frontend.php:734
 msgid "Print All"
-msgstr ""
+msgstr "모두 인쇄"
 
-#: includes/frontend/class-frontend.php:693
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:731
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:741
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:744
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:731
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:741
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:744
+#: includes/frontend/class-frontend.php:739
+#: includes/frontend/class-frontend.php:747
+#: includes/frontend/class-frontend.php:749
 msgid "Download PDF"
-msgstr ""
+msgstr "PDF 다운로드"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:742
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:742
+#: includes/frontend/class-frontend.php:748
+msgid "Generating PDF…"
+msgstr "PDF 생성..."
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:773
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:779
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:773
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:779
+#: includes/frontend/class-frontend.php:785
+#: includes/frontend/class-frontend.php:793
+msgid "PDF generation failed."
+msgstr "PDF 생성에 실패했습니다."
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:812
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:812
+#: includes/frontend/class-frontend.php:828
+msgid "Authentication failed."
+msgstr "인증에 실패했습니다."
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:819
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:819
+#: includes/frontend/class-frontend.php:835
+msgid "Invalid template."
+msgstr "잘못된 템플릿입니다."
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:851
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:851
+#: includes/frontend/class-frontend.php:867
+msgid "No valid orders found."
+msgstr "유효한 주문이 없습니다."
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:857
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:857
+#: includes/frontend/class-frontend.php:873
+msgid ""
+"PDF generation failed. Please try with fewer orders or check your server "
+"memory limit."
+msgstr "PDF를 생성하지 못했습니다. 주문 수를 줄여서 시도하거나 서버 메모리 제한을 확인하세요."
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/functions/template-functions.php:269
+#: dist/wc-version/woocommerce-delivery-notes/includes/functions/template-functions.php:269
 #: includes/functions/template-functions.php:269
 msgid "Refund"
-msgstr ""
+msgstr "환불"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/functions/template-functions.php:281
+#: dist/wc-version/woocommerce-delivery-notes/includes/functions/template-functions.php:281
 #: includes/functions/template-functions.php:281
 msgid "Order Subtotal"
-msgstr ""
+msgstr "주문 소계"
 
-#: includes/helpers/class-utils.php:406 includes/helpers/class-utils.php:598
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:407
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:596
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:407
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:596
+#: includes/helpers/class-utils.php:407 includes/helpers/class-utils.php:596
 msgid "Invoice"
-msgstr ""
+msgstr "인보이스"
 
-#: includes/helpers/class-utils.php:407
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:408
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:408
+#: includes/helpers/class-utils.php:408
 msgid "Invoices"
-msgstr ""
+msgstr "송장"
 
-#: includes/helpers/class-utils.php:409
-msgid "Print Invoices"
-msgstr ""
-
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:410
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:410
 #: includes/helpers/class-utils.php:410
-msgid "Invoice created."
-msgstr ""
+msgid "Print Invoices"
+msgstr "송장 인쇄"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:411
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:411
 #: includes/helpers/class-utils.php:411
-msgid "Invoices created."
-msgstr ""
+msgid "Invoice created."
+msgstr "인보이스가 생성되었습니다."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:412
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:412
 #: includes/helpers/class-utils.php:412
+msgid "Invoices created."
+msgstr "인보이스가 생성되었습니다."
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:413
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:413
+#: includes/helpers/class-utils.php:413
 msgid "Show \"Print Invoice\" button"
-msgstr ""
+msgstr "\"송장 인쇄\" 버튼 표시"
 
-#: includes/helpers/class-utils.php:421 includes/helpers/class-utils.php:599
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:422
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:597
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:422
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:597
+#: includes/helpers/class-utils.php:422 includes/helpers/class-utils.php:597
 msgid "Delivery Note"
-msgstr ""
+msgstr "배송 참고 사항"
 
-#: includes/helpers/class-utils.php:422
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:423
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:423
+#: includes/helpers/class-utils.php:423
 msgid "Delivery Notes"
-msgstr ""
+msgstr "배송 참고 사항"
 
-#: includes/helpers/class-utils.php:424
-msgid "Print Delivery Notes"
-msgstr ""
-
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:425
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:425
 #: includes/helpers/class-utils.php:425
-msgid "Delivery Note created."
-msgstr ""
+msgid "Print Delivery Notes"
+msgstr "배송 메모 인쇄"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:426
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:426
 #: includes/helpers/class-utils.php:426
-msgid "Delivery Notes created."
-msgstr ""
+msgid "Delivery Note created."
+msgstr "배송 메모가 생성되었습니다."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:427
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:427
 #: includes/helpers/class-utils.php:427
+msgid "Delivery Notes created."
+msgstr "배송 메모가 생성되었습니다."
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:428
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:428
+#: includes/helpers/class-utils.php:428
 msgid "Show \"Print Delivery Note\" button"
-msgstr ""
+msgstr "\"배송 메모 인쇄\" 버튼 표시"
 
-#: includes/helpers/class-utils.php:436 includes/helpers/class-utils.php:600
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:437
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:598
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:437
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:598
+#: includes/helpers/class-utils.php:437 includes/helpers/class-utils.php:598
 msgid "Receipt"
-msgstr ""
+msgstr "영수증"
 
-#: includes/helpers/class-utils.php:437
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:438
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:438
+#: includes/helpers/class-utils.php:438
 msgid "Receipts"
-msgstr ""
+msgstr "영수증"
 
-#: includes/helpers/class-utils.php:439
-msgid "Print Receipts"
-msgstr ""
-
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:440
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:440
 #: includes/helpers/class-utils.php:440
-msgid "Receipt created."
-msgstr ""
+msgid "Print Receipts"
+msgstr "영수증 인쇄"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:441
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:441
 #: includes/helpers/class-utils.php:441
-msgid "Receipts created."
-msgstr ""
+msgid "Receipt created."
+msgstr "영수증이 생성되었습니다."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:442
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:442
 #: includes/helpers/class-utils.php:442
+msgid "Receipts created."
+msgstr "영수증 생성."
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:443
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:443
+#: includes/helpers/class-utils.php:443
 msgid "Show \"Print Receipt\" button"
-msgstr ""
+msgstr "'영수증 인쇄' 버튼 표시"
 
-#: includes/helpers/class-utils.php:451 includes/helpers/class-utils.php:601
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:452
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:599
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:452
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:599
+#: includes/helpers/class-utils.php:452 includes/helpers/class-utils.php:599
 msgid "Credit Note"
-msgstr ""
+msgstr "크레딧 노트"
 
-#: includes/helpers/class-utils.php:452
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:453
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:453
+#: includes/helpers/class-utils.php:453
 msgid "Credit Notes"
-msgstr ""
+msgstr "신용 메모"
 
-#: includes/helpers/class-utils.php:454
-msgid "Print Credit Notes"
-msgstr ""
-
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:455
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:455
 #: includes/helpers/class-utils.php:455
-msgid "Credit Note created."
-msgstr ""
+msgid "Print Credit Notes"
+msgstr "신용 메모 인쇄"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:456
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:456
 #: includes/helpers/class-utils.php:456
-msgid "Credit Notes created."
-msgstr ""
+msgid "Credit Note created."
+msgstr "신용 메모가 생성되었습니다."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:457
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:457
 #: includes/helpers/class-utils.php:457
+msgid "Credit Notes created."
+msgstr "신용 메모가 생성되었습니다."
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:458
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:458
+#: includes/helpers/class-utils.php:458
 msgid "Show \"Credit Note\" button"
-msgstr ""
+msgstr "'신용 메모' 버튼 표시"
 
-#: includes/helpers/class-utils.php:466 includes/helpers/class-utils.php:602
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:467
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:600
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:467
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:600
+#: includes/helpers/class-utils.php:467 includes/helpers/class-utils.php:600
 msgid "Packing Slip"
-msgstr ""
+msgstr "포장 명세서"
 
-#: includes/helpers/class-utils.php:467
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:468
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:468
+#: includes/helpers/class-utils.php:468
 msgid "Packing Slips"
-msgstr ""
+msgstr "포장 명세서"
 
-#: includes/helpers/class-utils.php:469
-msgid "Print Packing Slips"
-msgstr ""
-
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:470
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:470
 #: includes/helpers/class-utils.php:470
-msgid "Packing Slip created."
-msgstr ""
+msgid "Print Packing Slips"
+msgstr "포장 명세서 인쇄"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:471
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:471
 #: includes/helpers/class-utils.php:471
-msgid "Packing Slips created."
-msgstr ""
+msgid "Packing Slip created."
+msgstr "패킹 슬립이 생성되었습니다."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:472
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:472
 #: includes/helpers/class-utils.php:472
-msgid "Show \"Print Packing Slip\" button"
-msgstr ""
+msgid "Packing Slips created."
+msgstr "패킹 슬립이 생성되었습니다."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:473
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:473
+#: includes/helpers/class-utils.php:473
+msgid "Show \"Print Packing Slip\" button"
+msgstr "\"패킹 슬립 인쇄\" 버튼 표시"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/integrations/class-emails.php:240
+#: dist/wc-version/woocommerce-delivery-notes/includes/integrations/class-emails.php:240
+#: includes/integrations/class-emails.php:240
 #. translators: 1. Order number, 2. Document type (e.g. Invoice)
-#: includes/integrations/class-emails.php:229
 #, php-format
 msgid "New Order #%1$s — %2$s Attached"
-msgstr ""
+msgstr "새 주문 #%1$s - %2$s 첨부됨"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/integrations/class-emails.php:250
+#: dist/wc-version/woocommerce-delivery-notes/includes/integrations/class-emails.php:250
+#: includes/integrations/class-emails.php:250
 #. translators: 1. Document type (e.g. Invoice), 2. Order number
-#: includes/integrations/class-emails.php:239
 #, php-format
 msgid ""
 "A new order has been placed. Please find the %1$s for Order #%2$s attached "
 "to this email."
-msgstr ""
+msgstr "새 주문이 접수되었습니다. 이 이메일에 첨부된 주문 #%2$s에 대한 %1$s를 확인하세요."
 
-#: includes/integrations/class-emails.php:395
-msgid "Print:"
-msgstr ""
-
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:92
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:92
 #: includes/services/template/class-template-engine.php:92
 msgid "Invoice Settings"
-msgstr ""
+msgstr "인보이스 설정"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:98
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:117
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:136
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:155
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:174
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:98
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:117
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:136
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:155
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:174
 #: includes/services/template/class-template-engine.php:98
 #: includes/services/template/class-template-engine.php:117
 #: includes/services/template/class-template-engine.php:136
 #: includes/services/template/class-template-engine.php:155
 #: includes/services/template/class-template-engine.php:174
 msgid "Template Settings"
-msgstr ""
+msgstr "템플릿 설정"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:111
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:111
 #: includes/services/template/class-template-engine.php:111
 msgid "Receipt Settings"
-msgstr ""
+msgstr "영수증 설정"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:130
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:130
 #: includes/services/template/class-template-engine.php:130
 msgid "Delivery Note Settings"
-msgstr ""
+msgstr "배송 메모 설정"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:149
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:149
 #: includes/services/template/class-template-engine.php:149
 msgid "Packing Slip Settings"
-msgstr ""
+msgstr "패킹 슬립 설정"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:168
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:168
 #: includes/services/template/class-template-engine.php:168
 msgid "Credit Note Settings"
-msgstr ""
+msgstr "크레딧 메모 설정"
 
-#: includes/services/template/class-template-engine.php:558
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:564
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:564
+#: includes/services/template/class-template-engine.php:564
 msgid "Enable Invoice"
-msgstr ""
+msgstr "송장 사용"
 
-#: includes/services/template/class-template-engine.php:559
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:565
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:565
+#: includes/services/template/class-template-engine.php:565
 msgid "Enable Receipt"
-msgstr ""
+msgstr "영수증 사용"
 
-#: includes/services/template/class-template-engine.php:560
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:566
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:566
+#: includes/services/template/class-template-engine.php:566
 msgid "Enable Delivery Note"
-msgstr ""
+msgstr "배달 메모 사용"
 
-#: includes/services/template/class-template-engine.php:561
-msgid "Enable Packing Slip"
-msgstr ""
-
-#: includes/services/template/class-template-engine.php:562
-msgid "Enable Credit Note"
-msgstr ""
-
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:567
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:567
 #: includes/services/template/class-template-engine.php:567
+msgid "Enable Packing Slip"
+msgstr "패킹 슬립 활성화"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:568
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:568
+#: includes/services/template/class-template-engine.php:568
+msgid "Enable Credit Note"
+msgstr "신용 메모 사용"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:573
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:573
+#: includes/services/template/class-template-engine.php:573
 msgid ""
 "An invoice ia a detailed bill showing items purchased, taxes, shipping "
 "charges, and the total amount due."
-msgstr ""
+msgstr "인보이스는 구매한 품목, 세금, 배송료, 총 결제 금액이 표시된 상세 청구서입니다."
 
-#: includes/services/template/class-template-engine.php:571
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:577
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:577
+#: includes/services/template/class-template-engine.php:577
 msgid ""
 "A receipt is used to issue a payment confirmation document showing items "
 "purchased and the amount paid."
-msgstr ""
+msgstr "영수증은 구매한 품목과 결제 금액이 표시된 결제 확인 문서를 발행하는 데 사용됩니다."
 
-#: includes/services/template/class-template-engine.php:575
-msgid ""
-"The delivery note template generates a document listing delivered items."
-msgstr ""
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:581
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:581
+#: includes/services/template/class-template-engine.php:581
+msgid "The delivery note template generates a document listing delivered items."
+msgstr "배송 메모 템플릿은 배송된 품목을 나열하는 문서를 생성합니다."
 
-#: includes/services/template/class-template-engine.php:579
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:585
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:585
+#: includes/services/template/class-template-engine.php:585
 msgid ""
 "The packing slip includes a document inside the package detailing the "
 "shipment contents for verification."
-msgstr ""
+msgstr "포장 명세서에는 확인을 위해 배송 내용물을 자세히 설명하는 문서가 포장물 안에 포함되어 있습니다."
 
-#: includes/services/template/class-template-engine.php:583
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:589
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:589
+#: includes/services/template/class-template-engine.php:589
 msgid ""
 "The credit note is a document created to refund or adjust a previously "
 "issued invoice."
-msgstr ""
+msgstr "크레딧 메모는 이전에 발행된 인보이스를 환불하거나 조정하기 위해 작성하는 문서입니다."
 
-#: includes/services/template/class-template-engine.php:595
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:601
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:601
+#: includes/services/template/class-template-engine.php:601
 msgid "Date Format"
-msgstr ""
+msgstr "날짜 형식"
 
-#: includes/services/template/class-template-engine.php:633
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:639
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:639
+#: includes/services/template/class-template-engine.php:639
 msgid "PDF Filename"
-msgstr ""
+msgstr "PDF 파일 이름"
 
-#: includes/services/template/class-template-engine.php:634
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:640
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:640
+#: includes/services/template/class-template-engine.php:640
 msgid "Available placeholders: {order_number}, {order_date}, {customer_name}"
-msgstr ""
+msgstr "사용 가능한 자리 표시자: {주문 번호}, {주문 날짜}, {고객 이름}"
 
-#: includes/services/template/class-template-engine.php:653
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:659
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:659
+#: includes/services/template/class-template-engine.php:659
 msgid "Attach PDF to customer emails"
-msgstr ""
+msgstr "고객 이메일에 PDF 첨부"
 
-#: includes/services/template/class-template-engine.php:663
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:669
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:669
+#: includes/services/template/class-template-engine.php:669
 msgid "Send the PDF as an attachment to all administrator email addresses."
-msgstr ""
+msgstr "모든 관리자 이메일 주소로 PDF를 첨부 파일로 보냅니다."
 
-#: includes/services/template/class-template-engine.php:673
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:679
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:679
+#: includes/services/template/class-template-engine.php:679
 msgid "Attach PDF to custom email addresses"
-msgstr ""
+msgstr "사용자 지정 이메일 주소에 PDF 첨부"
 
-#: includes/services/template/class-template-engine.php:683
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:689
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:689
+#: includes/services/template/class-template-engine.php:689
 msgid "Enter multiple email addresses separated by commas."
-msgstr ""
+msgstr "여러 개의 이메일 주소를 쉼표로 구분하여 입력합니다."
 
-#: includes/services/template/class-template-engine.php:696
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:702
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:702
+#: includes/services/template/class-template-engine.php:702
 msgid "Attach PDF to selected order status(es)"
-msgstr ""
+msgstr "선택한 주문 상태에 PDF 첨부하기"
 
-#: includes/services/template/class-template-engine.php:715
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:721
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:721
+#: includes/services/template/class-template-engine.php:721
 msgid "Start typing to select order statuses."
-msgstr ""
+msgstr "입력을 시작하여 주문 상태를 선택합니다."
 
-#: includes/services/template/class-template-engine.php:726
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:732
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:732
+#: includes/services/template/class-template-engine.php:732
 msgid "Attach PDF to selected WooCommerce Email(s)"
-msgstr ""
+msgstr "선택한 WooCommerce 이메일에 PDF 첨부하기"
 
-#: includes/services/template/class-template-engine.php:739
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:745
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:745
+#: includes/services/template/class-template-engine.php:745
 msgid "Start typing to select WooCommerce email types."
-msgstr ""
+msgstr "입력을 시작하여 WooCommerce 이메일 유형을 선택합니다."
 
-#: includes/services/template/class-template-engine.php:749
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:755
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:755
+#: includes/services/template/class-template-engine.php:755
 msgid "Show Shop Logo"
-msgstr ""
+msgstr "스토어 로고 표시"
 
-#: includes/services/template/class-template-engine.php:764
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:770
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:770
+#: includes/services/template/class-template-engine.php:770
 msgid "Scale"
-msgstr ""
+msgstr "규모"
 
-#: includes/services/template/class-template-engine.php:774
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:780
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:780
+#: includes/services/template/class-template-engine.php:780
 msgid "Alignment"
-msgstr ""
+msgstr "정렬"
 
-#: includes/services/template/class-template-engine.php:785
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:791
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:791
+#: includes/services/template/class-template-engine.php:791
 msgid "Document Title"
-msgstr ""
+msgstr "문서 제목"
 
-#: includes/services/template/class-template-engine.php:792
-#: includes/services/template/class-template-engine.php:2075
-msgid "Title"
-msgstr ""
-
-#: includes/services/template/class-template-engine.php:794
-msgid "INVOICE"
-msgstr ""
-
-#: includes/services/template/class-template-engine.php:795
-msgid "RECEIPT"
-msgstr ""
-
-#: includes/services/template/class-template-engine.php:796
-msgid "DELIVERY NOTE"
-msgstr ""
-
-#: includes/services/template/class-template-engine.php:797
-msgid "PACKING SLIP"
-msgstr ""
-
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:798
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2086
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:798
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2086
 #: includes/services/template/class-template-engine.php:798
+#: includes/services/template/class-template-engine.php:2086
+msgid "Title"
+msgstr "제목"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:800
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:800
+#: includes/services/template/class-template-engine.php:800
+msgid "INVOICE"
+msgstr "인보이스"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:801
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:801
+#: includes/services/template/class-template-engine.php:801
+msgid "RECEIPT"
+msgstr "수신"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:802
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:802
+#: includes/services/template/class-template-engine.php:802
+msgid "DELIVERY NOTE"
+msgstr "배송 참고 사항"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:803
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:803
+#: includes/services/template/class-template-engine.php:803
+msgid "PACKING SLIP"
+msgstr "포장 명세서"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:804
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:804
+#: includes/services/template/class-template-engine.php:804
 msgid "CREDIT NOTE"
-msgstr ""
+msgstr "크레딧 참고"
 
-#: includes/services/template/class-template-engine.php:806
-#: includes/services/template/class-template-engine.php:859
-#: includes/services/template/class-template-engine.php:912
-#: includes/services/template/class-template-engine.php:973
-#: includes/services/template/class-template-engine.php:1054
-#: includes/services/template/class-template-engine.php:1135
-#: includes/services/template/class-template-engine.php:1196
-#: includes/services/template/class-template-engine.php:1261
-#: includes/services/template/class-template-engine.php:1326
-#: includes/services/template/class-template-engine.php:1389
-#: includes/services/template/class-template-engine.php:1489
-#: includes/services/template/class-template-engine.php:1562
-#: includes/services/template/class-template-engine.php:1623
-#: includes/services/template/class-template-engine.php:1684
-#: includes/services/template/class-template-engine.php:1745
-#: includes/services/template/class-template-engine.php:1806
-#: includes/services/template/class-template-engine.php:1867
-#: includes/services/template/class-template-engine.php:1928
-#: includes/services/template/class-template-engine.php:1989
-#: includes/services/template/class-template-engine.php:2083
-#: includes/services/template/class-template-engine.php:2127
-#: includes/services/template/class-template-engine.php:2162
-#: includes/services/template/class-template-engine.php:2197
-#: includes/services/template/class-template-engine.php:2243
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:812
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:865
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:918
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:979
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1060
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1141
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1202
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1267
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1332
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1395
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1495
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1568
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1629
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1690
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1756
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1817
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1878
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1939
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2000
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2094
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2138
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2191
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2244
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2308
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2461
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:812
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:865
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:918
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:979
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1060
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1141
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1202
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1267
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1332
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1395
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1495
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1568
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1629
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1690
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1756
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1817
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1878
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1939
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2000
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2094
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2138
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2191
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2244
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2308
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2461
+#: includes/services/template/class-template-engine.php:812
+#: includes/services/template/class-template-engine.php:865
+#: includes/services/template/class-template-engine.php:918
+#: includes/services/template/class-template-engine.php:979
+#: includes/services/template/class-template-engine.php:1060
+#: includes/services/template/class-template-engine.php:1141
+#: includes/services/template/class-template-engine.php:1202
+#: includes/services/template/class-template-engine.php:1267
+#: includes/services/template/class-template-engine.php:1332
+#: includes/services/template/class-template-engine.php:1395
+#: includes/services/template/class-template-engine.php:1495
+#: includes/services/template/class-template-engine.php:1568
+#: includes/services/template/class-template-engine.php:1629
+#: includes/services/template/class-template-engine.php:1690
+#: includes/services/template/class-template-engine.php:1756
+#: includes/services/template/class-template-engine.php:1817
+#: includes/services/template/class-template-engine.php:1878
+#: includes/services/template/class-template-engine.php:1939
+#: includes/services/template/class-template-engine.php:2000
+#: includes/services/template/class-template-engine.php:2094
+#: includes/services/template/class-template-engine.php:2138
+#: includes/services/template/class-template-engine.php:2191
+#: includes/services/template/class-template-engine.php:2244
+#: includes/services/template/class-template-engine.php:2308
+#: includes/services/template/class-template-engine.php:2461
 msgid "Font Size"
-msgstr ""
+msgstr "글꼴 크기"
 
-#: includes/services/template/class-template-engine.php:816
-#: includes/services/template/class-template-engine.php:869
-#: includes/services/template/class-template-engine.php:922
-#: includes/services/template/class-template-engine.php:983
-#: includes/services/template/class-template-engine.php:1064
-#: includes/services/template/class-template-engine.php:1145
-#: includes/services/template/class-template-engine.php:1206
-#: includes/services/template/class-template-engine.php:1271
-#: includes/services/template/class-template-engine.php:1336
-#: includes/services/template/class-template-engine.php:1399
-#: includes/services/template/class-template-engine.php:1499
-#: includes/services/template/class-template-engine.php:1572
-#: includes/services/template/class-template-engine.php:1633
-#: includes/services/template/class-template-engine.php:1694
-#: includes/services/template/class-template-engine.php:1755
-#: includes/services/template/class-template-engine.php:1816
-#: includes/services/template/class-template-engine.php:1877
-#: includes/services/template/class-template-engine.php:1938
-#: includes/services/template/class-template-engine.php:1999
-#: includes/services/template/class-template-engine.php:2093
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:822
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:875
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:928
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:989
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1070
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1151
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1212
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1277
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1342
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1405
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1505
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1578
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1639
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1700
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1766
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1827
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1888
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1949
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2010
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2104
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2148
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2201
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2254
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2471
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:822
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:875
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:928
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:989
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1070
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1151
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1212
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1277
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1342
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1405
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1505
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1578
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1639
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1700
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1766
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1827
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1888
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1949
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2010
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2104
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2148
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2201
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2254
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2471
+#: includes/services/template/class-template-engine.php:822
+#: includes/services/template/class-template-engine.php:875
+#: includes/services/template/class-template-engine.php:928
+#: includes/services/template/class-template-engine.php:989
+#: includes/services/template/class-template-engine.php:1070
+#: includes/services/template/class-template-engine.php:1151
+#: includes/services/template/class-template-engine.php:1212
+#: includes/services/template/class-template-engine.php:1277
+#: includes/services/template/class-template-engine.php:1342
+#: includes/services/template/class-template-engine.php:1405
+#: includes/services/template/class-template-engine.php:1505
+#: includes/services/template/class-template-engine.php:1578
+#: includes/services/template/class-template-engine.php:1639
+#: includes/services/template/class-template-engine.php:1700
+#: includes/services/template/class-template-engine.php:1766
+#: includes/services/template/class-template-engine.php:1827
+#: includes/services/template/class-template-engine.php:1888
+#: includes/services/template/class-template-engine.php:1949
+#: includes/services/template/class-template-engine.php:2010
+#: includes/services/template/class-template-engine.php:2104
+#: includes/services/template/class-template-engine.php:2148
+#: includes/services/template/class-template-engine.php:2201
+#: includes/services/template/class-template-engine.php:2254
+#: includes/services/template/class-template-engine.php:2471
 msgid "Font Style"
-msgstr ""
+msgstr "글꼴 스타일"
 
-#: includes/services/template/class-template-engine.php:825
-#: includes/services/template/class-template-engine.php:878
-#: includes/services/template/class-template-engine.php:931
-#: includes/services/template/class-template-engine.php:992
-#: includes/services/template/class-template-engine.php:1073
-#: includes/services/template/class-template-engine.php:1154
-#: includes/services/template/class-template-engine.php:1215
-#: includes/services/template/class-template-engine.php:1280
-#: includes/services/template/class-template-engine.php:1345
-#: includes/services/template/class-template-engine.php:1408
-#: includes/services/template/class-template-engine.php:1508
-#: includes/services/template/class-template-engine.php:1581
-#: includes/services/template/class-template-engine.php:1642
-#: includes/services/template/class-template-engine.php:1703
-#: includes/services/template/class-template-engine.php:1764
-#: includes/services/template/class-template-engine.php:1825
-#: includes/services/template/class-template-engine.php:1886
-#: includes/services/template/class-template-engine.php:1947
-#: includes/services/template/class-template-engine.php:2008
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:831
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:884
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:937
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:998
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1079
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1160
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1221
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1286
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1351
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1414
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1514
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1587
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1648
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1709
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1775
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1836
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1897
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1958
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2019
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2157
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2210
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2263
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:831
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:884
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:937
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:998
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1079
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1160
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1221
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1286
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1351
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1414
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1514
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1587
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1648
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1709
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1775
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1836
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1897
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1958
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2019
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2157
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2210
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2263
+#: includes/services/template/class-template-engine.php:831
+#: includes/services/template/class-template-engine.php:884
+#: includes/services/template/class-template-engine.php:937
+#: includes/services/template/class-template-engine.php:998
+#: includes/services/template/class-template-engine.php:1079
+#: includes/services/template/class-template-engine.php:1160
+#: includes/services/template/class-template-engine.php:1221
+#: includes/services/template/class-template-engine.php:1286
+#: includes/services/template/class-template-engine.php:1351
+#: includes/services/template/class-template-engine.php:1414
+#: includes/services/template/class-template-engine.php:1514
+#: includes/services/template/class-template-engine.php:1587
+#: includes/services/template/class-template-engine.php:1648
+#: includes/services/template/class-template-engine.php:1709
+#: includes/services/template/class-template-engine.php:1775
+#: includes/services/template/class-template-engine.php:1836
+#: includes/services/template/class-template-engine.php:1897
+#: includes/services/template/class-template-engine.php:1958
+#: includes/services/template/class-template-engine.php:2019
+#: includes/services/template/class-template-engine.php:2157
+#: includes/services/template/class-template-engine.php:2210
+#: includes/services/template/class-template-engine.php:2263
 msgid "Text Align"
-msgstr ""
+msgstr "텍스트 정렬"
 
-#: includes/services/template/class-template-engine.php:834
-#: includes/services/template/class-template-engine.php:887
-#: includes/services/template/class-template-engine.php:940
-#: includes/services/template/class-template-engine.php:1001
-#: includes/services/template/class-template-engine.php:1082
-#: includes/services/template/class-template-engine.php:1163
-#: includes/services/template/class-template-engine.php:1228
-#: includes/services/template/class-template-engine.php:1293
-#: includes/services/template/class-template-engine.php:1354
-#: includes/services/template/class-template-engine.php:1417
-#: includes/services/template/class-template-engine.php:1517
-#: includes/services/template/class-template-engine.php:1590
-#: includes/services/template/class-template-engine.php:1651
-#: includes/services/template/class-template-engine.php:1712
-#: includes/services/template/class-template-engine.php:1773
-#: includes/services/template/class-template-engine.php:1834
-#: includes/services/template/class-template-engine.php:1895
-#: includes/services/template/class-template-engine.php:1956
-#: includes/services/template/class-template-engine.php:2017
-#: includes/services/template/class-template-engine.php:2102
-#: includes/services/template/class-template-engine.php:2137
-#: includes/services/template/class-template-engine.php:2172
-#: includes/services/template/class-template-engine.php:2207
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:840
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:893
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:946
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1007
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1088
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1169
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1234
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1299
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1360
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1423
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1523
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1596
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1657
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1718
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1784
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1845
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1906
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1967
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2028
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2113
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2166
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2219
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2272
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2480
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:840
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:893
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:946
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1007
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1088
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1169
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1234
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1299
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1360
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1423
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1523
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1596
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1657
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1718
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1784
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1845
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1906
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1967
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2028
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2113
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2166
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2219
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2272
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2480
+#: includes/services/template/class-template-engine.php:840
+#: includes/services/template/class-template-engine.php:893
+#: includes/services/template/class-template-engine.php:946
+#: includes/services/template/class-template-engine.php:1007
+#: includes/services/template/class-template-engine.php:1088
+#: includes/services/template/class-template-engine.php:1169
+#: includes/services/template/class-template-engine.php:1234
+#: includes/services/template/class-template-engine.php:1299
+#: includes/services/template/class-template-engine.php:1360
+#: includes/services/template/class-template-engine.php:1423
+#: includes/services/template/class-template-engine.php:1523
+#: includes/services/template/class-template-engine.php:1596
+#: includes/services/template/class-template-engine.php:1657
+#: includes/services/template/class-template-engine.php:1718
+#: includes/services/template/class-template-engine.php:1784
+#: includes/services/template/class-template-engine.php:1845
+#: includes/services/template/class-template-engine.php:1906
+#: includes/services/template/class-template-engine.php:1967
+#: includes/services/template/class-template-engine.php:2028
+#: includes/services/template/class-template-engine.php:2113
+#: includes/services/template/class-template-engine.php:2166
+#: includes/services/template/class-template-engine.php:2219
+#: includes/services/template/class-template-engine.php:2272
+#: includes/services/template/class-template-engine.php:2480
 msgid "Text Color"
-msgstr ""
+msgstr "텍스트 색상"
 
-#: includes/services/template/class-template-engine.php:844
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:850
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:850
+#: includes/services/template/class-template-engine.php:850
 msgid "Show Shop Name"
-msgstr ""
+msgstr "스토어 이름 표시"
 
-#: includes/services/template/class-template-engine.php:897
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:903
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:903
+#: includes/services/template/class-template-engine.php:903
 msgid "Show Shop Address"
-msgstr ""
+msgstr "스토어 주소 표시"
 
-#: includes/services/template/class-template-engine.php:950
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:956
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:956
+#: includes/services/template/class-template-engine.php:956
 msgid "Show Shop Phone Number"
-msgstr ""
+msgstr "상점 전화번호 표시"
 
-#: includes/services/template/class-template-engine.php:965
-#: includes/services/template/class-template-engine.php:1046
-#: includes/services/template/class-template-engine.php:1127
-#: includes/services/template/class-template-engine.php:1188
-#: includes/services/template/class-template-engine.php:1253
-#: includes/services/template/class-template-engine.php:1318
-#: includes/services/template/class-template-engine.php:1381
-#: includes/services/template/class-template-engine.php:1481
-#: includes/services/template/class-template-engine.php:1548
-#: includes/services/template/class-template-engine.php:1615
-#: includes/services/template/class-template-engine.php:1676
-#: includes/services/template/class-template-engine.php:1737
-#: includes/services/template/class-template-engine.php:1798
-#: includes/services/template/class-template-engine.php:1859
-#: includes/services/template/class-template-engine.php:1920
-#: includes/services/template/class-template-engine.php:1981
-#: includes/services/template/class-template-engine.php:2232
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:971
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1052
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1133
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1194
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1259
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1324
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1387
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1487
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1554
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1621
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1682
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1748
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1809
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1870
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1931
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1992
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2297
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:971
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1052
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1133
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1194
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1259
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1324
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1387
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1487
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1554
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1621
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1682
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1748
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1809
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1870
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1931
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1992
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2297
+#: includes/services/template/class-template-engine.php:971
+#: includes/services/template/class-template-engine.php:1052
+#: includes/services/template/class-template-engine.php:1133
+#: includes/services/template/class-template-engine.php:1194
+#: includes/services/template/class-template-engine.php:1259
+#: includes/services/template/class-template-engine.php:1324
+#: includes/services/template/class-template-engine.php:1387
+#: includes/services/template/class-template-engine.php:1487
+#: includes/services/template/class-template-engine.php:1554
+#: includes/services/template/class-template-engine.php:1621
+#: includes/services/template/class-template-engine.php:1682
+#: includes/services/template/class-template-engine.php:1748
+#: includes/services/template/class-template-engine.php:1809
+#: includes/services/template/class-template-engine.php:1870
+#: includes/services/template/class-template-engine.php:1931
+#: includes/services/template/class-template-engine.php:1992
+#: includes/services/template/class-template-engine.php:2297
 msgid "Text"
-msgstr ""
+msgstr "텍스트"
 
-#: includes/services/template/class-template-engine.php:966
-#: includes/services/template/class-template-engine.php:1189
-#: templates/base.php:111 templates/base.php:177
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:972
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1195
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:111
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:190
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:972
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1195
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:111
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:190
+#: includes/services/template/class-template-engine.php:972
+#: includes/services/template/class-template-engine.php:1195
+#: templates/base.php:111 templates/base.php:190
 msgid "Phone"
-msgstr ""
+msgstr "전화"
 
-#: includes/services/template/class-template-engine.php:1009
-#: includes/services/template/class-template-engine.php:1090
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1015
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1096
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1015
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1096
+#: includes/services/template/class-template-engine.php:1015
+#: includes/services/template/class-template-engine.php:1096
 msgid "Margin Top"
-msgstr ""
+msgstr "마진 상단"
 
-#: includes/services/template/class-template-engine.php:1019
-#: includes/services/template/class-template-engine.php:1100
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1025
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1106
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1025
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1106
+#: includes/services/template/class-template-engine.php:1025
+#: includes/services/template/class-template-engine.php:1106
 msgid "Margin Bottom"
-msgstr ""
+msgstr "하단 여백"
 
-#: includes/services/template/class-template-engine.php:1031
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1037
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1037
+#: includes/services/template/class-template-engine.php:1037
 msgid "Show Shop Email Address"
-msgstr ""
+msgstr "상점 이메일 주소 표시"
 
-#: includes/services/template/class-template-engine.php:1047
-#: includes/services/template/class-template-engine.php:1254
-#: templates/base.php:120 templates/base.php:181
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1053
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1260
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:120
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:194
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:218
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1053
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1260
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:120
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:194
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:218
+#: includes/services/template/class-template-engine.php:1053
+#: includes/services/template/class-template-engine.php:1260
+#: templates/base.php:120 templates/base.php:194 templates/base.php:218
 msgid "Email"
-msgstr ""
+msgstr "이메일"
 
-#: includes/services/template/class-template-engine.php:1112
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1118
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1118
+#: includes/services/template/class-template-engine.php:1118
 msgid "Show Billing Address"
-msgstr ""
+msgstr "청구지 주소 표시"
 
-#: includes/services/template/class-template-engine.php:1128
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1134
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1134
+#: includes/services/template/class-template-engine.php:1134
 msgid "Billing Address"
-msgstr ""
+msgstr "청구 주소"
 
-#: includes/services/template/class-template-engine.php:1173
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1179
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1179
+#: includes/services/template/class-template-engine.php:1179
 msgid "Show Billing Phone"
-msgstr ""
+msgstr "청구 전화 표시"
 
-#: includes/services/template/class-template-engine.php:1238
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1244
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1244
+#: includes/services/template/class-template-engine.php:1244
 msgid "Show Billing Email"
-msgstr ""
+msgstr "청구 이메일 표시"
 
-#: includes/services/template/class-template-engine.php:1303
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1309
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1309
+#: includes/services/template/class-template-engine.php:1309
 msgid "Show Shipping Address"
-msgstr ""
+msgstr "배송 주소 표시"
 
-#: includes/services/template/class-template-engine.php:1319
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1325
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1325
+#: includes/services/template/class-template-engine.php:1325
 msgid "Shipping Address"
-msgstr ""
+msgstr "배송 주소"
 
-#: includes/services/template/class-template-engine.php:1364
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1370
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1370
+#: includes/services/template/class-template-engine.php:1370
 msgid "Show Order Data Header"
-msgstr ""
+msgstr "주문 데이터 헤더 표시"
 
-#: includes/services/template/class-template-engine.php:1382
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1388
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1388
+#: includes/services/template/class-template-engine.php:1388
 msgid "Order"
-msgstr ""
+msgstr "주문"
 
-#: includes/services/template/class-template-engine.php:1425
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1431
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1431
+#: includes/services/template/class-template-engine.php:1431
 msgid "Spacing Top"
-msgstr ""
+msgstr "간격 상단"
 
-#: includes/services/template/class-template-engine.php:1435
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1441
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1441
+#: includes/services/template/class-template-engine.php:1441
 msgid "Spacing Bottom"
-msgstr ""
+msgstr "하단 간격"
 
-#: includes/services/template/class-template-engine.php:1445
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1451
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1451
+#: includes/services/template/class-template-engine.php:1451
 msgid "Show Border"
-msgstr ""
+msgstr "테두리 표시"
 
-#: includes/services/template/class-template-engine.php:1456
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1462
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1462
+#: includes/services/template/class-template-engine.php:1462
 msgid "Template Order Data Position"
-msgstr ""
+msgstr "템플릿 주문 데이터 위치"
 
-#: includes/services/template/class-template-engine.php:1466
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1472
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1472
+#: includes/services/template/class-template-engine.php:1472
 msgid "Show Invoice Number"
-msgstr ""
+msgstr "송장 번호 표시"
 
-#: includes/services/template/class-template-engine.php:1482
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1488
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:52
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1488
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:52
+#: includes/services/template/class-template-engine.php:1488
 #: templates/base.php:52
 msgid "Invoice No"
-msgstr ""
+msgstr "송장 번호"
 
-#: includes/services/template/class-template-engine.php:1528
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1534
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1534
+#: includes/services/template/class-template-engine.php:1534
 msgid "Show Invoice Date"
-msgstr ""
+msgstr "송장 날짜 표시"
 
-#: includes/services/template/class-template-engine.php:1529
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1535
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1535
+#: includes/services/template/class-template-engine.php:1535
 msgid "Show Receipt Date"
-msgstr ""
+msgstr "영수증 날짜 표시"
 
-#: includes/services/template/class-template-engine.php:1530
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1536
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1536
+#: includes/services/template/class-template-engine.php:1536
 msgid "Show Delivery Note Date"
-msgstr ""
+msgstr "배송 메모 날짜 표시"
 
-#: includes/services/template/class-template-engine.php:1531
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1537
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1537
+#: includes/services/template/class-template-engine.php:1537
 msgid "Show Packing Slip Date"
-msgstr ""
+msgstr "패킹 슬립 날짜 표시"
 
-#: includes/services/template/class-template-engine.php:1532
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1538
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1538
+#: includes/services/template/class-template-engine.php:1538
 msgid "Show Credit Note Date"
-msgstr ""
+msgstr "신용 메모 날짜 표시"
 
-#: includes/services/template/class-template-engine.php:1550
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1556
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1556
+#: includes/services/template/class-template-engine.php:1556
 msgid "Invoice Date"
-msgstr ""
+msgstr "송장 날짜"
 
-#: includes/services/template/class-template-engine.php:1551
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1557
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1557
+#: includes/services/template/class-template-engine.php:1557
 msgid "Receipt Date"
-msgstr ""
+msgstr "수령 날짜"
 
-#: includes/services/template/class-template-engine.php:1552
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1558
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1558
+#: includes/services/template/class-template-engine.php:1558
 msgid "Delivery Note Date"
-msgstr ""
+msgstr "배송 참고 날짜"
 
-#: includes/services/template/class-template-engine.php:1553
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1559
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1559
+#: includes/services/template/class-template-engine.php:1559
 msgid "Packing Slip Date"
-msgstr ""
+msgstr "포장 명세서 날짜"
 
-#: includes/services/template/class-template-engine.php:1554
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1560
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1560
+#: includes/services/template/class-template-engine.php:1560
 msgid "Credit Note Date"
-msgstr ""
+msgstr "신용 메모 날짜"
 
-#: includes/services/template/class-template-engine.php:1600
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1606
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1606
+#: includes/services/template/class-template-engine.php:1606
 msgid "Show Order Number"
-msgstr ""
+msgstr "주문 번호 표시"
 
-#: includes/services/template/class-template-engine.php:1616
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1622
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:64
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1622
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:64
+#: includes/services/template/class-template-engine.php:1622
 #: templates/base.php:64
 msgid "Order No"
-msgstr ""
+msgstr "주문 번호"
 
-#: includes/services/template/class-template-engine.php:1661
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1667
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1667
+#: includes/services/template/class-template-engine.php:1667
 msgid "Show Order Date"
-msgstr ""
+msgstr "주문 날짜 표시"
 
-#: includes/services/template/class-template-engine.php:1677
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1683
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:70
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1683
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:70
+#: includes/services/template/class-template-engine.php:1683
 #: templates/base.php:70
 msgid "Date"
-msgstr ""
+msgstr "날짜"
 
-#: includes/services/template/class-template-engine.php:1722
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1728
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1728
+#: includes/services/template/class-template-engine.php:1728
 msgid "Show Payment Method"
-msgstr ""
+msgstr "결제 방법 표시"
 
-#: includes/services/template/class-template-engine.php:1738
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1749
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:76
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1749
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:76
+#: includes/services/template/class-template-engine.php:1749
 #: templates/base.php:76
 msgid "Payment Method"
-msgstr ""
+msgstr "결제 방법"
 
-#: includes/services/template/class-template-engine.php:1783
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1794
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1794
+#: includes/services/template/class-template-engine.php:1794
 msgid "Show Payment Date"
-msgstr ""
+msgstr "결제 날짜 표시"
 
-#: includes/services/template/class-template-engine.php:1799
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1810
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:82
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1810
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:82
+#: includes/services/template/class-template-engine.php:1810
 #: templates/base.php:82
 msgid "Payment Date"
-msgstr ""
+msgstr "결제 날짜"
 
-#: includes/services/template/class-template-engine.php:1844
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1855
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1855
+#: includes/services/template/class-template-engine.php:1855
 msgid "Show Shipping Method"
-msgstr ""
+msgstr "배송 방법 표시"
 
-#: includes/services/template/class-template-engine.php:1860
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1871
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:88
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1871
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:88
+#: includes/services/template/class-template-engine.php:1871
 #: templates/base.php:88
 msgid "Shipping Method"
-msgstr ""
+msgstr "배송 방법"
 
-#: includes/services/template/class-template-engine.php:1905
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1916
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1916
+#: includes/services/template/class-template-engine.php:1916
 msgid "Show Refund Date"
-msgstr ""
+msgstr "환불 날짜 표시"
 
-#: includes/services/template/class-template-engine.php:1921
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1932
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:94
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1932
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:94
+#: includes/services/template/class-template-engine.php:1932
 #: templates/base.php:94
 msgid "Refund Date"
-msgstr ""
+msgstr "환불 날짜"
 
-#: includes/services/template/class-template-engine.php:1966
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1977
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1977
+#: includes/services/template/class-template-engine.php:1977
 msgid "Show Refund Reason"
-msgstr ""
+msgstr "환불 사유 표시"
 
-#: includes/services/template/class-template-engine.php:1982
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1993
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:100
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1993
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:100
+#: includes/services/template/class-template-engine.php:1993
 #: templates/base.php:100
 msgid "Refund Reason"
-msgstr ""
+msgstr "환불 사유"
 
-#: includes/services/template/class-template-engine.php:2027
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2038
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2038
+#: includes/services/template/class-template-engine.php:2038
 msgid "Show Pay Now Button"
-msgstr ""
+msgstr "지금 결제 버튼 표시"
 
-#: includes/services/template/class-template-engine.php:2042
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2053
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2053
+#: includes/services/template/class-template-engine.php:2053
 msgid "Button Label"
-msgstr ""
+msgstr "버튼 레이블"
 
-#: includes/services/template/class-template-engine.php:2043
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2054
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2054
+#: includes/services/template/class-template-engine.php:2054
 msgid "Pay Now"
-msgstr ""
+msgstr "지금 결제"
 
-#: includes/services/template/class-template-engine.php:2050
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2061
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2061
+#: includes/services/template/class-template-engine.php:2061
 msgid "Button Color"
-msgstr ""
+msgstr "버튼 색상"
 
-#: includes/services/template/class-template-engine.php:2060
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2071
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2071
+#: includes/services/template/class-template-engine.php:2071
 msgid "Show Customer Note"
-msgstr ""
+msgstr "고객 노트 보기"
 
-#: includes/services/template/class-template-engine.php:2076
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2087
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2087
+#: includes/services/template/class-template-engine.php:2087
 msgid "Customer Note"
-msgstr ""
+msgstr "고객 노트"
 
-#: includes/services/template/class-template-engine.php:2112
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2123
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2123
+#: includes/services/template/class-template-engine.php:2123
 msgid "Show Complimentary Close"
-msgstr ""
+msgstr "무료 닫기 표시"
 
-#: includes/services/template/class-template-engine.php:2147
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2176
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2176
+#: includes/services/template/class-template-engine.php:2176
 msgid "Show Policies"
-msgstr ""
+msgstr "정책 보기"
 
-#: includes/services/template/class-template-engine.php:2182
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2229
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2229
+#: includes/services/template/class-template-engine.php:2229
 msgid "Show Footer"
-msgstr ""
+msgstr "바닥글 표시"
 
-#: includes/services/template/class-template-engine.php:2217
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2282
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2282
+#: includes/services/template/class-template-engine.php:2282
 msgid "Show Watermark"
-msgstr ""
+msgstr "워터마크 표시"
 
-#: includes/services/template/class-template-engine.php:2234
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2299
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2299
+#: includes/services/template/class-template-engine.php:2299
 msgid "PAID"
-msgstr ""
+msgstr "유료"
 
-#: includes/services/template/class-template-engine.php:2235
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2300
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2300
+#: includes/services/template/class-template-engine.php:2300
 msgid "REFUNDED"
-msgstr ""
+msgstr "환불"
 
-#: includes/services/template/class-template-engine.php:2253
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2318
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2318
+#: includes/services/template/class-template-engine.php:2318
 msgid "Opacity"
-msgstr ""
+msgstr "불투명도"
 
-#: includes/services/template/class-template-engine.php:2264
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2329
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2329
+#: includes/services/template/class-template-engine.php:2329
 msgid "Angle"
-msgstr ""
+msgstr "각도"
 
-#: includes/services/template/class-template-engine.php:2275
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2340
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2340
+#: includes/services/template/class-template-engine.php:2340
 msgid "Layout"
-msgstr ""
+msgstr "레이아웃"
 
-#: includes/services/template/class-template-engine.php:2293
-msgid "Color"
-msgstr ""
-
-#: includes/services/template/class-template-engine.php:2303
-msgid "Display Price in Product Details Table"
-msgstr ""
-
-#: includes/services/template/class-template-engine.php:2320
-msgid "Show Product Table Charges"
-msgstr ""
-
-#: includes/services/template/class-template-engine.php:2336
-msgid "Show Subtotal"
-msgstr ""
-
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2344
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2344
 #: includes/services/template/class-template-engine.php:2344
+msgid "Single"
+msgstr "싱글"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2348
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2348
+#: includes/services/template/class-template-engine.php:2348
+msgid "Repeat"
+msgstr "반복"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2358
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2358
+#: includes/services/template/class-template-engine.php:2358
+msgid "Color"
+msgstr "색상"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2368
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2368
+#: includes/services/template/class-template-engine.php:2368
+msgid "Display Price in Product Details Table"
+msgstr "제품 세부 정보 표에 가격 표시"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2385
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2385
+#: includes/services/template/class-template-engine.php:2385
+msgid "Show Product Table Charges"
+msgstr "제품 테이블 요금 표시"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2401
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2401
+#: includes/services/template/class-template-engine.php:2401
+msgid "Show Subtotal"
+msgstr "소계 표시"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2409
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2409
+#: includes/services/template/class-template-engine.php:2409
 msgid "Show Tax"
-msgstr ""
+msgstr "세금 표시"
 
-#: includes/services/template/class-template-engine.php:2352
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2417
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2417
+#: includes/services/template/class-template-engine.php:2417
 msgid "Show Shipping"
-msgstr ""
+msgstr "배송 표시"
 
-#: includes/services/template/class-template-engine.php:2362
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2427
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2427
+#: includes/services/template/class-template-engine.php:2427
 msgid "Show Product Images"
-msgstr ""
+msgstr "제품 이미지 표시"
 
-#: includes/services/template/class-template-engine.php:2377
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2442
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2442
+#: includes/services/template/class-template-engine.php:2442
 msgid "Image Size"
-msgstr ""
+msgstr "이미지 크기"
 
-#: includes/services/template/class-template-engine.php:2389
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2454
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2454
+#: includes/services/template/class-template-engine.php:2454
+msgid "Product Name"
+msgstr "제품 이름"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2488
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2488
+#: includes/services/template/class-template-engine.php:2488
+msgid "Padding"
+msgstr "패딩"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2500
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2500
+#: includes/services/template/class-template-engine.php:2500
 msgid "Display Refund Items in Product Table"
-msgstr ""
+msgstr "제품 테이블에 환불 항목 표시"
 
-#: includes/services/template/class-template-engine.php:2420
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2531
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2531
+#: includes/services/template/class-template-engine.php:2531
 msgid "Left"
-msgstr ""
+msgstr "왼쪽"
 
-#: includes/services/template/class-template-engine.php:2424
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2535
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2535
+#: includes/services/template/class-template-engine.php:2535
 msgid "Center"
-msgstr ""
+msgstr "센터"
 
-#: includes/services/template/class-template-engine.php:2428
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2539
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2539
+#: includes/services/template/class-template-engine.php:2539
 msgid "Right"
-msgstr ""
+msgstr "오른쪽"
 
-#: includes/services/template/class-template-engine.php:2434
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2545
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2545
+#: includes/services/template/class-template-engine.php:2545
 msgid "Normal"
-msgstr ""
+msgstr "보통"
 
-#: includes/services/template/class-template-engine.php:2438
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2549
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2549
+#: includes/services/template/class-template-engine.php:2549
 msgid "Bold"
-msgstr ""
+msgstr "Bold"
 
-#: includes/services/template/class-template-engine.php:2444
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2555
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2555
+#: includes/services/template/class-template-engine.php:2555
 msgid "Alongside Addresses"
-msgstr ""
+msgstr "주소와 함께"
 
-#: includes/services/template/class-template-engine.php:2448
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2559
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2559
+#: includes/services/template/class-template-engine.php:2559
 msgid "Below Addresses"
-msgstr ""
+msgstr "아래 주소"
 
-#: templates/base.php:400
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:413
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:413
+#: templates/base.php:413
 msgid "Refunded Item"
-msgstr ""
+msgstr "환불된 품목"
 
-#: templates/base.php:400
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:413
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:413
+#: templates/base.php:413
 msgid "Product"
-msgstr ""
+msgstr "제품"
 
-#: templates/base.php:403
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:416
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:416
+#: templates/base.php:416
 msgid "Price"
-msgstr ""
+msgstr "가격"
 
-#: templates/base.php:406
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:419
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:419
+#: templates/base.php:419
 msgid "Quantity"
-msgstr ""
+msgstr "수량"
 
-#: templates/base.php:409
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:422
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:422
+#: templates/base.php:422
 msgid "Total Refunded"
-msgstr ""
+msgstr "총 환불 금액"
 
-#: templates/base.php:409
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:422
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:422
+#: templates/base.php:422
 msgid "Total"
-msgstr ""
+msgstr "합계"
 
-#: templates/base.php:435
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:448
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:448
+#: templates/base.php:448
 msgid ""
 "The wcdn_order_item_before hook argument order changed in v7.0. Update your "
 "callback to accept ( $item, $order, $template ) instead of ( $product, "
 "$order, $item )."
 msgstr ""
+"v7.0에서 wcdn_order_item_before 후크 인수 순서가 변경되었습니다. 콜백을 업데이트하여 ( $product, "
+"$order, $item ) 대신 ( $item, $order, $template )를 받도록 합니다."
 
-#: templates/base.php:480
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:474
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:474
+#: templates/base.php:474
+msgid "SKU"
+msgstr "SKU"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:495
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:495
+#: templates/base.php:495
 msgid ""
 "The wcdn_order_item_after hook argument order changed in v7.0. Update your "
 "callback to accept ( $item, $order, $template ) instead of ( $product, "
 "$order, $item )."
 msgstr ""
+"v7.0에서 wcdn_order_item_after 후크 인수 순서가 변경되었습니다. 콜백을 업데이트하여 ( $product, "
+"$order, $item ) 대신 ( $item, $order, $template )를 받도록 합니다."
 
-#: templates/base.php:530
-msgid "Subtotal:"
-msgstr ""
-
-#: templates/base.php:537
-msgid "Discount:"
-msgstr ""
-
-#: templates/base.php:552
-msgid "Tax:"
-msgstr ""
-
-#: templates/base.php:560
-msgid "Shipping:"
-msgstr ""
-
-#: templates/base.php:567
-msgid "Order Total:"
-msgstr ""
-
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:545
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:545
 #: templates/base.php:571
+msgid "Subtotal:"
+msgstr "소계:"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:552
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:552
+#: templates/base.php:578
+msgid "Discount:"
+msgstr "할인:"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:567
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:567
+#: templates/base.php:593
+msgid "Tax:"
+msgstr "세금:"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:575
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:575
+#: templates/base.php:601
+msgid "Shipping:"
+msgstr "배송:"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:582
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:582
+#: templates/base.php:617
+msgid "Order Total:"
+msgstr "주문 합계:"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:586
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:586
+#: templates/base.php:621
 msgid "Refund:"
-msgstr ""
+msgstr "환불:"
 
-#: templates/base.php:575 templates/base.php:585
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:590
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:600
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:590
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:600
+#: templates/base.php:625 templates/base.php:635
 msgid "Total:"
-msgstr ""
+msgstr "합계:"
 
-#: build/admin.js:1 src/admin/components/Header.js:17
-msgid "Dashboard"
-msgstr ""
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:607
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:621
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:607
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:621
+#: templates/base.php:642 templates/base.php:656
+msgid "Deposit:"
+msgstr "입금:"
 
-#: build/admin.js:1 src/admin/components/Header.js:19
-msgid "Templates"
-msgstr ""
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:614
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:614
+#: templates/base.php:649
+msgid "Future Payments:"
+msgstr "향후 결제:"
 
-#: build/admin.js:1 src/admin/components/Header.js:26
-msgid "FAQs"
-msgstr ""
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:628
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:628
+#: templates/base.php:663
+msgid "Future Payment:"
+msgstr "향후 결제:"
 
-#: build/admin.js:1 src/admin/components/Alert.js:22
+#: includes/integrations/class-coderockz-woo-delivery.php:60
+msgid "Delivery Date"
+msgstr "배송 날짜"
+
+#: includes/integrations/class-coderockz-woo-delivery.php:64
+msgid "Delivery Time"
+msgstr "배송 시간"
+
+#: includes/integrations/class-coderockz-woo-delivery.php:68
+msgid "Pickup Date"
+msgstr "픽업 날짜"
+
+#: includes/integrations/class-coderockz-woo-delivery.php:72
+msgid "Pickup Time"
+msgstr "픽업 시간"
+
+#: templates/base.php:536 templates/base.php:540
+msgid "Total Qty:"
+msgstr "총 수량:"
+
+#: templates/base.php:670
+msgid "Total Cart Amount:"
+msgstr "총 카트 금액:"
+
+#: build/admin.js:5454
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Alert.js:22 build/admin.js:5294
 msgid "Dismiss"
-msgstr ""
+msgstr "해지"
 
-#: build/admin.js:1 src/admin/components/Footer.js:20
+#: build/admin.js:5489
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Footer.js:20 build/admin.js:5323
 msgid "Get our"
-msgstr ""
+msgstr "저희의"
 
-#: build/admin.js:1 src/admin/components/Footer.js:22
+#: build/admin.js:5493
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Footer.js:22 build/admin.js:5325
 msgid "Order Delivery Date Pro"
-msgstr ""
+msgstr "주문 배송 날짜 프로"
 
-#: build/admin.js:1 src/admin/components/Footer.js:24
+#: build/admin.js:5494
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Footer.js:24 build/admin.js:5327
 msgid ""
 "plugin to schedule and manage your local deliveries and pickups in "
 "WooCommerce."
-msgstr ""
+msgstr "플러그인을 사용하여 WooCommerce에서 지역 배송 및 픽업을 예약하고 관리할 수 있습니다."
 
-#: build/admin.js:1 src/admin/components/Footer.js:31
+#: build/admin.js:5500
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Footer.js:31 build/admin.js:5334
 msgid "Open the support forum for this plugin on WordPress.org"
-msgstr ""
+msgstr "워드프레스닷컴에서 이 플러그인에 대한 지원 포럼을 엽니다."
 
-#: build/admin.js:1 src/admin/components/Footer.js:33
+#: build/admin.js:5501
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Footer.js:33 build/admin.js:5336
 msgid "Need Support?"
-msgstr ""
+msgstr "지원이 필요하신가요?"
 
-#: build/admin.js:1 src/admin/components/Footer.js:35
+#: build/admin.js:5502
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Footer.js:35 build/admin.js:5338
 msgid "We're always happy to help you."
-msgstr ""
+msgstr "언제나 기꺼이 도와드리겠습니다."
 
-#: build/admin.js:1 src/admin/components/Footer.js:38
+#: build/admin.js:5504
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Footer.js:38 build/admin.js:5341
 msgid "If this plugin helped you,"
-msgstr ""
+msgstr "이 플러그인이 도움이 되었다면,"
 
-#: build/admin.js:1 src/admin/components/Footer.js:43
+#: build/admin.js:5508
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Footer.js:43 build/admin.js:5346
 msgid "Leave a review for this plugin on WordPress.org"
-msgstr ""
+msgstr "워드프레스닷컴에 이 플러그인에 대한 리뷰를 남겨주세요."
 
-#: build/admin.js:1 src/admin/components/Footer.js:45
+#: build/admin.js:5509
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Footer.js:45 build/admin.js:5348
 msgid "please rate it"
-msgstr ""
+msgstr "평가해 주세요"
 
-#: build/admin.js:1 src/admin/components/Footer.js:50
+#: build/admin.js:5518
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Footer.js:50 build/admin.js:5353
 msgid "Check out more plugins by"
-msgstr ""
+msgstr "더 많은 플러그인을 확인해보세요."
 
-#: build/admin.js:1 src/admin/components/Footer.js:55
+#: build/admin.js:5522
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Footer.js:55 build/admin.js:5358
 msgid "Visit Tyche Softwares to explore more WooCommerce plugins"
-msgstr ""
+msgstr "타이크 소프트웨어를 방문하여 더 많은 WooCommerce 플러그인을 살펴보세요."
+
+#: build/admin.js:5559
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: dist/wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Header.js:10 build/admin.js:5379
+msgid "Generate, customize, print, and email order documents."
+msgstr "주문 문서를 생성, 사용자 지정, 인쇄 및 이메일로 전송합니다."
+
+#: build/admin.js:5572
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: dist/wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Header.js:17 build/admin.js:5386
+msgid "Dashboard"
+msgstr "대시보드"
+
+#: build/admin.js:5575
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: dist/wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Header.js:19 build/admin.js:5388
+msgid "Templates"
+msgstr "템플릿"
+
+#: build/admin.js:5581
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: dist/wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Header.js:26 build/admin.js:5395
+msgid "FAQs"
+msgstr "자주 묻는 질문"
+
+#: build/admin.js:6121
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:2
+#: dist/wc-version/woocommerce-delivery-notes/build/admin.js:2
+#: src/admin/components/form/SaveBar.js:27 build/admin.js:5740
+#. translators: 1: completed steps, 2: total steps
+msgid "Save Settings"
+msgstr "설정 저장"
+
+#: build/admin.js:6579
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:3
+#: dist/wc-version/woocommerce-delivery-notes/build/admin.js:3
+#: src/admin/components/template/SectionItem.js:46 build/admin.js:6056
+#. translators: %s: font family name
+msgid "Customize"
+msgstr "사용자 지정"
+
+#~ msgid "View and print your invoice"
+#~ msgstr "인보이스 보기 및 인쇄"
+
+#~ msgid "Print order documents"
+#~ msgstr "주문 문서 인쇄"
+
+#~ msgid "Print:"
+#~ msgstr "인쇄:"

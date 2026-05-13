@@ -21,6 +21,7 @@ function Templates() {
     const [templates, setTemplates] = useState(null);
     const [preview, setPreview] = useState(null);
     const [config, setConfig] = useState(null);
+    const [pdfPaperSize, setPdfPaperSize] = useState("A4");
     const [activeTemplate, setActiveTemplate] = useState("invoice");
     const [isSaving, setIsSaving] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
@@ -36,6 +37,7 @@ function Templates() {
                 setTemplates(response.templates);
                 setPreview(response.preview);
                 setConfig(response.config);
+                setPdfPaperSize(response.pdfPaperSize ?? "A4");
             })
             .catch(() => {
                 toast.error(__("Failed to load templates.", TEXT_DOMAIN));
@@ -59,18 +61,28 @@ function Templates() {
 
     const saveHandler = async () => {
         const label = TEMPLATE_LABELS[activeTemplate];
+        const wasApplyToAll = !!currentSettings?.applyZoomToAll;
 
         setIsSaving(true);
 
         try {
-            await saveTemplates({
+            const response = await saveTemplates({
                 template: activeTemplate,
                 data: templates[activeTemplate],
             });
+
+            if (wasApplyToAll && response.allTemplates) {
+                setTemplates(response.allTemplates);
+            } else if (response.template) {
+                setTemplates((prev) => ({ ...prev, [activeTemplate]: response.template }));
+            }
+
             setHasChanges(false);
             setNotice({
                 status: "success",
-                message: sprintf(__("%s template saved successfully.", TEXT_DOMAIN), label),
+                message: wasApplyToAll
+                    ? __("Zoom settings applied to all templates.", TEXT_DOMAIN)
+                    : sprintf(__("%s template saved successfully.", TEXT_DOMAIN), label),
             });
         } catch {
             toast.error(sprintf(__("Failed to save %s template.", TEXT_DOMAIN), label));
@@ -115,6 +127,7 @@ function Templates() {
                                     template={activeTemplate}
                                     settings={currentSettings}
                                     preview={preview}
+                                    pdfPaperSize={pdfPaperSize}
                                 />
                             </div>
                         </div>

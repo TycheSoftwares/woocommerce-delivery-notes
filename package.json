@@ -1,6 +1,6 @@
 {
     "name": "woocommerce-delivery-notes",
-    "version": "7.0.0",
+    "version": "7.1.2",
     "private": true,
     "description": "Print Invoice & Delivery Notes for WooCommerce",
     "author": "Tyche Softwares",
@@ -17,14 +17,12 @@
         "makepot": "wp i18n make-pot . languages/woocommerce-delivery-notes.pot --skip-js --exclude=src,vendor,node_modules --merge=languages/js.pot",
         "deploy": "npm-run-all build makepot copy",
         "composer": "composer install --no-dev --optimize-autoloader",
-        "clean": "rm -rf dist && rm -rf languages",
-        "i18n:pot": "wp i18n make-pot . languages/woocommerce-delivery-notes.pot",
-        "i18n:po": "node generate-po.js",
-        "i18n:mo": "node compile-mo.js",
-        "i18n": "npm run i18n:pot && npm run i18n:po && npm run i18n:mo",
+        "clean": "rm -rf dist",
+        "translate": "wp i18n make-pot . languages/woocommerce-delivery-notes.pot && node generate-po.js && node compile-mo.js",
+        "translate:deepl": "node --env-file=.env translate-po.mjs && node compile-mo.js",
         "package": "node build-plugin.js",
         "package:wc": "node build-plugin.js --variant=wc",
-        "release:non-wc": "npm run build && npm run i18n && node build-plugin.js",
+        "release:non-wc": "npm run build && node build-plugin.js",
         "release:wc": "WCDN_WC_BUILD=true npm run build && node build-plugin.js --variant=wc",
         "release": "npm run clean && npm run composer && npm run release:non-wc && npm run release:wc"
     },
@@ -36,7 +34,8 @@
         "browser-sync-webpack-plugin": "^2.4.0",
         "eslint": "^8.57.1",
         "eslint-config-prettier": "^10.1.8",
-        "eslint-plugin-react": "^7.37.5"
+        "eslint-plugin-react": "^7.37.5",
+        "gettext-parser": "^9.0.2"
     },
     "dependencies": {
         "@fontsource/inter": "^5.2.8",

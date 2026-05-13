@@ -95,7 +95,7 @@ function Preview({ template, settings, preview }) {
                   {
                       key: "billingPhone",
                       show: true,
-                      label: settings.billingPhoneText ?? "Phone",
+                      label: settings.billingPhoneText ?? __("Phone", TEXT_DOMAIN),
                       value: order.billing.phone,
                       style: {
                           fontSize: `${settings.billingPhoneFontSize ?? 14}px`,
@@ -112,7 +112,7 @@ function Preview({ template, settings, preview }) {
                   {
                       key: "billingEmail",
                       show: true,
-                      label: settings.billingEmailText ?? "Email",
+                      label: settings.billingEmailText ?? __("Email", TEXT_DOMAIN),
                       value: order.billing.email,
                       style: {
                           fontSize: `${settings.billingEmailFontSize ?? 14}px`,
@@ -164,6 +164,8 @@ function Preview({ template, settings, preview }) {
                     </div>
                 ))}
 
+            <div style={{ transform: `scale(${(settings.documentZoom ?? 100) / 100})`, transformOrigin: "top left" }}>
+
             {/* Logo */}
             {settings.showLogo && (
                 <div className={`wcdn-preview-logo align-${settings.logoAlignment}`}>
@@ -188,7 +190,7 @@ function Preview({ template, settings, preview }) {
                                     transform: `scale(${settings.logoScale / 100})`,
                                 }}
                             >
-                                [SHOP LOGO]
+                                {__("[SHOP LOGO]", TEXT_DOMAIN)}
                             </div>
                         )}
                     </div>
@@ -196,17 +198,19 @@ function Preview({ template, settings, preview }) {
             )}
 
             {/* Document Title */}
-            <h1
-                className="wcdn-preview-title"
-                style={{
-                    fontSize: settings.documentTitleFontSize,
-                    color: settings.documentTitleTextColor,
-                    textAlign: settings.documentTitleAlign,
-                    fontWeight: settings.documentTitleFontStyle === "bold" ? 600 : 400,
-                }}
-            >
-                {settings.documentTitle}
-            </h1>
+            {settings.showDocumentTitle && (
+                <h1
+                    className="wcdn-preview-title"
+                    style={{
+                        fontSize: settings.documentTitleFontSize,
+                        color: settings.documentTitleTextColor,
+                        textAlign: settings.documentTitleAlign,
+                        fontWeight: settings.documentTitleFontStyle === "bold" ? 600 : 400,
+                    }}
+                >
+                    {settings.documentTitle}
+                </h1>
+            )}
 
             {(settings.showShopName ||
                 settings.showShopAddress ||
@@ -240,14 +244,10 @@ function Preview({ template, settings, preview }) {
                                     textAlign: settings.addressAlign,
                                     fontWeight: settings.addressFontStyle === "bold" ? 600 : 400,
                                 }}
-                            >
-                                {shop.address.split("\n").map((line, i) => (
-                                    <span key={i}>
-                                        {i > 0 && <br />}
-                                        {line}
-                                    </span>
-                                ))}
-                            </div>
+                                dangerouslySetInnerHTML={{
+                                    __html: shop.address.replace(/\n/g, "<br />"),
+                                }}
+                            />
                         )}
 
                         {settings.showShopPhone && shop.phone && (
@@ -384,7 +384,7 @@ function Preview({ template, settings, preview }) {
                                             {order.shipping.email && (
                                                 <>
                                                     <br />
-                                                    Email: {order.shipping.email}
+                                                    {__("Email", TEXT_DOMAIN)}: {order.shipping.email}
                                                 </>
                                             )}
                                         </p>
@@ -504,7 +504,7 @@ function Preview({ template, settings, preview }) {
                         <tbody>
                             {items.map((item, index) => (
                                 <tr key={index}>
-                                    <td>
+                                    <td className="wcdn-product-cell">
                                         {item.addon ? (
                                             <>
                                                 <div className="wcdn-item-addon-name">
@@ -522,15 +522,24 @@ function Preview({ template, settings, preview }) {
                                                         : <div className="wcdn-item-image-placeholder" style={{ width: settings.productImageSize ?? 40, height: settings.productImageSize ?? 40, flexShrink: 0 }} />
                                                 )}
                                                 <div style={{ flex: 1, minWidth: 0 }}>
-                                                {item.name}
-                                                {item.sku && (
-                                                    <span className="wcdn-item-sku">
-                                                        {sprintf(
-                                                            __("(SKU: %s)", TEXT_DOMAIN),
-                                                            item.sku
-                                                        )}
-                                                    </span>
-                                                )}
+                                                <span className="wcdn-item-name" style={{
+                                                    fontSize: settings.productNameFontSize ? `${settings.productNameFontSize}px` : undefined,
+                                                    fontWeight: settings.productNameFontStyle === "bold" ? 600 : 400,
+                                                    color: settings.productNameTextColor || undefined,
+                                                    paddingTop: settings.productNamePadding != null ? `${settings.productNamePadding}px` : undefined,
+                                                    paddingBottom: settings.productNamePadding != null ? `${settings.productNamePadding}px` : undefined,
+                                                    display: "block",
+                                                }}>
+                                                    {item.name}
+                                                    {item.sku && (
+                                                        <span className="wcdn-item-sku">
+                                                            {sprintf(
+                                                                __("(SKU: %s)", TEXT_DOMAIN),
+                                                                item.sku
+                                                            )}
+                                                        </span>
+                                                    )}
+                                                </span>
                                                 {item.meta?.length > 0 && (
                                                     <dl className="wcdn-item-meta">
                                                         {item.meta.map((row, i) => (
@@ -706,10 +715,11 @@ function Preview({ template, settings, preview }) {
                         style={{
                             fontSize: settings.policiesFontSize,
                             color: settings.policiesTextColor,
+                            fontWeight: "bold" === settings.policiesFontStyle ? 600 : 400,
+                            textAlign: settings.policiesAlign,
                         }}
-                    >
-                        {document.policies}
-                    </div>
+                        dangerouslySetInnerHTML={{ __html: document.policies?.replace(/\n/g, "<br />") }}
+                    />
                 </>
             )}
 
@@ -723,10 +733,11 @@ function Preview({ template, settings, preview }) {
                         style={{
                             fontSize: settings.complimentaryCloseFontSize,
                             color: settings.complimentaryCloseTextColor,
+                            fontWeight: "bold" === settings.complimentaryCloseFontStyle ? 600 : 400,
+                            textAlign: settings.complimentaryCloseAlign,
                         }}
-                    >
-                        {document.complimentaryClose}
-                    </div>
+                        dangerouslySetInnerHTML={{ __html: document.complimentaryClose?.replace(/\n/g, "<br />") }}
+                    />
                 </>
             )}
 
@@ -740,12 +751,15 @@ function Preview({ template, settings, preview }) {
                         style={{
                             fontSize: settings.footerFontSize,
                             color: settings.footerTextColor,
+                            fontWeight: "bold" === settings.footerFontStyle ? 600 : 400,
+                            textAlign: settings.footerAlign,
                         }}
-                    >
-                        {document.footer}
-                    </div>
+                        dangerouslySetInnerHTML={{ __html: document.footer?.replace(/\n/g, "<br />") }}
+                    />
                 </>
             )}
+
+            </div>
         </div>
     );
 }

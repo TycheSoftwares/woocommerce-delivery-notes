@@ -24,7 +24,7 @@ function SaveBar({ onSave, isSaving = false, hasChanges, notice, setNotice }) {
         <div className={`wcdn-save-bar ${atBottom ? "is-bottom" : "is-floating"}`}>
             <div className="wcdn-save-bar-row">
                 <Button variant="primary" onClick={onSave} isBusy={isSaving} disabled={!hasChanges}>
-                    Save Settings
+                    {__("Save Settings", "woocommerce-delivery-notes")}
                 </Button>
 
                 {notice && <Notice {...notice} onRemove={() => setNotice(null)} />}

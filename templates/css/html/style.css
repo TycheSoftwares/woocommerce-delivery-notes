@@ -2,7 +2,7 @@ body {
     background: #ffffff;
     margin: 0;
     font-size: 13px;
-    line-height: 1.3em;
+    line-height: 1.2em;
     font-family: "Inter", sans-serif;
 }
 
@@ -23,7 +23,7 @@ td,
 th {
     font-family: "Inter", sans-serif;
     font-size: 13px;
-    line-height: 1.3em;
+    line-height: 1.2em;
 }
 
 .wcdn-document {

@@ -20,7 +20,10 @@ do_action( 'wcdn_before_packingslip_template', $data );
 /**
  * Include shared template.
  */
-require __DIR__ . '/base.php';
+$base_file = \Tyche\WCDN\Services\Template_Renderer::locate( 'base', $type );
+if ( $base_file ) {
+	require $base_file;
+}
 
 /**
  * Allow template-specific hooks after.

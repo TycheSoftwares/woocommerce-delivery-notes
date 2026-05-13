@@ -201,6 +201,9 @@ class Api extends \Tyche\WCDN\Admin {
 				? $value
 				: array();
 
+			case 'html':
+				return str_replace( "\n", '<br />', wp_kses_post( $value ) );
+
 			default:
 				return sanitize_text_field( $value );
 

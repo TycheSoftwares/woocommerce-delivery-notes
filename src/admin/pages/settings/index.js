@@ -5,8 +5,8 @@ import Skeleton from "./skeleton";
 import { SaveBar } from "@admin/components/form";
 import { TEXT_DOMAIN } from "../../constants";
 import { fetch as fetchSettings, save as saveSettings } from "../../api/settings";
+import { clearCache as clearTemplatesCache } from "../../api/templates";
 import { toast } from "../../utils/toast";
-import { useData } from "@admin/data/context";
 import StoreSettings from "./StoreSettings";
 import GeneralSettings from "./GeneralSettings";
 import FontSettings from "./FontSettings";
@@ -18,7 +18,6 @@ function Settings() {
     const [hasChanges, setHasChanges] = useState(false);
     const [notice, setNotice] = useState(null);
     const [activeTab, setActiveTab] = useState("store");
-    const { setShowLoader } = useData();
 
     useEffect(() => {
         let mounted = true;
@@ -60,17 +59,17 @@ function Settings() {
         }
 
         setIsSaving(true);
-        setShowLoader(true);
 
         try {
             const response = await saveSettings(
                 is_reset_plugin_settings ? { reset_plugin_usage_tracking: true } : settings
             );
 
+            clearTemplatesCache();
+
             setTimeout(() => {
                 setIsSaving(false);
                 setHasChanges(false);
-                setShowLoader(false);
 
                 setNotice({
                     status: "success",
@@ -89,7 +88,6 @@ function Settings() {
 
             toast.error(error);
             setIsSaving(false);
-            setShowLoader(false);
         }
     };
 

@@ -53,10 +53,10 @@ class Frontend {
 		add_filter( 'query_vars', array( $this, 'add_query_vars' ) );
 		add_action( 'template_redirect', array( $this, 'template_redirect_theme' ) );
 		add_action( 'wp_ajax_print_order', array( $this, 'template_redirect_admin' ) );
+		add_action( 'wp_ajax_wcdn_generate_bulk_pdf', array( $this, 'ajax_generate_bulk_pdf' ) );
 		add_filter( 'woocommerce_my_account_my_orders_actions', array( $this, 'create_print_button_account_page' ), 10, 2 );
 		add_action( 'woocommerce_view_order', array( $this, 'create_print_button_order_page' ) );
 		add_action( 'woocommerce_thankyou', array( $this, 'create_print_button_order_page' ) );
-		add_action( 'wcdn_after_items', array( $this, 'wdn_add_extra_data_after_items' ), 10, 1 );
 		add_filter( 'woocommerce_get_item_count', array( $this, 'wcdn_order_item_count' ), 20, 3 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_myaccount_styles' ) );
 		add_action( 'woocommerce_checkout_create_order', array( $this, 'generate_guest_access_token' ), 10, 1 );
@@ -349,6 +349,15 @@ class Frontend {
 					}
 				}
 
+				// AWCDP partial payment child orders — resolve to the parent deposit order so the
+				// invoice shows the original products plus Deposit / Future Payments rows.
+				if ( defined( 'AWCDP_POST_TYPE' ) && $order->get_type() === AWCDP_POST_TYPE ) {
+					$parent = wc_get_order( $order->get_parent_id() );
+					if ( $parent ) {
+						$order = $parent;
+					}
+				}
+
 				if ( ! $this->can_view_order( $order, $email ) ) {
 					wp_die( esc_html__( 'Access denied.', 'woocommerce-delivery-notes' ) );
 				}
@@ -502,29 +511,18 @@ class Frontend {
 
 		$order_ids = wp_list_pluck( $documents, 'order_id' );
 
-		// Generate merged PDF if multiple.
+		// PDF is generated synchronously on load for single orders only.
+		// For multiple orders, dompdf processing a combined N-page document blocks
+		// the entire HTTP response and causes timeouts beyond ~50 orders.
 		$pdf_url = '';
 
-		if ( ! empty( $order_ids ) ) {
+		if ( 1 === count( $order_ids ) ) {
 
-			if ( 1 === count( $order_ids ) ) {
-
-				// Single order.
-				$pdf_file = Service::pdf()->generate(
-					$order_ids[0],
-					$template,
-					$documents[0]['data']
-				);
-
-			} else {
-
-				// Multiple orders.
-				$pdf_file = Service::pdf()->generate(
-					$order_ids,
-					$template,
-					$documents
-				);
-			}
+			$pdf_file = Service::pdf()->generate(
+				$order_ids[0],
+				$template,
+				$documents[0]['data']
+			);
 
 			if ( $pdf_file ) {
 
@@ -541,7 +539,9 @@ class Frontend {
 <html>
 
 <head>
-	<title><?php echo esc_html( Settings::get( 'defaultDocumentLabel' ) ); ?></title>
+	<title>
+		<?php echo esc_html( apply_filters( 'wcdn_print_document_title', Settings::get( 'defaultDocumentLabel' ), $order_ids, $template ) ); ?>
+	</title>
 
 	<style>
 	body {
@@ -665,11 +665,66 @@ class Frontend {
 		.wcdn-toolbar {
 			display: none;
 		}
+
+		.wcdn-print-overlay {
+			display: none;
+		}
 	}
+
+		<?php
+		if ( Settings::get( 'autoPrintDialog' ) ) :
+			?>
+			.wcdn-print-overlay {
+		position: fixed;
+		inset: 0;
+		background: #fff;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 20px;
+		z-index: 9999;
+	}
+
+	.wcdn-print-overlay.is-hidden {
+		display: none;
+	}
+
+	.wcdn-print-spinner {
+		width: 40px;
+		height: 40px;
+		border: 3px solid #e0e0e0;
+		border-top-color: #2271b1;
+		border-radius: 50%;
+		animation: wcdn-spin 0.7s linear infinite;
+	}
+
+	.wcdn-print-overlay p {
+		font-size: 15px;
+		color: #646970;
+		margin: 0;
+	}
+
+	@keyframes wcdn-spin {
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+			<?php
+	endif;
+		?>
 	</style>
 </head>
 
 <body>
+
+		<?php if ( Settings::get( 'autoPrintDialog' ) ) : ?>
+	<div class="wcdn-print-overlay" id="wcdn-print-overlay">
+		<div class="wcdn-print-spinner"></div>
+		<p><?php esc_html_e( 'Preparing document…', 'woocommerce-delivery-notes' ); ?></p>
+	</div>
+	<?php endif; ?>
 
 	<div class="wcdn-container">
 
@@ -692,10 +747,77 @@ class Frontend {
 			<a href="<?php echo esc_url( $pdf_url ); ?>" target="_blank" class="wcdn-btn wcdn-btn-primary">
 				<?php esc_html_e( 'Download PDF', 'woocommerce-delivery-notes' ); ?>
 			</a>
+			<?php elseif ( count( $order_ids ) > 1 && Settings::get( 'enablePDF' ) ) : ?>
+			<button id="wcdn-bulk-pdf-btn" class="wcdn-btn wcdn-btn-primary"
+				data-order-ids="<?php echo esc_attr( implode( ',', $order_ids ) ); ?>"
+				data-template="<?php echo esc_attr( $template ); ?>"
+				data-nonce="<?php echo esc_attr( wp_create_nonce( 'wcdn_bulk_pdf' ) ); ?>"
+				data-ajax-url="<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>"
+				data-label="<?php echo esc_attr( __( 'Download PDF', 'woocommerce-delivery-notes' ) ); ?>"
+				data-label-loading="<?php echo esc_attr( __( 'Generating PDF…', 'woocommerce-delivery-notes' ) ); ?>">
+				<?php esc_html_e( 'Download PDF', 'woocommerce-delivery-notes' ); ?>
+			</button>
 			<?php endif; ?>
 
 		</div>
 	</div>
+
+	<script>
+	(function() {
+		var btn = document.getElementById('wcdn-bulk-pdf-btn');
+		if (!btn) {
+			return;
+		}
+		btn.addEventListener('click', function() {
+			btn.disabled = true;
+			btn.textContent = btn.dataset.labelLoading;
+			fetch(btn.dataset.ajaxUrl, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/x-www-form-urlencoded'
+					},
+					body: new URLSearchParams({
+						action: 'wcdn_generate_bulk_pdf',
+						order_ids: btn.dataset.orderIds,
+						template: btn.dataset.template,
+						_wpnonce: btn.dataset.nonce
+					})
+				})
+				.then(function(r) {
+					return r.json();
+				})
+				.then(function(data) {
+					if (data.success && data.data.url) {
+						window.location.href = data.data.url;
+					} else {
+						alert(data.data && data.data.message ? data.data.message :
+							<?php echo wp_json_encode( __( 'PDF generation failed.', 'woocommerce-delivery-notes' ) ); ?>
+							);
+						btn.disabled = false;
+						btn.textContent = btn.dataset.label;
+					}
+				})
+				.catch(function() {
+					alert(
+						<?php echo wp_json_encode( __( 'PDF generation failed.', 'woocommerce-delivery-notes' ) ); ?>);
+					btn.disabled = false;
+					btn.textContent = btn.dataset.label;
+				});
+		});
+	})();
+	</script>
+
+		<?php if ( Settings::get( 'autoPrintDialog' ) ) : ?>
+	<script>
+	window.addEventListener('DOMContentLoaded', function() {
+		var overlay = document.getElementById('wcdn-print-overlay');
+		if (overlay) {
+			overlay.classList.add('is-hidden');
+		}
+		window.print();
+	});
+	</script>
+	<?php endif; ?>
 
 </body>
 
@@ -704,65 +826,66 @@ class Frontend {
 	}
 
 	/**
-	 * Add extra data after order items.
+	 * AJAX handler: generate a merged PDF for multiple orders on demand.
 	 *
-	 * @param \WC_Order $order Order object.
 	 * @return void
-	 * @since 7.0
+	 * @since 7.1.2
 	 */
-	public function wdn_add_extra_data_after_items( $order ) {
+	public function ajax_generate_bulk_pdf() {
 
-		/**
-		 * Local pickup plus plugin is active
-		 */
-		if ( class_exists( 'WC_Local_Pickup_Plus' ) ) {
-
-			$cdn_local_pickup_plugin_plugins_version = wc_local_pickup_plus()->get_version();
-
-			if ( version_compare( $cdn_local_pickup_plugin_plugins_version, '2.0.0', '>=' ) ) {
-				$cdn_local_pickup_object           = new WC_Local_Pickup_Plus_Orders();
-				$local_pickup                      = wc_local_pickup_plus();
-				$cdn_local_pickup_locations        = $cdn_local_pickup_object->get_order_pickup_data( $order );
-				$cdn_local_pickup__shipping_object = $local_pickup->get_shipping_method_instance();
-				$this->cdn_print_local_pickup_address( $cdn_local_pickup_locations, $cdn_local_pickup__shipping_object );
-			}
+		if ( ! check_ajax_referer( 'wcdn_bulk_pdf', '_wpnonce', false ) || ! current_user_can( 'manage_woocommerce' ) ) { // phpcs:ignore WordPress.WP.Capabilities.Unknown
+			wp_send_json_error( array( 'message' => __( 'Authentication failed.', 'woocommerce-delivery-notes' ) ) );
 		}
-	}
 
-	/**
-	 * Print local pickup address.
-	 *
-	 * @param array  $cdn_local_pickup_locations Pickup locations.
-	 * @param object $shipping_method            Shipping method instance.
-	 * @return void
-	 * @since 7.0
-	 */
-	public function cdn_print_local_pickup_address( $cdn_local_pickup_locations, $shipping_method ) {
+		$order_ids_raw = isset( $_POST['order_ids'] ) ? sanitize_text_field( wp_unslash( $_POST['order_ids'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce verified above
+		$template      = isset( $_POST['template'] ) ? sanitize_text_field( wp_unslash( $_POST['template'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
 
-		$package_number = 1;
-		$packages_count = count( $cdn_local_pickup_locations );
-		foreach ( $cdn_local_pickup_locations as $pickup_meta ) :
-			?>
-<div>
-			<?php if ( $packages_count > 1 ) : ?>
-	<h5><?php echo wp_kses_post( sprintf( is_rtl() ? '#%2$s %1$s' : '%1$s #%2$s', esc_html( $shipping_method->get_method_title() ), $package_number ) ); ?>
-	</h5>
-	<?php endif; ?>
-	<ul>
-			<?php foreach ( $pickup_meta as $label => $value ) : ?>
-		<li>
-				<?php if ( is_rtl() ) : ?>
-					<?php echo wp_kses_post( $value ); ?> <strong>:<?php echo esc_html( $label ); ?></strong>
-			<?php else : ?>
-			<strong><?php echo esc_html( $label ); ?>:</strong> <?php echo wp_kses_post( $value ); ?>
-			<?php endif; ?>
-		</li>
-		<?php endforeach; ?>
-	</ul>
-			<?php ++$package_number; ?>
-</div>
-			<?php
-			endforeach;
+		if ( ! in_array( $template, Template_Engine::get_template_keys(), true ) ) {
+			wp_send_json_error( array( 'message' => __( 'Invalid template.', 'woocommerce-delivery-notes' ) ) );
+		}
+
+		$order_ids = array_values( array_filter( array_map( 'absint', explode( ',', $order_ids_raw ) ) ) );
+
+		if ( empty( $order_ids ) ) {
+			wp_send_json_error( array( 'message' => __( 'No orders provided.', 'woocommerce-delivery-notes' ) ) );
+		}
+
+		$documents = array();
+
+		foreach ( $order_ids as $order_id ) {
+
+			$order = wc_get_order( $order_id );
+
+			if ( ! $order ) {
+				continue;
+			}
+
+			$documents[] = array(
+				'order_id' => $order_id,
+				'data'     => array(
+					'order'    => Templates_Api::format_order_data( $order, false, $template ),
+					'shop'     => Templates_Api::get_store_data(),
+					'document' => Templates_Api::get_document_data(),
+					'settings' => Templates::template( $template ),
+					'template' => $template,
+				),
+			);
+		}
+
+		if ( empty( $documents ) ) {
+			wp_send_json_error( array( 'message' => __( 'No valid orders found.', 'woocommerce-delivery-notes' ) ) );
+		}
+
+		$pdf_file = Service::pdf()->generate( $order_ids, $template, $documents );
+
+		if ( ! $pdf_file ) {
+			wp_send_json_error( array( 'message' => __( 'PDF generation failed. Please try with fewer orders or check your server memory limit.', 'woocommerce-delivery-notes' ) ) );
+		}
+
+		$upload_dir = wp_upload_dir();
+		$pdf_url    = trailingslashit( $upload_dir['baseurl'] ) . 'wcdn/' . $template . '/' . basename( $pdf_file );
+
+		wp_send_json_success( array( 'url' => $pdf_url ) );
 	}
 
 	/**

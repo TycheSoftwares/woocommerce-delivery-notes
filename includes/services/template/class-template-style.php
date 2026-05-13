@@ -41,6 +41,28 @@ class Template_Style {
 		$css = '';
 
 		/**
+		 * DOCUMENT ZOOM
+		 * HTML: CSS zoom property.
+		 * PDF: pt-value scaling via zoom_factor + padding-right override in Template_Renderer.
+		 */
+		$zoom        = (int) ( $settings['documentZoom'] ?? 100 );
+		$zoom_factor = $zoom / 100;
+
+		if ( 'html' === $context && 100 !== $zoom ) {
+			$css .= '.wcdn-document{zoom:' . $zoom . '%;}';
+		}
+
+		// PDF: apply a 0.9 base factor so text/spacing match the HTML viewport rendering.
+		// context_css pt-scaling + padding-right override handled in Template_Renderer::get_css().
+		$zoom_mode = 'pdf' === $context
+			? apply_filters( 'wcdn_pdf_zoom_mode', $settings['documentZoomMode'] ?? 'layout' )
+			: 'layout';
+
+		if ( 'pdf' === $context ) {
+			$zoom_factor *= 0.9;
+		}
+
+		/**
 		 * BASIC SECTIONS
 		 */
 		$css .= self::map(
@@ -132,18 +154,24 @@ class Template_Style {
 				),
 
 				'.wcdn-policies'              => array(
-					'font-size' => 'policiesFontSize',
-					'color'     => 'policiesTextColor',
+					'font-size'   => 'policiesFontSize',
+					'color'       => 'policiesTextColor',
+					'font-weight' => array( 'policiesFontStyle', 'bold' ),
+					'text-align'  => 'policiesAlign',
 				),
 
 				'.wcdn-complimentary-close'   => array(
-					'font-size' => 'complimentaryCloseFontSize',
-					'color'     => 'complimentaryCloseTextColor',
+					'font-size'   => 'complimentaryCloseFontSize',
+					'color'       => 'complimentaryCloseTextColor',
+					'font-weight' => array( 'complimentaryCloseFontStyle', 'bold' ),
+					'text-align'  => 'complimentaryCloseAlign',
 				),
 
 				'.wcdn-footer'                => array(
-					'font-size' => 'footerFontSize',
-					'color'     => 'footerTextColor',
+					'font-size'   => 'footerFontSize',
+					'color'       => 'footerTextColor',
+					'font-weight' => array( 'footerFontStyle', 'bold' ),
+					'text-align'  => 'footerAlign',
 				),
 
 				'.wcdn-payment-button'        => array(
@@ -155,9 +183,19 @@ class Template_Style {
 					'color'       => 'customerNoteTextColor',
 					'font-weight' => array( 'customerNoteFontStyle', 'bold' ),
 				),
+
+				'.wcdn-item-name'             => array(
+					'font-size'      => 'productNameFontSize',
+					'font-weight'    => array( 'productNameFontStyle', 'bold' ),
+					'color'          => 'productNameTextColor',
+					'padding-top'    => 'productNamePadding',
+					'padding-bottom' => 'productNamePadding',
+				),
 			),
 			$settings,
-			$context
+			$context,
+			$zoom_factor,
+			$zoom_mode
 		);
 
 		/**
@@ -174,7 +212,10 @@ class Template_Style {
 					'opacity'   => $settings['watermarkOpacity'] ?? 0.08,
 					'font-size' => $settings['watermarkFontSize'] ?? '80px',
 					'transform' => "rotate({$angle}deg)",
-				)
+				),
+				$context,
+				$zoom_factor,
+				$zoom_mode
 			);
 		}
 
@@ -191,7 +232,9 @@ class Template_Style {
 				'margin-top'    => $settings['orderDataHeaderSpacingTop'] ?? null,
 				'margin-bottom' => $settings['orderDataHeaderSpacingBottom'] ?? null,
 			),
-			$context
+			$context,
+			$zoom_factor,
+			$zoom_mode
 		);
 
 		/**
@@ -221,7 +264,9 @@ class Template_Style {
 					'color'       => $settings[ "{$key}TextColor" ] ?? null,
 					'font-weight' => self::font_weight( $settings[ "{$key}FontStyle" ] ?? null ),
 				),
-				$context
+				$context,
+				$zoom_factor,
+				$zoom_mode
 			);
 		}
 
@@ -235,7 +280,9 @@ class Template_Style {
 					'color'       => $settings[ "{$key}TextColor" ] ?? null,
 					'font-weight' => self::font_weight( $settings[ "{$key}FontStyle" ] ?? null ),
 				),
-				$context
+				$context,
+				$zoom_factor,
+				$zoom_mode
 			);
 		}
 
@@ -245,13 +292,15 @@ class Template_Style {
 	/**
 	 * Map multiple selectors to settings.
 	 *
-	 * @param array  $map      Selector-to-setting mapping.
-	 * @param array  $settings Template settings.
-	 * @param string $context  Rendering context ('pdf', 'html', etc.).
+	 * @param array  $map         Selector-to-setting mapping.
+	 * @param array  $settings    Template settings.
+	 * @param string $context     Rendering context ('pdf', 'html', etc.).
+	 * @param float  $zoom_factor Multiplier applied to numeric size values in PDF context.
+	 * @param string $zoom_mode   'layout' scales all dimensional props; 'text' scales font-size only.
 	 * @return string
 	 * @since 7.0
 	 */
-	protected static function map( $map, $settings, $context = 'html' ) {
+	protected static function map( $map, $settings, $context = 'html', $zoom_factor = 1.0, $zoom_mode = 'layout' ) {
 
 		$css = '';
 
@@ -289,7 +338,7 @@ class Template_Style {
 				}
 			}
 
-			$css .= self::rule( $selector, $styles, $context );
+			$css .= self::rule( $selector, $styles, $context, $zoom_factor, $zoom_mode );
 		}
 
 		return $css;
@@ -298,13 +347,15 @@ class Template_Style {
 	/**
 	 * Build CSS rule.
 	 *
-	 * @param string $selector CSS selector.
-	 * @param array  $styles   CSS properties.
-	 * @param string $context  Rendering context ('pdf', 'html', etc.).
+	 * @param string $selector    CSS selector.
+	 * @param array  $styles      CSS properties.
+	 * @param string $context     Rendering context ('pdf', 'html', etc.).
+	 * @param float  $zoom_factor Multiplier applied to numeric size values in PDF context.
+	 * @param string $zoom_mode   'layout' scales all dimensional props; 'text' scales font-size only.
 	 * @return string
 	 * @since 7.0
 	 */
-	protected static function rule( $selector, $styles, $context = 'html' ) {
+	protected static function rule( $selector, $styles, $context = 'html', $zoom_factor = 1.0, $zoom_mode = 'layout' ) {
 
 		if ( empty( $styles ) ) {
 			return '';
@@ -318,11 +369,12 @@ class Template_Style {
 				continue;
 			}
 
-			$px_props = array( 'font-size', 'margin-top', 'margin-bottom' );
+			$px_props = array( 'font-size', 'margin-top', 'margin-bottom', 'padding-top', 'padding-bottom', 'padding' );
 			if ( in_array( $prop, $px_props, true ) && is_numeric( $value ) ) {
 				if ( 'pdf' === $context ) {
-					// Convert px (at 96 DPI) to pt for dompdf, which uses 72 pt/inch.
-					$value = round( $value * 72 / 96, 2 ) . 'pt';
+					// In text mode only font-size is zoomed; other dimensional props keep full scale.
+					$factor = ( 'text' === $zoom_mode && 'font-size' !== $prop ) ? 1.0 : $zoom_factor;
+					$value  = round( $value * 72 / 96 * $factor, 2 ) . 'pt';
 				} else {
 					$value .= 'px';
 				}

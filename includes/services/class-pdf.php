@@ -244,8 +244,8 @@ class Pdf {
 			'600' => 'Inter-SemiBold.ttf',
 			'700' => 'Inter-Bold.ttf',
 		);
-		foreach ( $inter_weights as $weight => $filename ) {
-			$path = $inter_dir . $filename;
+		foreach ( $inter_weights as $weight => $font_file ) {
+			$path = $inter_dir . $font_file;
 			if ( file_exists( $path ) ) {
 				$dompdf->getFontMetrics()->registerFont(
 					array(
@@ -261,7 +261,7 @@ class Pdf {
 
 		$dompdf->loadHtml( $html, 'UTF-8' );
 
-		$paper_size  = apply_filters( 'wcdn_pdf_paper_size', 'A4', $order_id );
+		$paper_size  = apply_filters( 'wcdn_pdf_paper_size', Settings::get( 'pdfPaperSize' ), $order_id );
 		$orientation = apply_filters( 'wcdn_pdf_orientation', 'portrait', $order_id );
 
 		$dompdf->setPaper( $paper_size, $orientation );
@@ -308,7 +308,45 @@ class Pdf {
 			true
 		);
 
+		$base     = preg_replace( '/\.pdf$/i', '', $filename );
+		$token    = $this->get_secure_token( $order_id, $template, $order );
+		$filename = $base . '-' . $token . '.pdf';
+
 		return apply_filters( 'wcdn_pdf_filename', $filename, $order_id, $template );
+	}
+
+	/**
+	 * Get or create a cryptographic token for a given order and template.
+	 *
+	 * The token is generated once using random_bytes and stored in order meta
+	 * so the filename remains stable across subsequent calls while staying
+	 * unguessable even when the order number is known.
+	 *
+	 * @param int            $order_id Order ID.
+	 * @param string         $template Template key.
+	 * @param \WC_Order|null $order    Optional pre-loaded order object.
+	 * @return string 24-character lowercase hex string.
+	 * @since 7.1.2
+	 */
+	protected function get_secure_token( $order_id, $template, $order = null ) {
+
+		if ( null === $order ) {
+			$order = wc_get_order( $order_id );
+		}
+
+		$meta_key = '_wcdn_' . $template . '_pdf_token';
+		$token    = $order ? $order->get_meta( $meta_key ) : '';
+
+		if ( ! $token ) {
+			$token = bin2hex( random_bytes( 12 ) );
+
+			if ( $order ) {
+				$order->update_meta_data( $meta_key, $token );
+				$order->save();
+			}
+		}
+
+		return $token;
 	}
 
 	/**
@@ -376,17 +414,21 @@ class Pdf {
 			$filesystem->put_contents( $index_file, '', FS_CHMOD_FILE );
 		}
 
-		// Apache protection.
+		// Apache protection — prevent directory listing only.
+		// PDF filenames include a cryptographic token so direct URLs are
+		// unguessable; blocking them via FilesMatch would break the download
+		// button on Apache hosts.
 		$htaccess_file = trailingslashit( $dir ) . '.htaccess';
+		$correct_rules = "Options -Indexes\n";
 
-		if ( ! $filesystem->exists( $htaccess_file ) ) {
-
-			$rules  = "Options -Indexes\n";
-			$rules .= "<FilesMatch \"\\.pdf$\">\n";
-			$rules .= "Require all denied\n";
-			$rules .= '</FilesMatch>';
-
-			$filesystem->put_contents( $htaccess_file, $rules, FS_CHMOD_FILE );
+		if ( $filesystem->exists( $htaccess_file ) ) {
+			// Heal existing files that contain the old deny rule.
+			$current = $filesystem->get_contents( $htaccess_file );
+			if ( false !== strpos( $current, 'Require all denied' ) ) {
+				$filesystem->put_contents( $htaccess_file, $correct_rules, FS_CHMOD_FILE );
+			}
+		} else {
+			$filesystem->put_contents( $htaccess_file, $correct_rules, FS_CHMOD_FILE );
 		}
 	}
 }

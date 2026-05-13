@@ -389,6 +389,7 @@ class Template_Engine {
 
 		self::$layouts_cache = array(
 			'invoice'      => array(
+				'documentZoom',
 				'logo',
 				'documentTitle',
 				'shopName',
@@ -408,6 +409,7 @@ class Template_Engine {
 				'shippingMethod',
 				'showProductCharges',
 				'showProductImages',
+				'productName',
 				'payNow',
 				'customerNote',
 				'complimentaryClose',
@@ -415,6 +417,7 @@ class Template_Engine {
 				'footer',
 			),
 			'receipt'      => array(
+				'documentZoom',
 				'logo',
 				'documentTitle',
 				'shopName',
@@ -435,6 +438,7 @@ class Template_Engine {
 				'shippingMethod',
 				'showProductCharges',
 				'showProductImages',
+				'productName',
 				'watermark',
 				'customerNote',
 				'complimentaryClose',
@@ -442,6 +446,7 @@ class Template_Engine {
 				'footer',
 			),
 			'deliverynote' => array(
+				'documentZoom',
 				'logo',
 				'documentTitle',
 				'shopName',
@@ -458,15 +463,18 @@ class Template_Engine {
 				'orderNumber',
 				'orderDate',
 				'shippingMethod',
+				'paymentMethod',
 				'displayPriceInProductDetailsTable',
 				'showProductCharges',
 				'showProductImages',
+				'productName',
 				'customerNote',
 				'complimentaryClose',
 				'policies',
 				'footer',
 			),
 			'packingslip'  => array(
+				'documentZoom',
 				'logo',
 				'documentTitle',
 				'shopName',
@@ -483,12 +491,14 @@ class Template_Engine {
 				'orderDate',
 				'shippingMethod',
 				'showProductImages',
+				'productName',
 				'customerNote',
 				'complimentaryClose',
 				'policies',
 				'footer',
 			),
 			'creditnote'   => array(
+				'documentZoom',
 				'logo',
 				'documentTitle',
 				'shopName',
@@ -511,6 +521,7 @@ class Template_Engine {
 				'refundTotal',
 				'displayRefundItemsInTable',
 				'showProductImages',
+				'productName',
 				'watermark',
 				'customerNote',
 				'complimentaryClose',
@@ -742,11 +753,60 @@ class Template_Engine {
 				),
 			),
 
+			/* Page Setup */
+			'documentZoom'                      => array(
+				'type'  => 'group',
+				'id'    => 'documentZoom',
+				'label' => __( 'Page Setup', 'woocommerce-delivery-notes' ),
+				'items' => array(
+					array(
+						'type'      => 'field',
+						'field'     => 'documentZoom',
+						'schema'    => 'number',
+						'fieldType' => 'slider',
+						'label'     => __( 'Zoom', 'woocommerce-delivery-notes' ),
+						'default'   => 100,
+						'min'       => 70,
+						'max'       => 130,
+					),
+					array(
+						'type'        => 'field',
+						'field'       => 'documentZoomMode',
+						'schema'      => 'text',
+						'fieldType'   => 'radio',
+						'label'       => __( 'Zoom Mode', 'woocommerce-delivery-notes' ),
+						'default'     => 'layout',
+						'bottomLabel' => __( 'Zoom Mode applies to PDF generation only. The HTML print preview uses the browser\'s own zoom handling.', 'woocommerce-delivery-notes' ),
+						'options'     => array(
+							array(
+								'label'       => __( 'Layout', 'woocommerce-delivery-notes' ),
+								'value'       => 'layout',
+								'description' => __( 'Scales the entire document — fonts, spacing, tables and borders shrink proportionally.', 'woocommerce-delivery-notes' ),
+							),
+							array(
+								'label'       => __( 'Text only', 'woocommerce-delivery-notes' ),
+								'value'       => 'text',
+								'description' => __( 'Only font sizes shrink. Tables, borders and page margins stay full-size.', 'woocommerce-delivery-notes' ),
+							),
+						),
+					),
+					array(
+						'type'        => 'field',
+						'field'       => 'applyZoomToAll',
+						'schema'      => 'boolean',
+						'fieldType'   => 'checkbox',
+						'label'       => __( 'Apply to all templates', 'woocommerce-delivery-notes' ),
+						'default'     => false,
+						'bottomLabel' => __( 'Copy all Page Setup settings to every other template when saving.', 'woocommerce-delivery-notes' ),
+					),
+				),
+			),
+
 			/* Logo */
 			'logo'                              => array(
 				'type'   => 'group',
 				'id'     => 'logo',
-				'label'  => __( 'Show Shop Logo', 'woocommerce-delivery-notes' ),
+				'label'  => __( 'Shop Logo', 'woocommerce-delivery-notes' ),
 				'toggle' => 'showLogo',
 				'items'  => array(
 					array(
@@ -780,10 +840,18 @@ class Template_Engine {
 
 			/* Document Title */
 			'documentTitle'                     => array(
-				'type'  => 'group',
-				'id'    => 'documentTitle',
-				'label' => __( 'Document Title', 'woocommerce-delivery-notes' ),
-				'items' => array(
+				'type'   => 'group',
+				'id'     => 'documentTitle',
+				'label'  => __( 'Document Title', 'woocommerce-delivery-notes' ),
+				'toggle' => 'showDocumentTitle',
+				'items'  => array(
+					array(
+						'type'      => 'field',
+						'field'     => 'showDocumentTitle',
+						'schema'    => 'bool',
+						'fieldType' => 'checkbox',
+						'default'   => true,
+					),
 					array(
 						'type'      => 'field',
 						'field'     => 'documentTitle',
@@ -841,7 +909,7 @@ class Template_Engine {
 			'shopName'                          => array(
 				'type'   => 'group',
 				'id'     => 'shopName',
-				'label'  => __( 'Show Shop Name', 'woocommerce-delivery-notes' ),
+				'label'  => __( 'Shop Name', 'woocommerce-delivery-notes' ),
 				'toggle' => 'showShopName',
 				'items'  => array(
 					array(
@@ -894,7 +962,7 @@ class Template_Engine {
 			'shopAddress'                       => array(
 				'type'   => 'group',
 				'id'     => 'shopAddress',
-				'label'  => __( 'Show Shop Address', 'woocommerce-delivery-notes' ),
+				'label'  => __( 'Shop Address', 'woocommerce-delivery-notes' ),
 				'toggle' => 'showShopAddress',
 				'items'  => array(
 					array(
@@ -947,7 +1015,7 @@ class Template_Engine {
 			'shopPhone'                         => array(
 				'type'   => 'group',
 				'id'     => 'shopPhone',
-				'label'  => __( 'Show Shop Phone Number', 'woocommerce-delivery-notes' ),
+				'label'  => __( 'Shop Phone Number', 'woocommerce-delivery-notes' ),
 				'toggle' => 'showShopPhone',
 				'items'  => array(
 					array(
@@ -1028,7 +1096,7 @@ class Template_Engine {
 			'shopEmail'                         => array(
 				'type'   => 'group',
 				'id'     => 'shopEmail',
-				'label'  => __( 'Show Shop Email Address', 'woocommerce-delivery-notes' ),
+				'label'  => __( 'Shop Email Address', 'woocommerce-delivery-notes' ),
 				'toggle' => 'showShopEmail',
 				'items'  => array(
 					array(
@@ -1109,7 +1177,7 @@ class Template_Engine {
 			'billingAddress'                    => array(
 				'type'   => 'group',
 				'id'     => 'billingAddress',
-				'label'  => __( 'Show Billing Address', 'woocommerce-delivery-notes' ),
+				'label'  => __( 'Billing Address', 'woocommerce-delivery-notes' ),
 				'toggle' => 'showBillingAddress',
 				'items'  => array(
 					array(
@@ -1170,7 +1238,7 @@ class Template_Engine {
 			'billingPhone'                      => array(
 				'type'   => 'group',
 				'id'     => 'billingPhone',
-				'label'  => __( 'Show Billing Phone', 'woocommerce-delivery-notes' ),
+				'label'  => __( 'Billing Phone', 'woocommerce-delivery-notes' ),
 				'toggle' => 'showBillingPhone',
 				'items'  => array(
 					array(
@@ -1235,7 +1303,7 @@ class Template_Engine {
 			'billingEmail'                      => array(
 				'type'   => 'group',
 				'id'     => 'billingEmail',
-				'label'  => __( 'Show Billing Email', 'woocommerce-delivery-notes' ),
+				'label'  => __( 'Billing Email', 'woocommerce-delivery-notes' ),
 				'toggle' => 'showBillingEmail',
 				'items'  => array(
 					array(
@@ -1300,7 +1368,7 @@ class Template_Engine {
 			'shippingAddress'                   => array(
 				'type'   => 'group',
 				'id'     => 'shippingAddress',
-				'label'  => __( 'Show Shipping Address', 'woocommerce-delivery-notes' ),
+				'label'  => __( 'Shipping Address', 'woocommerce-delivery-notes' ),
 				'toggle' => 'showShippingAddress',
 				'items'  => array(
 					array(
@@ -1361,7 +1429,7 @@ class Template_Engine {
 			'orderDataHeader'                   => array(
 				'type'           => 'group',
 				'id'             => 'orderDataHeader',
-				'label'          => __( 'Show Order Data Header', 'woocommerce-delivery-notes' ),
+				'label'          => __( 'Order Data Header', 'woocommerce-delivery-notes' ),
 				'toggle'         => 'showOrderDataHeader',
 				'condition'      => 'orderMetaPosition',
 				'conditionValue' => 'below',
@@ -1442,7 +1510,7 @@ class Template_Engine {
 						'field'     => 'showOrderDataHeaderBorder',
 						'schema'    => 'bool',
 						'fieldType' => 'checkbox',
-						'label'     => __( 'Show Border', 'woocommerce-delivery-notes' ),
+						'label'     => __( 'Border', 'woocommerce-delivery-notes' ),
 						'default'   => true,
 					),
 				),
@@ -1463,7 +1531,7 @@ class Template_Engine {
 			'invoiceNumber'                     => array(
 				'type'   => 'group',
 				'id'     => 'invoiceNumber',
-				'label'  => __( 'Show Invoice Number', 'woocommerce-delivery-notes' ),
+				'label'  => __( 'Invoice Number', 'woocommerce-delivery-notes' ),
 				'toggle' => 'showInvoiceNumber',
 				'items'  => array(
 					array(
@@ -1525,11 +1593,11 @@ class Template_Engine {
 				'type'   => 'group',
 				'id'     => 'documentDate',
 				'label'  => array(
-					'invoice'      => __( 'Show Invoice Date', 'woocommerce-delivery-notes' ),
-					'receipt'      => __( 'Show Receipt Date', 'woocommerce-delivery-notes' ),
-					'deliverynote' => __( 'Show Delivery Note Date', 'woocommerce-delivery-notes' ),
-					'packingslip'  => __( 'Show Packing Slip Date', 'woocommerce-delivery-notes' ),
-					'creditnote'   => __( 'Show Credit Note Date', 'woocommerce-delivery-notes' ),
+					'invoice'      => __( 'Invoice Date', 'woocommerce-delivery-notes' ),
+					'receipt'      => __( 'Receipt Date', 'woocommerce-delivery-notes' ),
+					'deliverynote' => __( 'Delivery Note Date', 'woocommerce-delivery-notes' ),
+					'packingslip'  => __( 'Packing Slip Date', 'woocommerce-delivery-notes' ),
+					'creditnote'   => __( 'Credit Note Date', 'woocommerce-delivery-notes' ),
 				),
 				'toggle' => 'showDocumentDate',
 				'items'  => array(
@@ -1597,7 +1665,7 @@ class Template_Engine {
 			'orderNumber'                       => array(
 				'type'   => 'group',
 				'id'     => 'orderNumber',
-				'label'  => __( 'Show Order Number', 'woocommerce-delivery-notes' ),
+				'label'  => __( 'Order Number', 'woocommerce-delivery-notes' ),
 				'toggle' => 'showOrderNumber',
 				'items'  => array(
 					array(
@@ -1658,7 +1726,7 @@ class Template_Engine {
 			'orderDate'                         => array(
 				'type'   => 'group',
 				'id'     => 'orderDate',
-				'label'  => __( 'Show Order Date', 'woocommerce-delivery-notes' ),
+				'label'  => __( 'Order Date', 'woocommerce-delivery-notes' ),
 				'toggle' => 'showOrderDate',
 				'items'  => array(
 					array(
@@ -1719,7 +1787,7 @@ class Template_Engine {
 			'paymentMethod'                     => array(
 				'type'   => 'group',
 				'id'     => 'paymentMethod',
-				'label'  => __( 'Show Payment Method', 'woocommerce-delivery-notes' ),
+				'label'  => __( 'Payment Method', 'woocommerce-delivery-notes' ),
 				'toggle' => 'showPaymentMethod',
 				'items'  => array(
 					array(
@@ -1727,7 +1795,12 @@ class Template_Engine {
 						'field'     => 'showPaymentMethod',
 						'schema'    => 'bool',
 						'fieldType' => 'checkbox',
-						'default'   => true,
+						'default'   => array(
+							'invoice'      => true,
+							'receipt'      => true,
+							'deliverynote' => false,
+							'creditnote'   => true,
+						),
 					),
 					array(
 						'type'      => 'field',
@@ -1780,7 +1853,7 @@ class Template_Engine {
 			'paymentDate'                       => array(
 				'type'   => 'group',
 				'id'     => 'paymentDate',
-				'label'  => __( 'Show Payment Date', 'woocommerce-delivery-notes' ),
+				'label'  => __( 'Payment Date', 'woocommerce-delivery-notes' ),
 				'toggle' => 'showPaymentDate',
 				'items'  => array(
 					array(
@@ -1841,7 +1914,7 @@ class Template_Engine {
 			'shippingMethod'                    => array(
 				'type'   => 'group',
 				'id'     => 'shippingMethod',
-				'label'  => __( 'Show Shipping Method', 'woocommerce-delivery-notes' ),
+				'label'  => __( 'Shipping Method', 'woocommerce-delivery-notes' ),
 				'toggle' => 'showShippingMethod',
 				'items'  => array(
 					array(
@@ -1902,7 +1975,7 @@ class Template_Engine {
 			'refundDate'                        => array(
 				'type'   => 'group',
 				'id'     => 'refundDate',
-				'label'  => __( 'Show Refund Date', 'woocommerce-delivery-notes' ),
+				'label'  => __( 'Refund Date', 'woocommerce-delivery-notes' ),
 				'toggle' => 'showRefundDate',
 				'items'  => array(
 					array(
@@ -1963,7 +2036,7 @@ class Template_Engine {
 			'refundReason'                      => array(
 				'type'   => 'group',
 				'id'     => 'refundReason',
-				'label'  => __( 'Show Refund Reason', 'woocommerce-delivery-notes' ),
+				'label'  => __( 'Refund Reason', 'woocommerce-delivery-notes' ),
 				'toggle' => 'showRefundReason',
 				'items'  => array(
 					array(
@@ -2057,7 +2130,7 @@ class Template_Engine {
 			'customerNote'                      => array(
 				'type'   => 'group',
 				'id'     => 'customerNote',
-				'label'  => __( 'Show Customer Note', 'woocommerce-delivery-notes' ),
+				'label'  => __( 'Customer Note', 'woocommerce-delivery-notes' ),
 				'toggle' => 'showCustomerNote',
 				'items'  => array(
 					array(
@@ -2109,7 +2182,7 @@ class Template_Engine {
 			'complimentaryClose'                => array(
 				'type'   => 'group',
 				'id'     => 'complimentaryClose',
-				'label'  => __( 'Show Complimentary Close', 'woocommerce-delivery-notes' ),
+				'label'  => __( 'Complimentary Close', 'woocommerce-delivery-notes' ),
 				'toggle' => 'showComplimentaryClose',
 				'items'  => array(
 					array(
@@ -2131,6 +2204,24 @@ class Template_Engine {
 					),
 					array(
 						'type'      => 'field',
+						'field'     => 'complimentaryCloseFontStyle',
+						'schema'    => 'text',
+						'fieldType' => 'select',
+						'label'     => __( 'Font Style', 'woocommerce-delivery-notes' ),
+						'default'   => 'normal',
+						'options'   => self::field_options( 'fontStyleOptions' ),
+					),
+					array(
+						'type'      => 'field',
+						'field'     => 'complimentaryCloseAlign',
+						'schema'    => 'text',
+						'fieldType' => 'radio',
+						'label'     => __( 'Text Align', 'woocommerce-delivery-notes' ),
+						'default'   => 'center',
+						'options'   => self::field_options( 'alignOptions' ),
+					),
+					array(
+						'type'      => 'field',
 						'field'     => 'complimentaryCloseTextColor',
 						'schema'    => 'text',
 						'fieldType' => 'color',
@@ -2144,7 +2235,7 @@ class Template_Engine {
 			'policies'                          => array(
 				'type'   => 'group',
 				'id'     => 'policies',
-				'label'  => __( 'Show Policies', 'woocommerce-delivery-notes' ),
+				'label'  => __( 'Policies', 'woocommerce-delivery-notes' ),
 				'toggle' => 'showPolicies',
 				'items'  => array(
 					array(
@@ -2166,6 +2257,24 @@ class Template_Engine {
 					),
 					array(
 						'type'      => 'field',
+						'field'     => 'policiesFontStyle',
+						'schema'    => 'text',
+						'fieldType' => 'select',
+						'label'     => __( 'Font Style', 'woocommerce-delivery-notes' ),
+						'default'   => 'normal',
+						'options'   => self::field_options( 'fontStyleOptions' ),
+					),
+					array(
+						'type'      => 'field',
+						'field'     => 'policiesAlign',
+						'schema'    => 'text',
+						'fieldType' => 'radio',
+						'label'     => __( 'Text Align', 'woocommerce-delivery-notes' ),
+						'default'   => 'center',
+						'options'   => self::field_options( 'alignOptions' ),
+					),
+					array(
+						'type'      => 'field',
 						'field'     => 'policiesTextColor',
 						'schema'    => 'text',
 						'fieldType' => 'color',
@@ -2179,7 +2288,7 @@ class Template_Engine {
 			'footer'                            => array(
 				'type'   => 'group',
 				'id'     => 'footer',
-				'label'  => __( 'Show Footer', 'woocommerce-delivery-notes' ),
+				'label'  => __( 'Footer', 'woocommerce-delivery-notes' ),
 				'toggle' => 'showFooter',
 				'items'  => array(
 					array(
@@ -2201,6 +2310,24 @@ class Template_Engine {
 					),
 					array(
 						'type'      => 'field',
+						'field'     => 'footerFontStyle',
+						'schema'    => 'text',
+						'fieldType' => 'select',
+						'label'     => __( 'Font Style', 'woocommerce-delivery-notes' ),
+						'default'   => 'normal',
+						'options'   => self::field_options( 'fontStyleOptions' ),
+					),
+					array(
+						'type'      => 'field',
+						'field'     => 'footerAlign',
+						'schema'    => 'text',
+						'fieldType' => 'radio',
+						'label'     => __( 'Text Align', 'woocommerce-delivery-notes' ),
+						'default'   => 'center',
+						'options'   => self::field_options( 'alignOptions' ),
+					),
+					array(
+						'type'      => 'field',
 						'field'     => 'footerTextColor',
 						'schema'    => 'text',
 						'fieldType' => 'color',
@@ -2214,7 +2341,7 @@ class Template_Engine {
 			'watermark'                         => array(
 				'type'   => 'group',
 				'id'     => 'watermark',
-				'label'  => __( 'Show Watermark', 'woocommerce-delivery-notes' ),
+				'label'  => __( 'Watermark', 'woocommerce-delivery-notes' ),
 				'toggle' => 'showWatermark',
 				'items'  => array(
 					array(
@@ -2276,11 +2403,11 @@ class Template_Engine {
 						'default'   => 'single',
 						'options'   => array(
 							array(
-								'label' => 'Single',
+								'label' => __( 'Single', 'woocommerce-delivery-notes' ),
 								'value' => 'single',
 							),
 							array(
-								'label' => 'Repeat',
+								'label' => __( 'Repeat', 'woocommerce-delivery-notes' ),
 								'value' => 'repeat',
 							),
 						),
@@ -2317,7 +2444,7 @@ class Template_Engine {
 			'showProductCharges'                => array(
 				'type'      => 'group',
 				'id'        => 'showProductCharges',
-				'label'     => __( 'Show Product Table Charges', 'woocommerce-delivery-notes' ),
+				'label'     => __( 'Product Table Charges', 'woocommerce-delivery-notes' ),
 				'toggle'    => 'showProductCharges',
 				'condition' => 'displayPriceInProductDetailsTable',
 				'items'     => array(
@@ -2378,6 +2505,52 @@ class Template_Engine {
 						'default'   => 40,
 						'min'       => 20,
 						'max'       => 100,
+					),
+				),
+			),
+
+			/* Product Name Styling */
+			'productName'                       => array(
+				'type'  => 'group',
+				'id'    => 'productName',
+				'label' => __( 'Product Name', 'woocommerce-delivery-notes' ),
+				'items' => array(
+					array(
+						'type'      => 'field',
+						'field'     => 'productNameFontSize',
+						'schema'    => 'number',
+						'fieldType' => 'slider',
+						'label'     => __( 'Font Size', 'woocommerce-delivery-notes' ),
+						'default'   => 14,
+						'min'       => 8,
+						'max'       => 32,
+					),
+					array(
+						'type'      => 'field',
+						'field'     => 'productNameFontStyle',
+						'schema'    => 'string',
+						'fieldType' => 'select',
+						'label'     => __( 'Font Style', 'woocommerce-delivery-notes' ),
+						'default'   => 'normal',
+						'options'   => self::field_options( 'fontStyleOptions' ),
+					),
+					array(
+						'type'      => 'field',
+						'field'     => 'productNameTextColor',
+						'schema'    => 'string',
+						'fieldType' => 'color',
+						'label'     => __( 'Text Color', 'woocommerce-delivery-notes' ),
+						'default'   => '#333333',
+					),
+					array(
+						'type'      => 'field',
+						'field'     => 'productNamePadding',
+						'schema'    => 'number',
+						'fieldType' => 'slider',
+						'label'     => __( 'Padding', 'woocommerce-delivery-notes' ),
+						'default'   => 10,
+						'min'       => 0,
+						'max'       => 30,
 					),
 				),
 			),

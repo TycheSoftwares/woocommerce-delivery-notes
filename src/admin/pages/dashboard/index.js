@@ -1,4 +1,4 @@
-import { __ } from "@wordpress/i18n";
+import { __, sprintf } from "@wordpress/i18n";
 import {
     Card,
     CardHeader,
@@ -120,7 +120,12 @@ function Dashboard() {
 
                     <ProgressBar value={progress} max={100} className="wcdn-progress-bar" />
                     <p className="wcdn-progress-bar-text">
-                        {`${completedCount} of ${totalCount} steps completed`}
+                        {sprintf(
+                            /* translators: 1: completed steps, 2: total steps */
+                            __("%1$d of %2$d steps completed", TEXT_DOMAIN),
+                            completedCount,
+                            totalCount
+                        )}
                     </p>
                     <p>{leftSideBottomText}</p>
                 </CardBody>

@@ -59,6 +59,11 @@ class Migration {
 			$success = self::migrate_to_v71();
 		}
 
+		// Update email link text defaults and restore button labels saved as empty strings.
+		if ( $success && version_compare( (string) $from_version, '7.1.2', '<' ) ) {
+			$success = self::migrate_to_v712();
+		}
+
 		return $success;
 	}
 
@@ -249,6 +254,64 @@ class Migration {
 		}
 
 		update_option( 'wcdn_migration_7_1_0_completed', true );
+		return true;
+	}
+
+	/**
+	 * Run migration to v7.1.2.
+	 *
+	 * - Updates email link text defaults changed so the document name is
+	 *   appended at runtime. Only touches values still matching the old defaults.
+	 * - Restores button labels saved as empty strings in v7.0 (wp_parse_args
+	 *   cannot fill in defaults for keys that exist with an empty value).
+	 *   Only updates labels that are still empty — custom values are preserved.
+	 *
+	 * @return bool
+	 * @since 7.1.2
+	 */
+	public static function migrate_to_v712() {
+
+		if ( get_option( 'wcdn_migration_7_1_2_completed' ) ) {
+			return true;
+		}
+
+		$settings = get_option( Settings::OPTION_KEY, array() );
+		$defaults = Settings::default_settings();
+		$updated  = false;
+
+		if ( ( $settings['customerEmailText'] ?? '' ) === 'View and print your invoice' ) {
+			$settings['customerEmailText'] = 'View and print your';
+			$updated                       = true;
+		}
+
+		if ( ( $settings['adminEmailText'] ?? '' ) === 'Print order documents' ) {
+			$settings['adminEmailText'] = 'Print order';
+			$updated                    = true;
+		}
+
+		$label_keys = array(
+			'invoiceButtonLabel',
+			'deliveryNoteButtonLabel',
+			'receiptButtonLabel',
+			'creditNoteButtonLabel',
+			'packingSlipButtonLabel',
+		);
+
+		foreach ( $label_keys as $key ) {
+			if ( isset( $settings[ $key ] ) && '' === $settings[ $key ] && ! empty( $defaults[ $key ] ) ) {
+				$settings[ $key ] = $defaults[ $key ];
+				$updated          = true;
+			}
+		}
+
+		if ( $updated ) {
+			update_option( Settings::OPTION_KEY, $settings );
+		}
+
+		// Remove any orphaned cron events from the old file-deletion hook.
+		wp_clear_scheduled_hook( 'wcdn_delete_file' );
+
+		update_option( 'wcdn_migration_7_1_2_completed', true );
 		return true;
 	}
 
@@ -1751,6 +1814,7 @@ class Migration {
 		delete_option( 'wcdn_migration_7_completed' );
 		delete_option( 'wcdn_migration_7_0_2_completed' );
 		delete_option( 'wcdn_migration_7_1_0_completed' );
+		delete_option( 'wcdn_migration_7_1_2_completed' );
 
 		return true;
 	}

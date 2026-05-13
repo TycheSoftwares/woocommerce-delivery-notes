@@ -6,10 +6,12 @@ const postcss = require("postcss");
 const cssnano = require("cssnano");
 
 const PLUGIN_SLUG = "woocommerce-delivery-notes";
+const pluginHeader = fs.readFileSync(`${PLUGIN_SLUG}.php`, "utf8");
+const version = (pluginHeader.match(/\*\s+Version:\s+(\S+)/) ?? [])[1] ?? "0.0.0";
 const variant = process.argv.includes("--variant=wc") ? "wc" : "non-wc";
 const DEST_BASE = path.join("dist", variant === "wc" ? "wc-version" : "non-wc-version");
 const DEST = path.join(DEST_BASE, PLUGIN_SLUG);
-const ZIP_PATH = path.join(DEST_BASE, `${PLUGIN_SLUG}.zip`);
+const ZIP_PATH = path.join(DEST_BASE, `${PLUGIN_SLUG}.${version}.zip`);
 
 // Files/folders to copy into the distribution.
 const INCLUDE = [
@@ -25,6 +27,7 @@ const INCLUDE = [
     "README.md",
     "readme.txt",
     "changelog.txt",
+    "HOOKS.md",
 ];
 
 // Assets minified in the dist output (WC version skips the tracking JS).

@@ -1,5 +1,35 @@
 *** Print Invoice & Delivery Notes for WooCommerce ***
 
+= 2026-05-13 - version 7.1.2
+* Feature - Added integration with Deposits & Partial Payments for WooCommerce Pro (AWCDP). Documents now display a Deposit Amount row and a Future Payments row for deposit orders, reading the correct persisted meta values set at checkout.
+* Enhancement - Added a Page Setup section to all five document types with a Zoom slider (70–130%) and a PDF Zoom Mode option. Layout mode scales the entire document proportionally; Text mode scales only font sizes.
+* Enhancement - Added a Product Name styling section to all five document types for configuring font size, font style, text colour, and padding of product names in the items table.
+* Enhancement - Added font-weight and text-align settings for the Policies, Complimentary Close, and Footer sections.
+* Enhancement - Added Payment Method as a configurable section on the Delivery Note template. Previously it was only available on Invoice and Receipt.
+* Enhancement - Bulk Print now generates merged PDFs on demand via an async AJAX request rather than synchronously on page load, avoiding HTTP timeouts when printing large numbers of orders.
+* Enhancement - Added a loading overlay with a spinner when Auto Print Dialog is enabled. The overlay is dismissed immediately before the browser print dialog opens.
+* Enhancement - All document type templates (invoice, receipt, delivery note, packing slip, credit note) now resolve base.php through the theme override lookup, so copying base.php to your theme now correctly overrides the document layout.
+* Enhancement - Added a WooCommerce_Delivery_Notes global class alias so third-party plugins that detect the plugin via class_exists( 'WooCommerce_Delivery_Notes' ) continue to work after the v7 namespace refactor.
+* Enhancement - The HTML print preview now declares a @page size rule matching the configured PDF paper size, so the browser print preview page dimensions match the generated PDF.
+* Enhancement - Added wcdn_print_document_title filter to customise the print window browser tab title.
+* Enhancement - Added wcdn_pdf_zoom_mode filter to override the PDF zoom mode (layout or text) programmatically.
+* Enhancement - Added wcdn_order_info_fields filter to append extra rows to the order meta block in documents.
+* Enhancement - Added wcdn_order_items filter to sort or reorder line items in the document table. Each item exposes name, sku, price, quantity, total, product_id, and order_item_id.
+* Enhancement - Added thirteen new action hooks to base.php covering every document section: wcdn_before_logo, wcdn_before_title, wcdn_before_branding, wcdn_before_addresses, wcdn_before_totals, wcdn_before_pay_button, wcdn_before_notes, wcdn_before_policies, wcdn_after_policies, wcdn_before_complimentary_close, wcdn_after_complimentary_close, wcdn_before_footer, and wcdn_after_footer.
+* Enhancement - Added six new developer filters: wcdn_shop_data (store name/logo/address/phone/email), wcdn_document_data (footer/policies/close text), wcdn_billing_address, wcdn_shipping_address, wcdn_order_meta_fields (reorder or remove order meta rows), and wcdn_watermark_text.
+* Fix - PDF generation for email attachments was triggered unconditionally, which could exhaust server memory on sites using locale fonts (e.g. CJK scripts). Generation is now skipped entirely when no attachment target has the feature enabled.
+* Fix - The wcdn_pdf_paper_size filter's default value was hardcoded to A4. It now correctly uses the paper size configured under PDF Settings.
+* Fix - Generated PDF filenames now include a per-order cryptographic token, preventing enumeration of stored PDFs by order number alone.
+* Fix - An interval-based readyState polling loop in the admin print button handler could cause double-prints on slow connections. The polling loop has been removed.
+* Fix - Fatal error when generating a PDF for a refund email on orders containing downloadable products.
+* Tweak - Rewrote base.php with comprehensive inline documentation: a full @var block describing every variable available to template overrides ($shop, $order, $document, $settings, $items, $totals), standardised section comment blocks throughout the file, a hooks-at-a-glance reference listing all 26 actions and their signatures, and guidance on overriding the template or its CSS from a theme.
+* Tweak - PDF base font size increased from 9.5pt to 9.75pt for improved readability.
+* Tweak - Line height reduced from 1.3/1.4 to 1.2 in HTML and PDF stylesheets for a more compact document layout.
+* Tweak - Reduced spacing above and below horizontal rules, and reduced the top margin of the order totals table.
+
+2026-04-25 - version 7.1.1
+* Fix - Resolved a deployment issue that caused the admin interface to not load correctly after updating to 7.1.0.
+
 2026-04-25 - version 7.1.0
 * Enhancement - Added Show/Hide controls for Subtotal, Tax, and Shipping rows in the product table. Configurable per document type under Template Settings → Show Product Table Charges.
 * Enhancement - Added option to display Order Data beside or below the Billing/Shipping address section. Configurable under Invoice Settings → Template Order Data Position. Default matches the v6 layout (below).

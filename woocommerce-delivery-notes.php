@@ -11,7 +11,7 @@
  * Plugin Name:  Print Invoice & Delivery Notes for WooCommerce
  * Plugin URI:   https://www.tychesoftwares.com
  * Description:  This plugin lets you generate, customize, print, and email professional order documents directly from your WooCommerce store.
- * Version:      7.1.0
+ * Version:      7.1.2
  * Author:       Tyche Softwares
  * Author URI:   https://www.tychesoftwares.com
  * Text Domain:  woocommerce-delivery-notes
@@ -53,6 +53,12 @@ if ( ! defined( 'WCDN_FILE' ) ) {
 // Include the WCDN class.
 if ( ! class_exists( 'WooCommerce_Delivery_Notes', false ) ) {
 	include_once dirname( WCDN_FILE ) . '/includes/class-woocommerce-delivery-notes.php';
+
+	// Register a global alias so third-party plugins (e.g. ORDDD) that detect
+	// WCDN via class_exists('WooCommerce_Delivery_Notes') still work in v7+.
+	if ( ! class_exists( 'WooCommerce_Delivery_Notes', false ) ) {
+		class_alias( 'Tyche\WCDN\WooCommerce_Delivery_Notes', 'WooCommerce_Delivery_Notes' );
+	}
 }
 
 /**

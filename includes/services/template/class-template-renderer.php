@@ -13,6 +13,7 @@
 namespace Tyche\WCDN\Services;
 
 use Tyche\WCDN\Helpers\Utils;
+use Tyche\WCDN\Helpers\Settings;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -74,10 +75,12 @@ class Template_Renderer {
 		 * Filter template data.
 		 */
 		$data = apply_filters( 'wcdn_template_data', $data, $template, $type );
+		$data = self::prepare_template_data( $data );
 
 		ob_start();
 
-		self::extract_data( $data );
+		// phpcs:ignore WordPress.PHP.DontExtract.extract_extract -- template files rely on named variables, not $data['key'] access.
+		extract( $data );
 
 		include $template_file; // nosemgrep: audit.php.lang.security.file.inclusion-arg -- path resolved by locate(), which calls sanitize_file_name() and file_exists() before returning.
 
@@ -119,6 +122,37 @@ class Template_Renderer {
 		// Context stylesheet loaded last; corrects px → pt for PDF via dompdf.
 		$context_css = self::import_css( get_stylesheet_directory() . '/' . self::TEMPLATE_OVERRIDE_PATH . $subdir . 'style.css', self::TEMPLATE_PATH . $subdir . 'style.css' );
 
+		$zoom      = (int) ( $settings['documentZoom'] ?? 100 );
+		$zoom_mode = 'pdf' === $context
+			? apply_filters( 'wcdn_pdf_zoom_mode', $settings['documentZoomMode'] ?? 'layout' )
+			: 'layout';
+
+		if ( 'pdf' === $context ) {
+			// Apply user zoom plus a constant 0.9 base factor so the PDF matches
+			// the HTML viewport rendering at equivalent zoom levels.
+			$zoom_factor = ( $zoom / 100 ) * 0.9;
+
+			if ( 'text' === $zoom_mode ) {
+				// Text mode: only font-size values scale; layout/structure stays full-size.
+				$context_css = preg_replace_callback(
+					'/\bfont-size\s*:\s*(\d+(?:\.\d+)?)pt\b/',
+					function ( $m ) use ( $zoom_factor ) {
+						return 'font-size:' . round( (float) $m[1] * $zoom_factor, 4 ) . 'pt';
+					},
+					$context_css
+				);
+			} else {
+				// Layout mode: scale all pt values uniformly.
+				$context_css = preg_replace_callback(
+					'/(\d+(?:\.\d+)?)pt/',
+					function ( $m ) use ( $zoom_factor ) {
+						return round( (float) $m[1] * $zoom_factor, 4 ) . 'pt';
+					},
+					$context_css
+				);
+			}
+		}
+
 		/*
 		 * When a locale font is active, patch every font-family declaration in the
 		 * imported stylesheets directly. CSS cascade overrides fail inside dompdf
@@ -139,6 +173,19 @@ class Template_Renderer {
 		}
 
 		$css .= $base_css . $settings_css . $context_css;
+
+		if ( 'html' === $context ) {
+			$paper_size = Settings::get( 'pdfPaperSize' );
+			$paper      = ! empty( $paper_size ) ? $paper_size : 'A4';
+			$css       .= '@page{size:' . esc_attr( $paper ) . ' portrait;}';
+		}
+
+		if ( 'pdf' === $context && 'layout' === $zoom_mode ) {
+			// Layout mode only: distribute the reduction equally left and right so margins stay symmetric.
+			// Text mode leaves the document at full page width — only font sizes shrink.
+			$padding_each = max( 0, round( ( 1 - ( ( $zoom / 100 ) * 0.9 ) ) * 100 / 2 ) );
+			$css         .= '.wcdn-document{padding-left:' . $padding_each . '%;padding-right:' . $padding_each . '%;}';
+		}
 
 		$css = apply_filters( 'wcdn_template_css', $css, $context, $data );
 
@@ -176,21 +223,187 @@ class Template_Renderer {
 	}
 
 	/**
-	 * Extract data into local scope for template usage.
+	 * Prepare template data.
 	 *
-	 * @param array $data Template data.
-	 * @return void
-	 * @since 7.0
+	 * Computes derived display variables from raw order/settings data and merges
+	 * them back into the data array so templates receive ready-to-use values.
+	 * Raw keys are never removed so theme overrides relying on them keep working.
+	 *
+	 * @param array $data Raw template data.
+	 * @return array
+	 * @since 7.1.2
 	 */
-	protected static function extract_data( $data ) {
+	protected static function prepare_template_data( $data ) {
 
-		if ( ! is_array( $data ) ) {
-			return;
+		$order    = $data['order'] ?? array();
+		$settings = $data['settings'] ?? array();
+		$document = $data['document'] ?? array();
+		$template = $data['template'] ?? 'invoice';
+
+		$is_creditnote = 'creditnote' === $template;
+
+		$items = $is_creditnote
+			? ( $order['refund']['items'] ?? array() )
+			: ( $order['items'] ?? array() );
+
+		$totals = $is_creditnote
+			? array( 'total' => $order['refund']['total'] ?? 0 )
+			: ( $order['totals'] ?? array() );
+
+		$is_rtl              = $document['isRTL'] ?? false;
+		$order_meta_position = $settings['orderMetaPosition'] ?? 'columns';
+		$show_billing        = ! empty( $settings['showBillingAddress'] ) && ! empty( $order['billing'] );
+		$show_shipping       = ! empty( $settings['showShippingAddress'] ) && ! empty( $order['shipping'] );
+
+		$order_meta_fields = array(
+			array(
+				'show'  => ! empty( $settings['showInvoiceNumber'] ),
+				'label' => $settings['invoiceNumberText'] ?? __( 'Invoice No', 'woocommerce-delivery-notes' ),
+				'value' => $order['invoiceNumber'] ?? '',
+				'key'   => 'invoiceNumber',
+			),
+			array(
+				'show'  => ! empty( $settings['showDocumentDate'] ),
+				'label' => $settings['documentDateText'] ?? '',
+				'value' => $order['documentDate'] ?? '',
+				'key'   => 'documentDate',
+			),
+			array(
+				'show'  => ! empty( $settings['showOrderNumber'] ),
+				'label' => $settings['orderNumberText'] ?? __( 'Order No', 'woocommerce-delivery-notes' ),
+				'value' => $order['orderNumber'] ?? '',
+				'key'   => 'orderNumber',
+			),
+			array(
+				'show'  => ! empty( $settings['showOrderDate'] ),
+				'label' => $settings['orderDateText'] ?? __( 'Date', 'woocommerce-delivery-notes' ),
+				'value' => wcdn_format_date( $order['date'] ?? '', $settings['dateFormat'] ?? '' ),
+				'key'   => 'orderDate',
+			),
+			array(
+				'show'  => ! empty( $settings['showPaymentMethod'] ),
+				'label' => $settings['paymentMethodText'] ?? __( 'Payment Method', 'woocommerce-delivery-notes' ),
+				'value' => $order['paymentMethod'] ?? '',
+				'key'   => 'paymentMethod',
+			),
+			array(
+				'show'  => ! empty( $settings['showPaymentDate'] ),
+				'label' => $settings['paymentDateText'] ?? __( 'Payment Date', 'woocommerce-delivery-notes' ),
+				'value' => wcdn_format_date( $order['paymentDate'] ?? '', $settings['dateFormat'] ?? '' ),
+				'key'   => 'paymentDate',
+			),
+			array(
+				'show'  => ! empty( $settings['showShippingMethod'] ),
+				'label' => $settings['shippingMethodText'] ?? __( 'Shipping Method', 'woocommerce-delivery-notes' ),
+				'value' => $order['shippingMethod'] ?? '',
+				'key'   => 'shippingMethod',
+			),
+			array(
+				'show'  => ! empty( $settings['showRefundDate'] ),
+				'label' => $settings['refundDateText'] ?? __( 'Refund Date', 'woocommerce-delivery-notes' ),
+				'value' => wcdn_format_date( $order['refund']['date'] ?? '', $settings['dateFormat'] ?? '' ),
+				'key'   => 'refundDate',
+			),
+			array(
+				'show'  => ! empty( $settings['showRefundReason'] ),
+				'label' => $settings['refundReasonText'] ?? __( 'Refund Reason', 'woocommerce-delivery-notes' ),
+				'value' => $order['refund']['reason'] ?? '',
+				'key'   => 'refundReason',
+			),
+		);
+
+		// 'below' mode: phone and email become meta table rows.
+		if ( 'below' === $order_meta_position ) {
+			if ( ! empty( $settings['showBillingPhone'] ) && ! empty( $order['billing']['phone'] ) ) {
+				$order_meta_fields[] = array(
+					'show'  => true,
+					'label' => $settings['billingPhoneText'] ?? __( 'Phone', 'woocommerce-delivery-notes' ),
+					'value' => wcdn_format_phone_number( $order['billing']['phone'], $order['billing']['country'] ?? '' ),
+					'key'   => 'billingPhone',
+				);
+			}
+
+			if ( ! empty( $settings['showBillingEmail'] ) && ! empty( $order['billing']['email'] ) ) {
+				$order_meta_fields[] = array(
+					'show'  => true,
+					'label' => $settings['billingEmailText'] ?? __( 'Email', 'woocommerce-delivery-notes' ),
+					'value' => $order['billing']['email'],
+					'key'   => 'billingEmail',
+				);
+			}
 		}
 
-		foreach ( $data as $key => $value ) {
-			${$key} = $value;
+		// Extra fields injected via filter (e.g. Order Delivery Date plugin).
+		foreach ( $order['extra_fields'] ?? array() as $key => $field ) {
+			if ( empty( $field['value'] ) ) {
+				continue;
+			}
+			$order_meta_fields[] = array(
+				'show'  => true,
+				'label' => $field['label'] ?? $key,
+				'value' => $field['value'],
+				'key'   => sanitize_key( $key ),
+			);
 		}
+
+		/**
+		 * Filter the order meta fields shown in the document's order data block.
+		 *
+		 * Each field is an associative array: [ 'key', 'label', 'value', 'show' ].
+		 * Use this filter to remove, reorder, or modify existing rows, or to add
+		 * rows that need access to $order or $settings that wcdn_order_info_fields
+		 * does not expose.
+		 *
+		 * @param array  $order_meta_fields Meta field rows.
+		 * @param array  $order             Formatted order data array.
+		 * @param array  $settings          Per-template settings array.
+		 * @param string $template          Template key (e.g. 'invoice', 'receipt').
+		 * @since 7.1.2
+		 */
+		$order_meta_fields = apply_filters( 'wcdn_order_meta_fields', $order_meta_fields, $order, $settings, $template );
+
+		$has_order_meta = false;
+		foreach ( $order_meta_fields as $field ) {
+			if ( $field['show'] && ! empty( $field['value'] ) ) {
+				$has_order_meta = true;
+				break;
+			}
+		}
+
+		$col_count = 0;
+		if ( $show_billing ) {
+			++$col_count;
+		}
+		if ( $show_shipping ) {
+			++$col_count;
+		}
+		if ( $has_order_meta && 'columns' === $order_meta_position ) {
+			++$col_count;
+		}
+
+		$col_width = $col_count ? (int) floor( 100 / $col_count ) : 100;
+
+		$show_pay_now_button = ! empty( $settings['showPayNowButton'] )
+			&& ! empty( $totals['total'] )
+			&& ! empty( $order['payment_url'] )
+			&& in_array( $order['status'] ?? '', array( 'pending', 'failed' ), true );
+
+		return array_merge(
+			$data,
+			array(
+				'items'               => $items,
+				'totals'              => $totals,
+				'is_rtl'              => $is_rtl,
+				'show_billing'        => $show_billing,
+				'show_shipping'       => $show_shipping,
+				'order_meta_position' => $order_meta_position,
+				'order_meta_fields'   => $order_meta_fields,
+				'has_order_meta'      => $has_order_meta,
+				'col_width'           => $col_width,
+				'angle'               => $settings['watermarkAngle'] ?? -25,
+				'show_pay_now_button' => $show_pay_now_button,
+			)
+		);
 	}
 
 	/**
@@ -667,7 +880,7 @@ class Template_Renderer {
 	 */
 	public static function prefetch_locale_font() {
 		self::$locale_font_cache = null;
-		$info = self::get_locale_font_info();
+		$info                    = self::get_locale_font_info();
 		return ! empty( $info['path'] ) && file_exists( $info['path'] );
 	}
 
