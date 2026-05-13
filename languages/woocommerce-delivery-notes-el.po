@@ -3,1290 +3,2351 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Print Invoice & Delivery Notes for WooCommerce 7.1.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce-"
-"delivery-notes\n"
+"Report-Msgid-Bugs-To: "
+"https://wordpress.org/support/plugin/woocommerce-delivery-notes\n"
+"POT-Creation-Date: 2026-05-11T10:33:53+00:00\n"
+"PO-Revision-Date: 2026-04-24T19:53:22+00:00\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-24T19:53:22+00:00\n"
-"PO-Revision-Date: 2026-04-24T19:53:22+00:00\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: woocommerce-delivery-notes\n"
-"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. Plugin Name of the plugin
 #: woocommerce-delivery-notes.php
+#. Plugin Name of the plugin
 msgid "Print Invoice & Delivery Notes for WooCommerce"
-msgstr ""
+msgstr "Εκτύπωση τιμολογίου & σημειώσεων παράδοσης για το WooCommerce"
 
+#: woocommerce-delivery-notes.php
 #. Plugin URI of the plugin
 #. Author URI of the plugin
-#: woocommerce-delivery-notes.php
 msgid "https://www.tychesoftwares.com"
-msgstr ""
+msgstr "https://www.tychesoftwares.com"
 
-#. Description of the plugin
 #: woocommerce-delivery-notes.php
+#. Description of the plugin
 msgid ""
 "This plugin lets you generate, customize, print, and email professional "
 "order documents directly from your WooCommerce store."
 msgstr ""
+"Αυτό το πρόσθετο σας επιτρέπει να δημιουργείτε, να προσαρμόζετε, να "
+"εκτυπώνετε και να στέλνετε με email επαγγελματικά έγγραφα παραγγελιών "
+"απευθείας από το κατάστημα WooCommerce."
 
+#: woocommerce-delivery-notes.php build/admin.js:5523
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Footer.js:57 build/admin.js:5360
 #. Author of the plugin
-#: woocommerce-delivery-notes.php build/admin.js:1
-#: src/admin/components/Footer.js:57
 msgid "Tyche Softwares"
-msgstr ""
+msgstr "Λογισμικά Tyche"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:177
+#: dist/wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:150
 #: includes/admin/class-backend.php:177
 msgid "Order Printing"
-msgstr ""
+msgstr "Παραγγελία εκτύπωσης"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:211
+#: dist/wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:184
 #: includes/admin/class-backend.php:211
 msgid "Invoice number: "
-msgstr ""
+msgstr "Αριθμός τιμολογίου:"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:214
+#: dist/wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:187
 #: includes/admin/class-backend.php:214
 msgid "Invoice date: "
-msgstr ""
+msgstr "Ημερομηνία τιμολογίου:"
 
-#. translators: %1$d: number of documents, %2$s: document type label.
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:326
+#: dist/wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:299
 #: includes/admin/class-backend.php:326
+#. translators: %1$d: number of documents, %2$s: document type label.
 #, php-format
 msgid "Print %1$d %2$s"
-msgstr ""
+msgstr "Εκτύπωση %1$d %2$s"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:331
+#: dist/wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:304
 #: includes/admin/class-backend.php:331
 msgid "Are you sure you want to proceed?"
-msgstr ""
+msgstr "Είστε σίγουρος ότι θέλετε να προχωρήσετε;"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:336
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:257
+#: dist/wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:309
 #: includes/admin/class-backend.php:336
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:257
 msgid "Cancel"
-msgstr ""
+msgstr "Ακύρωση"
 
-#: includes/admin/class-backend.php:340 includes/api/class-settings.php:329
-#: includes/api/class-settings.php:330 includes/api/class-settings.php:349
-#: includes/frontend/class-frontend.php:688
-#: includes/helpers/class-utils.php:582
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:340
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:335
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:336
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:355
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:726
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:580
+#: dist/wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:313
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:315
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:316
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:335
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:726
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:580
+#: includes/admin/class-backend.php:340 includes/api/class-settings.php:335
+#: includes/api/class-settings.php:336 includes/api/class-settings.php:355
+#: includes/frontend/class-frontend.php:734
+#: includes/helpers/class-utils.php:580
 msgid "Print"
-msgstr ""
+msgstr "Εκτύπωση"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:369
+#: dist/wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:342
 #: includes/admin/class-backend.php:369
 msgid "Pop-up blocked. Please allow pop-ups and try again."
 msgstr ""
+"Αναδυόμενο παράθυρο μπλοκαρισμένο. Παρακαλούμε επιτρέψτε τα αναδυόμενα "
+"παράθυρα και δοκιμάστε ξανά."
 
-#: includes/admin/class-backend.php:452
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:445
+#: dist/wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:418
+#: includes/admin/class-backend.php:445
 msgid "Print now"
-msgstr ""
+msgstr "Εκτυπώστε τώρα"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:551
+#: dist/wc-version/woocommerce-delivery-notes/includes/admin/class-backend.php:464
+#: includes/admin/class-backend.php:551
 #. translators: 1: font display name, 2: settings page URL
-#: includes/admin/class-backend.php:558
 #, php-format
 msgid ""
 "<strong>Print Invoice & Delivery Notes:</strong> Your store language "
 "requires the <strong>%1$s</strong> font for correct PDF output. <a "
 "href=\"%2$s\">Upload it in Font Settings &rarr;</a>"
 msgstr ""
+"<strong>Εκτύπωση τιμολογίου και δελτίων παράδοσης:</strong> Η γλώσσα του "
+"καταστήματός σας απαιτεί τη γραμματοσειρά <strong>%1$s</strong> για σωστή "
+"έξοδο PDF. <a href=\"%2$s\">Φορτώστε το στις ρυθμίσεις γραμματοσειράς "
+"&rarr;</a>"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/admin/class-menu.php:40
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/admin/class-menu.php:41
+#: dist/wc-version/woocommerce-delivery-notes/includes/admin/class-menu.php:40
+#: dist/wc-version/woocommerce-delivery-notes/includes/admin/class-menu.php:41
 #: includes/admin/class-menu.php:40 includes/admin/class-menu.php:41
+#: build/admin.js:5557
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: dist/wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Header.js:9 build/admin.js:5378
 msgid "Print Invoices & Delivery Notes"
-msgstr ""
+msgstr "Εκτύπωση τιμολογίων & δελτίων παράδοσης"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/admin/class-notices.php:110
+#: dist/wc-version/woocommerce-delivery-notes/includes/admin/class-notices.php:110
 #: includes/admin/class-notices.php:110
 msgid "Action failed. Please refresh the page and retry."
-msgstr ""
+msgstr "Η δράση απέτυχε. Παρακαλώ ανανεώστε τη σελίδα και προσπαθήστε ξανά."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/admin/class-notices.php:114
+#: dist/wc-version/woocommerce-delivery-notes/includes/admin/class-notices.php:114
 #: includes/admin/class-notices.php:114
 msgid "You don't have the permission to hide the selected notice."
-msgstr ""
+msgstr "Δεν έχετε το δικαίωμα να αποκρύψετε την επιλεγμένη ειδοποίηση."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:93
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:93
 #: includes/api/class-fonts.php:93
 msgid "No valid font file provided."
-msgstr ""
+msgstr "Δεν παρέχεται έγκυρο αρχείο γραμματοσειράς."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:100
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:100
 #: includes/api/class-fonts.php:100
 msgid "Font file is too small. Please upload a complete font file."
 msgstr ""
+"Το αρχείο γραμματοσειράς είναι πολύ μικρό. Παρακαλούμε ανεβάστε ένα πλήρες "
+"αρχείο γραμματοσειράς."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:108
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:108
 #: includes/api/class-fonts.php:108
 msgid "Invalid font file. Please upload a TTF or OTF file."
-msgstr ""
+msgstr "Μη έγκυρο αρχείο γραμματοσειράς. Παρακαλούμε ανεβάστε ένα αρχείο TTF ή OTF."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:114
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:114
 #: includes/api/class-fonts.php:114
 msgid "No font is required for the current site language."
-msgstr ""
+msgstr "Δεν απαιτείται γραμματοσειρά για την τρέχουσα γλώσσα του ιστότοπου."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:136
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:136
 #: includes/api/class-fonts.php:136
 msgid "Failed to save the font file."
-msgstr ""
+msgstr "Απέτυχε η αποθήκευση του αρχείου γραμματοσειράς."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:144
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:144
 #: includes/api/class-fonts.php:144
 msgid "Font uploaded successfully."
-msgstr ""
+msgstr "Η γραμματοσειρά μεταφορτώθηκε με επιτυχία."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:170
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:170
 #: includes/api/class-fonts.php:170
 msgid "No font is configured for the current site language."
 msgstr ""
+"Δεν έχει ρυθμιστεί καμία γραμματοσειρά για την τρέχουσα γλώσσα της "
+"τοποθεσίας."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:193
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:193
 #: includes/api/class-fonts.php:193
 msgid "No font file found to delete."
-msgstr ""
+msgstr "Δεν βρέθηκε αρχείο γραμματοσειράς προς διαγραφή."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:201
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-fonts.php:201
 #: includes/api/class-fonts.php:201
 msgid "Font deleted successfully."
-msgstr ""
+msgstr "Η γραμματοσειρά διαγράφηκε με επιτυχία."
 
-#: includes/api/class-settings.php:184 includes/api/class-templates.php:962
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:187
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:961
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:187
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:961
+#: includes/api/class-settings.php:187 includes/api/class-templates.php:992
 msgid "Authentication has failed."
-msgstr ""
+msgstr "Ο έλεγχος ταυτότητας απέτυχε."
 
-#: includes/api/class-settings.php:195
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:198
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:198
+#: includes/api/class-settings.php:198
 msgid "No data received."
-msgstr ""
+msgstr "Δεν ελήφθησαν δεδομένα."
 
-#: includes/api/class-settings.php:207
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:210
+#: includes/api/class-settings.php:210
 msgid "Tracking data settings reset successfully."
-msgstr ""
+msgstr "Η επαναφορά των ρυθμίσεων δεδομένων παρακολούθησης έγινε με επιτυχία."
 
-#: includes/api/class-settings.php:215
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:218
+#: includes/api/class-settings.php:218
 msgid "Tracking data already reset."
-msgstr ""
+msgstr "Τα δεδομένα παρακολούθησης έχουν ήδη μηδενιστεί."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:244
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:224
+#: includes/api/class-settings.php:244
 #. translators: %d: minimum allowed invoice number.
-#: includes/api/class-settings.php:241
 #, php-format
 msgid "Next invoice number must be greater than or equal to %d."
-msgstr ""
+msgstr "Ο αριθμός του επόμενου τιμολογίου πρέπει να είναι μεγαλύτερος ή ίσος με %d."
 
-#: includes/api/class-settings.php:254
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:257
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:237
+#: includes/api/class-settings.php:257
 msgid "Year starting number must be greater than 0."
-msgstr ""
+msgstr "Ο αριθμός έναρξης του έτους πρέπει να είναι μεγαλύτερος από 0."
 
-#: includes/api/class-settings.php:296
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:299
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:279
+#: includes/api/class-settings.php:299
 msgid "Settings saved successfully."
-msgstr ""
+msgstr "Οι ρυθμίσεις αποθηκεύτηκαν με επιτυχία."
 
-#: includes/api/class-settings.php:320 templates/base.php:286
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:324
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:299
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:304
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:299
+#: includes/api/class-settings.php:324 templates/base.php:299
 msgid "Document"
-msgstr ""
+msgstr "Έγγραφο"
 
-#: includes/api/class-settings.php:324
-msgid "View and print your invoice"
-msgstr ""
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:330
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:310
+#: includes/api/class-settings.php:330
+msgid "View and print your"
+msgstr "Προβολή και εκτύπωση των"
 
-#: includes/api/class-settings.php:326
-msgid "Print order documents"
-msgstr ""
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:332
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:312
+#: includes/api/class-settings.php:332
+msgid "Print order"
+msgstr "Παραγγελία εκτύπωσης"
 
-#: includes/api/class-settings.php:331 includes/helpers/class-utils.php:408
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:337
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:409
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:317
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:409
+#: includes/api/class-settings.php:337 includes/helpers/class-utils.php:409
 msgid "Print Invoice"
-msgstr ""
+msgstr "Εκτύπωση τιμολογίου"
 
-#: includes/api/class-settings.php:332 includes/helpers/class-utils.php:423
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:338
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:424
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:318
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:424
+#: includes/api/class-settings.php:338 includes/helpers/class-utils.php:424
 msgid "Print Delivery Note"
-msgstr ""
+msgstr "Εκτύπωση Σημείωμα παράδοσης"
 
-#: includes/api/class-settings.php:333 includes/helpers/class-utils.php:438
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:339
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:439
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:319
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:439
+#: includes/api/class-settings.php:339 includes/helpers/class-utils.php:439
 msgid "Print Receipt"
-msgstr ""
+msgstr "Εκτύπωση απόδειξης"
 
-#: includes/api/class-settings.php:334 includes/helpers/class-utils.php:453
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:340
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:454
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:320
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:454
+#: includes/api/class-settings.php:340 includes/helpers/class-utils.php:454
 msgid "Print Credit Note"
-msgstr ""
+msgstr "Εκτύπωση πιστωτικού σημειώματος"
 
-#: includes/api/class-settings.php:335 includes/helpers/class-utils.php:468
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:341
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:469
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:321
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:469
+#: includes/api/class-settings.php:341 includes/helpers/class-utils.php:469
 msgid "Print Packing Slip"
-msgstr ""
+msgstr "Εκτύπωση δελτίου συσκευασίας"
 
-#: includes/api/class-settings.php:336
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:342
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-settings.php:322
+#: includes/api/class-settings.php:342
 msgid "invoice"
-msgstr ""
+msgstr "τιμολόγιο"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:119
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:119
 #: includes/api/class-templates.php:119
 msgid "Sample Product"
-msgstr ""
+msgstr "Δείγμα προϊόντος"
 
-#: includes/api/class-templates.php:362 includes/api/class-templates.php:1102
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:364
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:1101
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:364
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:1101
+#: includes/api/class-templates.php:364 includes/api/class-templates.php:1132
 msgid "Customer returned item"
-msgstr ""
+msgstr "Πελάτης επέστρεψε αντικείμενο"
 
-#: includes/api/class-templates.php:466
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:464
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:464
+#: includes/api/class-templates.php:464
 msgid "N/A"
-msgstr ""
+msgstr "N/A"
 
-#: includes/api/class-templates.php:809
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:808
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:808
+#: includes/api/class-templates.php:839
 msgid "Download"
-msgstr ""
+msgstr "Λήψη"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:810
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:810
+#: includes/api/class-templates.php:841
 #. translators: %s: number of files
-#: includes/api/class-templates.php:811
 #, php-format
 msgid "%s Files"
-msgstr ""
+msgstr "%s Αρχεία"
 
-#: includes/api/class-templates.php:975
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:974
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:974
+#: includes/api/class-templates.php:1005
 msgid "Invalid request payload."
-msgstr ""
+msgstr "Μη έγκυρο ωφέλιμο φορτίο αίτησης."
 
-#: includes/api/class-templates.php:994
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:993
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:993
+#: includes/api/class-templates.php:1024
 msgid "Invalid template type."
-msgstr ""
+msgstr "Μη έγκυρος τύπος προτύπου."
 
-#: includes/api/class-templates.php:1028
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:1027
+#: dist/wc-version/woocommerce-delivery-notes/includes/api/class-templates.php:1027
+#: includes/api/class-templates.php:1058
 msgid "Template saved successfully."
-msgstr ""
+msgstr "Το πρότυπο αποθηκεύτηκε με επιτυχία."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/class-woocommerce-delivery-notes.php:116
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/class-woocommerce-delivery-notes.php:125
+#: dist/wc-version/woocommerce-delivery-notes/includes/class-woocommerce-delivery-notes.php:116
+#: dist/wc-version/woocommerce-delivery-notes/includes/class-woocommerce-delivery-notes.php:125
 #: includes/class-woocommerce-delivery-notes.php:116
 #: includes/class-woocommerce-delivery-notes.php:125
 msgid "Not allowed."
-msgstr ""
+msgstr "Δεν επιτρέπεται."
 
-#. translators: 1. Plugin Name, 2. WordPress Version
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/class-woocommerce-delivery-notes.php:231
+#: dist/wc-version/woocommerce-delivery-notes/includes/class-woocommerce-delivery-notes.php:231
 #: includes/class-woocommerce-delivery-notes.php:231
+#. translators: 1. Plugin Name, 2. WordPress Version
 #, php-format
 msgid ""
 "You are using an outdated version of WordPress. %1$s requires WP version "
 "%2$s or higher."
 msgstr ""
+"Χρησιμοποιείτε μια ξεπερασμένη έκδοση του WordPress. Το %1$s απαιτεί την "
+"έκδοση WP %2$s ή νεότερη."
 
-#. translators: 1. Plugin Name, 2. PHP Version
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/class-woocommerce-delivery-notes.php:237
+#: dist/wc-version/woocommerce-delivery-notes/includes/class-woocommerce-delivery-notes.php:237
 #: includes/class-woocommerce-delivery-notes.php:237
+#. translators: 1. Plugin Name, 2. PHP Version
 #, php-format
 msgid ""
 "%1$s requires PHP version %2$s or above. Please update PHP to run this "
 "plugin."
 msgstr ""
+"Το %1$s απαιτεί έκδοση PHP %2$s ή μεγαλύτερη. Ενημερώστε την PHP για να "
+"τρέξει αυτό το πρόσθετο."
 
-#. translators: 1. Plugin Name, 2. WooCommerce Version
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/class-woocommerce-delivery-notes.php:243
+#: dist/wc-version/woocommerce-delivery-notes/includes/class-woocommerce-delivery-notes.php:243
 #: includes/class-woocommerce-delivery-notes.php:243
+#. translators: 1. Plugin Name, 2. WooCommerce Version
 #, php-format
 msgid "WooCommerce not found. %1$s requires WooCommerce v%2$s or higher."
 msgstr ""
+"Το WooCommerce δεν βρέθηκε. Το %1$s απαιτεί WooCommerce v%2$s ή νεότερη "
+"έκδοση."
 
-#. translators: 1. Plugin Name, 2. WooCommerce Version
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/class-woocommerce-delivery-notes.php:246
+#: dist/wc-version/woocommerce-delivery-notes/includes/class-woocommerce-delivery-notes.php:246
 #: includes/class-woocommerce-delivery-notes.php:246
+#. translators: 1. Plugin Name, 2. WooCommerce Version
 #, php-format
 msgid ""
 "You are using an outdated version of WooCommerce. %1$s requires WooCommerce "
 "v%2$s or higher."
 msgstr ""
+"Χρησιμοποιείτε μια ξεπερασμένη έκδοση του WooCommerce. Το %1$s απαιτεί "
+"WooCommerce v%2$s ή νεότερη έκδοση."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:176
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:176
 msgid "I only needed the plugin for a short period."
-msgstr ""
+msgstr "Χρειάστηκα το πρόσθετο μόνο για σύντομο χρονικό διάστημα."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:182
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:182
 msgid "I found a better plugin."
-msgstr ""
+msgstr "Βρήκα ένα καλύτερο πρόσθετο."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:184
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:184
 msgid "Please let us have the plugin's name so that we can make improvements"
 msgstr ""
+"Παρακαλούμε ενημερώστε μας για το όνομα του πρόσθετου ώστε να μπορέσουμε να "
+"κάνουμε βελτιώσεις."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:188
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:188
 msgid "The plugin is not working."
-msgstr ""
+msgstr "Το πρόσθετο δεν λειτουργεί."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:190
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:190
 msgid ""
 "Please share what was faulty with the plugin so that we may get the issue "
 "fixed."
 msgstr ""
+"Παρακαλούμε μοιραστείτε τι ήταν ελαττωματικό με το πρόσθετο, ώστε να "
+"μπορέσουμε να διορθώσουμε το πρόβλημα."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:194
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:194
 msgid "The plugin is causing issues on my site"
-msgstr ""
+msgstr "Το πρόσθετο προκαλεί προβλήματα στον ιστότοπό μου"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:196
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:196
-msgid ""
-"We’re sorry! Please tell us about the issues so that we can get them fixed."
+msgid "We’re sorry! Please tell us about the issues so that we can get them fixed."
 msgstr ""
+"Λυπούμαστε! Παρακαλούμε ενημερώστε μας για τα προβλήματα, ώστε να "
+"μπορέσουμε να τα διορθώσουμε."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:200
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:200
 msgid "Some features I need are not working as per my expectations"
 msgstr ""
+"Ορισμένες λειτουργίες που χρειάζομαι δεν λειτουργούν σύμφωνα με τις "
+"προσδοκίες μου"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:202
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:202
 msgid "Please tell us about these features."
-msgstr ""
+msgstr "Πείτε μας για αυτά τα χαρακτηριστικά."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:206
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:206
 msgid "The plugin is not compatible with another plugin/theme"
-msgstr ""
+msgstr "Το πρόσθετο δεν είναι συμβατό με άλλο πρόσθετο/θέμα"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:208
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:208
 msgid ""
 "We’re sorry! We would like you to tell us the plugin/theme so that we can "
 "work on the compatibility."
 msgstr ""
+"Λυπούμαστε! Θα θέλαμε να μας πείτε το πρόσθετο/θέμα, ώστε να μπορέσουμε να "
+"εργαστούμε για τη συμβατότητα."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:212
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:212
 msgid ""
 "I can't differentiate between Invoice, Delivery Notes & Receipt. The "
 "templates are the same."
 msgstr ""
+"Δεν μπορώ να κάνω διάκριση μεταξύ τιμολογίου, δελτίου αποστολής και "
+"απόδειξης παραλαβής. Τα πρότυπα είναι τα ίδια."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:218
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:218
 msgid "The invoice sent through mail can't be downloaded as PDF directly."
 msgstr ""
+"Το τιμολόγιο που αποστέλλεται μέσω ταχυδρομείου δεν μπορεί να μεταφορτωθεί "
+"απευθείας ως PDF."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:224
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:224
 msgid "This plugin is not useful to me."
-msgstr ""
+msgstr "Αυτό το πρόσθετο δεν μου είναι χρήσιμο."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:230
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:230
 msgid "Other"
-msgstr ""
+msgstr "Άλλα"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:244
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:244
 msgid "If you have a moment, please let us know why you are deactivating:"
-msgstr ""
+msgstr "Αν έχετε λίγο χρόνο, ενημερώστε μας για τον λόγο που απενεργοποιείτε:"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:255
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:255
 msgid "Skip & Deactivate"
-msgstr ""
+msgstr "Παράλειψη & απενεργοποίηση"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:256
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:256
 msgid "Submit & Deactivate"
-msgstr ""
+msgstr "Υποβολή & απενεργοποίηση"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:270
 #: includes/component/plugin-deactivation/class-tyche-plugin-deactivation.php:270
 msgid "Please select a reason for deactivation!"
-msgstr ""
+msgstr "Παρακαλούμε επιλέξτε έναν λόγο για την απενεργοποίηση!"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/component/plugin-tracking/class-tyche-plugin-tracking.php:262
+#: includes/component/plugin-tracking/class-tyche-plugin-tracking.php:264
 #. translators: 1. Plugin name, 2. URL to find out more about usage tracking
-#: includes/component/plugin-tracking/class-tyche-plugin-tracking.php:262
 #, php-format
 msgid ""
-"Want to help make %1$s even more awesome? Allow %1$s to collect non-"
-"sensitive diagnostic data and usage information and get 20%% off on your "
-"next purchase. <a href=\"%2$s\" target=\"_blank\">Find out more</a>."
+"Want to help make %1$s even more awesome? Allow %1$s to collect "
+"non-sensitive diagnostic data and usage information and get 20%% off on "
+"your next purchase. <a href=\"%2$s\" target=\"_blank\">Find out more</a>."
 msgstr ""
+"Θέλετε να βοηθήσετε να γίνει το %1$s ακόμα πιο φοβερό; Επιτρέψτε στην %1$s "
+"να συλλέγει μη ευαίσθητα διαγνωστικά δεδομένα και πληροφορίες χρήσης και "
+"κερδίστε 20%% έκπτωση στην επόμενη αγορά σας. <a href=\"%2$s\" "
+"target=\"_blank\">Μάθετε περισσότερα</a>."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/core/class-hooks.php:71
+#: dist/wc-version/woocommerce-delivery-notes/includes/core/class-hooks.php:71
 #: includes/core/class-hooks.php:71
 msgid "Go to the settings page"
-msgstr ""
+msgstr "Μεταβείτε στη σελίδα ρυθμίσεων"
 
-#: includes/core/class-hooks.php:72 build/admin.js:1
-#: src/admin/components/Header.js:23
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/core/class-hooks.php:72
+#: dist/wc-version/woocommerce-delivery-notes/includes/core/class-hooks.php:72
+#: includes/core/class-hooks.php:72 build/admin.js:5578
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: dist/wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Header.js:23 build/admin.js:5392
 msgid "Settings"
-msgstr ""
+msgstr "Ρυθμίσεις"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:328
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:825
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:328
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:825
 #: includes/frontend/class-frontend.php:327
+#: includes/frontend/class-frontend.php:841
 msgid "No orders provided."
-msgstr ""
+msgstr "Δεν παρέχονται εντολές."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:342
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:349
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:342
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:349
 #: includes/frontend/class-frontend.php:341
 #: includes/frontend/class-frontend.php:348
 msgid "Invalid order."
-msgstr ""
+msgstr "Μη έγκυρη σειρά."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:354
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:354
 #: includes/frontend/class-frontend.php:353
 msgid "Access denied."
-msgstr ""
+msgstr "Απαγορεύεται η πρόσβαση."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:360
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:360
 #: includes/frontend/class-frontend.php:359
 msgid "Access to this document is denied."
-msgstr ""
+msgstr "Η πρόσβαση σε αυτό το έγγραφο απαγορεύεται."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:377
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:377
 #: includes/frontend/class-frontend.php:376
 msgid "No valid documents found."
-msgstr ""
+msgstr "Δεν βρέθηκαν έγκυρα έγγραφα."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:480
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:480
 #: includes/frontend/class-frontend.php:479
 msgid ""
 "You need to be logged into your account to access this document. Please "
 "login first."
 msgstr ""
+"Πρέπει να συνδεθείτε στο λογαριασμό σας για να αποκτήσετε πρόσβαση σε αυτό "
+"το έγγραφο. Παρακαλώ συνδεθείτε πρώτα."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:482
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:482
 #: includes/frontend/class-frontend.php:481
 msgid "Proceed to Login"
-msgstr ""
+msgstr "Προχωρήστε στην είσοδο"
 
-#: includes/frontend/class-frontend.php:688
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:708
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:708
+#: includes/frontend/class-frontend.php:716
+msgid "Preparing document…"
+msgstr "Προετοιμασία εγγράφου..."
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:726
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:726
+#: includes/frontend/class-frontend.php:734
 msgid "Print All"
-msgstr ""
+msgstr "Εκτύπωση όλων"
 
-#: includes/frontend/class-frontend.php:693
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:731
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:741
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:744
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:731
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:741
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:744
+#: includes/frontend/class-frontend.php:739
+#: includes/frontend/class-frontend.php:747
+#: includes/frontend/class-frontend.php:749
 msgid "Download PDF"
-msgstr ""
+msgstr "Λήψη PDF"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:742
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:742
+#: includes/frontend/class-frontend.php:748
+msgid "Generating PDF…"
+msgstr "Δημιουργία PDF..."
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:773
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:779
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:773
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:779
+#: includes/frontend/class-frontend.php:785
+#: includes/frontend/class-frontend.php:793
+msgid "PDF generation failed."
+msgstr "Η δημιουργία PDF απέτυχε."
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:812
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:812
+#: includes/frontend/class-frontend.php:828
+msgid "Authentication failed."
+msgstr "Ο έλεγχος ταυτότητας απέτυχε."
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:819
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:819
+#: includes/frontend/class-frontend.php:835
+msgid "Invalid template."
+msgstr "Μη έγκυρο πρότυπο."
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:851
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:851
+#: includes/frontend/class-frontend.php:867
+msgid "No valid orders found."
+msgstr "Δεν βρέθηκαν έγκυρες παραγγελίες."
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:857
+#: dist/wc-version/woocommerce-delivery-notes/includes/frontend/class-frontend.php:857
+#: includes/frontend/class-frontend.php:873
+msgid ""
+"PDF generation failed. Please try with fewer orders or check your server "
+"memory limit."
+msgstr ""
+"Η δημιουργία PDF απέτυχε. Παρακαλώ δοκιμάστε με λιγότερες παραγγελίες ή "
+"ελέγξτε το όριο μνήμης του διακομιστή σας."
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/functions/template-functions.php:269
+#: dist/wc-version/woocommerce-delivery-notes/includes/functions/template-functions.php:269
 #: includes/functions/template-functions.php:269
 msgid "Refund"
-msgstr ""
+msgstr "Επιστροφή χρημάτων"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/functions/template-functions.php:281
+#: dist/wc-version/woocommerce-delivery-notes/includes/functions/template-functions.php:281
 #: includes/functions/template-functions.php:281
 msgid "Order Subtotal"
-msgstr ""
+msgstr "Υποσύνολο παραγγελίας"
 
-#: includes/helpers/class-utils.php:406 includes/helpers/class-utils.php:598
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:407
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:596
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:407
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:596
+#: includes/helpers/class-utils.php:407 includes/helpers/class-utils.php:596
 msgid "Invoice"
-msgstr ""
+msgstr "Τιμολόγιο"
 
-#: includes/helpers/class-utils.php:407
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:408
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:408
+#: includes/helpers/class-utils.php:408
 msgid "Invoices"
-msgstr ""
+msgstr "Τιμολόγια"
 
-#: includes/helpers/class-utils.php:409
-msgid "Print Invoices"
-msgstr ""
-
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:410
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:410
 #: includes/helpers/class-utils.php:410
-msgid "Invoice created."
-msgstr ""
+msgid "Print Invoices"
+msgstr "Εκτύπωση τιμολογίων"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:411
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:411
 #: includes/helpers/class-utils.php:411
-msgid "Invoices created."
-msgstr ""
+msgid "Invoice created."
+msgstr "Δημιουργία τιμολογίου."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:412
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:412
 #: includes/helpers/class-utils.php:412
+msgid "Invoices created."
+msgstr "Δημιουργία τιμολογίων."
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:413
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:413
+#: includes/helpers/class-utils.php:413
 msgid "Show \"Print Invoice\" button"
-msgstr ""
+msgstr "Εμφάνιση του κουμπιού \"Εκτύπωση τιμολογίου\""
 
-#: includes/helpers/class-utils.php:421 includes/helpers/class-utils.php:599
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:422
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:597
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:422
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:597
+#: includes/helpers/class-utils.php:422 includes/helpers/class-utils.php:597
 msgid "Delivery Note"
-msgstr ""
+msgstr "Σημείωση παράδοσης"
 
-#: includes/helpers/class-utils.php:422
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:423
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:423
+#: includes/helpers/class-utils.php:423
 msgid "Delivery Notes"
-msgstr ""
+msgstr "Σημειώσεις παράδοσης"
 
-#: includes/helpers/class-utils.php:424
-msgid "Print Delivery Notes"
-msgstr ""
-
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:425
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:425
 #: includes/helpers/class-utils.php:425
-msgid "Delivery Note created."
-msgstr ""
+msgid "Print Delivery Notes"
+msgstr "Εκτύπωση Σημειώσεις παράδοσης"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:426
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:426
 #: includes/helpers/class-utils.php:426
-msgid "Delivery Notes created."
-msgstr ""
+msgid "Delivery Note created."
+msgstr "Σημείωση παράδοσης δημιουργήθηκε."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:427
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:427
 #: includes/helpers/class-utils.php:427
+msgid "Delivery Notes created."
+msgstr "Σημειώσεις παράδοσης που δημιουργήθηκαν."
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:428
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:428
+#: includes/helpers/class-utils.php:428
 msgid "Show \"Print Delivery Note\" button"
-msgstr ""
+msgstr "Εμφάνιση του κουμπιού \"Εκτύπωση δελτίου παράδοσης\""
 
-#: includes/helpers/class-utils.php:436 includes/helpers/class-utils.php:600
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:437
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:598
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:437
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:598
+#: includes/helpers/class-utils.php:437 includes/helpers/class-utils.php:598
 msgid "Receipt"
-msgstr ""
+msgstr "Απόδειξη είσπραξης"
 
-#: includes/helpers/class-utils.php:437
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:438
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:438
+#: includes/helpers/class-utils.php:438
 msgid "Receipts"
-msgstr ""
+msgstr "Εισπράξεις"
 
-#: includes/helpers/class-utils.php:439
-msgid "Print Receipts"
-msgstr ""
-
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:440
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:440
 #: includes/helpers/class-utils.php:440
-msgid "Receipt created."
-msgstr ""
+msgid "Print Receipts"
+msgstr "Εκτύπωση αποδείξεων"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:441
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:441
 #: includes/helpers/class-utils.php:441
-msgid "Receipts created."
-msgstr ""
+msgid "Receipt created."
+msgstr "Δημιουργία απόδειξης."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:442
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:442
 #: includes/helpers/class-utils.php:442
+msgid "Receipts created."
+msgstr "Δημιουργία αποδείξεων."
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:443
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:443
+#: includes/helpers/class-utils.php:443
 msgid "Show \"Print Receipt\" button"
-msgstr ""
+msgstr "Εμφάνιση του κουμπιού \"Εκτύπωση απόδειξης\""
 
-#: includes/helpers/class-utils.php:451 includes/helpers/class-utils.php:601
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:452
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:599
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:452
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:599
+#: includes/helpers/class-utils.php:452 includes/helpers/class-utils.php:599
 msgid "Credit Note"
-msgstr ""
+msgstr "Πιστωτικό σημείωμα"
 
-#: includes/helpers/class-utils.php:452
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:453
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:453
+#: includes/helpers/class-utils.php:453
 msgid "Credit Notes"
-msgstr ""
+msgstr "Πιστωτικές σημειώσεις"
 
-#: includes/helpers/class-utils.php:454
-msgid "Print Credit Notes"
-msgstr ""
-
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:455
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:455
 #: includes/helpers/class-utils.php:455
-msgid "Credit Note created."
-msgstr ""
+msgid "Print Credit Notes"
+msgstr "Εκτύπωση πιστωτικών σημειώσεων"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:456
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:456
 #: includes/helpers/class-utils.php:456
-msgid "Credit Notes created."
-msgstr ""
+msgid "Credit Note created."
+msgstr "Δημιουργήθηκε πιστωτικό σημείωμα."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:457
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:457
 #: includes/helpers/class-utils.php:457
+msgid "Credit Notes created."
+msgstr "Δημιουργήθηκαν πιστωτικές σημειώσεις."
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:458
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:458
+#: includes/helpers/class-utils.php:458
 msgid "Show \"Credit Note\" button"
-msgstr ""
+msgstr "Εμφάνιση του κουμπιού \"Πιστωτικό σημείωμα\""
 
-#: includes/helpers/class-utils.php:466 includes/helpers/class-utils.php:602
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:467
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:600
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:467
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:600
+#: includes/helpers/class-utils.php:467 includes/helpers/class-utils.php:600
 msgid "Packing Slip"
-msgstr ""
+msgstr "Αποδεικτικό συσκευασίας"
 
-#: includes/helpers/class-utils.php:467
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:468
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:468
+#: includes/helpers/class-utils.php:468
 msgid "Packing Slips"
-msgstr ""
+msgstr "Δελτία συσκευασίας"
 
-#: includes/helpers/class-utils.php:469
-msgid "Print Packing Slips"
-msgstr ""
-
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:470
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:470
 #: includes/helpers/class-utils.php:470
-msgid "Packing Slip created."
-msgstr ""
+msgid "Print Packing Slips"
+msgstr "Εκτύπωση δελτίων συσκευασίας"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:471
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:471
 #: includes/helpers/class-utils.php:471
-msgid "Packing Slips created."
-msgstr ""
+msgid "Packing Slip created."
+msgstr "Δημιουργία δελτίου συσκευασίας."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:472
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:472
 #: includes/helpers/class-utils.php:472
-msgid "Show \"Print Packing Slip\" button"
-msgstr ""
+msgid "Packing Slips created."
+msgstr "Δημιουργία δελτίων συσκευασίας."
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:473
+#: dist/wc-version/woocommerce-delivery-notes/includes/helpers/class-utils.php:473
+#: includes/helpers/class-utils.php:473
+msgid "Show \"Print Packing Slip\" button"
+msgstr "Εμφάνιση του κουμπιού \"Print Packing Slip\""
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/integrations/class-emails.php:240
+#: dist/wc-version/woocommerce-delivery-notes/includes/integrations/class-emails.php:240
+#: includes/integrations/class-emails.php:240
 #. translators: 1. Order number, 2. Document type (e.g. Invoice)
-#: includes/integrations/class-emails.php:229
 #, php-format
 msgid "New Order #%1$s — %2$s Attached"
-msgstr ""
+msgstr "Νέα παραγγελία #%1$s - %2$s Attached"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/integrations/class-emails.php:250
+#: dist/wc-version/woocommerce-delivery-notes/includes/integrations/class-emails.php:250
+#: includes/integrations/class-emails.php:250
 #. translators: 1. Document type (e.g. Invoice), 2. Order number
-#: includes/integrations/class-emails.php:239
 #, php-format
 msgid ""
 "A new order has been placed. Please find the %1$s for Order #%2$s attached "
 "to this email."
 msgstr ""
+"Έγινε νέα παραγγελία. Παρακαλούμε βρείτε το %1$s για την παραγγελία #%2$s "
+"που επισυνάπτεται σε αυτό το email."
 
-#: includes/integrations/class-emails.php:395
-msgid "Print:"
-msgstr ""
-
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:92
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:92
 #: includes/services/template/class-template-engine.php:92
 msgid "Invoice Settings"
-msgstr ""
+msgstr "Ρυθμίσεις τιμολογίου"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:98
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:117
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:136
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:155
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:174
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:98
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:117
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:136
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:155
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:174
 #: includes/services/template/class-template-engine.php:98
 #: includes/services/template/class-template-engine.php:117
 #: includes/services/template/class-template-engine.php:136
 #: includes/services/template/class-template-engine.php:155
 #: includes/services/template/class-template-engine.php:174
 msgid "Template Settings"
-msgstr ""
+msgstr "Ρυθμίσεις προτύπου"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:111
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:111
 #: includes/services/template/class-template-engine.php:111
 msgid "Receipt Settings"
-msgstr ""
+msgstr "Ρυθμίσεις παραλαβής"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:130
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:130
 #: includes/services/template/class-template-engine.php:130
 msgid "Delivery Note Settings"
-msgstr ""
+msgstr "Ρυθμίσεις σημειώσεων παράδοσης"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:149
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:149
 #: includes/services/template/class-template-engine.php:149
 msgid "Packing Slip Settings"
-msgstr ""
+msgstr "Ρυθμίσεις ολίσθησης συσκευασίας"
 
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:168
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:168
 #: includes/services/template/class-template-engine.php:168
 msgid "Credit Note Settings"
-msgstr ""
+msgstr "Ρυθμίσεις πιστωτικών σημειωμάτων"
 
-#: includes/services/template/class-template-engine.php:558
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:564
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:564
+#: includes/services/template/class-template-engine.php:564
 msgid "Enable Invoice"
-msgstr ""
+msgstr "Ενεργοποίηση τιμολογίου"
 
-#: includes/services/template/class-template-engine.php:559
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:565
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:565
+#: includes/services/template/class-template-engine.php:565
 msgid "Enable Receipt"
-msgstr ""
+msgstr "Ενεργοποίηση παραλαβής"
 
-#: includes/services/template/class-template-engine.php:560
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:566
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:566
+#: includes/services/template/class-template-engine.php:566
 msgid "Enable Delivery Note"
-msgstr ""
+msgstr "Ενεργοποίηση σημείωσης παράδοσης"
 
-#: includes/services/template/class-template-engine.php:561
-msgid "Enable Packing Slip"
-msgstr ""
-
-#: includes/services/template/class-template-engine.php:562
-msgid "Enable Credit Note"
-msgstr ""
-
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:567
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:567
 #: includes/services/template/class-template-engine.php:567
+msgid "Enable Packing Slip"
+msgstr "Ενεργοποίηση δελτίου συσκευασίας"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:568
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:568
+#: includes/services/template/class-template-engine.php:568
+msgid "Enable Credit Note"
+msgstr "Ενεργοποίηση πιστωτικού σημειώματος"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:573
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:573
+#: includes/services/template/class-template-engine.php:573
 msgid ""
 "An invoice ia a detailed bill showing items purchased, taxes, shipping "
 "charges, and the total amount due."
 msgstr ""
+"Το τιμολόγιο είναι ένας λεπτομερής λογαριασμός που δείχνει τα είδη που "
+"αγοράστηκαν, τους φόρους, τα έξοδα αποστολής και το συνολικό οφειλόμενο "
+"ποσό."
 
-#: includes/services/template/class-template-engine.php:571
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:577
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:577
+#: includes/services/template/class-template-engine.php:577
 msgid ""
 "A receipt is used to issue a payment confirmation document showing items "
 "purchased and the amount paid."
 msgstr ""
+"Η απόδειξη χρησιμοποιείται για την έκδοση ενός εγγράφου επιβεβαίωσης "
+"πληρωμής που δείχνει τα είδη που αγοράστηκαν και το ποσό που καταβλήθηκε."
 
-#: includes/services/template/class-template-engine.php:575
-msgid ""
-"The delivery note template generates a document listing delivered items."
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:581
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:581
+#: includes/services/template/class-template-engine.php:581
+msgid "The delivery note template generates a document listing delivered items."
 msgstr ""
+"Το υπόδειγμα δελτίου παράδοσης παράγει ένα έγγραφο που περιλαμβάνει τα "
+"παραδοθέντα στοιχεία."
 
-#: includes/services/template/class-template-engine.php:579
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:585
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:585
+#: includes/services/template/class-template-engine.php:585
 msgid ""
 "The packing slip includes a document inside the package detailing the "
 "shipment contents for verification."
 msgstr ""
+"Το δελτίο συσκευασίας περιλαμβάνει ένα έγγραφο στο εσωτερικό της "
+"συσκευασίας που περιγράφει λεπτομερώς το περιεχόμενο της αποστολής για "
+"επαλήθευση."
 
-#: includes/services/template/class-template-engine.php:583
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:589
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:589
+#: includes/services/template/class-template-engine.php:589
 msgid ""
 "The credit note is a document created to refund or adjust a previously "
 "issued invoice."
 msgstr ""
+"Το πιστωτικό σημείωμα είναι ένα έγγραφο που δημιουργείται για την επιστροφή "
+"ή την προσαρμογή ενός τιμολογίου που έχει εκδοθεί προηγουμένως."
 
-#: includes/services/template/class-template-engine.php:595
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:601
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:601
+#: includes/services/template/class-template-engine.php:601
 msgid "Date Format"
-msgstr ""
+msgstr "Μορφή ημερομηνίας"
 
-#: includes/services/template/class-template-engine.php:633
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:639
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:639
+#: includes/services/template/class-template-engine.php:639
 msgid "PDF Filename"
-msgstr ""
+msgstr "Όνομα αρχείου PDF"
 
-#: includes/services/template/class-template-engine.php:634
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:640
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:640
+#: includes/services/template/class-template-engine.php:640
 msgid "Available placeholders: {order_number}, {order_date}, {customer_name}"
-msgstr ""
+msgstr "Διαθέσιμα εικονικά στοιχεία: {order_number}, {order_date}, {customer_name}"
 
-#: includes/services/template/class-template-engine.php:653
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:659
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:659
+#: includes/services/template/class-template-engine.php:659
 msgid "Attach PDF to customer emails"
-msgstr ""
+msgstr "Επισύναψη PDF σε email πελατών"
 
-#: includes/services/template/class-template-engine.php:663
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:669
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:669
+#: includes/services/template/class-template-engine.php:669
 msgid "Send the PDF as an attachment to all administrator email addresses."
 msgstr ""
+"Στείλτε το PDF ως συνημμένο σε όλες τις διευθύνσεις ηλεκτρονικού "
+"ταχυδρομείου του διαχειριστή."
 
-#: includes/services/template/class-template-engine.php:673
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:679
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:679
+#: includes/services/template/class-template-engine.php:679
 msgid "Attach PDF to custom email addresses"
-msgstr ""
+msgstr "Επισύναψη PDF σε προσαρμοσμένες διευθύνσεις email"
 
-#: includes/services/template/class-template-engine.php:683
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:689
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:689
+#: includes/services/template/class-template-engine.php:689
 msgid "Enter multiple email addresses separated by commas."
 msgstr ""
+"Εισάγετε πολλαπλές διευθύνσεις ηλεκτρονικού ταχυδρομείου χωρισμένες με "
+"κόμματα."
 
-#: includes/services/template/class-template-engine.php:696
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:702
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:702
+#: includes/services/template/class-template-engine.php:702
 msgid "Attach PDF to selected order status(es)"
-msgstr ""
+msgstr "Επισύναψη PDF σε επιλεγμένες καταστάσεις παραγγελίας"
 
-#: includes/services/template/class-template-engine.php:715
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:721
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:721
+#: includes/services/template/class-template-engine.php:721
 msgid "Start typing to select order statuses."
-msgstr ""
+msgstr "Αρχίστε να πληκτρολογείτε για να επιλέξετε καταστάσεις παραγγελίας."
 
-#: includes/services/template/class-template-engine.php:726
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:732
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:732
+#: includes/services/template/class-template-engine.php:732
 msgid "Attach PDF to selected WooCommerce Email(s)"
-msgstr ""
+msgstr "Επισύναψη PDF σε επιλεγμένα email του WooCommerce"
 
-#: includes/services/template/class-template-engine.php:739
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:745
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:745
+#: includes/services/template/class-template-engine.php:745
 msgid "Start typing to select WooCommerce email types."
 msgstr ""
+"Αρχίστε να πληκτρολογείτε για να επιλέξετε τους τύπους email του "
+"WooCommerce."
 
-#: includes/services/template/class-template-engine.php:749
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:755
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:755
+#: includes/services/template/class-template-engine.php:755
 msgid "Show Shop Logo"
-msgstr ""
+msgstr "Εμφάνιση λογότυπου καταστήματος"
 
-#: includes/services/template/class-template-engine.php:764
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:770
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:770
+#: includes/services/template/class-template-engine.php:770
 msgid "Scale"
-msgstr ""
+msgstr "Κλίμακα"
 
-#: includes/services/template/class-template-engine.php:774
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:780
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:780
+#: includes/services/template/class-template-engine.php:780
 msgid "Alignment"
-msgstr ""
+msgstr "Ευθυγράμμιση"
 
-#: includes/services/template/class-template-engine.php:785
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:791
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:791
+#: includes/services/template/class-template-engine.php:791
 msgid "Document Title"
-msgstr ""
+msgstr "Τίτλος εγγράφου"
 
-#: includes/services/template/class-template-engine.php:792
-#: includes/services/template/class-template-engine.php:2075
-msgid "Title"
-msgstr ""
-
-#: includes/services/template/class-template-engine.php:794
-msgid "INVOICE"
-msgstr ""
-
-#: includes/services/template/class-template-engine.php:795
-msgid "RECEIPT"
-msgstr ""
-
-#: includes/services/template/class-template-engine.php:796
-msgid "DELIVERY NOTE"
-msgstr ""
-
-#: includes/services/template/class-template-engine.php:797
-msgid "PACKING SLIP"
-msgstr ""
-
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:798
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2086
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:798
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2086
 #: includes/services/template/class-template-engine.php:798
+#: includes/services/template/class-template-engine.php:2086
+msgid "Title"
+msgstr "Τίτλος"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:800
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:800
+#: includes/services/template/class-template-engine.php:800
+msgid "INVOICE"
+msgstr "ΤΙΜΟΛΟΓΙΟ"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:801
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:801
+#: includes/services/template/class-template-engine.php:801
+msgid "RECEIPT"
+msgstr "ΑΠΟΔΕΙΞΗ"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:802
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:802
+#: includes/services/template/class-template-engine.php:802
+msgid "DELIVERY NOTE"
+msgstr "ΣΗΜΕΙΩΣΗ ΠΑΡΑΔΟΣΗΣ"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:803
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:803
+#: includes/services/template/class-template-engine.php:803
+msgid "PACKING SLIP"
+msgstr "ΣΦΡΑΓΙΔΑ ΣΥΣΚΕΥΑΣΙΑΣ"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:804
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:804
+#: includes/services/template/class-template-engine.php:804
 msgid "CREDIT NOTE"
-msgstr ""
+msgstr "ΠΙΣΤΩΤΙΚΟ ΣΗΜΕΙΩΜΑ"
 
-#: includes/services/template/class-template-engine.php:806
-#: includes/services/template/class-template-engine.php:859
-#: includes/services/template/class-template-engine.php:912
-#: includes/services/template/class-template-engine.php:973
-#: includes/services/template/class-template-engine.php:1054
-#: includes/services/template/class-template-engine.php:1135
-#: includes/services/template/class-template-engine.php:1196
-#: includes/services/template/class-template-engine.php:1261
-#: includes/services/template/class-template-engine.php:1326
-#: includes/services/template/class-template-engine.php:1389
-#: includes/services/template/class-template-engine.php:1489
-#: includes/services/template/class-template-engine.php:1562
-#: includes/services/template/class-template-engine.php:1623
-#: includes/services/template/class-template-engine.php:1684
-#: includes/services/template/class-template-engine.php:1745
-#: includes/services/template/class-template-engine.php:1806
-#: includes/services/template/class-template-engine.php:1867
-#: includes/services/template/class-template-engine.php:1928
-#: includes/services/template/class-template-engine.php:1989
-#: includes/services/template/class-template-engine.php:2083
-#: includes/services/template/class-template-engine.php:2127
-#: includes/services/template/class-template-engine.php:2162
-#: includes/services/template/class-template-engine.php:2197
-#: includes/services/template/class-template-engine.php:2243
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:812
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:865
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:918
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:979
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1060
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1141
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1202
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1267
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1332
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1395
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1495
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1568
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1629
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1690
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1756
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1817
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1878
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1939
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2000
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2094
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2138
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2191
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2244
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2308
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2461
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:812
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:865
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:918
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:979
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1060
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1141
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1202
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1267
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1332
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1395
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1495
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1568
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1629
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1690
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1756
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1817
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1878
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1939
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2000
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2094
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2138
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2191
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2244
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2308
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2461
+#: includes/services/template/class-template-engine.php:812
+#: includes/services/template/class-template-engine.php:865
+#: includes/services/template/class-template-engine.php:918
+#: includes/services/template/class-template-engine.php:979
+#: includes/services/template/class-template-engine.php:1060
+#: includes/services/template/class-template-engine.php:1141
+#: includes/services/template/class-template-engine.php:1202
+#: includes/services/template/class-template-engine.php:1267
+#: includes/services/template/class-template-engine.php:1332
+#: includes/services/template/class-template-engine.php:1395
+#: includes/services/template/class-template-engine.php:1495
+#: includes/services/template/class-template-engine.php:1568
+#: includes/services/template/class-template-engine.php:1629
+#: includes/services/template/class-template-engine.php:1690
+#: includes/services/template/class-template-engine.php:1756
+#: includes/services/template/class-template-engine.php:1817
+#: includes/services/template/class-template-engine.php:1878
+#: includes/services/template/class-template-engine.php:1939
+#: includes/services/template/class-template-engine.php:2000
+#: includes/services/template/class-template-engine.php:2094
+#: includes/services/template/class-template-engine.php:2138
+#: includes/services/template/class-template-engine.php:2191
+#: includes/services/template/class-template-engine.php:2244
+#: includes/services/template/class-template-engine.php:2308
+#: includes/services/template/class-template-engine.php:2461
 msgid "Font Size"
-msgstr ""
+msgstr "Μέγεθος γραμματοσειράς"
 
-#: includes/services/template/class-template-engine.php:816
-#: includes/services/template/class-template-engine.php:869
-#: includes/services/template/class-template-engine.php:922
-#: includes/services/template/class-template-engine.php:983
-#: includes/services/template/class-template-engine.php:1064
-#: includes/services/template/class-template-engine.php:1145
-#: includes/services/template/class-template-engine.php:1206
-#: includes/services/template/class-template-engine.php:1271
-#: includes/services/template/class-template-engine.php:1336
-#: includes/services/template/class-template-engine.php:1399
-#: includes/services/template/class-template-engine.php:1499
-#: includes/services/template/class-template-engine.php:1572
-#: includes/services/template/class-template-engine.php:1633
-#: includes/services/template/class-template-engine.php:1694
-#: includes/services/template/class-template-engine.php:1755
-#: includes/services/template/class-template-engine.php:1816
-#: includes/services/template/class-template-engine.php:1877
-#: includes/services/template/class-template-engine.php:1938
-#: includes/services/template/class-template-engine.php:1999
-#: includes/services/template/class-template-engine.php:2093
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:822
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:875
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:928
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:989
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1070
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1151
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1212
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1277
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1342
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1405
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1505
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1578
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1639
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1700
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1766
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1827
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1888
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1949
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2010
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2104
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2148
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2201
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2254
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2471
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:822
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:875
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:928
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:989
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1070
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1151
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1212
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1277
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1342
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1405
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1505
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1578
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1639
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1700
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1766
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1827
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1888
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1949
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2010
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2104
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2148
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2201
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2254
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2471
+#: includes/services/template/class-template-engine.php:822
+#: includes/services/template/class-template-engine.php:875
+#: includes/services/template/class-template-engine.php:928
+#: includes/services/template/class-template-engine.php:989
+#: includes/services/template/class-template-engine.php:1070
+#: includes/services/template/class-template-engine.php:1151
+#: includes/services/template/class-template-engine.php:1212
+#: includes/services/template/class-template-engine.php:1277
+#: includes/services/template/class-template-engine.php:1342
+#: includes/services/template/class-template-engine.php:1405
+#: includes/services/template/class-template-engine.php:1505
+#: includes/services/template/class-template-engine.php:1578
+#: includes/services/template/class-template-engine.php:1639
+#: includes/services/template/class-template-engine.php:1700
+#: includes/services/template/class-template-engine.php:1766
+#: includes/services/template/class-template-engine.php:1827
+#: includes/services/template/class-template-engine.php:1888
+#: includes/services/template/class-template-engine.php:1949
+#: includes/services/template/class-template-engine.php:2010
+#: includes/services/template/class-template-engine.php:2104
+#: includes/services/template/class-template-engine.php:2148
+#: includes/services/template/class-template-engine.php:2201
+#: includes/services/template/class-template-engine.php:2254
+#: includes/services/template/class-template-engine.php:2471
 msgid "Font Style"
-msgstr ""
+msgstr "Στυλ γραμματοσειράς"
 
-#: includes/services/template/class-template-engine.php:825
-#: includes/services/template/class-template-engine.php:878
-#: includes/services/template/class-template-engine.php:931
-#: includes/services/template/class-template-engine.php:992
-#: includes/services/template/class-template-engine.php:1073
-#: includes/services/template/class-template-engine.php:1154
-#: includes/services/template/class-template-engine.php:1215
-#: includes/services/template/class-template-engine.php:1280
-#: includes/services/template/class-template-engine.php:1345
-#: includes/services/template/class-template-engine.php:1408
-#: includes/services/template/class-template-engine.php:1508
-#: includes/services/template/class-template-engine.php:1581
-#: includes/services/template/class-template-engine.php:1642
-#: includes/services/template/class-template-engine.php:1703
-#: includes/services/template/class-template-engine.php:1764
-#: includes/services/template/class-template-engine.php:1825
-#: includes/services/template/class-template-engine.php:1886
-#: includes/services/template/class-template-engine.php:1947
-#: includes/services/template/class-template-engine.php:2008
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:831
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:884
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:937
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:998
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1079
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1160
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1221
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1286
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1351
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1414
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1514
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1587
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1648
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1709
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1775
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1836
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1897
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1958
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2019
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2157
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2210
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2263
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:831
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:884
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:937
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:998
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1079
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1160
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1221
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1286
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1351
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1414
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1514
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1587
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1648
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1709
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1775
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1836
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1897
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1958
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2019
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2157
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2210
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2263
+#: includes/services/template/class-template-engine.php:831
+#: includes/services/template/class-template-engine.php:884
+#: includes/services/template/class-template-engine.php:937
+#: includes/services/template/class-template-engine.php:998
+#: includes/services/template/class-template-engine.php:1079
+#: includes/services/template/class-template-engine.php:1160
+#: includes/services/template/class-template-engine.php:1221
+#: includes/services/template/class-template-engine.php:1286
+#: includes/services/template/class-template-engine.php:1351
+#: includes/services/template/class-template-engine.php:1414
+#: includes/services/template/class-template-engine.php:1514
+#: includes/services/template/class-template-engine.php:1587
+#: includes/services/template/class-template-engine.php:1648
+#: includes/services/template/class-template-engine.php:1709
+#: includes/services/template/class-template-engine.php:1775
+#: includes/services/template/class-template-engine.php:1836
+#: includes/services/template/class-template-engine.php:1897
+#: includes/services/template/class-template-engine.php:1958
+#: includes/services/template/class-template-engine.php:2019
+#: includes/services/template/class-template-engine.php:2157
+#: includes/services/template/class-template-engine.php:2210
+#: includes/services/template/class-template-engine.php:2263
 msgid "Text Align"
-msgstr ""
+msgstr "Ευθυγράμμιση κειμένου"
 
-#: includes/services/template/class-template-engine.php:834
-#: includes/services/template/class-template-engine.php:887
-#: includes/services/template/class-template-engine.php:940
-#: includes/services/template/class-template-engine.php:1001
-#: includes/services/template/class-template-engine.php:1082
-#: includes/services/template/class-template-engine.php:1163
-#: includes/services/template/class-template-engine.php:1228
-#: includes/services/template/class-template-engine.php:1293
-#: includes/services/template/class-template-engine.php:1354
-#: includes/services/template/class-template-engine.php:1417
-#: includes/services/template/class-template-engine.php:1517
-#: includes/services/template/class-template-engine.php:1590
-#: includes/services/template/class-template-engine.php:1651
-#: includes/services/template/class-template-engine.php:1712
-#: includes/services/template/class-template-engine.php:1773
-#: includes/services/template/class-template-engine.php:1834
-#: includes/services/template/class-template-engine.php:1895
-#: includes/services/template/class-template-engine.php:1956
-#: includes/services/template/class-template-engine.php:2017
-#: includes/services/template/class-template-engine.php:2102
-#: includes/services/template/class-template-engine.php:2137
-#: includes/services/template/class-template-engine.php:2172
-#: includes/services/template/class-template-engine.php:2207
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:840
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:893
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:946
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1007
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1088
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1169
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1234
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1299
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1360
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1423
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1523
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1596
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1657
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1718
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1784
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1845
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1906
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1967
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2028
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2113
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2166
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2219
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2272
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2480
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:840
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:893
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:946
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1007
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1088
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1169
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1234
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1299
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1360
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1423
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1523
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1596
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1657
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1718
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1784
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1845
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1906
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1967
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2028
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2113
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2166
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2219
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2272
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2480
+#: includes/services/template/class-template-engine.php:840
+#: includes/services/template/class-template-engine.php:893
+#: includes/services/template/class-template-engine.php:946
+#: includes/services/template/class-template-engine.php:1007
+#: includes/services/template/class-template-engine.php:1088
+#: includes/services/template/class-template-engine.php:1169
+#: includes/services/template/class-template-engine.php:1234
+#: includes/services/template/class-template-engine.php:1299
+#: includes/services/template/class-template-engine.php:1360
+#: includes/services/template/class-template-engine.php:1423
+#: includes/services/template/class-template-engine.php:1523
+#: includes/services/template/class-template-engine.php:1596
+#: includes/services/template/class-template-engine.php:1657
+#: includes/services/template/class-template-engine.php:1718
+#: includes/services/template/class-template-engine.php:1784
+#: includes/services/template/class-template-engine.php:1845
+#: includes/services/template/class-template-engine.php:1906
+#: includes/services/template/class-template-engine.php:1967
+#: includes/services/template/class-template-engine.php:2028
+#: includes/services/template/class-template-engine.php:2113
+#: includes/services/template/class-template-engine.php:2166
+#: includes/services/template/class-template-engine.php:2219
+#: includes/services/template/class-template-engine.php:2272
+#: includes/services/template/class-template-engine.php:2480
 msgid "Text Color"
-msgstr ""
+msgstr "Χρώμα κειμένου"
 
-#: includes/services/template/class-template-engine.php:844
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:850
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:850
+#: includes/services/template/class-template-engine.php:850
 msgid "Show Shop Name"
-msgstr ""
+msgstr "Εμφάνιση ονόματος καταστήματος"
 
-#: includes/services/template/class-template-engine.php:897
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:903
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:903
+#: includes/services/template/class-template-engine.php:903
 msgid "Show Shop Address"
-msgstr ""
+msgstr "Διεύθυνση καταστήματος επίδειξης"
 
-#: includes/services/template/class-template-engine.php:950
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:956
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:956
+#: includes/services/template/class-template-engine.php:956
 msgid "Show Shop Phone Number"
-msgstr ""
+msgstr "Εμφάνιση αριθμού τηλεφώνου καταστήματος"
 
-#: includes/services/template/class-template-engine.php:965
-#: includes/services/template/class-template-engine.php:1046
-#: includes/services/template/class-template-engine.php:1127
-#: includes/services/template/class-template-engine.php:1188
-#: includes/services/template/class-template-engine.php:1253
-#: includes/services/template/class-template-engine.php:1318
-#: includes/services/template/class-template-engine.php:1381
-#: includes/services/template/class-template-engine.php:1481
-#: includes/services/template/class-template-engine.php:1548
-#: includes/services/template/class-template-engine.php:1615
-#: includes/services/template/class-template-engine.php:1676
-#: includes/services/template/class-template-engine.php:1737
-#: includes/services/template/class-template-engine.php:1798
-#: includes/services/template/class-template-engine.php:1859
-#: includes/services/template/class-template-engine.php:1920
-#: includes/services/template/class-template-engine.php:1981
-#: includes/services/template/class-template-engine.php:2232
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:971
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1052
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1133
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1194
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1259
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1324
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1387
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1487
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1554
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1621
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1682
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1748
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1809
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1870
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1931
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1992
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2297
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:971
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1052
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1133
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1194
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1259
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1324
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1387
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1487
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1554
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1621
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1682
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1748
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1809
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1870
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1931
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1992
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2297
+#: includes/services/template/class-template-engine.php:971
+#: includes/services/template/class-template-engine.php:1052
+#: includes/services/template/class-template-engine.php:1133
+#: includes/services/template/class-template-engine.php:1194
+#: includes/services/template/class-template-engine.php:1259
+#: includes/services/template/class-template-engine.php:1324
+#: includes/services/template/class-template-engine.php:1387
+#: includes/services/template/class-template-engine.php:1487
+#: includes/services/template/class-template-engine.php:1554
+#: includes/services/template/class-template-engine.php:1621
+#: includes/services/template/class-template-engine.php:1682
+#: includes/services/template/class-template-engine.php:1748
+#: includes/services/template/class-template-engine.php:1809
+#: includes/services/template/class-template-engine.php:1870
+#: includes/services/template/class-template-engine.php:1931
+#: includes/services/template/class-template-engine.php:1992
+#: includes/services/template/class-template-engine.php:2297
 msgid "Text"
-msgstr ""
+msgstr "Κείμενο"
 
-#: includes/services/template/class-template-engine.php:966
-#: includes/services/template/class-template-engine.php:1189
-#: templates/base.php:111 templates/base.php:177
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:972
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1195
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:111
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:190
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:972
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1195
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:111
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:190
+#: includes/services/template/class-template-engine.php:972
+#: includes/services/template/class-template-engine.php:1195
+#: templates/base.php:111 templates/base.php:190
 msgid "Phone"
-msgstr ""
+msgstr "Τηλέφωνο"
 
-#: includes/services/template/class-template-engine.php:1009
-#: includes/services/template/class-template-engine.php:1090
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1015
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1096
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1015
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1096
+#: includes/services/template/class-template-engine.php:1015
+#: includes/services/template/class-template-engine.php:1096
 msgid "Margin Top"
-msgstr ""
+msgstr "Περιθώριο Top"
 
-#: includes/services/template/class-template-engine.php:1019
-#: includes/services/template/class-template-engine.php:1100
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1025
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1106
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1025
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1106
+#: includes/services/template/class-template-engine.php:1025
+#: includes/services/template/class-template-engine.php:1106
 msgid "Margin Bottom"
-msgstr ""
+msgstr "Περιθώριο Κάτω μέρος"
 
-#: includes/services/template/class-template-engine.php:1031
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1037
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1037
+#: includes/services/template/class-template-engine.php:1037
 msgid "Show Shop Email Address"
-msgstr ""
+msgstr "Εμφάνιση διεύθυνσης ηλεκτρονικού ταχυδρομείου καταστήματος"
 
-#: includes/services/template/class-template-engine.php:1047
-#: includes/services/template/class-template-engine.php:1254
-#: templates/base.php:120 templates/base.php:181
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1053
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1260
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:120
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:194
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:218
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1053
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1260
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:120
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:194
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:218
+#: includes/services/template/class-template-engine.php:1053
+#: includes/services/template/class-template-engine.php:1260
+#: templates/base.php:120 templates/base.php:194 templates/base.php:218
 msgid "Email"
-msgstr ""
+msgstr "Ηλεκτρονικό ταχυδρομείο"
 
-#: includes/services/template/class-template-engine.php:1112
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1118
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1118
+#: includes/services/template/class-template-engine.php:1118
 msgid "Show Billing Address"
-msgstr ""
+msgstr "Εμφάνιση διεύθυνσης χρέωσης"
 
-#: includes/services/template/class-template-engine.php:1128
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1134
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1134
+#: includes/services/template/class-template-engine.php:1134
 msgid "Billing Address"
-msgstr ""
+msgstr "Διεύθυνση χρέωσης"
 
-#: includes/services/template/class-template-engine.php:1173
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1179
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1179
+#: includes/services/template/class-template-engine.php:1179
 msgid "Show Billing Phone"
-msgstr ""
+msgstr "Εμφάνιση τηλεφώνου χρέωσης"
 
-#: includes/services/template/class-template-engine.php:1238
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1244
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1244
+#: includes/services/template/class-template-engine.php:1244
 msgid "Show Billing Email"
-msgstr ""
+msgstr "Εμφάνιση email χρέωσης"
 
-#: includes/services/template/class-template-engine.php:1303
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1309
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1309
+#: includes/services/template/class-template-engine.php:1309
 msgid "Show Shipping Address"
-msgstr ""
+msgstr "Εμφάνιση διεύθυνσης αποστολής"
 
-#: includes/services/template/class-template-engine.php:1319
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1325
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1325
+#: includes/services/template/class-template-engine.php:1325
 msgid "Shipping Address"
-msgstr ""
+msgstr "Διεύθυνση αποστολής"
 
-#: includes/services/template/class-template-engine.php:1364
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1370
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1370
+#: includes/services/template/class-template-engine.php:1370
 msgid "Show Order Data Header"
-msgstr ""
+msgstr "Εμφάνιση κεφαλίδας δεδομένων παραγγελίας"
 
-#: includes/services/template/class-template-engine.php:1382
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1388
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1388
+#: includes/services/template/class-template-engine.php:1388
 msgid "Order"
-msgstr ""
+msgstr "Παραγγελία"
 
-#: includes/services/template/class-template-engine.php:1425
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1431
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1431
+#: includes/services/template/class-template-engine.php:1431
 msgid "Spacing Top"
-msgstr ""
+msgstr "Απόσταση Κορυφή"
 
-#: includes/services/template/class-template-engine.php:1435
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1441
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1441
+#: includes/services/template/class-template-engine.php:1441
 msgid "Spacing Bottom"
-msgstr ""
+msgstr "Απόσταση Κάτω μέρος"
 
-#: includes/services/template/class-template-engine.php:1445
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1451
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1451
+#: includes/services/template/class-template-engine.php:1451
 msgid "Show Border"
-msgstr ""
+msgstr "Εμφάνιση συνόρων"
 
-#: includes/services/template/class-template-engine.php:1456
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1462
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1462
+#: includes/services/template/class-template-engine.php:1462
 msgid "Template Order Data Position"
-msgstr ""
+msgstr "Πρότυπο Δεδομένα παραγγελίας Θέση"
 
-#: includes/services/template/class-template-engine.php:1466
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1472
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1472
+#: includes/services/template/class-template-engine.php:1472
 msgid "Show Invoice Number"
-msgstr ""
+msgstr "Εμφάνιση αριθμού τιμολογίου"
 
-#: includes/services/template/class-template-engine.php:1482
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1488
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:52
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1488
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:52
+#: includes/services/template/class-template-engine.php:1488
 #: templates/base.php:52
 msgid "Invoice No"
-msgstr ""
+msgstr "Αριθμός τιμολογίου"
 
-#: includes/services/template/class-template-engine.php:1528
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1534
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1534
+#: includes/services/template/class-template-engine.php:1534
 msgid "Show Invoice Date"
-msgstr ""
+msgstr "Εμφάνιση ημερομηνίας τιμολογίου"
 
-#: includes/services/template/class-template-engine.php:1529
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1535
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1535
+#: includes/services/template/class-template-engine.php:1535
 msgid "Show Receipt Date"
-msgstr ""
+msgstr "Εμφάνιση ημερομηνίας παραλαβής"
 
-#: includes/services/template/class-template-engine.php:1530
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1536
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1536
+#: includes/services/template/class-template-engine.php:1536
 msgid "Show Delivery Note Date"
-msgstr ""
+msgstr "Εμφάνιση ημερομηνίας σημείωσης παράδοσης"
 
-#: includes/services/template/class-template-engine.php:1531
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1537
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1537
+#: includes/services/template/class-template-engine.php:1537
 msgid "Show Packing Slip Date"
-msgstr ""
+msgstr "Εμφάνιση δελτίου συσκευασίας Ημερομηνία"
 
-#: includes/services/template/class-template-engine.php:1532
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1538
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1538
+#: includes/services/template/class-template-engine.php:1538
 msgid "Show Credit Note Date"
-msgstr ""
+msgstr "Εμφάνιση ημερομηνίας πιστωτικού σημειώματος"
 
-#: includes/services/template/class-template-engine.php:1550
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1556
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1556
+#: includes/services/template/class-template-engine.php:1556
 msgid "Invoice Date"
-msgstr ""
+msgstr "Ημερομηνία τιμολογίου"
 
-#: includes/services/template/class-template-engine.php:1551
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1557
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1557
+#: includes/services/template/class-template-engine.php:1557
 msgid "Receipt Date"
-msgstr ""
+msgstr "Ημερομηνία παραλαβής"
 
-#: includes/services/template/class-template-engine.php:1552
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1558
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1558
+#: includes/services/template/class-template-engine.php:1558
 msgid "Delivery Note Date"
-msgstr ""
+msgstr "Σημείωμα παράδοσης Ημερομηνία"
 
-#: includes/services/template/class-template-engine.php:1553
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1559
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1559
+#: includes/services/template/class-template-engine.php:1559
 msgid "Packing Slip Date"
-msgstr ""
+msgstr "Αποδεικτικό συσκευασίας Ημερομηνία"
 
-#: includes/services/template/class-template-engine.php:1554
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1560
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1560
+#: includes/services/template/class-template-engine.php:1560
 msgid "Credit Note Date"
-msgstr ""
+msgstr "Πιστωτικό σημείωμα Ημερομηνία"
 
-#: includes/services/template/class-template-engine.php:1600
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1606
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1606
+#: includes/services/template/class-template-engine.php:1606
 msgid "Show Order Number"
-msgstr ""
+msgstr "Εμφάνιση αριθμού παραγγελίας"
 
-#: includes/services/template/class-template-engine.php:1616
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1622
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:64
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1622
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:64
+#: includes/services/template/class-template-engine.php:1622
 #: templates/base.php:64
 msgid "Order No"
-msgstr ""
+msgstr "Αριθμός παραγγελίας"
 
-#: includes/services/template/class-template-engine.php:1661
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1667
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1667
+#: includes/services/template/class-template-engine.php:1667
 msgid "Show Order Date"
-msgstr ""
+msgstr "Εμφάνιση ημερομηνίας παραγγελίας"
 
-#: includes/services/template/class-template-engine.php:1677
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1683
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:70
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1683
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:70
+#: includes/services/template/class-template-engine.php:1683
 #: templates/base.php:70
 msgid "Date"
-msgstr ""
+msgstr "Ημερομηνία"
 
-#: includes/services/template/class-template-engine.php:1722
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1728
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1728
+#: includes/services/template/class-template-engine.php:1728
 msgid "Show Payment Method"
-msgstr ""
+msgstr "Εμφάνιση μεθόδου πληρωμής"
 
-#: includes/services/template/class-template-engine.php:1738
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1749
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:76
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1749
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:76
+#: includes/services/template/class-template-engine.php:1749
 #: templates/base.php:76
 msgid "Payment Method"
-msgstr ""
+msgstr "Μέθοδος πληρωμής"
 
-#: includes/services/template/class-template-engine.php:1783
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1794
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1794
+#: includes/services/template/class-template-engine.php:1794
 msgid "Show Payment Date"
-msgstr ""
+msgstr "Εμφάνιση ημερομηνίας πληρωμής"
 
-#: includes/services/template/class-template-engine.php:1799
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1810
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:82
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1810
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:82
+#: includes/services/template/class-template-engine.php:1810
 #: templates/base.php:82
 msgid "Payment Date"
-msgstr ""
+msgstr "Ημερομηνία πληρωμής"
 
-#: includes/services/template/class-template-engine.php:1844
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1855
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1855
+#: includes/services/template/class-template-engine.php:1855
 msgid "Show Shipping Method"
-msgstr ""
+msgstr "Εμφάνιση μεθόδου αποστολής"
 
-#: includes/services/template/class-template-engine.php:1860
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1871
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:88
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1871
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:88
+#: includes/services/template/class-template-engine.php:1871
 #: templates/base.php:88
 msgid "Shipping Method"
-msgstr ""
+msgstr "Μέθοδος αποστολής"
 
-#: includes/services/template/class-template-engine.php:1905
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1916
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1916
+#: includes/services/template/class-template-engine.php:1916
 msgid "Show Refund Date"
-msgstr ""
+msgstr "Εμφάνιση ημερομηνίας επιστροφής χρημάτων"
 
-#: includes/services/template/class-template-engine.php:1921
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1932
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:94
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1932
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:94
+#: includes/services/template/class-template-engine.php:1932
 #: templates/base.php:94
 msgid "Refund Date"
-msgstr ""
+msgstr "Ημερομηνία επιστροφής χρημάτων"
 
-#: includes/services/template/class-template-engine.php:1966
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1977
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1977
+#: includes/services/template/class-template-engine.php:1977
 msgid "Show Refund Reason"
-msgstr ""
+msgstr "Εμφάνιση αιτίας επιστροφής χρημάτων"
 
-#: includes/services/template/class-template-engine.php:1982
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1993
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:100
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:1993
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:100
+#: includes/services/template/class-template-engine.php:1993
 #: templates/base.php:100
 msgid "Refund Reason"
-msgstr ""
+msgstr "Λόγος επιστροφής χρημάτων"
 
-#: includes/services/template/class-template-engine.php:2027
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2038
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2038
+#: includes/services/template/class-template-engine.php:2038
 msgid "Show Pay Now Button"
-msgstr ""
+msgstr "Εμφάνιση κουμπιού πληρωμής τώρα"
 
-#: includes/services/template/class-template-engine.php:2042
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2053
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2053
+#: includes/services/template/class-template-engine.php:2053
 msgid "Button Label"
-msgstr ""
+msgstr "Ετικέτα κουμπιού"
 
-#: includes/services/template/class-template-engine.php:2043
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2054
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2054
+#: includes/services/template/class-template-engine.php:2054
 msgid "Pay Now"
-msgstr ""
+msgstr "Πληρώστε τώρα"
 
-#: includes/services/template/class-template-engine.php:2050
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2061
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2061
+#: includes/services/template/class-template-engine.php:2061
 msgid "Button Color"
-msgstr ""
+msgstr "Χρώμα κουμπιού"
 
-#: includes/services/template/class-template-engine.php:2060
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2071
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2071
+#: includes/services/template/class-template-engine.php:2071
 msgid "Show Customer Note"
-msgstr ""
+msgstr "Εμφάνιση σημείωσης πελάτη"
 
-#: includes/services/template/class-template-engine.php:2076
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2087
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2087
+#: includes/services/template/class-template-engine.php:2087
 msgid "Customer Note"
-msgstr ""
+msgstr "Σημείωση πελάτη"
 
-#: includes/services/template/class-template-engine.php:2112
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2123
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2123
+#: includes/services/template/class-template-engine.php:2123
 msgid "Show Complimentary Close"
-msgstr ""
+msgstr "Εμφάνιση Δωρεάν κλείσιμο"
 
-#: includes/services/template/class-template-engine.php:2147
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2176
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2176
+#: includes/services/template/class-template-engine.php:2176
 msgid "Show Policies"
-msgstr ""
+msgstr "Εμφάνιση πολιτικών"
 
-#: includes/services/template/class-template-engine.php:2182
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2229
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2229
+#: includes/services/template/class-template-engine.php:2229
 msgid "Show Footer"
-msgstr ""
+msgstr "Εμφάνιση υποσέλιδου"
 
-#: includes/services/template/class-template-engine.php:2217
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2282
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2282
+#: includes/services/template/class-template-engine.php:2282
 msgid "Show Watermark"
-msgstr ""
+msgstr "Εμφάνιση υδατογραφήματος"
 
-#: includes/services/template/class-template-engine.php:2234
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2299
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2299
+#: includes/services/template/class-template-engine.php:2299
 msgid "PAID"
-msgstr ""
+msgstr "ΠΛΗΡΩΜΗ"
 
-#: includes/services/template/class-template-engine.php:2235
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2300
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2300
+#: includes/services/template/class-template-engine.php:2300
 msgid "REFUNDED"
-msgstr ""
+msgstr "ΕΠΙΣΤΡΟΦΗ"
 
-#: includes/services/template/class-template-engine.php:2253
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2318
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2318
+#: includes/services/template/class-template-engine.php:2318
 msgid "Opacity"
-msgstr ""
+msgstr "Αδιαφάνεια"
 
-#: includes/services/template/class-template-engine.php:2264
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2329
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2329
+#: includes/services/template/class-template-engine.php:2329
 msgid "Angle"
-msgstr ""
+msgstr "Γωνία"
 
-#: includes/services/template/class-template-engine.php:2275
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2340
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2340
+#: includes/services/template/class-template-engine.php:2340
 msgid "Layout"
-msgstr ""
+msgstr "Διάταξη"
 
-#: includes/services/template/class-template-engine.php:2293
-msgid "Color"
-msgstr ""
-
-#: includes/services/template/class-template-engine.php:2303
-msgid "Display Price in Product Details Table"
-msgstr ""
-
-#: includes/services/template/class-template-engine.php:2320
-msgid "Show Product Table Charges"
-msgstr ""
-
-#: includes/services/template/class-template-engine.php:2336
-msgid "Show Subtotal"
-msgstr ""
-
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2344
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2344
 #: includes/services/template/class-template-engine.php:2344
+msgid "Single"
+msgstr "Ενιαία"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2348
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2348
+#: includes/services/template/class-template-engine.php:2348
+msgid "Repeat"
+msgstr "Επανάληψη"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2358
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2358
+#: includes/services/template/class-template-engine.php:2358
+msgid "Color"
+msgstr "Χρώμα"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2368
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2368
+#: includes/services/template/class-template-engine.php:2368
+msgid "Display Price in Product Details Table"
+msgstr "Εμφάνιση τιμής στον πίνακα λεπτομερειών προϊόντος"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2385
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2385
+#: includes/services/template/class-template-engine.php:2385
+msgid "Show Product Table Charges"
+msgstr "Εμφάνιση χρεώσεων πίνακα προϊόντων"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2401
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2401
+#: includes/services/template/class-template-engine.php:2401
+msgid "Show Subtotal"
+msgstr "Εμφάνιση υποσυνόλου"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2409
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2409
+#: includes/services/template/class-template-engine.php:2409
 msgid "Show Tax"
-msgstr ""
+msgstr "Εμφάνιση φόρου"
 
-#: includes/services/template/class-template-engine.php:2352
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2417
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2417
+#: includes/services/template/class-template-engine.php:2417
 msgid "Show Shipping"
-msgstr ""
+msgstr "Εμφάνιση ναυτιλίας"
 
-#: includes/services/template/class-template-engine.php:2362
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2427
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2427
+#: includes/services/template/class-template-engine.php:2427
 msgid "Show Product Images"
-msgstr ""
+msgstr "Εμφάνιση εικόνων προϊόντων"
 
-#: includes/services/template/class-template-engine.php:2377
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2442
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2442
+#: includes/services/template/class-template-engine.php:2442
 msgid "Image Size"
-msgstr ""
+msgstr "Μέγεθος εικόνας"
 
-#: includes/services/template/class-template-engine.php:2389
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2454
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2454
+#: includes/services/template/class-template-engine.php:2454
+msgid "Product Name"
+msgstr "Όνομα προϊόντος"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2488
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2488
+#: includes/services/template/class-template-engine.php:2488
+msgid "Padding"
+msgstr "Padding"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2500
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2500
+#: includes/services/template/class-template-engine.php:2500
 msgid "Display Refund Items in Product Table"
-msgstr ""
+msgstr "Εμφάνιση στοιχείων επιστροφής χρημάτων στον πίνακα προϊόντων"
 
-#: includes/services/template/class-template-engine.php:2420
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2531
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2531
+#: includes/services/template/class-template-engine.php:2531
 msgid "Left"
-msgstr ""
+msgstr "Αριστερά"
 
-#: includes/services/template/class-template-engine.php:2424
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2535
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2535
+#: includes/services/template/class-template-engine.php:2535
 msgid "Center"
-msgstr ""
+msgstr "Κέντρο"
 
-#: includes/services/template/class-template-engine.php:2428
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2539
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2539
+#: includes/services/template/class-template-engine.php:2539
 msgid "Right"
-msgstr ""
+msgstr "Δεξιά"
 
-#: includes/services/template/class-template-engine.php:2434
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2545
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2545
+#: includes/services/template/class-template-engine.php:2545
 msgid "Normal"
-msgstr ""
+msgstr "Κανονικό"
 
-#: includes/services/template/class-template-engine.php:2438
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2549
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2549
+#: includes/services/template/class-template-engine.php:2549
 msgid "Bold"
-msgstr ""
+msgstr "Τολμηρό"
 
-#: includes/services/template/class-template-engine.php:2444
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2555
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2555
+#: includes/services/template/class-template-engine.php:2555
 msgid "Alongside Addresses"
-msgstr ""
+msgstr "Παράλληλα με τις διευθύνσεις"
 
-#: includes/services/template/class-template-engine.php:2448
+#: dist/non-wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2559
+#: dist/wc-version/woocommerce-delivery-notes/includes/services/template/class-template-engine.php:2559
+#: includes/services/template/class-template-engine.php:2559
 msgid "Below Addresses"
-msgstr ""
+msgstr "Κάτωθι διευθύνσεις"
 
-#: templates/base.php:400
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:413
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:413
+#: templates/base.php:413
 msgid "Refunded Item"
-msgstr ""
+msgstr "Στοιχείο που επιστρέφεται"
 
-#: templates/base.php:400
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:413
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:413
+#: templates/base.php:413
 msgid "Product"
-msgstr ""
+msgstr "Προϊόν"
 
-#: templates/base.php:403
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:416
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:416
+#: templates/base.php:416
 msgid "Price"
-msgstr ""
+msgstr "Τιμή"
 
-#: templates/base.php:406
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:419
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:419
+#: templates/base.php:419
 msgid "Quantity"
-msgstr ""
+msgstr "Ποσότητα"
 
-#: templates/base.php:409
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:422
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:422
+#: templates/base.php:422
 msgid "Total Refunded"
-msgstr ""
+msgstr "Σύνολο Refunded"
 
-#: templates/base.php:409
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:422
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:422
+#: templates/base.php:422
 msgid "Total"
-msgstr ""
+msgstr "Σύνολο"
 
-#: templates/base.php:435
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:448
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:448
+#: templates/base.php:448
 msgid ""
 "The wcdn_order_item_before hook argument order changed in v7.0. Update your "
 "callback to accept ( $item, $order, $template ) instead of ( $product, "
 "$order, $item )."
 msgstr ""
+"Η σειρά των επιχειρημάτων του γάντζου wcdn_order_item_before άλλαξε στην "
+"έκδοση v7.0. Ενημερώστε το callback σας ώστε να δέχεται ( $item, $order, "
+"$template ) αντί για ( $product, $order, $item )."
 
-#: templates/base.php:480
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:474
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:474
+#: templates/base.php:474
+msgid "SKU"
+msgstr "SKU"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:495
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:495
+#: templates/base.php:495
 msgid ""
 "The wcdn_order_item_after hook argument order changed in v7.0. Update your "
 "callback to accept ( $item, $order, $template ) instead of ( $product, "
 "$order, $item )."
 msgstr ""
+"Η σειρά των επιχειρημάτων του γάντζου wcdn_order_item_after άλλαξε στην "
+"έκδοση v7.0. Ενημερώστε το callback σας ώστε να δέχεται ( $item, $order, "
+"$template ) αντί για ( $product, $order, $item )."
 
-#: templates/base.php:530
-msgid "Subtotal:"
-msgstr ""
-
-#: templates/base.php:537
-msgid "Discount:"
-msgstr ""
-
-#: templates/base.php:552
-msgid "Tax:"
-msgstr ""
-
-#: templates/base.php:560
-msgid "Shipping:"
-msgstr ""
-
-#: templates/base.php:567
-msgid "Order Total:"
-msgstr ""
-
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:545
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:545
 #: templates/base.php:571
+msgid "Subtotal:"
+msgstr "Υποσύνολο:"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:552
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:552
+#: templates/base.php:578
+msgid "Discount:"
+msgstr "Έκπτωση:"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:567
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:567
+#: templates/base.php:593
+msgid "Tax:"
+msgstr "Φόρος:"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:575
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:575
+#: templates/base.php:601
+msgid "Shipping:"
+msgstr "Ναυτιλία:"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:582
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:582
+#: templates/base.php:617
+msgid "Order Total:"
+msgstr "Σύνολο παραγγελίας:"
+
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:586
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:586
+#: templates/base.php:621
 msgid "Refund:"
-msgstr ""
+msgstr "Επιστροφή χρημάτων:"
 
-#: templates/base.php:575 templates/base.php:585
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:590
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:600
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:590
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:600
+#: templates/base.php:625 templates/base.php:635
 msgid "Total:"
-msgstr ""
+msgstr "Σύνολο:"
 
-#: build/admin.js:1 src/admin/components/Header.js:17
-msgid "Dashboard"
-msgstr ""
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:607
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:621
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:607
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:621
+#: templates/base.php:642 templates/base.php:656
+msgid "Deposit:"
+msgstr "Κατάθεση:"
 
-#: build/admin.js:1 src/admin/components/Header.js:19
-msgid "Templates"
-msgstr ""
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:614
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:614
+#: templates/base.php:649
+msgid "Future Payments:"
+msgstr "Μελλοντικές πληρωμές:"
 
-#: build/admin.js:1 src/admin/components/Header.js:26
-msgid "FAQs"
-msgstr ""
+#: dist/non-wc-version/woocommerce-delivery-notes/templates/base.php:628
+#: dist/wc-version/woocommerce-delivery-notes/templates/base.php:628
+#: templates/base.php:663
+msgid "Future Payment:"
+msgstr "Μελλοντική πληρωμή:"
 
-#: build/admin.js:1 src/admin/components/Alert.js:22
+#: includes/integrations/class-coderockz-woo-delivery.php:60
+msgid "Delivery Date"
+msgstr "Ημερομηνία παράδοσης"
+
+#: includes/integrations/class-coderockz-woo-delivery.php:64
+msgid "Delivery Time"
+msgstr "Χρόνος παράδοσης"
+
+#: includes/integrations/class-coderockz-woo-delivery.php:68
+msgid "Pickup Date"
+msgstr "Ημερομηνία παραλαβής"
+
+#: includes/integrations/class-coderockz-woo-delivery.php:72
+msgid "Pickup Time"
+msgstr "Ώρα παραλαβής"
+
+#: templates/base.php:536 templates/base.php:540
+msgid "Total Qty:"
+msgstr "Συνολική ποσότητα:"
+
+#: templates/base.php:670
+msgid "Total Cart Amount:"
+msgstr "Συνολικό ποσό καλαθιού:"
+
+#: build/admin.js:5454
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Alert.js:22 build/admin.js:5294
 msgid "Dismiss"
-msgstr ""
+msgstr "Απορρίψτε το"
 
-#: build/admin.js:1 src/admin/components/Footer.js:20
+#: build/admin.js:5489
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Footer.js:20 build/admin.js:5323
 msgid "Get our"
-msgstr ""
+msgstr "Αποκτήστε το"
 
-#: build/admin.js:1 src/admin/components/Footer.js:22
+#: build/admin.js:5493
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Footer.js:22 build/admin.js:5325
 msgid "Order Delivery Date Pro"
-msgstr ""
+msgstr "Ημερομηνία παράδοσης παραγγελίας Pro"
 
-#: build/admin.js:1 src/admin/components/Footer.js:24
+#: build/admin.js:5494
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Footer.js:24 build/admin.js:5327
 msgid ""
 "plugin to schedule and manage your local deliveries and pickups in "
 "WooCommerce."
 msgstr ""
+"plugin για να προγραμματίσετε και να διαχειριστείτε τις τοπικές παραδόσεις "
+"και παραλαβές σας στο WooCommerce."
 
-#: build/admin.js:1 src/admin/components/Footer.js:31
+#: build/admin.js:5500
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Footer.js:31 build/admin.js:5334
 msgid "Open the support forum for this plugin on WordPress.org"
-msgstr ""
+msgstr "Ανοίξτε το φόρουμ υποστήριξης για αυτό το πρόσθετο στο WordPress.org"
 
-#: build/admin.js:1 src/admin/components/Footer.js:33
+#: build/admin.js:5501
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Footer.js:33 build/admin.js:5336
 msgid "Need Support?"
-msgstr ""
+msgstr "Χρειάζεστε υποστήριξη;"
 
-#: build/admin.js:1 src/admin/components/Footer.js:35
+#: build/admin.js:5502
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Footer.js:35 build/admin.js:5338
 msgid "We're always happy to help you."
-msgstr ""
+msgstr "Είμαστε πάντα ευτυχείς να σας βοηθήσουμε."
 
-#: build/admin.js:1 src/admin/components/Footer.js:38
+#: build/admin.js:5504
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Footer.js:38 build/admin.js:5341
 msgid "If this plugin helped you,"
-msgstr ""
+msgstr "Αν αυτό το πρόσθετο σας βοήθησε,"
 
-#: build/admin.js:1 src/admin/components/Footer.js:43
+#: build/admin.js:5508
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Footer.js:43 build/admin.js:5346
 msgid "Leave a review for this plugin on WordPress.org"
-msgstr ""
+msgstr "Αφήστε μια κριτική για αυτό το πρόσθετο στο WordPress.org"
 
-#: build/admin.js:1 src/admin/components/Footer.js:45
+#: build/admin.js:5509
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Footer.js:45 build/admin.js:5348
 msgid "please rate it"
-msgstr ""
+msgstr "παρακαλώ βαθμολογήστε το"
 
-#: build/admin.js:1 src/admin/components/Footer.js:50
+#: build/admin.js:5518
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Footer.js:50 build/admin.js:5353
 msgid "Check out more plugins by"
-msgstr ""
+msgstr "Ελέγξτε περισσότερα plugins από"
 
-#: build/admin.js:1 src/admin/components/Footer.js:55
+#: build/admin.js:5522
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Footer.js:55 build/admin.js:5358
 msgid "Visit Tyche Softwares to explore more WooCommerce plugins"
 msgstr ""
+"Επισκεφθείτε το Tyche Softwares για να εξερευνήσετε περισσότερα plugins "
+"WooCommerce"
+
+#: build/admin.js:5559
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: dist/wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Header.js:10 build/admin.js:5379
+msgid "Generate, customize, print, and email order documents."
+msgstr ""
+"Δημιουργία, προσαρμογή, εκτύπωση και αποστολή εγγράφων παραγγελίας μέσω "
+"ηλεκτρονικού ταχυδρομείου."
+
+#: build/admin.js:5572
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: dist/wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Header.js:17 build/admin.js:5386
+msgid "Dashboard"
+msgstr "Ταμπλό"
+
+#: build/admin.js:5575
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: dist/wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Header.js:19 build/admin.js:5388
+msgid "Templates"
+msgstr "Πρότυπα"
+
+#: build/admin.js:5581
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: dist/wc-version/woocommerce-delivery-notes/build/admin.js:1
+#: src/admin/components/Header.js:26 build/admin.js:5395
+msgid "FAQs"
+msgstr "Συχνές ερωτήσεις"
+
+#: build/admin.js:6121
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:2
+#: dist/wc-version/woocommerce-delivery-notes/build/admin.js:2
+#: src/admin/components/form/SaveBar.js:27 build/admin.js:5740
+#. translators: 1: completed steps, 2: total steps
+msgid "Save Settings"
+msgstr "Αποθήκευση ρυθμίσεων"
+
+#: build/admin.js:6579
+#: dist/non-wc-version/woocommerce-delivery-notes/build/admin.js:3
+#: dist/wc-version/woocommerce-delivery-notes/build/admin.js:3
+#: src/admin/components/template/SectionItem.js:46 build/admin.js:6056
+#. translators: %s: font family name
+msgid "Customize"
+msgstr "Προσαρμογή"
+
+#~ msgid "View and print your invoice"
+#~ msgstr "Προβολή και εκτύπωση του τιμολογίου σας"
+
+#~ msgid "Print order documents"
+#~ msgstr "Εκτύπωση εγγράφων παραγγελίας"
+
+#~ msgid "Print:"
+#~ msgstr "Εκτύπωση:"

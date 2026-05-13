@@ -275,7 +275,9 @@ class Templates extends \Tyche\WCDN\Api\Api {
 	 */
 	public static function format_order_data( $order, $is_sample = false, $template = 'invoice' ) {
 
-		add_filter( 'woocommerce_currency_symbol', array( __CLASS__, 'normalize_currency_symbol' ), 10, 2 );
+		if ( Settings::get( 'pdfUseCurrencyCode' ) ) {
+			add_filter( 'woocommerce_currency_symbol', array( __CLASS__, 'normalize_currency_symbol' ), 10, 2 );
+		}
 
 		if ( $is_sample ) {
 			$sample = array(
@@ -396,10 +398,6 @@ class Templates extends \Tyche\WCDN\Api\Api {
 
 			$product = apply_filters( 'wcdn_order_item_product', $item->get_product(), $item );
 
-			if ( ! $product ) {
-				continue;
-			}
-
 			$qty_refunded = $order->get_qty_refunded_for_item( $item_id );
 			$_qty         = max( 0, $item->get_quantity() + $qty_refunded );
 
@@ -407,7 +405,7 @@ class Templates extends \Tyche\WCDN\Api\Api {
 				continue;
 			}
 
-			$image_id   = $product->get_image_id();
+			$image_id   = $product ? $product->get_image_id() : false;
 			$image_file = $image_id ? get_attached_file( $image_id ) : false;
 
 			$items[] = array(
@@ -416,7 +414,7 @@ class Templates extends \Tyche\WCDN\Api\Api {
 				'price'         => self::format_order_item( 'price', $product, $order, $item ),
 				'quantity'      => self::format_order_item( 'quantity', $product, $order, $item ),
 				'total'         => self::format_order_item( 'total', $product, $order, $item ),
-				'product_id'    => $product->get_id(),
+				'product_id'    => $product ? $product->get_id() : 0,
 				'order_item_id' => $item_id,
 				'meta'          => self::format_order_item( 'meta', $product, $order, $item ),
 				'addon'         => self::format_order_item( 'addon', $product, $order, $item ),
@@ -424,6 +422,27 @@ class Templates extends \Tyche\WCDN\Api\Api {
 				'image_path'    => $image_file ? $image_file : '',
 			);
 		}
+
+		/**
+		 * Filter the order items array before it is passed to the document template.
+		 *
+		 * Each item is an associative array with keys: name, sku, price, quantity,
+		 * total, product_id, order_item_id, meta, addon, image_url, image_path.
+		 * Use this filter to sort, remove, or reorder items.
+		 *
+		 * Example — sort alphabetically by product name:
+		 *
+		 *   add_filter( 'wcdn_order_items', function( $items ) {
+		 *       usort( $items, fn( $a, $b ) => strcmp( $a['name'], $b['name'] ) );
+		 *       return $items;
+		 *   } );
+		 *
+		 * @param array     $items    Formatted order items.
+		 * @param \WC_Order $order    Order object.
+		 * @param string    $template Template key (e.g. 'invoice', 'receipt').
+		 * @since 7.1.2
+		 */
+		$items = apply_filters( 'wcdn_order_items', $items, $order, $template );
 
 		$billing  = $order->get_address( 'billing' );
 		$shipping = $order->get_address( 'shipping' );
@@ -495,6 +514,7 @@ class Templates extends \Tyche\WCDN\Api\Api {
 			'totals'         => self::format_order_totals( $order, $template ),
 			'refund'         => self::generate_refund_preview( $order, $items ),
 			'status'         => $order->get_status(),
+			'extra_fields'   => apply_filters( 'wcdn_order_info_fields', array(), $order ),
 		);
 
 		remove_filter( 'woocommerce_currency_symbol', array( __CLASS__, 'normalize_currency_symbol' ), 10 );
@@ -529,6 +549,24 @@ class Templates extends \Tyche\WCDN\Api\Api {
 
 		if ( $order->get_discount_total() > 0 ) {
 			$totals['discount'] = wc_price( -$order->get_discount_total(), array( 'currency' => $currency ) );
+		}
+
+		$fee_items = $order->get_fees();
+		if ( ! empty( $fee_items ) ) {
+			$fee_lines = array();
+			foreach ( $fee_items as $fee ) {
+				$fee_total = (float) $fee->get_total();
+				if ( 0.0 === $fee_total ) {
+					continue;
+				}
+				$fee_lines[] = array(
+					'label' => $fee->get_name(),
+					'value' => wc_price( $fee_total, array( 'currency' => $currency ) ),
+				);
+			}
+			if ( ! empty( $fee_lines ) ) {
+				$totals['fee_lines'] = $fee_lines;
+			}
 		}
 
 		// Tax rows — only when WC taxes are enabled and the order has a non-zero tax amount.
@@ -750,12 +788,14 @@ class Templates extends \Tyche\WCDN\Api\Api {
 		/**
 		 * Extra Product Options (TM EPO / _tmcartepo_data).
 		 */
-		$epo_data = $item->get_meta( '_tmcartepo_data', true );
+		$epo_data     = $item->get_meta( '_tmcartepo_data', true );
+		$has_epo_data = false;
 
 		if ( ! empty( $epo_data ) && is_array( $epo_data ) ) {
 			foreach ( $epo_data as $epo ) {
 				if ( ! empty( $epo['name'] ) && isset( $epo['value'] ) ) {
-					$meta[] = array(
+					$has_epo_data = true;
+					$meta[]       = array(
 						'label' => $epo['name'],
 						'value' => wp_strip_all_tags( $epo['value'] ),
 					);
@@ -774,8 +814,19 @@ class Templates extends \Tyche\WCDN\Api\Api {
 
 		/**
 		 * Variation attributes and remaining visible meta.
+		 *
+		 * EPO hooks woocommerce_order_item_get_formatted_meta_data to inject the same
+		 * fields we already read from _tmcartepo_data. Temporarily toggle its own
+		 * wc_epo_no_order_get_items escape hatch so it skips that injection and we
+		 * don't render EPO options twice.
 		 */
+		if ( $has_epo_data ) {
+			add_filter( 'wc_epo_no_order_get_items', '__return_true' );
+		}
 		$item_meta = apply_filters( 'wcdn_product_meta_data', $item->get_formatted_meta_data( '_' ), $item );
+		if ( $has_epo_data ) {
+			remove_filter( 'wc_epo_no_order_get_items', '__return_true' );
+		}
 
 		if ( $item_meta ) {
 			foreach ( $item_meta as $meta_field ) {
@@ -803,12 +854,23 @@ class Templates extends \Tyche\WCDN\Api\Api {
 
 		/**
 		 * Downloadable file count.
+		 *
+		 * Skip when the item belongs to a WC_Order_Refund: WC's get_item_downloads()
+		 * calls $item->get_order()->is_download_permitted() internally, and
+		 * WC_Order_Refund does not implement that method (fatal error on refund emails).
 		 */
-		if ( $product && $product->exists() && $product->is_downloadable() && $order->is_download_permitted() ) {
+		$item_order = $item->get_order();
+		if (
+			$product &&
+			$product->exists() &&
+			$product->is_downloadable() &&
+			! ( $item_order instanceof \WC_Order_Refund ) &&
+			$order->is_download_permitted()
+		) {
 			$meta[] = array(
 				'label' => __( 'Download', 'woocommerce-delivery-notes' ),
 				/* translators: %s: number of files */
-				'value' => sprintf( __( '%s Files', 'woocommerce-delivery-notes' ), count( $item->get_item_downloads() ) ),
+				'value' => sprintf( __( '%s Files', 'woocommerce-delivery-notes' ), count( (array) $item->get_item_downloads() ) ),
 			);
 		}
 
@@ -933,9 +995,10 @@ class Templates extends \Tyche\WCDN\Api\Api {
 		return self::response(
 			'success',
 			array(
-				'templates' => $templates,
-				'config'    => $config,
-				'preview'   => $preview,
+				'templates'    => $templates,
+				'config'       => $config,
+				'preview'      => $preview,
+				'pdfPaperSize' => Settings::get( 'pdfPaperSize' ),
 			)
 		);
 	}
@@ -1019,17 +1082,61 @@ class Templates extends \Tyche\WCDN\Api\Api {
 			$defaults
 		);
 
+		/*
+		* Copy Page Setup settings to all other templates when requested.
+		*/
+		$apply_to_all = ! empty( $templates[ $template_key ]['applyZoomToAll'] );
+
+		if ( $apply_to_all ) {
+			// Collect all fields in the Page Setup (documentZoom) group dynamically
+			// so that any future additions to the group are automatically included.
+			$zoom_fields = array();
+			foreach ( $structure['sections'] ?? array() as $section ) {
+				foreach ( $section['items'] ?? array() as $group ) {
+					if ( isset( $group['id'] ) && 'documentZoom' === $group['id'] ) {
+						foreach ( $group['items'] ?? array() as $field ) {
+							if ( isset( $field['field'] ) && 'applyZoomToAll' !== $field['field'] ) {
+								$zoom_fields[] = $field['field'];
+							}
+						}
+						break 2;
+					}
+				}
+			}
+
+			foreach ( Template_Engine::get_template_keys() as $other_key ) {
+				if ( $other_key === $template_key ) {
+					continue;
+				}
+
+				$other_structure = Template_Engine::get_structure( $other_key );
+				$other_defaults  = Template_Engine::build_defaults( $other_key, $other_structure );
+				$other_schema    = Template_Engine::build_schema( $other_structure );
+				$other_data      = isset( $templates[ $other_key ] ) ? $templates[ $other_key ] : $other_defaults;
+
+				foreach ( $zoom_fields as $zoom_field ) {
+					$other_data[ $zoom_field ] = $templates[ $template_key ][ $zoom_field ];
+				}
+
+				$templates[ $other_key ] = self::sanitize( $other_data, $other_schema, $other_defaults );
+			}
+
+			// Reset the checkbox on the saved template too — it's a one-shot action.
+			$templates[ $template_key ]['applyZoomToAll'] = false;
+		}
+
 		update_option( self::OPTION_KEY, $templates );
 
-		return self::response(
-			'success',
-			array(
-				'message'   =>
-				__( 'Template saved successfully.', 'woocommerce-delivery-notes' ),
-				'templates' =>
-				$templates[ $template_key ],
-			)
+		$response_data = array(
+			'message'  => __( 'Template saved successfully.', 'woocommerce-delivery-notes' ),
+			'template' => $templates[ $template_key ],
 		);
+
+		if ( $apply_to_all ) {
+			$response_data['allTemplates'] = $templates;
+		}
+
+		return self::response( 'success', $response_data );
 	}
 
 	/**

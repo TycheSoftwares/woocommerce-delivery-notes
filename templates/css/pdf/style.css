@@ -16,13 +16,13 @@
 body {
     background: #ffffff;
     margin: 0;
-    font-size: 9.5pt;
-    line-height: 1.4;
+    font-size: 9.75pt;
+    line-height: 1.2;
     font-family: Inter, DejaVuSans, sans-serif;
 }
 
 html {
-    font-size: 9.5pt;
+    font-size: 9.75pt;
 }
 
 h1 {
@@ -37,8 +37,8 @@ body,
 td,
 th {
     font-family: Inter, DejaVuSans, sans-serif;
-    font-size: 9.5pt;
-    line-height: 1.4;
+    font-size: 9.75pt;
+    line-height: 1.2;
 }
 
 .wcdn-document {
@@ -105,10 +105,6 @@ th {
     padding-left: 0;
 }
 
-.wcdn-order-meta-below {
-    margin-top: 6pt;
-}
-
 .wcdn-order-meta-below td {
     padding: 3pt 0;
 }
@@ -118,7 +114,7 @@ th {
     padding-right: 6pt;
 }
 
-.wcdn-order-meta-below tr + tr td {
+.wcdn-order-meta-below tr+tr td {
     border-top: 1px solid #e0e0e0;
 }
 

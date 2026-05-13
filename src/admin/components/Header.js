@@ -6,8 +6,8 @@ function Header() {
 	return (
 		<div id="wcdn-header">
 			<Card className="wcdn-topbar" isBorderless>
-				<h1>Print Invoices & Delivery Notes</h1>
-				<p>Generate, customize, print, and email order documents.</p>
+				<h1>{__("Print Invoices & Delivery Notes", "woocommerce-delivery-notes")}</h1>
+				<p>{__("Generate, customize, print, and email order documents.", "woocommerce-delivery-notes")}</p>
 			</Card>
 
 			<Card className="wcdn-navigation" isBorderless>

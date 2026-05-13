@@ -14,6 +14,7 @@ namespace Tyche\WCDN\Helpers;
 
 use Tyche\WCDN\Helpers\Settings;
 use Tyche\WCDN\Helpers\Templates;
+use Tyche\WCDN\Services\Template_Engine;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -510,40 +511,37 @@ class Utils {
 			}
 		}
 
+		// Helper: extract plain status values from get_template_order_statuses(),
+		// which applies the wcdn_allowed_statuses_[template] filter.
+		$allowed = function ( $template ) {
+			return array_column( Template_Engine::get_template_order_statuses( $template ), 'value' );
+		};
+
 		// Invoice.
-		if ( in_array( $status, array( 'pending', 'on-hold', 'processing', 'completed' ), true ) ) {
+		if ( in_array( $status, $allowed( 'invoice' ), true ) ) {
 			$types[] = 'invoice';
 		}
 
-		// Receipt (only after payment).
-		if ( $order->is_paid() ) {
+		// Receipt.
+		if ( in_array( $status, $allowed( 'receipt' ), true ) ) {
 			$types[] = 'receipt';
 		}
 
 		// Shipping documents (only for physical products).
 		if ( $has_physical_items ) {
 
-			$types[] = 'packingslip';
+			if ( in_array( $status, $allowed( 'packingslip' ), true ) ) {
+				$types[] = 'packingslip';
+			}
 
-			// Optional: stricter delivery note logic.
-			if ( in_array( $status, array( 'processing', 'completed' ), true ) ) {
+			if ( in_array( $status, $allowed( 'deliverynote' ), true ) ) {
 				$types[] = 'deliverynote';
 			}
 		}
 
-		// Credit note.
-		$refunded_total = (float) $order->get_total_refunded();
-
-		if ( $refunded_total > 0 ) {
-
-			// Partial refund vs full refund.
-			if ( $refunded_total < (float) $order->get_total() ) {
-				// Partial refund → still show credit note.
-				$types[] = 'creditnote';
-			} else {
-				// Full refund → definitely show credit note.
-				$types[] = 'creditnote';
-			}
+		// Credit note (refund-based, status acts as secondary gate).
+		if ( (float) $order->get_total_refunded() > 0 ) {
+			$types[] = 'creditnote';
 		}
 
 		return apply_filters( 'wcdn_template_types_from_order', $types, $order );

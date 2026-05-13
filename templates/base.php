@@ -2,161 +2,98 @@
 /**
  * WCDN Document Template.
  *
+ * ============================================================================
+ * OVERRIDING THIS TEMPLATE
+ * ============================================================================
+ * Copy this file to your active theme and the plugin will use your copy
+ * instead of the bundled one:
+ *
+ *   your-theme/woocommerce-delivery-notes/base.php
+ *
+ * Keep the @version tag in your copy. The plugin uses it to detect when the
+ * bundled template has been updated so it can warn you that your override may
+ * need to be updated too.
+ *
+ * ============================================================================
+ * OVERRIDING CSS
+ * ============================================================================
+ * Three CSS files control the document appearance. Copy any of them to your
+ * theme at the corresponding path to override styles without editing the plugin:
+ *
+ *   Shared styles (HTML + PDF):
+ *   your-theme/woocommerce-delivery-notes/css/style.css
+ *
+ *   HTML print-preview only:
+ *   your-theme/woocommerce-delivery-notes/css/html/style.css
+ *
+ *   PDF generation only:
+ *   your-theme/woocommerce-delivery-notes/css/pdf/style.css
+ *
+ * Theme CSS is loaded first; the plugin's dynamic settings CSS is applied on
+ * top, so inline styles set via the settings page will still take effect.
+ *
+ * ============================================================================
+ * USING HOOKS INSTEAD OF FULL OVERRIDES
+ * ============================================================================
+ * For smaller changes, hooks are safer than copying the whole file because
+ * they are unaffected by plugin updates:
+ *
+ *   wcdn_before_document( $order, $template )   — before all document content
+ *   wcdn_after_logo( $order, $template )        — after the shop logo
+ *   wcdn_after_title( $order, $template )       — after the document title
+ *   wcdn_after_branding( $order, $template )    — after shop name/address block
+ *   wcdn_after_addresses( $order, $template )   — after billing/shipping/meta
+ *   wcdn_before_items( $order, $template )      — before the line-items table
+ *   wcdn_order_item_before( $item, $order, $template ) — before each line item
+ *   wcdn_order_item_after( $item, $order, $template )  — after each line item
+ *   wcdn_after_items( $order, $template )       — after the line-items table
+ *   wcdn_after_totals( $order, $template )      — after the order totals table
+ *   wcdn_after_pay_button( $order, $template )  — after the pay-now button
+ *   wcdn_after_notes( $order, $template )       — after the customer note
+ *   wcdn_after_document( $order, $template )    — after all document content
+ *
  * @package WCDN/Templates
- * @since   7.0
+ * @version 7.1.2
  */
 
 defined( 'ABSPATH' ) || exit;
 
-$shop     = isset( $data['shop'] ) ? $data['shop'] : array();
-$order    = isset( $data['order'] ) ? $data['order'] : array(); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-$document = isset( $data['document'] ) ? $data['document'] : array();
-$settings = isset( $data['settings'] ) ? $data['settings'] : array();
-$template = isset( $data['template'] ) ? $data['template'] : 'invoice'; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-
-$items = ( 'creditnote' === $template )
-	? ( isset( $order['refund']['items'] ) ? $order['refund']['items'] : array() )
-	: ( isset( $order['items'] ) ? $order['items'] : array() );
-
-$totals = ( 'creditnote' === $template ) // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-	? array( 'total' => isset( $order['refund']['total'] ) ? $order['refund']['total'] : 0 )
-	: ( isset( $order['totals'] ) ? $order['totals'] : array() );
-
-$is_rtl = isset( $document['isRTL'] ) ? $document['isRTL'] : false;
-
 /**
- * Order meta fields.
+ * All variables below are prepared by Template_Renderer::prepare_template_data()
+ * and extracted into scope before this file is included. Raw data is also
+ * available via $data['order'], $data['settings'], $data['shop'], $data['document'].
+ *
+ * @var array  $shop                Shop info.
+ * @var array  $order               Order data.
+ * @var array  $document            Document data.
+ * @var array  $settings            Template settings.
+ * @var string $template            Template key (invoice, receipt, …).
+ * @var string $type                Render context ('pdf' or 'html').
+ * @var array  $items               Line items for the current document.
+ * @var array  $totals              Order totals.
+ * @var bool   $is_rtl              Whether the document locale is RTL.
+ * @var bool   $show_billing        Whether to render the billing address column.
+ * @var bool   $show_shipping       Whether to render the shipping address column.
+ * @var string $order_meta_position 'columns' or 'below'.
+ * @var array  $order_meta_fields   Prepared meta rows ready for rendering.
+ * @var bool   $has_order_meta      Whether any meta rows have a visible value.
+ * @var int    $col_width           Width percentage for each address column.
+ * @var int    $angle               Watermark rotation angle.
+ * @var bool   $show_pay_now_button Whether to render the pay-now button.
  */
-$order_meta_keys = array(
-	'invoiceNumber',
-	'documentDate',
-	'orderNumber',
-	'orderDate',
-	'paymentMethod',
-	'paymentDate',
-	'shippingMethod',
-	'refundDate',
-	'refundReason',
-);
 
-// Determine which columns exist.
-$show_billing  = ! empty( $settings['showBillingAddress'] ) && ! empty( $order['billing'] );
-$show_shipping = ! empty( $settings['showShippingAddress'] ) && ! empty( $order['shipping'] );
-
-$order_meta_position = $settings['orderMetaPosition'] ?? 'columns';
-
-// Build order meta.
-$order_meta_fields = array(
-	array(
-		'show'  => ! empty( $settings['showInvoiceNumber'] ),
-		'label' => $settings['invoiceNumberText'] ?? __( 'Invoice No', 'woocommerce-delivery-notes' ),
-		'value' => $order['invoiceNumber'] ?? '',
-		'key'   => 'invoiceNumber',
-	),
-	array(
-		'show'  => ! empty( $settings['showDocumentDate'] ),
-		'label' => $settings['documentDateText'] ?? '',
-		'value' => $order['documentDate'] ?? '',
-		'key'   => 'documentDate',
-	),
-	array(
-		'show'  => ! empty( $settings['showOrderNumber'] ),
-		'label' => $settings['orderNumberText'] ?? __( 'Order No', 'woocommerce-delivery-notes' ),
-		'value' => $order['orderNumber'] ?? '',
-		'key'   => 'orderNumber',
-	),
-	array(
-		'show'  => ! empty( $settings['showOrderDate'] ),
-		'label' => $settings['orderDateText'] ?? __( 'Date', 'woocommerce-delivery-notes' ),
-		'value' => wcdn_format_date( $order['date'] ?? '', $settings['dateFormat'] ?? '' ),
-		'key'   => 'orderDate',
-	),
-	array(
-		'show'  => ! empty( $settings['showPaymentMethod'] ),
-		'label' => $settings['paymentMethodText'] ?? __( 'Payment Method', 'woocommerce-delivery-notes' ),
-		'value' => $order['paymentMethod'] ?? '',
-		'key'   => 'paymentMethod',
-	),
-	array(
-		'show'  => ! empty( $settings['showPaymentDate'] ),
-		'label' => $settings['paymentDateText'] ?? __( 'Payment Date', 'woocommerce-delivery-notes' ),
-		'value' => wcdn_format_date( $order['paymentDate'] ?? '', $settings['dateFormat'] ?? '' ),
-		'key'   => 'paymentDate',
-	),
-	array(
-		'show'  => ! empty( $settings['showShippingMethod'] ),
-		'label' => $settings['shippingMethodText'] ?? __( 'Shipping Method', 'woocommerce-delivery-notes' ),
-		'value' => $order['shippingMethod'] ?? '',
-		'key'   => 'shippingMethod',
-	),
-	array(
-		'show'  => ! empty( $settings['showRefundDate'] ),
-		'label' => $settings['refundDateText'] ?? __( 'Refund Date', 'woocommerce-delivery-notes' ),
-		'value' => wcdn_format_date( $order['refund']['date'] ?? '', $settings['dateFormat'] ?? '' ),
-		'key'   => 'refundDate',
-	),
-	array(
-		'show'  => ! empty( $settings['showRefundReason'] ),
-		'label' => $settings['refundReasonText'] ?? __( 'Refund Reason', 'woocommerce-delivery-notes' ),
-		'value' => $order['refund']['reason'] ?? '',
-		'key'   => 'refundReason',
-	),
-);
-
-// In 'below' mode only: append phone/email as meta table rows.
-if ( 'below' === $order_meta_position ) {
-	if ( ! empty( $settings['showBillingPhone'] ) && ! empty( $order['billing']['phone'] ) ) {
-		$order_meta_fields[] = array(
-			'show'  => true,
-			'label' => $settings['billingPhoneText'] ?? __( 'Phone', 'woocommerce-delivery-notes' ),
-			'value' => wcdn_format_phone_number( $order['billing']['phone'], $order['billing']['country'] ?? '' ),
-			'key'   => 'billingPhone',
-		);
+$meta_style_for = function ( $field ) {
+	if ( ! isset( $field['fontSize'] ) ) {
+		return '';
 	}
-
-	if ( ! empty( $settings['showBillingEmail'] ) && ! empty( $order['billing']['email'] ) ) {
-		$order_meta_fields[] = array(
-			'show'  => true,
-			'label' => $settings['billingEmailText'] ?? __( 'Email', 'woocommerce-delivery-notes' ),
-			'value' => $order['billing']['email'],
-			'key'   => 'billingEmail',
-		);
-	}
-}
-
-// Check if any meta exists.
-$has_order_meta = false;
-foreach ( $order_meta_fields as $field ) {
-	if ( $field['show'] && ! empty( $field['value'] ) ) {
-		$has_order_meta = true;
-		break;
-	}
-}
-
-// Count columns. Meta is only a column when position is 'columns'.
-$columns = 0;
-if ( $show_billing ) {
-	++$columns;
-}
-
-if ( $show_shipping ) {
-	++$columns;
-}
-
-if ( $has_order_meta && 'columns' === $order_meta_position ) {
-	++$columns;
-}
-
-$col_width = $columns ? floor( 100 / $columns ) : 100;
-
-$angle = $settings['watermarkAngle'] ?? -25;
+	return 'font-size:' . $field['fontSize'] . 'px;'
+		. 'font-weight:' . $field['fontWeight'] . ';'
+		. 'text-align:' . $field['textAlign'] . ';'
+		. 'color:' . $field['color'] . ';';
+};
 
 $columns_data = array();
 
-$show_pay_now_button = ! empty( $settings['showPayNowButton'] ) && ! empty( $totals['total'] ) && ! empty( $order['payment_url'] );
-$show_pay_now_button = $show_pay_now_button && in_array( $order['status'], array( 'pending', 'failed' ), true );
-
-// Billing.
 if ( $show_billing ) {
 	$columns_data['billing'] = function () use ( $order, $settings, $col_width, $order_meta_position ) {
 		?>
@@ -174,19 +111,22 @@ if ( $show_billing ) {
 
 		<?php if ( 'columns' === $order_meta_position ) : ?>
 			<?php if ( ! empty( $settings['showBillingPhone'] ) && ! empty( $order['billing']['phone'] ) ) : ?>
-				<p class="wcdn-columns-billingPhone"><?php echo esc_html( ( $settings['billingPhoneText'] ?? __( 'Phone', 'woocommerce-delivery-notes' ) ) . ': ' . wcdn_format_phone_number( $order['billing']['phone'], $order['billing']['country'] ?? '' ) ); ?></p>
-			<?php endif; ?>
+	<p class="wcdn-columns-billingPhone">
+				<?php echo esc_html( ( $settings['billingPhoneText'] ?? __( 'Phone', 'woocommerce-delivery-notes' ) ) . ': ' . wcdn_format_phone_number( $order['billing']['phone'], $order['billing']['country'] ?? '' ) ); ?>
+	</p>
+	<?php endif; ?>
 
 			<?php if ( ! empty( $settings['showBillingEmail'] ) && ! empty( $order['billing']['email'] ) ) : ?>
-				<p class="wcdn-columns-billingEmail"><?php echo esc_html( ( $settings['billingEmailText'] ?? __( 'Email', 'woocommerce-delivery-notes' ) ) . ': ' . $order['billing']['email'] ); ?></p>
-			<?php endif; ?>
-		<?php endif; ?>
+	<p class="wcdn-columns-billingEmail">
+				<?php echo esc_html( ( $settings['billingEmailText'] ?? __( 'Email', 'woocommerce-delivery-notes' ) ) . ': ' . $order['billing']['email'] ); ?>
+	</p>
+	<?php endif; ?>
+	<?php endif; ?>
 </td>
 		<?php
 	};
 }
 
-// Shipping.
 if ( $show_shipping ) {
 	$columns_data['shipping'] = function () use ( $order, $settings, $col_width ) {
 		?>
@@ -202,7 +142,7 @@ if ( $show_shipping ) {
 		<?php endif; ?>
 
 		<?php if ( ! empty( $order['shipping']['email'] ) ) : ?>
-			<?php echo esc_html( 'Email: ' . $order['shipping']['email'] ); ?><br />
+			<?php echo esc_html( __( 'Email', 'woocommerce-delivery-notes' ) . ': ' . $order['shipping']['email'] ); ?><br />
 		<?php endif; ?>
 	</p>
 </td>
@@ -210,26 +150,19 @@ if ( $show_shipping ) {
 	};
 }
 
-// Meta as a column (only when position is 'columns').
 if ( $has_order_meta && 'columns' === $order_meta_position ) {
-	$columns_data['meta'] = function () use ( $order_meta_fields, $settings, $col_width ) {
+	$columns_data['meta'] = function () use ( $order_meta_fields, $settings, $col_width, $meta_style_for ) {
 		?>
 <td style="width: <?php echo esc_attr( $col_width ); ?>%; vertical-align: top;" class="wcdn-order-meta">
 	<table>
 		<?php foreach ( $order_meta_fields as $field ) : ?>
 			<?php if ( $field['show'] && ! empty( $field['value'] ) ) : ?>
-				<?php
-				$meta_style = '';
-				if ( isset( $field['fontSize'] ) ) {
-					$meta_style = 'font-size:' . $field['fontSize'] . 'px;'
-						. 'font-weight:' . $field['fontWeight'] . ';'
-						. 'text-align:' . $field['textAlign'] . ';'
-						. 'color:' . $field['color'] . ';';
-				}
-				?>
+				<?php $meta_style = $meta_style_for( $field ); ?>
 		<tr class="wcdn-meta-<?php echo esc_attr( $field['key'] ); ?>">
-			<td class="label"<?php echo $meta_style ? ' style="' . esc_attr( $meta_style ) . '"' : ''; ?>><?php echo esc_html( $field['label'] ); ?>:</td>
-			<td class="value"<?php echo $meta_style ? ' style="' . esc_attr( $meta_style ) . '"' : ''; ?>><?php echo esc_html( $field['value'] ); ?></td>
+			<td class="label" <?php echo $meta_style ? ' style="' . esc_attr( $meta_style ) . '"' : ''; ?>>
+				<?php echo esc_html( $field['label'] ); ?>:</td>
+			<td class="value" <?php echo $meta_style ? ' style="' . esc_attr( $meta_style ) . '"' : ''; ?>>
+				<?php echo esc_html( $field['value'] ); ?></td>
 		</tr>
 		<?php endif; ?>
 		<?php endforeach; ?>
@@ -248,7 +181,6 @@ if ( $is_rtl ) {
 
 	<?php do_action( 'wcdn_before_document', $order, $template ); ?>
 
-	<!-- WATERMARK -->
 	<?php
 	if ( ! empty( $settings['showWatermark'] ) && ! empty( $settings['watermarkText'] ) ) :
 		if ( isset( $settings['watermarkLayout'] ) && 'repeat' === $settings['watermarkLayout'] ) :
@@ -269,7 +201,6 @@ if ( $is_rtl ) {
 	<?php endif; ?>
 	<?php endif; ?>
 
-	<!-- LOGO -->
 	<?php if ( ! empty( $settings['showLogo'] ) ) : ?>
 	<div
 		class="wcdn-logo align-<?php echo esc_attr( isset( $settings['logoAlignment'] ) ? $settings['logoAlignment'] : 'center' ); ?>">
@@ -281,12 +212,16 @@ if ( $is_rtl ) {
 	</div>
 	<?php endif; ?>
 
-	<!-- TITLE -->
+	<?php do_action( 'wcdn_after_logo', $order, $template ); ?>
+
+	<?php if ( ! isset( $settings['showDocumentTitle'] ) || ! empty( $settings['showDocumentTitle'] ) ) : ?>
 	<h1 class="wcdn-title">
 		<?php echo esc_html( isset( $settings['documentTitle'] ) ? $settings['documentTitle'] : __( 'Document', 'woocommerce-delivery-notes' ) ); ?>
 	</h1>
+	<?php endif; ?>
 
-	<!-- SHOP DETAILS -->
+	<?php do_action( 'wcdn_after_title', $order, $template ); ?>
+
 	<?php
 	if (
 		! empty( $settings['showShopName'] ) ||
@@ -304,15 +239,19 @@ if ( $is_rtl ) {
 		<?php endif; ?>
 
 		<?php if ( ! empty( $settings['showShopAddress'] ) && ! empty( $shop['address'] ) ) : ?>
-		<div class="wcdn-shop-address"><?php echo nl2br( esc_html( $shop['address'] ) ); ?></div>
+		<div class="wcdn-shop-address"><?php echo nl2br( wp_kses_post( $shop['address'] ) ); ?></div>
 		<?php endif; ?>
 
 		<?php if ( ! empty( $settings['showShopPhone'] ) && ! empty( $shop['phone'] ) ) : ?>
-		<div class="wcdn-shop-phone"><?php echo esc_html( ( ! empty( $settings['shopPhoneText'] ) ? $settings['shopPhoneText'] . ': ' : '' ) . $shop['phone'] ); ?></div>
+		<div class="wcdn-shop-phone">
+			<?php echo esc_html( ( ! empty( $settings['shopPhoneText'] ) ? $settings['shopPhoneText'] . ': ' : '' ) . $shop['phone'] ); ?>
+		</div>
 		<?php endif; ?>
 
 		<?php if ( ! empty( $settings['showShopEmail'] ) && ! empty( $shop['email'] ) ) : ?>
-		<div class="wcdn-shop-email"><?php echo esc_html( ( ! empty( $settings['shopEmailText'] ) ? $settings['shopEmailText'] . ': ' : '' ) . $shop['email'] ); ?></div>
+		<div class="wcdn-shop-email">
+			<?php echo esc_html( ( ! empty( $settings['shopEmailText'] ) ? $settings['shopEmailText'] . ': ' : '' ) . $shop['email'] ); ?>
+		</div>
 		<?php endif; ?>
 	</div>
 
@@ -320,7 +259,6 @@ if ( $is_rtl ) {
 
 	<?php endif; ?>
 
-	<!-- ADDRESSES & ORDER META -->
 	<?php
 	$show_address_grid = ! empty( $columns_data );
 	$show_meta_below   = 'below' === $order_meta_position && $has_order_meta;
@@ -330,58 +268,54 @@ if ( $is_rtl ) {
 	<hr />
 
 		<?php if ( $show_address_grid ) : ?>
-		<table class="wcdn-address-grid">
-			<tr>
-				<?php
-				foreach ( $columns_data as $column ) {
-					$column();
-				}
-				?>
-			</tr>
-		</table>
-		<?php endif; ?>
+	<table class="wcdn-address-grid">
+		<tr>
+			<?php
+			foreach ( $columns_data as $column ) {
+				$column();
+			}
+			?>
+		</tr>
+	</table>
+	<?php endif; ?>
 
 		<?php if ( $show_meta_below ) : ?>
 			<?php if ( ! empty( $settings['showOrderDataHeader'] ) && ! empty( $settings['orderDataHeaderText'] ) ) : ?>
-			<p class="wcdn-order-data-header">
+	<p class="wcdn-order-data-header">
 				<?php echo esc_html( $settings['orderDataHeaderText'] ); ?>
-			</p>
+	</p>
 				<?php if ( ! empty( $settings['showOrderDataHeaderBorder'] ) ) : ?>
-				<hr class="wcdn-order-data-header-border" style="margin: 0 0 8px;" />
-				<?php endif; ?>
-			<?php endif; ?>
-		<table class="wcdn-order-meta wcdn-order-meta-below" style="width: 100%;">
+	<hr class="wcdn-order-data-header-border" style="margin: 0" />
+	<?php endif; ?>
+	<?php endif; ?>
+	<table class="wcdn-order-meta wcdn-order-meta-below" style="width: 100%;">
 			<?php foreach ( $order_meta_fields as $field ) : ?>
 				<?php if ( $field['show'] && ! empty( $field['value'] ) ) : ?>
-					<?php
-					$meta_style = '';
-					if ( isset( $field['fontSize'] ) ) {
-						$meta_style = 'font-size:' . $field['fontSize'] . 'px;'
-							. 'font-weight:' . $field['fontWeight'] . ';'
-							. 'text-align:' . $field['textAlign'] . ';'
-							. 'color:' . $field['color'] . ';';
-					}
-					?>
-			<tr class="wcdn-meta-<?php echo esc_attr( $field['key'] ); ?>">
-				<td class="label"<?php echo $meta_style ? ' style="' . esc_attr( $meta_style ) . '"' : ''; ?>><?php echo esc_html( $field['label'] ); ?>:</td>
-				<td class="value"<?php echo $meta_style ? ' style="' . esc_attr( $meta_style ) . '"' : ''; ?>><?php echo esc_html( $field['value'] ); ?></td>
-			</tr>
-				<?php endif; ?>
-			<?php endforeach; ?>
-		</table>
+					<?php $meta_style = $meta_style_for( $field ); ?>
+		<tr class="wcdn-meta-<?php echo esc_attr( $field['key'] ); ?>">
+			<td class="label" <?php echo $meta_style ? ' style="' . esc_attr( $meta_style ) . '"' : ''; ?>>
+					<?php echo esc_html( $field['label'] ); ?>:</td>
+			<td class="value" <?php echo $meta_style ? ' style="' . esc_attr( $meta_style ) . '"' : ''; ?>>
+					<?php echo esc_html( $field['value'] ); ?></td>
+		</tr>
 		<?php endif; ?>
+		<?php endforeach; ?>
+	</table>
+	<?php endif; ?>
 
 		<?php do_action( 'wcdn_after_addresses', $order, $template ); ?>
 
 	<?php endif; ?>
 
-	<!-- ITEMS -->
 	<?php if ( ! empty( $items ) ) : ?>
 		<?php
 		$show_price_cols = ! empty( $settings['displayPriceInProductDetailsTable'] ) ||
 		( 'creditnote' === $template && ! empty( $settings['displayRefundItemsInTable'] ) );
 		?>
-	<hr />
+
+		<?php do_action( 'wcdn_before_items', $order, $template ); ?>
+
+	<hr style="margin: 0 0 10px 0;" />
 	<table class="wcdn-items">
 		<?php if ( $show_price_cols ) : ?>
 		<colgroup>
@@ -393,28 +327,27 @@ if ( $is_rtl ) {
 		<?php endif; ?>
 		<thead>
 			<tr>
-				<?php
-				$has_price_cols = ! empty( $settings['displayPriceInProductDetailsTable'] ) ||
-					( 'creditnote' === $template && ! empty( $settings['displayRefundItemsInTable'] ) );
-				?>
-				<th style="width:<?php echo $has_price_cols ? '50%' : '80%'; ?>;"><?php echo esc_html( ( 'creditnote' === $template ) ? __( 'Refunded Item', 'woocommerce-delivery-notes' ) : __( 'Product', 'woocommerce-delivery-notes' ) ); ?></th>
+				<th style="width:<?php echo $show_price_cols ? '50%' : '80%'; ?>;">
+					<?php echo esc_html( ( 'creditnote' === $template ) ? __( 'Refunded Item', 'woocommerce-delivery-notes' ) : __( 'Product', 'woocommerce-delivery-notes' ) ); ?>
+				</th>
 
-				<?php if ( $has_price_cols ) : ?>
+				<?php if ( $show_price_cols ) : ?>
 				<th style="width:15%;"><?php esc_html_e( 'Price', 'woocommerce-delivery-notes' ); ?></th>
 				<?php endif; ?>
 
-				<th style="width:<?php echo $has_price_cols ? '15%' : '20%'; ?>;"><?php esc_html_e( 'Quantity', 'woocommerce-delivery-notes' ); ?></th>
+				<th style="width:<?php echo $show_price_cols ? '15%' : '20%'; ?>;">
+					<?php esc_html_e( 'Quantity', 'woocommerce-delivery-notes' ); ?></th>
 
-				<?php if ( $has_price_cols ) : ?>
-				<th style="width:20%;"><?php echo esc_html( ( 'creditnote' === $template ) ? __( 'Total Refunded', 'woocommerce-delivery-notes' ) : __( 'Total', 'woocommerce-delivery-notes' ) ); ?></th>
+				<?php if ( $show_price_cols ) : ?>
+				<th style="width:20%;">
+					<?php echo esc_html( ( 'creditnote' === $template ) ? __( 'Total Refunded', 'woocommerce-delivery-notes' ) : __( 'Total', 'woocommerce-delivery-notes' ) ); ?>
+				</th>
 				<?php endif; ?>
 			</tr>
 		</thead>
 
 		<tbody>
 			<?php
-			// Load the WC_Order once so the deprecated backward-compat hooks below can
-			// pass the original WC objects that v6 callbacks expected.
 			$_wcdn_wc_order = ! empty( $order['id'] ) ? wc_get_order( $order['id'] ) : null;
 			?>
 			<?php foreach ( $items as $item ) : ?>
@@ -425,7 +358,7 @@ if ( $is_rtl ) {
 					: null;
 				?>
 			<tr>
-				<td>
+				<td class="wcdn-product-cell">
 					<?php
 					do_action_deprecated(
 						'wcdn_order_item_before',
@@ -449,27 +382,36 @@ if ( $is_rtl ) {
 						$has_image = ! empty( $img_src );
 						?>
 						<?php if ( $has_image ) : ?>
-						<table class="wcdn-item-layout" style="border-collapse:collapse;width:100%;"><tr>
-						<td style="width:<?php echo esc_attr( $img_size ); ?>px;padding-right:6px;vertical-align:top;">
-							<img class="wcdn-item-image" src="<?php echo esc_attr( $img_src ); ?>" width="<?php echo esc_attr( $img_size ); ?>" height="<?php echo esc_attr( $img_size ); ?>" alt="" />
-						</td>
-						<td style="vertical-align:top;">
-						<?php endif; ?>
-						<?php echo wp_kses_post( $item['name'] ); ?>
-						<?php if ( ! empty( $item['sku'] ) ) : ?>
-					<span class="wcdn-item-sku"><?php echo wp_kses_post( '(SKU: ' . $item['sku'] . ')' ); ?></span>
+					<table class="wcdn-item-layout" style="border-collapse:collapse;width:100%;">
+						<tr>
+							<td
+								style="width:<?php echo esc_attr( $img_size ); ?>px;padding-right:6px;vertical-align:top;">
+								<img class="wcdn-item-image" src="<?php echo esc_attr( $img_src ); ?>"
+									width="<?php echo esc_attr( $img_size ); ?>"
+									height="<?php echo esc_attr( $img_size ); ?>" alt="" />
+							</td>
+							<td style="vertical-align:top;">
+								<?php endif; ?>
+								<span class="wcdn-item-name">
+									<?php echo wp_kses_post( $item['name'] ); ?>
+									<?php if ( ! empty( $item['sku'] ) ) : ?>
+									<span
+										class="wcdn-item-sku"><?php echo wp_kses_post( '(' . __( 'SKU', 'woocommerce-delivery-notes' ) . ': ' . $item['sku'] . ')' ); ?></span>
+									<?php endif; ?>
+								</span>
+								<?php if ( ! empty( $item['meta'] ) ) : ?>
+								<dl class="wcdn-item-meta">
+									<?php foreach ( $item['meta'] as $row ) : ?>
+									<dt><?php echo wp_kses_post( $row['label'] ); ?></dt>
+									<dd><?php echo wp_kses_post( $row['value'] ); ?></dd>
+									<?php endforeach; ?>
+								</dl>
+								<?php endif; ?>
+								<?php if ( $has_image ) : ?>
+							</td>
+						</tr>
+					</table>
 					<?php endif; ?>
-						<?php if ( ! empty( $item['meta'] ) ) : ?>
-					<dl class="wcdn-item-meta">
-							<?php foreach ( $item['meta'] as $row ) : ?>
-						<dt><?php echo wp_kses_post( $row['label'] ); ?></dt>
-						<dd><?php echo wp_kses_post( $row['value'] ); ?></dd>
-						<?php endforeach; ?>
-					</dl>
-					<?php endif; ?>
-						<?php if ( $has_image ) : ?>
-						</td></tr></table>
-						<?php endif; ?>
 					<?php endif; ?>
 					<?php
 					do_action_deprecated(
@@ -483,19 +425,13 @@ if ( $is_rtl ) {
 					?>
 				</td>
 
-				<?php
-				if ( ! empty( $settings['displayPriceInProductDetailsTable'] ) ||
-				( 'creditnote' === $template && ! empty( $settings['displayRefundItemsInTable'] ) ) ) :
-					?>
+				<?php if ( $show_price_cols ) : ?>
 				<td><?php echo wp_kses_post( $item['price'] ); ?></td>
 				<?php endif; ?>
 
 				<td><?php echo esc_html( $item['quantity'] ); ?></td>
 
-				<?php
-				if ( ! empty( $settings['displayPriceInProductDetailsTable'] ) ||
-				( 'creditnote' === $template && ! empty( $settings['displayRefundItemsInTable'] ) ) ) :
-					?>
+				<?php if ( $show_price_cols ) : ?>
 				<td><?php echo wp_kses_post( $item['total'] ); ?></td>
 				<?php endif; ?>
 
@@ -503,145 +439,176 @@ if ( $is_rtl ) {
 			<?php endforeach; ?>
 		</tbody>
 
+		<?php
+		$total_quantity  = 0;
+		$non_addon_count = 0;
+		foreach ( $items as $item ) {
+			if ( empty( $item['addon'] ) ) {
+				$total_quantity += (float) $item['quantity'];
+				++$non_addon_count;
+			}
+		}
+		$total_quantity = ( floor( $total_quantity ) === $total_quantity ) ? (int) $total_quantity : $total_quantity;
+		?>
+		<?php if ( $non_addon_count > 1 ) : ?>
+		<tfoot>
+			<tr class="wcdn-total-quantity">
+				<?php if ( $show_price_cols ) : ?>
+				<td colspan="2" class="wcdn-totals-label">
+					<?php esc_html_e( 'Total Qty:', 'woocommerce-delivery-notes' ); ?></td>
+				<td><?php echo esc_html( $total_quantity ); ?></td>
+				<td></td>
+				<?php else : ?>
+				<td class="wcdn-totals-label"><?php esc_html_e( 'Total Qty:', 'woocommerce-delivery-notes' ); ?></td>
+				<td><?php echo esc_html( $total_quantity ); ?></td>
+				<?php endif; ?>
+			</tr>
+		</tfoot>
+		<?php endif; ?>
+
 	</table>
 		<?php do_action( 'wcdn_after_items', $order, $template ); ?>
 	<?php endif; ?>
 
-	<!-- TOTALS -->
 	<?php
 	if ( isset( $totals['total'] ) && 'creditnote' !== $template && ! empty( $settings['displayPriceInProductDetailsTable'] ) ) :
+		$render_totals_row = function ( $value, $label, $bold = false, $row_class = '' ) use ( $order ) {
+			$formatted  = esc_html( apply_filters( 'wcdn_invoice_order_total_label', $label, $order ) );
+			$cell_label = $bold ? '<strong>' . $formatted . '</strong>' : $formatted;
+			?>
+	<tr<?php echo $row_class ? ' class="' . esc_attr( $row_class ) . '"' : ''; ?>>
+		<td colspan="3" class="wcdn-totals-label"><?php echo wp_kses( $cell_label, array( 'strong' => array() ) ); ?></td>
+		<td class="wcdn-totals-value"><?php echo wp_kses_post( $value ); ?></td>
+	</tr>
+			<?php
+		};
 		?>
 
-	<table class="wcdn-totals" width="100%">
-		<colgroup>
-			<col class="wcdn-col-product" style="width:50%;">
-			<col class="wcdn-col-price" style="width:15%;">
-			<col class="wcdn-col-qty" style="width:15%;">
-			<col class="wcdn-col-total" style="width:20%;">
-		</colgroup>
-		<tr style="line-height:0;font-size:0;">
-			<td style="width:50%;height:0;padding:0;border:none;"></td>
-			<td style="width:15%;height:0;padding:0;border:none;"></td>
-			<td style="width:15%;height:0;padding:0;border:none;"></td>
-			<td style="width:20%;height:0;padding:0;border:none;"></td>
-		</tr>
-		<?php if ( isset( $totals['subtotal'] ) && ! empty( $settings['showProductCharges'] ) && ! empty( $settings['showSubtotal'] ) ) : ?>
-		<tr>
-			<td colspan="3" class="wcdn-totals-label"><?php echo esc_html( apply_filters( 'wcdn_invoice_order_total_label', __( 'Subtotal:', 'woocommerce-delivery-notes' ), $order ) ); ?></td>
-			<td class="wcdn-totals-value"><?php echo wp_kses_post( $totals['subtotal'] ); ?></td>
-		</tr>
-		<?php endif; ?>
-
-		<?php if ( isset( $totals['discount'] ) ) : ?>
-		<tr>
-			<td colspan="3" class="wcdn-totals-label"><?php echo esc_html( apply_filters( 'wcdn_invoice_order_total_label', __( 'Discount:', 'woocommerce-delivery-notes' ), $order ) ); ?></td>
-			<td class="wcdn-totals-value"><?php echo wp_kses_post( $totals['discount'] ); ?></td>
-		</tr>
-		<?php endif; ?>
-
-		<?php if ( ( isset( $totals['tax'] ) || ! empty( $totals['tax_lines'] ) ) && ! empty( $settings['showProductCharges'] ) && ! empty( $settings['showTax'] ) ) : ?>
-			<?php if ( ! empty( $totals['tax_lines'] ) ) : ?>
-				<?php foreach ( $totals['tax_lines'] as $tax_line ) : ?>
-				<tr>
-					<td colspan="3" class="wcdn-totals-label"><?php echo esc_html( apply_filters( 'wcdn_invoice_order_total_label', $tax_line['label'] . ':', $order ) ); ?></td>
-					<td class="wcdn-totals-value"><?php echo wp_kses_post( $tax_line['value'] ); ?></td>
-				</tr>
-				<?php endforeach; ?>
-			<?php elseif ( isset( $totals['tax'] ) ) : ?>
-			<tr>
-				<td colspan="3" class="wcdn-totals-label"><?php echo esc_html( apply_filters( 'wcdn_invoice_order_total_label', __( 'Tax:', 'woocommerce-delivery-notes' ), $order ) ); ?></td>
-				<td class="wcdn-totals-value"><?php echo wp_kses_post( $totals['tax'] ); ?></td>
+		<table class="wcdn-totals" width="100%">
+			<colgroup>
+				<col class="wcdn-col-product" style="width:50%;">
+				<col class="wcdn-col-price" style="width:15%;">
+				<col class="wcdn-col-qty" style="width:15%;">
+				<col class="wcdn-col-total" style="width:20%;">
+			</colgroup>
+			<tr style="line-height:0;font-size:0;">
+				<td style="width:50%;height:0;padding:0;border:none;"></td>
+				<td style="width:15%;height:0;padding:0;border:none;"></td>
+				<td style="width:15%;height:0;padding:0;border:none;"></td>
+				<td style="width:20%;height:0;padding:0;border:none;"></td>
 			</tr>
+
+			<?php if ( isset( $totals['subtotal'] ) && ! empty( $settings['showProductCharges'] ) && ! empty( $settings['showSubtotal'] ) ) : ?>
+				<?php $render_totals_row( $totals['subtotal'], __( 'Subtotal:', 'woocommerce-delivery-notes' ) ); ?>
 			<?php endif; ?>
-		<?php endif; ?>
 
-		<?php if ( isset( $totals['shipping'] ) && ! empty( $settings['showProductCharges'] ) && ! empty( $settings['showShipping'] ) ) : ?>
-		<tr>
-			<td colspan="3" class="wcdn-totals-label"><?php echo esc_html( apply_filters( 'wcdn_invoice_order_total_label', __( 'Shipping:', 'woocommerce-delivery-notes' ), $order ) ); ?></td>
-			<td class="wcdn-totals-value"><?php echo wp_kses_post( $totals['shipping'] ); ?></td>
-		</tr>
-		<?php endif; ?>
+			<?php if ( isset( $totals['discount'] ) ) : ?>
+				<?php $render_totals_row( $totals['discount'], __( 'Discount:', 'woocommerce-delivery-notes' ) ); ?>
+			<?php endif; ?>
 
-		<?php if ( ! empty( $totals['has_refund'] ) ) : ?>
-		<tr>
-			<td colspan="3" class="wcdn-totals-label"><strong><?php echo esc_html( apply_filters( 'wcdn_invoice_order_total_label', __( 'Order Total:', 'woocommerce-delivery-notes' ), $order ) ); ?></strong></td>
-			<td class="wcdn-totals-value"><?php echo wp_kses_post( $totals['total'] ); ?></td>
-		</tr>
-		<tr>
-			<td colspan="3" class="wcdn-totals-label"><?php echo esc_html( apply_filters( 'wcdn_invoice_order_total_label', __( 'Refund:', 'woocommerce-delivery-notes' ), $order ) ); ?></td>
-			<td class="wcdn-totals-value"><?php echo wp_kses_post( $totals['refunded'] ); ?></td>
-		</tr>
-		<tr class="wcdn-total">
-			<td colspan="3" class="wcdn-totals-label"><strong><?php echo esc_html( apply_filters( 'wcdn_invoice_order_total_label', __( 'Total:', 'woocommerce-delivery-notes' ), $order ) ); ?></strong></td>
-			<td class="wcdn-totals-value">
-				<?php echo wp_kses_post( $totals['net_total'] ); ?>
-				<?php if ( ! empty( $totals['tax_label'] ) ) : ?>
-					<?php echo wp_kses_post( $totals['tax_label'] ); ?>
-				<?php endif; ?>
-			</td>
-		</tr>
-		<?php else : ?>
-		<tr class="wcdn-total">
-			<td colspan="3" class="wcdn-totals-label"><strong><?php echo esc_html( apply_filters( 'wcdn_invoice_order_total_label', __( 'Total:', 'woocommerce-delivery-notes' ), $order ) ); ?></strong></td>
-			<td class="wcdn-totals-value"><?php echo wp_kses_post( $totals['total'] ); ?></td>
-		</tr>
-		<?php endif; ?>
-	</table>
+			<?php if ( ( isset( $totals['tax'] ) || ! empty( $totals['tax_lines'] ) ) && ! empty( $settings['showProductCharges'] ) && ! empty( $settings['showTax'] ) ) : ?>
+				<?php if ( ! empty( $totals['tax_lines'] ) ) : ?>
+					<?php foreach ( $totals['tax_lines'] as $tax_line ) : ?>
+						<?php $render_totals_row( $tax_line['value'], $tax_line['label'] . ':' ); ?>
+			<?php endforeach; ?>
+			<?php elseif ( isset( $totals['tax'] ) ) : ?>
+				<?php $render_totals_row( $totals['tax'], __( 'Tax:', 'woocommerce-delivery-notes' ) ); ?>
+			<?php endif; ?>
+			<?php endif; ?>
 
-	<?php endif; ?>
+			<?php if ( isset( $totals['shipping'] ) && ! empty( $settings['showProductCharges'] ) && ! empty( $settings['showShipping'] ) ) : ?>
+				<?php $render_totals_row( $totals['shipping'], __( 'Shipping:', 'woocommerce-delivery-notes' ) ); ?>
+			<?php endif; ?>
 
-	<!-- PAY NOW -->
-	<?php if ( $show_pay_now_button ) : ?>
-	<div class="wcdn-pay">
-		<table align="center">
-			<tr>
-				<td>
-					<a class="wcdn-payment-button" href="<?php echo esc_url( $order['payment_url'] ); ?>">
-						<?php echo esc_html( $settings['payNowLabel'] ); ?> &mdash;
-						<?php echo wp_kses_post( $totals['total'] ); ?>
-					</a>
-				</td>
-			</tr>
+			<?php if ( ! empty( $totals['fee_lines'] ) ) : ?>
+				<?php foreach ( $totals['fee_lines'] as $fee_line ) : ?>
+					<?php $render_totals_row( $fee_line['value'], $fee_line['label'] . ':' ); ?>
+			<?php endforeach; ?>
+			<?php endif; ?>
+
+			<?php if ( ! empty( $totals['has_refund'] ) ) : ?>
+				<?php $render_totals_row( $totals['total'], __( 'Order Total:', 'woocommerce-delivery-notes' ), true ); ?>
+				<?php $render_totals_row( $totals['refunded'], __( 'Refund:', 'woocommerce-delivery-notes' ) ); ?>
+				<?php $render_totals_row( $totals['net_total'] . ( ! empty( $totals['tax_label'] ) ? ' ' . $totals['tax_label'] : '' ), __( 'Total:', 'woocommerce-delivery-notes' ), true, 'wcdn-total' ); ?>
+			<?php else : ?>
+				<?php $render_totals_row( $totals['total'], __( 'Total:', 'woocommerce-delivery-notes' ), true, 'wcdn-total' ); ?>
+			<?php endif; ?>
+
+			<?php if ( isset( $totals['awcdp_deposit'] ) ) : ?>
+				<?php $render_totals_row( $totals['awcdp_deposit'], __( 'Deposit:', 'woocommerce-delivery-notes' ) ); ?>
+			<?php endif; ?>
+
+			<?php if ( isset( $totals['awcdp_future_payments'] ) ) : ?>
+				<?php $render_totals_row( $totals['awcdp_future_payments'], __( 'Future Payments:', 'woocommerce-delivery-notes' ) ); ?>
+			<?php endif; ?>
+
+			<?php if ( isset( $totals['dfw_deposit'] ) ) : ?>
+				<?php $render_totals_row( $totals['dfw_deposit'], __( 'Deposit:', 'woocommerce-delivery-notes' ) ); ?>
+			<?php endif; ?>
+
+			<?php if ( isset( $totals['dfw_future_payment'] ) ) : ?>
+				<?php $render_totals_row( $totals['dfw_future_payment'], __( 'Future Payment:', 'woocommerce-delivery-notes' ) ); ?>
+			<?php endif; ?>
+
+			<?php if ( isset( $totals['dfw_total_cart_amount'] ) ) : ?>
+				<?php $render_totals_row( $totals['dfw_total_cart_amount'], __( 'Total Cart Amount:', 'woocommerce-delivery-notes' ) ); ?>
+			<?php endif; ?>
 		</table>
-	</div>
 
-	<?php endif; ?>
+		<?php endif; ?>
 
-	<!-- CUSTOMER NOTE -->
-	<?php if ( ! empty( $settings['showCustomerNote'] ) && ! empty( $order['customer_note'] ) ) : ?>
-	<hr />
-	<div class="wcdn-customer-note">
-		<?php echo esc_html( $settings['customerNoteTitle'] ); ?>: <?php echo esc_html( $order['customer_note'] ); ?>
-	</div>
+		<?php do_action( 'wcdn_after_totals', $order, $template ); ?>
 
-		<?php do_action( 'wcdn_after_notes', $order, $template ); ?>
+		<?php if ( $show_pay_now_button ) : ?>
+		<div class="wcdn-pay">
+			<table align="center">
+				<tr>
+					<td>
+						<a class="wcdn-payment-button" href="<?php echo esc_url( $order['payment_url'] ); ?>">
+							<?php echo esc_html( $settings['payNowLabel'] ); ?> &mdash;
+							<?php echo wp_kses_post( $totals['total'] ); ?>
+						</a>
+					</td>
+				</tr>
+			</table>
+		</div>
 
-	<?php endif; ?>
+		<?php endif; ?>
 
-	<!-- POLICIES -->
-	<?php if ( ! empty( $settings['showPolicies'] ) && ! empty( $document['policies'] ) ) : ?>
-	<hr />
-	<div class="wcdn-policies">
-		<?php echo wp_kses_post( $document['policies'] ); ?>
-	</div>
-	<?php endif; ?>
+		<?php do_action( 'wcdn_after_pay_button', $order, $template ); ?>
 
-	<!-- COMPLIMENTARY CLOSE -->
-	<?php if ( ! empty( $settings['showComplimentaryClose'] ) && ! empty( $document['complimentaryClose'] ) ) : ?>
-	<hr />
-	<div class="wcdn-complimentary-close">
-		<?php echo wp_kses_post( $document['complimentaryClose'] ); ?>
-	</div>
-	<?php endif; ?>
+		<?php if ( ! empty( $settings['showCustomerNote'] ) && ! empty( $order['customer_note'] ) ) : ?>
+		<hr style="margin: 5px 0;" />
+		<div class="wcdn-customer-note">
+			<?php echo esc_html( $settings['customerNoteTitle'] ); ?>:
+			<?php echo esc_html( $order['customer_note'] ); ?>
+		</div>
 
-	<!-- FOOTER -->
-	<?php if ( ! empty( $settings['showFooter'] ) && ! empty( $document['footer'] ) ) : ?>
-	<hr />
-	<div class="wcdn-footer">
-		<?php echo wp_kses_post( $document['footer'] ); ?>
-	</div>
-	<?php endif; ?>
+			<?php do_action( 'wcdn_after_notes', $order, $template ); ?>
 
-	<?php do_action( 'wcdn_after_document', $order, $template ); ?>
+		<?php endif; ?>
+
+		<?php if ( ! empty( $settings['showPolicies'] ) && ! empty( $document['policies'] ) ) : ?>
+		<hr style="margin: 5px 0;" />
+		<div class="wcdn-policies">
+			<?php echo wp_kses_post( $document['policies'] ); ?>
+		</div>
+		<?php endif; ?>
+
+		<?php if ( ! empty( $settings['showComplimentaryClose'] ) && ! empty( $document['complimentaryClose'] ) ) : ?>
+		<hr style="margin: 5px 0;" />
+		<div class="wcdn-complimentary-close">
+			<?php echo wp_kses_post( $document['complimentaryClose'] ); ?>
+		</div>
+		<?php endif; ?>
+
+		<?php if ( ! empty( $settings['showFooter'] ) && ! empty( $document['footer'] ) ) : ?>
+		<hr style="margin: 5px 0;" />
+		<div class="wcdn-footer">
+			<?php echo wp_kses_post( $document['footer'] ); ?>
+		</div>
+		<?php endif; ?>
+
+		<?php do_action( 'wcdn_after_document', $order, $template ); ?>
 
 </div>

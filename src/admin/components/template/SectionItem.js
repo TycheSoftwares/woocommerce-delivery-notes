@@ -1,3 +1,4 @@
+import { __ } from "@wordpress/i18n";
 import { useState, useRef } from "@wordpress/element";
 import { Icon } from "@wordpress/components";
 import { chevronDown, chevronUp } from "@wordpress/icons";
@@ -42,7 +43,7 @@ function SectionItem({ label = "", checked = false, disabled, onToggle = {}, chi
                             className="wcdn-customize-toggle"
                             onClick={handleClick}
                         >
-                            Customize
+                            {__("Customize", "woocommerce-delivery-notes")}
                             <Icon icon={open ? chevronUp : chevronDown} />
                         </button>
                     )}

@@ -355,6 +355,8 @@ body {
     border: 1px solid #a29393 !important;
     background: var(--wcdn-color-bg) !important;
     color: #504a4a !important;
+    height: 30px !important;
+    padding: 0 6px !important;
 }
 
 .wcdn-logo-help {
@@ -600,6 +602,58 @@ body {
         label {
             font-family: var(--font-family);
             font-size: 0.8rem;
+        }
+    }
+
+    &__help {
+        font-family: var(--font-family);
+        font-size: 0.75rem;
+        color: #757575;
+        margin: 6px 0 0;
+        line-height: 1.4;
+    }
+
+    .wcdn-radio-options {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 4px;
+    }
+
+    .wcdn-radio-option {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        cursor: pointer;
+
+        &.is-disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        input[type="radio"] {
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        &__body {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        &__label {
+            font-family: var(--font-family);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #1e1e1e;
+        }
+
+        &__description {
+            font-family: var(--font-family);
+            font-size: 0.75rem;
+            color: #757575;
+            line-height: 1.4;
         }
     }
 }
@@ -889,7 +943,7 @@ body {
 
 .wcdn-preview-canvas {
     transition: transform 0.15s ease;
-    max-width: 1024px;
+    flex-shrink: 0;
 }
 
 .wcdn-preview-document {
@@ -909,7 +963,7 @@ body {
 
 .wcdn-preview-divider {
     border-bottom: 1px solid #e0e0e0;
-    margin: 20px 0;
+    margin: 10px 0;
 }
 
 .wcdn-preview-logo {
@@ -926,7 +980,7 @@ body {
 
 .wcdn-preview-logo-box {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 10px 20px 10px 0;
     color: #777;
 }
 
@@ -1069,6 +1123,11 @@ body {
 .wcdn-preview-totals td {
     padding: 10px;
     border-bottom: 1px solid #eee;
+}
+
+.wcdn-preview-table td.wcdn-product-cell {
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .wcdn-preview-totals {

@@ -51,6 +51,7 @@ class Uninstall {
 	 */
 	public static function remove_cron_jobs() {
 		wp_clear_scheduled_hook( 'wcdn_ts_tracker_send_event' );
+		wp_clear_scheduled_hook( 'wcdn_delete_file' );
 	}
 
 	/**

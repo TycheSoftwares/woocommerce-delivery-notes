@@ -7,7 +7,7 @@ Requires PHP: 7.4
 Tested up to: 6.9.4
 WC requires at least: 5.0.0
 WC tested up to: 10.7.0
-Stable tag: 7.0.0
+Stable tag: 7.1.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -243,6 +243,30 @@ No, document prices come directly from WooCommerce orders, though you can choose
 This plugin communicates with our tracking server to send usage data **only** if the user has explicitly opted in to usage tracking. For detailed information about what is tracked, please refer to our [usage tracking documentation](https://www.tychesoftwares.com/docs/woocommerce-print-invoice-delivery-note/print-invoice-usage-trackings/).
 
 == Changelog ==
+
+= 7.1.2 - 13/05/2026 =
+* Feature - Added integration with Deposits & Partial Payments for WooCommerce Pro (AWCDP). Documents now display a Deposit Amount row and a Future Payments row for deposit orders, reading the correct persisted meta values set at checkout.
+* Feature - Printing a child AWCDP partial payment order now resolves to the parent deposit order, restoring the product items table and showing the correct deposit and future payment totals.
+* Enhancement - Added a Page Setup section to all five document types with a Zoom slider (70–130%) and a PDF Zoom Mode option. Layout mode scales the entire document proportionally; Text mode scales only font sizes.
+* Enhancement - Added a Product Name styling section to all five document types for configuring font size, font style, text colour, and padding of product names in the items table.
+* Enhancement - Added font-weight and text-align settings for the Policies, Complimentary Close, and Footer sections.
+* Enhancement - Added Payment Method as a configurable section on the Delivery Note template. Previously it was only available on Invoice and Receipt.
+* Enhancement - Bulk Print now generates merged PDFs on demand via an async AJAX request rather than synchronously on page load, avoiding HTTP timeouts when printing large numbers of orders.
+* Enhancement - Added a loading overlay with a spinner when Auto Print Dialog is enabled. The overlay is dismissed immediately before the browser print dialog opens.
+* Enhancement - All document type templates now resolve base.php through the theme override lookup, so copying base.php to your theme correctly overrides the document layout.
+* Enhancement - Added a WooCommerce_Delivery_Notes global class alias so third-party plugins that detect the plugin via class_exists( 'WooCommerce_Delivery_Notes' ) continue to work after the v7 namespace refactor.
+* Enhancement - The HTML print preview now declares a @page size rule matching the configured PDF paper size, so the browser print preview page dimensions match the generated PDF.
+* Enhancement - Added wcdn_print_document_title, wcdn_pdf_zoom_mode, wcdn_order_info_fields, and wcdn_order_items developer filters. wcdn_order_items allows sorting or reordering line items in the document table by name, SKU, quantity, or any other item field.
+* Fix - Fatal error when generating a PDF for a refund email on orders containing downloadable products.
+* Fix - PDF generation for email attachments was triggered unconditionally, which could exhaust server memory on sites using locale fonts (e.g. CJK scripts). Generation is now skipped entirely when no attachment target has the feature enabled.
+* Fix - The wcdn_pdf_paper_size filter's default value was hardcoded to A4. It now correctly uses the paper size configured under PDF Settings.
+* Fix - Generated PDF filenames now include a per-order cryptographic token, preventing enumeration of stored PDFs by order number alone.
+* Fix - An interval-based readyState polling loop in the admin print button handler could cause double-prints on slow connections. The polling loop has been removed.
+* Tweak - PDF base font size increased from 9.5pt to 9.75pt and line height reduced to 1.2 for improved readability and more compact layout.
+* Tweak - Reduced spacing above and below horizontal rules, and reduced the top margin of the order totals table.
+
+= 7.1.1 - 25/04/2026 =
+* Fix - Resolved a deployment issue that caused the admin interface to not load correctly after updating to 7.1.0.
 
 = 7.1.0 - 25/04/2026 =
 * Enhancement - Added Show/Hide controls for Subtotal, Tax, and Shipping rows in the product table. Configurable per document type under Template Settings → Show Product Table Charges.

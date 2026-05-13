@@ -121,9 +121,6 @@ class Emails {
 
 		foreach ( $templates as $template ) {
 
-			$file_name = $order->get_meta( '_wcdn_' . $template . '_pdf' );
-			$file_path = $upload_dir['basedir'] . '/wcdn/' . $template . '/' . $file_name;
-
 			// Template enabled.
 			if ( ! Templates::get( $template, 'enabled' ) ) {
 				continue;
@@ -134,7 +131,23 @@ class Emails {
 				continue;
 			}
 
-			if ( ! $file_name || ! $filesystem->exists( $file_path ) ) {
+			// Resolve all attachment targets before generating the PDF.
+			// Generating a PDF unconditionally loads fonts and can exhaust
+			// memory on sites with large locale fonts (e.g. CJK scripts).
+			$attach_customer = $this->should_attach_template_for_customer( $template, $email_id, $order );
+			$attach_admin    = (bool) Templates::get( $template, 'attachAdminEmail' );
+			$attach_custom   = (bool) Templates::get( $template, 'attachCustomEmails' );
+
+			$file_name  = $order->get_meta( '_wcdn_' . $template . '_pdf' );
+			$file_path  = $upload_dir['basedir'] . '/wcdn/' . $template . '/' . $file_name;
+			$has_cached = $file_name && $filesystem->exists( $file_path );
+
+			// Skip generation entirely when no one needs the PDF.
+			if ( ! $has_cached && ! $attach_customer && ! $attach_admin && ! $attach_custom ) {
+				continue;
+			}
+
+			if ( ! $has_cached ) {
 				/**
 				 * Build document data.
 				 */
@@ -156,19 +169,17 @@ class Emails {
 				);
 			}
 
-			if ( $this->should_attach_template_for_customer( $template, $email_id, $order ) ) {
-				if ( $filesystem->exists( $file_path ) ) {
-					$attachments[] = $file_path;
-				}
+			if ( $attach_customer && $filesystem->exists( $file_path ) ) {
+				$attachments[] = $file_path;
 			}
 
 			// To all Administrators.
-			if ( Templates::get( $template, 'attachAdminEmail' ) ) {
+			if ( $attach_admin ) {
 				$this->send_to_custom_email( wcdn_get_all_administrator_emails(), $order, $file_path, $template );
 			}
 
 			// Custom Email Addresses.
-			if ( Templates::get( $template, 'attachCustomEmails' ) ) {
+			if ( $attach_custom ) {
 				$this->send_to_custom_email( Templates::get( $template, 'customEmailAddresses' ), $order, $file_path, $template );
 			}
 		}
@@ -338,7 +349,8 @@ class Emails {
 				true
 			);
 
-			$label = Utils::get_label_for_template_type( $type );
+			$label_data    = Utils::template_label( $type );
+			$document_name = $label_data['labels']['name'] ?? $type;
 
 			// Customer email.
 			if ( $show_customer_email_link && ! $sent_to_admin ) {
@@ -348,7 +360,7 @@ class Emails {
 					$this->print_link_in_email(
 						$plain_text,
 						$url,
-						Settings::get( 'customerEmailText' ) . ' ' . $label
+						Settings::get( 'customerEmailText' ) . ' ' . $document_name
 					);
 				}
 			}
@@ -359,7 +371,7 @@ class Emails {
 				$this->print_link_in_email(
 					$plain_text,
 					$url,
-					Settings::get( 'adminEmailText' ) . ' ' . $label
+					Settings::get( 'adminEmailText' ) . ' ' . $document_name
 				);
 			}
 		}
@@ -385,30 +397,8 @@ class Emails {
 			return;
 		}
 
-		?>
-<p>
-	<strong>
-		<?php
-			echo esc_html(
-				apply_filters(
-					'wcdn_print_text_in_email',
-					__( 'Print:', 'woocommerce-delivery-notes' )
-				)
-			);
-		?>
-	</strong>
-
-	<a href="<?php echo esc_url( $url ); ?>">
-		<?php
-			echo esc_html(
-				apply_filters(
-					'wcdn_print_view_in_browser_text_in_email',
-					$link_text
-				)
-			);
-		?>
-	</a>
-</p>
-		<?php
+		$text = esc_html( apply_filters( 'wcdn_print_view_in_browser_text_in_email', $link_text ) );
+		$href = esc_url( $url );
+		echo wp_kses_post( '<p><a href="' . $href . '">' . $text . '</a></p>' );
 	}
 }

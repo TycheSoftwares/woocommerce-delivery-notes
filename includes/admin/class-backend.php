@@ -371,13 +371,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			return;
 		}
 
-		const interval = setInterval(function() {
-			if (printWindow.document.readyState === 'complete') {
-				clearInterval(interval);
-				printWindow.print();
-			}
-		}, 500);
-
 		closeModal();
 	});
 

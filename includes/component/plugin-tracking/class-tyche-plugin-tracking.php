@@ -4,10 +4,10 @@
  *
  * Plugin Tracking Class.
  *
- * @author      Tyche Softwares
- * @package     TycheSoftwares/PluginTracking
- * @category    Classes
- * @since       1.2
+ * @author   Tyche Softwares
+ * @package  TycheSoftwares/PluginTracking
+ * @category Classes
+ * @since    1.2
  */
 
 namespace Tyche\WCDN;
@@ -259,7 +259,10 @@ if ( ! class_exists( 'Tyche\WCDN\Tyche_Plugin_Tracking' ) ) {
 			src="<?php echo esc_url( $this->api_url . '/assets/plugin-tracking/images/site-logo.jpg?v=' . $this->version ); ?> ">
 	</div>
 	<p style="margin: 10px 0 10px 130px; font-size: medium;">
-		<?php /* translators: 1. Plugin name, 2. URL to find out more about usage tracking */ print( sprintf( __( 'Want to help make %1$s even more awesome? Allow %1$s to collect non-sensitive diagnostic data and usage information and get 20%% off on your next purchase. <a href="%2$s" target="_blank">Find out more</a>.', 'woocommerce-delivery-notes' ), $this->plugin_name, $this->blog_link ) );  //phpcs:ignore ?>
+		<?php //phpcs:ignore
+             /* translators: 1. Plugin name, 2. URL to find out more about usage tracking */
+                print( $this->safe_sprintf( __( 'Want to help make %1$s even more awesome? Allow %1$s to collect non-sensitive diagnostic data and usage information and get 20%% off on your next purchase. <a href="%2$s" target="_blank">Find out more</a>.', 'woocommerce-delivery-notes' ), $this->plugin_name, $this->blog_link ) ); //phpcs:ignore
+				?>
 	</p>
 	<p class="submit">
 		<a class="button-primary button button-large"
@@ -269,6 +272,32 @@ if ( ! class_exists( 'Tyche\WCDN\Tyche_Plugin_Tracking' ) ) {
 	</p>
 </div>
 				<?php
+			}
+		}
+
+		/**
+		 * Format a translatable sprintf template safely.
+		 *
+		 * Falls back to str_replace when a translation contains an unescaped %
+		 * that would cause a ValueError in sprintf (e.g. Dutch "20% off" translations).
+		 *
+		 * @param string $template Translated sprintf template.
+		 * @param mixed  ...$args  Substitution values.
+		 * @return string
+		 */
+		protected function safe_sprintf( $template, ...$args ) {
+			try {
+				return sprintf( $template, ...$args );
+			} catch ( \ValueError $e ) {
+				$placeholders = array();
+				$values       = array();
+				foreach ( $args as $i => $value ) {
+					$placeholders[] = '%' . ( $i + 1 ) . '$s';
+					$values[]       = $value;
+				}
+				$placeholders[] = '%%';
+				$values[]       = '%';
+				return str_replace( $placeholders, $values, $template );
 			}
 		}
 

@@ -1,6 +1,6 @@
 import apiFetch from "@wordpress/api-fetch";
 import { handleResponse } from "./utils";
-import { cachedFetch, updateCache, clearCache } from "./cache";
+import { cachedFetch, clearCache } from "./cache";
 
 /**
  * Create API Helper
@@ -33,9 +33,8 @@ export function createApi(endpoint) {
             })
                 .then(handleResponse)
                 .then((response) => {
-                    const result = response || {};
-                    updateCache(CACHE_KEY, result);
-                    return result;
+                    clearCache(CACHE_KEY);
+                    return response || {};
                 });
         },
 

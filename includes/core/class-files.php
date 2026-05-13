@@ -22,6 +22,32 @@ defined( 'ABSPATH' ) || exit;
 class Files {
 
 	/**
+	 * Load a third-party integration once its detection class is available.
+	 *
+	 * Defers to plugins_loaded priority 20 so third-party plugins that
+	 * register their classes at the default priority (10) are already loaded.
+	 *
+	 * @param string $detect_class Fully-qualified class name used to detect the plugin.
+	 * @param string $file         Path relative to the includes directory.
+	 * @param string $fqcn         Fully-qualified class name of the integration to instantiate.
+	 * @since 7.1.2
+	 */
+	private static function load_integration( string $detect_class, string $file, string $fqcn ): void {
+		$load = static function () use ( $detect_class, $file, $fqcn ) {
+			if ( class_exists( $detect_class ) ) {
+				WCDN()::include_file( $file );
+				new $fqcn();
+			}
+		};
+
+		if ( did_action( 'plugins_loaded' ) ) {
+			$load();
+		} else {
+			add_action( 'plugins_loaded', $load, 20 );
+		}
+	}
+
+	/**
 	 * Include files.
 	 *
 	 * @since 7.0
@@ -93,6 +119,11 @@ class Files {
 
 		WCDN()::include_file( 'integrations/class-emails.php' );
 		new \Tyche\WCDN\Integrations\Emails();
+
+		self::load_integration( 'AWCDP_Deposits', 'integrations/class-deposits-partial-payments.php', \Tyche\WCDN\Integrations\Deposits_Partial_Payments::class );
+		self::load_integration( 'DFW_Deposits', 'integrations/class-dfw-deposits.php', \Tyche\WCDN\Integrations\DFW_Deposits::class );
+		self::load_integration( 'WC_Local_Pickup_Plus_Orders', 'integrations/class-local-pickup-plus.php', \Tyche\WCDN\Integrations\Local_Pickup_Plus::class );
+		self::load_integration( 'Coderockz_Woo_Delivery', 'integrations/class-coderockz-woo-delivery.php', \Tyche\WCDN\Integrations\Coderockz_Woo_Delivery::class );
 
 		WCDN()::include_file( 'frontend/class-frontend.php' );
 		WCDN()::include_file( 'admin/class-backend.php' );

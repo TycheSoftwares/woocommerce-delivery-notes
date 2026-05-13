@@ -10,9 +10,9 @@ function MediaUpload({ label, tooltip, value, onChange, help, className }) {
     const openMediaLibrary = () => {
         if (!frameRef.current) {
             frameRef.current = wp.media({
-                title: "Select Logo",
+                title: __("Select Logo", TEXT_DOMAIN),
                 button: {
-                    text: "Use Logo",
+                    text: __("Use Logo", TEXT_DOMAIN),
                 },
                 library: {
                     type: "image",
@@ -45,7 +45,7 @@ function MediaUpload({ label, tooltip, value, onChange, help, className }) {
                             }}
                         />
                     ) : (
-                        "Logo"
+                        __("Logo", TEXT_DOMAIN)
                     )}
                 </div>
 
