@@ -27,6 +27,7 @@ const INCLUDE = [
     "README.md",
     "readme.txt",
     "changelog.txt",
+    "HOOKS.md",
 ];
 
 // Assets minified in the dist output (WC version skips the tracking JS).
