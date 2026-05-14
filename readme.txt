@@ -15,94 +15,85 @@ Create and print PDF invoices, delivery notes, receipts, credit notes, and packi
 
 == Description ==
 
-> ###🚀&nbsp;&nbsp;New Launch: Flexi BOGO for WooCommerce
->
-> The only BOGO plugin with a revenue tracking feature. **Now, at an attractive introductory price**. [Check out our new plugin here](https://www.tychesoftwares.com/products/woocommerce-flexi-bogo-plugin/?utm_source=wprepo&utm_medium=pluginpagetop&utm_campaign=WCDeliveryNotes).
+Print Invoice & Delivery Notes for WooCommerce helps store owners generate printable PDF invoices, delivery notes, receipts, credit notes, and packing slips directly from WooCommerce orders.
 
-Print Invoice & Delivery Notes for WooCommerce allows store owners to generate, customise, and print order documents directly from the WooCommerce admin. Supports five document types: invoices, receipts, delivery notes, credit notes, and packing slips.
+Store admins can print order documents individually or in bulk, attach invoice PDFs to WooCommerce emails, and customize invoice templates with company branding, invoice numbering, billing details, and footer content.
 
-Store owners can generate PDFs, attach them to WooCommerce order emails, and allow customers to access and print documents from their account page and order emails.
+Customers can access and download invoices from the WooCommerce My Account page and order emails, making it easier to manage order records without contacting store support.
 
-Ideal for stores that want a straightforward way to manage order documents for customers and accounting, without creating them manually.
+Ideal for WooCommerce stores that need a simple solution for invoice management, order fulfilment, customer records, and accounting workflows.
 
 
 == Key Features ==
 
-= Five Document Types =
+= Generate and Print WooCommerce Invoices =
 
-* **Invoice** – professional billing document with sequential numbering
-* **Receipt** – payment confirmation document
-* **Delivery Note** – dispatch document for shipments
-* **Packing Slip** – warehouse-ready picking document
-* **Credit Note** – refund and return document
+Generate printable invoices, delivery notes, receipts, credit notes, and packing slips directly from WooCommerce orders.
 
-= Customisable Templates =
+The plugin adds:
 
-Each template is independently configurable with a live preview:
+* An Order Printing panel to the Edit Order page
+* Print actions on the WooCommerce Orders screen
+* Quick access to print order documents while managing orders
 
-* Company logo with adjustable scale and alignment
-* Document title, shop name, address, phone, and email
-* Billing and shipping address labels and styles
-* Font sizes, font weight, text colours, and alignment per section
-* Watermark with custom text, opacity, angle, and repeat layout
-* Footer text, policies, complimentary close, and customer notes
-* Enable or disable individual sections per template
+This helps streamline WooCommerce order processing and fulfillment workflows.
 
-= Sequential Invoice Numbering =
+= Send Invoice PDFs in WooCommerce Emails =
 
-* Customisable number format with placeholders: {next_number}, {order_number}, {order_date}, {year}, {month}, {customer_name}, and more
-* Optional yearly reset with a configurable starting number per year
-* Manually adjustable next invoice number
+Add invoice and delivery note print links to WooCommerce order emails sent to customers and store admins.
 
-= PDF Generation and Storage =
+Choose which order statuses — such as Processing or Completed — should include invoice print links in emails.
 
-* Generate and store PDFs for all document types
-* Configurable PDF expiration — automatically delete stored files after a set number of days
-* Customisable PDF filename per template using order data placeholders
-* Attach PDFs automatically to WooCommerce order emails
+Customers and admins can open, print, or download invoice PDFs directly from WooCommerce emails.
 
-= Add Print Links and PDF Attachments to Emails =
+= Customize Invoice and Delivery Note Templates =
 
-* Attach PDFs to customer and admin WooCommerce emails
-* Control which order statuses trigger attachments
-* Select specific WooCommerce email types to attach to
-* Add print links to customer and admin emails with customisable link text
-* Send PDFs to additional custom email addresses
+Customize invoice, receipt, and delivery note templates to match your WooCommerce store branding and business requirements.
 
-= Bulk Print WooCommerce Order Documents =
+Available customization options include:
 
-* Select multiple orders from the WooCommerce Orders page
-* Print or generate merged PDFs for multiple orders at once using **Bulk Actions**
+* Company logo, name, and address
+* Invoice titles and invoice numbering formats
+* Billing and shipping details
+* Payment information
+* Footer text and store policies
+* Customer notes and contact details
 
-= Customer Access to Documents =
+The plugin includes two built-in invoice layouts and a live preview option to review changes before saving.
 
-* Print buttons on the **My Account → Orders** page
-* Print buttons on the order confirmation (thank you) page
-* Print links in order emails
-* Guest access via secure tokens — no login required
-* Customisable button labels per document type
+= Bulk Print WooCommerce Invoices =
+
+Bulk print invoices, receipts, delivery notes, and packing slips directly from the WooCommerce Orders page.
+
+Select multiple orders and generate printable order documents using WooCommerce Bulk Actions without opening each order individually.
+
+Useful for WooCommerce stores managing high order volumes, warehouse operations, and fulfillment workflows.
+
+= Allow Customers to Download WooCommerce Invoices =
+
+Customers can access invoices and receipts from:
+
+* My Account → Orders page
+* WooCommerce order confirmation emails
+* Order-related email notifications
+
+This improves the post-purchase experience and reduces customer support requests related to invoice downloads and order records.
 
 == Additional Features ==
 
-* **Live preview** – see template changes in real time before saving
-* **RTL support** – configurable text direction for right-to-left languages
-* **Dashboard onboarding** – setup checklist to guide initial configuration
-* **Keeps documents accurate when orders are refunded**
-* **Advanced extensibility** via hooks and filters
-* **Theme overrides** – copy templates to your theme folder to customise HTML output without losing changes on update
+* **Live preview** – see changes in real-time before saving
+* **Adjust logo size** – set custom length and height for your company logo
+* Company logo, name, and address added to invoices
+* Customize invoice numbering with prefix and suffix
+* Display print links in emails based on order status
+* Store PDF files for a configurable duration
+* Supports Sequential & Custom Invoice Numbers
+* Keeps invoices accurate when orders are refunded in WooCommerce
+* Offers advanced customization support via hooks and filters
 
 == Developer Support and Extensibility ==
 
-The plugin exposes hooks and filters for developers to extend document output, PDF generation, and email delivery. Key filter categories include:
-
-* **Template rendering** – `wcdn_template_data`, `wcdn_template_css`, `wcdn_locate_template`, `wcdn_dynamic_css`
-* **Order item display** – `wcdn_order_item_name`, `wcdn_order_item_quantity`, `wcdn_formatted_item_price`, `wcdn_product_meta_data`, `wcdn_order_item_fields`
-* **Invoice number and date** – `wcdn_order_invoice_number`, `wcdn_order_invoice_date`
-* **PDF output** – `wcdn_pdf_paper_size`, `wcdn_pdf_orientation`, `wcdn_pdf_dpi`, `wcdn_pdf_filename`
-* **Email delivery** – `wcdn_administrator_emails`, `wcdn_custom_email_recipients`, `wcdn_custom_email_message_body`
-* **Document availability** – `wcdn_template_types_from_order`, `wcdn_allowed_statuses_[template]`
-
-Action: `wcdn_after_pdf_generated` fires after a PDF is created.
+The plugin includes hooks and filters for developers who want to customize templates and invoice numbers.
 
 == Need Help? ==
 
@@ -189,41 +180,57 @@ The manual installation method involves downloading the plugin and uploading it 
 
 == Frequently Asked Questions ==
 
-= How do templates work? =
+= Can invoices be generated and downloaded as PDFs? =
 
-Templates are pre-designed layouts for your documents. You can enable or disable each template (Invoice, Receipt, Delivery Note, etc.) and customize their sections, fonts, colors, and content. Changes are reflected in real-time in the preview pane.
+Yes. When you print an invoice, delivery note, or receipt, it opens in PDF format in the browser. You can print it directly or save it as a PDF on your device.
 
-= Why does the order print show a 404 page? =
+= Are invoices automatically sent to customers after an order is placed? =
 
-This usually happens due to permalink settings — resave your WordPress Permalinks or WooCommerce Print Settings and ensure a My Account Page is selected in WooCommerce settings.
+The plugin can automatically include a print invoice link in WooCommerce order emails sent to customers after an order is placed or when the order status changes. Customers can open the link to view and print the invoice.
 
-= How can I translate the plugin? =
+= Can customers download invoices from the My Account page? =
 
-Upload your .mo and .po files to `/wp-content/languages/plugins/` using the correct locale (e.g. `woocommerce-delivery-notes-it_IT.mo`).
+Yes. Customers can access and print their invoices and receipts from My Account → Orders. You can show print buttons on both the My Account page and the individual View Order page.
 
-= Does this plugin modify order data? =
+= Can admins print invoices directly from the WooCommerce Orders page? =
 
-No, the plugin only reads WooCommerce order data to generate documents and does not modify any order information.
+Yes. Admins can print invoices, delivery notes, and receipts directly from the WooCommerce Orders page using the Print buttons or from inside the individual edit order page.
 
-= What is the difference between an invoice and a receipt? =
+= Can I bulk print invoices or delivery notes for multiple orders? =
 
-An invoice requests payment before it is made, while a receipt confirms that payment has already been received.
+Yes. The plugin supports printing order invoices in bulk. You can select multiple orders from the WooCommerce Orders page and use Bulk Actions to print invoices, delivery notes, or receipts for all selected orders at once.
 
-= Why can't customers see the Print button? =
+= Can I customize invoice, receipt, and delivery note templates? =
 
-Ensure the print button option is enabled, the document template is active, and order status rules are properly configured.
+Yes. You can customize the design and content of your invoices, receipts, and delivery notes using the plugin settings. You can also see a live preview of your changes before saving them.
 
-= How do I enable automatic PDF attachments to emails? =
+= Can I customize invoice fields, labels, and layout? =
 
-Enable PDF attachments for customer or admin emails in the Documents tab, and configure order status rules if needed.
+Yes. You can control document titles, text alignment, font size, colors, and choose which fields appear on invoices.
 
-= Is the plugin GDPR compliant? =
+= Can I add my brand details, such as logo, company name, and address to invoices? =
 
-Yes, the plugin stores minimal data beyond WooCommerce, but storing generated PDFs should be disclosed in your privacy policy.
+Yes. You can include your company logo, name, address, footer content, policies, and closing text on all documents to ensure they match your store's branding and business requirements.
 
-= Can I change item prices in documents? =
+= Can I control what order and product information appears on invoices? =
 
-No, document prices come directly from WooCommerce orders, though you can choose the price source in the Templates settings.
+Yes. You can choose which details to show, including order number, invoice number, order date, payment method, billing and shipping address, customer contact details, product prices, and customer notes.
+
+= Can I show unit price, VAT %, tax amount on invoices? =
+
+Yes. The plugin displays WooCommerce tax data on invoices, including product prices and tax amounts, based on your store's tax configuration.
+
+= Can I display custom order numbers with prefixes and suffixes on invoices? =
+
+Yes. The plugin lets you use custom order numbers on invoices, including prefixes and suffixes, instead of default WooCommerce order IDs.
+
+= Can I translate invoices into my store's language? =
+
+Yes. You can translate invoices into any language using a plugin like Loco Translate. Use it to translate the text strings in the Print Invoice & Delivery Notes plugin into your preferred language. Once done, your order invoices will display correctly in your chosen language for your customers.
+
+= What happens to invoices when an order is refunded? =
+
+When an order is refunded, the refunded amount is shown on the invoice, and you can still access and print it.
 
 == Screenshots ==
 
