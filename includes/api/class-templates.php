@@ -617,8 +617,16 @@ class Templates extends \Tyche\WCDN\Api\Api {
 				if ( 0.0 === $fee_total ) {
 					continue;
 				}
+				$label        = $fee->get_name();
+				$addon_labels = $fee->get_meta( '_wc_checkout_add_on_label', true ); // Support WooCommerce Checkout Add-Ons label.
+				if ( ! empty( $addon_labels ) ) {
+					if ( is_array( $addon_labels ) ) {
+						$addon_labels = implode( ', ', $addon_labels );
+					}
+					$label .= ': ' . $addon_labels;
+				}
 				$fee_lines[] = array(
-					'label' => $fee->get_name(),
+					'label' => $label,
 					'value' => wc_price( $fee_total, array( 'currency' => $currency ) ),
 				);
 			}
