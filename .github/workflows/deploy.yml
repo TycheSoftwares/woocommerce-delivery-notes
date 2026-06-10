@@ -2,7 +2,12 @@ name: Deploy to WordPress.org
 on:
   push:
     tags:
-      - "*"
+      - "[0-9]+.[0-9]+.[0-9]+"  # matches 1.0.0, 2.0.0, 1.5.2 etc. Ignores 1.0.0-beta, 1.0.0-rc1 etc.
+
+concurrency:
+  group: wp-org-deploy
+  cancel-in-progress: false  # let the running deploy finish; don't cancel it mid-SVN-commit
+
 jobs:
   build-and-deploy:
     name: Build & WordPress.org Release
