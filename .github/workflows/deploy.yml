@@ -33,7 +33,7 @@ jobs:
         run: npm ci
 
       - name: Run release build
-        run: npm run release
+        run: npm run release:svn
 
       - name: WordPress Plugin Deploy
         uses: 10up/action-wordpress-plugin-deploy@stable

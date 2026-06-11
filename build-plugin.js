@@ -8,8 +8,15 @@ const cssnano = require("cssnano");
 const PLUGIN_SLUG = "woocommerce-delivery-notes";
 const pluginHeader = fs.readFileSync(`${PLUGIN_SLUG}.php`, "utf8");
 const version = (pluginHeader.match(/\*\s+Version:\s+(\S+)/) ?? [])[1] ?? "0.0.0";
-const variant = process.argv.includes("--variant=wc") ? "wc" : "non-wc";
-const DEST_BASE = path.join("dist", variant === "wc" ? "wc-version" : "non-wc-version");
+const variant = process.argv.includes("--variant=wc")
+    ? "wc"
+    : process.argv.includes("--variant=svn")
+        ? "svn"
+        : "non-wc";
+
+const DEST_BASE = variant === "svn"
+    ? "dist"
+    : path.join("dist", variant === "wc" ? "wc-version" : "non-wc-version");
 const DEST = path.join(DEST_BASE, PLUGIN_SLUG);
 const ZIP_PATH = path.join(DEST_BASE, `${PLUGIN_SLUG}.${version}.zip`);
 
@@ -55,10 +62,11 @@ if (!fs.existsSync("vendor")) {
 }
 
 // Clean only this variant's output folder (leaves the other variant intact).
-fs.removeSync(DEST_BASE);
+fs.removeSync(variant === "svn" ? DEST : DEST_BASE);
 fs.mkdirpSync(DEST);
 
-console.log(`\nPackaging ${variant === "wc" ? "WC Marketplace" : "Standard"} version…`);
+const variantLabel = variant === "wc" ? "WC Marketplace" : variant === "svn" ? "SVN" : "Standard";
+console.log(`\nPackaging ${variantLabel} version…`);
 
 // Copy all included files.
 INCLUDE.forEach((item) => {

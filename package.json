@@ -24,7 +24,8 @@
         "package:wc": "node build-plugin.js --variant=wc",
         "release:non-wc": "npm run build && node build-plugin.js",
         "release:wc": "WCDN_WC_BUILD=true npm run build && node build-plugin.js --variant=wc",
-        "release": "npm run clean && npm run composer && npm run release:non-wc && npm run release:wc"
+        "release": "npm run clean && npm run composer && npm run release:non-wc && npm run release:wc",
+        "release:svn": "npm run clean && npm run build && npm run i18n && node build-plugin.js --variant=svn"
     },
     "devDependencies": {
         "@wordpress/eslint-plugin": "^22.22.0",
