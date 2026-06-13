@@ -346,6 +346,21 @@ class Template_Renderer {
 			);
 		}
 
+		// Deduplicate $order_meta_fields by 'key' before applying the filter.
+		$seen_keys      = array();
+		$deduped_fields = array();
+		foreach ( $order_meta_fields as $field ) {
+			$key = isset( $field['key'] ) ? (string) $field['key'] : '';
+			if ( '' !== $key ) {
+				if ( isset( $seen_keys[ $key ] ) ) {
+					continue;
+				}
+				$seen_keys[ $key ] = true;
+			}
+			$deduped_fields[] = $field;
+		}
+		$order_meta_fields = $deduped_fields;
+
 		/**
 		 * Filter the order meta fields shown in the document's order data block.
 		 *
