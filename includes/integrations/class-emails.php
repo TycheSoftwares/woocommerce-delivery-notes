@@ -210,7 +210,7 @@ class Emails {
 			}
 		}
 
-		$already_sent = $order->get_meta( '_email_pdf_sent', true );
+		$already_sent = $order->get_meta( '_email_pdf_sent_' . $template, true );
 
 		if ( $already_sent || empty( $emails ) || empty( $file_path ) || ! file_exists( $file_path ) || '' === $emails ) {
 			return;
@@ -274,7 +274,7 @@ class Emails {
 			array( $file_path )
 		);
 
-		$order->update_meta_data( '_email_pdf_sent', 1 );
+		$order->update_meta_data( '_email_pdf_sent_' . $template, 1 );
 		$order->save();
 	}
 
