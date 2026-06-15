@@ -288,8 +288,10 @@ class Pdf {
 
 		if ( ! $is_sample && ! $is_multiple ) {
 			$order = wc_get_order( $order_id );
-			$order->update_meta_data( '_wcdn_' . $template . '_pdf', $filename );
-			$order->save();
+			if ( $order ) {
+				$order->update_meta_data( '_wcdn_' . $template . '_pdf', $filename );
+				$order->save();
+			}
 		}
 
 		return $file;
