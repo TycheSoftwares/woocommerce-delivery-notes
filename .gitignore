@@ -87,5 +87,4 @@ workspace.code-workspace
 Rubbish/
 npm-debug.log*
 vendor/
-package-lock.json
 .env
