@@ -169,7 +169,7 @@ class Emails {
 				);
 			}
 
-			if ( $attach_customer && $filesystem->exists( $file_path ) ) {
+			if ( $attach_customer && $filesystem->exists( $file_path ) && 'new_order' !== $email_id ) {
 				$attachments[] = $file_path;
 			}
 
