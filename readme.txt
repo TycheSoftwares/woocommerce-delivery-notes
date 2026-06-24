@@ -4,10 +4,10 @@ Contributors: ashokrane, tychesoftwares
 Tags: packing slips, invoice, pdf invoice, delivery notes, woocommerce print invoice
 Requires at least: 6.0
 Requires PHP: 7.4
-Tested up to: 6.9.4
+Tested up to: 7.0.0
 WC requires at least: 5.0.0
-WC tested up to: 10.7.0
-Stable tag: 7.1.2
+WC tested up to: 10.8.1
+Stable tag: 7.2.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -250,6 +250,15 @@ When an order is refunded, the refunded amount is shown on the invoice, and you 
 This plugin communicates with our tracking server to send usage data **only** if the user has explicitly opted in to usage tracking. For detailed information about what is tracked, please refer to our [usage tracking documentation](https://www.tychesoftwares.com/docs/woocommerce-print-invoice-delivery-note/print-invoice-usage-trackings/).
 
 == Changelog ==
+
+= 7.2.0 - 24/06/2026 =
+* Fix - Logo scaling configured in the template settings is not applied to invoice templates and PDF documents.
+* Fix - Email attachments are not sent consistently when multiple document template email attachments are enabled.
+* Fix - Duplicate Delivery/Pickup Date fields are displayed on invoices when using the WooCommerce Delivery & Pickup Date Time Pro plugin.
+* Fix - Fatal error during PDF generation when PDF attachments are enabled on some hosting environments.
+* Fix - WooCommerce Checkout Add-Ons values are not displayed in generated invoices and documents.
+* Fix - Fatal error during PDF generation when an invalid order is encountered.
+* Fix - PDF attachments are incorrectly attached to Admin New Order emails when only the "Attach PDF to Customer Emails" setting is enabled.
 
 = 7.1.2 - 13/05/2026 =
 * Feature - Added integration with Deposits & Partial Payments for WooCommerce Pro (AWCDP). Documents now display a Deposit Amount row and a Future Payments row for deposit orders, reading the correct persisted meta values set at checkout.
