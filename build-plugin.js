@@ -148,7 +148,7 @@ function patchWcVersion(dest) {
 
 // Removes the Admin_Component load from class-files.php.
 function patchFilesPhp(file) {
-    let content = fs.readFileSync(file, "utf8");
+    let content = fs.readFileSync(file, "utf8").replace(/\r\n/g, "\n");
 
     content = replaceOrWarn(
         content,
@@ -165,7 +165,7 @@ function patchFilesPhp(file) {
 
 // Removes the tracker filter, tracking scripts enqueue, and tracker_data method.
 function patchBackendPhp(file) {
-    let content = fs.readFileSync(file, "utf8");
+    let content = fs.readFileSync(file, "utf8").replace(/\r\n/g, "\n");
 
     // 1. Remove add_filter for tracker data.
     content = replaceOrWarn(
@@ -203,7 +203,7 @@ function patchBackendPhp(file) {
 
 // Removes the reset_plugin_usage_tracking handler from class-settings.php.
 function patchSettingsPhp(file) {
-    let content = fs.readFileSync(file, "utf8");
+    let content = fs.readFileSync(file, "utf8").replace(/\r\n/g, "\n");
 
     content = content.replace(
         /\n\t\tif \( isset\( \$params\['reset_plugin_usage_tracking'\] \) \) \{[\s\S]*?\n\t\t\}\n\n(?=\t\t\$old_settings)/,
@@ -219,7 +219,7 @@ function patchSettingsPhp(file) {
 
 // Removes the tracker display notice filter and method from class-scripts.php.
 function patchScriptsPhp(file) {
-    let content = fs.readFileSync(file, "utf8");
+    let content = fs.readFileSync(file, "utf8").replace(/\r\n/g, "\n");
 
     // Remove add_filter line for tracker display notice.
     content = replaceOrWarn(
@@ -245,7 +245,7 @@ function patchScriptsPhp(file) {
 
 // Removes the Flexi BOGO cross-promotion block from readme.txt.
 function patchReadmeTxt(file) {
-    let content = fs.readFileSync(file, "utf8");
+    let content = fs.readFileSync(file, "utf8").replace(/\r\n/g, "\n");
 
     content = content.replace(
         /> ###🚀[^\n]*\n>\n>[^\n]*\n\n/,

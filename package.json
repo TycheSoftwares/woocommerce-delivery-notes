@@ -23,7 +23,7 @@
         "package": "node build-plugin.js",
         "package:wc": "node build-plugin.js --variant=wc",
         "release:non-wc": "npm run build && node build-plugin.js",
-        "release:wc": "WCDN_WC_BUILD=true npm run build && node build-plugin.js --variant=wc",
+        "release:wc": "cross-env WCDN_WC_BUILD=true npm run build && node build-plugin.js --variant=wc",
         "release": "npm run clean && npm run composer && npm run release:non-wc && npm run release:wc",
         "release:svn": "npm run clean && npm run build && npm run i18n && node build-plugin.js --variant=svn"
     },
@@ -33,6 +33,7 @@
         "archiver": "^7.0.1",
         "browser-sync": "^3.0.4",
         "browser-sync-webpack-plugin": "^2.4.0",
+        "cross-env": "^10.1.0",
         "eslint": "^8.57.1",
         "eslint-config-prettier": "^10.1.8",
         "eslint-plugin-react": "^7.37.5",
