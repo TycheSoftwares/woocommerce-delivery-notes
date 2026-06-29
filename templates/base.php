@@ -836,7 +836,7 @@ if ( $is_rtl ) {
 						'wcdn_order_item_before',
 						array( $_wcdn_wc_product, $_wcdn_wc_order, $_wcdn_wc_order_item ),
 						'7.0.0',
-						'wcdn_order_item_before',
+						'wcdn_order_item_before_legacy',
 						esc_html__( 'The wcdn_order_item_before hook argument order changed in v7.0. Update your callback to accept ( $item, $order, $template ) instead of ( $product, $order, $item ).', 'woocommerce-delivery-notes' )
 					);
 					do_action( 'wcdn_order_item_before', $item, $order, $template );
@@ -939,7 +939,7 @@ if ( $is_rtl ) {
 						'wcdn_order_item_after',
 						array( $_wcdn_wc_product, $_wcdn_wc_order, $_wcdn_wc_order_item ),
 						'7.0.0',
-						'wcdn_order_item_after',
+						'wcdn_order_item_after_legacy',
 						esc_html__( 'The wcdn_order_item_after hook argument order changed in v7.0. Update your callback to accept ( $item, $order, $template ) instead of ( $product, $order, $item ).', 'woocommerce-delivery-notes' )
 					);
 					do_action( 'wcdn_order_item_after', $item, $order, $template );
