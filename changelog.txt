@@ -1,5 +1,12 @@
 *** Print Invoice & Delivery Notes for WooCommerce ***
 
+= 2026-06-29 - version 7.2.1
+* Fix - Order action buttons are not displayed properly on the order edit page.
+* Fix - A few required minified (.min) files are missing from the plugin package, causing warnings and errors.
+* Fix - Critical error: Class Dompdf\Options not found when generating document PDFs.
+* Fix - Deprecated wcdn_order_item_before and wcdn_order_item_after hooks pass inconsistent argument types in v7.
+* Fix - Fatal error: Class Tyche\WCDN\WCDN_Notices not found when plugin activation requirements are not met and the admin notice is triggered.
+
 = 2026-06-24 - version 7.2.0
 * Fix - Logo scaling configured in the template settings is not applied to invoice templates and PDF documents.
 * Fix - Email attachments are not sent consistently when multiple document template email attachments are enabled.

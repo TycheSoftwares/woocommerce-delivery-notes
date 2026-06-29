@@ -6,8 +6,8 @@ Requires at least: 6.0
 Requires PHP: 7.4
 Tested up to: 7.0.0
 WC requires at least: 5.0.0
-WC tested up to: 10.8.1
-Stable tag: 7.2.0
+WC tested up to: 10.9.1
+Stable tag: 7.2.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -250,6 +250,13 @@ When an order is refunded, the refunded amount is shown on the invoice, and you 
 This plugin communicates with our tracking server to send usage data **only** if the user has explicitly opted in to usage tracking. For detailed information about what is tracked, please refer to our [usage tracking documentation](https://www.tychesoftwares.com/docs/woocommerce-print-invoice-delivery-note/print-invoice-usage-trackings/).
 
 == Changelog ==
+
+= 7.2.1 - 29/06/2026 =
+* Fix - Order action buttons are not displayed properly on the order edit page.
+* Fix - A few required minified (.min) files are missing from the plugin package, causing warnings and errors.
+* Fix - Critical error: Class Dompdf\Options not found when generating document PDFs.
+* Fix - Deprecated wcdn_order_item_before and wcdn_order_item_after hooks pass inconsistent argument types in v7.
+* Fix - Fatal error: Class Tyche\WCDN\WCDN_Notices not found when plugin activation requirements are not met and the admin notice is triggered.
 
 = 7.2.0 - 24/06/2026 =
 * Fix - Logo scaling configured in the template settings is not applied to invoice templates and PDF documents.
