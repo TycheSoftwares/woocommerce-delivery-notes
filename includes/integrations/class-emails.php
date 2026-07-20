@@ -175,12 +175,12 @@ class Emails {
 
 			// To all Administrators.
 			if ( $attach_admin ) {
-				$this->send_to_custom_email( wcdn_get_all_administrator_emails(), $order, $file_path, $template );
+				$this->send_to_custom_email( wcdn_get_all_administrator_emails(), $order, $file_path, $template, 'admin' );
 			}
 
 			// Custom Email Addresses.
 			if ( $attach_custom ) {
-				$this->send_to_custom_email( Templates::get( $template, 'customEmailAddresses' ), $order, $file_path, $template );
+				$this->send_to_custom_email( Templates::get( $template, 'customEmailAddresses' ), $order, $file_path, $template, 'custom' );
 			}
 		}
 
@@ -201,7 +201,7 @@ class Emails {
 	 * @return void
 	 * @since 7.0
 	 */
-	protected function send_to_custom_email( $emails, $order, $file_path, $template ) {
+	protected function send_to_custom_email( $emails, $order, $file_path, $template, $recipient_type = 'custom' ) {
 
 		if ( $order instanceof \WC_Order_Refund ) {
 			$order = wc_get_order( $order->get_parent_id() );
@@ -210,7 +210,7 @@ class Emails {
 			}
 		}
 
-		$already_sent = $order->get_meta( '_email_pdf_sent_' . $template, true );
+		$already_sent = $order->get_meta( '_email_pdf_sent_' . $recipient_type . '_' . $template, true );
 
 		if ( $already_sent || empty( $emails ) || empty( $file_path ) || ! file_exists( $file_path ) || '' === $emails ) {
 			return;
@@ -274,7 +274,7 @@ class Emails {
 			array( $file_path )
 		);
 
-		$order->update_meta_data( '_email_pdf_sent_' . $template, 1 );
+		$order->update_meta_data( '_email_pdf_sent_' . $recipient_type . '_' . $template, 1 );
 		$order->save();
 	}
 
