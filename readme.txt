@@ -42,7 +42,7 @@ This helps streamline WooCommerce order processing and fulfillment workflows.
 
 Add invoice and delivery note print links to WooCommerce order emails sent to customers and store admins.
 
-Choose which order statuses — such as Processing or Completed — should include invoice print links in emails.
+Choose which order statuses â€” such as Processing or Completed â€” should include invoice print links in emails.
 
 Customers and admins can open, print, or download invoice PDFs directly from WooCommerce emails.
 
@@ -73,7 +73,7 @@ Useful for WooCommerce stores managing high order volumes, warehouse operations,
 
 Customers can access invoices and receipts from:
 
-* My Account → Orders page
+* My Account â†’ Orders page
 * WooCommerce order confirmation emails
 * Order-related email notifications
 
@@ -81,8 +81,8 @@ This improves the post-purchase experience and reduces customer support requests
 
 == Additional Features ==
 
-* **Live preview** – see changes in real-time before saving
-* **Adjust logo size** – set custom length and height for your company logo
+* **Live preview** â€“ see changes in real-time before saving
+* **Adjust logo size** â€“ set custom length and height for your company logo
 * Company logo, name, and address added to invoices
 * Customize invoice numbering with prefix and suffix
 * Display print links in emails based on order status
@@ -100,7 +100,7 @@ The plugin includes hooks and filters for developers who want to customize templ
 * Visit the [WordPress support forums](https://wordpress.org/support/plugin/woocommerce-delivery-notes/)
 * Check the [documentation](https://www.tychesoftwares.com/docs/docs/print-invoice-delivery-notes-for-woocommerce/) for common answers
 
-If you find the plugin useful, a ⭐⭐⭐⭐⭐ rating is always appreciated — it helps other store owners discover the plugin.
+If you find the plugin useful, a â­â­â­â­â­ rating is always appreciated â€” it helps other store owners discover the plugin.
 
 = Contributing =
 
@@ -170,9 +170,9 @@ When your language is missing you can contribute a translation to the [GitHub re
 
 = Automatic installation =
 
-Automatic installation is the easiest option as WordPress handles the file transfers itself and you don’t need to leave your web browser. To do an automatic install of Print Invoice & Delivery Notes for WooCommerce, log in to your WordPress dashboard, navigate to the Plugins menu and click Add New.
+Automatic installation is the easiest option as WordPress handles the file transfers itself and you donâ€™t need to leave your web browser. To do an automatic install of Print Invoice & Delivery Notes for WooCommerce, log in to your WordPress dashboard, navigate to the Plugins menu and click Add New.
 
-In the search field type “WooCommerce Print Invoice” and click Search Plugins. Once you’ve found the plugin you can view details about it such as the the point release, rating and description. Most importantly of course, you can install it by simply clicking “Install Now”.
+In the search field type â€œWooCommerce Print Invoiceâ€ and click Search Plugins. Once youâ€™ve found the plugin you can view details about it such as the the point release, rating and description. Most importantly of course, you can install it by simply clicking â€œInstall Nowâ€.
 
 = Manual installation =
 
@@ -190,7 +190,7 @@ The plugin can automatically include a print invoice link in WooCommerce order e
 
 = Can customers download invoices from the My Account page? =
 
-Yes. Customers can access and print their invoices and receipts from My Account → Orders. You can show print buttons on both the My Account page and the individual View Order page.
+Yes. Customers can access and print their invoices and receipts from My Account â†’ Orders. You can show print buttons on both the My Account page and the individual View Order page.
 
 = Can admins print invoices directly from the WooCommerce Orders page? =
 
@@ -234,17 +234,17 @@ When an order is refunded, the refunded amount is shown on the invoice, and you 
 
 == Screenshots ==
 
-1. Dashboard – setup checklist and quick actions
-2. Templates – list of all five document types with enable/disable toggles
-3. Template Editor – customise sections, fonts, colours, and layout with live preview
-4. Watermark Settings – configure watermark text, opacity, angle, and repeat style
-5. Invoice Numbering – sequential numbering with format placeholders and yearly reset
-6. PDF Settings – enable PDF storage, set expiration, and configure filename format
-7. Email Attachments – attach PDFs to customer and admin emails by order status
-8. Store Settings – configure shop name, logo, address, and contact details
-9. Print Button on Order Edit Page – one-click printing from the WooCommerce order screen
-10. Customer My Account Page – print buttons on the Orders page
-11. Bulk Actions – print or generate PDFs for multiple orders at once
+1. Dashboard â€“ setup checklist and quick actions
+2. Templates â€“ list of all five document types with enable/disable toggles
+3. Template Editor â€“ customise sections, fonts, colours, and layout with live preview
+4. Watermark Settings â€“ configure watermark text, opacity, angle, and repeat style
+5. Invoice Numbering â€“ sequential numbering with format placeholders and yearly reset
+6. PDF Settings â€“ enable PDF storage, set expiration, and configure filename format
+7. Email Attachments â€“ attach PDFs to customer and admin emails by order status
+8. Store Settings â€“ configure shop name, logo, address, and contact details
+9. Print Button on Order Edit Page â€“ one-click printing from the WooCommerce order screen
+10. Customer My Account Page â€“ print buttons on the Orders page
+11. Bulk Actions â€“ print or generate PDFs for multiple orders at once
 
 == External Services ==
 This plugin communicates with our tracking server to send usage data **only** if the user has explicitly opted in to usage tracking. For detailed information about what is tracked, please refer to our [usage tracking documentation](https://www.tychesoftwares.com/docs/woocommerce-print-invoice-delivery-note/print-invoice-usage-trackings/).
@@ -270,7 +270,7 @@ This plugin communicates with our tracking server to send usage data **only** if
 = 7.1.2 - 13/05/2026 =
 * Feature - Added integration with Deposits & Partial Payments for WooCommerce Pro (AWCDP). Documents now display a Deposit Amount row and a Future Payments row for deposit orders, reading the correct persisted meta values set at checkout.
 * Feature - Printing a child AWCDP partial payment order now resolves to the parent deposit order, restoring the product items table and showing the correct deposit and future payment totals.
-* Enhancement - Added a Page Setup section to all five document types with a Zoom slider (70–130%) and a PDF Zoom Mode option. Layout mode scales the entire document proportionally; Text mode scales only font sizes.
+* Enhancement - Added a Page Setup section to all five document types with a Zoom slider (70â€“130%) and a PDF Zoom Mode option. Layout mode scales the entire document proportionally; Text mode scales only font sizes.
 * Enhancement - Added a Product Name styling section to all five document types for configuring font size, font style, text colour, and padding of product names in the items table.
 * Enhancement - Added font-weight and text-align settings for the Policies, Complimentary Close, and Footer sections.
 * Enhancement - Added Payment Method as a configurable section on the Delivery Note template. Previously it was only available on Invoice and Receipt.
@@ -295,8 +295,8 @@ This plugin communicates with our tracking server to send usage data **only** if
 * Fix - Resolved a deployment issue that caused the admin interface to not load correctly after updating to 7.1.0.
 
 = 7.1.0 - 25/04/2026 =
-* Enhancement - Added Show/Hide controls for Subtotal, Tax, and Shipping rows in the product table. Configurable per document type under Template Settings → Show Product Table Charges.
-* Enhancement - Added option to display Order Data beside or below the Billing/Shipping address section. Configurable under Invoice Settings → Template Order Data Position. Default matches the v6 layout (below).
+* Enhancement - Added Show/Hide controls for Subtotal, Tax, and Shipping rows in the product table. Configurable per document type under Template Settings â†’ Show Product Table Charges.
+* Enhancement - Added option to display Order Data beside or below the Billing/Shipping address section. Configurable under Invoice Settings â†’ Template Order Data Position. Default matches the v6 layout (below).
 * Enhancement - Added settings to show/hide and style Billing Email and Billing Phone Number independently, including font size, font style, text align, and colour.
 * Enhancement - Added wcdn_format_phone_number filter to allow custom formatting of the billing phone number in document templates.
 * Enhancement - Separated Store Phone Number and Store Email into individual rows with dedicated CSS settings for font style, text align, margin top, and margin bottom.
@@ -546,8 +546,8 @@ Tweak :- In FAQ page changed the code snippet to add the products image in the i
 
 = 4.4.7 (24.11.2018) =
 
-* Fix – Fixed compatibility related issue with WooCommerce Product Add-ons v3.0.x. Options were not being printed.
-* Fix – Fixed compatibility related issue with Woocommerce Partial Orders Pro Plugin.
+* Fix â€“ Fixed compatibility related issue with WooCommerce Product Add-ons v3.0.x. Options were not being printed.
+* Fix â€“ Fixed compatibility related issue with Woocommerce Partial Orders Pro Plugin.
 
 = 4.4.6 (22.10.2018) =
 
