@@ -281,7 +281,7 @@ class Pdf {
 		$filesystem->put_contents(
 			$file,
 			$dompdf->output(),
-			FS_CHMOD_FILE
+			defined( 'FS_CHMOD_FILE' ) ? FS_CHMOD_FILE : false
 		);
 
 		do_action( 'wcdn_after_pdf_generated', $file, $order_id, $template );
@@ -424,7 +424,7 @@ class Pdf {
 		$index_file = trailingslashit( $dir ) . 'index.html';
 
 		if ( ! $filesystem->exists( $index_file ) ) {
-			$filesystem->put_contents( $index_file, '', FS_CHMOD_FILE );
+			$filesystem->put_contents( $index_file, '', defined( 'FS_CHMOD_FILE' ) ? FS_CHMOD_FILE : false );
 		}
 
 		// Apache protection — prevent directory listing only.
@@ -433,15 +433,15 @@ class Pdf {
 		// button on Apache hosts.
 		$htaccess_file = trailingslashit( $dir ) . '.htaccess';
 		$correct_rules = "Options -Indexes\n";
+		$file_mode     = defined( 'FS_CHMOD_FILE' ) ? FS_CHMOD_FILE : false;
 
 		if ( $filesystem->exists( $htaccess_file ) ) {
-			// Heal existing files that contain the old deny rule.
 			$current = $filesystem->get_contents( $htaccess_file );
 			if ( false !== strpos( $current, 'Require all denied' ) ) {
-				$filesystem->put_contents( $htaccess_file, $correct_rules, FS_CHMOD_FILE );
+				$filesystem->put_contents( $htaccess_file, $correct_rules, $file_mode );
 			}
 		} else {
-			$filesystem->put_contents( $htaccess_file, $correct_rules, FS_CHMOD_FILE );
+			$filesystem->put_contents( $htaccess_file, $correct_rules, $file_mode );
 		}
 	}
 }
