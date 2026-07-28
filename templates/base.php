@@ -364,7 +364,12 @@ if ( $has_order_meta && 'columns' === $order_meta_position ) {
 			<td class="label" <?php echo $meta_style ? ' style="' . esc_attr( $meta_style ) . '"' : ''; ?>>
 				<?php echo esc_html( $field['label'] ); ?>:</td>
 			<td class="value" <?php echo $meta_style ? ' style="' . esc_attr( $meta_style ) . '"' : ''; ?>>
-				<?php echo esc_html( $field['value'] ); ?></td>
+				<?php if ( ! empty( $field['allow_html'] ) ) : ?>
+					<?php echo wp_kses_post( $field['value'] ); ?>
+				<?php else : ?>
+					<?php echo esc_html( $field['value'] ); ?>
+				<?php endif; ?>
+			</td>
 		</tr>
 		<?php endif; ?>
 		<?php endforeach; ?>
@@ -700,7 +705,12 @@ if ( $is_rtl ) {
 			<td class="label" <?php echo $meta_style ? ' style="' . esc_attr( $meta_style ) . '"' : ''; ?>>
 					<?php echo esc_html( $field['label'] ); ?>:</td>
 			<td class="value" <?php echo $meta_style ? ' style="' . esc_attr( $meta_style ) . '"' : ''; ?>>
-					<?php echo esc_html( $field['value'] ); ?></td>
+					<?php if ( ! empty( $field['allow_html'] ) ) : ?>
+						<?php echo wp_kses_post( $field['value'] ); ?>
+				<?php else : ?>
+					<?php echo esc_html( $field['value'] ); ?>
+				<?php endif; ?>
+			</td>
 		</tr>
 		<?php endif; ?>
 		<?php endforeach; ?>
