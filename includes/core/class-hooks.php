@@ -48,7 +48,8 @@ class Hooks {
 				}
 
 				load_plugin_textdomain( $domain, false, basename( dirname( WCDN_FILE ) ) . '/languages/' );
-			}
+			},
+			1 // Priority 1: must load translations before other init callbacks output translated strings.
 		);
 
 		add_filter(
