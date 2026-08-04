@@ -26,7 +26,7 @@ final class WooCommerce_Delivery_Notes {
 	 *
 	 * @var string
 	 */
-	protected static $plugin_version = '7.2.1';
+	protected static $plugin_version = '7.3.0';
 
 	/**
 	 * Minimum version of WordPress required.
