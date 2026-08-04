@@ -1,5 +1,11 @@
 *** Print Invoice & Delivery Notes for WooCommerce ***
 
+= 2026-08-04 - version 7.3.0
+* Fix - Fatal error: Undefined constant FS_CHMOD_FILE when printing documents when the server denies access to the required files.
+* Fix - Norwegian language translations are not applied correctly to templates, even though the translation files are present and valid.
+* Fix - Custom HTML/Image fields added via wcdn_order_meta_fields are escaped instead of being rendered.
+* Fix - PDF attachments are not included in emails sent to custom email addresses.
+
 = 2026-06-29 - version 7.2.1
 * Fix - Order action buttons are not displayed properly on the order edit page.
 * Fix - A few required minified (.min) files are missing from the plugin package, causing warnings and errors.

@@ -4,10 +4,10 @@ Contributors: ashokrane, tychesoftwares
 Tags: packing slips, invoice, pdf invoice, delivery notes, woocommerce print invoice
 Requires at least: 6.0
 Requires PHP: 7.4
-Tested up to: 7.0.0
+Tested up to: 7.0.2
 WC requires at least: 5.0.0
-WC tested up to: 10.9.1
-Stable tag: 7.2.1
+WC tested up to: 10.9.4
+Stable tag: 7.3.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -250,6 +250,12 @@ When an order is refunded, the refunded amount is shown on the invoice, and you 
 This plugin communicates with our tracking server to send usage data **only** if the user has explicitly opted in to usage tracking. For detailed information about what is tracked, please refer to our [usage tracking documentation](https://www.tychesoftwares.com/docs/woocommerce-print-invoice-delivery-note/print-invoice-usage-trackings/).
 
 == Changelog ==
+
+= 7.3.0 - 04/08/2026 =
+* Fix - Fatal error: Undefined constant FS_CHMOD_FILE when printing documents when the server denies access to the required files.
+* Fix - Norwegian language translations are not applied correctly to templates, even though the translation files are present and valid.
+* Fix - Custom HTML/Image fields added via wcdn_order_meta_fields are escaped instead of being rendered.
+* Fix - PDF attachments are not included in emails sent to custom email addresses.
 
 = 7.2.1 - 29/06/2026 =
 * Fix - Order action buttons are not displayed properly on the order edit page.
