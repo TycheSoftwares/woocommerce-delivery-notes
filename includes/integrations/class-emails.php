@@ -169,7 +169,8 @@ class Emails {
 				);
 			}
 
-			if ( $attach_customer && $filesystem->exists( $file_path ) && 'new_order' !== $email_id ) {
+			$attach_to_new_order = apply_filters( 'wcdn_attach_pdf_to_new_order_email', false, $email_id, $order, $template );
+			if ( $attach_customer && $filesystem->exists( $file_path ) && ( 'new_order' !== $email_id || $attach_to_new_order ) ) {
 				$attachments[] = $file_path;
 			}
 
