@@ -124,6 +124,7 @@ class Files {
 		self::load_integration( 'DFW_Deposits', 'integrations/class-dfw-deposits.php', \Tyche\WCDN\Integrations\DFW_Deposits::class );
 		self::load_integration( 'WC_Local_Pickup_Plus_Orders', 'integrations/class-local-pickup-plus.php', \Tyche\WCDN\Integrations\Local_Pickup_Plus::class );
 		self::load_integration( 'Coderockz_Woo_Delivery', 'integrations/class-coderockz-woo-delivery.php', \Tyche\WCDN\Integrations\Coderockz_Woo_Delivery::class );
+		self::load_integration( 'orddd_common', 'integrations/class-orddd-integration.php', \Tyche\WCDN\Integrations\Orddd_Integration::class );
 
 		WCDN()::include_file( 'frontend/class-frontend.php' );
 		WCDN()::include_file( 'admin/class-backend.php' );
