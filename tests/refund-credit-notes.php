@@ -191,7 +191,12 @@ try {
 			$check( 'refund_' . $index . '_amount_only_row_matches_refund', $data['order']['refund']['items'][0]['total'] === $data['order']['refund']['total'] );
 		}
 		$html = Template_Renderer::render( 'creditnote', $data, 'html' );
-		$check( 'refund_' . $index . '_renders_refund_total', false !== strpos( $html, $data['order']['refund']['total'] ) );
+		$document = new DOMDocument();
+		@$document->loadHTML( $html ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged -- HTML5 elements are valid in the rendered template.
+		$xpath       = new DOMXPath( $document );
+		$total_cells = $xpath->query( '//table[contains(concat(" ", normalize-space(@class), " "), " wcdn-totals ")]//td[contains(concat(" ", normalize-space(@class), " "), " wcdn-totals-value ")]' );
+		$expected    = html_entity_decode( wp_strip_all_tags( $data['order']['refund']['total'] ), ENT_QUOTES, 'UTF-8' );
+		$check( 'refund_' . $index . '_renders_refund_total', 1 === $total_cells->length && trim( $total_cells->item( 0 )->textContent ) === trim( $expected ) );
 	}
 
 	// A resend must select the older refund, even after a newer full refund exists.
