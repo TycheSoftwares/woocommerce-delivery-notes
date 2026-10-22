@@ -420,7 +420,8 @@ class Templates extends \Tyche\WCDN\Api\Api {
 			return $sample;
 		}
 
-		// WC_Order_Refund objects lack address/payment methods; always work with the parent order.
+		// Preserve the selected refund while reading address/payment data from its parent.
+		$selected_refund = $order instanceof \WC_Order_Refund ? $order : null;
 		if ( $order instanceof \WC_Order_Refund ) {
 			$parent = wc_get_order( $order->get_parent_id() );
 			if ( ! $parent ) {
@@ -570,7 +571,7 @@ class Templates extends \Tyche\WCDN\Api\Api {
 			),
 			'items'          => $items,
 			'totals'         => self::format_order_totals( $order, $template ),
-			'refund'         => self::generate_refund_preview( $order, $items ),
+			'refund'         => self::generate_refund_preview( $order, $items, $selected_refund ),
 			'status'         => $order->get_status(),
 			'extra_fields'   => apply_filters( 'wcdn_order_info_fields', array(), $order ),
 		);
@@ -1211,23 +1212,23 @@ class Templates extends \Tyche\WCDN\Api\Api {
 	 * Ensures the preview always has refund data even if the
 	 * selected order does not contain real refunds.
 	 *
-	 * @param WC_Order $order Order object.
-	 * @param array    $items Order items.
+	 * @param WC_Order              $order  Order object.
+	 * @param array                 $items  Order items.
+	 * @param \WC_Order_Refund|null $refund Explicit refund, when supplied by an email.
 	 *
 	 * @return array
 	 *
 	 * @since 7.0
 	 */
-	private static function generate_refund_preview( $order, $items ) {
+	private static function generate_refund_preview( $order, $items, $refund = null ) {
 
-		$refunds = $order->get_refunds();
+		$refund = Utils::get_order_refund( $order, $refund ? $refund->get_id() : 0 );
 
 		/*
 		* If the order already has a refund, use it
 		*/
-		if ( ! empty( $refunds ) ) {
+		if ( $refund ) {
 
-			$refund         = current( $refunds );
 			$refunded_items = array();
 			$currency       = $order->get_currency();
 
@@ -1247,12 +1248,24 @@ class Templates extends \Tyche\WCDN\Api\Api {
 				);
 			}
 
-			// Manual amount refunds have no line items — fall back to original order items.
-			if ( empty( $refunded_items ) && ! empty( $items ) ) {
-				$refunded_items = $items;
+			// An amount-only refund must not label the original item total as refunded.
+			if ( empty( $refunded_items ) ) {
+				$amount         = wc_price( abs( $refund->get_amount() ), array( 'currency' => $currency ) );
+				$refunded_items = array(
+					array(
+						'name'     => __( 'Refund', 'woocommerce-delivery-notes' ),
+						'sku'      => '',
+						'price'    => $amount,
+						'quantity' => 1,
+						'total'    => $amount,
+						'meta'     => array(),
+						'addon'    => null,
+					),
+				);
 			}
 
 			return array(
+				'id'     => $refund->get_id(),
 				'date'   => wc_format_datetime( $refund->get_date_created() ),
 				'reason' => $refund->get_reason(),
 				'total'  => wc_price( abs( $refund->get_amount() ), array( 'currency' => $currency ) ),
