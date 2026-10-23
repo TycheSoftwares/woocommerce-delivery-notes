@@ -59,6 +59,15 @@ class Install {
 			return;
 		}
 		$ran      = true;
+
+		$current_db_version = get_option( WCDN_SLUG . '_db_version', '0.0.0' );
+		$plugin_version     = WCDN_PLUGIN_VERSION;
+
+		// Nothing to migrate: do not touch the options table on every request.
+		if ( version_compare( $current_db_version, $plugin_version, '>=' ) ) {
+			return;
+		}
+
 		$lock_key = WCDN_SLUG . '_migration_lock';
 
 		// Try atomic lock first.
@@ -68,15 +77,12 @@ class Install {
 
 			// If lock exists and is recent → exit.
 			if ( $lock && ( time() - (int) $lock ) < 300 ) {
-				//return;
+				return;
 			}
 
 			// Stale lock → take over.
 			update_option( $lock_key, time(), false );
 		}
-
-		$current_db_version = get_option( WCDN_SLUG . '_db_version', '0.0.0' );
-		$plugin_version     = WCDN_PLUGIN_VERSION;
 
 		// Fresh install.
 		if ( '0.0.0' === $current_db_version || '7.0' === $current_db_version ) {
