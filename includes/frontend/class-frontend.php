@@ -332,7 +332,11 @@ class Frontend {
 			$is_sample = 'sample' === $order_id;
 			$order     = '';
 
-			if ( ! $is_sample ) {
+			if ( $is_sample ) {
+				if ( ! current_user_can( 'manage_woocommerce' ) ) { // phpcs:ignore
+					wp_die( esc_html__( 'Access denied.', 'woocommerce-delivery-notes' ) );
+				}
+			} else {
 
 				$order_id = absint( $order_id );
 				$order    = wc_get_order( $order_id );
