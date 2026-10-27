@@ -235,6 +235,7 @@ class Pdf {
 					array(
 						$options->getRootDir(),
 						realpath( ABSPATH ),
+						realpath( $upload_dir['basedir'] ),
 						realpath( $upload_fonts_dir ),
 					)
 				)
