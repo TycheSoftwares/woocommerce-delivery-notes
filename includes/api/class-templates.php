@@ -902,7 +902,7 @@ class Templates extends \Tyche\WCDN\Api\Api {
 					continue;
 				}
 
-				$value = wp_strip_all_tags( $meta_field->display_value );
+				$value = wp_kses_post( $meta_field->display_value );
 
 				foreach ( $product_addons as $addon ) {
 					if ( 'file_upload' === $addon['type'] && $meta_field->key === $addon['name'] ) {
