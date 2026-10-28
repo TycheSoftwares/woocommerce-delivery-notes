@@ -952,6 +952,19 @@ class Template_Renderer {
 				$bold_path
 			);
 		}
+
+		// Register extra weights for Inter and Noto Sans families that ship multiple weights.
+		$extra_weights = array(
+			'500' => $info['path'], // Medium -> Regular.
+			'600' => $bold_path,    // SemiBold -> Bold.
+		);
+
+		foreach ( $extra_weights as $weight => $file ) {
+			$dompdf->getFontMetrics()->registerFont(
+				array( 'family' => $info['name'], 'weight' => $weight, 'style' => 'normal' ),
+				$file
+			);
+		}
 	}
 
 	/**
