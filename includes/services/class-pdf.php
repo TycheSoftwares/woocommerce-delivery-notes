@@ -137,6 +137,10 @@ class Pdf {
 	 */
 	public function generate( $order_id, $template, $data = array(), $force = true ) {
 
+		// Reject unknown template keys before any path is built.
+		if ( ! in_array( $template, Template_Engine::get_template_keys(), true ) ) {
+			return false;
+		}
 		$is_sample   = 'sample' === $order_id;
 		$filesystem  = Utils::get_filesystem();
 		$is_multiple = is_array( $order_id );
