@@ -125,6 +125,28 @@ class Utils {
 	}
 
 	/**
+	 * Select a refund belonging to an order, or its latest refund by default.
+	 *
+	 * @param \WC_Order $order     Parent order.
+	 * @param int       $refund_id Optional explicit refund ID, for email resends.
+	 * @return \WC_Order_Refund|false
+	 */
+	public static function get_order_refund( $order, $refund_id = 0 ) {
+		if ( ! $order instanceof \WC_Order ) {
+			return false;
+		}
+
+		if ( $refund_id ) {
+			$refund = wc_get_order( $refund_id );
+			return $refund instanceof \WC_Order_Refund && $refund->get_parent_id() === $order->get_id()
+				? $refund : false;
+		}
+
+		$refunds = $order->get_refunds();
+		return ! empty( $refunds ) ? reset( $refunds ) : false;
+	}
+
+	/**
 	 * Replace placeholders in a given text string.
 	 *
 	 * Supported placeholders:

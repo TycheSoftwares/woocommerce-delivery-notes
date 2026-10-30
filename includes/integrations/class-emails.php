@@ -43,7 +43,7 @@ class Emails {
 			'woocommerce_email_attachments',
 			array( $this, 'attach_pdfs' ),
 			10,
-			3
+			4
 		);
 
 		add_action( 'woocommerce_email_after_order_table', array( $this, 'add_email_print_url' ), 100, 3 );
@@ -94,16 +94,21 @@ class Emails {
 	 * @param array           $attachments Existing attachments.
 	 * @param string          $email_id    WooCommerce email ID.
 	 * @param \WC_Order|mixed $order       Order object.
+	 * @param \WC_Email|null  $email       Email object, including its selected refund.
 	 * @return array
 	 * @since 7.0
 	 */
-	public function attach_pdfs( $attachments, $email_id, $order ) {
+	public function attach_pdfs( $attachments, $email_id, $order, $email = null ) {
 
 		$upload_dir = wp_upload_dir();
 		$filesystem = Utils::get_filesystem();
 
+		$refund_id = $order instanceof \WC_Order_Refund ? $order->get_id() : 0;
 		if ( $order instanceof \WC_Order_Refund ) {
 			$order = wc_get_order( $order->get_parent_id() );
+		}
+		if ( is_object( $email ) && isset( $email->refund ) && $email->refund instanceof \WC_Order_Refund ) {
+			$refund_id = $email->refund->get_id();
 		}
 
 		if ( ! $order instanceof \WC_Order || ! $filesystem ) {
@@ -138,7 +143,12 @@ class Emails {
 			$attach_admin    = (bool) Templates::get( $template, 'attachAdminEmail' );
 			$attach_custom   = (bool) Templates::get( $template, 'attachCustomEmails' );
 
-			$file_name  = $order->get_meta( '_wcdn_' . $template . '_pdf' );
+			// Credit notes belong to individual refunds, never the parent's invoice cache.
+			$document_order = 'creditnote' === $template ? Utils::get_order_refund( $order, $refund_id ) : $order;
+			if ( ! $document_order ) {
+				continue;
+			}
+			$file_name  = $document_order->get_meta( '_wcdn_' . $template . '_pdf' );
 			$file_path  = $upload_dir['basedir'] . '/wcdn/' . $template . '/' . $file_name;
 			$has_cached = $file_name && $filesystem->exists( $file_path );
 
@@ -153,7 +163,7 @@ class Emails {
 				 */
 				$data = apply_filters(
 					'wcdn_email_template_data',
-					$this->build_data( $order, $template ),
+					$this->build_data( $document_order, $template ),
 					$order,
 					$template,
 					$email_id
@@ -176,12 +186,12 @@ class Emails {
 
 			// To all Administrators.
 			if ( $attach_admin ) {
-				$this->send_to_custom_email( wcdn_get_all_administrator_emails(), $order, $file_path, $template, 'admin' );
+				$this->send_to_custom_email( wcdn_get_all_administrator_emails(), $document_order, $file_path, $template, 'admin' );
 			}
 
 			// Custom Email Addresses.
 			if ( $attach_custom ) {
-				$this->send_to_custom_email( Templates::get( $template, 'customEmailAddresses' ), $order, $file_path, $template, 'custom' );
+				$this->send_to_custom_email( Templates::get( $template, 'customEmailAddresses' ), $document_order, $file_path, $template, 'custom' );
 			}
 		}
 
@@ -204,6 +214,7 @@ class Emails {
 	 */
 	protected function send_to_custom_email( $emails, $order, $file_path, $template, $recipient_type = 'custom' ) {
 
+		$document_order = $order;
 		if ( $order instanceof \WC_Order_Refund ) {
 			$order = wc_get_order( $order->get_parent_id() );
 			if ( ! $order ) {
@@ -211,7 +222,7 @@ class Emails {
 			}
 		}
 
-		$already_sent = $order->get_meta( '_email_pdf_sent_' . $recipient_type . '_' . $template, true );
+		$already_sent = $document_order->get_meta( '_email_pdf_sent_' . $recipient_type . '_' . $template, true );
 
 		if ( $already_sent || empty( $emails ) || empty( $file_path ) || ! file_exists( $file_path ) || '' === $emails ) {
 			return;
@@ -275,8 +286,8 @@ class Emails {
 			array( $file_path )
 		);
 
-		$order->update_meta_data( '_email_pdf_sent_' . $recipient_type . '_' . $template, 1 );
-		$order->save();
+		$document_order->update_meta_data( '_email_pdf_sent_' . $recipient_type . '_' . $template, 1 );
+		$document_order->save();
 	}
 
 	/**

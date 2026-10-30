@@ -1183,6 +1183,13 @@ if ( $is_rtl ) {
 			<?php endif; ?>
 		</table>
 
+		<?php elseif ( 'creditnote' === $template && isset( $order['refund']['total'] ) && ! empty( $settings['displayPriceInProductDetailsTable'] ) ) : ?>
+		<table class="wcdn-totals" width="100%">
+			<tr class="wcdn-total">
+				<td class="wcdn-totals-label"><strong><?php esc_html_e( 'Total Refunded:', 'woocommerce-delivery-notes' ); ?></strong></td>
+				<td class="wcdn-totals-value"><?php echo wp_kses_post( $order['refund']['total'] ); ?></td>
+			</tr>
+		</table>
 		<?php endif; ?>
 
 		<?php
