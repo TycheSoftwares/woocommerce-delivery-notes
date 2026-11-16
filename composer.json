@@ -1,6 +1,6 @@
 {
     "require": {
-        "dompdf/dompdf": "^2.0"
+        "dompdf/dompdf": "3.1.6"
     },
     "autoload": {
         "classmap": [
