@@ -4,10 +4,10 @@ Contributors: ashokrane, tychesoftwares
 Tags: packing slips, invoice, pdf invoice, delivery notes, woocommerce print invoice
 Requires at least: 6.0
 Requires PHP: 7.4
-Tested up to: 7.0.2
+Tested up to: 7.1.4
 WC requires at least: 5.0.0
-WC tested up to: 10.9.4
-Stable tag: 7.3.0
+WC tested up to: 11.3.0
+Stable tag: 7.4.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -250,6 +250,16 @@ When an order is refunded, the refunded amount is shown on the invoice, and you 
 This plugin communicates with our tracking server to send usage data **only** if the user has explicitly opted in to usage tracking. For detailed information about what is tracked, please refer to our [usage tracking documentation](https://www.tychesoftwares.com/docs/woocommerce-print-invoice-delivery-note/print-invoice-usage-trackings/).
 
 == Changelog ==
+
+= 7.4.0 - 17/11/2026
+* Fix - Japanese text is missing from PDF documents when a bold font is selected in the template settings.
+* Fix - Print Order invoice can be accessed by unauthenticated users after an order is placed.
+* Fix - Updated the bundled Dompdf library from version 2.0.8 to 3.1.6 to address security vulnerabilities.
+* Fix - Migration check runs even after the migration has been completed.
+* Fix - Store logo is not displayed in PDF documents when the uploads directory is located outside ABSPATH.
+* Fix - Images in order item metadata are not displayed in invoices when the metadata is updated from the Edit Order page.
+* Fix - Delivery/Pickup dates from Order Delivery Date Pro are not displayed in Delivery Notes.
+* Fix - Added the ‘wcdn_attach_pdf_to_new_order_email’ filter to allow attaching PDFs to new order emails sent to the shop administrator.
 
 = 7.3.0 - 04/08/2026 =
 * Fix - Fatal error: Undefined constant FS_CHMOD_FILE when printing documents when the server denies access to the required files.
