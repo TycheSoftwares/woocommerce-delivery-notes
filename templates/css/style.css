@@ -152,6 +152,12 @@ hr {
     color: #555;
 }
 
+.wcdn-item-meta dd p {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
 .wcdn-item-meta dt::after {
     content: ': ';
 }

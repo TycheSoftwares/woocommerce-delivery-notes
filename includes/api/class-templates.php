@@ -905,6 +905,10 @@ class Templates extends \Tyche\WCDN\Api\Api {
 
 				$value = wp_kses_post( $meta_field->display_value );
 
+				// WooCommerce wraps meta values in <p> tags; as block elements with margins they add large gaps between item meta rows. Collapse them while keeping other markup (e.g. images).
+				$value = preg_replace( '#</p>\s*<p[^>]*>#i', '<br>', $value );
+				$value = trim( preg_replace( '#</?p[^>]*>#i', '', $value ) );
+
 				foreach ( $product_addons as $addon ) {
 					if ( 'file_upload' === $addon['type'] && $meta_field->key === $addon['name'] ) {
 						$value = wp_basename( $value );
